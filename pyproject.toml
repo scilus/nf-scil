@@ -1,0 +1,28 @@
+[build-system]
+
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+
+name = "nf-scil-tools"
+version = "0.1.0"
+description = "Tools for the NF-SCIL project"
+license = "MIT"
+readme = "README.md"
+
+authors = ["The SCIL developers"]
+
+maintainers = [
+    "alex valcourt caron <alex.valcourt.caron@usherbrooke.ca>",
+    "arnaud boré <arnaud.bore@gmail.com>"
+]
+
+homepage = "https://scil.usherbrooke.ca/"
+
+repository = "https://github.com/scilus/nf-scil.git"
+
+[tool.poetry.dependencies]
+
+python = "^3.8"
+nf-core = "^2.0.0"
