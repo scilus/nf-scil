@@ -12,7 +12,7 @@ process SCILPY_CROPVOLUME {
 
     output:
     tuple val(meta), path("*_cropped.nii.gz"), emit: image
-    tuple val(meta), path("*.pkl")           , emit: crop_box
+    tuple val(meta), path("*.pkl")           , emit: crop_box, optional: true
     path "versions.yml"                      , emit: versions
 
     when:
