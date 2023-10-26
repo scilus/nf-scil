@@ -24,5 +24,7 @@ repository = "https://github.com/scilus/nf-scil.git"
 
 [tool.poetry.dependencies]
 
-python = "^3.8"
+python = "<3.13,>=3.9"
 nf-core = "^2.0.0"
+nibabel = "^5.1.0"
+numpy = "^1.26.1"
