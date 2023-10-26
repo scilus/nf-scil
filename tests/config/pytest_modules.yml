@@ -1,4 +1,3 @@
----
 
 scilpy/cropvolume:
   - modules/nf-scil/scilpy/cropvolume/**
