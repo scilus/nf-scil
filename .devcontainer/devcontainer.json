@@ -6,7 +6,7 @@
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {},
 		"ghcr.io/robsyme/features/nextflow:1": {},
 		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
@@ -30,5 +30,7 @@
                 "yzhang.markdown-all-in-one"
             ]
         }
-    }
+    },
+    "init": true,
+    "privileged": true
 }
