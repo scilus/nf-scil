@@ -197,7 +197,7 @@ nf-core modules create-test-yml \
 All the test case you defined will be run, watch out for errors ! Once everything runs 
 smoothly, look at the test metadata file produced : `tests/modules/nf-scil/<category/<tool>/test.yml` 
 and validate that ALL outputs produced by test cases have been catched. Their `md5sum` is 
-critical to ensure future execution of your test produce valid outputs.
+critical to ensure future executions of your test produce valid outputs.
 
 ## Last safety test
 
@@ -221,7 +221,7 @@ Open a PR to the `nf-scil` repository master. We'll test everything, make sure i
 working and that codes follows standards. It's the perfect place to get new tools added 
 to our containers, if need be !
 
-Once we have LGTM has been declared, you'll need to do a last step to update the 
-`main` with your test. Go in the `tests/config/test_data.config` file and change all 
-references to your branch so it points to `main`. Then wave to the maintainers and look 
-at your hard work paying off. PR merged !
+Once LGTM has been declared, you'll need to do a last step to update the `main` with your 
+test data. Go in the `tests/config/test_data.config` file and change all references to 
+your branch so it points to `main`. Then wave to the maintainers and look at your hard 
+work paying off. PR merged !
