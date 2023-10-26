@@ -1,0 +1,5 @@
+---
+
+scilpy/cropvolume:
+  - modules/nf-scil/scilpy/cropvolume/**
+  - tests/modules/nf-scil/scilpy/cropvolume/**
