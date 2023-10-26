@@ -14,3 +14,14 @@ workflow test_scilpy_cropvolume {
 
     SCILPY_CROPVOLUME ( input )
 }
+
+workflow test_scilpy_cropvolume_output_bbox {
+
+    input = [
+        [ id:'test', single_end:false ], // meta map
+        file(params.test_data['scilpy']['cropvolume']['image'], checkIfExists: true),
+        file(params.test_data['scilpy']['cropvolume']['mask'], checkIfExists: true)
+    ]
+
+    SCILPY_CROPVOLUME ( input )
+}
