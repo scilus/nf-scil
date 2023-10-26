@@ -1,0 +1,36 @@
+{
+    "name": "NF-SCIL development container",
+    "build": { "dockerfile": "Dockerfile" },
+    "forwardPorts": [3000],
+    "onCreateCommand": "bash .devcontainer/setup_container.sh",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {},
+		"ghcr.io/robsyme/features/nextflow:1": {},
+		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
+		"ghcr.io/devcontainers-contrib/features/tmux-apt-get:1": {},
+		"ghcr.io/devcontainers-contrib/features/wget-apt-get:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.vscode-pull-request-github",
+                "ms-azuretools.vscode-docker",
+                "ms-python.isort",
+                "ms-python.vscode-pylance",
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpptools-themes",
+                "ms-vscode.makefile-tools",
+                "nf-core.nf-core-extensionpack",
+                "twxs.cmake",
+                "yzhang.markdown-all-in-one"
+            ]
+        }
+    },
+    "init": true,
+    "privileged": true
+}

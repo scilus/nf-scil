@@ -1,0 +1,53 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "scilpy_cropvolume"
+description: Crop empty planes around the data in a volume
+keywords:
+  - nifti
+  - crop
+  - scilpy
+tools:
+  - "scilpy":
+      description: "Scilpy library"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - image:
+      type: file
+      description: Nifti image file to crop
+      pattern: "*.{nii,nii.gz}"
+
+  - mask:
+      type: file
+      description: Nifti image file used to mask the input image
+      pattern: "*.{nii,nii.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - image:
+      type: file
+      description: Cropped Nifti image file
+      pattern: "*_cropped.{nii,nii.gz}"
+
+  - bounding_box:
+      type: file
+      description: Bouding box defining the limits of the crop
+      pattern: "*.pkl"
+
+authors:
+  - "@AlexVCaron"
