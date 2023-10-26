@@ -22,6 +22,8 @@ process SCILPY_CROPVOLUME {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
+    if ( task.ext.output_bbox ) args = "$args --output_bbox ${prefix}_bbox.pkl"
+
     """
     scil_crop_volume.py $image ${prefix}_cropped.nii.gz $args
 
