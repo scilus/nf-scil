@@ -27,7 +27,7 @@ process SCILPY_CROPVOLUME {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(echo \$(scil_get_version.py --version_only 2>&1) | sed 's/^.*scilpy //; s/Using.*\$//' ))
+        : \$(scil_get_version.py 2>&1)
     END_VERSIONS
     """
 
@@ -42,7 +42,7 @@ process SCILPY_CROPVOLUME {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(echo \$(scil_get_version.py --version_only 2>&1) | sed 's/^.*scilpy //; s/Using.*\$//' ))
+        : \$(scil_get_version.py 2>&1)
     END_VERSIONS
     """
 }

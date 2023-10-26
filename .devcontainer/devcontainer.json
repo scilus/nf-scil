@@ -25,6 +25,7 @@
                 "ms-vscode.cpptools-extension-pack",
                 "ms-vscode.cpptools-themes",
                 "ms-vscode.makefile-tools",
+                "nf-core.nf-core-extensionpack",
                 "twxs.cmake",
                 "yzhang.markdown-all-in-one"
             ]
