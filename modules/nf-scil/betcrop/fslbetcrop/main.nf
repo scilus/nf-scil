@@ -27,7 +27,7 @@ process BETCROP_FSLBETCROP {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_exctract_b0.py $dwi $bval $bvec ${prefix}__b0.nii.gz --mean \
+    scil_extract_b0.py $dwi $bval $bvec ${prefix}__b0.nii.gz --mean \
         --b0_thr $params.b0_thr --force_b0_threshold
     bet ${prefix}__b0.nii.gz ${prefix}__b0_bet.nii.gz -m -R -f $params.bet_dwi_f
     scil_image_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__b0_bet_mask.nii.gz --data_type uint8 -f
