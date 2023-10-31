@@ -1,3 +1,6 @@
+denoising/nlmeans:
+  - modules/nf-scil/denoising/nlmeans/**
+  - tests/modules/nf-scil/denoising/nlmeans/**
 
 scilpy/cropvolume:
   - modules/nf-scil/scilpy/cropvolume/**

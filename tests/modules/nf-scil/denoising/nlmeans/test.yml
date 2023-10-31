@@ -1,0 +1,9 @@
+- name: denoising nlmeans test_denoising_nlmeans
+  command: nextflow run ./tests/modules/nf-scil/denoising/nlmeans -entry test_denoising_nlmeans -c ./tests/config/nextflow.config
+  tags:
+    - denoising
+    - denoising/nlmeans
+  files:
+    - path: output/denoising/test_denoised.nii.gz
+      md5sum: 749692b736eceee98403467d145ab3e2
+    - path: output/denoising/versions.yml
