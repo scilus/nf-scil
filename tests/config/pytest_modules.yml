@@ -1,3 +1,6 @@
+preproc/n4:
+  - modules/nf-scil/preproc/n4/**
+  - tests/modules/nf-scil/preproc/n4/**
 
 scilpy/cropvolume:
   - modules/nf-scil/scilpy/cropvolume/**

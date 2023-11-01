@@ -1,0 +1,67 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "preproc_n4"
+## TODO nf-core: Add a description of the module and list keywords
+description: Bias field correction using N4
+keywords:
+  - "ANTs"
+    description: ANTs computes high-dimensional mappings to capture the statistics of brain structure and function.
+
+  - "scilpy"
+    description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab
+tools:
+  - "preproc":
+      ## TODO nf-core: Add a description and other details for the software below
+      description: ""
+      homepage: ""
+      documentation: ""
+      tool_dev_url: ""
+      doi: ""
+      licence: ""
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  ## TODO nf-core: Delete / customise this example input
+  - dwi:
+      type: file
+      description: Nifti image file to correct
+      pattern: "*.{nii,nii.gz}"
+  
+  - b0:
+      type: file
+      description: Nifti image file - b0
+      pattern: "*.{nii,nii.gz}"
+
+  - b0_mask:
+      type: file
+      description: Nifti image file mask
+      pattern: "*.{nii,nii.gz}"        
+
+## TODO nf-core: Add a description of all of the variables used as output
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  ## TODO nf-core: Delete / customise this example output
+  - dwi:
+      type: file
+      description: DWI image N4 corrected
+      pattern: "*.{nii,nii.gz}"
+
+authors:
+  - "@arnaudbore"

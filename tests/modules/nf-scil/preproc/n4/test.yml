@@ -1,0 +1,11 @@
+## TODO nf-core: Please run the following command to build this file:
+#                nf-core modules create-test-yml /n4
+- name: "preproc n4"
+  command: nextflow run ./tests/modules/nf-scil/preproc/n4 -entry test_preproc_n4 -c ./tests/config/nextflow.config
+  tags:
+    - "preproc"
+    - "preproc/n4"
+  files:
+    - path: "output/preproc/test_dwi_n4.nii.gz"
+      md5sum: 0000000000000exemple
+    - path: "output/preproc/versions.yml"    
