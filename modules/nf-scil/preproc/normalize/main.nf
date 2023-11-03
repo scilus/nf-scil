@@ -79,6 +79,7 @@ process PREPROC_NORMALIZE {
     cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             : \$(scil_get_version.py 2>&1)
+            : \$(dwidenoise --version 2>&1)
     END_VERSIONS
     """
 
@@ -99,6 +100,7 @@ process PREPROC_NORMALIZE {
     cat <<-END_VERSIONS > versions.yml
         "${task.process}":
             : \$(scil_get_version.py 2>&1)
+            : \$(dwidenoise --version 2>&1)
     END_VERSIONS
     """
 }
