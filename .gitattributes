@@ -12,3 +12,6 @@
 *.sh text eol=lf
 .test_data/**/cropvolume* filter=lfs diff=lfs merge=lfs -text
 .test_data/**/fslbetcrop* filter=lfs diff=lfs merge=lfs -text
+.test_data/**/nlmeans* filter=lfs diff=lfs merge=lfs -text
+.test_data/**/b0* filter=lfs diff=lfs merge=lfs -text
+.test_data/**/dwi.nii.gz filter=lfs diff=lfs merge=lfs -text
