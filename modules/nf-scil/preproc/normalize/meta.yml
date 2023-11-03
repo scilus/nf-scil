@@ -1,0 +1,67 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "preproc_normalize"
+description: Normalize DWI using MRtrix3 (in WM)
+keywords:
+  - nifti
+  - normalise
+  - scilpy
+  - MRtrix3
+ 
+tools:
+  - "MRtrix3"
+    description: dwinormalise normalize DWI to have a mean value in the WM of approximately 1000.
+
+  - "scilpy"
+    description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab.
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - dwi:
+      type: file
+      description: Nifti image file to normalize
+      pattern: "*.{nii,nii.gz}"
+
+  - mask:
+      type: file
+      description: Nifti image file used to mask the input image
+      pattern: "*.{nii,nii.gz}"
+
+  - bvec:
+      type: file
+      description: Text file containing b-vectors
+      pattern: "*.{.bvec}"
+
+  - bval:
+      type: file
+      description: Text file containing b-values
+      pattern: "*.{.bval}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - dwi:
+      type: file
+      description: Normalized Nifti image file
+      pattern: "*_normalized.{nii,nii.gz}"
+
+  - mask:
+      type: file
+      description: Nifti image file mask
+      pattern: "*_mask.{nii,nii.gz}"
+
+authors:
+  - "@scilus"
