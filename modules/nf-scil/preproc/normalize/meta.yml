@@ -7,13 +7,14 @@ keywords:
   - normalise
   - scilpy
   - MRtrix3
- 
+
 tools:
   - "MRtrix3"
     description: dwinormalise normalize DWI to have a mean value in the WM of approximately 1000.
 
   - "scilpy"
     description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab.
+
 input:
   - meta:
       type: map
@@ -47,7 +48,7 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - versions:
       type: file
       description: File containing software versions
