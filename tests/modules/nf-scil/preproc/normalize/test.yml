@@ -9,4 +9,4 @@
     - path: "output/preproc/test__fa_wm_mask.nii.gz"
       md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
     - path: "output/preproc/versions.yml"
-    
+
