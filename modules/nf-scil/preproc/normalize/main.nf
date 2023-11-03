@@ -3,12 +3,12 @@ process PREPROC_NORMALIZE {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scil.usherbrooke.ca/containers/scilus_1.5.0.sif':
+        'https://scil.usherbrooke.ca/containers/scilus_1.5.0.sif':
         'scilus/scilus:1.5.0' }"
 
     input:
     tuple val(meta), path(dwi), path(mask), path(bval), path(bvec)
-    path(dti_shells) /* optional, value = [] */
+    val(dti_shells) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*dwi_normalized.nii.gz")     , emit: dwi
@@ -33,15 +33,13 @@ process PREPROC_NORMALIZE {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_extract_dwi_shell.py $dwi \
-        $bval $bvec $dti_info dwi_dti.nii.gz \
+    scil_extract_dwi_shell.py $dwi $bval $bvec $dti_info dwi_dti.nii.gz \
         bval_dti bvec_dti -t $args1
 
     scil_compute_dti_metrics.py dwi_dti.nii.gz bval_dti bvec_dti --mask $mask \
         --not_all --fa fa.nii.gz --force_b0_threshold
 
-    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz \
-        -abs $args2 -nthreads 1
+    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz -abs $args2 -nthreads 1
 
     dwinormalise individual $dwi ${prefix}_fa_wm_mask.nii.gz \
         ${prefix}__dwi_normalized.nii.gz -fslgrad $bvec $bval -nthreads 1
@@ -63,15 +61,13 @@ process PREPROC_NORMALIZE {
 
     shells=\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$args3)print v}' | uniq)
 
-    scil_extract_dwi_shell.py $dwi \
-        $bval $bvec \$shells dwi_dti.nii.gz \
+    scil_extract_dwi_shell.py $dwi $bval $bvec \$shells dwi_dti.nii.gz \
         bval_dti bvec_dti -t $args1
 
     scil_compute_dti_metrics.py dwi_dti.nii.gz bval_dti bvec_dti --mask $mask \
         --not_all --fa fa.nii.gz --force_b0_threshold
 
-    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz \
-        -abs $args2 -nthreads 1
+    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz -abs $args2 -nthreads 1
 
     dwinormalise individual $dwi ${prefix}_fa_wm_mask.nii.gz \
         ${prefix}__dwi_normalized.nii.gz -fslgrad $bvec $bval -nthreads 1
