@@ -7,5 +7,7 @@
     - path: output/betcrop/test__dwi_bet_cropped.nii.gz
       md5sum: e597e3030800fbf9de681c1a5e539c9d
     - path: output/betcrop/test__dwi_bet_cropped_mask.nii.gz
-      md5sum: d511acb62d15958b5a8f2116cdb3ce3a
+      md5sum: 2fc5bd8704c86fe94b79c1d651e94032
+    - path: output/betcrop/test__dwi_boundingBox.pkl
+      md5sum: 89012d5b4f0f1bee03658b193911e0a1
     - path: output/betcrop/versions.yml

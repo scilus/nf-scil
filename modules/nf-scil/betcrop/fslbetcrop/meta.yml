@@ -3,13 +3,19 @@
 name: "betcrop_fslbetcrop"
 description: Perform Brain extraction using FSL BET followed by cropping empty planes around the data.
 keywords:
-  - FSL
+  - DWI
   - BET
   - Crop
 tools:
-  - "fslbetcrop":
+  - "FSL":
       description: "FSL Toolbox and Scilpy Toolbox"
-      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki, https://github.com/scilus/scilpy"
+      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+  - "MRtrix3":
+      description: "Toolbox for image processing, analysis and visualisation of dMRI."
+      homepage: "https://mrtrix.readthedocs.io/en/latest/"
 
 input:
   - meta:
