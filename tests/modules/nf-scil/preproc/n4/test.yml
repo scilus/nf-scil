@@ -5,5 +5,5 @@
     - "preproc/n4"
   files:
     - path: "output/preproc/test_dwi_n4.nii.gz"
-      md5sum: 0000000000000exemple
+      md5sum: dsad1201253
     - path: "output/preproc/versions.yml"    

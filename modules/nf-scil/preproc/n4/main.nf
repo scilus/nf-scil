@@ -10,8 +10,8 @@ process PREPROC_N4 {
     tuple val(meta), path(dwi), path(b0), path(b0_mask)
 
     output:
-    tuple val(meta), path("*dwi_n4.nii.gz")            , emit: dwi
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("*dwi_n4.nii.gz")     , emit: dwi
+    path "versions.yml"                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

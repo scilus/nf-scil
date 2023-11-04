@@ -3,19 +3,9 @@
 name: "preproc_n4"
 description: Bias field correction using N4
 keywords:
-  - "ANTs"
-    description: ANTs computes high-dimensional mappings to capture the statistics of brain structure and function.
-
-  - "scilpy"
-    description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab
-tools:
-  - "preproc":
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+  - correction
+  - N4
+  - bias field
 
 input:
   - meta:
@@ -28,6 +18,7 @@ input:
       type: file
       description: Nifti image file to correct
       pattern: "*.{nii,nii.gz}"
+
   - b0:
       type: file
       description: Nifti image file - b0
@@ -49,6 +40,7 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
+
   - dwi:
       type: file
       description: DWI image N4 corrected
