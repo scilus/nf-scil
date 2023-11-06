@@ -9,23 +9,9 @@ keywords:
   - scilpy
 tools:
   - "denoising":
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+      description: "Scilpy library"
 
 input:
-  # Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'test', single_end:false ]`
-  
-  
-  - input:
   - meta:
       type: map
       description: |
@@ -34,7 +20,7 @@ input:
 
   - image:
       type: file
-      description: Nifti image file to crop
+      description: Nifti image file to denoise
       pattern: "*.{nii,nii.gz}"
 
   - mask:
@@ -43,7 +29,6 @@ input:
       pattern: "*.{nii,nii.gz}"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
