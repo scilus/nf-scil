@@ -5,7 +5,7 @@
     - scilpy
   files:
     - path: output/scilpy/test_cropped.nii.gz
-      md5sum: 8d945f5e2108477d8bdd1ed093dcd7fc
+      md5sum: 67b8f391eac912369d617d7d1d6d93c8
     - path: output/scilpy/versions.yml
 
 - name: scilpy cropvolume test_scilpy_cropvolume_output_bbox
@@ -15,7 +15,7 @@
     - scilpy
   files:
     - path: output/scilpy/test_bbox.pkl
-      md5sum: 860d7150c20b1808abd8015fea624fa7
+      md5sum: 7ca97c01483453a4d7179f3848ddc0c5
     - path: output/scilpy/test_cropped.nii.gz
-      md5sum: 8d945f5e2108477d8bdd1ed093dcd7fc
+      md5sum: 67b8f391eac912369d617d7d1d6d93c8
     - path: output/scilpy/versions.yml

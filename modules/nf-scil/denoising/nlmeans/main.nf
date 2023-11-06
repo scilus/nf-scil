@@ -18,11 +18,12 @@ process DENOISING_NLMEANS {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+    def args = []
+    if (mask) args += ["--mask $mask"]
+
     """
-    scil_run_nlmeans.py $image ${prefix}_denoised.nii.gz 1 $args
+    scil_run_nlmeans.py $image ${prefix}_denoised.nii.gz 1 ${args.join(" ")}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -31,7 +32,6 @@ process DENOISING_NLMEANS {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     
     """
