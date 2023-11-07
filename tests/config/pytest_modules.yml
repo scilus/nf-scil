@@ -1,7 +1,9 @@
 preproc/n4:
   - modules/nf-scil/preproc/n4/**
   - tests/modules/nf-scil/preproc/n4/**
-
+betcrop/fslbetcrop:
+  - modules/nf-scil/betcrop/fslbetcrop/**
+  - tests/modules/nf-scil/betcrop/fslbetcrop/**
 scilpy/cropvolume:
   - modules/nf-scil/scilpy/cropvolume/**
   - tests/modules/nf-scil/scilpy/cropvolume/**
