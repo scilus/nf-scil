@@ -1,0 +1,50 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "preproc_n4"
+description: Bias field correction using N4
+keywords:
+  - correction
+  - N4
+  - bias field
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - dwi:
+      type: file
+      description: Nifti image file to correct
+      pattern: "*.{nii,nii.gz}"
+
+  - b0:
+      type: file
+      description: Nifti image file - b0
+      pattern: "*.{nii,nii.gz}"
+
+  - b0_mask:
+      type: file
+      description: Nifti image file mask
+      pattern: "*.{nii,nii.gz}"        
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - dwi:
+      type: file
+      description: DWI image N4 corrected
+      pattern: "*.{nii,nii.gz}"
+
+authors:
+  - "@arnaudbore"
