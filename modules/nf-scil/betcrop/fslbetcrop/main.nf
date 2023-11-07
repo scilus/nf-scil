@@ -4,8 +4,8 @@ process BETCROP_FSLBETCROP {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.5.0.sif':
-        'scilus/scilus:1.5.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
+        'scilus/scilus:1.6.0' }"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec)
@@ -45,9 +45,9 @@ process BETCROP_FSLBETCROP {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(scil_get_version.py 2>&1)
-        : \$(mrcalc -version 2>&1)
-        : \$(flirt -version 2>&1)
+        scilpy: 1.6.0
+        mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
+        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 
@@ -67,9 +67,9 @@ process BETCROP_FSLBETCROP {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(scil_get_version.py 2>&1)
-        : \$(mrcalc -version 2>&1)
-        : \$(flirt -version 2>&1)
+        scilpy: 1.6.0
+        mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
+        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 }
