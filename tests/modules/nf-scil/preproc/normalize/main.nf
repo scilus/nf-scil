@@ -27,7 +27,5 @@ workflow test_preproc_normalize_with_dti_shells {
         file(params.test_data['preproc']['normalize']['bvec'], checkIfExists: true)
     ]
 
-    dti_shell = '0 300 1000'
-
-    PREPROC_NORMALIZE ( input, dti_shell )
+    PREPROC_NORMALIZE ( input )
 }
