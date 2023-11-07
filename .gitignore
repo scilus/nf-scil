@@ -1,4 +1,5 @@
 .work/
 .nextflow*
+*.pyc
 
 *.code-workspace
