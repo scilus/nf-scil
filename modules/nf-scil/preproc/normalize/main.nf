@@ -4,7 +4,7 @@ process PREPROC_NORMALIZE {
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.5.0' }"
+        'scilus/scilus:1.6.0' }"
 
     input:
     tuple val(meta), path(dwi), path(mask), path(bval), path(bvec)
