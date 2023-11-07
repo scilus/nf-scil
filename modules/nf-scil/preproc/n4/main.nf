@@ -50,7 +50,7 @@ process PREPROC_N4 {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
-        N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: \\([0-9.]\\+\\)/\\1/p')
+            N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 }
