@@ -23,7 +23,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - dwi:
       type: file
       description: Nifti DWI volume to perform BET + crop.
@@ -50,7 +50,7 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  
+
   - dwi:
       type: file
       description: Nifti DWI volume brain-extracted and cropped.
@@ -60,6 +60,11 @@ output:
       type: file
       description: DWI mask brain-extracted and cropped.
       pattern: "*dwi_bet_cropped_mask.{nii,nii.gz}"
+
+  - bbox:
+      type: file
+      description: DWI BoundingBox used for cropping. 
+      pattern: "*dwi_boundingBox.pkl"
 
 authors:
   - "@gagnonanthony"
