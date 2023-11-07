@@ -3,7 +3,7 @@ process PREPROC_NORMALIZE {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.5.0.sif':
+        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
         'scilus/scilus:1.5.0' }"
 
     input:
@@ -18,9 +18,9 @@ process PREPROC_NORMALIZE {
     task.ext.when == null || task.ext.when
 
     script:
-    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ?: ''
-    def fa_mask_threshold = task.ext.fa_mask_threshold ?: ''
-    def max_dti_shell_value = task.ext.max_dti_shell_value ?: ''
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "-t $task.ext.dwi_shell_tolerance" : ""
+    def fa_mask_threshold = task.ext.fa_mask_threshold ? "-abs $task.ext.fa_mask_threshold": ""
+    def max_dti_shell_value = task.ext.max_dti_shell_value ?: "1600"
     def prefix = task.ext.prefix ?: "${meta.id}"
     def dti_info = task.ext.dti_shells ? "--dti_shells ${dti_shells}" : "--dti_shells \$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value)print v}' | uniq)"
 
@@ -32,21 +32,21 @@ process PREPROC_NORMALIZE {
     export OPENBLAS_NUM_THREADS=1
 
     scil_extract_dwi_shell.py $dwi $bval $bvec $dti_info dwi_dti.nii.gz \
-        bval_dti bvec_dti -t $dwi_shell_tolerance
+        bval_dti bvec_dti $dwi_shell_tolerance
 
     scil_compute_dti_metrics.py dwi_dti.nii.gz bval_dti bvec_dti --mask $mask \
         --not_all --fa fa.nii.gz --force_b0_threshold
 
-    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz -abs $fa_mask_threshold \
+    mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz $fa_mask_threshold \
         -nthreads 1
 
     dwinormalise individual $dwi ${prefix}_fa_wm_mask.nii.gz \
         ${prefix}__dwi_normalized.nii.gz -fslgrad $bvec $bval -nthreads 1
 
     cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            : \$(scil_get_version.py 2>&1)
-            : \$(dwidenoise --version 2>&1)
+    "${task.process}":
+        scilpy: 1.6.0
+        mrtrix: \$(dwidenoise -version 2>&1 | sed -n 's/== dwidenoise \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
 
@@ -64,9 +64,9 @@ process PREPROC_NORMALIZE {
     touch ${prefix}__fa_wm_mask.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            : \$(scil_get_version.py 2>&1)
-            : \$(dwidenoise --version 2>&1)
+    "${task.process}":
+        scilpy: 1.6.0
+        mrtrix: \$(dwidenoise -version 2>&1 | sed -n 's/== dwidenoise \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
 }

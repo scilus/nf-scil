@@ -9,10 +9,10 @@ keywords:
   - MRtrix3
 
 tools:
-  - "MRtrix3"
+  - "MRtrix3":
     description: dwinormalise normalize DWI to have a mean value in the WM of approximately 1000.
 
-  - "scilpy"
+  - "scilpy":
     description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab.
 
 input:
