@@ -1,3 +1,6 @@
+betcrop/fslbetcrop:
+  - modules/nf-scil/betcrop/fslbetcrop/**
+  - tests/modules/nf-scil/betcrop/fslbetcrop/**
 
 scilpy/cropvolume:
   - modules/nf-scil/scilpy/cropvolume/**
