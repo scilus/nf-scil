@@ -8,8 +8,8 @@ workflow test_preproc_n4 {
     
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['preproc']['n4']['dwi'], checkIfExists: true)
-        file(params.test_data['preproc']['n4']['b0'], checkIfExists: true)
+        file(params.test_data['preproc']['n4']['dwi'], checkIfExists: true),
+        file(params.test_data['preproc']['n4']['b0'], checkIfExists: true),
         file(params.test_data['preproc']['n4']['b0_mask'], checkIfExists: true)
     ]
 
