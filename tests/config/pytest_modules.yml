@@ -1,3 +1,10 @@
+preproc/n4:
+  - modules/nf-scil/preproc/n4/**
+  - tests/modules/nf-scil/preproc/n4/**
+
+betcrop/fslbetcrop:
+  - modules/nf-scil/betcrop/fslbetcrop/**
+  - tests/modules/nf-scil/betcrop/fslbetcrop/**
 denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**

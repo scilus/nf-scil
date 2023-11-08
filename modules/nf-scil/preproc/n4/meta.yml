@@ -1,15 +1,11 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
-name: "denoising_nlmeans"
-description: denoise a dataset with the Non Local Means algorithm
+name: "preproc_n4"
+description: Bias field correction using N4
 keywords:
-  - nifti
-  - denoising
-  - nlmeans
-  - scilpy
-tools:
-  - "scilpy":
-      description: "Scilpy library"
+  - correction
+  - N4
+  - bias field
 
 input:
   - meta:
@@ -17,16 +13,21 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-
-  - image:
+  
+  - dwi:
       type: file
-      description: Nifti image file to denoise
+      description: Nifti image file to correct
       pattern: "*.{nii,nii.gz}"
 
-  - mask:
+  - b0:
       type: file
-      description: Nifti image file used to mask the input image
+      description: Nifti image file - b0
       pattern: "*.{nii,nii.gz}"
+
+  - b0_mask:
+      type: file
+      description: Nifti image file mask
+      pattern: "*.{nii,nii.gz}"        
 
 output:
   - meta:
@@ -39,11 +40,11 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  
-  - image:
+
+  - dwi:
       type: file
-      description: Denoised Nifti image file
-      pattern: "*_denoised.{nii,nii.gz}"
+      description: DWI image N4 corrected
+      pattern: "*.{nii,nii.gz}"
 
 authors:
-  - "@scilus"
+  - "@arnaudbore"
