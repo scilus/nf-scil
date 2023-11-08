@@ -8,7 +8,7 @@ keywords:
   - nlmeans
   - scilpy
 tools:
-  - "denoising":
+  - "scilpy":
       description: "Scilpy library"
 
 input:

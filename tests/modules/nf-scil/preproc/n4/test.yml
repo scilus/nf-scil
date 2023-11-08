@@ -1,0 +1,9 @@
+- name: preproc n4 test_preproc_n4
+  command: nextflow run ./tests/modules/nf-scil/preproc/n4 -entry test_preproc_n4 -c ./tests/config/nextflow.config
+  tags:
+    - preproc
+    - preproc/n4
+  files:
+    - path: output/preproc/test__dwi_n4.nii.gz
+      md5sum: d7a741dcf1a1f9176619790e9d708940
+    - path: output/preproc/versions.yml
