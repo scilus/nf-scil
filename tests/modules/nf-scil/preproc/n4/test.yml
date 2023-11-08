@@ -5,5 +5,5 @@
     - preproc/n4
   files:
     - path: output/preproc/test__dwi_n4.nii.gz
-      md5sum: 7d446225e9081c8bbef521056f61efa2
+      md5sum: d7a741dcf1a1f9176619790e9d708940
     - path: output/preproc/versions.yml
