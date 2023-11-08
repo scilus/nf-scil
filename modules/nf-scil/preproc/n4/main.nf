@@ -23,6 +23,7 @@ process PREPROC_N4 {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
+    export ANTS_RANDOM_SEED=1234
 
     N4BiasFieldCorrection -i $b0\
         -o [${prefix}__b0_n4.nii.gz, bias_field_b0.nii.gz]\

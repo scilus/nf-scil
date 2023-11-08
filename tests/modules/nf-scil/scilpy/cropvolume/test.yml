@@ -1,8 +1,8 @@
 - name: scilpy cropvolume test_scilpy_cropvolume
   command: nextflow run ./tests/modules/nf-scil/scilpy/cropvolume -entry test_scilpy_cropvolume -c ./tests/config/nextflow.config
   tags:
-    - scilpy
     - scilpy/cropvolume
+    - scilpy
   files:
     - path: output/scilpy/test_cropped.nii.gz
       md5sum: 67b8f391eac912369d617d7d1d6d93c8
@@ -11,8 +11,8 @@
 - name: scilpy cropvolume test_scilpy_cropvolume_output_bbox
   command: nextflow run ./tests/modules/nf-scil/scilpy/cropvolume -entry test_scilpy_cropvolume_output_bbox -c ./tests/config/nextflow.config
   tags:
-    - scilpy
     - scilpy/cropvolume
+    - scilpy
   files:
     - path: output/scilpy/test_bbox.pkl
       md5sum: 7ca97c01483453a4d7179f3848ddc0c5
