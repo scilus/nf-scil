@@ -3,8 +3,8 @@ process PREPROC_N4 {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'scil.usherbrooke.ca/containers/scilus_1.5.0.sif':
+        'scilus/scilus:1.5.0' }"
 
     input:
     tuple val(meta), path(dwi), path(b0), path(b0_mask)
@@ -23,6 +23,7 @@ process PREPROC_N4 {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
+    export ANTS_RANDOM_SEED=1234
 
     N4BiasFieldCorrection -i $b0\
         -o [${prefix}__b0_n4.nii.gz, bias_field_b0.nii.gz]\
