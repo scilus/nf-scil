@@ -2,7 +2,7 @@
 
 nextflow.enable.dsl = 2
 
-include { SCILPY_CROPVOLUME } from '../../../../../modules/nf-scil/scilpy/cropvolume/main.nf'
+include { BETCROP_CROPVOLUME } from '../../../../../modules/nf-scil/betcrop/cropvolume/main.nf'
 
 workflow test_betcrop_cropvolume {
     
