@@ -1,14 +1,15 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
-name: "scilpy_cropvolume"
+name: "betcrop_cropvolume"
 description: Crop empty planes around the data in a volume
 keywords:
   - nifti
   - crop
   - scilpy
 tools:
-  - "scilpy":
-      description: "Scilpy library"
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
 
 input:
   - meta:

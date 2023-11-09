@@ -1,0 +1,21 @@
+- name: betcrop cropvolume test_betcrop_cropvolume
+  command: nextflow run ./tests/modules/nf-scil/betcrop/cropvolume -entry test_betcrop_cropvolume -c ./tests/config/nextflow.config
+  tags:
+    - betcrop/cropvolume
+    - betcrop
+  files:
+    - path: output/betcrop/test_cropped.nii.gz
+      md5sum: 67b8f391eac912369d617d7d1d6d93c8
+    - path: output/betcrop/versions.yml
+
+- name: betcrop cropvolume test_betcrop_cropvolume_output_bbox
+  command: nextflow run ./tests/modules/nf-scil/betcrop/cropvolume -entry test_betcrop_cropvolume_output_bbox -c ./tests/config/nextflow.config
+  tags:
+    - betcrop/cropvolume
+    - betcrop
+  files:
+    - path: output/betcrop/test_bbox.pkl
+      md5sum: 7ca97c01483453a4d7179f3848ddc0c5
+    - path: output/betcrop/test_cropped.nii.gz
+      md5sum: 67b8f391eac912369d617d7d1d6d93c8
+    - path: output/betcrop/versions.yml
