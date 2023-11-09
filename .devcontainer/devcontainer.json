@@ -5,6 +5,7 @@
     "onCreateCommand": "bash .devcontainer/setup_container.sh",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/git-lfs:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {},
@@ -18,6 +19,7 @@
             "extensions": [
                 "GitHub.vscode-pull-request-github",
                 "ms-azuretools.vscode-docker",
+                "ms-python.python",
                 "ms-python.isort",
                 "ms-python.vscode-pylance",
                 "ms-vscode.cmake-tools",
