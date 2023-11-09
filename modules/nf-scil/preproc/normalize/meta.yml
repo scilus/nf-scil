@@ -7,13 +7,13 @@ keywords:
   - normalise
   - scilpy
   - MRtrix3
-
 tools:
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
   - "MRtrix3":
-    description: dwinormalise normalize DWI to have a mean value in the WM of approximately 1000.
-
-  - "scilpy":
-    description: Scilpy is the main library supporting research and development at the Sherbrooke Connectivity Imaging Lab.
+      description: "Toolbox for image processing, analysis and visualisation of dMRI."
+      homepage: "https://mrtrix.readthedocs.io/en/latest/"
 
 input:
   - meta:

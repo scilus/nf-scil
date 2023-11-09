@@ -18,14 +18,13 @@ process PREPROC_NORMALIZE {
     task.ext.when == null || task.ext.when
 
     script:
-    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "-tolerance $task.ext.dwi_shell_tolerance" : ""
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance $task.ext.dwi_shell_tolerance" : ""
     def fa_mask_threshold = task.ext.fa_mask_threshold ? "-abs $task.ext.fa_mask_threshold": ""
     def max_dti_shell_value = task.ext.max_dti_shell_value ?: "1600"
     def prefix = task.ext.prefix ?: "${meta.id}"
     def dti_info = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value)print v}' | sort | uniq)"
 
     """
-
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1

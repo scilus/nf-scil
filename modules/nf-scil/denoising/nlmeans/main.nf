@@ -11,8 +11,8 @@ process DENOISING_NLMEANS {
     tuple val(meta), path(image), path(mask)
 
     output:
-    tuple val(meta), path("*_denoised.nii.gz"), emit: image
-    path "versions.yml"                       , emit: versions
+    tuple val(meta), path("*_denoised.nii.gz")      , emit: image
+    path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

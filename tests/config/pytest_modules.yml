@@ -1,14 +1,18 @@
-preproc/n4:
-  - modules/nf-scil/preproc/n4/**
-  - tests/modules/nf-scil/preproc/n4/**
+betcrop/cropvolume:
+  - modules/nf-scil/betcrop/cropvolume/**
+  - tests/modules/nf-scil/betcrop/cropvolume/**
 
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
 
-scilpy/cropvolume:
-  - modules/nf-scil/scilpy/cropvolume/**
-  - tests/modules/nf-scil/scilpy/cropvolume/**
+denoising/nlmeans:
+  - modules/nf-scil/denoising/nlmeans/**
+  - tests/modules/nf-scil/denoising/nlmeans/**
+
+preproc/n4:
+  - modules/nf-scil/preproc/n4/**
+  - tests/modules/nf-scil/preproc/n4/**
 
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**

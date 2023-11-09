@@ -70,11 +70,11 @@ will disable auto-generation of comments, examples and TODOs and can be a time-s
 ## Edit the template
 
 The template has to be edited in order to work with `nf-scil` and still be importable 
-through `nf-core`. Refer to the `scilpy/cropvolume` module for an example as it should 
+through `nf-core`. Refer to the `betcrop/cropvolume` module for an example as it should 
 already follow all guidelines. You will find related files in :
 
-- `modules/nf-scil/scilpy/cropvolume`
-- `tests/modules/nf-scil/scilpy/cropvolume`
+- `modules/nf-scil/betcrop/cropvolume`
+- `tests/modules/nf-scil/betcrop/cropvolume`
 
 Editions are to be done in two locations :
 
@@ -128,7 +128,7 @@ Editions are to be done in two locations :
       to a single test case, use the test's `nextflow.config` file. In the `process` scope, add
       `withNAME: "<test_workflow_name>:<process_name>" { }`. Inside it, you can set parameters to the
       scope `ext` that will be reserved to the process and the test case. Look at 
-      `tests/modules/nf-scil/scilpy/cropvolume/nextflow.config` for an example.
+      `tests/modules/nf-scil/betcrop/cropvolume/nextflow.config` for an example.
 
 ## Test data infrastructure
 
