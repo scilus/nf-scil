@@ -1,0 +1,7 @@
+- name: "reconst noddi"
+  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi -c ./tests/config/nextflow.config
+  tags:
+    - "reconst"
+    - "reconst/noddi"
+  files:
+    - path: ""
