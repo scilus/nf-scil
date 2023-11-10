@@ -17,6 +17,7 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "bierner.github-markdown-preview",
                 "GitHub.vscode-pull-request-github",
                 "ms-azuretools.vscode-docker",
                 "ms-python.python",
@@ -29,6 +30,7 @@
                 "ms-vscode.makefile-tools",
                 "nf-core.nf-core-extensionpack",
                 "twxs.cmake",
+                "yahyabatulu.vscode-markdown-alert",
                 "yzhang.markdown-all-in-one"
             ]
         }
