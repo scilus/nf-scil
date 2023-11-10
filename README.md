@@ -50,6 +50,10 @@ pipx install poetry
 > If the second command above fails, `pipx` cannot be found in the path. Prepend the 
   second command with `$(which python) -m` and rerun the whole block.
 
+> [!WARNING]
+> Poetry doesn't like when other python environments are activated around it. Make 
+  sure to deactivate any before calling `poetry` commands.
+
 Once done, install the project with : 
 
 ```
@@ -58,19 +62,56 @@ poetry install
 
 ## Loading the project's environment
 
+> [!IMPORTANT]
+> Make sure no python environment is activated before running commands !
+
 The project scripts and dependencies can be accessed using :
 
 ```
 poetry shell
 ```
 
-which will activate the project's python environment in the current shell. To 
-exit the environment, simply enter the `exit` command in the shell.
+which will activate the project's python environment in the current shell.
+
+> [!NOTE]
+> You will know the poetry environment is activated by looking at your shell. The 
+  input line should be prefixed by : `(nf-scil-tools-py<version>)`, with `<version>` 
+  being the actual Python version used in the environment.
+
+To exit the environment, simply enter the `exit` command in the shell.
 
 > [!IMPORTANT]
 > Do not use traditional deactivation (calling `deactivate`), since it does not relinquish 
   the environment gracefully, making it so you won't be able to reactivate it without 
   exiting the shell.
+
+## Working with VS Code
+
+### Manual configuration of the VS Code project :
+
+First install the `nf-scil-extensions` package. You can find it easily on the [extension 
+marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-scil-extensions).
+
+### Configuration via the `devcontainer` :
+
+The `devcontainer` definition for the project contains all required dependencies and setup 
+steps are automatically executed. Open the cloned repository in *VS Code* and click on the 
+arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure 
+will start a docker build, wait for a few minutes and enjoy your fully configured development 
+environment.
+
+- Available in the container :
+  - `nf-scil`, `nf-core` all accessible through the terminal, which is configured to load 
+    the `poetry` environment in shells automatically
+  - `git`, `git-lfs`, `github-cli`
+  - `curl`, `wget`, `apt-get`
+  - `nextflow`, `docker`, `tmux`
+
+- Available in the VS Code IDE through extensions :
+  - Docker images and containers management
+  - Python and C++ linting, building and debugging tools
+  - Github Pull Requests managementscil
+  - Github flavored markdown previewing
 
 ## Contributing to `nf-scil`
 
