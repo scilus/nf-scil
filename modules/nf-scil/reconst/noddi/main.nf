@@ -1,5 +1,5 @@
 
-process BETCROP_FSLBETCROP {
+process RECONST_NODDI {
     tag "$meta.id"
     label 'process_single'
 
