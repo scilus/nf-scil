@@ -20,7 +20,7 @@ process TRACKING_PFTTRACKING {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    def pft_random_seed = task.ext.pft_random_seed ?: "--seed " + task.ext.pft_random_seed : ""
+    def pft_random_seed = task.ext.pft_random_seed ? "--seed " + task.ext.pft_random_seed : ""
     def compress = task.ext.pft_compress_streamlines ? "--compress " + task.ext.pft_compress_value : ""
     def pft_algo = task.ext.pft_algo ? "--algo " + task.ext.pft_algo: ""
     def pft_seeding_type = task.ext.pft_seeding ? "--"  + task.ext.pft_seeding : ""
@@ -41,7 +41,7 @@ process TRACKING_PFTTRACKING {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
-    echo $pft_seeding_type
+
     scil_compute_pft.py $fodf $seed $include $exclude tmp.trk\
         $pft_algo $pft_seeding_type $pft_nbr_seeds \
         $pft_random_seed $pft_step $pft_theta\

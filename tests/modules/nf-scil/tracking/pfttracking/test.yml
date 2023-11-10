@@ -1,7 +1,9 @@
-- name: "tracking pfttracking"
+- name: tracking pfttracking test_tracking_pfttracking
   command: nextflow run ./tests/modules/nf-scil/tracking/pfttracking -entry test_tracking_pfttracking -c ./tests/config/nextflow.config
   tags:
-    - "tracking"
-    - "tracking/pfttracking"
+    - tracking/pfttracking
+    - tracking
   files:
-    - path: ""
+    - path: output/tracking/test__pft_tracking.trk
+      md5sum: b29eed431fb432727786d83035c78351
+    - path: output/tracking/versions.yml
