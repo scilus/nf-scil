@@ -1,0 +1,7 @@
+- name: "tracking pfttracking"
+  command: nextflow run ./tests/modules/nf-scil/tracking/pfttracking -entry test_tracking_pfttracking -c ./tests/config/nextflow.config
+  tags:
+    - "tracking"
+    - "tracking/pfttracking"
+  files:
+    - path: ""
