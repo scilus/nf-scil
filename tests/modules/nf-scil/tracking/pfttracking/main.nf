@@ -8,10 +8,10 @@ workflow test_tracking_pfttracking {
     
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['tracking']['pfttracking']['fodf'], checkIfExists: true),
-        file(params.test_data['tracking']['pfttracking']['seed'], checkIfExists: true),
-        file(params.test_data['tracking']['pfttracking']['include'], checkIfExists: true),
-        file(params.test_data['tracking']['pfttracking']['exclude'], checkIfExists: true)
+        file(params.test_data['betcrop']['cropvolume']['fodf'], checkIfExists: true),
+        file(params.test_data['betcrop']['fslbetcrop']['seed'], checkIfExists: true),
+        file(params.test_data['betcrop']['cropvolume']['include'], checkIfExists: true),
+        file(params.test_data['betcrop']['cropvolume']['exclude'], checkIfExists: true)
     ]
 
     TRACKING_PFTTRACKING ( input )

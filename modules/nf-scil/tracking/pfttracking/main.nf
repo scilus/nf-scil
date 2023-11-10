@@ -8,7 +8,6 @@ process TRACKING_PFTTRACKING {
         'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
         'scilus/scilus:1.6.0' }"
 
-
     input:
         tuple val(meta), path(fodf), path(seed), path(include), path(exclude)
 
