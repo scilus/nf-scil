@@ -1,7 +1,627 @@
-- name: "reconst noddi"
-  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi -c ./tests/config/nextflow.config
+- name: reconst noddi test_reconst_noddi_load_kernels
+  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi_load_kernels -c ./tests/config/nextflow.config
   tags:
-    - "reconst"
-    - "reconst/noddi"
+    - reconst/noddi
+    - reconst
   files:
-    - path: ""
+    - path: output/reconst/kernels/A_001.npy
+      md5sum: 5d1dadedf0e019b3299fcb144bd87c51
+    - path: output/reconst/kernels/A_002.npy
+      md5sum: f97f94c9421c5d8c2ec80304f810798a
+    - path: output/reconst/kernels/A_003.npy
+      md5sum: bafbb71623cb3bb53664387c98e33842
+    - path: output/reconst/kernels/A_004.npy
+      md5sum: e9c5f3215391e94d4f7666e66ff94064
+    - path: output/reconst/kernels/A_005.npy
+      md5sum: 5a18a084e63de26b2fed68f403f99285
+    - path: output/reconst/kernels/A_006.npy
+      md5sum: 0eff1d43c2622cb55c6ab5cdf0ae3696
+    - path: output/reconst/kernels/A_007.npy
+      md5sum: 75b9cf03d089ad4b0ef2f70e16bda343
+    - path: output/reconst/kernels/A_008.npy
+      md5sum: 3793a6da2d6dcb8ced870fab495c6a99
+    - path: output/reconst/kernels/A_009.npy
+      md5sum: b11e88a6b582d5bf4f6c2f82efcae04a
+    - path: output/reconst/kernels/A_010.npy
+      md5sum: 113365b207d797c2d40b10180e4c5165
+    - path: output/reconst/kernels/A_011.npy
+      md5sum: a982696ca8428438125211a2c0163713
+    - path: output/reconst/kernels/A_012.npy
+      md5sum: 30341158644f9f15faffb0cd9372f1cf
+    - path: output/reconst/kernels/A_013.npy
+      md5sum: 73232bcec46a217f21c8245d31e3fad2
+    - path: output/reconst/kernels/A_014.npy
+      md5sum: df033c346710d08025e240937f161128
+    - path: output/reconst/kernels/A_015.npy
+      md5sum: 46358fbdd4d6c06c6a447b24cadc0154
+    - path: output/reconst/kernels/A_016.npy
+      md5sum: fd250ca58fce67a4fc341acca65f3ed6
+    - path: output/reconst/kernels/A_017.npy
+      md5sum: a02eea0f69b77350b64acadadaa5fd10
+    - path: output/reconst/kernels/A_018.npy
+      md5sum: 07e9c5772c103e4e3cd5f3809e6ae9ea
+    - path: output/reconst/kernels/A_019.npy
+      md5sum: 3bd75d8d4c0f30ffe56d4f2f967f81fe
+    - path: output/reconst/kernels/A_020.npy
+      md5sum: 5750bb4ce97114fba3ffbeaa89086593
+    - path: output/reconst/kernels/A_021.npy
+      md5sum: 77b8659ace86273f112093d865696cbe
+    - path: output/reconst/kernels/A_022.npy
+      md5sum: 16a85b338f368533e6a32dd92f8ae13b
+    - path: output/reconst/kernels/A_023.npy
+      md5sum: 67dbdcf2dea08989205a8ce85214ce43
+    - path: output/reconst/kernels/A_024.npy
+      md5sum: 921769c0ae16989ec00d15eea1d1e273
+    - path: output/reconst/kernels/A_025.npy
+      md5sum: 6881f23d9dd5b8901996fbe1fee76d87
+    - path: output/reconst/kernels/A_026.npy
+      md5sum: 06b51f39a96b4ef6645d71a103c1a993
+    - path: output/reconst/kernels/A_027.npy
+      md5sum: a2f41048d8cb9c5bf6b6400776e3f7f2
+    - path: output/reconst/kernels/A_028.npy
+      md5sum: 319672ac31c75d2f4aecadb62886d727
+    - path: output/reconst/kernels/A_029.npy
+      md5sum: fd7d718a4d44c71674a1656d91ff5e84
+    - path: output/reconst/kernels/A_030.npy
+      md5sum: 83b6e7efa87861f47ce6738335c38713
+    - path: output/reconst/kernels/A_031.npy
+      md5sum: 694ce0b35fa4225e73fb7c7d07ebc4a9
+    - path: output/reconst/kernels/A_032.npy
+      md5sum: d9d40013ec32486f2640b82d4ef5b16c
+    - path: output/reconst/kernels/A_033.npy
+      md5sum: 0f7de1b252f4affff1cfb45b1c6fb021
+    - path: output/reconst/kernels/A_034.npy
+      md5sum: d485f155f44eca53b80853d112d705f1
+    - path: output/reconst/kernels/A_035.npy
+      md5sum: c4733fcff0ea94bac8805303a32469f5
+    - path: output/reconst/kernels/A_036.npy
+      md5sum: eca1c8942064584914952e8f95e19f38
+    - path: output/reconst/kernels/A_037.npy
+      md5sum: 98c8e225fd4d5ad93f108cf4c9bf7cd5
+    - path: output/reconst/kernels/A_038.npy
+      md5sum: c5fc08354e13ed11cb6a574baa7124f1
+    - path: output/reconst/kernels/A_039.npy
+      md5sum: c224259fa20f6f045d844c802b8d62ca
+    - path: output/reconst/kernels/A_040.npy
+      md5sum: 8e15b6e1121bd93c5a4fce8b1378141f
+    - path: output/reconst/kernels/A_041.npy
+      md5sum: f4da63c4743412be917aa33103041a9d
+    - path: output/reconst/kernels/A_042.npy
+      md5sum: b81b82e7f8307afcb5484f3a6628cb95
+    - path: output/reconst/kernels/A_043.npy
+      md5sum: e5a012d117ee066bcf8933b915cc6b7c
+    - path: output/reconst/kernels/A_044.npy
+      md5sum: b310412c19054ba6070c02c59d8bf540
+    - path: output/reconst/kernels/A_045.npy
+      md5sum: 07239a26f38e4bc5ed963091bea8095a
+    - path: output/reconst/kernels/A_046.npy
+      md5sum: 638a166f9fc94a357e8e8278682c0307
+    - path: output/reconst/kernels/A_047.npy
+      md5sum: e86d4bf72a6e8d134b6b8f5eeddc7b8a
+    - path: output/reconst/kernels/A_048.npy
+      md5sum: ee73536167f203b6212fc20bebd3dceb
+    - path: output/reconst/kernels/A_049.npy
+      md5sum: c13da889d803e6f0816ef63d202099a6
+    - path: output/reconst/kernels/A_050.npy
+      md5sum: a4256aa6e6f6f4d16836cf141727377f
+    - path: output/reconst/kernels/A_051.npy
+      md5sum: cc08f2c275820efecacbf061566d8416
+    - path: output/reconst/kernels/A_052.npy
+      md5sum: 79e71b254933d21eb50be64de80c722b
+    - path: output/reconst/kernels/A_053.npy
+      md5sum: 7d8f5d0a874a0fae31dc2d4a027788aa
+    - path: output/reconst/kernels/A_054.npy
+      md5sum: aba64789a815a298afb51dbb54ed4020
+    - path: output/reconst/kernels/A_055.npy
+      md5sum: 7635fcf2868ea2860392ea3f37b34b0b
+    - path: output/reconst/kernels/A_056.npy
+      md5sum: 6530c555e08458d8e0719f6f98885015
+    - path: output/reconst/kernels/A_057.npy
+      md5sum: c2a0ddc88cc5a094c6e97edb0f58454b
+    - path: output/reconst/kernels/A_058.npy
+      md5sum: eeb5c4436a08ed50cd61f83be09302c9
+    - path: output/reconst/kernels/A_059.npy
+      md5sum: 9ac8f402a41883b28b3a28dce97bd2ae
+    - path: output/reconst/kernels/A_060.npy
+      md5sum: 78e2cfa9d82b7578f1147d7e4e75ff55
+    - path: output/reconst/kernels/A_061.npy
+      md5sum: fcee7d6727d7c33b303b09392de03a59
+    - path: output/reconst/kernels/A_062.npy
+      md5sum: f8ae3a750df58c91ff184cca79d7aef4
+    - path: output/reconst/kernels/A_063.npy
+      md5sum: 6104a65c9fe1bd4a48fe131b0eb87e06
+    - path: output/reconst/kernels/A_064.npy
+      md5sum: b64cbebb48e6471dcbe345b587204a6d
+    - path: output/reconst/kernels/A_065.npy
+      md5sum: 01cc1d2119f70317122a741c254c8d6e
+    - path: output/reconst/kernels/A_066.npy
+      md5sum: 7275b514c844cc9c132944f8c9b8c772
+    - path: output/reconst/kernels/A_067.npy
+      md5sum: cf9ec41445048b1d7070bdf2e86b5c61
+    - path: output/reconst/kernels/A_068.npy
+      md5sum: 3b3b9b20979c783ca1f00b62106642c7
+    - path: output/reconst/kernels/A_069.npy
+      md5sum: cfd25755d0fce846b5180a52a800a2c8
+    - path: output/reconst/kernels/A_070.npy
+      md5sum: 1f73c40da625db07a349523d238ee517
+    - path: output/reconst/kernels/A_071.npy
+      md5sum: cff532cd85ce7c4c1b4b5e28ba8f1bef
+    - path: output/reconst/kernels/A_072.npy
+      md5sum: 1be683fd690a9c32ab526fde7b08c557
+    - path: output/reconst/kernels/A_073.npy
+      md5sum: 1502152db9aaa3954c56543aa8958e95
+    - path: output/reconst/kernels/A_074.npy
+      md5sum: 93a34726de267c7adcc622e74eb6053b
+    - path: output/reconst/kernels/A_075.npy
+      md5sum: c44863c437bd6efbd4fbba59fb68a1a7
+    - path: output/reconst/kernels/A_076.npy
+      md5sum: 0f958ddf0cae03fbb4b49edda8198755
+    - path: output/reconst/kernels/A_077.npy
+      md5sum: 84a4161ffda23ef05ce604e77650b618
+    - path: output/reconst/kernels/A_078.npy
+      md5sum: f8f2163f365a5d2c2171e1e0334e215a
+    - path: output/reconst/kernels/A_079.npy
+      md5sum: a9acd5a6afc6e58a29bc2eb4b379c0ad
+    - path: output/reconst/kernels/A_080.npy
+      md5sum: 0d87721bf87a257da252bc6727fdd1aa
+    - path: output/reconst/kernels/A_081.npy
+      md5sum: 4df8e8caf6d84d3270d07b19d530700c
+    - path: output/reconst/kernels/A_082.npy
+      md5sum: 71ecffaebf85c9c7cf340ffd562a785d
+    - path: output/reconst/kernels/A_083.npy
+      md5sum: 584d1a648750193cef6dd15a58e15257
+    - path: output/reconst/kernels/A_084.npy
+      md5sum: 3b11ef08b7f153cb8a172a0ffa7008d3
+    - path: output/reconst/kernels/A_085.npy
+      md5sum: 104b43baaa6d99e5af67bd0b7490cecc
+    - path: output/reconst/kernels/A_086.npy
+      md5sum: b85f20a82a044cc778c1f9d7eb1a22c3
+    - path: output/reconst/kernels/A_087.npy
+      md5sum: a3e8d1381d3994ee573698c12d310346
+    - path: output/reconst/kernels/A_088.npy
+      md5sum: 2300b1d39cde363d163e2fba4157bb9c
+    - path: output/reconst/kernels/A_089.npy
+      md5sum: b822ece094f5cd46083ab0125087b70c
+    - path: output/reconst/kernels/A_090.npy
+      md5sum: 3bba9f9d0210c5c1fe29ca064f9a1554
+    - path: output/reconst/kernels/A_091.npy
+      md5sum: b061d083304494c8a81c8fb405daca1b
+    - path: output/reconst/kernels/A_092.npy
+      md5sum: d8cd741929d0bd7f9cc27de3f50631af
+    - path: output/reconst/kernels/A_093.npy
+      md5sum: 71fd006a1513fd045ed76db3318b463f
+    - path: output/reconst/kernels/A_094.npy
+      md5sum: 30a53135c93ec1fdb39a6188d159b354
+    - path: output/reconst/kernels/A_095.npy
+      md5sum: 3173d702713f79a5a1a3880ffd8eab12
+    - path: output/reconst/kernels/A_096.npy
+      md5sum: 5615ba57cb6596c974ca0ea412b4ee25
+    - path: output/reconst/kernels/A_097.npy
+      md5sum: 37bc928e0d513d693f00e71a1007e4ba
+    - path: output/reconst/kernels/A_098.npy
+      md5sum: 72e2c002c575b6fc314d219498b66cf9
+    - path: output/reconst/kernels/A_099.npy
+      md5sum: 559a4649bb073f12840508c20d5c4b02
+    - path: output/reconst/kernels/A_100.npy
+      md5sum: d18afcf83b7c79506ca949f630ba8fdf
+    - path: output/reconst/kernels/A_101.npy
+      md5sum: e311ef1d91430f1d424cee33a132af75
+    - path: output/reconst/kernels/A_102.npy
+      md5sum: ba63137531bba68874a40dd3f2fa8a8c
+    - path: output/reconst/kernels/A_103.npy
+      md5sum: ebad94c5584697aaf2a8babddde93609
+    - path: output/reconst/kernels/A_104.npy
+      md5sum: 7bc1435b9919b6266845c4bc23718fcd
+    - path: output/reconst/kernels/A_105.npy
+      md5sum: 8dc8274621fb69cfe438620b670e758c
+    - path: output/reconst/kernels/A_106.npy
+      md5sum: 0b8d87f6b432379906829c0b32545c83
+    - path: output/reconst/kernels/A_107.npy
+      md5sum: eb385a2fc82a0fea31d62beb4ba25e28
+    - path: output/reconst/kernels/A_108.npy
+      md5sum: b2bb762ba5d4438f3ef183b41b468269
+    - path: output/reconst/kernels/A_109.npy
+      md5sum: a5bebc10bf52ec06276a76c7fb81014b
+    - path: output/reconst/kernels/A_110.npy
+      md5sum: ed5a60e2579eea689d2f3da2aee0d1f0
+    - path: output/reconst/kernels/A_111.npy
+      md5sum: f2fe9a5b60861f042bf4df0ed296fa6a
+    - path: output/reconst/kernels/A_112.npy
+      md5sum: f492e04b2dd2434b20ba04955b2c3f99
+    - path: output/reconst/kernels/A_113.npy
+      md5sum: d642337d7ee1983885fdbc05673a078d
+    - path: output/reconst/kernels/A_114.npy
+      md5sum: 65ea65a22145f057be14a04af7bba4c8
+    - path: output/reconst/kernels/A_115.npy
+      md5sum: 376d4f7447c76851d18654efafd3bb3b
+    - path: output/reconst/kernels/A_116.npy
+      md5sum: 2c09cb8d1d68bd5b6f34ce17fc4f99b7
+    - path: output/reconst/kernels/A_117.npy
+      md5sum: fb371a46d73bfe0b5fccee02df840c96
+    - path: output/reconst/kernels/A_118.npy
+      md5sum: 8cbbb429707eecf1341eee0fbac24117
+    - path: output/reconst/kernels/A_119.npy
+      md5sum: cb5ec3300c23c58e7ab627b464873bf2
+    - path: output/reconst/kernels/A_120.npy
+      md5sum: 0b0b4c681f524a1d493d21b00ad7b5be
+    - path: output/reconst/kernels/A_121.npy
+      md5sum: a9267c076b391dd6a3680d2db225ddc7
+    - path: output/reconst/kernels/A_122.npy
+      md5sum: 497345183cb3ca8462ee63645e33a385
+    - path: output/reconst/kernels/A_123.npy
+      md5sum: 2f4d49dacc30601580dc14f1b92d25be
+    - path: output/reconst/kernels/A_124.npy
+      md5sum: 750c6ab38ed43a4eff5e5d8d75b0f7f2
+    - path: output/reconst/kernels/A_125.npy
+      md5sum: 8d45943b6ba73b8d7340af713654af24
+    - path: output/reconst/kernels/A_126.npy
+      md5sum: 6299c09402dc8d55d24fb8e0768ddda2
+    - path: output/reconst/kernels/A_127.npy
+      md5sum: 22dcdf0990f474daeb41cf4e86fa91e3
+    - path: output/reconst/kernels/A_128.npy
+      md5sum: 44e0fdd80d56d47baf60a892ade17404
+    - path: output/reconst/kernels/A_129.npy
+      md5sum: d35081723b41b2302f610cac3448a249
+    - path: output/reconst/kernels/A_130.npy
+      md5sum: faea61bc516b14a1b409a5cdd47e5317
+    - path: output/reconst/kernels/A_131.npy
+      md5sum: 1a5b35904bdcb8238712574e6880f932
+    - path: output/reconst/kernels/A_132.npy
+      md5sum: 62d8d19fc8d09bd5f1c0c430cb5b5660
+    - path: output/reconst/kernels/A_133.npy
+      md5sum: 6b58371a1bdc76c0446c874d948be75a
+    - path: output/reconst/kernels/A_134.npy
+      md5sum: 168c93f332b7e421183b2296b3487bec
+    - path: output/reconst/kernels/A_135.npy
+      md5sum: f3886b6a78f8e21a30ecc2622d5bff5f
+    - path: output/reconst/kernels/A_136.npy
+      md5sum: db91b8df1c39ac308d76e369711a4ef5
+    - path: output/reconst/kernels/A_137.npy
+      md5sum: af4f13fe5719182a673ca0a026635b95
+    - path: output/reconst/kernels/A_138.npy
+      md5sum: 6cd4f96aa931c4af37129fddb8e0ae4c
+    - path: output/reconst/kernels/A_139.npy
+      md5sum: c8fd628c9e30142d5bf3f13e7c1278e5
+    - path: output/reconst/kernels/A_140.npy
+      md5sum: 2d35ffc60587ee3eeafa1973a8d82837
+    - path: output/reconst/kernels/A_141.npy
+      md5sum: 30490fc3e35baef485a52ac175e4f631
+    - path: output/reconst/kernels/A_142.npy
+      md5sum: 8f8270a314bd37d2d79e96c6113ba2d5
+    - path: output/reconst/kernels/A_143.npy
+      md5sum: fea4192a0f046914898cc0a6077509c8
+    - path: output/reconst/kernels/A_144.npy
+      md5sum: 77b944ca35765dfa8e37d22c88b193c5
+    - path: output/reconst/kernels/A_145.npy
+      md5sum: 98e74b4faa55630093f8307bcc204933
+    - path: output/reconst/test__FIT_ICVF.nii.gz
+      md5sum: d77509b84b9c123ad2f90f246cea30da
+    - path: output/reconst/test__FIT_ISOVF.nii.gz
+      md5sum: bab03bbf3c6434854aad6e8dbc8b3763
+    - path: output/reconst/test__FIT_OD.nii.gz
+      md5sum: afefa40473a52cb59622fe0a6bca2348
+    - path: output/reconst/test__FIT_dir.nii.gz
+      md5sum: 31800837907586af6d8e15145ce7c35a
+    - path: output/reconst/versions.yml
+
+- name: reconst noddi test_reconst_noddi_load_kernels_no_mask
+  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi_load_kernels_no_mask -c ./tests/config/nextflow.config
+  tags:
+    - reconst/noddi
+    - reconst
+  files:
+    - path: output/reconst/kernels/A_001.npy
+      md5sum: 5d1dadedf0e019b3299fcb144bd87c51
+    - path: output/reconst/kernels/A_002.npy
+      md5sum: f97f94c9421c5d8c2ec80304f810798a
+    - path: output/reconst/kernels/A_003.npy
+      md5sum: bafbb71623cb3bb53664387c98e33842
+    - path: output/reconst/kernels/A_004.npy
+      md5sum: e9c5f3215391e94d4f7666e66ff94064
+    - path: output/reconst/kernels/A_005.npy
+      md5sum: 5a18a084e63de26b2fed68f403f99285
+    - path: output/reconst/kernels/A_006.npy
+      md5sum: 0eff1d43c2622cb55c6ab5cdf0ae3696
+    - path: output/reconst/kernels/A_007.npy
+      md5sum: 75b9cf03d089ad4b0ef2f70e16bda343
+    - path: output/reconst/kernels/A_008.npy
+      md5sum: 3793a6da2d6dcb8ced870fab495c6a99
+    - path: output/reconst/kernels/A_009.npy
+      md5sum: b11e88a6b582d5bf4f6c2f82efcae04a
+    - path: output/reconst/kernels/A_010.npy
+      md5sum: 113365b207d797c2d40b10180e4c5165
+    - path: output/reconst/kernels/A_011.npy
+      md5sum: a982696ca8428438125211a2c0163713
+    - path: output/reconst/kernels/A_012.npy
+      md5sum: 30341158644f9f15faffb0cd9372f1cf
+    - path: output/reconst/kernels/A_013.npy
+      md5sum: 73232bcec46a217f21c8245d31e3fad2
+    - path: output/reconst/kernels/A_014.npy
+      md5sum: df033c346710d08025e240937f161128
+    - path: output/reconst/kernels/A_015.npy
+      md5sum: 46358fbdd4d6c06c6a447b24cadc0154
+    - path: output/reconst/kernels/A_016.npy
+      md5sum: fd250ca58fce67a4fc341acca65f3ed6
+    - path: output/reconst/kernels/A_017.npy
+      md5sum: a02eea0f69b77350b64acadadaa5fd10
+    - path: output/reconst/kernels/A_018.npy
+      md5sum: 07e9c5772c103e4e3cd5f3809e6ae9ea
+    - path: output/reconst/kernels/A_019.npy
+      md5sum: 3bd75d8d4c0f30ffe56d4f2f967f81fe
+    - path: output/reconst/kernels/A_020.npy
+      md5sum: 5750bb4ce97114fba3ffbeaa89086593
+    - path: output/reconst/kernels/A_021.npy
+      md5sum: 77b8659ace86273f112093d865696cbe
+    - path: output/reconst/kernels/A_022.npy
+      md5sum: 16a85b338f368533e6a32dd92f8ae13b
+    - path: output/reconst/kernels/A_023.npy
+      md5sum: 67dbdcf2dea08989205a8ce85214ce43
+    - path: output/reconst/kernels/A_024.npy
+      md5sum: 921769c0ae16989ec00d15eea1d1e273
+    - path: output/reconst/kernels/A_025.npy
+      md5sum: 6881f23d9dd5b8901996fbe1fee76d87
+    - path: output/reconst/kernels/A_026.npy
+      md5sum: 06b51f39a96b4ef6645d71a103c1a993
+    - path: output/reconst/kernels/A_027.npy
+      md5sum: a2f41048d8cb9c5bf6b6400776e3f7f2
+    - path: output/reconst/kernels/A_028.npy
+      md5sum: 319672ac31c75d2f4aecadb62886d727
+    - path: output/reconst/kernels/A_029.npy
+      md5sum: fd7d718a4d44c71674a1656d91ff5e84
+    - path: output/reconst/kernels/A_030.npy
+      md5sum: 83b6e7efa87861f47ce6738335c38713
+    - path: output/reconst/kernels/A_031.npy
+      md5sum: 694ce0b35fa4225e73fb7c7d07ebc4a9
+    - path: output/reconst/kernels/A_032.npy
+      md5sum: d9d40013ec32486f2640b82d4ef5b16c
+    - path: output/reconst/kernels/A_033.npy
+      md5sum: 0f7de1b252f4affff1cfb45b1c6fb021
+    - path: output/reconst/kernels/A_034.npy
+      md5sum: d485f155f44eca53b80853d112d705f1
+    - path: output/reconst/kernels/A_035.npy
+      md5sum: c4733fcff0ea94bac8805303a32469f5
+    - path: output/reconst/kernels/A_036.npy
+      md5sum: eca1c8942064584914952e8f95e19f38
+    - path: output/reconst/kernels/A_037.npy
+      md5sum: 98c8e225fd4d5ad93f108cf4c9bf7cd5
+    - path: output/reconst/kernels/A_038.npy
+      md5sum: c5fc08354e13ed11cb6a574baa7124f1
+    - path: output/reconst/kernels/A_039.npy
+      md5sum: c224259fa20f6f045d844c802b8d62ca
+    - path: output/reconst/kernels/A_040.npy
+      md5sum: 8e15b6e1121bd93c5a4fce8b1378141f
+    - path: output/reconst/kernels/A_041.npy
+      md5sum: f4da63c4743412be917aa33103041a9d
+    - path: output/reconst/kernels/A_042.npy
+      md5sum: b81b82e7f8307afcb5484f3a6628cb95
+    - path: output/reconst/kernels/A_043.npy
+      md5sum: e5a012d117ee066bcf8933b915cc6b7c
+    - path: output/reconst/kernels/A_044.npy
+      md5sum: b310412c19054ba6070c02c59d8bf540
+    - path: output/reconst/kernels/A_045.npy
+      md5sum: 07239a26f38e4bc5ed963091bea8095a
+    - path: output/reconst/kernels/A_046.npy
+      md5sum: 638a166f9fc94a357e8e8278682c0307
+    - path: output/reconst/kernels/A_047.npy
+      md5sum: e86d4bf72a6e8d134b6b8f5eeddc7b8a
+    - path: output/reconst/kernels/A_048.npy
+      md5sum: ee73536167f203b6212fc20bebd3dceb
+    - path: output/reconst/kernels/A_049.npy
+      md5sum: c13da889d803e6f0816ef63d202099a6
+    - path: output/reconst/kernels/A_050.npy
+      md5sum: a4256aa6e6f6f4d16836cf141727377f
+    - path: output/reconst/kernels/A_051.npy
+      md5sum: cc08f2c275820efecacbf061566d8416
+    - path: output/reconst/kernels/A_052.npy
+      md5sum: 79e71b254933d21eb50be64de80c722b
+    - path: output/reconst/kernels/A_053.npy
+      md5sum: 7d8f5d0a874a0fae31dc2d4a027788aa
+    - path: output/reconst/kernels/A_054.npy
+      md5sum: aba64789a815a298afb51dbb54ed4020
+    - path: output/reconst/kernels/A_055.npy
+      md5sum: 7635fcf2868ea2860392ea3f37b34b0b
+    - path: output/reconst/kernels/A_056.npy
+      md5sum: 6530c555e08458d8e0719f6f98885015
+    - path: output/reconst/kernels/A_057.npy
+      md5sum: c2a0ddc88cc5a094c6e97edb0f58454b
+    - path: output/reconst/kernels/A_058.npy
+      md5sum: eeb5c4436a08ed50cd61f83be09302c9
+    - path: output/reconst/kernels/A_059.npy
+      md5sum: 9ac8f402a41883b28b3a28dce97bd2ae
+    - path: output/reconst/kernels/A_060.npy
+      md5sum: 78e2cfa9d82b7578f1147d7e4e75ff55
+    - path: output/reconst/kernels/A_061.npy
+      md5sum: fcee7d6727d7c33b303b09392de03a59
+    - path: output/reconst/kernels/A_062.npy
+      md5sum: f8ae3a750df58c91ff184cca79d7aef4
+    - path: output/reconst/kernels/A_063.npy
+      md5sum: 6104a65c9fe1bd4a48fe131b0eb87e06
+    - path: output/reconst/kernels/A_064.npy
+      md5sum: b64cbebb48e6471dcbe345b587204a6d
+    - path: output/reconst/kernels/A_065.npy
+      md5sum: 01cc1d2119f70317122a741c254c8d6e
+    - path: output/reconst/kernels/A_066.npy
+      md5sum: 7275b514c844cc9c132944f8c9b8c772
+    - path: output/reconst/kernels/A_067.npy
+      md5sum: cf9ec41445048b1d7070bdf2e86b5c61
+    - path: output/reconst/kernels/A_068.npy
+      md5sum: 3b3b9b20979c783ca1f00b62106642c7
+    - path: output/reconst/kernels/A_069.npy
+      md5sum: cfd25755d0fce846b5180a52a800a2c8
+    - path: output/reconst/kernels/A_070.npy
+      md5sum: 1f73c40da625db07a349523d238ee517
+    - path: output/reconst/kernels/A_071.npy
+      md5sum: cff532cd85ce7c4c1b4b5e28ba8f1bef
+    - path: output/reconst/kernels/A_072.npy
+      md5sum: 1be683fd690a9c32ab526fde7b08c557
+    - path: output/reconst/kernels/A_073.npy
+      md5sum: 1502152db9aaa3954c56543aa8958e95
+    - path: output/reconst/kernels/A_074.npy
+      md5sum: 93a34726de267c7adcc622e74eb6053b
+    - path: output/reconst/kernels/A_075.npy
+      md5sum: c44863c437bd6efbd4fbba59fb68a1a7
+    - path: output/reconst/kernels/A_076.npy
+      md5sum: 0f958ddf0cae03fbb4b49edda8198755
+    - path: output/reconst/kernels/A_077.npy
+      md5sum: 84a4161ffda23ef05ce604e77650b618
+    - path: output/reconst/kernels/A_078.npy
+      md5sum: f8f2163f365a5d2c2171e1e0334e215a
+    - path: output/reconst/kernels/A_079.npy
+      md5sum: a9acd5a6afc6e58a29bc2eb4b379c0ad
+    - path: output/reconst/kernels/A_080.npy
+      md5sum: 0d87721bf87a257da252bc6727fdd1aa
+    - path: output/reconst/kernels/A_081.npy
+      md5sum: 4df8e8caf6d84d3270d07b19d530700c
+    - path: output/reconst/kernels/A_082.npy
+      md5sum: 71ecffaebf85c9c7cf340ffd562a785d
+    - path: output/reconst/kernels/A_083.npy
+      md5sum: 584d1a648750193cef6dd15a58e15257
+    - path: output/reconst/kernels/A_084.npy
+      md5sum: 3b11ef08b7f153cb8a172a0ffa7008d3
+    - path: output/reconst/kernels/A_085.npy
+      md5sum: 104b43baaa6d99e5af67bd0b7490cecc
+    - path: output/reconst/kernels/A_086.npy
+      md5sum: b85f20a82a044cc778c1f9d7eb1a22c3
+    - path: output/reconst/kernels/A_087.npy
+      md5sum: a3e8d1381d3994ee573698c12d310346
+    - path: output/reconst/kernels/A_088.npy
+      md5sum: 2300b1d39cde363d163e2fba4157bb9c
+    - path: output/reconst/kernels/A_089.npy
+      md5sum: b822ece094f5cd46083ab0125087b70c
+    - path: output/reconst/kernels/A_090.npy
+      md5sum: 3bba9f9d0210c5c1fe29ca064f9a1554
+    - path: output/reconst/kernels/A_091.npy
+      md5sum: b061d083304494c8a81c8fb405daca1b
+    - path: output/reconst/kernels/A_092.npy
+      md5sum: d8cd741929d0bd7f9cc27de3f50631af
+    - path: output/reconst/kernels/A_093.npy
+      md5sum: 71fd006a1513fd045ed76db3318b463f
+    - path: output/reconst/kernels/A_094.npy
+      md5sum: 30a53135c93ec1fdb39a6188d159b354
+    - path: output/reconst/kernels/A_095.npy
+      md5sum: 3173d702713f79a5a1a3880ffd8eab12
+    - path: output/reconst/kernels/A_096.npy
+      md5sum: 5615ba57cb6596c974ca0ea412b4ee25
+    - path: output/reconst/kernels/A_097.npy
+      md5sum: 37bc928e0d513d693f00e71a1007e4ba
+    - path: output/reconst/kernels/A_098.npy
+      md5sum: 72e2c002c575b6fc314d219498b66cf9
+    - path: output/reconst/kernels/A_099.npy
+      md5sum: 559a4649bb073f12840508c20d5c4b02
+    - path: output/reconst/kernels/A_100.npy
+      md5sum: d18afcf83b7c79506ca949f630ba8fdf
+    - path: output/reconst/kernels/A_101.npy
+      md5sum: e311ef1d91430f1d424cee33a132af75
+    - path: output/reconst/kernels/A_102.npy
+      md5sum: ba63137531bba68874a40dd3f2fa8a8c
+    - path: output/reconst/kernels/A_103.npy
+      md5sum: ebad94c5584697aaf2a8babddde93609
+    - path: output/reconst/kernels/A_104.npy
+      md5sum: 7bc1435b9919b6266845c4bc23718fcd
+    - path: output/reconst/kernels/A_105.npy
+      md5sum: 8dc8274621fb69cfe438620b670e758c
+    - path: output/reconst/kernels/A_106.npy
+      md5sum: 0b8d87f6b432379906829c0b32545c83
+    - path: output/reconst/kernels/A_107.npy
+      md5sum: eb385a2fc82a0fea31d62beb4ba25e28
+    - path: output/reconst/kernels/A_108.npy
+      md5sum: b2bb762ba5d4438f3ef183b41b468269
+    - path: output/reconst/kernels/A_109.npy
+      md5sum: a5bebc10bf52ec06276a76c7fb81014b
+    - path: output/reconst/kernels/A_110.npy
+      md5sum: ed5a60e2579eea689d2f3da2aee0d1f0
+    - path: output/reconst/kernels/A_111.npy
+      md5sum: f2fe9a5b60861f042bf4df0ed296fa6a
+    - path: output/reconst/kernels/A_112.npy
+      md5sum: f492e04b2dd2434b20ba04955b2c3f99
+    - path: output/reconst/kernels/A_113.npy
+      md5sum: d642337d7ee1983885fdbc05673a078d
+    - path: output/reconst/kernels/A_114.npy
+      md5sum: 65ea65a22145f057be14a04af7bba4c8
+    - path: output/reconst/kernels/A_115.npy
+      md5sum: 376d4f7447c76851d18654efafd3bb3b
+    - path: output/reconst/kernels/A_116.npy
+      md5sum: 2c09cb8d1d68bd5b6f34ce17fc4f99b7
+    - path: output/reconst/kernels/A_117.npy
+      md5sum: fb371a46d73bfe0b5fccee02df840c96
+    - path: output/reconst/kernels/A_118.npy
+      md5sum: 8cbbb429707eecf1341eee0fbac24117
+    - path: output/reconst/kernels/A_119.npy
+      md5sum: cb5ec3300c23c58e7ab627b464873bf2
+    - path: output/reconst/kernels/A_120.npy
+      md5sum: 0b0b4c681f524a1d493d21b00ad7b5be
+    - path: output/reconst/kernels/A_121.npy
+      md5sum: a9267c076b391dd6a3680d2db225ddc7
+    - path: output/reconst/kernels/A_122.npy
+      md5sum: 497345183cb3ca8462ee63645e33a385
+    - path: output/reconst/kernels/A_123.npy
+      md5sum: 2f4d49dacc30601580dc14f1b92d25be
+    - path: output/reconst/kernels/A_124.npy
+      md5sum: 750c6ab38ed43a4eff5e5d8d75b0f7f2
+    - path: output/reconst/kernels/A_125.npy
+      md5sum: 8d45943b6ba73b8d7340af713654af24
+    - path: output/reconst/kernels/A_126.npy
+      md5sum: 6299c09402dc8d55d24fb8e0768ddda2
+    - path: output/reconst/kernels/A_127.npy
+      md5sum: 22dcdf0990f474daeb41cf4e86fa91e3
+    - path: output/reconst/kernels/A_128.npy
+      md5sum: 44e0fdd80d56d47baf60a892ade17404
+    - path: output/reconst/kernels/A_129.npy
+      md5sum: d35081723b41b2302f610cac3448a249
+    - path: output/reconst/kernels/A_130.npy
+      md5sum: faea61bc516b14a1b409a5cdd47e5317
+    - path: output/reconst/kernels/A_131.npy
+      md5sum: 1a5b35904bdcb8238712574e6880f932
+    - path: output/reconst/kernels/A_132.npy
+      md5sum: 62d8d19fc8d09bd5f1c0c430cb5b5660
+    - path: output/reconst/kernels/A_133.npy
+      md5sum: 6b58371a1bdc76c0446c874d948be75a
+    - path: output/reconst/kernels/A_134.npy
+      md5sum: 168c93f332b7e421183b2296b3487bec
+    - path: output/reconst/kernels/A_135.npy
+      md5sum: f3886b6a78f8e21a30ecc2622d5bff5f
+    - path: output/reconst/kernels/A_136.npy
+      md5sum: db91b8df1c39ac308d76e369711a4ef5
+    - path: output/reconst/kernels/A_137.npy
+      md5sum: af4f13fe5719182a673ca0a026635b95
+    - path: output/reconst/kernels/A_138.npy
+      md5sum: 6cd4f96aa931c4af37129fddb8e0ae4c
+    - path: output/reconst/kernels/A_139.npy
+      md5sum: c8fd628c9e30142d5bf3f13e7c1278e5
+    - path: output/reconst/kernels/A_140.npy
+      md5sum: 2d35ffc60587ee3eeafa1973a8d82837
+    - path: output/reconst/kernels/A_141.npy
+      md5sum: 30490fc3e35baef485a52ac175e4f631
+    - path: output/reconst/kernels/A_142.npy
+      md5sum: 8f8270a314bd37d2d79e96c6113ba2d5
+    - path: output/reconst/kernels/A_143.npy
+      md5sum: fea4192a0f046914898cc0a6077509c8
+    - path: output/reconst/kernels/A_144.npy
+      md5sum: 77b944ca35765dfa8e37d22c88b193c5
+    - path: output/reconst/kernels/A_145.npy
+      md5sum: 98e74b4faa55630093f8307bcc204933
+    - path: output/reconst/test__FIT_ICVF.nii.gz
+      md5sum: d77509b84b9c123ad2f90f246cea30da
+    - path: output/reconst/test__FIT_ISOVF.nii.gz
+      md5sum: bab03bbf3c6434854aad6e8dbc8b3763
+    - path: output/reconst/test__FIT_OD.nii.gz
+      md5sum: e06751a57e7c61c74acf537bdaa8051d
+    - path: output/reconst/test__FIT_dir.nii.gz
+      md5sum: fd8c25acb8850a9d68c4f3d171a14822
+    - path: output/reconst/versions.yml
+
+- name: reconst noddi test_reconst_noddi_save_kernels
+  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi_save_kernels -c ./tests/config/nextflow.config
+  tags:
+    - reconst/noddi
+    - reconst
+  files:
+    - path: output/reconst/versions.yml
+
+- name: reconst noddi test_reconst_noddi_save_kernels_no_mask
+  command: nextflow run ./tests/modules/nf-scil/reconst/noddi -entry test_reconst_noddi_save_kernels_no_mask -c ./tests/config/nextflow.config
+  tags:
+    - reconst/noddi
+    - reconst
+  files:
+    - path: output/reconst/versions.yml
