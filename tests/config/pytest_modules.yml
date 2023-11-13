@@ -17,3 +17,7 @@ preproc/n4:
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
+
+reconstruction/fodf:
+  - modules/nf-scil/reconstruction/fodf/**
+  - tests/modules/nf-scil/reconstruction/fodf/**
