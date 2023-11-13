@@ -8,8 +8,7 @@ process RECONST_NODDI {
         'scilus/scilus:1.6.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask)
-        path(kernels)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(kernels)
 
     output:
         tuple val(meta), path("*__FIT_dir.nii.gz")              , emit: dir
@@ -32,18 +31,15 @@ process RECONST_NODDI {
     def b_thr = task.ext.b_thr ? "--b_thr " + task.ext.b_thr : ""
 
     def set_kernels = []
-    if (kernels)
-        set_kernels += ["--load_kernels + $kernels"]
-    else
-        set_kernels += ["--save_kernels kernels/ --compute_only":]
+    if (kernels) set_kernels += ["--load_kernels $kernels"] else set_kernels += ["--save_kernels kernels/ --compute_only"]
 
     def set_mask = []
     if (mask) set_mask += ["--mask $mask"]
 
     """
-    scil_compute_NODDI.py $dwi $bval $bvec $set_mask\
-        $para_diff $iso_diff $lambda1 $lambda2 $nb_threads $b_thr\
-        $set_kernels
+    scil_compute_NODDI.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
+        $lambda2 $nb_threads $b_thr \
+        ${set_mask.join(" ")} ${set_kernels.join(" ")}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -57,7 +53,7 @@ process RECONST_NODDI {
 
     """
     scil_compute_NODDI.py -h
-
+    mkdir kernels
     touch "${prefix}__FIT_dir.nii.gz"
     touch "${prefix}__FIT_ISOVF.nii.gz"
     touch "${prefix}__FIT_ICVF.nii.gz"
