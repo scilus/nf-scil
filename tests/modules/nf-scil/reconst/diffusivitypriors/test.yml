@@ -1,0 +1,7 @@
+- name: "reconst diffusivitypriors"
+  command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors -c ./tests/config/nextflow.config
+  tags:
+    - "reconst"
+    - "reconst/diffusivitypriors"
+  files:
+    - path: ""
