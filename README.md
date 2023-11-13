@@ -32,8 +32,23 @@ nf-core modules \
 
 ## Dependencies
 
-- Python &GreaterEqual; 3.8, < 3.13
-- Nextflow &GreaterEqual; 21.04.3
+- Python &geq; 3.8, < 3.13
+- Java Runtime &geq; 11, &leq; 17
+  - On Ubuntu, install `openjdk-jre-<version>` packages
+- Nextflow &geq; 21.04.3
+
+> [!IMPORTANT]
+> Nextflow might not detect the right `Java virtual machine` by default, more so if 
+>  multiple versions of the runtime are installed. If so, you need to set the environment 
+>  variable `JAVA_HOME` to target the right one.
+> 
+>  - Linux : look in `/usr/lib/jvm` for 
+>    a folder named `java-<version>-openjdk-<platform>` and use it as `JAVA_HOME`.
+>
+>  - MacOS : if the `Java jvm` is the preferential one, use `JAVA_HOME=$(/usr/libexec/java_home)`. 
+>    Else, look into `/Library/Java/JavaVirtualMachines` for the folder with the correct
+>    runtime version (named `jdk<inner version>_1<runtime version>.jdk`) and use the
+>    following : `/Library/Java/JavaVirtualMachines/dk<inner version>_1<runtime version>.jdk/Contents/Home`.
 
 ## Developer installation
 
@@ -110,7 +125,7 @@ environment.
 - Available in the VS Code IDE through extensions :
   - Docker images and containers management
   - Python and C++ linting, building and debugging tools
-  - Github Pull Requests managementscil
+  - Github Pull Requests management
   - Github flavored markdown previewing
 
 ## Contributing to `nf-scil`
