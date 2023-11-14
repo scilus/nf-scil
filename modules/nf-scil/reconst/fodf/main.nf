@@ -1,5 +1,5 @@
 
-process RECONSTRUCTION_FODF {
+process RECONST_FODF {
     tag "$meta.id"
     label 'process_single'
 
