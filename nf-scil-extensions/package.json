@@ -7,7 +7,7 @@
     "url": "https://github.com/scilus/nf-scil.git"
   },
   "icon": "icon.avif",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "AlexVCaron",
   "engines": {
     "vscode": "^1.84.0"
@@ -24,7 +24,8 @@
     "bierner.markdown-preview-github-styles", 
     "bierner.markdown-yaml-preamble", 
     "github.vscode-github-actions", 
-    "GitHub.vscode-pull-request-github", 
+    "GitHub.vscode-pull-request-github",
+    "mhutchie.git-graph", 
     "ms-azuretools.vscode-docker", 
     "ms-python.isort", 
     "ms-python.python", 
