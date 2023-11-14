@@ -14,6 +14,7 @@ process RECONST_NODDI {
         tuple val(meta), path("*__FIT_dir.nii.gz")      , emit: dir, optional: true
         tuple val(meta), path("*__FIT_ISOVF.nii.gz")    , emit: isovf, optional: true
         tuple val(meta), path("*__FIT_ICVF.nii.gz")     , emit: icvf, optional: true
+        tuple val(meta), path("*__FIT_ECVF.nii.gz")     , emit: ecvf, optional: true
         tuple val(meta), path("*__FIT_OD.nii.gz")       , emit: od, optional: true
         path(kernels)                                   , emit: kernels, optional: true
         path "versions.yml"                             , emit: versions
@@ -48,6 +49,9 @@ process RECONST_NODDI {
         mv results/FIT_ISOVF.nii.gz ${prefix}__FIT_ISOVF.nii.gz
         mv results/FIT_OD.nii.gz ${prefix}__FIT_OD.nii.gz
 
+        scil_image_math.py subtraction 1 ${prefix}__FIT_ISOVF.nii.gz \
+            ${prefix}__FIT_ECVF.nii.gz --exclude_background
+
         rm -rf results
     fi
 
@@ -63,10 +67,12 @@ process RECONST_NODDI {
 
     """
     scil_compute_NODDI.py -h
+    scil_image_math.py -h
     mkdir kernels
     touch "${prefix}__FIT_dir.nii.gz"
     touch "${prefix}__FIT_ISOVF.nii.gz"
     touch "${prefix}__FIT_ICVF.nii.gz"
+    touch "${prefix}__FIT_ECVF.nii.gz"
     touch "${prefix}__FIT_OD.nii.gz"
 
     cat <<-END_VERSIONS > versions.yml
