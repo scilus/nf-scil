@@ -178,10 +178,21 @@ to specific tests using `selectors`.
 
 ## Run the tests to generate the test metadata file
 
+> [!WARNING]
+> Verify you are located at the root of `nf-scil` (not inside modules) before 
+> running commands !
+
 Once the test data has been pushed to the desired location and been made available to the 
 test infrastructure using the relevant configurations, the test module has to be pre-tested 
-so output files that gets generated are checksum correctly. First, verify you are located 
-at the root of `nf-scil` (not inside modules !), then run :
+so output files that gets generated are checksum correctly. 
+
+> [!IMPORTANT]
+> The test infrastructure uses `pytest-workflow` to run the tests. It is `git-aware`, 
+> meaning that only files either `committed` or `staged` will be considered by 
+> the tests. To verify that your file will be loaded correctly, check that it is 
+> listed by `git ls-files`.
+
+Run :
 
 ```
 nf-core modules create-test-yml \
