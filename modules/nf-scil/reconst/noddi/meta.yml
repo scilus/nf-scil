@@ -76,6 +76,11 @@ output:
       description: Nifti file for intra-compartment volume fraction.
       pattern: "*__FIT_ICVF.{nii,nii.gz}"
 
+  - ecvf:
+      type: file
+      description: Nifti file for intra-compartment volume fraction.
+      pattern: "*__FIT_ECVF.{nii,nii.gz}"
+
   - od:
       type: file
       description: Nifti file for orientation distribution.
