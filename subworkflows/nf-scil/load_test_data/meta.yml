@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
+name: "load_test_data"
+
+description: Load test data from Scilpy in a local temporary directory
+keywords:
+  - load
+  - test
+  - data
+  - scilpy
+components:
+  - testdata/scilpy
+input:
+  - ch_archive:
+      type: string
+      description: |
+        Input archives to download and extract
+      pattern: "*.zip"
+
+  - test_data_prefix:
+      type: string
+      description: |
+        Prefix for the output test data directory
+      pattern: "*"
+## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+output:
+  - test_data_directory:
+      type: file
+      description: |
+        Directory containing test data extracted from the archive
+      pattern: "*"
+
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+
+authors:
+  - "@AlexVCaron"
