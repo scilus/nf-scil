@@ -1,7 +1,35 @@
-- name: "reconst diffusivitypriors"
-  command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors -c ./tests/config/nextflow.config
+- name: reconst diffusivitypriors test_reconst_diffusivitypriors_compute_priors
+  command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors_compute_priors -c ./tests/config/nextflow.config
   tags:
-    - "reconst"
-    - "reconst/diffusivitypriors"
+    - reconst
+    - reconst/diffusivitypriors
   files:
-    - path: ""
+    - path: output/compute/versions.yml
+
+- name: reconst diffusivitypriors test_reconst_diffusivitypriors_mean_priors
+  command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors_mean_priors -c ./tests/config/nextflow.config
+  tags:
+    - reconst
+    - reconst/diffusivitypriors
+  files:
+    - path: output/mean/all_iso_diff.txt
+      md5sum: f66911e8beb4d77b04aa7587a030c300
+    - path: output/mean/all_para_diff.txt
+      md5sum: c229b5e1328fdaaa2d628f31695b676b
+    - path: output/mean/mean_iso_diff.txt
+      md5sum: e25626e8a6047c6a1765fd81c276caee
+    - path: output/mean/mean_para_diff.txt
+      md5sum: 95ced952e31a53b5bddd4756c35af595
+    - path: output/mean/priors/test1_iso_diff.txt
+      md5sum: e25626e8a6047c6a1765fd81c276caee
+    - path: output/mean/priors/test1_para_diff.txt
+      md5sum: 95ced952e31a53b5bddd4756c35af595
+    - path: output/mean/priors/test2_iso_diff.txt
+      md5sum: e25626e8a6047c6a1765fd81c276caee
+    - path: output/mean/priors/test2_para_diff.txt
+      md5sum: 95ced952e31a53b5bddd4756c35af595
+    - path: output/mean/priors/test_iso_diff.txt
+      md5sum: e25626e8a6047c6a1765fd81c276caee
+    - path: output/mean/priors/test_para_diff.txt
+      md5sum: 95ced952e31a53b5bddd4756c35af595
+    - path: output/mean/versions.yml

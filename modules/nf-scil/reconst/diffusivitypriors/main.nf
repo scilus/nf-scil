@@ -44,7 +44,7 @@ process RECONST_DIFFUSIVITYPRIORS {
         scil_compute_NODDI_priors.py $fa $ad $md $fa_min $fa_max $md_min $roi_radius\
         --out_txt_1fiber priors/${prefix}__para_diff.txt\
         --out_txt_ventricles priors/${prefix}__iso_diff.txt
-
+    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
