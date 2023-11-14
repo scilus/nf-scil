@@ -14,7 +14,7 @@ process RECONST_DIFFUSIVITYPRIORS {
     output:
         tuple val(meta), path("*para_diff.txt")     , emit: para_diff, optional: true
         tuple val(meta), path("*iso_diff.txt")      , emit: iso_diff, optional: true
-        path(priors)                                , emit: priors, optional: true
+        path("priors")                              , emit: priors, optional: true
         path("mean_para_diff.txt")                  , emit: mean_para_diff, optional: true
         path("mean_iso_diff.txt")                   , emit: mean_iso_diff, optional: true
         path "versions.yml"                         , emit: versions

@@ -1,35 +1,35 @@
 - name: reconst diffusivitypriors test_reconst_diffusivitypriors_compute_priors
   command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors_compute_priors -c ./tests/config/nextflow.config
   tags:
-    - reconst
     - reconst/diffusivitypriors
+    - reconst
   files:
+    - path: output/compute/priors/test__iso_diff.txt
+      md5sum: ff26f00e85520a577f443265a9340637
+    - path: output/compute/priors/test__para_diff.txt
+      md5sum: a72d72723fe5f515c45dbbf2eae52856
     - path: output/compute/versions.yml
 
 - name: reconst diffusivitypriors test_reconst_diffusivitypriors_mean_priors
   command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry test_reconst_diffusivitypriors_mean_priors -c ./tests/config/nextflow.config
   tags:
-    - reconst
     - reconst/diffusivitypriors
+    - reconst
   files:
     - path: output/mean/all_iso_diff.txt
-      md5sum: f66911e8beb4d77b04aa7587a030c300
+      md5sum: d8bc5660a39115ade79272e81c67c54b
     - path: output/mean/all_para_diff.txt
-      md5sum: c229b5e1328fdaaa2d628f31695b676b
+      md5sum: e5a9e1b46169eab379a9af5614e07d27
     - path: output/mean/mean_iso_diff.txt
-      md5sum: e25626e8a6047c6a1765fd81c276caee
+      md5sum: f7a8773c96e2473fa20fbe8a009cdb80
     - path: output/mean/mean_para_diff.txt
-      md5sum: 95ced952e31a53b5bddd4756c35af595
-    - path: output/mean/priors/test1_iso_diff.txt
-      md5sum: e25626e8a6047c6a1765fd81c276caee
-    - path: output/mean/priors/test1_para_diff.txt
-      md5sum: 95ced952e31a53b5bddd4756c35af595
-    - path: output/mean/priors/test2_iso_diff.txt
-      md5sum: e25626e8a6047c6a1765fd81c276caee
-    - path: output/mean/priors/test2_para_diff.txt
-      md5sum: 95ced952e31a53b5bddd4756c35af595
-    - path: output/mean/priors/test_iso_diff.txt
-      md5sum: e25626e8a6047c6a1765fd81c276caee
-    - path: output/mean/priors/test_para_diff.txt
-      md5sum: 95ced952e31a53b5bddd4756c35af595
+      md5sum: b1596819c6eb2226d5e0e26bf8d124dd
+    - path: output/mean/priors/test1__iso_diff.txt
+      md5sum: f7a8773c96e2473fa20fbe8a009cdb80
+    - path: output/mean/priors/test1__para_diff.txt
+      md5sum: b1596819c6eb2226d5e0e26bf8d124dd
+    - path: output/mean/priors/test__iso_diff.txt
+      md5sum: f7a8773c96e2473fa20fbe8a009cdb80
+    - path: output/mean/priors/test__para_diff.txt
+      md5sum: b1596819c6eb2226d5e0e26bf8d124dd
     - path: output/mean/versions.yml
