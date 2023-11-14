@@ -30,7 +30,7 @@ process TESTDATA_SCILPY {
 
     EOF
 
-    cat <<-END_VERSIOmodules/nf-scil/preproc/n4/meta.ymlNS > versions.yml
+    cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
     END_VERSIONS
