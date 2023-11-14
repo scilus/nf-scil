@@ -47,7 +47,7 @@ input:
   - kernels:
       type: folder
       description: Folder containg kernels.
-      pattern: "*.{npy}"
+      pattern: "kernels"
 
 output:
   - meta:
@@ -84,7 +84,7 @@ output:
   - kernels:
       type: folder
       description: Folder containg kernels.
-      pattern: "*.{npy}"
+      pattern: "kernels"
 
 authors:
   - "@Manonedde"

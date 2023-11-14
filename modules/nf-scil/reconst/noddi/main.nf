@@ -16,7 +16,7 @@ process RECONST_NODDI {
         tuple val(meta), path("*__FIT_ICVF.nii.gz")     , emit: icvf, optional: true
         tuple val(meta), path("*__FIT_ECVF.nii.gz")     , emit: ecvf, optional: true
         tuple val(meta), path("*__FIT_OD.nii.gz")       , emit: od, optional: true
-        path(kernels)                                   , emit: kernels, optional: true
+        path("kernels")                                 , emit: kernels, optional: true
         path "versions.yml"                             , emit: versions
 
     when:
