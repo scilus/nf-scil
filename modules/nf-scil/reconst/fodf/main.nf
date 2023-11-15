@@ -27,14 +27,11 @@ process RECONST_FODF {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
-    def fodf_shells = task.ext.fodf_shells ? task.ext.fodf_shells : "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | \
-                                                                    awk -F' ' '{v=int(\$1)}{if(v>=$params.min_fodf_shell_value|| \
-                                                                    v<=$params.b0_thr_extract_b0)print v}' | uniq)"
+    def fodf_shells = task.ext.fodf_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$task.ext.min_fodf_shell_value|| v<=$task.ext.b0_thr_extract_b0)print v}' | uniq)"
     def sh_order = task.ext.sh_order ? "--sh_order " + task.ext.sh_order : ""
     def sh_basis = task.ext.sh_basis ? "--sh_basis " + task.ext.sh_basis : ""
     def fa_threshold = task.ext.fa_threshold ? "--fa_t " + task.ext.fa_threshold : ""
-    def md_threshold = task.ext.md_threshold ? "--fa_t " + task.ext.md_threshold : ""
-    def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : ""
+    def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
 
@@ -52,12 +49,12 @@ process RECONST_FODF {
         --mask $b0_mask $processes
     
     scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
-        --max_value_output ventricles_fodf_max_values.txt $sh_basis \
+        --max_value_output ventricles_fodf_max_value.txt $sh_basis \
         $fa_threshold $md_threshold -f
 
     v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
-    a_threshold=\$(echo "scale=10; $fodf_metrics_a_factor*\$v_max" | bc)
-    if (( \$(echo "\$a_threshold < 0" | bc -l) )); then
+    a_threshold=\$(echo "scale=10; $task.ext.fodf_metrics_a_factor * \${v_max}" | bc)
+    if (( \$(echo "\${a_threshold} < 0" | bc -l) )); then
         a_threshold=0
     fi
 
@@ -75,7 +72,6 @@ process RECONST_FODF {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """

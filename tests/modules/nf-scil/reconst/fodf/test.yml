@@ -1,13 +1,47 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core modules create-test-yml /fodf
-- name: "reconstruction fodf"
-  command: nextflow run ./tests/modules/nf-scil/reconstruction/fodf -entry test_reconstruction_fodf -c ./tests/config/nextflow.config
+- name: reconst fodf test_reconst_fodf
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf -c ./tests/config/nextflow.config
   tags:
-    - "reconstruction"
-    - "reconstruction/fodf"
+    - reconst
+    - reconst/fodf
   files:
-    - path: "output/reconstruction/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/reconstruction/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
-    
+    - path: output/reconst/dwi_fodf.nii.gz
+      md5sum: 98ea0de7e14f9dac4c7ac353c6b24367
+    - path: output/reconst/test__afd_max.nii.gz
+      md5sum: 52444587796f16105343bf05da27385b
+    - path: output/reconst/test__afd_sum.nii.gz
+      md5sum: 44905e681c3cc1e936ddbf38c8c2e006
+    - path: output/reconst/test__afd_total.nii.gz
+      md5sum: db59fa3df5316a5f71fdf333f89e9ac8
+    - path: output/reconst/test__fodf.nii.gz
+      md5sum: da9ddae63aa33d85497852462a33d7d8
+    - path: output/reconst/test__nufo.nii.gz
+      md5sum: c5757edf42af96cd2096581d937a5780
+    - path: output/reconst/test__peak_indices.nii.gz
+      md5sum: 901da500ba58b3b2a00659fd205b3a02
+    - path: output/reconst/test__peaks.nii.gz
+      md5sum: cfc6f6ba9b1288e22c3abf81075b1484
+    - path: output/reconst/versions.yml
+
+- name: reconst fodf test_reconst_fodf_with_fodf_shells
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf_with_fodf_shells -c ./tests/config/nextflow.config
+  tags:
+    - reconst
+    - reconst/fodf
+  files:
+    - path: output/reconst/dwi_fodf.nii.gz
+      md5sum: 98ea0de7e14f9dac4c7ac353c6b24367
+    - path: output/reconst/test__afd_max.nii.gz
+      md5sum: 52444587796f16105343bf05da27385b
+    - path: output/reconst/test__afd_sum.nii.gz
+      md5sum: 44905e681c3cc1e936ddbf38c8c2e006
+    - path: output/reconst/test__afd_total.nii.gz
+      md5sum: db59fa3df5316a5f71fdf333f89e9ac8
+    - path: output/reconst/test__fodf.nii.gz
+      md5sum: da9ddae63aa33d85497852462a33d7d8
+    - path: output/reconst/test__nufo.nii.gz
+      md5sum: c5757edf42af96cd2096581d937a5780
+    - path: output/reconst/test__peak_indices.nii.gz
+      md5sum: 901da500ba58b3b2a00659fd205b3a02
+    - path: output/reconst/test__peaks.nii.gz
+      md5sum: cfc6f6ba9b1288e22c3abf81075b1484
+    - path: output/reconst/versions.yml
