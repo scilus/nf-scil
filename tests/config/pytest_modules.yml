@@ -10,9 +10,9 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
-nfscil/volresampling:
-  - modules/nf-scil/nfscil/volresampling/**
-  - tests/modules/nf-scil/nfscil/volresampling/**
+image/resample:
+  - modules/nf-scil/image/resample/**
+  - tests/modules/nf-scil/image/resample/**
 
 preproc/n4:
   - modules/nf-scil/preproc/n4/**

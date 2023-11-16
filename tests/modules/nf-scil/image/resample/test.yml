@@ -1,0 +1,9 @@
+- name: image resample test_image_resample
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample -c ./tests/config/nextflow.config
+  tags:
+    - image/resample
+    - image
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: 11da64899aa148113e84eeb5f9b62f4e
+    - path: output/image/versions.yml

@@ -1,4 +1,4 @@
-process NFSCIL_VOLRESAMPLING {
+process IMAGE_RESAMPLE {
     tag "$meta.id"
     label 'process_single'
 
