@@ -12,6 +12,7 @@ process TRACKING_PFTTRACKING {
 
     output:
         tuple val(meta), path("*__pft_tracking.trk")            , emit: trk
+        tuple val(meta), path("*__pft_tracking_config.json")    , emit: config
         path "versions.yml"                                     , emit: versions
 
     when:
@@ -24,7 +25,7 @@ process TRACKING_PFTTRACKING {
     def compress = task.ext.pft_compress_streamlines ? "--compress " + task.ext.pft_compress_value : ""
     def pft_algo = task.ext.pft_algo ? "--algo " + task.ext.pft_algo: ""
     def pft_seeding_type = task.ext.pft_seeding ? "--"  + task.ext.pft_seeding : ""
-    def pft_nbr_seeds = task.ext.pft_nbr_seeds ? "-- "  + task.ext.pft_nbr_seeds : ""
+    def pft_nbr_seeds = task.ext.pft_nbr_seeds ? ""  + task.ext.pft_nbr_seeds : ""
     def pft_step = task.ext.pft_step ? "--step "  + task.ext.pft_step : ""
     def pft_seeding_mask = task.ext.pft_seeding_mask_type ? "--"  + task.ext.pft_seeding_mask_type : ""
     def pft_theta = task.ext.pft_theta ? "--theta "  + task.ext.pft_theta : ""
@@ -54,6 +55,26 @@ process TRACKING_PFTTRACKING {
         ${prefix}__pft_tracking.trk\
         --remove_single_point
 
+    cat <<-TRACKING_INFO > ${prefix}__pft_tracking_config.json
+    {"algorithm": "${task.ext.pft_algo}",
+    "seeding_type": "${task.ext.pft_seeding}",
+    "nb_seed": $task.ext.pft_nbr_seeds,
+    "seeding_mask": "${task.ext.pft_seeding_mask_type}",
+    "random_seed": $task.ext.pft_random_seed,
+    "is_compress": "${task.ext.pft_compress_streamlines}",
+    "compress_value": $task.ext.pft_compress_value,
+    "step": $task.ext.pft_step,
+    "theta": $task.ext.pft_theta,
+    "sfthres": $task.ext.pft_sfthres,
+    "sfthres_init": $task.ext.pft_sfthres_init,
+    "min_len": $task.ext.pft_min_len,
+    "max_len": $task.ext.pft_max_len,
+    "particles": $task.ext.pft_particles,
+    "back": $task.ext.pft_back,
+    "forward": $task.ext.pft_front,
+    "sh_basis": "${task.ext.basis}"}
+    TRACKING_INFO
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
@@ -61,7 +82,6 @@ process TRACKING_PFTTRACKING {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     
     """
@@ -69,6 +89,7 @@ process TRACKING_PFTTRACKING {
     scil_remove_invalid_streamlines.py -h
 
     touch ${prefix}__pft_tracking.trk
+    touch ${prefix}__pft_tracking_config.json
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

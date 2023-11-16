@@ -60,5 +60,10 @@ output:
       description: Tractogram output file.
       pattern: "*.{trk,tck}"
 
+  - trk:
+      type: file
+      description: Json file containing tracking parameters.
+      pattern: "*.{json}"
+
 authors:
-  - "@scilus"
+  - "@Manonedde"
