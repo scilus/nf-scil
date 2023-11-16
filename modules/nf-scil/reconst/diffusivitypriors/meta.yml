@@ -39,7 +39,6 @@ input:
       pattern: "priors"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |

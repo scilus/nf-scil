@@ -12,12 +12,12 @@ process RECONST_DIFFUSIVITYPRIORS {
         tuple val(meta), path(fa), path(ad), path(md), path(priors)
 
     output:
-        tuple val(meta), path("*para_diff.txt")     , emit: para_diff, optional: true
-        tuple val(meta), path("*iso_diff.txt")      , emit: iso_diff, optional: true
-        path("priors")                              , emit: priors, optional: true
-        path("mean_para_diff.txt")                  , emit: mean_para_diff, optional: true
-        path("mean_iso_diff.txt")                   , emit: mean_iso_diff, optional: true
-        path "versions.yml"                         , emit: versions
+        tuple val(meta), path("*__para_diff.txt")       , emit: para_diff, optional: true
+        tuple val(meta), path("*__iso_diff.txt")        , emit: iso_diff, optional: true
+        path("priors")                                  , emit: priors, optional: true
+        path("mean_para_diff.txt")                      , emit: mean_para_diff, optional: true
+        path("mean_iso_diff.txt")                       , emit: mean_iso_diff, optional: true
+        path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -33,9 +33,9 @@ process RECONST_DIFFUSIVITYPRIORS {
     """
     if [ ! -z "$priors" ]
     then
-        cat $priors/*_para_diff.txt > all_para_diff.txt
+        cat $priors/*__para_diff.txt > all_para_diff.txt
         awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
-        cat $priors/*_iso_diff.txt > all_iso_diff.txt
+        cat $priors/*__iso_diff.txt > all_iso_diff.txt
         awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
 
     else
@@ -53,7 +53,6 @@ process RECONST_DIFFUSIVITYPRIORS {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
