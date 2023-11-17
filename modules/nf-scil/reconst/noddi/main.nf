@@ -31,17 +31,13 @@ process RECONST_NODDI {
     def lambda2 = task.ext.lambda2 ? "--lambda2 " + task.ext.lambda2 : ""
     def nb_threads = task.ext.nb_threads ? "--processes " + task.ext.nb_threads : ""
     def b_thr = task.ext.b_thr ? "--b_thr " + task.ext.b_thr : ""
-
-    def set_kernels = []
-    if (kernels) set_kernels += ["--load_kernels $kernels"] else set_kernels += ["--save_kernels kernels/ --compute_only"]
-
-    def set_mask = []
-    if (mask) set_mask += ["--mask $mask"]
+    def set_kernels = kernels ? "--load_kernels $kernels" : "--save_kernels kernels/ --compute_only"
+    def set_mask = mask ? "--mask $mask" : ""
 
     """
     scil_compute_NODDI.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
-        $lambda2 $nb_threads $b_thr \
-        ${set_mask.join(" ")} ${set_kernels.join(" ")}
+        $lambda2 $nb_threads $b_thr $set_mask $set_kernels
+        
 
     if [ ! -z "$kernels" ]; then
         mv results/FIT_dir.nii.gz ${prefix}__FIT_dir.nii.gz
@@ -62,7 +58,6 @@ process RECONST_NODDI {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
