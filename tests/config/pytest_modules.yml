@@ -62,3 +62,6 @@ tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
 
+subworkflows/load_test_data:
+  - subworkflows/nf-scil/load_test_data/**
+  - tests/subworkflows/nf-scil/load_test_data/**
