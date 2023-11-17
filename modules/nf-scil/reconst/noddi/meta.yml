@@ -1,0 +1,95 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "reconst_noddi"
+description: Run NODDI modelling pipeline using AMICO from DWI data.
+keywords:
+  - DWI
+  - NODDI
+tools:
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+  - "NODDI":
+      description: "Method to compute neurite orientation dispersion and density imaging."
+      doi: "10.1016/j.neuroimage.2012.03.072"
+  - "AMICO":
+      description: "Accelerated Microstructure Imaging via Convex Optimization."
+      homepage: "https://github.com/daducci/AMICO"
+      doi: "10.1016/j.neuroimage.2014.10.026"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - dwi:
+      type: file
+      description: Nifti DWI file acquired with a NODDI compatible protocol (multi-shell).
+      pattern: "*.{nii,nii.gz}"
+
+  - bval:
+      type: file
+      description: B-values in FSL format.
+      pattern: "*.bval"
+
+  - bvec:
+      type: file
+      description: B-vectors in FSL format.
+      pattern: "*.bvec"
+
+  - mask:
+      type: file
+      description: Nifti brain mask.
+      pattern: "*mask.{nii,nii.gz}"
+
+  - kernels:
+      type: folder
+      description: Folder containg kernels.
+      pattern: "kernels"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - versions:
+      type: file
+      description: File containing software versions.
+      pattern: "versions.yml"
+
+  - dir:
+      type: file
+      description: Nifti file main direction.
+      pattern: "*__FIT_dir.{nii,nii.gz}"
+
+  - isovf:
+      type: file
+      description: Nifti file for isotropic volume fraction.
+      pattern: "*__FIT_ISOVF.{nii,nii.gz}"
+
+  - icvf:
+      type: file
+      description: Nifti file for intra-compartment volume fraction.
+      pattern: "*__FIT_ICVF.{nii,nii.gz}"
+
+  - ecvf:
+      type: file
+      description: Nifti file for intra-compartment volume fraction.
+      pattern: "*__FIT_ECVF.{nii,nii.gz}"
+
+  - od:
+      type: file
+      description: Nifti file for orientation distribution.
+      pattern: "*__FIT_OD.{nii,nii.gz}"
+
+  - kernels:
+      type: folder
+      description: Folder containg kernels.
+      pattern: "kernels"
+
+authors:
+  - "@Manonedde"
