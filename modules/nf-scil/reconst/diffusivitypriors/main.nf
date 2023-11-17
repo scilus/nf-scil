@@ -44,6 +44,11 @@ process RECONST_DIFFUSIVITYPRIORS {
         scil_compute_NODDI_priors.py $fa $ad $md $fa_min $fa_max $md_min $roi_radius\
         --out_txt_1fiber priors/${prefix}__para_diff.txt\
         --out_txt_ventricles priors/${prefix}__iso_diff.txt
+
+        cat priors/*__para_diff.txt > all_para_diff.txt
+        awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
+        cat priors/*__iso_diff.txt > all_iso_diff.txt
+        awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
     fi
 
     cat <<-END_VERSIONS > versions.yml
