@@ -12,12 +12,12 @@ process RECONST_FODF {
 
     output:
         tuple val(meta), path("*fodf.nii.gz")           , emit: fodf
-        tuple val(meta), path("*peaks.nii.gz")          , emit: peaks
-        tuple val(meta), path("*peak_indices.nii.gz")   , emit: peak_indices
-        tuple val(meta), path("*afd_max.nii.gz")        , emit: afd_max
-        tuple val(meta), path("*afd_total.nii.gz")      , emit: afd_total
-        tuple val(meta), path("*afd_sum.nii.gz")        , emit: afd_sum
-        tuple val(meta), path("*nufo.nii.gz")           , emit: nufo
+        tuple val(meta), path("*peaks.nii.gz")          , emit: peaks, optional: true
+        tuple val(meta), path("*peak_indices.nii.gz")   , emit: peak_indices, optional: true
+        tuple val(meta), path("*afd_max.nii.gz")        , emit: afd_max, optional: true
+        tuple val(meta), path("*afd_total.nii.gz")      , emit: afd_total, optional: true
+        tuple val(meta), path("*afd_sum.nii.gz")        , emit: afd_sum, optional: true
+        tuple val(meta), path("*nufo.nii.gz")           , emit: nufo, optional: true
         path "versions.yml"                             , emit: versions
 
     when:
@@ -34,6 +34,13 @@ process RECONST_FODF {
     def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
+
+    if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else ""
+    if ( task.ext.peak_indices ) peak_indices = "--peak_indices ${prefix}__peak_indices.nii.gz" else ""
+    if ( task.ext.afd_max ) afd_max = "--afd_max ${prefix}__afd_max.nii.gz" else ""
+    if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else ""
+    if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else ""
+    if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -60,9 +67,9 @@ process RECONST_FODF {
 
     scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
         --mask $b0_mask $sh_basis \
-        --peaks ${prefix}__peaks.nii.gz --peak_indices ${prefix}__peak_indices.nii.gz \
-        --afd_max ${prefix}__afd_max.nii.gz --afd_total ${prefix}__afd_total.nii.gz \
-        --afd_sum ${prefix}__afd_sum.nii.gz --nufo ${prefix}__nufo.nii.gz \
+        $peaks $peak_indices \
+        $afd_max $afd_total \
+        $afd_sum $nufo \
         $relative_threshold --at \${a_threshold}
 
     cat <<-END_VERSIONS > versions.yml
