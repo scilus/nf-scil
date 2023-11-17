@@ -21,6 +21,5 @@
             ]
         }
     },
-    "init": true,
-    "privileged": true
+    "init": true
 }
