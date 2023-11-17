@@ -17,3 +17,7 @@ preproc/n4:
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
+
+segmentation/freesurferseg:
+  - modules/nf-scil/segmentation/freesurferseg/**
+  - tests/modules/nf-scil/segmentation/freesurferseg/**
