@@ -1,13 +1,13 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core modules create-test-yml /freesurferseg
-- name: "segmentation freesurferseg"
+- name: segmentation freesurferseg test_segmentation_freesurferseg
   command: nextflow run ./tests/modules/nf-scil/segmentation/freesurferseg -entry test_segmentation_freesurferseg -c ./tests/config/nextflow.config
   tags:
-    - "segmentation"
-    - "segmentation/freesurferseg"
+    - segmentation/freesurferseg
+    - segmentation
   files:
-    - path: "output/segmentation/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/segmentation/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
-    
+    - path: output/segmentation/test__mask_csf.nii.gz
+      md5sum: 6a47853f9fa62ef64809aca274570afa
+    - path: output/segmentation/test__mask_gm.nii.gz
+      md5sum: 20d0a04508ae5f6caa916c82ab572519
+    - path: output/segmentation/test__mask_wm.nii.gz
+      md5sum: 3cbf37c12ac357b1ed5307be0ddb93dd
+    - path: output/segmentation/versions.yml

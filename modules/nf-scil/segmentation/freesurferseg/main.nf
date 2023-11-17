@@ -31,8 +31,11 @@ process SEGMENTATION_FREESURFERSEG {
     mkdir wmparc_subcortical/
     mkdir aparc+aseg_subcortical/
 
-    scil_image_math.py convert $aparc_aseg aparc+aseg_int16.nii.gz --data_type int16 -f
-    scil_image_math.py convert $wmparc wmparc_int16.nii.gz --data_type int16 -f
+    mrconvert $aparc_aseg aparc+aseg.nii.gz -force -nthreads 1
+    mrconvert $wmparc wmparc.nii.gz -force -nthreads 1
+
+    scil_image_math.py convert aparc+aseg.nii.gz aparc+aseg_int16.nii.gz --data_type int16 -f
+    scil_image_math.py convert wmparc.nii.gz wmparc_int16.nii.gz --data_type int16 -f
 
     scil_split_volume_by_labels.py wmparc_int16.nii.gz --scilpy_lut freesurfer_desikan_killiany --out_dir wmparc_desikan
     scil_split_volume_by_labels.py wmparc_int16.nii.gz --scilpy_lut freesurfer_subcortical --out_dir wmparc_subcortical
@@ -80,12 +83,14 @@ process SEGMENTATION_FREESURFERSEG {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
+        mrtrix: \$(mrconvert -version 2>&1 | sed -n 's/== mrconvert \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
+    mrconvert -h
     scil_image_math.py -h
     scil_split_volume_by_labels.py -h
 
@@ -96,6 +101,7 @@ process SEGMENTATION_FREESURFERSEG {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
+        mrtrix: \$(mrconvert -version 2>&1 | sed -n 's/== mrconvert \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
 }
