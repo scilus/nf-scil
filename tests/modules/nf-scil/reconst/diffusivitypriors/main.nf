@@ -22,9 +22,7 @@ workflow test_reconst_diffusivitypriors_mean_priors {
 
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['reconst']['diffusivitypriors']['fa'], checkIfExists: true),
-        file(params.test_data['reconst']['diffusivitypriors']['md'], checkIfExists: true),
-        file(params.test_data['reconst']['diffusivitypriors']['ad'], checkIfExists: true),
+        [],[],[],
         file(params.test_data['reconst']['diffusivitypriors']['priors'], checkIfExists: true)
     ]
 
