@@ -1,4 +1,6 @@
+.pytest_cache/
 .work/
+.venv/
 .nextflow*
 *.pyc
 *.vsix

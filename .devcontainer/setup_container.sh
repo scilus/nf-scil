@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-poetry install
+mkdir /nf-scil-poetry-venv
+ln -s /nf-scil-poetry-venv .venv
+#poetry install --no-root
+#echo "export PROFILE=docker" >> ~/.bashrc
 
-echo "poetry shell" >> ~/.bashrc
-echo "export PROFILE=docker" >> ~/.bashrc
+#
