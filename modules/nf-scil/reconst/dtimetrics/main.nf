@@ -48,6 +48,7 @@ process RECONST_DTIMETRICS {
     def mask =[]
 
     if (b0mask) mask += ["--mask $b0mask"]
+    if ( task.ext.notall ) args += " --not_all"
     if ( task.ext.ad ) args += " --ad ${prefix}__ad.nii.gz"
     if ( task.ext.evecs ) args += " --evecs ${prefix}__evecs.nii.gz"
     if ( task.ext.evals ) args += " --evals ${prefix}__evals.nii.gz"
