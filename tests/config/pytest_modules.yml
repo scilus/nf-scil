@@ -18,6 +18,14 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
+reconst/diffusivitypriors:
+  - modules/nf-scil/reconst/diffusivitypriors/**
+  - tests/modules/nf-scil/reconst/diffusivitypriors/**
+
+reconst/noddi:
+  - modules/nf-scil/reconst/noddi/**
+  - tests/modules/nf-scil/reconst/noddi/**
+
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
   - tests/modules/nf-scil/segmentation/fastseg/**
