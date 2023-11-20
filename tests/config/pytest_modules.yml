@@ -21,3 +21,11 @@ preproc/normalize:
 reconstruction/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
+
+reconst/diffusivitypriors:
+  - modules/nf-scil/reconst/diffusivitypriors/**
+  - tests/modules/nf-scil/reconst/diffusivitypriors/**
+
+reconst/noddi:
+  - modules/nf-scil/reconst/noddi/**
+  - tests/modules/nf-scil/reconst/noddi/**
