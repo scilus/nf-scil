@@ -18,6 +18,10 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
+reconst/fodf:
+  - modules/nf-scil/reconst/fodf/**
+  - tests/modules/nf-scil/reconst/fodf/**
+
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
