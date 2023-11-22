@@ -25,14 +25,12 @@ process SEGMENTATION_FASTSEG {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    def number_of_tissues = task.ext.number_of_tissues ? "-n " + task.ext.number_of_tissues : ""
-
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    fast -t 1 $number_of_tissues\
+    fast -t 1 -n 3\
         -H 0.1 -I 4 -l 20.0 -g -o t1.nii.gz $image
     scil_image_math.py convert t1_seg_2.nii.gz ${prefix}__mask_wm.nii.gz --data_type uint8
     scil_image_math.py convert t1_seg_1.nii.gz ${prefix}__mask_gm.nii.gz --data_type uint8
