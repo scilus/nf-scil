@@ -1,0 +1,69 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "tracking_pfttracking"
+description: Generates a tractogram using anatomically-constrained particle
+             filter tracking, Particle Filtering Tractography (PFT).
+keywords:
+  - PFT
+  - tractography
+
+tools:
+  - "DIPY":
+      description: "DIPY is the paragon 3D/4D+ imaging library in Python."
+      homepage: https://dipy.org
+      doi: "10.1016/j.neuroimage.2014.04.074"
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - fodf:
+      type: file
+      description: Nifti image of Spherical harmonic file (fodf).
+      pattern: "*.{nii,nii.gz}"
+
+  - seed:
+      type: file
+      description: Nifti image seeding mask.
+      pattern: "*.{nii,nii.gz}"
+
+  - include:
+      type: file
+      description: Nifti image probability map for tracking of ending the streamline and including it in the output.
+      pattern: "*.{nii,nii.gz}"
+
+  - exclude:
+      type: file
+      description: Nifti image probability map for tracking of ending the streamline and excluding it in the output.
+      pattern: "*.{nii,nii.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - trk:
+      type: file
+      description: Tractogram output file.
+      pattern: "*.{trk,tck}"
+
+  - config:
+      type: file
+      description: Json file containing tracking parameters.
+      pattern: "*.{json}"
+
+authors:
+  - "@Manonedde"

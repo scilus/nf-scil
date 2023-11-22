@@ -25,3 +25,7 @@ reconst/diffusivitypriors:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
+
+tracking/pfttracking:
+  - modules/nf-scil/tracking/pfttracking/**
+  - tests/modules/nf-scil/tracking/pfttracking/**
