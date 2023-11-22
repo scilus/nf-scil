@@ -33,6 +33,7 @@ process RECONST_FODF {
     def fa_threshold = task.ext.fa_threshold ? "--fa_t " + task.ext.fa_threshold : ""
     def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
+    def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
 
     if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else ""
@@ -59,8 +60,9 @@ process RECONST_FODF {
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
         $fa_threshold $md_threshold -f
 
+    a_factor=$fodf_metrics_a_factor
     v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
-    a_threshold=\$(echo "scale=10; $task.ext.fodf_metrics_a_factor * \${v_max}" | bc)
+    a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
     if (( \$(echo "\${a_threshold} < 0" | bc -l) )); then
         a_threshold=0
     fi
