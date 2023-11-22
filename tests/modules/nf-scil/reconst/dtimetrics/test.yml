@@ -1,8 +1,8 @@
 - name: reconst dtimetrics test_reconst_dtimetrics
   command: nextflow run ./tests/modules/nf-scil/reconst/dtimetrics -entry test_reconst_dtimetrics -c ./tests/config/nextflow.config
   tags:
-    - reconst
     - reconst/dtimetrics
+    - reconst
   files:
     - path: output/reconst/test__ad.nii.gz
       md5sum: 28b27c671c137da4f40f4ef6d98926c2
@@ -59,8 +59,8 @@
 - name: reconst dtimetrics test_reconst_dtimetrics_with_b0mask
   command: nextflow run ./tests/modules/nf-scil/reconst/dtimetrics -entry test_reconst_dtimetrics_with_b0mask -c ./tests/config/nextflow.config
   tags:
-    - reconst
     - reconst/dtimetrics
+    - reconst
   files:
     - path: output/reconst/test__fa.nii.gz
       md5sum: 3387956ba85328f85e3cb8c4fc6d9498

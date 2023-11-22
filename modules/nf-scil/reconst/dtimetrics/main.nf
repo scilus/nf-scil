@@ -48,7 +48,6 @@ process RECONST_DTIMETRICS {
     def mask =[]
 
     if (b0mask) mask += ["--mask $b0mask"]
-    if ( task.ext.notall ) args += " --not_all"
     if ( task.ext.ad ) args += " --ad ${prefix}__ad.nii.gz"
     if ( task.ext.evecs ) args += " --evecs ${prefix}__evecs.nii.gz"
     if ( task.ext.evals ) args += " --evals ${prefix}__evals.nii.gz"
@@ -70,7 +69,7 @@ process RECONST_DTIMETRICS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_dti_metrics.py $dwi $bval $bvec ${mask.join(" ")} $args -f --force_b0_threshold
+    scil_compute_dti_metrics.py $dwi $bval $bvec ${mask.join(" ")} --not_all $args -f --force_b0_threshold
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
