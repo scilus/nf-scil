@@ -14,6 +14,10 @@ preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
 
+reconst/dtimetrics:
+  - modules/nf-scil/reconst/dtimetrics/**
+  - tests/modules/nf-scil/reconst/dtimetrics/**
+
 preproc/n4:
   - modules/nf-scil/preproc/n4/**
   - tests/modules/nf-scil/preproc/n4/**

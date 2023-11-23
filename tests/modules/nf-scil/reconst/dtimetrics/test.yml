@@ -1,0 +1,67 @@
+- name: reconst dtimetrics test_reconst_dtimetrics
+  command: nextflow run ./tests/modules/nf-scil/reconst/dtimetrics -entry test_reconst_dtimetrics -c ./tests/config/nextflow.config
+  tags:
+    - reconst/dtimetrics
+    - reconst
+  files:
+    - path: output/reconst/test__ad.nii.gz
+      md5sum: 28b27c671c137da4f40f4ef6d98926c2
+    - path: output/reconst/test__evals.nii.gz
+      md5sum: 4a731ec968a5ce73d1d151c4d97e5392
+    - path: output/reconst/test__evals_e1.nii.gz
+      md5sum: 28b27c671c137da4f40f4ef6d98926c2
+    - path: output/reconst/test__evals_e2.nii.gz
+      md5sum: 04fa1e4bf046183d9adccf51ce3b1cc7
+    - path: output/reconst/test__evals_e3.nii.gz
+      md5sum: d0121b41436e2dc174a5833e3d34eb9b
+    - path: output/reconst/test__evecs.nii.gz
+      md5sum: 2723d68e20e38130fcc1dffa50237eb4
+    - path: output/reconst/test__evecs_v1.nii.gz
+      md5sum: dfb215db47f5bb2b710f0ba324ba63dd
+    - path: output/reconst/test__evecs_v2.nii.gz
+      md5sum: 47e97614c4cccc658d5bc63ffa479530
+    - path: output/reconst/test__evecs_v3.nii.gz
+      md5sum: bdd302d89971f22fbeebc1d64f0bf74c
+    - path: output/reconst/test__fa.nii.gz
+      md5sum: 3387956ba85328f85e3cb8c4fc6d9498
+    - path: output/reconst/test__ga.nii.gz
+      md5sum: 9e0e8046f440175f2c9249c29efbe711
+    - path: output/reconst/test__md.nii.gz
+      md5sum: e6601925722a0aca7e1ddc2da029efc0
+    - path: output/reconst/test__mode.nii.gz
+      md5sum: 4640aaa01c290f87a0586c5743197fe9
+    - path: output/reconst/test__nonphysical.nii.gz
+      md5sum: 6bdfa114cd1a4a6876c7ffac3a63712c
+    - path: output/reconst/test__norm.nii.gz
+      md5sum: fb971e6bb348e3649629378d1c670f27
+    - path: output/reconst/test__rd.nii.gz
+      md5sum: b056688b927fc40aec96f4e5f38ffd5e
+    - path: output/reconst/test__residual.nii.gz
+      md5sum: 1cd7b1edf5f8d2cad1327ed0f28e20fb
+    - path: output/reconst/test__residual_iqr_residuals.npy
+      md5sum: d0c6efa90077b3bdcfea40c3ee0734d8
+    - path: output/reconst/test__residual_mean_residuals.npy
+      md5sum: 0925bd23ef8d1d1a7fd02a0c491c638f
+    - path: output/reconst/test__residual_q1_residuals.npy
+      md5sum: c2fbbb0bafb9a7cb350929b46435b719
+    - path: output/reconst/test__residual_q3_residuals.npy
+      md5sum: d0c6efa90077b3bdcfea40c3ee0734d8
+    - path: output/reconst/test__residual_residuals_stats.png
+      md5sum: fa1e88f54b9693f38b89e00d934f6f31
+    - path: output/reconst/test__residual_std_residuals.npy
+      md5sum: aa322b417a9701cace3ea8f97b905172
+    - path: output/reconst/test__rgb.nii.gz
+      md5sum: e676f4df3c2cd572256507a4fca7b6c2
+    - path: output/reconst/test__tensor.nii.gz
+      md5sum: 51dc1d89a830e4b18369ddc8c2cd2592
+    - path: output/reconst/versions.yml
+
+- name: reconst dtimetrics test_reconst_dtimetrics_with_b0mask
+  command: nextflow run ./tests/modules/nf-scil/reconst/dtimetrics -entry test_reconst_dtimetrics_with_b0mask -c ./tests/config/nextflow.config
+  tags:
+    - reconst/dtimetrics
+    - reconst
+  files:
+    - path: output/reconst/test__fa.nii.gz
+      md5sum: 3387956ba85328f85e3cb8c4fc6d9498
+    - path: output/reconst/versions.yml
