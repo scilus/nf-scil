@@ -1,39 +1,38 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "tracking_localtracking"
-## TODO nf-core: Add a description of the module and list keywords
 description: process local tracking
 keywords:
-  - tractography
-  - streamlines
+  - Tractography
+  - Local tracking
 tools:
-  - "tracking":
+  - "Scilpy":
       ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
   
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
+  - fodf:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: Nifti image of spherical harmonic file (fodf)
+      pattern: "*.{nii,nii.gz}"
 
-## TODO nf-core: Add a description of all of the variables used as output
+  - tracking_mask:
+      type: file
+      description: NIfti image binary mask for tracking
+      pattern: "*.{nii,nii.gz}"
+
+  - seed:
+      type: file
+      description: Nifti image seeding mask.
+      pattern: "*.{nii,nii.gz}"
+
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
@@ -44,11 +43,16 @@ output:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
+
+  - trk:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: Tractogram output file.
+      pattern: "*.{trk,tck}"
+
+  - config:
+      type: file
+      description: Json file containing tracking parameters.
+      pattern: "*.{json}"
 
 authors:
   - "@scilus"

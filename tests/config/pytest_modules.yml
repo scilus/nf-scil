@@ -21,3 +21,7 @@ preproc/n4:
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
+
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
