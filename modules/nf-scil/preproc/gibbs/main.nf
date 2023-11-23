@@ -17,7 +17,6 @@ process PREPROC_GIBBS {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -32,7 +31,6 @@ process PREPROC_GIBBS {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     mrdegibbs -h
