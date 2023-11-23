@@ -10,6 +10,10 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
+preproc/gibbs:
+  - modules/nf-scil/preproc/gibbs/**
+  - tests/modules/nf-scil/preproc/gibbs/**
+
 reconst/dtimetrics:
   - modules/nf-scil/reconst/dtimetrics/**
   - tests/modules/nf-scil/reconst/dtimetrics/**
