@@ -10,6 +10,14 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
+preproc/gibbs:
+  - modules/nf-scil/preproc/gibbs/**
+  - tests/modules/nf-scil/preproc/gibbs/**
+
+reconst/dtimetrics:
+  - modules/nf-scil/reconst/dtimetrics/**
+  - tests/modules/nf-scil/reconst/dtimetrics/**
+
 preproc/n4:
   - modules/nf-scil/preproc/n4/**
   - tests/modules/nf-scil/preproc/n4/**
@@ -18,6 +26,10 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
+reconst/fodf:
+  - modules/nf-scil/reconst/fodf/**
+  - tests/modules/nf-scil/reconst/fodf/**
+
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
@@ -25,6 +37,14 @@ reconst/diffusivitypriors:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
+
+tracking/pfttracking:
+  - modules/nf-scil/tracking/pfttracking/**
+  - tests/modules/nf-scil/tracking/pfttracking/**
+
+segmentation/fastseg:
+  - modules/nf-scil/segmentation/fastseg/**
+  - tests/modules/nf-scil/segmentation/fastseg/**
 
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
