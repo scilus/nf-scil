@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "reconst_frf"
+description: Compute a single Fiber Response Function from a DWI.
+keywords:
+  - DWI
+  - FRF
+
+tools:
+  - "DIPY":
+      description: "DIPY is the paragon 3D/4D+ imaging library in Python."
+      homepage: https://dipy.org
+
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - fodf:
+      type: file
+      description: Nifti image of Spherical harmonic file (fodf).
+      pattern: "*.{nii,nii.gz}"
+
+  - bval:
+      type: file
+      description: B-values in FSL format.
+      pattern: "*.bval"
+
+  - bvec:
+      type: file
+      description: B-vectors in FSL format.
+      pattern: "*.bvec"
+
+  - mask:
+      type: file
+      description: Nifti b0 binary mask.
+      pattern: "*.{nii,nii.gz}"
+
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+  
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  
+  - frf:
+      type: file
+      description: Fiber Response Function (FRF).
+      pattern: "*.txt"
+      
+authors:
+  - "@Manonedde"

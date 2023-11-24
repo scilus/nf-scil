@@ -38,6 +38,18 @@ reconst/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
 
+reconst/dtimetrics:
+  - modules/nf-scil/reconst/dtimetrics/**
+  - tests/modules/nf-scil/reconst/dtimetrics/**
+
+reconst/fodf:
+  - modules/nf-scil/reconst/fodf/**
+  - tests/modules/nf-scil/reconst/fodf/**
+
+reconst/frf:
+  - modules/nf-scil/reconst/frf/**
+  - tests/modules/nf-scil/reconst/frf/**
+
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
