@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "tracking_pfttracking"
-description: Compute include and exclude maps, and the seeding interface mask
+description: Compute include and exclude maps, and the seeding mask
              from partial volume estimation (PVE) maps.
              Generates a tractogram using anatomically-constrained particle
              filter tracking, Particle Filtering Tractography (PFT).
@@ -45,6 +45,10 @@ input:
       description: Nifti image of Spherical harmonic file (fodf).
       pattern: "*.{nii,nii.gz}"
 
+  - fa:
+      type: file
+      description: Nifti image of FA.
+      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
@@ -68,9 +72,9 @@ output:
       description: Nifti probability map for tracking of ending the streamline and excluding it in the output.
       pattern: "*.{nii,nii.gz}"
 
-  - interface:
+  - seeding:
       type: file
-      description: Nifti probability map for tracking of ending the streamline and excluding it in the output.
+      description: Nifti seeding mask for tracking.
       pattern: "*.{nii,nii.gz}"
 
   - trk:
