@@ -16,7 +16,6 @@ tools:
       homepage: "https://github.com/scilus/scilpy.git"
 
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
@@ -44,7 +43,6 @@ input:
       pattern: "*.{nii,nii.gz}"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
