@@ -20,4 +20,3 @@ workflow LOAD_TEST_DATA {
     test_data_directory = TESTDATA_SCILPY.out.test_data_directory  // channel: [ test_data_directory ]
     versions            = ch_versions                              // channel: [ versions.yml ]
 }
-
