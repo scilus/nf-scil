@@ -1,0 +1,11 @@
+- name: denoising mppca test_denoising_mppca
+  command: nextflow run ./tests/modules/nf-scil/denoising/mppca -entry test_denoising_mppca -c ./tests/config/nextflow.config
+  tags:
+    - denoising/mppca
+    - denoising
+  files:
+    - path: output/denoising/test__pre_dwi_denoised.nii.gz
+      md5sum: ea6e7e36fc16b5b2f629073f1348f7ef
+    - path: output/denoising/test_dwi_denoised.nii.gz
+      md5sum: a638004f8f6a60475a26a86c882d01d9
+    - path: output/denoising/versions.yml
