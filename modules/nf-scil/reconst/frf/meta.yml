@@ -22,9 +22,9 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
   
-  - fodf:
+  - dwi:
       type: file
-      description: Nifti image of Spherical harmonic file (fodf).
+      description: Nifti image of DWI.
       pattern: "*.{nii,nii.gz}"
 
   - bval:
