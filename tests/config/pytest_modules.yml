@@ -38,6 +38,10 @@ reconst/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
 
+reconst/frf:
+  - modules/nf-scil/reconst/frf/**
+  - tests/modules/nf-scil/reconst/frf/**
+
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
@@ -49,6 +53,10 @@ segmentation/fastseg:
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
+
+tracking/pfttracking:
+  - modules/nf-scil/tracking/pfttracking/**
+  - tests/modules/nf-scil/tracking/pfttracking/**
 
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
