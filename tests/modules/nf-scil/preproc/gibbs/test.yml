@@ -1,0 +1,9 @@
+- name: preproc gibbs test_preproc_gibbs
+  command: nextflow run ./tests/modules/nf-scil/preproc/gibbs -entry test_preproc_gibbs -c ./tests/config/nextflow.config
+  tags:
+    - preproc/gibbs
+    - preproc
+  files:
+    - path: output/preproc/test__dwi_gibbs_corrected.nii.gz
+      md5sum: 766bba5028790f45c4894dd304ec4f86
+    - path: output/preproc/versions.yml

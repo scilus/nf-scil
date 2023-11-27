@@ -1,8 +1,8 @@
 - name: betcrop fslbetcrop test_betcrop_fslbetcrop
   command: nextflow run ./tests/modules/nf-scil/betcrop/fslbetcrop -entry test_betcrop_fslbetcrop -c ./tests/config/nextflow.config
   tags:
-    - betcrop/fslbetcrop
     - betcrop
+    - betcrop/fslbetcrop
   files:
     - path: output/betcrop/test__dwi_bet_cropped.nii.gz
       md5sum: e597e3030800fbf9de681c1a5e539c9d
