@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NO_RUN_TESTS=("betcrop/cropvolume" "betcrop/fslbetcrop" "denoising/nlmeans" "preproc/gibbs" "preproc/n4" "reconst/diffusivitypriors" "reconst/noddi" "reconst/fodf" "tracking/pfttracking")
+NO_RUN_TESTS=("reconst/diffusivitypriors" "reconst/noddi" "reconst/fodf" "tracking/pfttracking" "segmentation/freesurferseg")
 
 if [ -f "failed_tests.txt" ]
 then
@@ -24,8 +24,9 @@ if [[ ${NO_RUN_TESTS[@]} =~ $test_instance ]]
 then
 echo "Skipping $test_instance"
 else
+echo "Running $test_instance"
 {
-    nf-core modules create-test-yml --run-tests --force --no-prompts $test_instance &&
+    nf-core modules test --no-prompts $test_instance &&
     echo "$test_instance" >> successful_tests.txt
 } || echo "$test_instance" >> failed_tests.txt
 
