@@ -298,9 +298,13 @@ process {
 ```
 
 > [!IMPORTANT]
-> Selection is `named based`, such that if the module is renamed at import (`import {A as B}`),
-  the selection `withName: "A"` won't apply. If the parameter must not change when the 
-  name changes, consider using `withLabel:` instead.
+> Modules inherit **selectors**. Thus, a module renamed at import (`import {A as B}`)
+> will be affected both by the selection `withName: "A"` and `withName: "B"`. However,
+> parameters defined by `B` will have precedence on those define in `A`.
+
+> [!IMPORTANT]
+> The same stands for **selectors** defined on multiple levels, implicit (`withName: WORKFLOW_X*`)
+> or explicit (`withName: WORKFLOW_Y:B`).
 
 # Test data infrastructure
 
