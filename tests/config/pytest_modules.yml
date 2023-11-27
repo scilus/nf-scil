@@ -57,7 +57,3 @@ segmentation/freesurferseg:
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
-
-tracking/pfttracking:
-  - modules/nf-scil/tracking/pfttracking/**
-  - tests/modules/nf-scil/tracking/pfttracking/**
