@@ -8,7 +8,7 @@ workflow test_segmentation_fastseg {
     
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['denoising']['nlmeans']['image'], checkIfExists: true)
+        file(params.test_data['segmentation']['fastseg']['image'], checkIfExists: true)
     ]
 
     SEGMENTATION_FASTSEG ( input )
