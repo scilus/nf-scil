@@ -25,8 +25,8 @@ process TRACKING_PFTTRACKING {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    def pft_fa_threshold = fa ? task.ext.pft_fa_seeding_mask_threshold : ""
-    def pft_seeding_mask = fa ? "fa" : "${task.ext.pft_seeding_mask_type}"
+    def pft_fa_threshold = task.ext.pft_fa_seeding_mask_threshold ? task.ext.pft_fa_seeding_mask_threshold : ""
+    def pft_seeding_mask = task.ext.pft_seeding_mask_type ? "${task.ext.pft_seeding_mask_type}" : ""
 
     def pft_random_seed = task.ext.pft_random_seed ? "--seed " + task.ext.pft_random_seed : ""
     def compress = task.ext.pft_compress_streamlines ? "--compress " + task.ext.pft_compress_value : ""
