@@ -1,8 +1,8 @@
 - name: segmentation fastseg test_segmentation_fastseg
   command: nextflow run ./tests/modules/nf-scil/segmentation/fastseg -entry test_segmentation_fastseg -c ./tests/config/nextflow.config
   tags:
-    - segmentation/fastseg
     - segmentation
+    - segmentation/fastseg
   files:
     - path: output/segmentation/test__map_csf.nii.gz
       md5sum: 461c210c0a1b45fde9bfe7eeda418289

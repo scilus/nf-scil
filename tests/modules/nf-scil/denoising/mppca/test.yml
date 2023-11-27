@@ -5,7 +5,7 @@
     - denoising
   files:
     - path: output/denoising/test__pre_dwi_denoised.nii.gz
-      md5sum: ea6e7e36fc16b5b2f629073f1348f7ef
+      md5sum: ece4b6fe910ae6502edd52b526609638
     - path: output/denoising/test_dwi_denoised.nii.gz
-      md5sum: a638004f8f6a60475a26a86c882d01d9
+      md5sum: 0cfa480f702173a047f076bbba9fe25e
     - path: output/denoising/versions.yml
