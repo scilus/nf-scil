@@ -161,13 +161,10 @@ provided.
 
 In any case, to get the test workflows working, do the following :
 
-- Modify the auto-generated `input` object to add your test data. You can do this at the 
-  end, when you have defined your test cases. Refer to [this section](#test-data-infrastructure) 
-  to see how to define your test data and which keys to the nested `params.test_data` 
-  dictionary you need to use.
-
-  > [!IMPORTANT]
-  > Keep the `meta map` in the first entry, modify it as necessary
+- Either modify the auto-generated `input` object to add your test data or replace it with 
+  a *fetcher workflow*. You can do this at the end, when you have defined your test cases.
+  Refer to [this section](#test-data-infrastructure) to see which use case fits your tests 
+  better.
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/nextflow.config` :
 
@@ -178,10 +175,21 @@ to specific tests using `selectors`.
 
 ## Run the tests to generate the test metadata file
 
+> [!WARNING]
+> Verify you are located at the root of `nf-scil` (not inside modules) before 
+> running commands !
+
 Once the test data has been pushed to the desired location and been made available to the 
 test infrastructure using the relevant configurations, the test module has to be pre-tested 
-so output files that gets generated are checksum correctly. First, verify you are located 
-at the root of `nf-scil` (not inside modules !), then run :
+so output files that gets generated are checksum correctly. 
+
+> [!IMPORTANT]
+> The test infrastructure uses `pytest-workflow` to run the tests. It is `git-aware`, 
+> meaning that only files either `committed` or `staged` will be considered by 
+> the tests. To verify that your file will be loaded correctly, check that it is 
+> listed by `git ls-files`.
+
+Run :
 
 ```
 nf-core modules create-test-yml \
@@ -290,38 +298,34 @@ process {
 ```
 
 > [!IMPORTANT]
-> Selection is `named based`, such that if the module is renamed at import (`import {A as B}`),
-  the selection `withName: "A"` won't apply. If the parameter must not change when the 
-  name changes, consider using `withLabel:` instead.
+> Modules inherit **selectors**. Thus, a module renamed at import (`import {A as B}`)
+> will be affected both by the selection `withName: "A"` and `withName: "B"`. However,
+> parameters defined by `B` will have precedence on those define in `A`.
+
+> [!IMPORTANT]
+> The same stands for **selectors** defined on multiple levels, implicit (`withName: WORKFLOW_X*`)
+> or explicit (`withName: WORKFLOW_Y:B`).
 
 # Test data infrastructure
 
 > [!WARNING]
-> WORK IN PROGRESS, WILL CHANGE SOON-ISH. Do not submit any test data via PR until fixed.
+> WORK IN PROGRESS, WILL CHANGE SOON-ISH. 2 temporary ways are available now and will be 
+> deprecated when the **DVC** infrastructure is ready.
 
-Test data is bound to this repository for now, all located under the `.test_data` 
-directory. As such, every single dataset added MUST be as light as possible. Datasets 
-must abide the following naming convention :
+## Using the `.test_data` directory
 
-- A test package for a `<category>` is located under `.test_data/<category>`.
+Some test datasets are available under the `.test_data` directory. You can use them as you wish,
+but inspect them before you do, since some dataset have been lean down and could not fit the 
+reality of your test cases. **Do not add or modify data in this directory**. Tests packages are 
+separated into `heavy` and `light` categories depending on their filesize. Inside, they are divided 
+into relevant sub-categories (dwi, anat, ...).
 
-- A test data file for a tool is named `<tool>_<input_name>.<ext>`, placed in that category 
-  directory.
-
-  > e.g. : A tool `nlmeans` with input `image` and `mask` has 2 data points, named
-    `nlmeans_image.nii.gz` and `nlmeans_mask.nii.gz` respectively.
-
-Once added to the repository, the data has to be added to `tests/config/test_data.config` in
-order to be visible. The configuration is a nesting of dictionaries, all test data 
+To bind data to test cases using this infrastructure, it first has to be added to `tests/config/test_data.config` 
+in order to be visible. The configuration is a nesting of dictionaries, all test data 
 files must be added to the `params.test_data` of this structure, using this convention 
 for the `dictionary key` : `params.test_data[<category>][<tool>][<input_name>]`.
 
-> [!IMPORTANT]
-> All files are indexed from the raw git repository. To scope correctly on branches and 
-  through PR, the file name has to contain the `branch` name containing the file. Use this 
-  naming convention : `<branch>/.test_data/<category>/<tool>_<input_name>.<ext>`
-
-Thus, a new dataset in `tests/config/test_data.config` should resemble the following
+Thus, a new binding in `tests/config/test_data.config` should resemble the following
 
 ```
 params {
@@ -334,8 +338,8 @@ params {
             "<tool>": {
                 ...
 
-                "<input_name1>": "${params.test_data_base}/<branch>/.test_data/<category>/<tool>_<input_name1>.<ext>"
-                "<input_name2>": "${params.test_data_base}/<branch>/.test_data/<category>/<tool>_<input_name2>.<ext>"
+                "<input_name1>": "${params.test_data_base}/<light or heavy>/.../<file1>"
+                "<input_name2>": "${params.test_data_base}/<light or heavy>/.../<file2>"
 
                 ...
             }
@@ -345,3 +349,56 @@ params {
     }
 }
 ```
+
+You then use `params.test_data[<category>][<tool>][<input_name>]` in your test cases to
+attach the data to the test case, since the `params.test_data` collection is loaded 
+automatically. To do so, in a test workflow, define an `input` object :
+
+```
+input = [
+  [ id:'test', single_end:false ], // meta map
+  params.test_data[<category>][<tool>][<input_name1>],
+  params.test_data[<category>][<tool>][<input_name2>],
+  ...
+]
+```
+
+and use it as input to the processes to test.
+
+> [!IMPORTANT]
+> Keep the `meta map` in the first entry, modify it as necessary
+
+## Using Scilpy Fetcher
+
+The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
+depository. To use it, first include the *fetcher workflow* in your test's `main.nf` :
+
+```
+include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
+```
+
+The workflow has two inputs :
+
+- A channel containing a list of archives names to download. Refer to [this page](./SCILPY_DATA.md) for a
+  list of available archives and their content.
+
+- A name for the temporary directory where the data will be put.
+
+The directories where the archives contents are unpacked are accessed using the output
+parameter of the workflow `LOAD_TEST_DATA.out.test_data_directory`. To create the test
+input from it, use the `.map` operator :
+
+```
+input = LOAD_TEST_DATA.out.test_data_directory
+  .map{ test_data_directory -> [
+    [ id:'test', single_end:false ], // meta map
+    file("${test_data_directory}/<file for input 1>"),
+    file("${test_data_directory}/<file for input 2>"),
+    ...
+  ] }
+```
+
+> [!NOTE]
+> The subworkflow must be called individually in each test workflow, even if they download
+> the same archives, since there is no mechanism to pass data channels to them from the 
+> outside.
