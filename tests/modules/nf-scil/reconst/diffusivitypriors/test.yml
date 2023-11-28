@@ -1,0 +1,42 @@
+- name: reconst diffusivitypriors TEST_COMPUTE_PRIORS
+  command: nextflow run ./tests/modules/nf-scil/reconst/diffusivitypriors -entry TEST_COMPUTE_PRIORS -c ./tests/config/nextflow.config
+  tags:
+    - reconst
+    - reconst/diffusivitypriors
+  files:
+    - path: output/compute/mean_iso_diff.txt
+      md5sum: 3f13db606b697f920d21efd3c9cf8838
+    - path: output/compute/mean_para_diff.txt
+      md5sum: b5ab394820e011a04e3787be3772ad6e
+    - path: output/compute/priors/test__iso_diff.txt
+      md5sum: 3f13db606b697f920d21efd3c9cf8838
+    - path: output/compute/priors/test__para_diff.txt
+      md5sum: b5ab394820e011a04e3787be3772ad6e
+    - path: output/compute/versions.yml
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/ad.nii.gz
+      md5sum: c4ec79d175170bfb759503228b9a7c58
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/cmd
+      md5sum: 8ff32d38a9aed8a9d4c0cbb5ceee02de
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/csf_frf.txt
+      md5sum: 1b4dedc5894946c3eafdc636ce9f32db
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/dwi.bval
+      md5sum: 160c236e78571e4d34b1f96d1d3d6015
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/dwi.bvec
+      md5sum: 9d735c6597a0973265385f1a4de142b7
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/dwi.nii.gz
+      md5sum: 10df72874f4948129761e7dd0610749c
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/fa.nii.gz
+      md5sum: 6ca6eb26b19b1e032f557ddd789cad56
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/gm_frf.txt
+      md5sum: 87337281aa2fbddd68b51734bfbba696
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/mask.nii.gz
+      md5sum: 39697f258480367edcec7fa36b31f1b2
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/md.nii.gz
+      md5sum: 04100d7dbfdcea362a302e5b6ec23a8c
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/peaks.nii.gz
+      md5sum: a3ca5f0ce808fb51722647a1f207ecf3
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/tracking.trk
+      md5sum: 712f2b551ea1d0dcd5a0065c0314054d
+    - path: output/testdata/test.load-test-data17104110298307795132/commit_amico/wm_frf.txt
+      md5sum: 177d74535b0cdcbb4270d949d63622bd
+    - path: output/testdata/versions.yml
