@@ -3,9 +3,6 @@
 nfcore_ver="$(poetry show nf-core | sed -n 's/\s*version\s\+:\s\+\([0-9.]\+\).*/\1/p')"
 echo "version : $nfcore_ver"
 
-wget -O /workspaces/nf-scil/.pre-commit-config.yaml \
-    https://github.com/nf-core/tools/raw/$nfcore_ver/.pre-commit-config.yaml
-
 wget -O /workspaces/nf-scil/.editorconfig \
     https://github.com/nf-core/tools/raw/$nfcore_ver/.editorconfig
 
@@ -26,5 +23,3 @@ cat .requirements.nf-core | xargs poetry remove
 cat .requirements.nf-core.new | xargs poetry add
 mv .requirements.nf-core.new .requirements.nf-core
 poetry lock
-
-pre-commit install --install-hooks
