@@ -1,4 +1,11 @@
 {
+    "git.allowForcePush": true,
+    "git.confirmForcePush": true,
+    "git.useForcePushIfIncludes": true,
+    "git.useForcePushWithLease": true,
+    "git.branchProtection": ["main"],
+    "git.branchProtectionPrompt": "alwaysPrompt",
+    "github.branchProtection": true,
     "cSpell.words": [
         "accumbens",
         "altnp",
