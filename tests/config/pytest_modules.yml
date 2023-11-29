@@ -58,10 +58,14 @@ segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
 
+subworkflows/load_test_data:
+  - subworkflows/nf-scil/load_test_data/**
+  - tests/subworkflows/nf-scil/load_test_data/**
+
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
 
-subworkflows/load_test_data:
-  - subworkflows/nf-scil/load_test_data/**
-  - tests/subworkflows/nf-scil/load_test_data/**
+utils/extractb0:
+  - modules/nf-scil/utils/extractb0/**
+  - tests/modules/nf-scil/utils/extractb0/**
