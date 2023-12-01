@@ -24,6 +24,7 @@ process TRACKING_LOCALTRACKING {
 
     def local_fa_tracking_mask_threshold = task.ext.local_fa_tracking_mask_threshold ? task.ext.local_fa_tracking_mask_threshold : ""
     def local_fa_seeding_mask_threshold = task.ext.local_fa_seeding_mask_threshold ? task.ext.local_fa_seeding_mask_threshold : ""
+    def local_tracking_mask = task.ext.local_tracking_mask_type ? "${task.ext.local_tracking_mask_type}" : ""
     def local_seeding_mask = task.ext.local_seeding_mask_type ? "${task.ext.local_seeding_mask_type}" : ""
 
     def local_step = task.ext.local_step ? "--step" + task.ext.local_step : ""
@@ -37,15 +38,20 @@ process TRACKING_LOCALTRACKING {
     def local_algo = task.ext.local_algo ? "--algo " + task.ext.local_algo: ""
     def compress = task.ext.local_compress_streamlines ? "--compress " + task.ext.local_compress_value : ""
     def basis = task.ext.basis ? "--sh_basis " + task.ext.basis : ""
-    def sphere = task.ext.sphere ? "--sphere" + task.ext.sphere : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    mrcalc $fa $local_fatracking__threshold -ge ${prefix}__local_tracking_mask.nii.gz\
-          -datatype uint8
+    if [ "${local_tracking_mask}" == "wm" ]; then
+        scil_image_math.py convert $wm ${prefix}__local_tracking_mask.nii.gz \
+            --data_type uint8
+
+    elif [ "${local_tracking_mask}" == "fa" ]; then
+        mrcalc $fa $local_fa_tracking__threshold -ge ${prefix}__local_tracking_mask.nii.gz\
+            --datatype uint8
+    fi
 
     if [ "${local_seeding_mask}" == "wm" ]; then
         scil_image_math.py convert $wm ${prefix}__mask_wm.nii.gz \
@@ -82,7 +88,6 @@ process TRACKING_LOCALTRACKING {
     "sfthres": $task.ext.local_sfthres,
     "min_len": $task.ext.local_min_len,
     "max_len": $task.ext.local_max_len,
-    "sphere": ${task.ext.sphere},
     "sh_basis": "${task.ext.basis}"}
     TRACKING_INFO
 
