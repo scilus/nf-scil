@@ -19,7 +19,7 @@ process PREPROC_N4 {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def bspline_knot_per_voxel = task.ext.bspline_knot_per_voxel ? "$task.ext.bspline_knot_per_voxel" : "3"
+    def bspline_knot_per_voxel = task.ext.bspline_knot_per_voxel ? "$task.ext.bspline_knot_per_voxel" : "1"
     def shrink_factor = task.ext.shrink_factor ? "$task.ext.shrink_factor" : "1"
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
