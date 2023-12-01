@@ -31,8 +31,8 @@ process SEGMENTATION_FREESURFERSEG {
     mkdir wmparc_subcortical/
     mkdir aparc+aseg_subcortical/
 
-    mrconvert $aparc_aseg aparc+aseg_int16.nii.gz -force -nthreads 1 -datatype int16
-    mrconvert $wmparc wmparc_int16.nii.gz -force -nthreads 1 -datatype int16
+    mrconvert -datatype int16 $aparc_aseg aparc+aseg_int16.nii.gz -force -nthreads 1
+    mrconvert -datatype int16 $wmparc wmparc_int16.nii.gz -force -nthreads 1
 
     scil_split_volume_by_labels.py wmparc_int16.nii.gz --scilpy_lut freesurfer_desikan_killiany --out_dir wmparc_desikan
     scil_split_volume_by_labels.py wmparc_int16.nii.gz --scilpy_lut freesurfer_subcortical --out_dir wmparc_subcortical

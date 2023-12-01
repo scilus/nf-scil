@@ -2,5 +2,6 @@
 .nextflow*
 *.pyc
 *.vsix
+.DS_Store
 
 *.code-workspace

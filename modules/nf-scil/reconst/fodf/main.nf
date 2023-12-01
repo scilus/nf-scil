@@ -8,7 +8,7 @@ process RECONST_FODF {
         'scilus/scilus:1.6.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(b0_mask), path(fa), path(md), path(frf)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(fa), path(md), path(frf)
 
     output:
         tuple val(meta), path("*fodf.nii.gz")           , emit: fodf
@@ -35,13 +35,14 @@ process RECONST_FODF {
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
     def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
+    def set_mask = mask ? "--mask $mask" : ""
 
-    if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else ""
-    if ( task.ext.peak_indices ) peak_indices = "--peak_indices ${prefix}__peak_indices.nii.gz" else ""
-    if ( task.ext.afd_max ) afd_max = "--afd_max ${prefix}__afd_max.nii.gz" else ""
-    if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else ""
-    if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else ""
-    if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else ""
+    if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else peaks = ""
+    if ( task.ext.peak_indices ) peak_indices = "--peak_indices ${prefix}__peak_indices.nii.gz" else peak_indices = ""
+    if ( task.ext.afd_max ) afd_max = "--afd_max ${prefix}__afd_max.nii.gz" else afd_max = ""
+    if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else afd_total = ""
+    if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else afd_sum = ""
+    if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else nufo = ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -54,7 +55,7 @@ process RECONST_FODF {
     
     scil_compute_ssst_fodf.py dwi_fodf.nii.gz bval_fodf bvec_fodf $frf ${prefix}__fodf.nii.gz \
         $sh_order $sh_basis --force_b0_threshold \
-        --mask $b0_mask $processes
+        $set_mask $processes
     
     scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
@@ -68,7 +69,7 @@ process RECONST_FODF {
     fi
 
     scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
-        --mask $b0_mask $sh_basis \
+        $set_mask $sh_basis \
         $peaks $peak_indices \
         $afd_max $afd_total \
         $afd_sum $nufo \
