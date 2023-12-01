@@ -7,7 +7,7 @@ process TRACKING_LOCALTRACKING {
         'biocontainers/scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(wm), path(gm), path(csf), path(fodf), path(fa)
+    tuple val(meta), path(wm), path(fodf), path(fa)
 
     output:
     tuple val(meta), path("*__local_tracking.trk"), emit: trk

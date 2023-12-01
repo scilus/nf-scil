@@ -17,8 +17,6 @@ workflow test_tracking_localtracking_wm {
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/map_wm.nii.gz"),
-            file("${test_data_directory}/map_gm.nii.gz"),
-            file("${test_data_directory}/map_csf.nii.gz"),
             file("${test_data_directory}/fodf.nii.gz"),
             file("${test_data_directory}/fa.nii.gz"),
             []
@@ -37,8 +35,6 @@ workflow test_tracking_localtracking_fa {
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/map_wm.nii.gz"),
-            file("${test_data_directory}/map_gm.nii.gz"),
-            file("${test_data_directory}/map_csf.nii.gz"),
             file("${test_data_directory}/fodf.nii.gz"),
             file("${test_data_directory}/fa.nii.gz")
     ]}
