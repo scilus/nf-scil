@@ -7,11 +7,13 @@ process TRACKING_LOCALTRACKING {
         'biocontainers/scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(fodf), path(tracking_mask), path(seed)
+    tuple val(meta), path(wm), path(gm), path(csf), path(fodf), path(fa)
 
     output:
     tuple val(meta), path("*__local_tracking.trk"), emit: trk
     tuple val(meta), path("*__local_tracking_config.json"), emit: config
+    tuple val(meta), path("*__local_seeding_mask.nii.gz"), emit: seeding
+    tuple val(meta), path("*__local_tracking_mask.nii.gz"), emit: seeding
     path "versions.yml"           , emit: versions
 
     when:
@@ -20,15 +22,20 @@ process TRACKING_LOCALTRACKING {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
+    def local_fa_tracking_mask_threshold = task.ext.local_fa_tracking_mask_threshold ? task.ext.local_fa_tracking_mask_threshold : ""
+    def local_fa_seeding_mask_threshold = task.ext.local_fa_seeding_mask_threshold ? task.ext.local_fa_seeding_mask_threshold : ""
+    def local_seeding_mask = task.ext.local_seeding_mask_type ? "${task.ext.local_seeding_mask_type}" : ""
+
     def local_step = task.ext.local_step ? "--step" + task.ext.local_step : ""
     def local_random_seed = task.ext.local_random_seed ? "--seed" + task.ext.local_random_seed : ""
     def local_seeding = task.ext.local_seeding ? "--" + task.ext.local_seeding : ""
-    def local_nbr_seed = task.ext.local_nbr_seed ? "--" + task.ext.local_nbr_seed : ""
-    def local_min_len = task.ext.min_len ? "--min_length" + task.ext.min_len : ""
-    def local_max_len = task.ext.max_len ? "--max_length" + task.ext.max_len : ""
+    def local_nbr_seed = task.ext.local_nbr_seed ? "" + task.ext.local_nbr_seed : ""
+    def local_min_len = task.ext.local_min_len ? "--min_length" + task.ext.local_min_len : ""
+    def local_max_len = task.ext.local_max_len ? "--max_length" + task.ext.local_max_len : ""
     def local_theta = task.ext.local_theta ? "--theta "  + task.ext.local_theta : ""
     def local_sfthres = task.ext.local_sfthres ? "--sfthres "  + task.ext.local_sfthres : ""
     def local_algo = task.ext.local_algo ? "--algo " + task.ext.local_algo: ""
+    def compress = task.ext.local_compress_streamlines ? "--compress " + task.ext.local_compress_value : ""
     def basis = task.ext.basis ? "--sh_basis " + task.ext.basis : ""
     def sphere = task.ext.sphere ? "--sphere" + task.ext.sphere : ""
 
@@ -37,7 +44,22 @@ process TRACKING_LOCALTRACKING {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_local_tracking.py $fodf $seed $tracking_mask tmp.trk\
+    mrcalc $fa $local_fatracking__threshold -ge ${prefix}__local_tracking_mask.nii.gz\
+          -datatype uint8
+
+    if [ "${local_seeding_mask}" == "wm" ]; then
+        scil_image_math.py convert $wm ${prefix}__mask_wm.nii.gz \
+            --data_type uint8
+        scil_image_math.py union ${prefix}__mask_wm.nii.gz \
+            ${prefix}__local_tracking_mask.nii.gz ${prefix}__local_seeding_mask.nii.gz\
+            --data_type uint8
+
+    elif [ "${local_seeding_mask}" == "fa" ]; then
+        mrcalc $fa $local_fa_seeding_mask_threshold -ge ${prefix}__local_seeding_mask.nii.gz\
+          -datatype uint8
+    fi
+
+    scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz\ tmp.trk\
             $local_algo $local_seeding $local_nbr_seeds\
             $local_random_seed $local_step $local_theta\
             $local_sfthres $local_min_len\
@@ -75,9 +97,13 @@ process TRACKING_LOCALTRACKING {
     """
     scil_compute_local_tracking.py -h
     scil_remove_invalid_streamlines.py -h
+    scil_image_math -h
+    mrcalc -h
 
     touch ${prefix}__local_tracking.trk
     touch ${prefix}__local_tracking_config.json
+    touch ${prefix}__local_seeding_mask.nii.gz
+    touch ${prefix}__local_tracking_mask.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
