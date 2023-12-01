@@ -26,8 +26,8 @@ process DENOISING_MPPCA {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    dwidenoise $dwi ${prefix}__pre_dwi_denoised.nii.gz $extent -nthreads 1
-    fslmaths ${prefix}__pre_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
+    dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent -nthreads 1
+    fslmaths ${prefix}_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
