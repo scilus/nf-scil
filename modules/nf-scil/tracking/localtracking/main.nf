@@ -12,8 +12,8 @@ process TRACKING_LOCALTRACKING {
     output:
     tuple val(meta), path("*__local_tracking.trk"), emit: trk
     tuple val(meta), path("*__local_tracking_config.json"), emit: config
-    tuple val(meta), path("*__local_seeding_mask.nii.gz"), emit: seeding
-    tuple val(meta), path("*__local_tracking_mask.nii.gz"), emit: seeding
+    tuple val(meta), path("*__local_seeding_mask.nii.gz"), emit: seedmask
+    tuple val(meta), path("*__local_tracking_mask.nii.gz"), emit: trackmask
     path "versions.yml"           , emit: versions
 
     when:
@@ -65,7 +65,7 @@ process TRACKING_LOCALTRACKING {
           -datatype uint8
     fi
 
-    scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz\ tmp.trk\
+    scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz tmp.trk\
             $local_algo $local_seeding $local_nbr_seeds\
             $local_random_seed $local_step $local_theta\
             $local_sfthres $local_min_len\
@@ -77,7 +77,10 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-TRACKING_INFO > ${prefix}__local_tracking_config.json
     {"algorithm": "${task.ext.local_algo}",
+    fa_tracking_threshold: $task.ext.local_fa_tracking_mask_threshold
+    fa_seeding_threshlod: $task.ext.local_fa_seeding_mask_threshold
     "seeding_type": "${task.ext.local_seeding}",
+    "tracking_mask": "${task.ext.local_tracking_mask_type}",
     "nb_seed": $task.ext.local_nbr_seeds,
     "seeding_mask": "${task.ext.local_seeding_mask_type}",
     "random_seed": $task.ext.local_random_seed,

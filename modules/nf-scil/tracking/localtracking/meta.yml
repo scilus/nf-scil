@@ -21,14 +21,14 @@ input:
       description: Nifti image of spherical harmonic file (fodf)
       pattern: "*.{nii,nii.gz}"
 
-  - tracking_mask:
+  - fa:
       type: file
-      description: NIfti image binary mask for tracking
+      description: NIfti image binary mask for fa mask
       pattern: "*.{nii,nii.gz}"
 
-  - seed:
+  - wm:
       type: file
-      description: Nifti image seeding mask.
+      description: Nifti image white matter mask.
       pattern: "*.{nii,nii.gz}"
 
 output:
@@ -47,6 +47,16 @@ output:
       type: file
       description: Tractogram output file.
       pattern: "*.{trk,tck}"
+
+  - seeding:
+      type: file
+      description: Nifti seeding mask for tracking.
+      pattern: "*.{nii,nii.gz}"
+
+  - tracking:
+      type: file
+      description: Nifti tracking mask
+      pattern: "*.{nii,nii.gz}"
 
   - config:
       type: file
