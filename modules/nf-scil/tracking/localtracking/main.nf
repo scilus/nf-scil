@@ -54,10 +54,7 @@ process TRACKING_LOCALTRACKING {
     fi
 
     if [ "${local_seeding_mask}" == "wm" ]; then
-        scil_image_math.py convert $wm ${prefix}__mask_wm.nii.gz \
-            --data_type uint8
-        scil_image_math.py union ${prefix}__mask_wm.nii.gz \
-            ${prefix}__local_tracking_mask.nii.gz ${prefix}__local_seeding_mask.nii.gz\
+        scil_image_math.py convert $wm ${prefix}__local_seeding_mask.nii.gz \
             --data_type uint8
 
     elif [ "${local_seeding_mask}" == "fa" ]; then
@@ -77,8 +74,8 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-TRACKING_INFO > ${prefix}__local_tracking_config.json
     {"algorithm": "${task.ext.local_algo}",
-    fa_tracking_threshold: $task.ext.local_fa_tracking_mask_threshold
-    fa_seeding_threshlod: $task.ext.local_fa_seeding_mask_threshold
+    "fa_tracking_threshold": $task.ext.local_fa_tracking_mask_threshold,
+    "fa_seeding_threshlod": $task.ext.local_fa_seeding_mask_threshold,
     "seeding_type": "${task.ext.local_seeding}",
     "tracking_mask": "${task.ext.local_tracking_mask_type}",
     "nb_seed": $task.ext.local_nbr_seeds,
