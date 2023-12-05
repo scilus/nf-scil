@@ -4,7 +4,7 @@ process TRACKING_LOCALTRACKING {
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'biocontainers/scilus/scilus:1.6.0' }"
+        'scilus/scilus:1.6.0' }"
 
     input:
     tuple val(meta), path(wm), path(fodf), path(fa)
@@ -27,12 +27,12 @@ process TRACKING_LOCALTRACKING {
     def local_tracking_mask = task.ext.local_tracking_mask_type ? "${task.ext.local_tracking_mask_type}" : ""
     def local_seeding_mask = task.ext.local_seeding_mask_type ? "${task.ext.local_seeding_mask_type}" : ""
 
-    def local_step = task.ext.local_step ? "--step" + task.ext.local_step : ""
-    def local_random_seed = task.ext.local_random_seed ? "--seed" + task.ext.local_random_seed : ""
+    def local_step = task.ext.local_step ? "--step " + task.ext.local_step : ""
+    def local_random_seed = task.ext.local_random_seed ? "--seed " + task.ext.local_random_seed : ""
     def local_seeding = task.ext.local_seeding ? "--" + task.ext.local_seeding : ""
     def local_nbr_seed = task.ext.local_nbr_seed ? "" + task.ext.local_nbr_seed : ""
-    def local_min_len = task.ext.local_min_len ? "--min_length" + task.ext.local_min_len : ""
-    def local_max_len = task.ext.local_max_len ? "--max_length" + task.ext.local_max_len : ""
+    def local_min_len = task.ext.local_min_len ? "--min_length " + task.ext.local_min_len : ""
+    def local_max_len = task.ext.local_max_len ? "--max_length " + task.ext.local_max_len : ""
     def local_theta = task.ext.local_theta ? "--theta "  + task.ext.local_theta : ""
     def local_sfthres = task.ext.local_sfthres ? "--sfthres "  + task.ext.local_sfthres : ""
     def local_algo = task.ext.local_algo ? "--algo " + task.ext.local_algo: ""

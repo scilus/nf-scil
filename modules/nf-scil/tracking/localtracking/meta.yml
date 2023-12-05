@@ -48,12 +48,12 @@ output:
       description: Tractogram output file.
       pattern: "*.{trk,tck}"
 
-  - seeding:
+  - seedmask:
       type: file
       description: Nifti seeding mask for tracking.
       pattern: "*.{nii,nii.gz}"
 
-  - tracking:
+  - trackmask:
       type: file
       description: Nifti tracking mask
       pattern: "*.{nii,nii.gz}"

@@ -18,8 +18,7 @@ workflow test_tracking_localtracking_wm {
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/map_wm.nii.gz"),
             file("${test_data_directory}/fodf.nii.gz"),
-            file("${test_data_directory}/fa.nii.gz"),
-            []
+            file("${test_data_directory}/fa.nii.gz")
     ]}
 
     WM_TRACKING ( input_wm )
