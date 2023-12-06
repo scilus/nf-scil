@@ -105,7 +105,7 @@ output:
   - ga:
       type: file
       description: Output filename for the geodesic anisotropy.
-      pattern: "*__ga.{nii,nii.gz}"Cropped Nifti image file
+      pattern: "*__ga.{nii,nii.gz}"
 
   - rgb:
       type: file

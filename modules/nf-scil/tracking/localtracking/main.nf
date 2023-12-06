@@ -30,7 +30,7 @@ process TRACKING_LOCALTRACKING {
     def local_step = task.ext.local_step ? "--step " + task.ext.local_step : ""
     def local_random_seed = task.ext.local_random_seed ? "--seed " + task.ext.local_random_seed : ""
     def local_seeding = task.ext.local_seeding ? "--" + task.ext.local_seeding : ""
-    def local_nbr_seed = task.ext.local_nbr_seed ? "" + task.ext.local_nbr_seed : ""
+    def local_nbr_seeds = task.ext.local_nbr_seeds ? "" + task.ext.local_nbr_seeds : ""
     def local_min_len = task.ext.local_min_len ? "--min_length " + task.ext.local_min_len : ""
     def local_max_len = task.ext.local_max_len ? "--max_length " + task.ext.local_max_len : ""
     def local_theta = task.ext.local_theta ? "--theta "  + task.ext.local_theta : ""
@@ -49,7 +49,7 @@ process TRACKING_LOCALTRACKING {
             --data_type uint8
 
     elif [ "${local_tracking_mask}" == "fa" ]; then
-        mrcalc $fa $local_fa_tracking__threshold -ge ${prefix}__local_tracking_mask.nii.gz\
+        mrcalc $fa $local_fa_tracking_mask_threshold -ge ${prefix}__local_tracking_mask.nii.gz\
             --datatype uint8
     fi
 
