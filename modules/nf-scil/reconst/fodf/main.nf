@@ -50,10 +50,10 @@ process RECONST_FODF {
     export OPENBLAS_NUM_THREADS=1
 
     scil_extract_dwi_shell.py $dwi $bval $bvec $fodf_shells \
-        dwi_fodf.nii.gz bval_fodf bvec_fodf \
+        dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
         $dwi_shell_tolerance -f
     
-    scil_compute_ssst_fodf.py dwi_fodf.nii.gz bval_fodf bvec_fodf $frf ${prefix}__fodf.nii.gz \
+    scil_compute_ssst_fodf.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf ${prefix}__fodf.nii.gz \
         $sh_order $sh_basis --force_b0_threshold \
         $set_mask $processes
     
