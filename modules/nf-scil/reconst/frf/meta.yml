@@ -48,16 +48,16 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  
+
   - frf:
       type: file
       description: Fiber Response Function (FRF).
       pattern: "*.txt"
-      
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
 authors:
   - "@Manonedde"

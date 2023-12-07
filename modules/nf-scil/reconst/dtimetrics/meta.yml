@@ -46,17 +46,12 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 
   - ad:
       type: file
       description: Output filename for the axial diffusivity.
       pattern: "*__ad.{nii,nii.gz}"
-  
+
   - evecs:
       type: file
       description: Output filename for the eigenvectors of the tensor.
@@ -166,7 +161,7 @@ output:
       description: Output filename for the mean of the residual of the tensor fit.
       pattern: "*__residual_mean_residuals.npy"
 
-  - residuall_q1_residuals:
+  - residual_q1_residuals:
       type: file
       description: Output filename for the firt quartile of the residual of the tensor fit.
       pattern: "*__residual_q1_residuals.npy"
@@ -185,6 +180,11 @@ output:
       type: file
       description: Output filename for the standard deviation of the residual of the tensor fit.
       pattern: "*__residual_std_residuals.npy"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@scilus"

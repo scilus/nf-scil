@@ -34,11 +34,6 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 
   - image:
       type: file
@@ -49,6 +44,11 @@ output:
       type: file
       description: Bouding box defining the limits of the crop
       pattern: "*.pkl"
+
+  - versions:
+    type: file
+    description: File containing software versions
+    pattern: "versions.yml"
 
 authors:
   - "@AlexVCaron"
