@@ -13,22 +13,22 @@ tools:
 
 input:
 
-  - frf:
+  - frf_list:
       type: Path
       description: List of individual Fiber Response Function (FRF) path.
       pattern: "*.txt"
 
 output:
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  
+
   - meanfrf:
       type: file
       description: Averaged Fiber Response Function (FRF).
       pattern: "mean_frf.txt"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@Manonedde"

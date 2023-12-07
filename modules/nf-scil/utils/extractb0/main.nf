@@ -13,7 +13,7 @@ process UTILS_EXTRACTB0 {
 
     output:
     tuple val(meta), path("*_b0*.nii.gz"), emit: b0
-    path "versions.yml"                 , emit: versions
+    path "versions.yml"                  , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

@@ -35,22 +35,21 @@ input:
       pattern: "*.bvec"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-  
+
   - b0:
       type: file
       description: b0 image(s) extracted from the DWI
       pattern: "*_b0*.{nii,nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@AlexVCaron"

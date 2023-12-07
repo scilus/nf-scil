@@ -33,11 +33,6 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - wm_mask:
       type: file
       description: Nifti WM mask volume. 
@@ -67,6 +62,11 @@ output:
       type: file
       description: Nifti CSF map volume.
       pattern: "*.{nii,nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@gagnonanthony"

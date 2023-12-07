@@ -56,11 +56,6 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions.
-      pattern: "versions.yml"
-
   - dir:
       type: file
       description: Nifti file main direction.
@@ -90,6 +85,11 @@ output:
       type: folder
       description: Folder containg kernels.
       pattern: "kernels"
+
+  - versions:
+      type: file
+      description: File containing software versions.
+      pattern: "versions.yml"
 
 authors:
   - "@Manonedde"

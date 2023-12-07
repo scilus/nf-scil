@@ -15,7 +15,12 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
+  - wm:
+      type: file
+      description: Nifti image white matter mask.
+      pattern: "*.{nii,nii.gz}"
+
   - fodf:
       type: file
       description: Nifti image of spherical harmonic file (fodf)
@@ -26,27 +31,22 @@ input:
       description: NIfti image binary mask for fa mask
       pattern: "*.{nii,nii.gz}"
 
-  - wm:
-      type: file
-      description: Nifti image white matter mask.
-      pattern: "*.{nii,nii.gz}"
-
 output:
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 
   - trk:
       type: file
       description: Tractogram output file.
       pattern: "*.{trk,tck}"
+
+  - config:
+      type: file
+      description: Json file containing tracking parameters.
+      pattern: "*.{json}"
 
   - seedmask:
       type: file
@@ -58,10 +58,10 @@ output:
       description: Nifti tracking mask
       pattern: "*.{nii,nii.gz}"
 
-  - config:
+  - versions:
       type: file
-      description: Json file containing tracking parameters.
-      pattern: "*.{json}"
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@scilus"
