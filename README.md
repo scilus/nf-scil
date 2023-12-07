@@ -1,4 +1,9 @@
-# `nf-scil`
+<p align="center">
+  <img src="docs/images/nf-scil_logo_light.png#gh-light-mode-only" alt="Sublime's custom image"/>
+</p> <!-- omit in toc -->
+<p align="center">
+  <img src="docs/images/nf-scil_logo_dark.png#gh-dark-mode-only" alt="Sublime's custom image"/>
+</p> <!-- omit in toc -->
 
 Welcome to `nf-scil` ! A **Nextflow** modules and workflows repository for neuroimaging 
 maintained by the [SCIL team](https://scil-documentation.readthedocs.io/en/latest/). The 
@@ -6,6 +11,31 @@ primary focus of the library is to provide pre-built processes and processing se
 **diffusion Magnetic Resonance Imaging**, optimized for *Nextflow DLS2*, based on open-source 
 technologies and made easily available to pipeline's developers through the `nf-core` 
 framework.
+
+* [Using modules from nf-scil](README.md#using-modules-from-nf-scil)
+* [Developing in nf-scil](README.md#developing-in-nf-scil)
+   * [Dependencies](README.md#dependencies)
+   * [Developer installation](README.md#developer-installation)
+   * [Loading the project's environment](README.md#loading-the-projects-environment)
+   * [Working with VS Code](README.md#working-with-vs-code)
+      * [Manual configuration of the VS Code project :](README.md#manual-configuration-of-the-vs-code-project-)
+      * [Configuration via the devcontainer :](README.md#configuration-via-the-devcontainer-)
+   * [Contributing to nf-scil](README.md#contributing-to-nf-scil)
+      * [Adding a new module to nf-scil](docs/MODULE.md#adding-a-new-module-to-nf-scil)
+         * [Generate the template](docs/MODULE.md#generate-the-template)
+         * [Edit the template](docs/MODULE.md#edit-the-template)
+            * [Editing the main](docs/MODULE.md#editing-modulesnf-scilcategorytoolmainnf-)
+            * [Editing the metadata](docs/MODULE.md#editing--modulesnf-scilcategorytoolmetayml-)
+            * [Editing the test cases](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolmainnf-)
+            * [Editing the tests configuration](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+         * [Run the tests to generate the test metadata file](docs/MODULE.md#run-the-tests-to-generate-the-test-metadata-file)
+         * [Last safety test](docs/MODULE.md#last-safety-test)
+         * [Submit your PR](docs/MODULE.md#submit-your-pr)
+      * [Defining processes optional parameters](docs/MODULE.md#defining-processes-optional-parameters)
+      * [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
+         * [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
+         * [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
+   * [Running tests](README.md#running-tests)
 
 # Using modules from `nf-scil`
 
