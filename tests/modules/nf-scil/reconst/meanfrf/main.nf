@@ -12,9 +12,9 @@ workflow test_reconst_meanfrf {
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
     input_mfrf = LOAD_TEST_DATA.out.test_data_directory
-            .map{ test_data_directory -> [
-            file("${test_data_directory}/frf.txt")
-    ]}
+            .map{ test_data_directory -> 
+            file(["${test_data_directory}/frf.txt"])
+    }
 
     RECONST_MEANFRF ( input_mfrf )
 }
