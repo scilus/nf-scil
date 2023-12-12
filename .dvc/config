@@ -1,0 +1,6 @@
+[core]
+    remote = test-data
+    autostage = true
+['remote "test-data"']
+    url = gdrive://1ERoll8kj2uXvx8cfxrWAl1t6_TSjAdRf/dvcstore
+    gdrive_acknowledge_abuse = true
