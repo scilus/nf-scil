@@ -21,7 +21,7 @@ def _unpack_archive(_upload_root, _archive, _test_dict, _fetcher):
     _fetcher(_test_dict, _archive)
 
     return os.path.join(_upload_root, ".".join(_archive.split(".")[:-1]))
-    
+
 
 
 def main():

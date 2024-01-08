@@ -37,7 +37,7 @@ process DENOISING_NLMEANS {
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_run_nlmeans.py -h
 

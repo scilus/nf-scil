@@ -20,7 +20,7 @@ process DENOISING_MPPCA {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def extent = task.ext.extent ? "-extent " + task.ext.extent : ""
-    
+
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1

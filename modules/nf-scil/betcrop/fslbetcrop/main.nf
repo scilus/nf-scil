@@ -54,7 +54,7 @@ process BETCROP_FSLBETCROP {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_extract_b0.py -h
     bet -h

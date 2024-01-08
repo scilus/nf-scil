@@ -37,7 +37,7 @@ process RECONST_NODDI {
     """
     scil_compute_NODDI.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
         $lambda2 $nb_threads $b_thr $set_mask $set_kernels
-        
+
 
     if [ ! -z "$kernels" ]; then
         mv results/FIT_dir.nii.gz ${prefix}__FIT_dir.nii.gz

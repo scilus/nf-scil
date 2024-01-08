@@ -39,36 +39,40 @@ process SEGMENTATION_FREESURFERSEG {
     scil_split_volume_by_labels.py aparc+aseg_int16.nii.gz --scilpy_lut freesurfer_subcortical --out_dir aparc+aseg_subcortical
 
     scil_image_math.py union wmparc_desikan/*\
-                             wmparc_subcortical/right-cerebellum-cortex.nii.gz\
-                             wmparc_subcortical/left-cerebellum-cortex.nii.gz\
-                             mask_cortex_m.nii.gz -f
+        wmparc_subcortical/right-cerebellum-cortex.nii.gz\
+        wmparc_subcortical/left-cerebellum-cortex.nii.gz\
+        mask_cortex_m.nii.gz -f
+
     scil_image_math.py union wmparc_subcortical/corpus-callosum-*\
-                             aparc+aseg_subcortical/*white-matter*\
-                             wmparc_subcortical/brain-stem.nii.gz\
-                             aparc+aseg_subcortical/*ventraldc*\
-                             mask_wm_m.nii.gz -f
+        aparc+aseg_subcortical/*white-matter*\
+        wmparc_subcortical/brain-stem.nii.gz\
+        aparc+aseg_subcortical/*ventraldc*\
+        mask_wm_m.nii.gz -f
+
     scil_image_math.py union wmparc_subcortical/*thalamus*\
-                             wmparc_subcortical/*putamen*\
-                             wmparc_subcortical/*pallidum*\
-                             wmparc_subcortical/*hippocampus*\
-                             wmparc_subcortical/*caudate*\
-                             wmparc_subcortical/*amygdala*\
-                             wmparc_subcortical/*accumbens*\
-                             wmparc_subcortical/*plexus*\
-                             mask_nuclei_m.nii.gz -f
+        wmparc_subcortical/*putamen*\
+        wmparc_subcortical/*pallidum*\
+        wmparc_subcortical/*hippocampus*\
+        wmparc_subcortical/*caudate*\
+        wmparc_subcortical/*amygdala*\
+        wmparc_subcortical/*accumbens*\
+        wmparc_subcortical/*plexus*\
+        mask_nuclei_m.nii.gz -f
+
     scil_image_math.py union wmparc_subcortical/*-lateral-ventricle.nii.gz\
-                             wmparc_subcortical/*-inferior-lateral-ventricle.nii.gz\
-                             wmparc_subcortical/cerebrospinal-fluid.nii.gz\
-                             wmparc_subcortical/*th-ventricle.nii.gz\
-                             mask_csf_1_m.nii.gz -f
+        wmparc_subcortical/*-inferior-lateral-ventricle.nii.gz\
+        wmparc_subcortical/cerebrospinal-fluid.nii.gz\
+        wmparc_subcortical/*th-ventricle.nii.gz\
+        mask_csf_1_m.nii.gz -f
+
     scil_image_math.py lower_threshold mask_wm_m.nii.gz 0.1\
-                                          ${prefix}__mask_wm_bin.nii.gz -f
+        ${prefix}__mask_wm_bin.nii.gz -f
     scil_image_math.py lower_threshold mask_cortex_m.nii.gz 0.1\
-                                          ${prefix}__mask_gm.nii.gz -f
+        ${prefix}__mask_gm.nii.gz -f
     scil_image_math.py lower_threshold mask_nuclei_m.nii.gz 0.1\
-                                          ${prefix}__mask_nuclei_bin.nii.gz -f
+        ${prefix}__mask_nuclei_bin.nii.gz -f
     scil_image_math.py lower_threshold mask_csf_1_m.nii.gz 0.1\
-                                          ${prefix}__mask_csf.nii.gz -f
+        ${prefix}__mask_csf.nii.gz -f
     scil_image_math.py addition ${prefix}__mask_wm_bin.nii.gz\
                                 ${prefix}__mask_nuclei_bin.nii.gz\
                                 ${prefix}__mask_wm.nii.gz --data_type int16
