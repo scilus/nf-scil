@@ -40,7 +40,7 @@ process UTILS_EXTRACTB0 {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_extract_b0.py - h
 

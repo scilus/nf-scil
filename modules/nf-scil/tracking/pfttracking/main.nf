@@ -66,7 +66,7 @@ process TRACKING_PFTTRACKING {
 
     elif [ "${pft_seeding_mask}" == "fa" ]; then
         mrcalc $fa $pft_fa_threshold -ge ${prefix}__pft_seeding_mask.nii.gz\
-          -datatype uint8
+            -datatype uint8
     fi
 
     scil_compute_pft.py $fodf ${prefix}__pft_seeding_mask.nii.gz \
