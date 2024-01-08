@@ -58,7 +58,7 @@ output:
 
   - bbox:
       type: file
-      description: DWI BoundingBox used for cropping. 
+      description: DWI BoundingBox used for cropping.
       pattern: "*dwi_boundingBox.pkl"
 
   - versions:

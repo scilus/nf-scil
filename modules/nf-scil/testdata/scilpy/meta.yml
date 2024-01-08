@@ -22,14 +22,14 @@ input:
   - test_data_path:
       type: file
       description: Directory where to store the test data
-      pattern: "*" 
+      pattern: "*"
 
 output:
   - test_data_path:
       type: file
       description: Directory where to store the test data
-      pattern: "*" 
-  
+      pattern: "*"
+
   - versions:
       type: file
       description: File containing software versions

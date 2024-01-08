@@ -19,10 +19,10 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - aparc_aseg:
       type: file
-      description: FreeSurfer cortical and subcortical parcellation output file. 
+      description: FreeSurfer cortical and subcortical parcellation output file.
       pattern: "*.mgz"
 
   - wmparc:
@@ -44,12 +44,12 @@ output:
 
   - gm_mask:
       type: file
-      description: Nifti GM mask file. 
+      description: Nifti GM mask file.
       pattern: "*.{nii,nii.gz}"
 
   - csf_mask:
       type: file
-      description: Nifti CSF mask file. 
+      description: Nifti CSF mask file.
       pattern: "*.{nii,nii.gz}"
 
   - versions:
