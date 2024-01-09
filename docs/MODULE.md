@@ -49,7 +49,7 @@ already follow all guidelines. You will find related files in :
 - If the process uses the `scilus` container, use the following replacements,
   else remove the whole section.
 
-  `depot.galaxyproject.org...` &DoubleLongRightArrow; `scil.usherbrooke.ca/containers/scilus_1.6.0.sif`
+  `depot.galaxyproject.org...` &DoubleLongRightArrow; `https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif`
 
   `biocontainers/YOUR-TOOL-HERE` &DoubleLongRightArrow; `scilus/scilus:1.6.0`
 
