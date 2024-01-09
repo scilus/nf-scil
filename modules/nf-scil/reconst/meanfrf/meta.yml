@@ -16,7 +16,7 @@ tools:
 
 input:
   - frf_list:
-      type: Path
+      type: list
       description: List of individual Fiber Response Function (FRF) path.
       pattern: "*.txt"
 

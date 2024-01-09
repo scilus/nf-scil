@@ -46,7 +46,7 @@ input:
       pattern: "*mask.{nii,nii.gz}"
 
   - kernels:
-      type: folder
+      type: directory
       description: Folder containg kernels.
       pattern: "kernels"
 
@@ -83,7 +83,7 @@ output:
       pattern: "*__FIT_OD.{nii,nii.gz}"
 
   - kernels:
-      type: folder
+      type: directory
       description: Folder containg kernels.
       pattern: "kernels"
 
