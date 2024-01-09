@@ -31,7 +31,7 @@ process RECONST_DIFFUSIVITYPRIORS {
     def roi_radius = task.ext.roi_radius ? "--roi_radius " + task.ext.roi_radius : ""
 
     """
-    if [ ! -z "$priors" ]
+    if [ -d "$priors" ]
     then
         cat $priors/*__para_diff.txt > all_para_diff.txt
         awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
