@@ -26,10 +26,6 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
-tracking/localtracking:
-  - modules/nf-scil/tracking/localtracking/**
-  - tests/modules/nf-scil/tracking/localtracking/**
-
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
@@ -54,6 +50,10 @@ reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
 
+registration/synthregistration:
+  - modules/nf-scil/registration/synthregistration/**
+  - tests/modules/nf-scil/registration/synthregistration/**
+
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
   - tests/modules/nf-scil/segmentation/fastseg/**
@@ -66,9 +66,9 @@ subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
 
-testdata/scilpy:
-  - modules/nf-scil/testdata/scilpy/**
-  - tests/modules/nf-scil/testdata/scilpy/**
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
 
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
