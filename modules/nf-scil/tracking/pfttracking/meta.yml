@@ -6,8 +6,9 @@ description: Compute include and exclude maps, and the seeding mask
   Generates a tractogram using anatomically-constrained particle
   filter tracking, Particle Filtering Tractography (PFT).
 keywords:
-  - PFT
-  - tractography
+  - Diffusion MRI
+  - Tractography
+  - Particle Filtering Tractography
 
 tools:
   - "DIPY":

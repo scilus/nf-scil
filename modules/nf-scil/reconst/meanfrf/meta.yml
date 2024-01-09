@@ -4,7 +4,10 @@ name: "reconst_meanfrf"
 description: Compute the mean Fiber Response Function from a set of individually
   computed Response Functions.
 keywords:
-  - FRF
+  - Fiber Orientation Distribution Function
+  - Diffusion MRI
+  - Fiber Response Function
+  - Average
 
 tools:
   - "Scilpy":
