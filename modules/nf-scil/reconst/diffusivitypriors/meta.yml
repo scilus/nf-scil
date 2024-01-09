@@ -34,7 +34,7 @@ input:
       pattern: "*.{nii,nii.gz}"
 
   - priors:
-      type: folder
+      type: directory
       description: Folder containg text files for iso and para diffusivity values.
       pattern: "priors"
 
@@ -66,7 +66,7 @@ output:
       pattern: "*.txt"
 
   - priors:
-      type: folder
+      type: directory
       description: Folder containg text files for iso and para diffusivity values.
       pattern: "priors"
 
