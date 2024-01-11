@@ -9,6 +9,14 @@ wget -O /workspaces/nf-scil/.editorconfig \
 wget -O /workspaces/nf-scil/.prettierignore \
     https://github.com/nf-core/tools/raw/$nfcore_ver/.prettierignore
 
+echo ".github" >> /workspaces/nf-scil/.prettierignore
+echo ".devcontainer" >> /workspaces/nf-scil/.prettierignore
+echo ".vscode" >> /workspaces/nf-scil/.prettierignore
+echo "venv" >> /workspaces/nf-scil/.prettierignore
+echo ".venv" >> /workspaces/nf-scil/.prettierignore
+echo ".test_data" >> /workspaces/nf-scil/.prettierignore
+echo ".pytest_cache" >> /workspaces/nf-scil/.prettierignore
+
 wget -O /workspaces/nf-scil/.prettierrc.yml \
     https://github.com/nf-core/tools/raw/$nfcore_ver/.prettierrc.yml
 

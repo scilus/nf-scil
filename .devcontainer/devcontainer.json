@@ -59,6 +59,5 @@
         }
     },
     "init": true,
-    "privileged": true,
-    "runArgs": ["--mount", "type=volume,target=/tmp/"]
+    "privileged": true
 }
