@@ -19,6 +19,11 @@
             "source": "nf-scil-venv",
             "target": "/workspaces/nf-scil/.venv",
             "type": "volume"
+        },
+        {
+            "source": "nf-scil-tmp",
+            "target": "/tmp",
+            "type": "volume"
         }
     ],
     "customizations": {
