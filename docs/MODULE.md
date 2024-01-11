@@ -55,11 +55,9 @@ already follow all guidelines. You will find related files in :
 
 - Add your inputs in the `input:` section :
 
-  > [!NOTE]
   > Each line below `input:` defines an input channel for the process. A channel can
   > receive one (`val`, `path`, ...) or more (`tuple`) values per item.
 
-  > [!IMPORTANT]
   > When possible, add all optional input parameters (not data !) to `task.ext` instead of
   > listing them in the `input:` section (see [this section](#defining-processes-optional-parameters)
   > for more information).
@@ -72,7 +70,6 @@ already follow all guidelines. You will find related files in :
     have to pass it an empty list `[]` for Nextflow to consider its value empty, but
     correct.
 
-    > [!IMPORTANT]
     > If you decide an input `path` value is optional, add `/* optional, value = [] */`
     > aside the parameter (e.g. f1 is optional, so `path(f1) /* optional, value = [] */`
     > or even `tuple val(meta), path(f1) /* optional, value = [] */, path(...` are valid
@@ -86,7 +83,6 @@ already follow all guidelines. You will find related files in :
 
     The variable `optional_input1` is the one to use in the script.
 
-    > [!NOTE]
     > At its most simple, a variable is `usable` if its conversion to a string is valid
     > in the script (e.g. : if a variable can be empty or null, then its conversion to an
     > empty string must be valid in the sense of the script for the variable to be considered
@@ -99,11 +95,9 @@ already follow all guidelines. You will find related files in :
 
   - File extensions MUST ALWAYS be defined (e.g. `path("*.{nii,nii.gz}")`).
 
-  > [!IMPORTANT]
   > Each line MUST use `emit: <name>` to make its results available inside Nextflow using
   > a relevant `name`. Results are accessible using : `PROCESS_NAME.out.<name>`.
 
-  > [!NOTE]
   > Optional outputs ARE possible, add `, optional: true` after the `emit: <name>` clause.
 
 - Fill the `script` section :
@@ -125,7 +119,6 @@ already follow all guidelines. You will find related files in :
     remove the lines in between the `cat` and the `END_VERSIONS` line. In it, add
     for each dependency a new line in the format : `<name>: <version>`.
 
-    > [!NOTE]
     > You can hard-bake the version as a number here, but if possible extract if from
     > the dependency dynamically. Refer to the `betcrop/fslbetcrop` module, in `main.nf`
     > for examples on how to extract the version number correctly.
