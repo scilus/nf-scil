@@ -32,7 +32,9 @@
                 "pythonIndent.keepHangingBracketOnLine": true,
                 "pythonIndent.trimLinesWithOnlyWhitespace": true,
                 "python.createEnvironment.trigger": "off",
+                "python.terminal.activateEnvironment": true,
                 "python.poetryPath": "/root/.local/bin/poetry",
+                "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
                 "python.analysis.exclude": [
                     "${workspaceFolder}/.dvc",
                     "${workspaceFolder}/.pytest_cache",
