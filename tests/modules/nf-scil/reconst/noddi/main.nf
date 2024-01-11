@@ -4,9 +4,9 @@ nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
 
-include { 
-    RECONST_NODDI as COMPUTE_KERNELS;
-    RECONST_NODDI as COMPUTE_METRICS} from '../../../../../modules/nf-scil/reconst/noddi/main.nf'
+include {
+    RECONST_NODDI as RECONST_NODDI_KERNELS;
+    RECONST_NODDI as RECONST_NODDI_METRICS} from '../../../../../modules/nf-scil/reconst/noddi/main.nf'
 
 workflow test_reconst_noddi_save_kernels {
 
@@ -24,7 +24,7 @@ workflow test_reconst_noddi_save_kernels {
             []
     ]}
 
-    COMPUTE_KERNELS ( input_noddi )
+    RECONST_NODDI_KERNELS ( input_noddi )
 }
 
 workflow test_reconst_noddi_save_kernels_no_mask {
@@ -42,5 +42,5 @@ workflow test_reconst_noddi_save_kernels_no_mask {
             [], []
     ]}
 
-    COMPUTE_KERNELS ( input_noddi )
+    RECONST_NODDI_KERNELS ( input_noddi )
 }
