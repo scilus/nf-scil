@@ -27,7 +27,7 @@ process PREPROC_N4 {
     export OPENBLAS_NUM_THREADS=1
     export ANTS_RANDOM_SEED=1234
 
-    spacing=\$(mrinfo -spacing $b0 | tr " " "\n" | sort -n | tail -1)
+    spacing=\$(mrinfo -spacing $b0 | tr " " "\\n" | sort -n | tail -1)
     knot_spacing=\$(echo "\$spacing/$bspline_knot_per_voxel" | bc -l)
 
     N4BiasFieldCorrection -i $b0\
