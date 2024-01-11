@@ -8,9 +8,9 @@ assignees: AlexVCaron
 ---
 
 **System (complete the following information, else the issue will be closed):**
- - OS: [e.g. Ubuntu, CentOS, other Linux distributions, MacOS, WSL, Windows, ...]
- - Python version [e.g. 3.10, PyPa 3.7, CPython 3.9, ...]
- - `nf-scil` version [e.g. 1.0.0, 1.2.post3, 0.1.dev0, main, feat/awesome_module, ...]
+  - OS: [e.g. Ubuntu, CentOS, other Linux distributions, MacOS, WSL, Windows, ...]
+  - Python version [e.g. 3.10, PyPa 3.7, CPython 3.9, ...]
+  - `nf-scil` version [e.g. 1.0.0, 1.2.post3, 0.1.dev0, main, feat/awesome_module, ...]
 
 **Describe the bug**
 A clear and concise description of what the bug is.

@@ -3,7 +3,7 @@ process TRACKING_LOCALTRACKING {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
+        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
         'scilus/scilus:1.6.0' }"
 
     input:
@@ -59,7 +59,7 @@ process TRACKING_LOCALTRACKING {
 
     elif [ "${local_seeding_mask}" == "fa" ]; then
         mrcalc $fa $local_fa_seeding_mask_threshold -ge ${prefix}__local_seeding_mask.nii.gz\
-          -datatype uint8
+            -datatype uint8
     fi
 
     scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz tmp.trk\

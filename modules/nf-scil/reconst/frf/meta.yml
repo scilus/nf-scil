@@ -3,9 +3,9 @@
 name: "reconst_frf"
 description: Compute a single Fiber Response Function from a DWI.
 keywords:
-  - DWI
-  - FRF
-
+  - Fiber Orientation Distribution Function
+  - Diffusion MRI
+  - Fiber Response Function
 tools:
   - "DIPY":
       description: "DIPY is the paragon 3D/4D+ imaging library in Python."
@@ -21,7 +21,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - dwi:
       type: file
       description: Nifti image of DWI.

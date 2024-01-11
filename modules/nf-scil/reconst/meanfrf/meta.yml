@@ -2,9 +2,12 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "reconst_meanfrf"
 description: Compute the mean Fiber Response Function from a set of individually
-             computed Response Functions.
+  computed Response Functions.
 keywords:
-  - FRF
+  - Fiber Orientation Distribution Function
+  - Diffusion MRI
+  - Fiber Response Function
+  - Average
 
 tools:
   - "Scilpy":
@@ -12,14 +15,12 @@ tools:
       homepage: "https://github.com/scilus/scilpy.git"
 
 input:
-
   - frf_list:
-      type: Path
+      type: list
       description: List of individual Fiber Response Function (FRF) path.
       pattern: "*.txt"
 
 output:
-
   - meanfrf:
       type: file
       description: Averaged Fiber Response Function (FRF).

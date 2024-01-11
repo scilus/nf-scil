@@ -66,7 +66,7 @@ process TRACKING_PFTTRACKING {
 
     elif [ "${pft_seeding_mask}" == "fa" ]; then
         mrcalc $fa $pft_fa_threshold -ge ${prefix}__pft_seeding_mask.nii.gz\
-          -datatype uint8
+            -datatype uint8
     fi
 
     scil_compute_pft.py $fodf ${prefix}__pft_seeding_mask.nii.gz \
@@ -108,7 +108,7 @@ process TRACKING_PFTTRACKING {
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_compute_pft.py -h
     scil_compute_maps_for_particle_filter_tracking.py -h

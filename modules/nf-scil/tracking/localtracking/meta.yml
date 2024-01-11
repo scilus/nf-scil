@@ -4,6 +4,7 @@ description: process local tracking
 keywords:
   - Tractography
   - Local tracking
+  - Diffusion MRI
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."

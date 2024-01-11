@@ -4,8 +4,6 @@
     - denoising/mppca
     - denoising
   files:
-    - path: output/denoising/test__pre_dwi_denoised.nii.gz
-      md5sum: ece4b6fe910ae6502edd52b526609638
     - path: output/denoising/test_dwi_denoised.nii.gz
       md5sum: 0cfa480f702173a047f076bbba9fe25e
     - path: output/denoising/versions.yml

@@ -35,7 +35,7 @@ output:
 
   - wm_mask:
       type: file
-      description: Nifti WM mask volume. 
+      description: Nifti WM mask volume.
       pattern: "*.{nii,nii.gz}"
 
   - gm_mask:

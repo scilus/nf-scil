@@ -1,49 +1,49 @@
 - name: utils extractb0 test_utils_extractb0_mean
   command: nextflow run ./tests/modules/nf-scil/utils/extractb0 -entry test_utils_extractb0_mean -c ./tests/config/nextflow.config
   tags:
-    - utils/extractb0
     - utils
+    - utils/extractb0
   files:
-    - path: output/extractb0/test_b0.nii.gz
+    - path: output/utils/test_b0.nii.gz
       md5sum: 9870c6a4fea2c94453d061012c8507b1
-    - path: output/extractb0/versions.yml
+    - path: output/utils/versions.yml
 
 - name: utils extractb0 test_utils_extractb0_all_4D
   command: nextflow run ./tests/modules/nf-scil/utils/extractb0 -entry test_utils_extractb0_all_4D -c ./tests/config/nextflow.config
   tags:
-    - utils/extractb0
     - utils
+    - utils/extractb0
   files:
-    - path: output/extractb0/test_b0.nii.gz
+    - path: output/utils/test_b0.nii.gz
       md5sum: 48ef1812ca653bcb3370e9a75ff3fd5e
-    - path: output/extractb0/versions.yml
+    - path: output/utils/versions.yml
 
 - name: utils extractb0 test_utils_extractb0_all_series
   command: nextflow run ./tests/modules/nf-scil/utils/extractb0 -entry test_utils_extractb0_all_series -c ./tests/config/nextflow.config
   tags:
-    - utils/extractb0
     - utils
+    - utils/extractb0
   files:
-    - path: output/extractb0/test_b0.nii.gz
+    - path: output/utils/test_b0.nii.gz
       md5sum: 48ef1812ca653bcb3370e9a75ff3fd5e
-    - path: output/extractb0/versions.yml
+    - path: output/utils/versions.yml
 
 - name: utils extractb0 test_utils_extractb0_cluster_mean
   command: nextflow run ./tests/modules/nf-scil/utils/extractb0 -entry test_utils_extractb0_cluster_mean -c ./tests/config/nextflow.config
   tags:
-    - utils/extractb0
     - utils
+    - utils/extractb0
   files:
-    - path: output/extractb0/test_b0.nii.gz
+    - path: output/utils/test_b0.nii.gz
       md5sum: 48ef1812ca653bcb3370e9a75ff3fd5e
-    - path: output/extractb0/versions.yml
+    - path: output/utils/versions.yml
 
 - name: utils extractb0 test_utils_extractb0_cluster_first
   command: nextflow run ./tests/modules/nf-scil/utils/extractb0 -entry test_utils_extractb0_cluster_first -c ./tests/config/nextflow.config
   tags:
-    - utils/extractb0
     - utils
+    - utils/extractb0
   files:
-    - path: output/extractb0/test_b0.nii.gz
+    - path: output/utils/test_b0.nii.gz
       md5sum: 48ef1812ca653bcb3370e9a75ff3fd5e
-    - path: output/extractb0/versions.yml
+    - path: output/utils/versions.yml

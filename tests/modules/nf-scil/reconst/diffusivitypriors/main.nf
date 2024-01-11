@@ -2,12 +2,12 @@
 
 nextflow.enable.dsl = 2
 
-include { RECONST_DIFFUSIVITYPRIORS as MEAN_PRIORS} from '../../../../../modules/nf-scil/reconst/diffusivitypriors/main.nf'
-include { RECONST_DIFFUSIVITYPRIORS as COMPUTE_PRIORS} from '../../../../../modules/nf-scil/reconst/diffusivitypriors/main.nf'
+include { RECONST_DIFFUSIVITYPRIORS as RECONST_MEAN_PRIORS} from '../../../../../modules/nf-scil/reconst/diffusivitypriors/main.nf'
+include { RECONST_DIFFUSIVITYPRIORS as RECONST_COMPUTE_PRIORS} from '../../../../../modules/nf-scil/reconst/diffusivitypriors/main.nf'
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
 
 workflow test_reconst_diffusivitypriors_compute_priors {
-    
+
     input_fetch = Channel.from( [ "commit_amico.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
@@ -21,7 +21,7 @@ workflow test_reconst_diffusivitypriors_compute_priors {
             []
   ]}
 
-    COMPUTE_PRIORS ( input_priors )
+    RECONST_COMPUTE_PRIORS ( input_priors )
 }
 
 workflow test_reconst_diffusivitypriors_mean_priors {
@@ -29,10 +29,10 @@ workflow test_reconst_diffusivitypriors_mean_priors {
     input = [
         [ id:'test', single_end:false ], // meta map
         [],[],[],
-        file(params.test_data['reconst']['diffusivitypriors']['priors'], checkIfExists: true)
+        params.test_data['reconst']['diffusivitypriors']['priors'].collect{ file(it, checkIfExists: true) }
     ]
 
-    MEAN_PRIORS ( input )
+    RECONST_MEAN_PRIORS ( input )
 }
 
 

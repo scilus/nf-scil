@@ -18,7 +18,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - dwi:
       type: file
       description: Nifti DWI volume to perform BET + crop.

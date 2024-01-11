@@ -3,8 +3,9 @@
 name: "reconst_noddi"
 description: Run NODDI modelling pipeline using AMICO from DWI data.
 keywords:
-  - DWI
+  - Diffusion MRI
   - NODDI
+  - Microstructure modeling
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -45,7 +46,7 @@ input:
       pattern: "*mask.{nii,nii.gz}"
 
   - kernels:
-      type: folder
+      type: directory
       description: Folder containg kernels.
       pattern: "kernels"
 
@@ -82,7 +83,7 @@ output:
       pattern: "*__FIT_OD.{nii,nii.gz}"
 
   - kernels:
-      type: folder
+      type: directory
       description: Folder containg kernels.
       pattern: "kernels"
 

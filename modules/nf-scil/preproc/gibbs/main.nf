@@ -3,7 +3,7 @@ process PREPROC_GIBBS {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
+        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
         'scilus/scilus:1.6.0' }"
 
     input:

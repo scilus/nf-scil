@@ -1,51 +1,51 @@
 {
-  "name": "nf-scil-extensions",
-  "displayName": "nf-scil-extensions",
-  "description": "Extension pack for VS Code development of nf-scil",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/scilus/nf-scil.git"
-  },
-  "icon": "icon.avif",
-  "version": "0.0.2",
-  "publisher": "AlexVCaron",
-  "engines": {
-    "vscode": "^1.84.0"
-  },
-  "categories": [
-    "Extension Packs"
-  ],
-  "extensionPack": [ 
-    "bierner.github-markdown-preview", 
-    "bierner.markdown-checkbox", 
-    "bierner.markdown-emoji", 
-    "bierner.markdown-footnotes", 
-    "bierner.markdown-mermaid", 
-    "bierner.markdown-preview-github-styles", 
-    "bierner.markdown-yaml-preamble", 
-    "github.vscode-github-actions", 
-    "GitHub.vscode-pull-request-github",
-    "mhutchie.git-graph", 
-    "ms-azuretools.vscode-docker", 
-    "ms-python.isort", 
-    "ms-python.python", 
-    "ms-python.vscode-pylance", 
-    "ms-vscode-remote.remote-containers", 
-    "ms-vscode-remote.remote-ssh", 
-    "ms-vscode-remote.remote-ssh-edit", 
-    "ms-vscode-remote.remote-wsl", 
-    "ms-vscode-remote.vscode-remote-extensionpack", 
-    "ms-vscode.cmake-tools", 
-    "ms-vscode.cpptools", 
-    "ms-vscode.cpptools-extension-pack", 
-    "ms-vscode.cpptools-themes", 
-    "ms-vscode.makefile-tools", 
-    "ms-vscode.remote-explorer", 
-    "ms-vscode.remote-server", 
-    "ms-vsliveshare.vsliveshare", 
-    "nf-core.nf-core-extensionpack", 
-    "twxs.cmake", 
-    "yahyabatulu.vscode-markdown-alert", 
-    "yzhang.markdown-all-in-one"
-  ]
+    "name": "nf-scil-extensions",
+    "displayName": "nf-scil-extensions",
+    "description": "Extension pack for VS Code development of nf-scil",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scilus/nf-scil.git"
+    },
+    "icon": "icon.avif",
+    "version": "0.0.2",
+    "publisher": "AlexVCaron",
+    "engines": {
+        "vscode": "^1.84.0"
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "extensionPack": [
+        "bierner.github-markdown-preview",
+        "bierner.markdown-checkbox",
+        "bierner.markdown-emoji",
+        "bierner.markdown-footnotes",
+        "bierner.markdown-mermaid",
+        "bierner.markdown-preview-github-styles",
+        "bierner.markdown-yaml-preamble",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode-remote.remote-wsl",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "ms-vscode.makefile-tools",
+        "ms-vscode.remote-explorer",
+        "ms-vscode.remote-server",
+        "ms-vsliveshare.vsliveshare",
+        "nf-core.nf-core-extensionpack",
+        "twxs.cmake",
+        "yahyabatulu.vscode-markdown-alert",
+        "yzhang.markdown-all-in-one"
+    ]
 }

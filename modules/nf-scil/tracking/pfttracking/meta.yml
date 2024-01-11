@@ -2,12 +2,13 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "tracking_pfttracking"
 description: Compute include and exclude maps, and the seeding mask
-             from partial volume estimation (PVE) maps.
-             Generates a tractogram using anatomically-constrained particle
-             filter tracking, Particle Filtering Tractography (PFT).
+  from partial volume estimation (PVE) maps.
+  Generates a tractogram using anatomically-constrained particle
+  filter tracking, Particle Filtering Tractography (PFT).
 keywords:
-  - PFT
-  - tractography
+  - Diffusion MRI
+  - Tractography
+  - Particle Filtering Tractography
 
 tools:
   - "DIPY":

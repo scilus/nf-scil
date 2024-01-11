@@ -19,7 +19,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - dwi:
       type: file
       description: Nifti DWI volume used to extract DTI metrics.
@@ -134,16 +134,16 @@ output:
 
   - nonphysical:
       type: file
-      description: Output filename for the voxels with physically implausible 
-                   signals where the mean of b=0 images is below one or more 
-                   diffusion-weighted images.
+      description: Output filename for the voxels with physically implausible
+        signals where the mean of b=0 images is below one or more
+        diffusion-weighted images.
       pattern: "*__nonphysical.{nii,nii.gz}"
 
   - pulsation_std_dwi:
       type: file
-      description: Standard deviation map across all diffusion-weighted images 
-                   and across b=0 images if more than one is available.Shows 
-                   pulsation and misalignment artifacts.
+      description: Standard deviation map across all diffusion-weighted images
+        and across b=0 images if more than one is available.Shows
+        pulsation and misalignment artifacts.
       pattern: "*__pulsation_std_dwi.{nii,nii.gz}"
 
   - residual:
