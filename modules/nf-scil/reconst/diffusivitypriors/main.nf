@@ -1,4 +1,20 @@
 
+import nextflow.util.BlankSeparatedList
+
+def compute_noddi_priors ( fa, ad, md, fa_min, fa_max, md_min, roi_radius, prefix, output_directory ) {
+    """
+    mkdir -p $output_directory
+
+    scil_compute_NODDI_priors.py $fa $ad $md $fa_min $fa_max $md_min $roi_radius \
+        --out_txt_1fiber $output_directory/${prefix}__para_diff.txt \
+        --out_txt_ventricles $output_directory/${prefix}__iso_diff.txt
+    """
+}
+
+
+def is_directory ( pathlike ) {
+    return !(pathlike instanceof BlankSeparatedList) && pathlike.isDirectory()
+}
 
 process RECONST_DIFFUSIVITYPRIORS {
     tag "$meta.id"
@@ -30,26 +46,15 @@ process RECONST_DIFFUSIVITYPRIORS {
     def md_min = task.ext.md_min ? "--md_min " + task.ext.md_min : ""
     def roi_radius = task.ext.roi_radius ? "--roi_radius " + task.ext.roi_radius : ""
 
+    def priors_directory = priors.isEmpty() ? "priors" : !is_directory(priors) ? "priors" : priors
     """
-    if [ -d "$priors" ]
-    then
-        cat $priors/*__para_diff.txt > all_para_diff.txt
-        awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
-        cat $priors/*__iso_diff.txt > all_iso_diff.txt
-        awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
+    ${ priors.isEmpty() ? compute_noddi_priors( fa, ad, md, fa_min, fa_max, md_min, roi_radius, prefix, priors_directory ) : ""}
 
-    else
-
-        mkdir priors
-        scil_compute_NODDI_priors.py $fa $ad $md $fa_min $fa_max $md_min $roi_radius\
-        --out_txt_1fiber priors/${prefix}__para_diff.txt\
-        --out_txt_ventricles priors/${prefix}__iso_diff.txt
-
-        cat priors/*__para_diff.txt > all_para_diff.txt
-        awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
-        cat priors/*__iso_diff.txt > all_iso_diff.txt
-        awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
-    fi
+    ${ !priors.isEmpty() && !is_directory(priors) ? "mkdir -p priors && ln $priors priors" : "" }
+    cat $priors_directory/*__para_diff.txt > all_para_diff.txt
+    awk '{ total += \$1; count++ } END { print total/count }' all_para_diff.txt > mean_para_diff.txt
+    cat $priors_directory/*__iso_diff.txt > all_iso_diff.txt
+    awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

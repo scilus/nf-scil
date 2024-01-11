@@ -40,9 +40,9 @@ process PREPROC_N4 {
         ${prefix}__dwi_n4.nii.gz --mask $b0_mask -f
 
     cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            scilpy: 1.6.0
-            N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
+    "${task.process}":
+        scilpy: 1.6.0
+        N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 
@@ -56,9 +56,9 @@ process PREPROC_N4 {
     touch ${prefix}_dwi_n4.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
-        "${task.process}":
-            scilpy: 1.6.0
-            N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
+    "${task.process}":
+        scilpy: 1.6.0
+        N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 }
