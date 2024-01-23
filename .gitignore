@@ -8,3 +8,6 @@
 
 *.code-workspace
 /.test_data
+
+unLFS_dryRun.sh
+unlfs.py
