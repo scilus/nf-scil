@@ -4,6 +4,7 @@ name: "betcrop_fslbetcrop"
 description: Perform Brain extraction using FSL BET followed by cropping empty planes around the data.
 keywords:
   - DWI
+  - T1
   - BET
   - Crop
 tools:
@@ -16,6 +17,9 @@ tools:
   - "MRtrix3":
       description: "Toolbox for image processing, analysis and visualisation of dMRI."
       homepage: "https://mrtrix.readthedocs.io/en/latest/"
+  - "ANTs":
+      description: "Advanced Normalization Tools"
+      homepage: "https://github.com/ANTsX/ANTs"
 
 input:
   - meta:
@@ -24,9 +28,9 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
-      description: Nifti DWI volume to perform BET + crop.
+      description: Nifti image volume to perform BET + crop.
       pattern: "*.{nii,nii.gz}"
 
   - bval:
@@ -39,6 +43,16 @@ input:
       description: B-vectors in FSL format.
       pattern: "*.bvec"
 
+  - template:
+      type: file
+      description: Anatomical template for Brain extraction template.
+      pattern: "*.{nii,nii.gz}"
+
+  - map:
+      type: file
+      description: Brain probability mask, with intensity range 1 (definitely brain) to 0 (definitely background).
+      pattern: "*.{nii,nii.gz}"
+
 output:
   - meta:
       type: map
@@ -46,19 +60,19 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
-      description: Nifti DWI volume brain-extracted and cropped.
-      pattern: "*dwi_bet_cropped.{nii,nii.gz}"
+      description: Nifti volume brain-extracted and cropped.
+      pattern: "*_bet_cropped.{nii,nii.gz}"
 
   - mask:
       type: file
-      description: DWI mask brain-extracted and cropped.
-      pattern: "*dwi_bet_cropped_mask.{nii,nii.gz}"
+      description: mask brain-extracted and cropped.
+      pattern: "*_bet_cropped_mask.{nii,nii.gz}"
 
   - bbox:
       type: file
-      description: DWI BoundingBox used for cropping.
+      description: BoundingBox used for cropping.
       pattern: "*dwi_boundingBox.pkl"
 
   - versions:
