@@ -23,7 +23,7 @@ process SEGMENTATION_FSLFIRST {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    run_first_all -i ${image} -o ${prefix} -b -v
+    run_first_all -i ${image} -o ${prefix}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
