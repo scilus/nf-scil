@@ -22,8 +22,8 @@ process BUNDLE_RECOGNIZE {
     // additional script arguments
     def minimal_vote_ratio = task.ext.minimal_vote_ratio ? "--minimal_vote_ratio " + task.ext.minimal_vote_ratio : ""
     def seed = task.ext.seed ? "--seed " + task.ext.seed : ""
-    def rbx_processes = task.ext.rbx_processes ? "--rbx_processes " + task.ext.rbx_processes : ""
-    def outlier_atlas = task.ext.outlier_alpha ? "--alpha " + task.ext.outlier_alpha : ""
+    def rbx_processes = task.ext.rbx_processes ? "--processes " + task.ext.rbx_processes : "--processes 1"
+    def outlier_alpha = task.ext.outlier_alpha ? "--alpha " + task.ext.outlier_alpha : ""
     """
     mkdir recobundles/
     scil_recognize_multi_bundles.py ${tractograms} ${config} ${directory}/ ${transform} --inverse --out_dir recobundles/ \
