@@ -1,55 +1,43 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "segmentation_fsreconall"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: "Performs Freesurfer's recon-all script to segment your anatomy (probably a T1) into labels, surfaces, and much more. See the full documentation here: https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all."
 keywords:
-  - sort
-  - example
-  - genomics
+  - FreeSurfer
+  - Segmentation
+  - Tissues
 tools:
-  - "segmentation":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+  - "Freesurfer":
+      description: "An open source neuroimaging toolkit for processing, analyzing, and visualizing human brain MR images."
+      homepage: "https://surfer.nmr.mgh.harvard.edu/"
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
 
-## TODO nf-core: Add a description of all of the variables used as output
+  - anat:
+      type: file
+      description: An anatomy (ex, .nii.gz).
+      pattern: "*.mgz"
+
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
+  - recon_all_out_folder:
+      type: directory
+      description: Directory containing all recon-all outputs.
+      pattern: "*.{nii,nii.gz}"
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
 
 authors:
   - "@EmmaRenauld"
