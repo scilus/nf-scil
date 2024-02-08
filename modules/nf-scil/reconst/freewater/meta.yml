@@ -11,7 +11,7 @@ tools:
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
       homepage: "https://github.com/scilus/scilpy.git"
   - "Freewater":
-      description: "Free water elimination and mapping from diffusion MRI.
+      description: "Free water elimination and mapping from diffusion MRI."
       doi: "10.1002/mrm.22055"
   - "AMICO":
       description: "Accelerated Microstructure Imaging via Convex Optimization."

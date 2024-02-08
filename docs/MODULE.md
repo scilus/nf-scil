@@ -24,7 +24,7 @@ nf-core modules create \
     --author @scilus \
     --label process_single \
     --meta \
-    <category/tool>
+    <category>/<tool>
 ```
 
 You will still have to interact with the **bioconda** prompt, still select `no`.
@@ -150,7 +150,7 @@ Once done, commit your module and push the changes. Then, to look at the documen
 nf-core modules \
   --git-remote <your reository> \
   --branch <your branch unless main branch> \
-  list <category/name>
+  list <category>/<name>
 ```
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
@@ -199,7 +199,7 @@ nf-core modules create-test-yml \
     --run-tests \
     --force \
     --no-prompts \
-    <category/tool>
+    <category>/<tool>
 ```
 
 All the test case you defined will be run, watch out for errors ! Once everything runs
@@ -212,7 +212,7 @@ critical to ensure future executions of your test produce valid outputs.
 Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
 
 ```bash
-nf-core module \
+nf-core modules \
   --git-remote <your repository> \
   --branch <your branch unless main branch> \
   lint <category>/<tool>
