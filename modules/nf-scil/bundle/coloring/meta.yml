@@ -1,0 +1,45 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "bundle_coloring"
+description: Coloring the bundles
+keywords:
+  -Tractometry
+  -Bundles
+tools:
+  - "nf-scil":
+      description: "A Nextflow modules and workflows repository for neuroimaging maintained by the SCIL team."
+      homepage: "https://github.com/scilus/nf-scil"
+
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - bundles:
+      type: file
+      description: TRK file containing bundles
+      pattern: "*.{trk}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - bundles:
+      type: file
+      description: Sorted BAM/CRAM/SAM file
+      pattern: "*_colored.trk"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+
+authors:
+  - "@scilus"
