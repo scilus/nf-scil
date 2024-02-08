@@ -1,2 +1,0 @@
-segmentation/fslfirst:
-  - "modules/nf-scil/segmentation/fslfirst/**"
