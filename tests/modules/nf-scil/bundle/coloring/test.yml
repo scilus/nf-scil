@@ -1,0 +1,13 @@
+## TODO nf-core: Please run the following command to build this file:
+#                nf-core modules create-test-yml /coloring
+- name: "bundle coloring"
+  command: nextflow run ./tests/modules/nf-scil/bundle/coloring -entry test_bundle_coloring -c ./tests/config/nextflow.config
+  tags:
+    - "bundle"
+    - "bundle/coloring"
+  files:
+    - path: "output/bundle/test.bam"
+      md5sum: e667c7caad0bc4b7ac383fd023c654fc
+    - path: "output/bundle/versions.yml"
+      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+    
