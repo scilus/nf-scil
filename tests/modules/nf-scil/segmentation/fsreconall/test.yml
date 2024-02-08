@@ -1,13 +1,7 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core modules create-test-yml /fsreconall
-- name: "segmentation fsreconall"
+- name: segmentation fsreconall test_segmentation_fsreconall
   command: nextflow run ./tests/modules/nf-scil/segmentation/fsreconall -entry test_segmentation_fsreconall -c ./tests/config/nextflow.config
   tags:
-    - "segmentation"
-    - "segmentation/fsreconall"
+    - segmentation/fsreconall
+    - segmentation
   files:
-    - path: "output/segmentation/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/segmentation/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
-    
+    - path: output/segmentation/versions.yml

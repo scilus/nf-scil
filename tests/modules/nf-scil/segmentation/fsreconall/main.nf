@@ -12,7 +12,8 @@ workflow test_segmentation_fsreconall {
 
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['segmentation']['fsreconall']['anat'], checkIfExists: true)
+        file(params.test_data['segmentation']['fsreconall']['anat'], checkIfExists: true),
+        file(params.test_data['segmentation']['fsreconall']['license'], checkIfExists: true)
     ]
 
     SEGMENTATION_FSRECONALL ( input )
