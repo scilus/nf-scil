@@ -17,9 +17,6 @@ tools:
   - "MRtrix3":
       description: "Toolbox for image processing, analysis and visualisation of dMRI."
       homepage: "https://mrtrix.readthedocs.io/en/latest/"
-  - "ANTs":
-      description: "Advanced Normalization Tools"
-      homepage: "https://github.com/ANTsX/ANTs"
 
 input:
   - meta:
@@ -42,16 +39,6 @@ input:
       type: file
       description: B-vectors in FSL format.
       pattern: "*.bvec"
-
-  - template:
-      type: file
-      description: Anatomical template for Brain extraction template.
-      pattern: "*.{nii,nii.gz}"
-
-  - map:
-      type: file
-      description: Brain probability mask, with intensity range 1 (definitely brain) to 0 (definitely background).
-      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
