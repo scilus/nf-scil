@@ -74,7 +74,7 @@ output:
 
   - fw:
       type: file
-      description: Nifti file for freewater volume fraction.
+      description: Nifti file for freewater.
       pattern: "*__FIT_FW.{nii,nii.gz}"
 
   - nrmse:
