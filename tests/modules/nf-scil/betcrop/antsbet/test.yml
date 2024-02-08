@@ -1,13 +1,11 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core modules create-test-yml /antsbet
-- name: "betcrop antsbet"
+- name: betcrop antsbet test_betcrop_antsbet
   command: nextflow run ./tests/modules/nf-scil/betcrop/antsbet -entry test_betcrop_antsbet -c ./tests/config/nextflow.config
   tags:
-    - "betcrop"
-    - "betcrop/antsbet"
+    - betcrop/antsbet
+    - betcrop
   files:
-    - path: "output/betcrop/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/betcrop/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
-    
+    - path: output/betcrop/test__t1_bet.nii.gz
+      md5sum: 159d59b9ca8f69c025daacaf3bb1113d
+    - path: output/betcrop/test__t1_bet_mask.nii.gz
+      md5sum: 2ef09348ed5b3abfd64676516cdb6909
+    - path: output/betcrop/versions.yml
