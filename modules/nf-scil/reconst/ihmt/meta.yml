@@ -2,8 +2,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "reconst_ihmt"
 description: Compute myelin indices maps from the MT and ihMT images. 
-Please refer to https://github.com/scilus/scilpy/blob/2ced08f4d70cef1d7e4b089872f7593bf5b2833a/scripts/scil_mti_maps_ihMT.py 
-to understand input format.
+  Please refer to https://github.com/scilus/scilpy/blob/2ced08f4d70cef1d7e4b089872f7593bf5b2833a/scripts/scil_mti_maps_ihMT.py 
+  to understand input format.
 keywords:
   - magnetization transfer imaging
   - myelin
