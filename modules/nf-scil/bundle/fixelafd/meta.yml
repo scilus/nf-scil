@@ -1,55 +1,49 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "bundle_fixelafd"
-## TODO nf-core: Add a description of the module and list keywords
-description: write your description here
+description: USE scilpy to compute mean apparent fiber density (AFD) and mean radial radial fODF (radfODF) maps along a bundle.
 keywords:
-  - sort
-  - example
-  - genomics
+  - DWI
+  - AFD
+  - Fixel
 tools:
-  - "bundle":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  ## TODO nf-core: Delete / customise this example input
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
 
-## TODO nf-core: Add a description of all of the variables used as output
+  - bundles:
+      type: file list
+      description: "Bundle in .trk format. Can be a list of file locations."
+      pattern: "*.trk"
+
+  - fodf:
+      type: file
+      description: "fODF file to extract fixel measurements from."
+      pattern: "*.nii.gz"
+
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
+  - fixel_afd:
+      type: file list
+      description: "Mean Apparent Fiber Density (AFD) along the bundle."
+      pattern: "*_afd_metric.nii.gz"
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
-      type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
 
 authors:
   - "@grahamlittlephd"
