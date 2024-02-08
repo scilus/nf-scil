@@ -74,7 +74,7 @@ output:
 
   - fw:
       type: file
-      description: Nifti file for freewater.
+      description: Nifti file for freewater (isotropic volume).
       pattern: "*__FIT_FW.{nii,nii.gz}"
 
   - nrmse:
