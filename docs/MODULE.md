@@ -218,7 +218,7 @@ nf-core module \
   lint <category>/<tool>
 ```
 
-YOu'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
+You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
 
 ## Last safety test
 

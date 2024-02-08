@@ -27,7 +27,7 @@ input:
 
   - dwi:
       type: file
-      description: Nifti DWI file acquired with a NODDI compatible protocol (single-shell or multi-shell).
+      description: Nifti DWI file acquired with a freewater compatible protocol (single-shell or multi-shell).
       pattern: "*.{nii,nii.gz}"
 
   - bval:
