@@ -78,7 +78,7 @@ jobs:
         id: filter
         with:
           filters: "tests/config/pytest_modules.yml"
-          token: ""
+          token: "${{ secrets.GITHUB_TOKEN }}"
 
   nf-core-lint:
     runs-on: scilus-nf-scil-runners
