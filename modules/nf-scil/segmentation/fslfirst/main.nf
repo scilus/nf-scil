@@ -3,7 +3,6 @@ process SEGMENTATION_FSLFIRST {
     tag "$meta.id"
     label 'process_single'
 
-    conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'scilus/scilus:1.2.0':
         'scilus/scilus:1.2.0' }"
@@ -28,7 +27,7 @@ process SEGMENTATION_FSLFIRST {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.2.0
-        fsl: \$(first -version 2>&1 | sed -n 's/FIRST version \\([0-9.]\\+\\)/\\1/p')
+        fsl: \$(run_first_all -version 2>&1 | sed -n 's/FIRST version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 
@@ -44,7 +43,7 @@ process SEGMENTATION_FSLFIRST {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.2.0
-        fsl: \$(first -version 2>&1 | sed -n 's/FIRST version \\([0-9.]\\+\\)/\\1/p')
+        fsl: \$(run_first_all -version 2>&1 | sed -n 's/FIRST version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 }
