@@ -12,10 +12,72 @@ workflow test_reconst_ihmt {
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
     
-    input_ihmt = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['sarscov2']['illumina']['test_paired_end_bam'], checkIfExists: true)
-    ]
+        input_ihmt = LOAD_TEST_DATA.out.test_data_directory
+            .map{ test_data_directory -> [
+            [ id:'test', single_end:false ], // meta map
+            [file("${test_data_directory}/echo-1_acq-altpn_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-altpn_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-altpn_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-altnp_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-altnp_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-altnp_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-pos_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-pos_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-pos_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-neg_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-neg_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-neg_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-mtoff_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-T1w_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-T1w_ihmt.nii.gz")],
+            file("${test_data_directory}/mask_resample.nii.gz"),
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz")],
+            [],
+            [],
+            []
+    ]}
+
+    RECONST_IHMT ( input_ihmt )
+}
+
+workflow test_reconst_ihmt_no_mask {
+
+    input_fetch = Channel.from( [ "ihMT.zip" ] )
+
+    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
+    
+        input_ihmt = LOAD_TEST_DATA.out.test_data_directory
+            .map{ test_data_directory -> [
+            [ id:'test', single_end:false ], // meta map
+            [file("${test_data_directory}/echo-1_acq-altpn_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-altpn_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-altpn_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-altnp_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-altnp_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-altnp_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-pos_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-pos_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-pos_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-neg_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-neg_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-neg_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-mtoff_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-2_acq-T1w_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-3_acq-T1w_ihmt.nii.gz")],
+            [],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
+            file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz")],
+            [],
+            [],
+            []
+    ]}
 
     RECONST_IHMT ( input_ihmt )
 }
