@@ -3,3 +3,5 @@
   tags:
     - segmentation/fsreconall
     - segmentation
+  files:
+    - path: output/segmentation/versions.yml
