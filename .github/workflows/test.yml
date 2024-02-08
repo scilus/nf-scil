@@ -1,12 +1,11 @@
 name: Modules Tests
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  merge_group:
-    types: [checks_requested]
-    branches: [main]
+    branches:
+      - main
+  pull_request_target:
+    branches:
+      - main
 
 # Cancel if a newer run is started
 concurrency:
@@ -20,7 +19,7 @@ env:
 
 jobs:
   pre-commit:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
@@ -32,7 +31,7 @@ jobs:
           extra_args: ""
 
   prettier:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -49,7 +48,7 @@ jobs:
         run: prettier --check .
 
   editorconfig:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     steps:
       - uses: actions/checkout@v4
 
@@ -65,7 +64,7 @@ jobs:
 
   pytest-changes:
     name: pytest-changes
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     outputs:
       # Expose matched filters as job 'modules' output variable
       modules: ${{ steps.filter.outputs.changes }}
@@ -82,7 +81,7 @@ jobs:
           token: ""
 
   nf-core-lint:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     name: nf-core-lint
     needs: [pytest-changes]
     if: ${{ (needs.pytest-changes.outputs.modules != '[]') }}
@@ -134,7 +133,7 @@ jobs:
         if: ${{ startsWith(matrix.tags, 'subworkflows/') }}
 
   pytest:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     name: pytest
     needs: [pytest-changes]
     if: needs.pytest-changes.outputs.modules != '[]'
@@ -212,9 +211,9 @@ jobs:
             !${{ github.workspace }}/.singularity
 
   confirm-pass:
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     needs: [prettier, editorconfig, pytest-changes, nf-core-lint, pytest]
-    if: always()
+    if: ${{ !cancelled() }}
     steps:
       - name: All tests ok
         if: ${{ success() || !contains(needs.*.result, 'failure') }}
@@ -224,7 +223,7 @@ jobs:
         run: exit 1
 
       - name: debug-print
-        if: always()
+        if: ${{ !cancelled() }}
         run: |
           echo "toJSON(needs) = ${{ toJSON(needs) }}"
           echo "toJSON(needs.*.result) = ${{ toJSON(needs.*.result) }}"
