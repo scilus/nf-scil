@@ -2,14 +2,45 @@
 
 nextflow.enable.dsl = 2
 
-include { RECONST_FREEWATER } from '../../../../../modules/nf-scil/reconst/freewater/main.nf'
+include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
 
-workflow test_reconst_freewater {
-    
-    input = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['sarscov2']['illumina']['test_paired_end_bam'], checkIfExists: true)
-    ]
+include {
+    RECONST_FREEWATER as RECONST_FREEWATER_KERNELS;
+    RECONST_FREEWATER as RECONST_FREEWATER_METRICS} from '../../../../../modules/nf-scil/reconst/freewater/main.nf'
 
-    RECONST_FREEWATER ( input )
+workflow test_reconst_freewater_save_kernels {
+
+    input_fetch = Channel.from( [ "commit_amico.zip" ] )
+
+    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
+
+    input_freewater = LOAD_TEST_DATA.out.test_data_directory
+            .map{ test_data_directory -> [
+            [ id:'test', single_end:false ], // meta map
+            file("${test_data_directory}/dwi.nii.gz"),
+            file("${test_data_directory}/dwi.bval"),
+            file("${test_data_directory}/dwi.bvec"),
+            file("${test_data_directory}/mask.nii.gz"),
+            []
+    ]}
+
+    RECONST_FREEWATER_KERNELS ( input_freewater )
+}
+
+workflow test_reconst_freewater_save_kernels_no_mask {
+
+    input_fetch = Channel.from( [ "commit_amico.zip" ] )
+
+    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
+
+    input_freewater = LOAD_TEST_DATA.out.test_data_directory
+            .map{ test_data_directory -> [
+            [ id:'test', single_end:false ], // meta map
+            file("${test_data_directory}/dwi.nii.gz"),
+            file("${test_data_directory}/dwi.bval"),
+            file("${test_data_directory}/dwi.bvec"),
+            [], []
+    ]}
+
+    RECONST_FREEWATER_KERNELS ( input_freewater )
 }

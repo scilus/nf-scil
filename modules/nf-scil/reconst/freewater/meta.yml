@@ -1,18 +1,18 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "reconst_freewater"
-description: Run NODDI modelling pipeline using AMICO from DWI data.
+description: Run freewater modelling pipeline using AMICO from DWI data.
 keywords:
   - Diffusion MRI
-  - NODDI
+  - Freewater
   - Microstructure modeling
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
       homepage: "https://github.com/scilus/scilpy.git"
-  - "NODDI":
-      description: "Method to compute neurite orientation dispersion and density imaging."
-      doi: "10.1016/j.neuroimage.2012.03.072"
+  - "Freewater":
+      description: "Free water elimination and mapping from diffusion MRI.
+      doi: "10.1002/mrm.22055"
   - "AMICO":
       description: "Accelerated Microstructure Imaging via Convex Optimization."
       homepage: "https://github.com/daducci/AMICO"
@@ -27,7 +27,7 @@ input:
 
   - dwi:
       type: file
-      description: Nifti DWI file acquired with a NODDI compatible protocol (multi-shell).
+      description: Nifti DWI file acquired with a NODDI compatible protocol (single-shell or multi-shell).
       pattern: "*.{nii,nii.gz}"
 
   - bval:
@@ -57,30 +57,30 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
+  - dwi_fw_corrected:
+      type: file
+      description: Nifti file freewater corrected DWI.
+      pattern: "*__dwi_fw_corrected.{nii,nii.gz}"
+
   - dir:
       type: file
       description: Nifti file main direction.
       pattern: "*__FIT_dir.{nii,nii.gz}"
 
-  - isovf:
+  - fibervolume:
       type: file
-      description: Nifti file for isotropic volume fraction.
-      pattern: "*__FIT_ISOVF.{nii,nii.gz}"
+      description: Nifti file for fiber volume.
+      pattern: "*__FIT_fibervolume.{nii,nii.gz}"
 
-  - icvf:
+  - fw:
       type: file
-      description: Nifti file for intra-compartment volume fraction.
-      pattern: "*__FIT_ICVF.{nii,nii.gz}"
+      description: Nifti file for freewater volume fraction.
+      pattern: "*__FIT_FW.{nii,nii.gz}"
 
-  - ecvf:
+  - nrmse:
       type: file
-      description: Nifti file for intra-compartment volume fraction.
-      pattern: "*__FIT_ECVF.{nii,nii.gz}"
-
-  - od:
-      type: file
-      description: Nifti file for orientation distribution.
-      pattern: "*__FIT_OD.{nii,nii.gz}"
+      description: Nifti file for nrmse.
+      pattern: "*__FIT_nrmse.{nii,nii.gz}"
 
   - kernels:
       type: directory
@@ -93,4 +93,4 @@ output:
       pattern: "versions.yml"
 
 authors:
-  - "@Manonedde"
+  - "@karanphil"
