@@ -23,7 +23,7 @@ process TESTDATA_SCILPY {
     """
     export SCILPY_HOME="$test_data_path"
 
-    python3 bin/fetch_data.py $archive
+    fetch_data.py $archive
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
