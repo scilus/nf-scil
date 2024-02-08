@@ -15,7 +15,7 @@
 Welcome to `nf-scil` ! A **Nextflow** modules and workflows repository for neuroimaging
 maintained by the [SCIL team](https://scil-documentation.readthedocs.io/en/latest/). The
 primary focus of the library is to provide pre-built processes and processing sequences for
-**diffusion Magnetic Resonance Imaging**, optimized for _Nextflow DLS2_, based on open-source
+**diffusion Magnetic Resonance Imaging**, optimized for _Nextflow DSL2_, based on open-source
 technologies and made easily available to pipeline's developers through the `nf-core`
 framework.
 
