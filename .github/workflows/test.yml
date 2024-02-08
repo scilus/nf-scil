@@ -2,7 +2,7 @@ name: Modules Tests
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
   merge_group:
     types: [checks_requested]
