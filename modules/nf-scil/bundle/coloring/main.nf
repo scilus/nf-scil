@@ -38,7 +38,7 @@ process BUNDLE_COLORING {
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    #L38-L54
+
 
     """
     touch ${prefix}._colored.trk
