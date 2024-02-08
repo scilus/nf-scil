@@ -7,7 +7,7 @@ process SEGMENTATION_FSRECONALL {
     container "freesurfer/freesurfer:7.1.1"
 
     input:
-        tuple val(meta), path(anat)
+        tuple val(meta), path(anat), path(fs_license) /* optional, value = [] */
 
     output:
         path("*__recon_all")                    , emit: recon_all_out_folder
@@ -21,10 +21,26 @@ process SEGMENTATION_FSRECONALL {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    export SUBJECTS_DIR=.
+    # Manage the license. (Save old one if existed.)
+    if [ $fs_license = [] ]; then
+        echo "License not given in input. Using default environment. "
+    else
+        cp $fs_license .license
+        here=`pwd`
+        export FS_LICENSE=\$here/.license
+    fi
 
+    # Run the main script
+    export SUBJECTS_DIR=`pwd`
     recon-all -i $anat -s ${prefix}__recon_all -all
 
+    # Remove the license
+    if [ ! $fs_license = [] ]; then
+        rm .license
+    fi
+
+
+    # Finish
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         freesurfer: 7.1.1
