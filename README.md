@@ -92,7 +92,7 @@ nf-core modules \
 The project uses _poetry_ to manage python dependencies. To install it using pipx,
 run the following commands :
 
-```
+```bash
 pip install pipx
 pipx ensurepath
 pipx install poetry
@@ -108,7 +108,7 @@ pipx install poetry
 
 Once done, install the project with :
 
-```
+```bash
 poetry install
 ```
 
@@ -119,7 +119,7 @@ poetry install
 
 The project scripts and dependencies can be accessed using :
 
-```
+```bash
 poetry shell
 ```
 
