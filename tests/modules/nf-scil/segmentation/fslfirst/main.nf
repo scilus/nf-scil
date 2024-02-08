@@ -11,5 +11,5 @@ workflow test_segmentation_fslfirst {
         file(params.test_data['segmentation']['fslfirst']['image'], checkIfExists: true)
     ]
 
-    SEGMENTATION_FSLFIRST ( input_fslfirst )
+    SEGMENTATION_FSLFIRST ( input )
 }
