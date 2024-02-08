@@ -23,12 +23,7 @@ process TESTDATA_SCILPY {
     """
     export SCILPY_HOME="$test_data_path"
 
-    python - << EOF
-    from scilpy.io.fetcher import fetch_data, get_testing_files_dict
-
-    fetch_data(get_testing_files_dict(), keys=["$archive"])
-
-    EOF
+    python3 bin/fetch_data.py $archive
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
