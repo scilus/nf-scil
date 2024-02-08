@@ -213,7 +213,7 @@ jobs:
   confirm-pass:
     runs-on: scilus-nf-scil-runners
     needs: [prettier, editorconfig, pytest-changes, nf-core-lint, pytest]
-    if: always()
+    if: !cancelled()
     steps:
       - name: All tests ok
         if: ${{ success() || !contains(needs.*.result, 'failure') }}
@@ -223,7 +223,7 @@ jobs:
         run: exit 1
 
       - name: debug-print
-        if: always()
+        if: !cancelled()
         run: |
           echo "toJSON(needs) = ${{ toJSON(needs) }}"
           echo "toJSON(needs.*.result) = ${{ toJSON(needs.*.result) }}"
