@@ -19,8 +19,8 @@ input:
         e.g. `[ id:'test', single_end:false ]`
 
   - bundles:
-      type: file list
-      description: "Bundle in .trk format. Can be a list of file locations."
+      type: list
+      description: "List of bundles in .trk format."
       pattern: "*.trk"
 
   - fodf:
@@ -36,7 +36,7 @@ output:
         e.g. `[ id:'test', single_end:false ]`
 
   - fixel_afd:
-      type: file list
+      type: list
       description: "Mean Apparent Fiber Density (AFD) along the bundle."
       pattern: "*_afd_metric.nii.gz"
 

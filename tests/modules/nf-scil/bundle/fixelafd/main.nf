@@ -7,14 +7,15 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 workflow test_bundle_fixelafd {
     input_fetch = Channel.from( [ "processing.zip" ] )
+
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/tracking.trk"),
-            file("${test_data_directory}/fodf_descoteaux07.nii.gz"),
+            file("${test_data_directory}/fodf_descoteaux07.nii.gz")
     ]}
-    
+
     BUNDLE_FIXELAFD ( input )
 }
