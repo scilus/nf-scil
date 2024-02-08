@@ -4,8 +4,8 @@ process SEGMENTATION_FSLFIRST {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scilus/tractoflow:2.2.1':
-        'scilus/scilus:1.1.0' }"
+        'scilus/tractoflow:1.3.0':
+        'scilus/scilus:1.3.0' }"
 
     input:
     tuple val(meta), path(image)
@@ -26,7 +26,7 @@ process SEGMENTATION_FSLFIRST {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.1.0
+        scilpy: 1.3.0
     END_VERSIONS
     """
 
@@ -41,7 +41,7 @@ process SEGMENTATION_FSLFIRST {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.1.0
+        scilpy: 1.3.0
     END_VERSIONS
     """
 }
