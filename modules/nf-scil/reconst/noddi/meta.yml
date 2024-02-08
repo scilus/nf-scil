@@ -84,7 +84,7 @@ output:
 
   - kernels:
       type: directory
-      description: Folder containg kernels.
+      description: Folder containing kernels.
       pattern: "kernels"
 
   - versions:
