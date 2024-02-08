@@ -34,7 +34,7 @@ output:
   - subcortex_segmentation:
       type: file
       description: Nifti subcortex segmentation volume
-      pattern: "*_all_fast_firstseg.nii.gz"
+      pattern: "*.{nii,nii.gz}"
 
   - versions:
       type: file
