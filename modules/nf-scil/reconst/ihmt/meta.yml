@@ -22,37 +22,37 @@ input:
   - altpn:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      alternation of positive and negative frequency saturation pulse.
+        alternation of positive and negative frequency saturation pulse.
       pattern: "*atlpn*.{nii,nii.gz}"
 
   - altnp:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      alternation of negative and positive frequency saturation pulse.
+        alternation of negative and positive frequency saturation pulse.
       pattern: "*altnp*.{nii,nii.gz}"
 
   - pos:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      positive frequency saturation pulse.
+        positive frequency saturation pulse.
       pattern: "*pos*.{nii,nii.gz}"
 
   - neg:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      negative frequency saturation pulse.
+        negative frequency saturation pulse.
       pattern: "*neg*.{nii,nii.gz}"
 
   - mtoff_pd:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      predominant PD (proton density) weighting images with no saturation pulse.
+        predominant PD (proton density) weighting images with no saturation pulse.
       pattern: "*mtoff_pd*.{nii,nii.gz}"
 
   - mtoff_t1:
       type: list
       description:  List of files (path to all echoes) corresponding to the 
-      predominant T1 weighting images with no saturation pulse.
+        predominant T1 weighting images with no saturation pulse.
       pattern: "*mtoff_t1*.{nii,nii.gz}"
 
   - jsons:
@@ -94,13 +94,13 @@ output:
   - ihmt_maps:
       type: directory
       description: Folder containing ihMT maps in native space. 
-      (MTR and ihMTR, plus MTsat and ihMTsat if mtoff_t1 was given)
+        (MTR and ihMTR, plus MTsat and ihMTsat if mtoff_t1 was given)
       pattern: "ihMT_native_maps"
 
   - comp_maps:
       type: directory
       description: Folder containing complementary maps. 
-      (intermediate files, B1 correction files, if extended option given)
+        (intermediate files, B1 correction files, if extended option given)
       pattern: "Complementary_maps"
 
 authors:
