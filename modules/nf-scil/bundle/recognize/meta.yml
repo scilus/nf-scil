@@ -34,7 +34,7 @@ input:
       pattern: "*.json"
 
   - directory:
-      type: path
+      type: directory
       description: Directory containing the reference atlas
 
 output:
