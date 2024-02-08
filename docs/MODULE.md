@@ -150,7 +150,7 @@ Once done, commit your module and push the changes. Then, to look at the documen
 nf-core modules \
   --git-remote <your reository> \
   --branch <your branch unless main branch> \
-  list <category>/<name>
+  info <category>/<name>
 ```
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
