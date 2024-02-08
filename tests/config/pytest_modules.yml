@@ -13,3 +13,7 @@ testdata/scilpy:
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
+
+segmentation/fsreconall:
+  - modules/nf-scil/segmentation/fsreconall/**
+  - tests/modules/nf-scil/segmentation/fsreconall/**
