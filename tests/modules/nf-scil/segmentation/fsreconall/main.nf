@@ -7,7 +7,7 @@ include { SEGMENTATION_FSRECONALL } from '../../../../../modules/nf-scil/segment
 // Too long, we don't test.
 // To test locally, add the following lines to the workflow below:
 
-
+/*
 workflow test_segmentation_fsreconall {
     input = [
         [ id:'test', single_end:false ], // meta map
@@ -18,10 +18,5 @@ workflow test_segmentation_fsreconall {
     // Hiding the real test because it is too long.
     // SEGMENTATION_FSRECONALL ( input )
 
-    // But nf-core does not allow an empty test. Results in critical error: Could not find any test result files in '/tmp/xxxxx'.
-    // Creating a fake new file.
-    def file = new File("test__recon_all")
-    file.mkdir()
-
-
 }
+*/
