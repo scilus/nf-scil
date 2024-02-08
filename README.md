@@ -73,6 +73,7 @@ nf-core modules \
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
+- Node &geq; 14 and Prettier (seel [below](#installing-prettier))
 
 > [!IMPORTANT]
 > Nextflow might not detect the right `Java virtual machine` by default, more so if
@@ -91,7 +92,7 @@ nf-core modules \
 The project uses _poetry_ to manage python dependencies. To install it using pipx,
 run the following commands :
 
-```
+```bash
 pip install pipx
 pipx ensurepath
 pipx install poetry
@@ -107,7 +108,7 @@ pipx install poetry
 
 Once done, install the project with :
 
-```
+```bash
 poetry install
 ```
 
@@ -118,7 +119,7 @@ poetry install
 
 The project scripts and dependencies can be accessed using :
 
-```
+```bash
 poetry shell
 ```
 
@@ -184,3 +185,25 @@ nf-core modules \
 ```
 
 The tool can be omitted to run tests for all modules in a category.
+
+
+# Installing Prettier
+
+To install **Prettier** for the project, you need to have `node` and `npm` installed on your system to at least version 14. On Ubuntu, you can do it using snap :
+
+```bash
+sudo snap install node --classic
+```
+
+However, if you cannot install snap, or have another OS, refer to the [official documentation](https://nodejs.org/en/download/package-manager/) for the installation procedure.
+
+Under the current configuration for the *Development Container*, for this project, we use the following procedure, considering `${NODE_MAJOR}` is at least 14 for Prettier :
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
+apt-get install -y nodejs
+
+npm install --save-dev --save-exact prettier
+
+echo "function prettier() { npm exec prettier $@; }" >> ~/.bashrc
+```
