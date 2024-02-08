@@ -3,7 +3,7 @@
 nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
-include { 
+include {
     TRACKING_LOCALTRACKING as WM_TRACKING;
     TRACKING_LOCALTRACKING as FA_TRACKING; } from '../../../../../modules/nf-scil/tracking/localtracking/main.nf'
 
@@ -12,7 +12,7 @@ workflow test_tracking_localtracking_wm {
     input_fetch = Channel.from( [ "tracking.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
-    
+
     input_wm = LOAD_TEST_DATA.out.test_data_directory
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
