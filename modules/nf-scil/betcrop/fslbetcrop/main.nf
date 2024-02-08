@@ -11,9 +11,9 @@ process BETCROP_FSLBETCROP {
         tuple val(meta), path(image), path(bval), path(bvec)
 
     output:
-        tuple val(meta), path("*_bet_cropped.nii.gz")            , emit: image
-        tuple val(meta), path("*_bet_cropped_mask.nii.gz")       , emit: mask
-        tuple val(meta), path("*_boundingBox.pkl")               , emit: bbox
+        tuple val(meta), path("*_bet*.nii.gz")            , emit: image
+        tuple val(meta), path("*_bet_*mask.nii.gz")       , emit: mask
+        tuple val(meta), path("*_boundingBox.pkl")               , emit: bbox , optional: true
         path "versions.yml"                                      , emit: versions
 
     when:
@@ -30,20 +30,20 @@ process BETCROP_FSLBETCROP {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    if [[ -v $bval && -v $bvec ]]
+    if [[ -v $bval ]]
     then
         scil_extract_b0.py $image $bval $bvec ${prefix}__b0.nii.gz --mean \
             $b0_thr --force_b0_threshold
 
         bet ${prefix}__b0.nii.gz ${prefix}__b0_bet.nii.gz -m -R $bet_f
-        scil_image_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__b0_bet_mask.nii.gz --data_type uint8 -f
-        mrcalc $image ${prefix}__b0_bet_mask.nii.gz -mult ${prefix}__dwi_bet.nii.gz -quiet -nthreads 1
+        scil_image_math.py convert ${prefix}__b0_mask_bet.nii.gz ${prefix}__b0_mask_bet.nii.gz --data_type uint8 -f
+        mrcalc $image ${prefix}__b0_mask_bet.nii.gz -mult ${prefix}__dwi_bet.nii.gz -quiet -nthreads 1
 
         if ( "$task.ext.crop" = true );
         then
-            scil_crop_volume.py $image ${prefix}__dwi_bet_cropped.nii.gz -f \
+            scil_crop_volume.py ${prefix}__dwi_bet.nii.gz ${prefix}__dwi_bet_cropped.nii.gz -f \
                 --output_bbox ${prefix}__dwi_boundingBox.pkl -f
-            scil_crop_volume.py ${prefix}__b0_bet_mask.nii.gz ${prefix}__dwi_bet_cropped_mask.nii.gz -f\
+            scil_crop_volume.py ${prefix}__b0_mask_bet.nii.gz ${prefix}__dwi_bet_cropped_mask.nii.gz -f\
                 --input_bbox ${prefix}__dwi_boundingBox.pkl -f
             scil_image_math.py convert ${prefix}__dwi_bet_cropped_mask.nii.gz ${prefix}__dwi_bet_cropped_mask.nii.gz \
                 --data_type uint8 -f
@@ -55,7 +55,7 @@ process BETCROP_FSLBETCROP {
 
         if ( "$task.ext.crop" = true );
         then
-            scil_crop_volume.py $image ${prefix}__t1_bet_cropped.nii.gz -f \
+            scil_crop_volume.py ${prefix}__t1_bet.nii.gz ${prefix}__t1_bet_cropped.nii.gz -f \
                 --output_bbox ${prefix}__t1_boundingBox.pkl -f
             scil_crop_volume.py ${prefix}__t1_bet_mask.nii.gz ${prefix}__t1_bet_cropped_mask.nii.gz -f\
                 --input_bbox ${prefix}__dwi_boundingBox.pkl -f
