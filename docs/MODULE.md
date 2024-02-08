@@ -79,9 +79,9 @@ already follow all guidelines. You will find related files in :
     In the script section, before the script definition (in `""" """`), unpack the
     optional argument into a `usable variable`. For a optional input `input1`, add :
 
-      ```groovy
-      def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
-      ```
+    ```groovy
+    def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    ```
 
     The variable `optional_input1` is the one to use in the script.
 
@@ -209,7 +209,7 @@ critical to ensure future executions of your test produce valid outputs.
 
 ## Lint your code
 
-Before submitting to *nf-scil*, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the *nf-core* command line :
+Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
 
 ```bash
 nf-core module \
@@ -218,7 +218,7 @@ nf-core module \
   lint <category>/<tool>
 ```
 
-YOu'll probably get a bunch of *whitespace* and *indentation* errors, but also image errors, bad *nextflow* syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
+YOu'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
 
 ## Last safety test
 
@@ -407,9 +407,9 @@ archives = Channel.from( [ "<archive1>", "archive2", ... ] )
 LOAD_TEST_DATA( archives, "<directory>" )
 ```
 
->[!IMPORTANT]
->This will download the `archives` and unpack them under the `directory`
->specified, using the archive's names as `sub-directories` to unpack to.
+> [!IMPORTANT]
+> This will download the `archives` and unpack them under the `directory`
+> specified, using the archive's names as `sub-directories` to unpack to.
 
 The archives contents are accessed using the output parameter of the workflow
 `LOAD_TEST_DATA.out.test_data_directory`. To create the test input from it for
@@ -430,7 +430,6 @@ Then feed it to it :
 ```groovy
 PROCESS( input )
 ```
-
 
 > [!NOTE]
 > The subworkflow must be called individually in each test workflow, even if they download
