@@ -1,0 +1,7 @@
+- name: "reconst freewater"
+  command: nextflow run ./tests/modules/nf-scil/reconst/freewater -entry test_reconst_freewater -c ./tests/config/nextflow.config
+  tags:
+    - "reconst"
+    - "reconst/freewater"
+  files:
+    - path: ""
