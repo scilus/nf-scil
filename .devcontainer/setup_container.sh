@@ -11,5 +11,3 @@ apt-get install -y nodejs
 npm install -g --save-dev --save-exact prettier
 npm install -g editorconfig
 npm install -g --save-dev editorconfig-checker
-
-echo "function prettier() { npm exec prettier $@; }" >> ~/.bashrc
