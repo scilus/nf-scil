@@ -32,6 +32,7 @@ process RECONST_FODFMETRICS {
     def fa_threshold = task.ext.fa_threshold ? "--fa_t " + task.ext.fa_threshold : ""
     def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
+    def abs_peaks_values = task.ext.abs_peaks_values ? "--abs_peaks_and_values" : ""
     def set_mask = mask ? "--mask $mask" : ""
 
     if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else peaks = ""
@@ -64,7 +65,7 @@ process RECONST_FODFMETRICS {
         $afd_max $afd_total \
         $afd_sum $nufo \
         $relative_threshold --at \${a_threshold} \
-        $processes
+        $processes $abs_peaks_values
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
