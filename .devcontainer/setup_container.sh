@@ -8,6 +8,6 @@ echo "export PROFILE=docker" >> ~/.bashrc
 curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
 apt-get install -y nodejs
 
-npm install --save-dev --save-exact prettier
-
-echo "function prettier() { npm exec prettier $@; }" >> ~/.bashrc
+npm install -g --save-dev --save-exact prettier
+npm install -g editorconfig
+npm install -g --save-dev editorconfig-checker
