@@ -6,6 +6,10 @@ betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
 
+bundle/labelmap:
+  - modules/nf-scil/bundle/labelmap/**
+  - tests/modules/nf-scil/bundle/labelmap/**
+
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
@@ -26,11 +30,6 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
-# Reinstate when test data becomes valid again
-#tracking/localtracking:
-#  - modules/nf-scil/tracking/localtracking/**
-#  - tests/modules/nf-scil/tracking/localtracking/**
-
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
@@ -39,19 +38,9 @@ reconst/dtimetrics:
   - modules/nf-scil/reconst/dtimetrics/**
   - tests/modules/nf-scil/reconst/dtimetrics/**
 
-# Reinstate when test data becomes valid again
-#reconst/fodf:
-#  - modules/nf-scil/reconst/fodf/**
-#  - tests/modules/nf-scil/reconst/fodf/**
-
 reconst/frf:
   - modules/nf-scil/reconst/frf/**
   - tests/modules/nf-scil/reconst/frf/**
-
-# Reinstate when test data becomes valid again
-#reconst/meanfrf:
-#  - modules/nf-scil/reconst/meanfrf/**
-#  - tests/modules/nf-scil/reconst/meanfrf/**
 
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
@@ -68,11 +57,6 @@ segmentation/freesurferseg:
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
-
-# Reinstate when test data becomes valid again
-#tracking/pfttracking:
-#  - modules/nf-scil/tracking/pfttracking/**
-#  - tests/modules/nf-scil/tracking/pfttracking/**
 
 utils/extractb0:
   - modules/nf-scil/utils/extractb0/**
