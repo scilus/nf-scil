@@ -1,0 +1,7 @@
+- name: "reconst fodfmetrics"
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodfmetrics -entry test_reconst_fodfmetrics -c ./tests/config/nextflow.config
+  tags:
+    - "reconst"
+    - "reconst/fodfmetrics"
+  files:
+    - path: ""
