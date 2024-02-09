@@ -10,6 +10,3 @@ indent_style = space
 
 [*.{md,yml,yaml,html,css,scss,js,cff}]
 indent_size = 2
-
-[LICENSE]
-indent_size = 1
