@@ -12,7 +12,7 @@ process TESTDATA_SCILPY {
     path(test_data_path)
 
     output:
-    path("$test_data_path/${archive.take(archive.lastIndexOf('.'))}"), emit: test_data_directory
+    path("test_data/${archive.take(archive.lastIndexOf('.'))}"), emit: test_data_directory
     path "versions.yml"                                              , emit: versions
 
     when:
@@ -21,6 +21,11 @@ process TESTDATA_SCILPY {
     script:
     def args = task.ext.args ?: ''
     """
+    if [ -d "$test_data_path" ]
+    then
+        ln -s $test_data_path test_data
+    fi
+
     python - << EOF
     import logging
     import hashlib
@@ -60,7 +65,7 @@ process TESTDATA_SCILPY {
 
 
     def get_home():
-        return "$test_data_path"
+        return "${test_data_path ?: 'test_data'}"
 
 
     def get_testing_files_dict():
@@ -144,9 +149,6 @@ process TESTDATA_SCILPY {
             CURR_URL = GOOGLE_URL + 'id=' + url_id
             if not os.path.isdir(full_path_no_ext):
                 if ext == '.zip' and not os.path.isdir(full_path_no_ext):
-                    logging.warning('Downloading and extracting {} from url {} to '
-                                    '{}'.format(f, CURR_URL, scilpy_home))
-
                     # Robust method to Virus/Size check from GDrive
                     download_file_from_google_drive(url_id, full_path)
 
@@ -168,10 +170,6 @@ process TESTDATA_SCILPY {
                 else:
                     raise NotImplementedError("Data fetcher was expecting to deal "
                                             "with a zip file.")
-
-            else:
-                # toDo. Verify that data on disk is the right one.
-                logging.warning("Not fetching data; already on disk.")
 
     fetch_data(get_testing_files_dict(), keys=["$archive"])
 
