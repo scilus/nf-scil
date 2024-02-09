@@ -1,4 +1,5 @@
 {
+    "editor.detectIndentation": false,
     "python.languageServer": "Pylance",
     "python.missingPackage.severity": "Warning",
     "python.terminal.activateEnvInCurrentTerminal": true,
