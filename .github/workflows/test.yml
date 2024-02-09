@@ -70,15 +70,26 @@ jobs:
       modules: ${{ steps.filter.outputs.changes }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Get branch names.
+        id: branch-names
+        uses: tj-actions/branch-names@v8
+
+      - uses: PatrikValkovic/last-successful-commit-action@v3.1
+        id: successful-ref
         with:
-          fetch-depth: 2 # To retrieve the preceding commit.
+          branch: ${{ steps.branch-names.outputs.current_branch }}
+          github_token: ${{ github.token }}
+          workflow_id: "test.yml"
 
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
         id: filter
         with:
           filters: "tests/config/pytest_modules.yml"
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: ""
+          base: ${{ steps.successful-ref.outputs.commit_hash }}
+
 
   nf-core-lint:
     runs-on: scilus-nf-scil-runners
