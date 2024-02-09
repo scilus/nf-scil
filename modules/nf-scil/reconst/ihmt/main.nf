@@ -37,7 +37,7 @@ process RECONST_IHMT {
     """
     scil_mti_maps_ihMT.py . --in_altpn $altpn --in_altnp $altnp --in_positive $pos \
         --in_negative $neg --in_mtoff_pd $mtoff_pd $set_mtoff_t1 --out_prefix $prefix \
-        --mask $set_mask $set_jsons $set_acq_params $set_b1 $set_b1_method \
+        $set_mask $set_jsons $set_acq_params $set_b1 $set_b1_method \
         $set_b1_fitvalues $b1_nominal $b1_smooth
     
     cat <<-END_VERSIONS > versions.yml

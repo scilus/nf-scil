@@ -34,8 +34,8 @@ workflow test_reconst_ihmt {
             file("${test_data_directory}/echo-2_acq-T1w_ihmt.nii.gz"),
             file("${test_data_directory}/echo-3_acq-T1w_ihmt.nii.gz")],
             file("${test_data_directory}/mask_resample.nii.gz"),
-            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
-            file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.json"),
+            file("${test_data_directory}/echo-1_acq-T1w_ihmt.json")],
             [],
             [],
             []
@@ -72,8 +72,8 @@ workflow test_reconst_ihmt_no_mask {
             file("${test_data_directory}/echo-2_acq-T1w_ihmt.nii.gz"),
             file("${test_data_directory}/echo-3_acq-T1w_ihmt.nii.gz")],
             [],
-            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
-            file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.json"),
+            file("${test_data_directory}/echo-1_acq-T1w_ihmt.json")],
             [],
             [],
             []
@@ -134,8 +134,8 @@ workflow test_reconst_ihmt_single_echo {
             file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
             file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz"),
             file("${test_data_directory}/mask_resample.nii.gz"),
-            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.nii.gz"),
-            file("${test_data_directory}/echo-1_acq-T1w_ihmt.nii.gz")],
+            [file("${test_data_directory}/echo-1_acq-mtoff_ihmt.json"),
+            file("${test_data_directory}/echo-1_acq-T1w_ihmt.json")],
             [],
             [],
             []
