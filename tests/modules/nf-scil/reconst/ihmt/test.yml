@@ -1,0 +1,7 @@
+- name: "reconst ihmt"
+  command: nextflow run ./tests/modules/nf-scil/reconst/ihmt -entry test_reconst_ihmt -c ./tests/config/nextflow.config
+  tags:
+    - "reconst"
+    - "reconst/ihmt"
+  files:
+    - path: ""
