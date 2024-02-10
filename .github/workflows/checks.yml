@@ -92,7 +92,6 @@ jobs:
 
   lint-modules:
     name: lint-modules
-    runs-on: ubuntu-latest
     needs: [failing-modules]
     if: needs.failing-modules.outputs.modules != '[]'
     strategy:
@@ -106,7 +105,6 @@ jobs:
 
   test-modules:
     name: test-modules
-    runs-on: ubuntu-latest
     needs: [failing-modules]
     if: needs.failing-modules.outputs.modules != '[]'
     strategy:
