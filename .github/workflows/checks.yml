@@ -1,4 +1,4 @@
-name: Modules Tests
+name: nf-scil checks
 on:
   push:
     branches:
