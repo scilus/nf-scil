@@ -19,7 +19,7 @@ env:
 
 jobs:
   pre-commit:
-    runs-on: scilus-nf-scil-runners
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
@@ -31,7 +31,7 @@ jobs:
           extra_args: ""
 
   prettier:
-    runs-on: scilus-nf-scil-runners
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
         run: prettier --check .
 
   editorconfig:
-    runs-on: scilus-nf-scil-runners
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -62,9 +62,9 @@ jobs:
       - name: Run ECLint check
         run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
-  pytest-changes:
-    name: pytest-changes
-    runs-on: scilus-nf-scil-runners
+  failing-modules:
+    name: failing-modules
+    runs-on: ubuntu-latest
     outputs:
       # Expose matched filters as job 'modules' output variable
       modules: ${{ steps.filter.outputs.changes }}
@@ -75,12 +75,12 @@ jobs:
         id: branch-names
         uses: tj-actions/branch-names@v8
 
-      - uses: PatrikValkovic/last-successful-commit-action@v3.1
+      - uses: SamhammerAG/last-successful-build-action@v5
         id: successful-ref
         with:
           branch: ${{ steps.branch-names.outputs.current_branch }}
-          github_token: ${{ github.token }}
-          workflow_id: "test.yml"
+          token: ${{ github.token }}
+          workflow: "Modules Tests"
 
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
@@ -90,141 +90,41 @@ jobs:
           token: ""
           base: ${{ steps.successful-ref.outputs.commit_hash }}
 
-
-  nf-core-lint:
-    runs-on: scilus-nf-scil-runners
-    name: nf-core-lint
-    needs: [pytest-changes]
-    if: ${{ (needs.pytest-changes.outputs.modules != '[]') }}
+  lint-modules:
+    name: lint-modules
+    runs-on: ubuntu-latest
+    needs: [failing-modules]
+    if: needs.failing-modules.outputs.modules != '[]'
     strategy:
       fail-fast: false
       matrix:
-        tags:
-          [
-            "${{ fromJson(needs.pytest-changes.outputs.modules) }}"
-          ]
-    steps:
-      - uses: actions/checkout@v4
+        module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
+    uses: ./.github/workflows/lint_modules.yml@${{ github.ref }}
+    with:
+      module: ${{ matrix.module }}
+    secrets: inherit
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install pip
-        run: python -m pip install --upgrade pip
-
-      - uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "17"
-
-      - name: Setup Nextflow
-        uses: nf-core/setup-nextflow@v1
-
-      - name: Install nf-core tools
-        run: python -m pip install --upgrade --force-reinstall nf-core
-
-      - name: Lint module ${{ matrix.tags }}
-        run: nf-core modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ matrix.tags }}
-        if: ${{ !startsWith(matrix.tags, 'subworkflows/') }}
-
-      - name: Remove substring from matrix.tags
-        id: remove_substring
-        run: echo subworkflow_names=$(echo "${{ matrix.tags }}" | sed 's/subworkflows\///g') >> $GITHUB_OUTPUT
-
-      - name: Lint subworkflow ${{ matrix.tags }}
-        run: nf-core subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
-        if: ${{ startsWith(matrix.tags, 'subworkflows/') }}
-
-  pytest:
-    runs-on: scilus-nf-scil-runners
-    name: pytest
-    needs: [pytest-changes]
-    if: needs.pytest-changes.outputs.modules != '[]'
+  test-modules:
+    name: test-modules
+    runs-on: ubuntu-latest
+    needs: [failing-modules]
+    if: needs.failing-modules.outputs.modules != '[]'
     strategy:
       fail-fast: false
       matrix:
-        tags: ["${{ fromJson(needs.pytest-changes.outputs.modules) }}"]
+        module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
         profile: ["docker", "singularity"]
         exclude:
-          - tags: "nf-test"
-    env:
-      NXF_ANSI_LOG: false
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pytest-workflow cryptography
-
-      - uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "17"
-
-      - name: Setup Nextflow
-        uses: nf-core/setup-nextflow@v1
-
-      - name: Setup apptainer
-        if: matrix.profile == 'singularity'
-        uses: eWaterCycle/setup-apptainer@main
-
-      - name: Set up Singularity
-        if: matrix.profile == 'singularity'
-        run: |
-          mkdir -p $NXF_SINGULARITY_CACHEDIR
-          mkdir -p $NXF_SINGULARITY_LIBRARYDIR
-
-      # Test the module
-      - name: Run pytest-workflow
-        # only use one thread for pytest-workflow to avoid race condition on conda cache.
-        run: TMPDIR=~/_work PROFILE=${{ matrix.profile }} pytest --tag ${{ matrix.tags }} --symlink --kwdof --git-aware --color=yes
-
-      - name: Output log on failure
-        if: failure()
-        run: |
-          sudo apt-get update > /dev/null
-          sudo apt-get install bat > /dev/null
-          batcat --decorations=always --color=always /home/runner/pytest_workflow_*/*/log.{out,err}
-
-      - name: Setting global variables
-        uses: actions/github-script@v6
-        id: parsed
-        with:
-          script: |
-            return '${{ matrix.tags }}'.toLowerCase().replaceAll(/\//g, '-').trim('-').trim('"')
-          result-encoding: string
-
-      - name: Upload logs on failure
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: logs-${{ matrix.profile }}-${{ steps.parsed.outputs.result }}
-          path: |
-            /home/runner/pytest_workflow_*/*/.nextflow.log
-            /home/runner/pytest_workflow_*/*/log.out
-            /home/runner/pytest_workflow_*/*/log.err
-            /home/runner/pytest_workflow_*/*/work
-            !/home/runner/pytest_workflow_*/*/work/conda
-            !/home/runner/pytest_workflow_*/*/work/singularity
-            !${{ github.workspace }}/.singularity
+          - module: "nf-test"
+    uses: ./.github/workflows/test_module.yml
+    with:
+      module: ${{ matrix.module }}
+      profile: ${{ matrix.profile }}
+    secrets: inherit
 
   confirm-pass:
-    runs-on: scilus-nf-scil-runners
-    needs: [prettier, editorconfig, pytest-changes, nf-core-lint, pytest]
+    runs-on: ubuntu-latest
+    needs: [prettier, editorconfig, failing-modules, lint-modules, test-modules]
     if: ${{ !cancelled() }}
     steps:
       - name: All tests ok
