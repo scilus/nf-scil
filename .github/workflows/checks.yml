@@ -80,7 +80,7 @@ jobs:
         with:
           branch: ${{ steps.branch-names.outputs.current_branch }}
           token: ${{ github.token }}
-          workflow: "Modules Tests"
+          workflow: "nf-scil checks"
 
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
