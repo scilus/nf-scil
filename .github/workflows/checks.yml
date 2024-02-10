@@ -1,16 +1,6 @@
 name: nf-scil checks
 on:
-  push:
-    branches:
-      - main
-  pull_request_target:
-    branches:
-      - main
-
-# Cancel if a newer run is started
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  workflow_call:
 
 env:
   NXF_SINGULARITY_CACHEDIR: ${{ github.workspace }}/.singularity
@@ -71,7 +61,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get branch names.
+      - name: Get branch names
         id: branch-names
         uses: tj-actions/branch-names@v8
 
