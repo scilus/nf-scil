@@ -45,6 +45,11 @@ process RECONST_DTIMETRICS {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
+    def max_dti_shell_value = task.ext.max_dti_shell_value ?: 1500
+    def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
+    def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
+    
     def mask =[]
 
     if (b0mask) mask += ["--mask $b0mask"]
@@ -69,7 +74,12 @@ process RECONST_DTIMETRICS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_dti_metrics.py $dwi $bval $bvec ${mask.join(" ")} --not_all $args -f --force_b0_threshold
+    scil_extract_dwi_shell.py $dwi $bval $bvec $dti_shells \
+                dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+                $dwi_shell_tolerance -f
+
+    scil_compute_dti_metrics.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+        ${mask.join(" ")} --not_all $args -f --force_b0_threshold
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -82,6 +92,7 @@ process RECONST_DTIMETRICS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
+    scil_extract_dwi_shell.py -h
     scil_compute_dti_metrics.py -h
 
     touch ${prefix}__ad.nii.gz

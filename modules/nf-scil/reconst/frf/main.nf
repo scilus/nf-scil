@@ -9,10 +9,13 @@ process RECONST_FRF {
         'scilus/scilus:1.6.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(wm_mask), path(gm_mask), path(csf_mask), val(method)
 
     output:
-        tuple val(meta), path("*__frf.txt")             , emit: frf
+        tuple val(meta), path("*__frf.txt")             , emit: frf, optional: true
+        tuple val(meta), path("*__wm_frf.txt")          , emit: wm_frf, optional: true
+        tuple val(meta), path("*__gm_frf.txt")          , emit: gm_frf, optional: true
+        tuple val(meta), path("*__csf_frf.txt")         , emit: csf_frf, optional: true
         path "versions.yml"                             , emit: versions
 
     when:
@@ -24,20 +27,67 @@ process RECONST_FRF {
     def fa_min = task.ext.fa_min ? "--min_fa " + task.ext.fa_min : ""
     def nvox_min = task.ext.nvox_min ? "--min_nvox " + task.ext.nvox_min : ""
     def roi_radius = task.ext.roi_radius ? "--roi_radii " + task.ext.roi_radius : ""
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
+    def max_dti_shell_value = task.ext.max_dti_shell_value ?: 1500
+    def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
+    // Test that this really gives the right dti_shells! (for dtimetrics also)
+    def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
+    def set_method = method ?: "ssst_frf"
+
+    def fa_thr_wm = task.ext.fa_thr_wm ? "--fa_thr_wm " + task.ext.fa_thr_wm : ""
+    def fa_thr_gm = task.ext.fa_thr_gm ? "--fa_thr_gm " + task.ext.fa_thr_gm : ""
+    def fa_thr_csf = task.ext.fa_thr_csf ? "--fa_thr_csf " + task.ext.fa_thr_csf : ""
+    def md_thr_wm = task.ext.md_thr_wm ? "--md_thr_wm " + task.ext.md_thr_wm : ""
+    def md_thr_gm = task.ext.md_thr_gm ? "--md_thr_gm " + task.ext.md_thr_gm : ""
+    def md_thr_csf = task.ext.md_thr_csf ? "--md_thr_csf " + task.ext.md_thr_csf : ""
+
     def fix_frf = task.ext.manual_frf ? task.ext.manual_frf : ""
+    def fix_wm_frf = task.ext.manual_wm_frf ? task.ext.manual_wm_frf : ""
+    def fix_gm_frf = task.ext.manual_gm_frf ? task.ext.manual_gm_frf : ""
+    def fix_csf_frf = task.ext.manual_csf_frf ? task.ext.manual_csf_frf : ""
     def set_mask = mask ? "--mask $mask" : ""
+    def set_wm_mask = wm_mask ? "--mask_wm $wm_mask" : ""
+    def set_gm_mask = gm_mask ? "--mask_gm $gm_mask" : ""
+    def set_csf_mask = csf_mask ? "--mask_csf $csf_mask" : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_ssst_frf.py $dwi $bval $bvec ${prefix}__frf.txt \
-        $set_mask $fa $fa_min $nvox_min $roi_radius --force_b0_threshold
+    if [ "$set_method" = "ssst_frf" ]; then
 
-    if ( "$task.ext.set_frf" = true ); then
-        scil_set_response_function.py ${prefix}__frf.txt "${fix_frf}" \
-            ${prefix}__frf.txt -f
+        scil_extract_dwi_shell.py $dwi $bval $bvec $dti_shells \
+                dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+                $dwi_shell_tolerance -f
+
+        scil_compute_ssst_frf.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells ${prefix}__frf.txt \
+            $set_mask $fa $fa_min $nvox_min $roi_radius --force_b0_threshold
+
+        if ( "$task.ext.set_frf" = true ); then
+            scil_set_response_function.py ${prefix}__frf.txt "${fix_frf}" \
+                ${prefix}__frf.txt -f
+        fi
+
+    fi
+
+    if [ "$set_method" = "msmt_frf" ]; then
+
+        scil_compute_msmt_frf.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+            ${prefix}__wm_frf.txt ${prefix}__gm_frf.txt ${prefix}__csf_frf.txt \
+            $set_mask $set_wm_mask $set_gm_mask $set_csf_mask $fa_thr_wm $fa_thr_gm \
+            $fa_thr_csf $md_thr_wm $md_thr_gm $md_thr_csf $nvox_min $roi_radius \
+            $dwi_shell_tolerance --dti_bval_limit $max_dti_shell_value
+
+        if ( "$task.ext.set_frf" = true ); then
+            scil_set_response_function.py ${prefix}__wm_frf.txt "${fix_wm_frf}" \
+                ${prefix}__wm_frf.txt -f
+            scil_set_response_function.py ${prefix}__gm_frf.txt "${fix_gm_frf}" \
+                ${prefix}__gm_frf.txt -f
+            scil_set_response_function.py ${prefix}__csf_frf.txt "${fix_csf_frf}" \
+                ${prefix}__csf_frf.txt -f
+        fi
+
     fi
 
     cat <<-END_VERSIONS > versions.yml
@@ -50,10 +100,15 @@ process RECONST_FRF {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
+    scil_extract_dwi_shell.py -h
     scil_compute_ssst_frf.py -h
     scil_set_response_function.py -h
+    scil_compute_msmt_frf.py -h
 
     touch ${prefix}__frf.txt
+    touch ${prefix}__wm_frf.txt
+    touch ${prefix}__gm_frf.txt
+    touch ${prefix}__csf_frf.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

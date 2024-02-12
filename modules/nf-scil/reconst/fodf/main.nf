@@ -32,7 +32,7 @@ process RECONST_FODF {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : "" /* WARNING!!! Don't forget to add this back to compute_msmt_fodf once we get to scilpy 2.0. */
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
     def min_fodf_shell_value = task.ext.min_fodf_shell_value ?: 100     /* Default value for min_fodf_shell_value */
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10        /* Default value for b0_thr_extract_b0 */
     def fodf_shells = task.ext.fodf_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$min_fodf_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
@@ -84,12 +84,8 @@ process RECONST_FODF {
 
     if [ "$set_method" = "msmt_fodf" ]; then
 
-        scil_extract_dwi_shell.py $dwi $bval $bvec $fodf_shells \
-            dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
-            $dwi_shell_tolerance -f
-
-        scil_compute_msmt_fodf.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf \
-            $sh_order $sh_basis $set_mask $processes \
+        scil_compute_msmt_fodf.py $dwi $bval $bvec $frf \
+            $sh_order $sh_basis $set_mask $processes $dwi_shell_tolerance \
             --not_all $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
 
         cp ${prefix}__wm_fodf.nii.gz ${prefix}__fodf.nii.gz
