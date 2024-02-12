@@ -1,7 +1,7 @@
 ---
 name: "reconst_fodf"
-description: Perform FODF reconstruction from a dwi volume for a selected number of shells. 
-  Note that multiple choices of reconstruction method are available throught the method argument. 
+description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells. 
+  Note that multiple choices of FODF reconstruction method are available throught the method argument. 
   The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst_fodf.
   The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst_fodf.
   The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt_fodf.
@@ -38,6 +38,16 @@ input:
   - mask:
       type: file
       description: B0 mask.
+      pattern: "*.{nii,nii.gz}"
+
+  - fa:
+      type: file
+      description: FA map.
+      pattern: "*.{nii,nii.gz}"
+
+  - md:
+      type: file
+      description: MD map.
       pattern: "*.{nii,nii.gz}"
 
   - frf:
@@ -88,6 +98,36 @@ output:
       type: file
       description: Volume fraction map in rgb.
       pattern: "*vf_rgb.nii.gz"
+
+  - peaks:
+      type: file
+      description: Peaks file.
+      pattern: "*peaks.nii.gz"
+
+  - peak_indices:
+      type: file
+      description: Peak indices file.
+      pattern: "*peak_indices.nii.gz"
+
+  - afd_max:
+      type: file
+      description: Maximum Apparent Fiber Density (AFDmax) map.
+      pattern: "*afd_max.nii.gz"
+
+  - afd_total:
+      type: file
+      description: Total Apparent Fiber Density (AFDtotal) map.
+      pattern: "*afd_total.nii.gz"
+
+  - afd_sum:
+      type: file
+      description: Sum of all Apparent Fiber Density (Afdsum) map.
+      pattern: "*afd_sum.nii.gz"
+
+  - nufo:
+      type: file
+      description: Number of Fiber Orientation (NuFO) map.
+      pattern: "*nufo.nii.gz"
 
   - versions:
       type: file

@@ -18,6 +18,8 @@ workflow test_reconst_fodf_ssst {
             file("${test_data_directory}/dwi.bval"),
             file("${test_data_directory}/dwi.bvec"),
             file("${test_data_directory}/cc.nii.gz"),
+            file("${test_data_directory}/fa.nii.gz"),
+            file("${test_data_directory}/md.nii.gz"),
             file("${test_data_directory}/frf.txt"),
             []
         ]}
@@ -38,6 +40,8 @@ workflow test_reconst_fodf_ssst_with_fodf_shells {
             file("${test_data_directory}/dwi.bval"),
             file("${test_data_directory}/dwi.bvec"),
             file("${test_data_directory}/cc.nii.gz"),
+            file("${test_data_directory}/fa.nii.gz"),
+            file("${test_data_directory}/md.nii.gz"),
             file("${test_data_directory}/frf.txt"),
             []
         ]}
@@ -58,6 +62,8 @@ workflow test_reconst_fodf_no_mask {
             file("${test_data_directory}/dwi.bval"),
             file("${test_data_directory}/dwi.bvec"),
             [],
+            file("${test_data_directory}/fa.nii.gz"),
+            file("${test_data_directory}/md.nii.gz"),
             file("${test_data_directory}/frf.txt"),
             []
         ]}
@@ -78,11 +84,35 @@ workflow test_reconst_fodf_msmt {
             file("${test_data_directory}/dwi.bval"),
             file("${test_data_directory}/dwi.bvec"),
             file("${test_data_directory}/mask.nii.gz"),
+            file("${test_data_directory}/fa.nii.gz"),
+            file("${test_data_directory}/md.nii.gz"),
             [file("${test_data_directory}/wm_frf.txt"),
             file("${test_data_directory}/gm_frf.txt"),
             file("${test_data_directory}/csf_frf.txt")],
-            ["msmt_fodf"]
+            "msmt_fodf"
         ]}
 
     RECONST_FODF ( input_msmt )
+}
+
+workflow test_reconst_fodf_ssst_with_no_metrics {
+
+    input_fetch = Channel.from( [ "processing.zip" ] )
+
+    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
+
+    input_no_metrics = LOAD_TEST_DATA.out.test_data_directory
+        .map{ test_data_directory -> [
+            [ id:'test', single_end:false ], // meta map
+            file("${test_data_directory}/dwi.nii.gz"),
+            file("${test_data_directory}/dwi.bval"),
+            file("${test_data_directory}/dwi.bvec"),
+            file("${test_data_directory}/cc.nii.gz"),
+            file("${test_data_directory}/fa.nii.gz"),
+            file("${test_data_directory}/md.nii.gz"),
+            file("${test_data_directory}/frf.txt"),
+            []
+        ]}
+
+    RECONST_FODF ( input_no_metrics )
 }
