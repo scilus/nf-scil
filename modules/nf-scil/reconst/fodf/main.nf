@@ -66,7 +66,7 @@ process RECONST_FODF {
 
     scil_compute_msmt_fodf.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf \
         $sh_order $sh_basis --tolerance $dwi_shell_tolerance $set_mask $processes \
-        $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
+        --not_all $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
 
     fi
 

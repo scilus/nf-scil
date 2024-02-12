@@ -60,7 +60,7 @@ process RECONST_FODFMETRICS {
     fi
 
     scil_compute_fodf_metrics.py $fodf \
-        $set_mask $sh_basis \
+        $set_mask $sh_basis --not_all \
         $peaks $peak_values $peak_indices \
         $afd_max $afd_total \
         $afd_sum $nufo \
