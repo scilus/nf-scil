@@ -8,7 +8,9 @@ process RECONST_FODF {
         'scilus/scilus:1.6.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(frf), path(method)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(frf), val(method)
+
+         /* Bring back fodf metrics!!!!!! */
 
     output:
         tuple val(meta), path("*fodf.nii.gz")           , emit: fodf, optional: true

@@ -15,7 +15,7 @@ workflow test_reconst_fodf_metrics {
         .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/fodf.nii.gz"),
-            file("${test_data_directory}/cc.nii.gz"),
+            [],
             file("${test_data_directory}/fa.nii.gz"),
             file("${test_data_directory}/md.nii.gz"),
         ]}

@@ -1,41 +1,19 @@
-- name: reconst fodf test_reconst_fodf
-  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf -c ./tests/config/nextflow.config
+- name: reconst fodf test_reconst_fodf_ssst
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf_ssst -c ./tests/config/nextflow.config
   tags:
     - reconst
     - reconst/fodf
   files:
-    - path: output/reconst/test__afd_max.nii.gz
-      md5sum: d2aecc1192eb3a53b242e6ef0685f49c
-    - path: output/reconst/test__afd_sum.nii.gz
-      md5sum: 11909eafd74abcd583319fd09fa1ba5b
-    - path: output/reconst/test__afd_total.nii.gz
-      md5sum: 47599cb268c908d77df357c0368845f4
     - path: output/reconst/test__fodf.nii.gz
       md5sum: 2c71e0506a12ef9c5be25053da2d77f3
-    - path: output/reconst/test__nufo.nii.gz
-      md5sum: 61e525ff274acab3e2af9315a8310990
-    - path: output/reconst/test__peak_indices.nii.gz
-      md5sum: 727c6364d59ddfe6b4fccd17c4dd6abb
-    - path: output/reconst/test__peaks.nii.gz
-      md5sum: ad1de478ad7ce7f89a0de8264062e499
     - path: output/reconst/versions.yml
 
-- name: reconst fodf test_reconst_fodf_with_fodf_shells
-  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf_with_fodf_shells -c ./tests/config/nextflow.config
+- name: reconst fodf test_reconst_fodf_ssst_with_fodf_shells
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf_ssst_with_fodf_shells -c ./tests/config/nextflow.config
   tags:
     - reconst
     - reconst/fodf
   files:
-    - path: output/reconst/afd_max.nii.gz
-      md5sum: 3ba2b409f74fc6ba07e7ecca9de799b8
-    - path: output/reconst/afd_sum.nii.gz
-      md5sum: 9616121f66cd74850b16f18b2933786d
-    - path: output/reconst/nufo.nii.gz
-      md5sum: 787b96bc0efe6664a0a1d27cbcbdd13b
-    - path: output/reconst/peak_indices.nii.gz
-      md5sum: ba05afacfadddf88703340ad13122be8
-    - path: output/reconst/peaks.nii.gz
-      md5sum: 6bfb78432f36a988fd3044e12be3d1c2
     - path: output/reconst/test__fodf.nii.gz
       md5sum: 354775ef620f04b85fcfaa1e8707f358
     - path: output/reconst/versions.yml
@@ -46,18 +24,14 @@
     - reconst
     - reconst/fodf
   files:
-    - path: output/reconst/test__afd_max.nii.gz
-      md5sum: 80daed94f5d973d40a4c38f084e3bbaf
-    - path: output/reconst/test__afd_sum.nii.gz
-      md5sum: 34eaaeacff2539ea93904cced646f5d1
-    - path: output/reconst/test__afd_total.nii.gz
-      md5sum: 7f50b056d2f36b81edf07562d6473d13
     - path: output/reconst/test__fodf.nii.gz
-      md5sum: 927605d51fb706aaeaf8e4f005950f1b
-    - path: output/reconst/test__nufo.nii.gz
-      md5sum: 6da0feb3c81ed10ef5b468223502ab68
-    - path: output/reconst/test__peak_indices.nii.gz
-      md5sum: b064ff1370edf449f128e196506b7484
-    - path: output/reconst/test__peaks.nii.gz
-      md5sum: 2f07a9efb9eb8b016bc3de213068b305
+      md5sum: 899b21d98af44f1ea0a6ac695c7e6cfa
+    - path: output/reconst/versions.yml
+
+- name: reconst fodf test_reconst_fodf_msmt
+  command: nextflow run ./tests/modules/nf-scil/reconst/fodf -entry test_reconst_fodf_msmt -c ./tests/config/nextflow.config
+  tags:
+    - reconst
+    - reconst/fodf
+  files:
     - path: output/reconst/versions.yml
