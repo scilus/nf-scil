@@ -1,10 +1,13 @@
 ---
 name: "reconst_fodf"
-description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells.
+description: Perform FODF reconstruction from a dwi volume for a selected number of shells. 
+  Note that multiple choices of reconstruction method are available throught the set_method argument. 
+  The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst_fodf.
+  The multi-shell single-tissue (msst) method can be performed by selecting multiple shells and choosing ssst_fodf. (Default)
+  The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt_fodf.
 keywords:
   - FODF
   - Local Model
-  - Metrics
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -37,20 +40,17 @@ input:
       description: B0 mask.
       pattern: "*.{nii,nii.gz}"
 
-  - fa:
-      type: file
-      description: FA map.
-      pattern: "*.{nii,nii.gz}"
-
-  - md:
-      type: file
-      description: MD map.
-      pattern: "*.{nii,nii.gz}"
-
   - frf:
-      type: file
-      description: Fiber Response Function (FRF).
+      type: file or list
+      description: Fiber Response Function (FRF). In the case of msmt_fodf method,
+        should be a list of files containing the wm_frf, gm_frf and csf_frf, in that order.
       pattern: "*.txt"
+
+  - method:
+      type: string
+      description: Reconstruction method. Either ssst_fodf or msmt_fodf. This choice 
+        changes the frf input and all the output, be careful.
+      pattern: "*_fodf"
 
 output:
   - meta:
@@ -64,35 +64,30 @@ output:
       description: FODF map.
       pattern: "*fodf.nii.gz"
 
-  - peaks:
+  - wm_fodf:
       type: file
-      description: Peaks file.
-      pattern: "*peaks.nii.gz"
+      description: WM FODF map.
+      pattern: "*wm_fodf.nii.gz"
 
-  - peak_indices:
+  - gm_fodf:
       type: file
-      description: Peak indices file.
-      pattern: "*peak_indices.nii.gz"
+      description: GM FODF map.
+      pattern: "*gm_fodf.nii.gz"
 
-  - afd_max:
+  - csf_fodf:
       type: file
-      description: Maximum Apparent Fiber Density (AFDmax) map.
-      pattern: "*afd_max.nii.gz"
+      description: CSF FODF map.
+      pattern: "*csf_fodf.nii.gz"
 
-  - afd_total:
+  - vf:
       type: file
-      description: Total Apparent Fiber Density (AFDtotal) map.
-      pattern: "*afd_total.nii.gz"
+      description: Volume fraction map.
+      pattern: "*vf.nii.gz"
 
-  - afd_sum:
+  - vf_rgb:
       type: file
-      description: Sum of all Apparent Fiber Density (Afdsum) map.
-      pattern: "*afd_sum.nii.gz"
-
-  - nufo:
-      type: file
-      description: Number of Fiber Orientation (NuFO) map.
-      pattern: "*nufo.nii.gz"
+      description: Volume fraction map in rgb.
+      pattern: "*vf_rgb.nii.gz"
 
   - versions:
       type: file
@@ -101,3 +96,4 @@ output:
 
 authors:
   - "@gagnonanthony"
+  - "@karanphil"
