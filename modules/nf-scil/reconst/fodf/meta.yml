@@ -1,9 +1,9 @@
 ---
 name: "reconst_fodf"
 description: Perform FODF reconstruction from a dwi volume for a selected number of shells. 
-  Note that multiple choices of reconstruction method are available throught the set_method argument. 
+  Note that multiple choices of reconstruction method are available throught the method argument. 
   The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst_fodf.
-  The multi-shell single-tissue (msst) method can be performed by selecting multiple shells and choosing ssst_fodf. (Default)
+  The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst_fodf.
   The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt_fodf.
 keywords:
   - FODF
