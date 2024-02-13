@@ -11,5 +11,6 @@ concurrency:
 
 jobs:
   checks:
+    if: github.repository == 'scilus/nf-scil'
     uses: ./.github/workflows/checks.yml
     secrets: inherit
