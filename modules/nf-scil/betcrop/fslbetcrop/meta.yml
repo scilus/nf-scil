@@ -46,11 +46,6 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - dwi:
       type: file
       description: Nifti DWI volume brain-extracted and cropped.
@@ -63,8 +58,13 @@ output:
 
   - bbox:
       type: file
-      description: DWI BoundingBox used for cropping. 
+      description: DWI BoundingBox used for cropping.
       pattern: "*dwi_boundingBox.pkl"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@gagnonanthony"

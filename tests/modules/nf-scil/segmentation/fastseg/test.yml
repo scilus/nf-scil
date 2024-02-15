@@ -1,0 +1,19 @@
+- name: segmentation fastseg test_segmentation_fastseg
+  command: nextflow run ./tests/modules/nf-scil/segmentation/fastseg -entry test_segmentation_fastseg -c ./tests/config/nextflow.config
+  tags:
+    - segmentation
+    - segmentation/fastseg
+  files:
+    - path: output/segmentation/test__map_csf.nii.gz
+      md5sum: 461c210c0a1b45fde9bfe7eeda418289
+    - path: output/segmentation/test__map_gm.nii.gz
+      md5sum: 4e14f969938ba3a933a8ffe18275c597
+    - path: output/segmentation/test__map_wm.nii.gz
+      md5sum: 96563c38fe5b09347bfeeb6323c0de67
+    - path: output/segmentation/test__mask_csf.nii.gz
+      md5sum: 5a93c78646c9d9ac83f74f1a7c76533d
+    - path: output/segmentation/test__mask_gm.nii.gz
+      md5sum: ca97f325d81e3962d31acff25a69037d
+    - path: output/segmentation/test__mask_wm.nii.gz
+      md5sum: 44d43bfd9e3a053eaf442ec5fd114513
+    - path: output/segmentation/versions.yml

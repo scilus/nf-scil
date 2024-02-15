@@ -1,5 +1,11 @@
+.pytest_cache/
 .work/
+.venv/
 .nextflow*
 *.pyc
+*.vsix
+.DS_Store
 
 *.code-workspace
+
+node_modules/

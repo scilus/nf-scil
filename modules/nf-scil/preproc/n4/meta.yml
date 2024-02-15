@@ -17,7 +17,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - dwi:
       type: file
       description: Nifti image file to correct
@@ -31,7 +31,7 @@ input:
   - b0_mask:
       type: file
       description: Nifti image file mask
-      pattern: "*.{nii,nii.gz}"        
+      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
@@ -39,16 +39,16 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
 
   - dwi:
       type: file
       description: DWI image N4 corrected
       pattern: "*.{nii,nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@arnaudbore"
