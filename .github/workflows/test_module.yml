@@ -70,6 +70,11 @@ jobs:
           mkdir -p $NXF_SINGULARITY_CACHEDIR
           mkdir -p $NXF_SINGULARITY_LIBRARYDIR
 
+      - name: Trigger local singularity build
+        if: inputs.profile == 'singularity'
+        run: |
+          singularity build --fakeroot $NXF_SINGULARITY_LIBRARYDIR/scilus_1.6.0.sif docker://scilus/scilus:1.6.0
+
       # Test the module
       - name: Run pytest-workflow
         # only use one thread for pytest-workflow to avoid race condition on conda cache.
