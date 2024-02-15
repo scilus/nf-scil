@@ -75,7 +75,7 @@ jobs:
         id: filter
         with:
           filters: "tests/config/pytest_modules.yml"
-          token: ""
+          token: ${{ github.token }}
           base: ${{ steps.successful-ref.outputs.commit_hash }}
 
   lint-modules:
