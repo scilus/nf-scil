@@ -99,6 +99,8 @@ process TRACKING_PFTTRACKING {
     "sh_basis": "${task.ext.basis}"}
     TRACKING_INFO
 
+    echo "remove, only to trigger tests"
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0

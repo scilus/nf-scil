@@ -29,6 +29,10 @@ on:
         required: true
         type: string
 
+env:
+  NXF_SINGULARITY_CACHEDIR: /home/runner/.singularity_cache/.singularity
+  NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
+
 run-name: Test ${{ inputs.module }}
 jobs:
   pytest:
