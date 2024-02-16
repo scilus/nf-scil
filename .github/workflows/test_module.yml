@@ -70,10 +70,10 @@ jobs:
           mkdir -p $NXF_SINGULARITY_CACHEDIR
           mkdir -p $NXF_SINGULARITY_LIBRARYDIR
 
-      - name: Trigger local singularity build
+      - name: Pull scilus image into cache
         if: inputs.profile == 'singularity'
         run: |
-          singularity build --fakeroot $NXF_SINGULARITY_LIBRARYDIR/scilus_1.6.0.sif docker://scilus/scilus:1.6.0
+          apptainer pull docker://scilus/scilus:1.6.0
 
       # Test the module
       - name: Run pytest-workflow
