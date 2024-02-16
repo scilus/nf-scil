@@ -85,7 +85,7 @@ jobs:
         run: |
           sudo apt-get update > /dev/null
           sudo apt-get install bat > /dev/null
-          batcat --decorations=always --color=always /home/runner/pytest_workflow_*/*/log.{out,err}
+          batcat --decorations=always --color=always /home/runner/_work/pytest_workflow_*/*/log.{out,err}
 
       - name: Setting global variables
         uses: actions/github-script@v6
