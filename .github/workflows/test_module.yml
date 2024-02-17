@@ -80,7 +80,6 @@ jobs:
         # only use one thread for pytest-workflow to avoid race condition on conda cache.
         run: |
             TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
-            sleep infinity
 
       - name: Collate logs on failure
         if: failure()
@@ -110,4 +109,6 @@ jobs:
             /home/runner/_work/pytest_workflow_*/**/.command.log
             /home/runner/_work/pytest_workflow_*/**/.command.sh
             /home/runner/_work/pytest_workflow_*/**/.command.run
+            /home/runner/_work/pytest_workflow_*/*/work/**/*.trk
+            /home/runner/_work/pytest_workflow_*/*/work/**/*.nii.gz
             !${{ github.workspace }}/.singularity
