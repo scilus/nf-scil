@@ -89,6 +89,7 @@ jobs:
 
       - name: Setting global variables
         uses: actions/github-script@v6
+        if: failure()
         id: parsed
         with:
           script: |
