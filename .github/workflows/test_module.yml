@@ -78,7 +78,9 @@ jobs:
       # Test the module
       - name: Run pytest-workflow
         # only use one thread for pytest-workflow to avoid race condition on conda cache.
-        run: TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
+        run: |
+            TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
+            sleep infinity
 
       - name: Collate logs on failure
         if: failure()
