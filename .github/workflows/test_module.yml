@@ -70,20 +70,27 @@ jobs:
           mkdir -p $NXF_SINGULARITY_CACHEDIR
           mkdir -p $NXF_SINGULARITY_LIBRARYDIR
 
+      - name: Pull scilus image into cache
+        if: inputs.profile == 'singularity'
+        run: |
+          apptainer pull docker://scilus/scilus:1.6.0
+
       # Test the module
       - name: Run pytest-workflow
         # only use one thread for pytest-workflow to avoid race condition on conda cache.
-        run: TMPDIR=~/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
+        run: |
+            TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
 
       - name: Collate logs on failure
         if: failure()
         run: |
           sudo apt-get update > /dev/null
           sudo apt-get install bat > /dev/null
-          batcat --decorations=always --color=always /home/runner/pytest_workflow_*/*/log.{out,err}
+          batcat --decorations=always --color=always /home/runner/_work/pytest_workflow_*/*/log.{out,err}
 
       - name: Setting global variables
         uses: actions/github-script@v6
+        if: failure()
         id: parsed
         with:
           script: |
@@ -99,9 +106,7 @@ jobs:
             /home/runner/_work/pytest_workflow_*/*/.nextflow.log
             /home/runner/_work/pytest_workflow_*/*/log.out
             /home/runner/_work/pytest_workflow_*/*/log.err
-            /home/runner/_work/pytest_workflow_*/*/.command.log
-            /home/runner/_work/pytest_workflow_*/*/.command.sh
-            /home/runner/_work/pytest_workflow_*/*/.command.run
-            !/home/runner/_work/pytest_workflow_*/*/work/conda
-            !/home/runner/_work/pytest_workflow_*/*/work/singularity
+            /home/runner/_work/pytest_workflow_*/**/.command.log
+            /home/runner/_work/pytest_workflow_*/**/.command.sh
+            /home/runner/_work/pytest_workflow_*/**/.command.run
             !${{ github.workspace }}/.singularity
