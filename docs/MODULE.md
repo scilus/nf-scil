@@ -4,7 +4,7 @@
 
 First verify you are located at the root of this repository (not in `modules`), then run the following interactive command :
 
-```
+```bash
 nf-core modules create
 ```
 
@@ -19,7 +19,7 @@ to the following to ensure configuration abides with `nf-scil` :
 
 Alternatively, you can use the following command to supply nearly all information :
 
-```
+```bash
 nf-core modules create \
     --author @scilus \
     --label process_single \
@@ -79,7 +79,9 @@ already follow all guidelines. You will find related files in :
     In the script section, before the script definition (in `""" """`), unpack the
     optional argument into a `usable variable`. For a optional input `input1`, add :
 
-        def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    ```groovy
+    def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    ```
 
     The variable `optional_input1` is the one to use in the script.
 
@@ -142,6 +144,15 @@ don't need to specify them all. At least define the `keywords`, describe the pro
 > the module ! If you use scripts from `scilpy`, here you describe scilpy. If using
 > `ANTs`, describe ANts. Etcetera.
 
+Once done, commit your module and push the changes. Then, to look at the documentation it creates for your module, run :
+
+```bash
+nf-core modules \
+  --git-remote <your reository> \
+  --branch <your branch unless main branch> \
+  list <category/name>
+```
+
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
 
 The module's test suite is a collection of workflows containing isolated test cases. You
@@ -183,7 +194,7 @@ so output files that gets generated are checksum correctly.
 
 Run :
 
-```
+```bash
 nf-core modules create-test-yml \
     --run-tests \
     --force \
@@ -195,6 +206,19 @@ All the test case you defined will be run, watch out for errors ! Once everythin
 smoothly, look at the test metadata file produced : `tests/modules/nf-scil/<category/<tool>/test.yml`
 and validate that ALL outputs produced by test cases have been caught. Their `md5sum` is
 critical to ensure future executions of your test produce valid outputs.
+
+## Lint your code
+
+Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
+
+```bash
+nf-core module \
+  --git-remote <your repository> \
+  --branch <your branch unless main branch> \
+  lint <category>/<tool>
+```
+
+YOu'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
 
 ## Last safety test
 
@@ -214,7 +238,7 @@ testing one.
 
 Run the following command, to try installing the module :
 
-```
+```bash
 nf-core module \
   --git-remote https://github.com/scilus/nf-scil.git \
   --branch <branch> \
@@ -319,7 +343,7 @@ for the `dictionary key` : `params.test_data[<category>][<tool>][<input_name>]`.
 
 Thus, a new binding in `tests/config/test_data.config` should resemble the following
 
-```
+```groovy
 params {
     test_data {
         ...
@@ -346,7 +370,7 @@ You then use `params.test_data[<category>][<tool>][<input_name>]` in your test c
 attach the data to the test case, since the `params.test_data` collection is loaded
 automatically. To do so, in a test workflow, define an `input` object :
 
-```
+```groovy
 input = [
   [ id:'test', single_end:false ], // meta map
   params.test_data[<category>][<tool>][<input_name1>],
@@ -365,7 +389,7 @@ and use it as input to the processes to test.
 The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
 depository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
 
-```
+```groovy
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
 ```
 
@@ -376,11 +400,22 @@ The workflow has two inputs :
 
 - A name for the temporary directory where the data will be put.
 
-The directories where the archives contents are unpacked are accessed using the output
-parameter of the workflow `LOAD_TEST_DATA.out.test_data_directory`. To create the test
-input from it, use the `.map` operator :
+To call it, use the following syntax :
 
+```groovy
+archives = Channel.from( [ "<archive1>", "archive2", ... ] )
+LOAD_TEST_DATA( archives, "<directory>" )
 ```
+
+> [!IMPORTANT]
+> This will download the `archives` and unpack them under the `directory`
+> specified, using the archive's names as `sub-directories` to unpack to.
+
+The archives contents are accessed using the output parameter of the workflow
+`LOAD_TEST_DATA.out.test_data_directory`. To create the test input from it for
+a given `PROCESS` to test use the `.map` operator :
+
+```groovy
 input = LOAD_TEST_DATA.out.test_data_directory
   .map{ test_data_directory -> [
     [ id:'test', single_end:false ], // meta map
@@ -390,7 +425,13 @@ input = LOAD_TEST_DATA.out.test_data_directory
   ] }
 ```
 
+Then feed it to it :
+
+```groovy
+PROCESS( input )
+```
+
 > [!NOTE]
 > The subworkflow must be called individually in each test workflow, even if they download
 > the same archives, since there is no mechanism to pass data channels to them from the
-> outside.
+> outside, or share cache between them.
