@@ -6,7 +6,6 @@ keywords:
   - t1
   - BET
   - ants
-  - 
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -23,7 +22,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - t1:
       type: file
       description: Nifti t1 volume to perform BET.
