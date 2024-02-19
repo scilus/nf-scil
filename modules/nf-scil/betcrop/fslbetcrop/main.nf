@@ -51,7 +51,7 @@ process BETCROP_FSLBETCROP {
 
     else
         bet $image ${prefix}__t1_bet.nii.gz -m -R $bet_f
-        scil_image_math.py convert ${prefix}__t1_bet_mask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8 -f 
+        scil_image_math.py convert ${prefix}__t1_bet_mask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8 -f
 
         if ( "$task.ext.crop" = true );
         then
@@ -62,7 +62,7 @@ process BETCROP_FSLBETCROP {
             scil_image_math.py convert ${prefix}__t1_bet_cropped_mask.nii.gz ${prefix}__t1_bet_cropped_mask.nii.gz \
                 --data_type uint8 -f
         fi
-    fi     
+    fi 
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
