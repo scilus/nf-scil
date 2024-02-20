@@ -1,0 +1,31 @@
+- name: tracking localtracking test_tracking_localtracking_wm
+  command: nextflow run ./tests/modules/nf-scil/tracking/localtracking -entry test_tracking_localtracking_wm -c ./tests/config/nextflow.config
+  tags:
+    - tracking/localtracking
+    - tracking
+  files:
+    - path: output/wm/test__local_seeding_mask.nii.gz
+      md5sum: e4e926fce399749c2cd68c92eccf04be
+    - path: output/wm/test__local_tracking.trk
+      md5sum: bfc37c0d4bf0b1e8723ce0ffa3d42160
+    - path: output/wm/test__local_tracking_config.json
+      md5sum: 2c580723a264df9016802b7594cf767f
+    - path: output/wm/test__local_tracking_mask.nii.gz
+      md5sum: e4e926fce399749c2cd68c92eccf04be
+    - path: output/wm/versions.yml
+
+- name: tracking localtracking test_tracking_localtracking_fa
+  command: nextflow run ./tests/modules/nf-scil/tracking/localtracking -entry test_tracking_localtracking_fa -c ./tests/config/nextflow.config
+  tags:
+    - tracking/localtracking
+    - tracking
+  files:
+    - path: output/fa/test__local_seeding_mask.nii.gz
+      md5sum: 49c19bc6c0f47af32dea7af992b40490
+    - path: output/fa/test__local_tracking.trk
+      md5sum: 7d7f49582d9f1253ce6bf7e22f359260
+    - path: output/fa/test__local_tracking_config.json
+      md5sum: 04229ce51ef839a62cc21a09851eeb04
+    - path: output/fa/test__local_tracking_mask.nii.gz
+      md5sum: 49c19bc6c0f47af32dea7af992b40490
+    - path: output/fa/versions.yml

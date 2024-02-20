@@ -1,0 +1,13 @@
+- name: segmentation freesurferseg test_segmentation_freesurferseg
+  command: nextflow run ./tests/modules/nf-scil/segmentation/freesurferseg -entry test_segmentation_freesurferseg -c ./tests/config/nextflow.config
+  tags:
+    - segmentation/freesurferseg
+    - segmentation
+  files:
+    - path: output/segmentation/test__mask_csf.nii.gz
+      md5sum: 7205df5a2f8943d56be08bb9dd988d2b
+    - path: output/segmentation/test__mask_gm.nii.gz
+      md5sum: 9b76673a8fef5781cd709cadf53a5d8f
+    - path: output/segmentation/test__mask_wm.nii.gz
+      md5sum: 9073e2189f83fb7893d16ba64b1ed0c1
+    - path: output/segmentation/versions.yml
