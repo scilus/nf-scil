@@ -36,7 +36,7 @@ process IMAGE_RESAMPLE {
         $interp \
         $iso_min \
         $image ${prefix}__resampled.nii.gz \
- 
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0

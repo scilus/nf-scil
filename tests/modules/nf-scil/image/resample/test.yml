@@ -1,9 +1,105 @@
-- name: image resample test_image_resample
-  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample -c ./tests/config/nextflow.config
+- name: image resample test_image_resample_voxsize
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_voxsize -c ./tests/config/nextflow.config
   tags:
-    - image/resample
     - image
+    - image/resample
   files:
-    - path: output/image/test__resampled.nii.gz
-      md5sum: 11da64899aa148113e84eeb5f9b62f4e
-    - path: output/image/versions.yml
+    - path: output/testdata/test_data/others/IFGWM.trk
+      md5sum: a5e2562f426828cc8545177cc9e1aee7
+    - path: output/testdata/test_data/others/IFGWM_sub.trk
+      md5sum: ac7ccd28cd68e1716ddbd0a89da44c2f
+    - path: output/testdata/test_data/others/atlas_freesurfer_v2.nii.gz
+      md5sum: 8e3f843675e91e11d2373776ba9ad3ea
+    - path: output/testdata/test_data/others/atlas_freesurfer_v2_LUT.json
+      md5sum: 4ef9f72ee0a4171d9f0c542f7fa84748
+    - path: output/testdata/test_data/others/bash.sh
+      md5sum: 59bc7e18f0eae3a99d12a946dcf9c982
+    - path: output/testdata/test_data/others/density.nii.gz
+      md5sum: 4a4e744d4cd5ffdd8c8cfab7017e5aa7
+    - path: output/testdata/test_data/others/empty.trk
+      md5sum: f2aace642173766bec0dac40ffc5325c
+    - path: output/testdata/test_data/others/encoding.b
+      md5sum: 5fcdf35e2a7091fbf9391e3acd30901a
+    - path: output/testdata/test_data/others/fa.nii.gz
+      md5sum: 343e160ca7c09bd097e58cd1ed855705
+    - path: output/testdata/test_data/others/fa_resample.nii.gz
+      md5sum: 452486ad673fc2dde945079b184cdac1
+    - path: output/testdata/test_data/others/fibercup_bundle_0.trk
+      md5sum: 6b0677d5d35cba36b7fc3ffe65d46ef6
+    - path: output/testdata/test_data/others/fibercup_bundle_0_color.trk
+      md5sum: a4ee454b392b15026c764fdec1940899
+    - path: output/testdata/test_data/others/fibercup_bundles.trk
+      md5sum: 3ac194f7a92cfd20d3f260573919e70e
+    - path: output/testdata/test_data/others/fibercup_bundles_color.trk
+      md5sum: 6b193c7db1ad6654c3777a0df2bb4d6b
+    - path: output/testdata/test_data/others/rgb.nii.gz
+      md5sum: 83bf9ee1b55da00c2cee4820f7e12ad3
+    - path: output/testdata/test_data/others/rgb_.nii.gz
+      md5sum: 0f07925e8cb7d5d0556ea26528616add
+    - path: output/testdata/test_data/others/t1.nii.gz
+      md5sum: 0810e2c63265d85ac978e10ccd4640c3
+    - path: output/testdata/test_data/others/t1_crop.nii.gz
+      md5sum: 4c22510d60989137c2f7de020319a786
+    - path: output/testdata/test_data/others/t1_crop_denoised.nii.gz
+      md5sum: 433debed89c6f1b2749d6b3db10df7fc
+    - path: output/testdata/test_data/others/t1_resample.nii.gz
+      md5sum: e49ff3ceedfb43c78650faca341dc407
+    - path: output/testdata/test_data/others/t1_reshape.nii.gz
+      md5sum: c3fb11528a64f214c3c9dc9c5646c6c3
+    - path: output/testdata/versions.yml
+    - path: output/voxsize/test__resampled.nii.gz
+      md5sum: a41ff35a73920630c99c9950236a82db
+    - path: output/voxsize/versions.yml
+
+- name: image resample test_image_resample_volsize
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_volsize -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/testdata/test_data/others/IFGWM.trk
+      md5sum: a5e2562f426828cc8545177cc9e1aee7
+    - path: output/testdata/test_data/others/IFGWM_sub.trk
+      md5sum: ac7ccd28cd68e1716ddbd0a89da44c2f
+    - path: output/testdata/test_data/others/atlas_freesurfer_v2.nii.gz
+      md5sum: 8e3f843675e91e11d2373776ba9ad3ea
+    - path: output/testdata/test_data/others/atlas_freesurfer_v2_LUT.json
+      md5sum: 4ef9f72ee0a4171d9f0c542f7fa84748
+    - path: output/testdata/test_data/others/bash.sh
+      md5sum: 59bc7e18f0eae3a99d12a946dcf9c982
+    - path: output/testdata/test_data/others/density.nii.gz
+      md5sum: 4a4e744d4cd5ffdd8c8cfab7017e5aa7
+    - path: output/testdata/test_data/others/empty.trk
+      md5sum: f2aace642173766bec0dac40ffc5325c
+    - path: output/testdata/test_data/others/encoding.b
+      md5sum: 5fcdf35e2a7091fbf9391e3acd30901a
+    - path: output/testdata/test_data/others/fa.nii.gz
+      md5sum: 343e160ca7c09bd097e58cd1ed855705
+    - path: output/testdata/test_data/others/fa_resample.nii.gz
+      md5sum: 452486ad673fc2dde945079b184cdac1
+    - path: output/testdata/test_data/others/fibercup_bundle_0.trk
+      md5sum: 6b0677d5d35cba36b7fc3ffe65d46ef6
+    - path: output/testdata/test_data/others/fibercup_bundle_0_color.trk
+      md5sum: a4ee454b392b15026c764fdec1940899
+    - path: output/testdata/test_data/others/fibercup_bundles.trk
+      md5sum: 3ac194f7a92cfd20d3f260573919e70e
+    - path: output/testdata/test_data/others/fibercup_bundles_color.trk
+      md5sum: 6b193c7db1ad6654c3777a0df2bb4d6b
+    - path: output/testdata/test_data/others/rgb.nii.gz
+      md5sum: 83bf9ee1b55da00c2cee4820f7e12ad3
+    - path: output/testdata/test_data/others/rgb_.nii.gz
+      md5sum: 0f07925e8cb7d5d0556ea26528616add
+    - path: output/testdata/test_data/others/t1.nii.gz
+      md5sum: 0810e2c63265d85ac978e10ccd4640c3
+    - path: output/testdata/test_data/others/t1_crop.nii.gz
+      md5sum: 4c22510d60989137c2f7de020319a786
+    - path: output/testdata/test_data/others/t1_crop_denoised.nii.gz
+      md5sum: 433debed89c6f1b2749d6b3db10df7fc
+    - path: output/testdata/test_data/others/t1_resample.nii.gz
+      md5sum: e49ff3ceedfb43c78650faca341dc407
+    - path: output/testdata/test_data/others/t1_reshape.nii.gz
+      md5sum: c3fb11528a64f214c3c9dc9c5646c6c3
+    - path: output/testdata/versions.yml
+    - path: output/volsize/test__resampled.nii.gz
+      md5sum: 83687e530f98cd0956d75030ca9c8465
+    - path: output/volsize/versions.yml
