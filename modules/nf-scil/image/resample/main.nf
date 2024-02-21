@@ -28,7 +28,7 @@ process IMAGE_RESAMPLE {
 
     def resampling_method = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : (task.ext.volume_size ? "--volume_size " + task.ext.volume_size : "")
 
-"""
+    """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1

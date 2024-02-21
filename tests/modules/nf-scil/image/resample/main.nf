@@ -3,12 +3,12 @@
 nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
-include { 
-    IMAGE_RESAMPLE as VOXSIZE_RESAMPLE;
-    IMAGE_RESAMPLE as VOLSIZE_RESAMPLE; } from '../../../../../modules/nf-scil/image/resample/main.nf'
+include {
+    IMAGE_RESAMPLE as IMAGE_RESAMPLE_VOXSIZE;
+    IMAGE_RESAMPLE as IMAGE_RESAMPLE_VOLSIZE; } from '../../../../../modules/nf-scil/image/resample/main.nf'
 
 workflow test_image_resample_voxsize {
-    
+
     input_fetch = Channel.from( [ "others.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
@@ -19,11 +19,11 @@ workflow test_image_resample_voxsize {
             file("${test_data_directory}/fa.nii.gz")
     ]}
 
-    VOXSIZE_RESAMPLE ( input_voxsize )
+    IMAGE_RESAMPLE_VOXSIZE ( input_voxsize )
 }
 
 workflow test_image_resample_volsize {
-    
+
     input_fetch = Channel.from( [ "others.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
@@ -34,5 +34,5 @@ workflow test_image_resample_volsize {
             file("${test_data_directory}/fa.nii.gz")
     ]}
 
-    VOLSIZE_RESAMPLE ( input_volsize )
+    IMAGE_RESAMPLE_VOLSIZE ( input_volsize )
 }
