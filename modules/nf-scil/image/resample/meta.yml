@@ -17,6 +17,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
+
   - image:
       type: file
       description: Nifti image file to resample
@@ -28,15 +29,16 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
+
   - image:
       type: file
       description: Nifti image file resampled
       pattern: "*_resampled.{nii,nii.gz}"
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-
 
 authors:
   - "@scilus"
