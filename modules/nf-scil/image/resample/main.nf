@@ -18,9 +18,13 @@ process IMAGE_RESAMPLE {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def ref = task.ext.ref ? "--ref" + task.ext.ref : ""
     def voxel_size = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : ""
-    def interp = task.ext.interp ? "--interp " + task.ext.interp : ""
     def volume_size = task.ext.volume_size ? "--volume_size " + task.ext.volume_size : ""
+    def iso_min = task.ext.iso_min ? "--iso_min" + task.ext.iso_min : ""
+    def interp = task.ext.interp ? "--interp " + task.ext.interp : ""
+    def f = task.ext.f ? "--f" + task.ext.f : ""
+    def enforce_dimensions = task.ext.enforce_dimensions ? "--enforce_dimensions" + task.ext.enforce_dimensions : ""
 
     def resampling_method = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : (task.ext.volume_size ? "--volume_size " + task.ext.volume_size : "")
 
@@ -30,6 +34,7 @@ process IMAGE_RESAMPLE {
     export OPENBLAS_NUM_THREADS=1
 
     scil_resample_volume.py $resampling_method \
+        $ref $iso_min $f $enforce_dimensions \
         $interp \
         $image ${prefix}__resampled.nii.gz \
 

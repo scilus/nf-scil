@@ -1,8 +1,8 @@
 - name: image resample test_image_resample_voxsize
   command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_voxsize -c ./tests/config/nextflow.config
   tags:
-    - image
     - image/resample
+    - image
   files:
     - path: output/image/test__resampled.nii.gz
       md5sum: a41ff35a73920630c99c9950236a82db
@@ -11,8 +11,8 @@
 - name: image resample test_image_resample_volsize
   command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_volsize -c ./tests/config/nextflow.config
   tags:
-    - image
     - image/resample
+    - image
   files:
     - path: output/image/test__resampled.nii.gz
       md5sum: 83687e530f98cd0956d75030ca9c8465
