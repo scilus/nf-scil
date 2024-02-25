@@ -23,9 +23,10 @@ input:
       description: Nifti image file to resample to
       pattern: "*.{nii,nii.gz}"
 
-  - ref:
-    type: file
-    description: Nifti reference image file
+  - reference:
+      type: file
+      description: Nifti reference image file
+      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
