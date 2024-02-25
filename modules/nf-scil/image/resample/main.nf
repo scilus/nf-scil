@@ -7,7 +7,7 @@ process IMAGE_RESAMPLE {
         'scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(image)
+    tuple val(meta), path(image), path(ref) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*_resampled.nii.gz"), emit: image
@@ -18,23 +18,33 @@ process IMAGE_RESAMPLE {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def ref = task.ext.ref ? "--ref" + task.ext.ref : ""
     def voxel_size = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : ""
     def volume_size = task.ext.volume_size ? "--volume_size " + task.ext.volume_size : ""
-    def iso_min = task.ext.iso_min ? "--iso_min" + task.ext.iso_min : ""
+    def iso_min = task.ext.iso_min ? "--iso_min" : ""
     def interp = task.ext.interp ? "--interp " + task.ext.interp : ""
-    def f = task.ext.f ? "--f" + task.ext.f : ""
-    def enforce_dimensions = task.ext.enforce_dimensions ? "--enforce_dimensions" + task.ext.enforce_dimensions : ""
-
-    def resampling_method = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : (task.ext.volume_size ? "--volume_size " + task.ext.volume_size : "")
+    def f = task.ext.f ? "-f" : ""
+    def enforce_dimensions = task.ext.enforce_dimensions ? "--enforce_dimensions" : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
+    if [[ -n "$ref" ]]; then
+        resampling_method="--ref $ref"
+    elif [[ -n "$volume_size" ]]; then
+        resampling_method="--volume_size $volume_size"
+    elif [[ -n "$voxel_size" ]]; then
+        resampling_method="--voxel_size $voxel_size"
+    elif [[ -n "$iso_min" ]]; then
+        resampling_method="--iso_min"
+    else
+        echo "One of 'voxel_size', 'volume_size', 'iso_min', or 'ref' must be provided."
+        exit 1
+    fi
+
     scil_resample_volume.py $resampling_method \
-        $ref $iso_min $f $enforce_dimensions \
+        $f $enforce_dimensions \
         $interp \
         $image ${prefix}__resampled.nii.gz \
 
