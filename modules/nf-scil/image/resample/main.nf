@@ -18,6 +18,7 @@ process IMAGE_RESAMPLE {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def reference = "$ref" ? "--ref $ref" : ""
     def voxel_size = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : ""
     def volume_size = task.ext.volume_size ? "--volume_size " + task.ext.volume_size : ""
     def iso_min = task.ext.iso_min ? "--iso_min" : ""
@@ -30,22 +31,8 @@ process IMAGE_RESAMPLE {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    if [[ -n "$ref" ]]; then
-        resampling_method="--ref $ref"
-    elif [[ -n "$volume_size" ]]; then
-        resampling_method="--volume_size $volume_size"
-    elif [[ -n "$voxel_size" ]]; then
-        resampling_method="--voxel_size $voxel_size"
-    elif [[ -n "$iso_min" ]]; then
-        resampling_method="--iso_min"
-    else
-        echo "One of 'voxel_size', 'volume_size', 'iso_min', or 'ref' must be provided."
-        exit 1
-    fi
-
-    scil_resample_volume.py $resampling_method \
-        $f $enforce_dimensions \
-        $interp \
+    scil_resample_volume.py $voxel_size $volume_size $reference $iso_min \
+        $f $enforce_dimensions $interp \
         $image ${prefix}__resampled.nii.gz \
 
     cat <<-END_VERSIONS > versions.yml
