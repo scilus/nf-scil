@@ -11,37 +11,39 @@
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 ![Checks](https://github.com/scilus/nf-scil/workflows/nf-scil%20merge%20checks/badge.svg)
 
-Welcome to `nf-scil` ! A **Nextflow** modules and workflows repository for neuroimaging
+Welcome to the `nf-scil` project ! A **Nextflow** modules and workflows repository for neuroimaging
 maintained by the [SCIL team](https://scil-documentation.readthedocs.io/en/latest/). The
 primary focus of the library is to provide pre-built processes and processing sequences for
 **diffusion Magnetic Resonance Imaging**, optimized for _Nextflow DLS2_, based on open-source
 technologies and made easily available to pipeline's developers through the `nf-core`
 framework.
 
-- [Using modules from nf-scil](README.md#using-modules-from-nf-scil)
-- [Developing in nf-scil](README.md#developing-in-nf-scil)
-  - [Dependencies](README.md#dependencies)
-  - [Developer installation](README.md#developer-installation)
-  - [Loading the project's environment](README.md#loading-the-projects-environment)
-  - [Working with VS Code](README.md#working-with-vs-code)
-    - [Manual configuration of the VS Code project :](README.md#manual-configuration-of-the-vs-code-project-)
-    - [Configuration via the devcontainer :](README.md#configuration-via-the-devcontainer-)
-  - [Contributing to nf-scil](README.md#contributing-to-nf-scil)
-    - [Adding a new module to nf-scil](docs/MODULE.md#adding-a-new-module-to-nf-scil)
-      - [Generate the template](docs/MODULE.md#generate-the-template)
-      - [Edit the template](docs/MODULE.md#edit-the-template)
-        - [Editing the main](docs/MODULE.md#editing-modulesnf-scilcategorytoolmainnf-)
-        - [Editing the metadata](docs/MODULE.md#editing--modulesnf-scilcategorytoolmetayml-)
-        - [Editing the test cases](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolmainnf-)
-        - [Editing the tests configuration](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
-      - [Run the tests to generate the test metadata file](docs/MODULE.md#run-the-tests-to-generate-the-test-metadata-file)
-      - [Last safety test](docs/MODULE.md#last-safety-test)
-      - [Submit your PR](docs/MODULE.md#submit-your-pr)
-    - [Defining processes optional parameters](docs/MODULE.md#defining-processes-optional-parameters)
-    - [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
-      - [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
-      - [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
-  - [Running tests](README.md#running-tests)
+* [Using modules from nf-scil](#using-modules-from-nf-scil)
+* [Developing in nf-scil](#developing-in-nf-scil)
+    * [Manual configuration](#manual-configuration)
+        * [Dependencies](#dependencies)
+        * [Python environment](#python-environment)
+        * [Loading the project's environment](#loading-the-projects-environment)
+        * [Working with VS Code](#working-with-vs-code)
+    * [Configuration via the devcontainer](#configuration-via-the-devcontainer-)
+    * [Contributing to the nf-scil project](#contributing-to-the-nf-scil-project)
+        * [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
+            * [Generate the template](#generate-the-template)
+            * [Edit the template](#edit-the-template)
+                * [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
+                * [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
+                * [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
+                * [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+            * [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
+            * [Lint your code](#lint-your-code)
+            * [Last safety test](#last-safety-test)
+            * [Submit your PR](#submit-your-pr)
+        * [Defining processes optional parameters](#defining-processes-optional-parameters)
+        * [Test data infrastructure](#test-data-infrastructure)
+            * [Using the .test_data directory](#using-the-test_data-directory)
+            * [Using Scilpy Fetcher](#using-scilpy-fetcher)
+    * [Running tests](#running-tests)
+    * [Installing Prettier](#installing-prettier)
 
 # Using modules from `nf-scil`
 
@@ -66,7 +68,11 @@ nf-core modules \
 
 # Developing in `nf-scil`
 
-## Dependencies
+The `nf-scil` project requires some specific tools to be installed on your system so that the development environment runs correctly. You can [install them manually](#manual-configuration), but if you desire to streamline the process and start coding faster, we highly recommend using the [VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a matter of minutes.
+
+## Manual configuration
+
+### Dependencies
 
 - Python &geq; 3.8, < 3.13
 - Java Runtime &geq; 11, &leq; 17
@@ -86,7 +92,7 @@ nf-core modules \
 >   runtime version (named `jdk<inner version>_1<runtime version>.jdk`) and use the
 >   following : `/Library/Java/JavaVirtualMachines/dk<inner version>_1<runtime version>.jdk/Contents/Home`.
 
-## Developer installation
+### Python environment
 
 The project uses _poetry_ to manage python dependencies. To install it using pipx,
 run the following commands :
@@ -111,7 +117,7 @@ Once done, install the project with :
 poetry install
 ```
 
-## Loading the project's environment
+### Loading the project's environment
 
 > [!IMPORTANT]
 > Make sure no python environment is activated before running commands !
@@ -136,14 +142,12 @@ To exit the environment, simply enter the `exit` command in the shell.
 > the environment gracefully, making it so you won't be able to reactivate it without
 > exiting the shell.
 
-## Working with VS Code
+### Working with VS Code
 
-### Manual configuration of the VS Code project :
-
-First install the `nf-scil-extensions` package. You can find it easily on the [extension
+The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the `nf-scil-extensions` package. You can find it easily on the [extension
 marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-scil-extensions).
 
-### Configuration via the `devcontainer` :
+## Configuration via the `devcontainer` :
 
 The `devcontainer` definition for the project contains all required dependencies and setup
 steps are automatically executed. Open the cloned repository in _VS Code_ and click on the
@@ -165,7 +169,7 @@ environment.
   - Github Pull Requests management
   - Github flavored markdown previewing
 
-## Contributing to `nf-scil`
+## Contributing to the `nf-scil` project
 
 If you want to propose a new `module` to the repository, follow the guidelines in the
 [module creation](./docs/MODULE.md) documentation. we follow standards closely
@@ -185,7 +189,7 @@ nf-core modules \
 
 The tool can be omitted to run tests for all modules in a category.
 
-# Installing Prettier
+## Installing Prettier
 
 To install **Prettier** for the project, you need to have `node` and `npm` installed on your system to at least version 14. On Ubuntu, you can do it using snap :
 
