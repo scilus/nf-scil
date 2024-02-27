@@ -18,32 +18,33 @@ primary focus of the library is to provide pre-built processes and processing se
 technologies and made easily available to pipeline's developers through the `nf-core`
 framework.
 
-* [Using modules from nf-scil](#using-modules-from-nf-scil)
-* [Developing in nf-scil](#developing-in-nf-scil)
-    * [Manual configuration](#manual-configuration)
-        * [Dependencies](#dependencies)
-        * [Python environment](#python-environment)
-        * [Loading the project's environment](#loading-the-projects-environment)
-        * [Working with VS Code](#working-with-vs-code)
-    * [Configuration via the devcontainer](#configuration-via-the-devcontainer-)
-    * [Contributing to the nf-scil project](#contributing-to-the-nf-scil-project)
-        * [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
-            * [Generate the template](#generate-the-template)
-            * [Edit the template](#edit-the-template)
-                * [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
-                * [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
-                * [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
-                * [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
-            * [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
-            * [Lint your code](#lint-your-code)
-            * [Last safety test](#last-safety-test)
-            * [Submit your PR](#submit-your-pr)
-        * [Defining processes optional parameters](#defining-processes-optional-parameters)
-        * [Test data infrastructure](#test-data-infrastructure)
-            * [Using the .test_data directory](#using-the-test_data-directory)
-            * [Using Scilpy Fetcher](#using-scilpy-fetcher)
-    * [Running tests](#running-tests)
-    * [Installing Prettier](#installing-prettier)
+- [Using modules from nf-scil](#using-modules-from-nf-scil)
+- [Developing in nf-scil](#developing-in-nf-scil)
+  - [Manual configuration](#manual-configuration)
+    - [Dependencies](#dependencies)
+    - [Python environment](#python-environment)
+    - [Loading the project's environment](#loading-the-projects-environment)
+    - [Working with VS Code](#working-with-vs-code)
+  - [Configuration via the devcontainer](#configuration-via-the-devcontainer-)
+  - [Contributing to the nf-scil project](#contributing-to-the-nf-scil-project)
+    - [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
+      - [Generate the template](#generate-the-template)
+      - [Edit the template](#edit-the-template)
+        - [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
+        - [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
+        - [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
+        - [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+      - [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
+      - [Lint your code](#lint-your-code)
+      - [Last safety test](#last-safety-test)
+      - [Submit your PR](#submit-your-pr)
+    - [Defining processes optional parameters](#defining-processes-optional-parameters)
+    - [Test data infrastructure](#test-data-infrastructure)
+      - [Using the .test_data directory](#using-the-test_data-directory)
+      - [Using Scilpy Fetcher](#using-scilpy-fetcher)
+  - [Running tests](#running-tests)
+  - [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
+  - [Installing Prettier](#installing-prettier)
 
 # Using modules from `nf-scil`
 
@@ -151,7 +152,7 @@ marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-s
 ## Configuration via the `devcontainer` :
 
 The `devcontainer` definition for the project contains all required dependencies and setup
-steps are automatically executed. To use this installation method, you need to have **Docker** (refer to [this section]() for configuration requirements or validate your configuration) and **Visual Studio Code** installed on your system.
+steps are automatically executed. To use this installation method, you need to have **Docker** (refer to [this section](#configuring-docker-for-easy-usage) for configuration requirements or validate your configuration) and **Visual Studio Code** installed on your system.
 
 Open the cloned repository in _VS Code_ and click on the arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
 will start a docker build, wait for a few minutes and enjoy your fully configured development
