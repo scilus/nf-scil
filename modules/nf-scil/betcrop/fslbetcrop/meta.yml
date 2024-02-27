@@ -50,17 +50,17 @@ output:
   - image:
       type: file
       description: Nifti volume brain-extracted and cropped.
-      pattern: "*_bet_cropped.{nii,nii.gz}"
+      pattern: "*_bet.{nii,nii.gz}"
 
   - mask:
       type: file
       description: mask brain-extracted and cropped.
-      pattern: "*_bet_cropped_mask.{nii,nii.gz}"
+      pattern: "*_bet_mask.{nii,nii.gz}"
 
   - bbox:
       type: file
       description: BoundingBox used for cropping.
-      pattern: "*dwi_boundingBox.pkl"
+      pattern: "*_boundingBox.pkl"
 
   - versions:
       type: file

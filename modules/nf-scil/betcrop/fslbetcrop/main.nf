@@ -13,8 +13,8 @@ process BETCROP_FSLBETCROP {
     output:
         tuple val(meta), path("*_bet.nii.gz")            , emit: image
         tuple val(meta), path("*_bet_mask.nii.gz")       , emit: mask
-        tuple val(meta), path("*_boundingBox.pkl")               , emit: bbox , optional: true
-        path "versions.yml"                                      , emit: versions
+        tuple val(meta), path("*_boundingBox.pkl")       , emit: bbox , optional: true
+        path "versions.yml"                              , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -24,44 +24,40 @@ process BETCROP_FSLBETCROP {
 
     def b0_thr = task.ext.b0_thr ? "--b0_thr " + task.ext.b0_thr : ""
     def bet_f = task.ext.bet_f ? "-f " + task.ext.bet_f : ""
+    def size_dil = task.ext.size_dil ? task.ext.size_dil : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    if [ -v "$bval" ]
+    if [[ -f "$bval" ]]
     then
         scil_extract_b0.py $image $bval $bvec ${prefix}__b0.nii.gz --mean \
             $b0_thr --force_b0_threshold
 
         bet ${prefix}__b0.nii.gz ${prefix}__b0_bet.nii.gz -m -R $bet_f
-        scil_image_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__b0_bet_mask.nii.gz --data_type uint8 -f
-        mrcalc $image ${prefix}__b0_bet_mask.nii.gz -mult ${prefix}__dwi_bet.nii.gz -quiet -nthreads 1
-
-        if [ "$task.ext.crop" = "true" ];
-        then
-            scil_crop_volume.py ${prefix}__dwi_bet.nii.gz ${prefix}__dwi_bet_cropped.nii.gz -f \
-                --output_bbox ${prefix}__dwi_boundingBox.pkl -f
-            scil_crop_volume.py ${prefix}__b0_bet_mask.nii.gz ${prefix}__dwi_bet_cropped_mask.nii.gz -f\
-                --input_bbox ${prefix}__dwi_boundingBox.pkl -f
-            scil_image_math.py convert ${prefix}__dwi_bet_cropped_mask.nii.gz ${prefix}__dwi_bet_cropped_mask.nii.gz \
-                --data_type uint8 -f
-        fi
+        scil_image_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
+        mrcalc $image ${prefix}__b0_bet_mask.nii.gz -mult ${prefix}__image_bet.nii.gz -quiet -nthreads 1
 
     else
-        bet $image ${prefix}__t1_bet.nii.gz -m -R $bet_f
-        scil_image_math.py convert ${prefix}__t1_bet_mask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8 -f
+        bet $image ${prefix}__image_bet.nii.gz -m -R $bet_f
+        scil_image_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
+    fi
 
-        if [ "$task.ext.crop" = "true" ];
-        then
-            scil_crop_volume.py ${prefix}__t1_bet.nii.gz ${prefix}__t1_bet_cropped.nii.gz -f \
-                --output_bbox ${prefix}__t1_boundingBox.pkl -f
-            scil_crop_volume.py ${prefix}__t1_bet_mask.nii.gz ${prefix}__t1_bet_cropped_mask.nii.gz -f\
-                --input_bbox ${prefix}__t1_boundingBox.pkl -f
-            scil_image_math.py convert ${prefix}__t1_bet_cropped_mask.nii.gz ${prefix}__t1_bet_cropped_mask.nii.gz \
-                --data_type uint8 -f
-        fi
+    if [ "$task.ext.dilate" = "true" ];
+    then
+        scil_image_math.py dilation ${prefix}__image_bet_mask.nii.gz $size_dil ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
+    fi
+
+    if [ "$task.ext.crop" = "true" ];
+    then
+        scil_crop_volume.py ${prefix}__image_bet.nii.gz ${prefix}__image_bet.nii.gz -f \
+            --output_bbox ${prefix}__image_boundingBox.pkl -f
+        scil_crop_volume.py ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz -f\
+            --input_bbox ${prefix}__image_boundingBox.pkl -f
+        scil_image_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz \
+            --data_type uint8 -f
     fi
 
     cat <<-END_VERSIONS > versions.yml
@@ -84,9 +80,9 @@ process BETCROP_FSLBETCROP {
     mrcalc -h
     scil_crop_volume.py -h
 
-    touch ${prefix}__dwi_bet_cropped.nii.gz
-    touch ${prefix}__dwi_bet_cropped_mask.nii.gz
-    touch ${prefix}__dwi_boundingBox.pkl
+    touch ${prefix}__image_bet.nii.gz
+    touch ${prefix}__image_bet_mask.nii.gz
+    touch ${prefix}__image_boundingBox.pkl
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
