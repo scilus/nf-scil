@@ -75,10 +75,11 @@ The `nf-scil` project requires some specific tools to be installed on your syste
 ### Dependencies
 
 - Python &geq; 3.8, < 3.13
+- Docker &geq; 24 (we recommend using [Docker Desktop](https://www.docker.com/products/docker-desktop))
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
-- Node &geq; 14 and Prettier (seel [below](#installing-prettier))
+- Node &geq; 14 and Prettier (see [below](#installing-prettier))
 
 > [!IMPORTANT]
 > Nextflow might not detect the right `Java virtual machine` by default, more so if
@@ -150,8 +151,9 @@ marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-s
 ## Configuration via the `devcontainer` :
 
 The `devcontainer` definition for the project contains all required dependencies and setup
-steps are automatically executed. Open the cloned repository in _VS Code_ and click on the
-arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
+steps are automatically executed. To use this installation method, you need to have **Docker** (refer to [this section]() for configuration requirements or validate your configuration) and **Visual Studio Code** installed on your system.
+
+Open the cloned repository in _VS Code_ and click on the arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
 will start a docker build, wait for a few minutes and enjoy your fully configured development
 environment.
 
@@ -188,6 +190,19 @@ nf-core modules \
 ```
 
 The tool can be omitted to run tests for all modules in a category.
+
+## Configuring Docker for easy usage
+
+The simplest way of installing everything Docker is to use [Docker Desktop](https://www.docker.com/products/docker-desktop). You can also go the [engine way](https://docs.docker.com/engine/install) and install Docker manually.
+
+Once installed, you need to configure some access rights to the Docker daemon. The easiest way to do this is to add your user to the `docker` group. This can be done with the following command :
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+After running this command, you need to log out and log back in to apply the changes.
 
 ## Installing Prettier
 
