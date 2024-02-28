@@ -59,7 +59,7 @@ process BETCROP_FSLBETCROP {
     then
         scil_image_math.py dilation ${prefix}__image_bet_mask.nii.gz $size_dil ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
     fi
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
