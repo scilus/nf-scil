@@ -45,11 +45,6 @@ process BETCROP_FSLBETCROP {
         scil_image_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
     fi
 
-    if [ "$task.ext.dilate" = "true" ];
-    then
-        scil_image_math.py dilation ${prefix}__image_bet_mask.nii.gz $size_dil ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
-    fi
-
     if [ "$task.ext.crop" = "true" ];
     then
         scil_crop_volume.py ${prefix}__image_bet.nii.gz ${prefix}__image_bet.nii.gz -f \
@@ -60,6 +55,11 @@ process BETCROP_FSLBETCROP {
             --data_type uint8 -f
     fi
 
+    if [ "$task.ext.dilate" = "true" ];
+    then
+        scil_image_math.py dilation ${prefix}__image_bet_mask.nii.gz $size_dil ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
+    fi
+    
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
