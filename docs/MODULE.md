@@ -137,7 +137,7 @@ already follow all guidelines. You will find related files in :
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but we
 don't need to specify them all. At least define the `keywords`, describe the process'
-`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process.
+`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process. The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`, `integer`, `float` and `boolean`.
 
 > [!IMPORTANT]
 > The `tool` documentation does not describe your module, but to the tools you use in
@@ -150,7 +150,7 @@ Once done, commit your module and push the changes. Then, to look at the documen
 nf-core modules \
   --git-remote <your reository> \
   --branch <your branch unless main branch> \
-  list <category/name>
+  info <category/name>
 ```
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :

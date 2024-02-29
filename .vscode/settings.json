@@ -122,5 +122,6 @@
         "voxels",
         "wmparc",
         "xform"
-    ]
+    ],
+    "markdown.extension.toc.updateOnSave": false
 }

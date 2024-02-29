@@ -81,3 +81,7 @@ tracking/pfttracking:
 utils/extractb0:
   - modules/nf-scil/utils/extractb0/**
   - tests/modules/nf-scil/utils/extractb0/**
+
+image/resample:
+  - modules/nf-scil/image/resample/**
+  - tests/modules/nf-scil/image/resample/**
