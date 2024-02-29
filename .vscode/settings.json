@@ -1,4 +1,5 @@
 {
+    "editor.detectIndentation": false,
     "python.languageServer": "Pylance",
     "python.missingPackage.severity": "Warning",
     "python.terminal.activateEnvInCurrentTerminal": true,
@@ -18,6 +19,23 @@
     "git.branchProtection": ["main"],
     "git.branchProtectionPrompt": "alwaysPrompt",
     "github.branchProtection": true,
+    "cSpell.enableFiletypes": [
+        "csv",
+        "csv (pipe)",
+        "csv (semicolon)",
+        "csv (whitespace)",
+        "dockercompose",
+        "dockerfile",
+        "editorconfig",
+        "github-actions-workflow",
+        "groovy",
+        "ignore",
+        "nextflow",
+        "shellscript",
+        "ssh_config",
+        "toml",
+        "xml"
+    ],
     "cSpell.words": [
         "accumbens",
         "altnp",
@@ -104,5 +122,6 @@
         "voxels",
         "wmparc",
         "xform"
-    ]
+    ],
+    "markdown.extension.toc.updateOnSave": false
 }

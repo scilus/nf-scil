@@ -1,23 +1,47 @@
-- name: testdata scilpy test_preproc_normalize
-  command: nextflow run ./tests/modules/nf-scil/testdata/scilpy -entry test_preproc_normalize -c ./tests/config/nextflow.config
+- name: testdata scilpy test_output_to_temp
+  command: nextflow run ./tests/modules/nf-scil/testdata/scilpy -entry test_output_to_temp -c ./tests/config/nextflow.config
   tags:
-    - testdata
     - testdata/scilpy
+    - testdata
   files:
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_complex_dwi_complex_rev_dwi.json
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_rev_dwi.json
       md5sum: 8002324629222edb9217a77b27e60a34
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_complex_dwi_complex_rev_dwi_sbref.json
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_rev_dwi_sbref.json
       md5sum: 720af6dfc6596814218a8e42d69b58c3
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_complex_dwi_complex_sbref.json
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_sbref.json
       md5sum: 60f3667851c3b6ed78f28a508a69341f
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_complex_dwi_epi.json
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_epi.json
       md5sum: 60f3667851c3b6ed78f28a508a69341f
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_real_dwi_epi.json
+    - path: output/testdata/test_data/bids_json/result_real_dwi_epi.json
       md5sum: 22adcf1437117b643cf292a82e7f7552
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_real_dwi_real_rev_dwi.json
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_rev_dwi.json
       md5sum: 42cb893cc5185bb674a28a38f1e35a99
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_real_dwi_real_rev_dwi_sbref.json
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_rev_dwi_sbref.json
       md5sum: 86343131de7e534024f0deb7697922c3
-    - path: output/testdata/test.test-data.scilpy.bids-json9700548222244222983/bids_json/result_real_dwi_real_sbref.json
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_sbref.json
+      md5sum: 22adcf1437117b643cf292a82e7f7552
+    - path: output/testdata/versions.yml
+
+- name: testdata scilpy test_output_to_work
+  command: nextflow run ./tests/modules/nf-scil/testdata/scilpy -entry test_output_to_work -c ./tests/config/nextflow.config
+  tags:
+    - testdata/scilpy
+    - testdata
+  files:
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_rev_dwi.json
+      md5sum: 8002324629222edb9217a77b27e60a34
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_rev_dwi_sbref.json
+      md5sum: 720af6dfc6596814218a8e42d69b58c3
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_complex_sbref.json
+      md5sum: 60f3667851c3b6ed78f28a508a69341f
+    - path: output/testdata/test_data/bids_json/result_complex_dwi_epi.json
+      md5sum: 60f3667851c3b6ed78f28a508a69341f
+    - path: output/testdata/test_data/bids_json/result_real_dwi_epi.json
+      md5sum: 22adcf1437117b643cf292a82e7f7552
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_rev_dwi.json
+      md5sum: 42cb893cc5185bb674a28a38f1e35a99
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_rev_dwi_sbref.json
+      md5sum: 86343131de7e534024f0deb7697922c3
+    - path: output/testdata/test_data/bids_json/result_real_dwi_real_sbref.json
       md5sum: 22adcf1437117b643cf292a82e7f7552
     - path: output/testdata/versions.yml

@@ -4,17 +4,17 @@
     - tracking/pfttracking
     - tracking
   files:
-    - path: output/wm/test__map_exclude.nii.gz
+    - path: output/tracking/test__map_exclude.nii.gz
       md5sum: ae545f0c56026f53fdfe0dd3bf53e9b9
-    - path: output/wm/test__map_include.nii.gz
+    - path: output/tracking/test__map_include.nii.gz
       md5sum: 091661939a1fbd40b6ea0d64fe48230b
-    - path: output/wm/test__pft_seeding_mask.nii.gz
+    - path: output/tracking/test__pft_seeding_mask.nii.gz
       md5sum: 2e6171867caa11910998c7b762837352
-    - path: output/wm/test__pft_tracking.trk
-      md5sum: d41d8cd98f00b204e9800998ecf8427e
-    - path: output/wm/test__pft_tracking_config.json
-      md5sum: bf3f2fc38de57ffd4c597dabdcdf70d7
-    - path: output/wm/versions.yml
+    - path: output/tracking/test__pft_tracking.trk
+      md5sum: 2d97dbfd5ad91313333774408b805d42
+    - path: output/tracking/test__pft_tracking_config.json
+      md5sum: bedf3ac8834d78389b3b58809f0bb750
+    - path: output/tracking/versions.yml
 
 - name: tracking pfttracking test_tracking_pfttracking_fa
   command: nextflow run ./tests/modules/nf-scil/tracking/pfttracking -entry test_tracking_pfttracking_fa -c ./tests/config/nextflow.config
@@ -22,17 +22,17 @@
     - tracking/pfttracking
     - tracking
   files:
-    - path: output/fa/test__map_exclude.nii.gz
+    - path: output/tracking/test__map_exclude.nii.gz
       md5sum: ae545f0c56026f53fdfe0dd3bf53e9b9
-    - path: output/fa/test__map_include.nii.gz
+    - path: output/tracking/test__map_include.nii.gz
       md5sum: 091661939a1fbd40b6ea0d64fe48230b
-    - path: output/fa/test__pft_seeding_mask.nii.gz
+    - path: output/tracking/test__pft_seeding_mask.nii.gz
       md5sum: 49c19bc6c0f47af32dea7af992b40490
-    - path: output/fa/test__pft_tracking.trk
-      md5sum: d41d8cd98f00b204e9800998ecf8427e
-    - path: output/fa/test__pft_tracking_config.json
-      md5sum: be879eadc3b49ea791dc4e883073e6f3
-    - path: output/fa/versions.yml
+    - path: output/tracking/test__pft_tracking.trk
+      md5sum: cd9f974b19a81098c0c3092a6fe16864
+    - path: output/tracking/test__pft_tracking_config.json
+      md5sum: d8a7d811f0c9bec571e8e583b0aecb94
+    - path: output/tracking/versions.yml
 
 - name: tracking pfttracking test_tracking_pfttracking_interface
   command: nextflow run ./tests/modules/nf-scil/tracking/pfttracking -entry test_tracking_pfttracking_interface -c ./tests/config/nextflow.config
@@ -40,14 +40,14 @@
     - tracking/pfttracking
     - tracking
   files:
-    - path: output/interface/test__map_exclude.nii.gz
+    - path: output/tracking/test__map_exclude.nii.gz
       md5sum: ae545f0c56026f53fdfe0dd3bf53e9b9
-    - path: output/interface/test__map_include.nii.gz
+    - path: output/tracking/test__map_include.nii.gz
       md5sum: 091661939a1fbd40b6ea0d64fe48230b
-    - path: output/interface/test__pft_seeding_mask.nii.gz
+    - path: output/tracking/test__pft_seeding_mask.nii.gz
       md5sum: b17a9efec42699688ed0c17c9824beb6
-    - path: output/interface/test__pft_tracking.trk
-      md5sum: d41d8cd98f00b204e9800998ecf8427e
-    - path: output/interface/test__pft_tracking_config.json
-      md5sum: ea09f20aac58b319d5fb5f2bc2497a5f
-    - path: output/interface/versions.yml
+    - path: output/tracking/test__pft_tracking.trk
+      md5sum: da9729bbb308a0acffe9a6c9c4c54831
+    - path: output/tracking/test__pft_tracking_config.json
+      md5sum: 7e326ef48dfda3d63e288f3f49d29847
+    - path: output/tracking/versions.yml

@@ -3,10 +3,10 @@
 nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
-include { 
-    TRACKING_PFTTRACKING as WM_TRACKING;
-    TRACKING_PFTTRACKING as FA_TRACKING;
-    TRACKING_PFTTRACKING as INTERFACE_TRACKING; } from '../../../../../modules/nf-scil/tracking/pfttracking/main.nf'
+include {
+    TRACKING_PFTTRACKING as TRACKING_WM;
+    TRACKING_PFTTRACKING as TRACKING_FA;
+    TRACKING_PFTTRACKING as TRACKING_INTERFACE; } from '../../../../../modules/nf-scil/tracking/pfttracking/main.nf'
 
 
 workflow test_tracking_pfttracking_wm {
@@ -25,7 +25,7 @@ workflow test_tracking_pfttracking_wm {
             []
     ]}
 
-    WM_TRACKING ( input_wm )
+    TRACKING_WM ( input_wm )
 }
 
 
@@ -45,12 +45,12 @@ workflow test_tracking_pfttracking_fa {
             file("${test_data_directory}/fa.nii.gz")
     ]}
 
-    FA_TRACKING ( input_fa )
+    TRACKING_FA ( input_fa )
 }
 
 
 workflow test_tracking_pfttracking_interface {
-    
+
     input_fetch = Channel.from( [ "tracking.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
@@ -65,5 +65,5 @@ workflow test_tracking_pfttracking_interface {
             []
     ]}
 
-    INTERFACE_TRACKING ( input_interface )
+    TRACKING_INTERFACE ( input_interface )
 }
