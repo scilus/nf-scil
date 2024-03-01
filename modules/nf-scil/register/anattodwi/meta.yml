@@ -47,14 +47,14 @@ output:
         e.g. `[ id:'test', single_end:false ]`
 
   - transfo_trk:
-      type: file
+      type: list
       description: Tuple, Transformation files to warp tractogram/streamlines (mat file, nii InverseWarp)
-      pattern: "*.{nii,nii.gz}"
+      pattern: "*.{mat,nii,nii.gz}"
 
   - transfo_image:
-      type: file
+      type: list
       description: Tuple, Transformation files to warp images (nii Warp, mat file)
-      pattern: "*.{nii,nii.gz}"
+      pattern: "*.{nii,nii.gz,mat}"
 
   - t1_warped:
       type: file
