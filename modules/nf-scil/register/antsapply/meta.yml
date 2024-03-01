@@ -1,0 +1,59 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "register_antsapply"
+description: Apply transformation to an input image according to a reference image and a transform file (or a set of transform files)
+keywords:
+  - registration
+  - transformation
+  - nifti
+  - trk
+tools:
+  - "ANTs":
+      description: "ANTs (Advanced Normalization Tools) open-source software package for image registration and segmentation."
+      homepage: "https://github.com/ANTsX/ANTs/wiki/Compiling-ANTs-on-Linux-and-Mac-OS"
+      documentation: "http://stnava.github.io/ANTsDoc/"
+      doi: "10.1016/j.neuroimage.2010.09.025"
+
+input:
+
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - reference:
+      type: file
+      description: Reference image to warped moving image (defines spacing, origin, size and direction)
+      pattern: "*.{nii,nii.gz}"
+
+  - moving:
+      type: file
+      description: Input image to be transformed
+      pattern: "*.{nii,nii.gz}"
+
+  - transfo:
+      type: list
+      description: Tuple, Transformation files to warp images or trk (nii Warp, mat file)
+      pattern: "*.{nii,nii.gz,mat}"
+
+output:
+
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - warped_images:
+      type: file
+      description: Input image warped into reference image space.
+      pattern: "*.{nii,nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@medde"
