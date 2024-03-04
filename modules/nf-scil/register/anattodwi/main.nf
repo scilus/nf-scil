@@ -12,9 +12,9 @@ process REGISTER_ANATTODWI {
     tuple val(meta), path(t1), path(b0), path(metric)
 
     output:
-    tuple val(meta), path("*0GenericAffine.mat"), path("*1InverseWarp.nii.gz")  , emit : transfo_trk
-    tuple val(meta), path("*1Warp.nii.gz"), path("*0GenericAffine.mat")         , emit : transfo_image
-    tuple val(meta), path("*t1_warped.nii.gz")                                  , emit : t1_warped
+    tuple val(meta), path("*0GenericAffine.mat"), path("*1InverseWarp.nii.gz")  , emit: transfo_trk
+    tuple val(meta), path("*1Warp.nii.gz"), path("*0GenericAffine.mat")         , emit: transfo_image
+    tuple val(meta), path("*t1_warped.nii.gz")                                  , emit: t1_warped
     path "versions.yml"                                                         , emit: versions
 
     when:
