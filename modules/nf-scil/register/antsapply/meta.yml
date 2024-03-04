@@ -22,19 +22,19 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - reference:
-      type: file
-      description: Reference image to warped moving image (defines spacing, origin, size and direction)
-      pattern: "*.{nii,nii.gz}"
-
   - moving:
       type: file
       description: Input image to be transformed
       pattern: "*.{nii,nii.gz}"
 
+  - reference:
+      type: file
+      description: Reference image to warped moving image (defines spacing, origin, size and direction)
+      pattern: "*.{nii,nii.gz}"
+
   - transfo:
-      type: list
-      description: Tuple, Transformation files to warp images or trk (nii Warp, mat file)
+      type: file
+      description: file or Tuple of files, Transformation file(s) to warp image or trk (*mat, [nii Warp, mat file])
       pattern: "*.{nii,nii.gz,mat}"
 
 output:
