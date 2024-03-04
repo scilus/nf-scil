@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "register_anattodwi"
-description: write your description here
+description: Anatomical image registration on a diffusion image.
 keywords:
   - nifti
   - registration

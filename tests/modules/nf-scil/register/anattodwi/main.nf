@@ -13,7 +13,7 @@ workflow test_register_anattodwi {
     input_reg = LOAD_TEST_DATA.out.test_data_directory
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ],
-            file("${test_data_directory}/t1.nii.gz"),
+            file("${test_data_directory}/mni_masked_2x2x2.nii.gz"),
             file("${test_data_directory}/b0_mean.nii.gz"),
             file("${test_data_directory}/fa.nii.gz")
     ]}
