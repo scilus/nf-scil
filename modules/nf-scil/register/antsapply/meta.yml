@@ -34,7 +34,7 @@ input:
 
   - transfo:
       type: file
-      description: file or Tuple of files, Transformation file(s) to warp image or trk (*mat, [nii Warp, mat file])
+      description: file or tuple of files, transformation file(s) to warp image or trk (*mat or [nii Warp, mat file])
       pattern: "*.{nii,nii.gz,mat}"
 
 output:
