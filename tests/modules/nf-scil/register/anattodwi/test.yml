@@ -6,14 +6,14 @@
   files:
     - path: output/register/test__output0GenericAffine.mat
       contains:
-        - 'Output transformation file'
+        - "Output transformation file"
     - path: output/register/test__output1InverseWarp.nii.gz
       contains:
-        - 'Output inverse warp info map'
+        - "Output inverse warp info map"
     - path: output/register/test__output1Warp.nii.gz
       contains:
-        - 'Output warp info map'
+        - "Output warp info map"
     - path: output/register/test__t1_warped.nii.gz
       contains:
-        - 'Anatomical image warped in diffusion space'
+        - "Anatomical image warped in diffusion space"
     - path: output/register/versions.yml
