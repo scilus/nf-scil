@@ -7,7 +7,7 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 workflow test_register_antsapply {
 
-    input_fetch = Channel.from( [ "register.zip" ] )
+    input_fetch = Channel.from( [ "registration.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
