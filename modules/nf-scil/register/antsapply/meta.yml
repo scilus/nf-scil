@@ -15,7 +15,6 @@ tools:
       doi: "10.1016/j.neuroimage.2010.09.025"
 
 input:
-
   - meta:
       type: map
       description: |
@@ -38,7 +37,6 @@ input:
       pattern: "*.{nii,nii.gz,mat}"
 
 output:
-
   - meta:
       type: map
       description: |
