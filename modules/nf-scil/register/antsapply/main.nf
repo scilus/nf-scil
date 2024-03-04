@@ -9,7 +9,7 @@ process REGISTER_ANTSAPPLY {
         'scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(reference), path(moving), path(transfo)
+    tuple val(meta), path(moving), path(reference), path(transfo)
 
     output:
     tuple val(meta), path("*_warped.nii.gz")             , emit: warped_images
@@ -21,13 +21,14 @@ process REGISTER_ANTSAPPLY {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def interpolation = task.ext.interpolation ? "-n " + task.ext.interpolation : ""
+    def data_type = task.ext.data_type ? "-u " + task.ext.data_type : ""
     """
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
     export ANTS_RANDOM_SEED=1234
 
-    antsApplyTransforms -d 3 -i $reference -r $moving \
-        -o ${moving.getSimpleName()}_warped.nii.gz -t $transfo $interpolation
+    antsApplyTransforms -d 3 -i $moving -r $reference \
+        -o ${moving.getSimpleName()}_warped.nii.gz -t $transfo $interpolation $data_type
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
