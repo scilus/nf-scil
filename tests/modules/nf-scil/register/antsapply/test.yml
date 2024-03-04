@@ -1,0 +1,9 @@
+- name: register antsapply test_register_antsapply
+  command: nextflow run ./tests/modules/nf-scil/register/antsapply -entry test_register_antsapply -c ./tests/config/nextflow.config
+  tags:
+    - register
+    - register/antsapply
+  files:
+    - path: output/register/mni_masked_2x2x2_warped.nii.gz
+      md5sum: 07ba37d6d9398f9eba6efe796258ed45
+    - path: output/register/versions.yml
