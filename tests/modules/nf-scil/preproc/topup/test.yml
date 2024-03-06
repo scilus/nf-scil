@@ -1,0 +1,7 @@
+- name: "preproc topup"
+  command: nextflow run ./tests/modules/nf-scil/preproc/topup -entry test_preproc_topup -c ./tests/config/nextflow.config
+  tags:
+    - "preproc"
+    - "preproc/topup"
+  files:
+    - path: ""

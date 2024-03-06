@@ -1,0 +1,85 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+name: "preproc_topup"
+description: Prepare data and apply FSL topup
+keywords:
+  - DWI
+  - distorsion
+  - topup
+tools:
+  - "FSL":
+      description: "FSL Toolbox and Scilpy Toolbox"
+      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+
+  - dwi:
+      type: file
+      description: DWI Nifti image
+      pattern: "*.{nii,nii.gz}"
+
+  - bval:
+      type: file
+      description: (DWI) B-values in FSL format.
+      pattern: "*.bval"
+
+  - bvec:
+      type: file
+      description: B-vectors in FSL format.
+      pattern: "*.bvec"
+
+  - b0:
+      type: file
+      description: B-vectors in FSL format.
+      pattern: "*.bvec"
+
+  - rev_dwi:
+      type: file
+      description: DWI Nifti image
+      pattern: "*.{nii,nii.gz}"
+
+  - rev_bval:
+      type: file
+      description: B-values in FSL format.
+      pattern: "*.bval"
+
+  - rev_bvec:
+      type: file
+      description: B-vectors in FSL format.
+      pattern: "*.bvec"
+
+  - rev_b0:
+      type: file
+      description: Reversed b0
+      pattern: "*.{nii,nii.gz}"
+
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+  - output:
+      type: file
+      description:
+      pattern:
+
+authors:
+  - "@arnaudbore"
