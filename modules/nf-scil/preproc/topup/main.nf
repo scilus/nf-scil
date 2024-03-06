@@ -1,5 +1,4 @@
 
-
 process PREPROC_TOPUP {
     tag "$meta.id"
     label 'process_single'
@@ -9,19 +8,17 @@ process PREPROC_TOPUP {
         'scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(dwi), path(bval), path(bvec), path(b0), path(rev_dwi), path(rev_bval), path(rev_bvec), path(rev_b0)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(b0), path(rev_dwi), path(rev_bval), path(rev_bvec), path(rev_b0)
+        path(config_topup)
 
     output:
-    tuple val(meta), path("*"), emit: output
-
-    tuple val(meta), path("*__corrected_b0s.nii.gz"), emit: topup_corrected_b0s
-    tuple val(meta), path("*_fieldcoef.nii.gz"), emit: topup_fieldcoef
-    tuple val(meta), path("*_movpar.txt"), emit: topup_movpart
-    tuple val(meta), path "*__rev_b0_warped.nii.gz"
-    tuple val(meta), path "*__rev_b0_mean.nii.gz"
-    tuple val(meta), path "*__b0_mean.nii.gz"
-
-    path "versions.yml"           , emit: versions
+        tuple val(meta), path("*__corrected_b0s.nii.gz"), emit: topup_corrected_b0s
+        tuple val(meta), path("*_fieldcoef.nii.gz"), emit: topup_fieldcoef
+        tuple val(meta), path("*_movpar.txt"), emit: topup_movpart
+        tuple val(meta), path("*__rev_b0_warped.nii.gz"), emit: rev_b0_warped
+        tuple val(meta), path("*__rev_b0_mean.nii.gz"), emit: rev_b0_mean
+        tuple val(meta), path("*__b0_mean.nii.gz"), emit: b0_mean
+        path "versions.yml"           , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -29,22 +26,22 @@ process PREPROC_TOPUP {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    def prefix_topup = task.ext.prefix_topup ?: task.ext.prefix_topup : ""
-    def config_topup = task.ext.config_topup ?: task.ext.config_topup : ""
-    def encoding = task.ext.encoding ?: task.ext.encoding : ""
-    def readout = task.ext.readout ?: task.ext.readout : ""
-    def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: task.ext.b0_thr_extract_b0 : ""
+    def prefix_topup = task.ext.prefix_topup ? task.ext.prefix_topup : ""
+    def config_topup = config_topup ?: task.ext.default_config_topup
+    def encoding = task.ext.encoding ? task.ext.encoding : ""
+    def readout = task.ext.readout ? task.ext.readout : ""
+    def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ? task.ext.b0_thr_extract_b0 : ""
 
     """
-    if [[ -f "$b0" ]]
+    if [[ -f "$b0" ]];
     then
-        scil_image_math.py concatenate $rev_b0 $rev_b0 ${prefix}__concatenated_b0.nii.gz
+        scil_image_math.py concatenate $b0 $b0 ${prefix}__concatenated_b0.nii.gz
         scil_image_math.py mean ${prefix}__concatenated_b0.nii.gz ${prefix}__b0_mean.nii.gz
     else
         scil_extract_b0.py $dwi $bval $bvec ${prefix}__b0_mean.nii.gz --mean --b0_thr $b0_thr_extract_b0 --force_b0_threshold
     fi
 
-    if [[ -f "$rev_b0"]]
+    if [[ -f "$rev_b0" ]];
     then
         scil_image_math.py concatenate $rev_b0 $rev_b0 ${prefix}__concatenated_rev_b0.nii.gz
         scil_image_math.py mean ${prefix}__concatenated_rev_b0.nii.gz ${prefix}__rev_b0_mean.nii.gz

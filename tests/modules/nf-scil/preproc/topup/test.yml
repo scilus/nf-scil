@@ -1,7 +1,20 @@
-- name: "preproc topup"
+- name: preproc topup test_preproc_topup
   command: nextflow run ./tests/modules/nf-scil/preproc/topup -entry test_preproc_topup -c ./tests/config/nextflow.config
   tags:
-    - "preproc"
-    - "preproc/topup"
+    - preproc
+    - preproc/topup
   files:
-    - path: ""
+    - path: output/preproc/test__b0_mean.nii.gz
+      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+    - path: output/preproc/test__corrected_b0s.nii.gz
+      md5sum: 27bf13c95bea445c7d39d68630a1ee27
+    - path: output/preproc/test__rev_b0_mean.nii.gz
+      md5sum: 9bdc8fa63e5bebbb9a8c1e4ea7e6c5ce
+    - path: output/preproc/test__rev_b0_warped.nii.gz
+      contains:
+        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+    - path: output/preproc/topup_results_fieldcoef.nii.gz
+      md5sum: f96c3c4942987bae1ffe028618bbf8d6
+    - path: output/preproc/topup_results_movpar.txt
+      md5sum: d76391c9fc30e542a5c1e35a0e961781
+    - path: output/preproc/versions.yml

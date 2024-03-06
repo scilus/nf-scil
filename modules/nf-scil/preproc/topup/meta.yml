@@ -63,6 +63,11 @@ input:
       description: Reversed b0
       pattern: "*.{nii,nii.gz}"
 
+  - config_topup:
+      type: file
+      description: topup config file
+      pattern: "*cnf"
+
 output:
   #Only when we have meta
   - meta:
