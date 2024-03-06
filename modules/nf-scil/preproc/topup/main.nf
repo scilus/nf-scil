@@ -33,6 +33,11 @@ process PREPROC_TOPUP {
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ? task.ext.b0_thr_extract_b0 : ""
 
     """
+    export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
+    export OMP_NUM_THREADS=1
+    export OPENBLAS_NUM_THREADS=1
+    export ANTS_RANDOM_SEED=1234
+
     if [[ -f "$b0" ]];
     then
         scil_image_math.py concatenate $b0 $b0 ${prefix}__concatenated_b0.nii.gz
