@@ -14,11 +14,12 @@ process PREPROC_TOPUP {
     output:
     tuple val(meta), path("*"), emit: output
 
-    tuple val(meta), path(dwi), path(bval), path(bvec), path(rev_dwi), path(rev_bval), path(rev_bvec), path("*__corrected_b0s.nii.gz"), path("*_fieldcoef.nii.gz"),
-    path("*_movpar.txt"), emit: topup_files_for_eddy_topup
-    path "*__rev_b0_warped.nii.gz"
-    path "*__rev_b0_mean.nii.gz"
-    path "*__b0_mean.nii.gz"
+    tuple val(meta), path("*__corrected_b0s.nii.gz"), emit: topup_corrected_b0s
+    tuple val(meta), path("*_fieldcoef.nii.gz"), emit: topup_fieldcoef
+    tuple val(meta), path("*_movpar.txt"), emit: topup_movpart
+    tuple val(meta), path "*__rev_b0_warped.nii.gz"
+    tuple val(meta), path "*__rev_b0_mean.nii.gz"
+    tuple val(meta), path "*__b0_mean.nii.gz"
 
     path "versions.yml"           , emit: versions
 

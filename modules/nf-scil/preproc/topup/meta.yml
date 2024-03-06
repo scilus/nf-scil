@@ -76,10 +76,20 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
 
-  - output:
+  - topup_corrected_b0s:
       type: file
-      description:
-      pattern:
+      description: Nifti volume b0 corrected
+      pattern: "*__corrected_b0s.nii.gz"
+
+  - topup_fieldcoef:
+      type: file
+      description: Nifti volume - topup field to correct for distorsion
+      pattern: "*_fieldcoef.nii.gz"
+
+  - topup_movpart:
+      type: file
+      description: Text file - topup movpart
+      pattern: "*__movpar.txt"
 
 authors:
   - "@arnaudbore"
