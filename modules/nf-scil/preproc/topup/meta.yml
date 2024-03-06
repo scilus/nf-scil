@@ -30,37 +30,37 @@ input:
 
   - bval:
       type: file
-      description: (DWI) B-values in FSL format.
+      description: B-values in FSL format [DWI].
       pattern: "*.bval"
 
   - bvec:
       type: file
-      description: B-vectors in FSL format.
+      description: B-values in FSL format [DWI].
       pattern: "*.bvec"
 
   - b0:
       type: file
-      description: B-vectors in FSL format.
+      description: b0 [DWI].
       pattern: "*.bvec"
 
   - rev_dwi:
       type: file
-      description: DWI Nifti image
+      description: DWI Nifti image [rev-DWI].
       pattern: "*.{nii,nii.gz}"
 
   - rev_bval:
       type: file
-      description: B-values in FSL format.
+      description: B-values in FSL format [rev-DWI].
       pattern: "*.bval"
 
   - rev_bvec:
       type: file
-      description: B-vectors in FSL format.
+      description: B-vectors in FSL format [rev-DWI].
       pattern: "*.bvec"
 
   - rev_b0:
       type: file
-      description: Reversed b0
+      description: Reversed b0 [rev-DWI].
       pattern: "*.{nii,nii.gz}"
 
   - config_topup:
