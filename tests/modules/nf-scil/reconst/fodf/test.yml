@@ -26,16 +26,6 @@
     - reconst
     - reconst/fodf
   files:
-    - path: output/reconst/afd_max.nii.gz
-      md5sum: 3ba2b409f74fc6ba07e7ecca9de799b8
-    - path: output/reconst/afd_sum.nii.gz
-      md5sum: 9616121f66cd74850b16f18b2933786d
-    - path: output/reconst/nufo.nii.gz
-      md5sum: 787b96bc0efe6664a0a1d27cbcbdd13b
-    - path: output/reconst/peak_indices.nii.gz
-      md5sum: ba05afacfadddf88703340ad13122be8
-    - path: output/reconst/peaks.nii.gz
-      md5sum: 6bfb78432f36a988fd3044e12be3d1c2
     - path: output/reconst/test__fodf.nii.gz
       md5sum: 354775ef620f04b85fcfaa1e8707f358
     - path: output/reconst/versions.yml

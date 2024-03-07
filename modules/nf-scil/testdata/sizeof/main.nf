@@ -50,8 +50,6 @@ process TESTDATA_SIZEOF {
 
     EOF
 
-    exit 1
-
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
