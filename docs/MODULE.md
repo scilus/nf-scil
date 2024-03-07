@@ -1,3 +1,21 @@
+# Contributing to nf-scil
+
+- [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
+  - [Generate the template](#generate-the-template)
+  - [Edit the template](#edit-the-template)
+    - [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
+    - [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
+    - [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
+    - [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+  - [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
+  - [Lint your code](#lint-your-code)
+  - [Last safety test](#last-safety-test)
+  - [Submit your PR](#submit-your-pr)
+- [Defining processes optional parameters](#defining-processes-optional-parameters)
+- [Test data infrastructure](#test-data-infrastructure)
+  - [Using the .test_data directory](#using-the-test_data-directory)
+  - [Using Scilpy Fetcher](#using-scilpy-fetcher)
+
 # Adding a new module to nf-scil
 
 ## Generate the template
