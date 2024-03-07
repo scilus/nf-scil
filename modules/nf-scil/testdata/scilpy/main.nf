@@ -74,7 +74,8 @@ process TESTDATA_SCILPY {
             "processing.zip": "eece5cdbf437b8e4b5cb89c797872e28",
             "surface_vtk_fib.zip": "241f3afd6344c967d7176b43e4a99a41",
             "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
-            "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958"
+            "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
+            "topup_eddy.zip": "aba9bd55ef30d9b45338883ed927d41e"
         }
 
     def fetch_data(files_dict, keys=None):

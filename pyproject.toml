@@ -25,7 +25,7 @@ repository = "https://github.com/scilus/nf-scil.git"
 [tool.poetry.dependencies]
 
 python = "<3.13,>=3.9"
-nf-core = "^2.0.0,<2.11"
+nf-core = { git = "https://github.com/AlexVCaron/nf-core-tools.git", branch = "fix/bad_subworkflow_linting" }
 nibabel = "^5.1.0"
 numpy = "^1.24"
 requests = "^2.28"
