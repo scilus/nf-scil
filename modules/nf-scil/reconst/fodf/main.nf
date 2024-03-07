@@ -69,13 +69,15 @@ process RECONST_FODF {
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
         $fa_threshold $md_threshold -f
 
+        echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
+
         a_factor=$fodf_metrics_a_factor
         v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
 
         echo "Maximal peak value in ventricles : \${v_max}"
 
         a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
-        if (( \$(echo "\${a_threshold} -le 0" | bc -l) )); then
+        if (( \$(echo "\${a_threshold} <= 0" | bc -l) )); then
            a_threshold=1E-10
         fi
 
