@@ -44,6 +44,11 @@ process RECONST_FODF {
     if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else afd_sum = ""
     if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else nufo = ""
 
+    def run_fodf_metrics = [
+        task.ext.peaks, task.ext.peak_indices, task.ext.afd_max,
+        task.ext.afd_sum, task.ext.afd_total, task.ext.nufo
+    ].any()
+
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
@@ -68,12 +73,15 @@ process RECONST_FODF {
         a_threshold=0
     fi
 
-    scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
-        $set_mask $sh_basis \
-        $peaks $peak_indices \
-        $afd_max $afd_total \
-        $afd_sum $nufo \
-        $relative_threshold --at \${a_threshold}
+    if $run_fodf_metrics
+    then
+        scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
+            $set_mask $sh_basis \
+            $peaks $peak_indices \
+            $afd_max $afd_total \
+            $afd_sum $nufo \
+            $relative_threshold --not_all --at \${a_threshold}
+    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
