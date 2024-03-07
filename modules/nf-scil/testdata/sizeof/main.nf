@@ -19,6 +19,9 @@ process TESTDATA_SIZEOF {
 
     import numpy as np
 
+    from sys import byteorder
+    print(f"endianness {byteorder}")
+
     def describe(_name, _datatype, _info_dt):
         _dt = np.dtype(_datatype)
         print(f"{_name} -> {_datatype} :")
