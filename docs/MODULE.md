@@ -311,7 +311,7 @@ process {
 
 > [!IMPORTANT]
 > Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR
-pipo
+
 ## Using Scilpy Fetcher
 
 The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
