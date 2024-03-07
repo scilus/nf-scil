@@ -310,7 +310,7 @@ process {
 # Test data infrastructure
 
 > [!IMPORTANT]
-> **Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR**
+> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR
 
 ## Using Scilpy Fetcher
 
@@ -363,7 +363,6 @@ PROCESS( input )
 > The subworkflow must be called individually in each test workflow, even if they download
 > the same archives, since there is no mechanism to pass data channels to them from the
 > outside, or share cache between them.
-
 
 ## Using the `.test_data` directory
 
