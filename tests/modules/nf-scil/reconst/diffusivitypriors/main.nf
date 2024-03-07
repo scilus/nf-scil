@@ -13,13 +13,13 @@ workflow test_reconst_diffusivitypriors_compute_priors {
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
     input_priors = LOAD_TEST_DATA.out.test_data_directory
-            .map{ test_data_directory -> [
+        .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/fa.nii.gz"),
             file("${test_data_directory}/md.nii.gz"),
             file("${test_data_directory}/ad.nii.gz"),
             []
-  ]}
+        ]}
 
     RECONST_COMPUTE_PRIORS ( input_priors )
 }
