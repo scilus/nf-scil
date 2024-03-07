@@ -103,8 +103,3 @@ jobs:
             /home/runner/_work/pytest_workflow_*/**/.command.sh
             /home/runner/_work/pytest_workflow_*/**/.command.run
             !${{ github.workspace }}/.singularity
-
-      - name: Sleep so I can debug the workers content
-        if: failure()
-        run: |
-              sleep infinity
