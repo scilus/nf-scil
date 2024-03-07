@@ -1,0 +1,7 @@
+- name: "registration ants"
+  command: nextflow run ./tests/modules/nf-scil/registration/ants -entry test_registration_ants -c ./tests/config/nextflow.config
+  tags:
+    - "registration"
+    - "registration/ants"
+  files:
+    - path: ""
