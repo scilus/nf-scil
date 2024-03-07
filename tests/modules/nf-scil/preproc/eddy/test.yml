@@ -1,0 +1,14 @@
+- name: "preproc eddy"
+  command: nextflow run ./tests/modules/nf-scil/preproc/eddy -entry test_preproc_eddy -c ./tests/config/nextflow.config
+  tags:
+    - "preproc"
+    - "preproc/eddy"
+  files:
+    - path: output/preproc/test__dwi_corrected.nii.gz
+      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+    - path: output/preproc/test__bval_eddy
+      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+    - path: output/preproc/test__dwi_eddy_corrected.bvec
+      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+    - path: output/preproc/test__b0_bet_mask.nii.gz
+      md5sum: ed0d43ea70a6595e3f6a3d135329627b
