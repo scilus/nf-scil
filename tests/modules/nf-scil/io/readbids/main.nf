@@ -3,13 +3,11 @@
 nextflow.enable.dsl = 2
 
 include { IO_READBIDS } from '../../../../../modules/nf-scil/io/readbids/main.nf'
+include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
 
 workflow test_io_readbids {
-    
-    input = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['sarscov2']['illumina']['test_paired_end_bam'], checkIfExists: true)
-    ]
 
-    IO_READBIDS ( input )
+    input = file(params.test_data['io']['readbids']['bids_dir'], checkIfExists: true)
+
+    IO_READBIDS ( input, [], [] )
 }
