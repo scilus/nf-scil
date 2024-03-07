@@ -1,19 +1,17 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "registration_ants"
-description: write your description here
+description: Image registration with antsRegistrationSyN or antsRegistrationSyNQuick
 keywords:
-  - sort
-  - example
-  - genomics
+  - nifti
+  - registration
+  - antsRegistrationSyN
+  - antsRegistrationSyNQuick
+  - trk
 tools:
-  - "registration":
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence: ""
+ - "ants":
+      description: "Advanced Normalization Tools."
+      homepage: "https://github.com/ANTsX/ANTs"
 
 input:
   # Only when we have meta
@@ -23,11 +21,20 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
   
-  
-  - input:
+  - fixedimage:
       type: file
-      description: 
-      pattern: 
+      description: Fixed image(s) or source image(s) or reference image(s)
+      pattern: "*.{nii,nii.gz}"
+
+  - movingimage:
+      type: file
+      description: Moving image(s) or target image(s)
+      pattern: "*.{nii,nii.gz}"
+
+  - mask:
+      type: file
+      description: Mask(s) for the fixed image space
+      pattern: "*.{nii,nii.gz}"
 
 output:
   #Only when we have meta
@@ -42,10 +49,20 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
   
-  - output:
+  - image:
       type: file
-      description: 
-      pattern: 
+      description: Nifti volume after registration.
+      pattern: "*_warped.nii.gz"
+
+  - transfo_image:
+      type: list
+      description: Tuple, Transformation files to warp images (nii Warp, mat file)
+      pattern: "*.{nii,nii.gz,mat}"
+
+  - transfo_trk:
+      type: list
+      description: Tuple, Transformation files to warp trk (mat file, nii InverseWarp)
+      pattern: "*.{mat,nii,nii.gz}"
 
 authors:
-  - "@scilus"
+  - "@ThoumyreStanislas"
