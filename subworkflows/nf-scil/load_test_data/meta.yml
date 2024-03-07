@@ -11,6 +11,8 @@ keywords:
   - scilpy
 components:
   - testdata/scilpy
+modules:
+  - testdata/scilpy
 input:
   - ch_archive:
       type: string
