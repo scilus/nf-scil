@@ -103,4 +103,9 @@ jobs:
             /home/runner/_work/pytest_workflow_*/**/.command.sh
             /home/runner/_work/pytest_workflow_*/**/.command.run
             /home/runner/_work/pytest_workflow_*/**/*.nii.gz
+            /home/runner/_work/pytest_workflow_*/**/*.txt
+            /home/runner/_work/pytest_workflow_*/**/*.bval
+            /home/runner/_work/pytest_workflow_*/**/*.bvec
+            /home/runner/_work/pytest_workflow_*/**/bval_fodf_shells
+            /home/runner/_work/pytest_workflow_*/**/bvec_fodf_shells
             !${{ github.workspace }}/.singularity
