@@ -1,7 +1,10 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "reconst_frf"
-description: Compute a single Fiber Response Function from a DWI.
+description: Compute a Fiber Response Function (FRF) from a DWI.
+  Note that multiple types of FRF are available through the method argument. 
+  The single-shell single-tissue (ssst) FRF can be performed by choosing ssst_frf.
+  The multi-shell multi-tissue (msmt) FRF can be performed by choosing msmt_frf.
 keywords:
   - Fiber Orientation Distribution Function
   - Diffusion MRI
@@ -42,6 +45,27 @@ input:
       description: Nifti b0 binary mask.
       pattern: "*.{nii,nii.gz}"
 
+  - wm_mask:
+      type: file
+      description: Nifti binary WM mask.
+      pattern: "*.{nii,nii.gz}"
+
+  - gm_mask:
+      type: file
+      description: Nifti binary GM mask.
+      pattern: "*.{nii,nii.gz}"
+  
+  - csf_mask:
+      type: file
+      description: Nifti binary CSF mask.
+      pattern: "*.{nii,nii.gz}"
+
+  - method:
+      type: string
+      description: Reconstruction method. Either ssst_frf or msmt_frf. This choice 
+        change the input masks and the output FRF, be careful.
+      pattern: "*_frf"
+
 output:
   - meta:
       type: map
@@ -51,7 +75,22 @@ output:
 
   - frf:
       type: file
-      description: Fiber Response Function (FRF).
+      description: Fiber Response Function (FRF), in the case of ssst_frf.
+      pattern: "*.txt"
+
+  - wm_frf:
+      type: file
+      description: WM Fiber Response Function (FRF), in the case of msmt_frf.
+      pattern: "*.txt"
+
+  - gm_frf:
+      type: file
+      description: GM Fiber Response Function (FRF), in the case of msmt_frf.
+      pattern: "*.txt"
+
+  - csf_frf:
+      type: file
+      description: CSF Fiber Response Function (FRF), in the case of msmt_frf.
       pattern: "*.txt"
 
   - versions:
@@ -61,3 +100,4 @@ output:
 
 authors:
   - "@Manonedde"
+  - "@karanphil"

@@ -26,10 +26,6 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
-tracking/localtracking:
-  - modules/nf-scil/tracking/localtracking/**
-  - tests/modules/nf-scil/tracking/localtracking/**
-
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
@@ -41,6 +37,10 @@ reconst/dtimetrics:
 reconst/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
+
+reconst/fodfmetrics:
+  - modules/nf-scil/reconst/fodfmetrics/**
+  - tests/modules/nf-scil/reconst/fodfmetrics/**
 
 reconst/frf:
   - modules/nf-scil/reconst/frf/**
@@ -69,6 +69,10 @@ subworkflows/load_test_data:
 testdata/scilpy:
   - modules/nf-scil/testdata/scilpy/**
   - tests/modules/nf-scil/testdata/scilpy/**
+
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
 
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**

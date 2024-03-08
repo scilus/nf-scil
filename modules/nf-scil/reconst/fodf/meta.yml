@@ -1,10 +1,13 @@
 ---
 name: "reconst_fodf"
-description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells.
+description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells. 
+  Note that multiple choices of FODF reconstruction method are available through the method argument. 
+  The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst_fodf.
+  The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst_fodf.
+  The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt_fodf.
 keywords:
   - FODF
   - Local Model
-  - Metrics
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -48,9 +51,16 @@ input:
       pattern: "*.{nii,nii.gz}"
 
   - frf:
-      type: file
-      description: Fiber Response Function (FRF).
+      type: file or list
+      description: Fiber Response Function (FRF). In the case of msmt_fodf method,
+        should be a list of files containing the wm_frf, gm_frf and csf_frf, in that order.
       pattern: "*.txt"
+
+  - method:
+      type: string
+      description: Reconstruction method. Either ssst_fodf or msmt_fodf. This choice 
+        changes the frf input and all the output, be careful.
+      pattern: "*_fodf"
 
 output:
   - meta:
@@ -63,6 +73,31 @@ output:
       type: file
       description: FODF map.
       pattern: "*fodf.nii.gz"
+
+  - wm_fodf:
+      type: file
+      description: WM FODF map.
+      pattern: "*wm_fodf.nii.gz"
+
+  - gm_fodf:
+      type: file
+      description: GM FODF map.
+      pattern: "*gm_fodf.nii.gz"
+
+  - csf_fodf:
+      type: file
+      description: CSF FODF map.
+      pattern: "*csf_fodf.nii.gz"
+
+  - vf:
+      type: file
+      description: Volume fraction map.
+      pattern: "*vf.nii.gz"
+
+  - vf_rgb:
+      type: file
+      description: Volume fraction map in rgb.
+      pattern: "*vf_rgb.nii.gz"
 
   - peaks:
       type: file
@@ -101,3 +136,4 @@ output:
 
 authors:
   - "@gagnonanthony"
+  - "@karanphil"
