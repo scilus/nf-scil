@@ -36,7 +36,7 @@ process REGISTRATION_ANTSAPPLYTRANSFORMS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        ants: 2.4.3
+        antsApplyTransforms: \$(antsApplyTransforms --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 
@@ -57,7 +57,7 @@ process REGISTRATION_ANTSAPPLYTRANSFORMS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        ants: 2.4.3
+        antsApplyTransforms: \$(antsApplyTransforms --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 }

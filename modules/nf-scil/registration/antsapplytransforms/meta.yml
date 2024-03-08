@@ -27,6 +27,11 @@ input:
       description: Reference image for registration
       pattern: "*.{nii.nii.gz}"
 
+  - transform:
+      type: file
+      description: file or tuple of files, transformation file(s) to warp image or trk (*mat or [nii Warp, mat file]). antsApplyTransforms can also be used to inverse a given rigid or affine transform, by using -o Linear[inversedTransform,1] as its output parameter.
+      pattern: "*.{nii,nii.gz,mat}"
+
 output:
   - meta:
       type: map
