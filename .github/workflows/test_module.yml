@@ -102,4 +102,5 @@ jobs:
             /home/runner/_work/pytest_workflow_*/**/.command.log
             /home/runner/_work/pytest_workflow_*/**/.command.sh
             /home/runner/_work/pytest_workflow_*/**/.command.run
+            /home/runner/_work/pytest_workflow_*/**/*.nii.gz
             !${{ github.workspace }}/.singularity

@@ -67,7 +67,7 @@ process RECONST_FODF {
 
         scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
-        $fa_threshold $md_threshold -f
+        $fa_threshold $md_threshold --mask_output ventricles_mask.nii.gz -f
 
         echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
 
@@ -78,7 +78,7 @@ process RECONST_FODF {
 
         a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
         if (( \$(echo "\${a_threshold} <= 0" | bc -l) )); then
-           a_threshold=1E-10
+            a_threshold=1E-10
         fi
 
         echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
