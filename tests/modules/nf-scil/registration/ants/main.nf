@@ -7,14 +7,14 @@ include { REGISTRATION_ANTS } from '../../../../../modules/nf-scil/registration/
 
 workflow test_registration_ants {
 
-    input_fetch = Channel.from( [ "other.zip" ] )
-    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
+    input_fetch = Channel.from( [ "others.zip" ] )
+    LOAD_TEST_DATA ( input_fetch, "test.test_registration_ants" )
     
     input = LOAD_TEST_DATA.out.test_data_directory
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ],
-            file("${test_data_directory}/t1_resample.nii.gz"),
-            file("${test_data_directory}/t1_resample.nii.gz"),
+            file("${test_data_directory}/t1.nii.gz"),
+            file("${test_data_directory}/t1_crop.nii.gz"),
             []
     ]}
 

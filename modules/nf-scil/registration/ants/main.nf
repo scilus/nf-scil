@@ -1,5 +1,4 @@
 
-
 process REGISTRATION_ANTS {
     tag "$meta.id"
     label 'process_single'
@@ -23,21 +22,21 @@ process REGISTRATION_ANTS {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def ants = task.ext.quick "antsRegistrationSyNQuick.sh " :  "antsRegistrationSyN.sh "
+    def ants = task.ext.quick ? "antsRegistrationSyNQuick.sh " :  "antsRegistrationSyN.sh "
     def dimension = task.ext.dimension ? "-d " + task.ext.dimension : "-d 3"
     
-    if ( task.ext.threads ) args += "-n " + task.ext.threads : ""
-    if ( task.ext.initial_transform ) args += " -i " + task.ext.initial_transform : ""
-    if ( task.ext.transform ) args += " -t " + task.ext.transform : ""
-    if ( task.ext.histogram_bins ) args += " -r " + task.ext.histogram_bins : ""
-    if ( task.ext.spline_distance ) args += " -s " + task.ext.spline_distance : ""
-    if ( task.ext.gradient_step ) args += " -g " + task.ext.gradient_step : ""
+    if ( task.ext.threads ) args += "-n " + task.ext.threads
+    if ( task.ext.initial_transform ) args += " -i " + task.ext.initial_transform
+    if ( task.ext.transform ) args += " -t " + task.ext.transform
+    if ( task.ext.histogram_bins ) args += " -r " + task.ext.histogram_bins
+    if ( task.ext.spline_distance ) args += " -s " + task.ext.spline_distance
+    if ( task.ext.gradient_step ) args += " -g " + task.ext.gradient_step
     if ( task.ext.mask ) args += " -x $mask"
-    if ( task.ext.type ) args += " -p " + task.ext.type : ""
-    if ( task.ext.histogram_matching ) args += " -j " + task.ext.histogram_matching : ""
-    if ( task.ext.repro_mode ) args += " -y " + task.ext.repro_mode : ""
-    if ( task.ext.collapse_output ) args += " -z " + task.ext.collapse_output : ""
-    if ( task.ext.random_seed ) args += " -e " + task.ext.random_seed : ""
+    if ( task.ext.type ) args += " -p " + task.ext.type
+    if ( task.ext.histogram_matching ) args += " -j " + task.ext.histogram_matching
+    if ( task.ext.repro_mode ) args += " -y " + task.ext.repro_mode
+    if ( task.ext.collapse_output ) args += " -z " + task.ext.collapse_output
+    if ( task.ext.random_seed ) args += " -e " + task.ext.random_seed
 
 
     """
@@ -45,9 +44,9 @@ process REGISTRATION_ANTS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    $ants $dimension $fixedimage $movingimage -o output $args
+    $ants $dimension -f $fixedimage -m $movingimage -o output $args
 
-    mv outputWarped.nii.gz ${prefix}__warped.nii.gz
+    mv *Warped.nii.gz ${prefix}__warped.nii.gz
     mv output0GenericAffine.mat ${prefix}__output0GenericAffine.mat
     mv output1InverseWarp.nii.gz ${prefix}__output1InverseWarp.nii.gz
     mv output1Warp.nii.gz ${prefix}__output1Warp.nii.gz
@@ -68,7 +67,7 @@ process REGISTRATION_ANTS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     
     """
-    antsRegistration -help
+    antsRegistrationSyNQuick.sh -help
 
     touch ${prefix}__t1_warped.nii.gz
     touch ${prefix}__output0GenericAffine.mat
