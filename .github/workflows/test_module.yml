@@ -81,13 +81,6 @@ jobs:
         run: |
             TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
 
-      - name: Collate logs on failure
-        if: failure()
-        run: |
-          sudo apt-get update > /dev/null
-          sudo apt-get install bat > /dev/null
-          batcat --decorations=always --color=always /home/runner/_work/pytest_workflow_*/*/log.{out,err}
-
       - name: Setting global variables
         uses: actions/github-script@v6
         if: failure()

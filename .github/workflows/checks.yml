@@ -63,7 +63,7 @@ jobs:
         id: branch-names
         uses: tj-actions/branch-names@v8
 
-      - uses: SamhammerAG/last-successful-build-action@v5
+      - uses: SamhammerAG/last-successful-build-action@v6
         id: successful-ref
         with:
           branch: ${{ steps.branch-names.outputs.current_branch }}
@@ -76,7 +76,7 @@ jobs:
         with:
           filters: "tests/config/pytest_modules.yml"
           token: ${{ github.token }}
-          base: ${{ steps.successful-ref.outputs.commit_hash }}
+          base: ${{ steps.successful-ref.outputs.sha }}
 
   lint-modules:
     name: lint-modules
