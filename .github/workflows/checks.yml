@@ -91,8 +91,8 @@ jobs:
         module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
         profile: [docker] # , "singularity"]
         exclude:
-          - tags: nf-test
-          - tags: testdata/scilpy
+          - module: nf-test
+          - module: testdata/scilpy
 
     uses: ./.github/workflows/test_module.yml
     with:
