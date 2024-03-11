@@ -58,6 +58,8 @@ jobs:
       modules: ${{ steps.filter.outputs.changes }}
     steps:
       - uses: actions/checkout@v4
+        with:
+            fetch-depth: 2
 
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
@@ -88,9 +90,10 @@ jobs:
       matrix:
         module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
         profile: ["docker"] # , "singularity"]
-        exclude:modules:
-          - testdata/scilpy
-          - module: "nf-test"
+        exclude:
+          - profile: docker
+            tags: testdata/scilpy
+
     uses: ./.github/workflows/test_module.yml
     with:
       module: ${{ matrix.module }}
