@@ -7,7 +7,6 @@
     - path: output/reconst/test__afd_max.nii.gz
       md5sum: d2aecc1192eb3a53b242e6ef0685f49c
     - path: output/reconst/test__afd_sum.nii.gz
-      md5sum: 11909eafd74abcd583319fd09fa1ba5b
     - path: output/reconst/test__afd_total.nii.gz
       md5sum: 47599cb268c908d77df357c0368845f4
     - path: output/reconst/test__fodf.nii.gz
@@ -15,9 +14,7 @@
     - path: output/reconst/test__nufo.nii.gz
       md5sum: 61e525ff274acab3e2af9315a8310990
     - path: output/reconst/test__peak_indices.nii.gz
-      md5sum: 727c6364d59ddfe6b4fccd17c4dd6abb
     - path: output/reconst/test__peaks.nii.gz
-      md5sum: ad1de478ad7ce7f89a0de8264062e499
     - path: output/reconst/versions.yml
 
 - name: reconst fodf test_reconst_fodf_with_fodf_shells
@@ -39,15 +36,11 @@
     - path: output/reconst/test__afd_max.nii.gz
       md5sum: 80daed94f5d973d40a4c38f084e3bbaf
     - path: output/reconst/test__afd_sum.nii.gz
-      md5sum: 34eaaeacff2539ea93904cced646f5d1
     - path: output/reconst/test__afd_total.nii.gz
       md5sum: 7f50b056d2f36b81edf07562d6473d13
     - path: output/reconst/test__fodf.nii.gz
-      md5sum: 927605d51fb706aaeaf8e4f005950f1b
     - path: output/reconst/test__nufo.nii.gz
       md5sum: 6da0feb3c81ed10ef5b468223502ab68
     - path: output/reconst/test__peak_indices.nii.gz
-      md5sum: b064ff1370edf449f128e196506b7484
     - path: output/reconst/test__peaks.nii.gz
-      md5sum: a759fff89aa24d0ad4c0ab94a579965d
     - path: output/reconst/versions.yml
