@@ -49,5 +49,5 @@
     - path: output/reconst/test__peak_indices.nii.gz
       md5sum: b064ff1370edf449f128e196506b7484
     - path: output/reconst/test__peaks.nii.gz
-      md5sum: 2f07a9efb9eb8b016bc3de213068b305
+      md5sum: a759fff89aa24d0ad4c0ab94a579965d
     - path: output/reconst/versions.yml

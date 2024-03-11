@@ -36,6 +36,7 @@ process RECONST_FODF {
     def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
     def set_mask = mask ? "--mask $mask" : ""
+    def absolute_peaks = task.ext.absolute_peaks ? "--abs_peaks_and_values" : ""
 
     if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else peaks = ""
     if ( task.ext.peak_indices ) peak_indices = "--peak_indices ${prefix}__peak_indices.nii.gz" else peak_indices = ""
@@ -84,7 +85,7 @@ process RECONST_FODF {
         echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
 
         scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
-            $set_mask $sh_basis \
+            $set_mask $sh_basis $absolute_peaks \
             $peaks $peak_indices \
             $afd_max $afd_total \
             $afd_sum $nufo \
