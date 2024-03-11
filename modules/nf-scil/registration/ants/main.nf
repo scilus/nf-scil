@@ -46,7 +46,7 @@ process REGISTRATION_ANTS {
 
     $ants $dimension -f $fixedimage -m $movingimage -o output $args
 
-    mv *Warped.nii.gz ${prefix}__warped.nii.gz
+    mv outputWarped.nii.gz ${prefix}__warped.nii.gz
     mv output0GenericAffine.mat ${prefix}__output0GenericAffine.mat
     mv output1InverseWarp.nii.gz ${prefix}__output1InverseWarp.nii.gz
     mv output1Warp.nii.gz ${prefix}__output1Warp.nii.gz
