@@ -6,19 +6,19 @@
   files:
     - path: output/registration/test__output0GenericAffine.mat
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__output1InverseWarp.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__output1Warp.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__revoutput0GenericAffine.mat
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__warped.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/versions.yml
     - path: output/testdata/test_data/others/IFGWM.trk
       md5sum: a5e2562f426828cc8545177cc9e1aee7
@@ -72,19 +72,19 @@
   files:
     - path: output/registration/test__output0GenericAffine.mat
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__output1InverseWarp.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__output1Warp.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__revoutput0GenericAffine.mat
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/test__warped.nii.gz
       contains:
-        - '# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead '
+        - "# TODO nf-core: file md5sum was variable, please replace this text with a string found in the file instead "
     - path: output/registration/versions.yml
     - path: output/testdata/test_data/others/IFGWM.trk
       md5sum: a5e2562f426828cc8545177cc9e1aee7

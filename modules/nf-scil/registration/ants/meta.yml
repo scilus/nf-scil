@@ -9,7 +9,7 @@ keywords:
   - antsRegistrationSyNQuick
   - trk
 tools:
- - "ants":
+  - "ants":
       description: "Advanced Normalization Tools."
       homepage: "https://github.com/ANTsX/ANTs"
 
@@ -20,7 +20,7 @@ input:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - fixedimage:
       type: file
       description: Fixed image(s) or source image(s) or reference image(s)
@@ -43,12 +43,12 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
-  
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  
+
   - image:
       type: file
       description: Nifti volume after registration.

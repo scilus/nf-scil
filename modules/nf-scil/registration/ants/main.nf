@@ -13,7 +13,7 @@ process REGISTRATION_ANTS {
     output:
     tuple val(meta), path("*_warped.nii.gz")                                                     , emit: image
     tuple val(meta), path("*__output1Warp.nii.gz"), path ("*__output0GenericAffine.mat")         , emit: transfo_image
-    tuple val(meta), path("*__revoutput0GenericAffine.mat"), path("*__output1InverseWarp.nii.gz"), emit: transfo_trk
+    tuple val(meta), path("*__revoutput0GenericAffine.mat"), path("*__output1InverseWarp.nii.gz"), emit: transfo_trk, optional: true
     path "versions.yml"                                                                          , emit: versions
 
     when:
@@ -24,7 +24,7 @@ process REGISTRATION_ANTS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def ants = task.ext.quick ? "antsRegistrationSyNQuick.sh " :  "antsRegistrationSyN.sh "
     def dimension = task.ext.dimension ? "-d " + task.ext.dimension : "-d 3"
-    
+
     if ( task.ext.threads ) args += "-n " + task.ext.threads
     if ( task.ext.initial_transform ) args += " -i " + task.ext.initial_transform
     if ( task.ext.transform ) args += " -t " + task.ext.transform
@@ -53,7 +53,7 @@ process REGISTRATION_ANTS {
 
     antsApplyTransforms -d 3 -i $fixedimage -r $movingimage -o Linear[output.mat]\
                         -t [${prefix}__output0GenericAffine.mat,1]
-    
+
     mv output.mat ${prefix}__revoutput0GenericAffine.mat
 
     cat <<-END_VERSIONS > versions.yml
@@ -65,7 +65,7 @@ process REGISTRATION_ANTS {
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     antsRegistrationSyNQuick.sh -help
 
