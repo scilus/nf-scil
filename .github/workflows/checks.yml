@@ -9,8 +9,8 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
       - uses: pre-commit/action@v3.0.0
         # FIXME Flip this off once we get to less than a couple hundred. Adding
         # this so it will only run against changed files. It'll make it much
@@ -59,24 +59,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get branch names
-        id: branch-names
-        uses: tj-actions/branch-names@v8
-
-      - uses: SamhammerAG/last-successful-build-action@v6
-        id: successful-ref
-        with:
-          branch: ${{ steps.branch-names.outputs.current_branch }}
-          token: ${{ github.token }}
-          workflow: "nf-scil checks"
-
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
         id: filter
         with:
           filters: "tests/config/pytest_modules.yml"
           token: ${{ github.token }}
-          base: ${{ steps.successful-ref.outputs.sha }}
 
   lint-modules:
     name: lint-modules
@@ -100,7 +88,8 @@ jobs:
       matrix:
         module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
         profile: ["docker"] # , "singularity"]
-        exclude:
+        exclude:modules:
+          - testdata/scilpy
           - module: "nf-test"
     uses: ./.github/workflows/test_module.yml
     with:
