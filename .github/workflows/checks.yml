@@ -89,10 +89,10 @@ jobs:
       fail-fast: false
       matrix:
         module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
-        profile: ["docker"] # , "singularity"]
+        profile: [docker] # , "singularity"]
         exclude:
-          - profile: docker
-            tags: testdata/scilpy
+          - tags: nf-test
+          - tags: testdata/scilpy
 
     uses: ./.github/workflows/test_module.yml
     with:
