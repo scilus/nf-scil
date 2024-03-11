@@ -34,6 +34,7 @@ isort = "^5.13.2"
 myst-parser = "^2.0.0"
 pytest-cov = "^4.1.0"
 pytest-datafiles = "^3.0.0"
+pytest-workflow>=2.0.0
 responses = "^0.24.1"
 sphinx = "^7.2.6"
 sphinx-rtd-theme = "^2.0.0"
