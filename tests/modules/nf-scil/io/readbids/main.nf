@@ -7,7 +7,7 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 workflow test_io_readbids {
 
-    input_fetch = Channel.from( [ "i_bids" ] )  
+    input_fetch = Channel.from( [ "bids.zip" ] )
     LOAD_TEST_DATA ( input_fetch, "test.test_io_readbids" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
