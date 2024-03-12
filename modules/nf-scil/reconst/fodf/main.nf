@@ -36,6 +36,7 @@ process RECONST_FODF {
     def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
     def set_mask = mask ? "--mask $mask" : ""
+    def absolute_peaks = task.ext.absolute_peaks ? "--abs_peaks_and_values" : ""
 
     if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else peaks = ""
     if ( task.ext.peak_indices ) peak_indices = "--peak_indices ${prefix}__peak_indices.nii.gz" else peak_indices = ""
@@ -43,6 +44,11 @@ process RECONST_FODF {
     if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else afd_total = ""
     if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else afd_sum = ""
     if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else nufo = ""
+
+    def run_fodf_metrics = [
+        task.ext.peaks, task.ext.peak_indices, task.ext.afd_max,
+        task.ext.afd_sum, task.ext.afd_total, task.ext.nufo
+    ].any()
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -57,23 +63,34 @@ process RECONST_FODF {
         $sh_order $sh_basis --force_b0_threshold \
         $set_mask $processes
 
-    scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
+    if $run_fodf_metrics
+    then
+
+        scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
-        $fa_threshold $md_threshold -f
+        $fa_threshold $md_threshold --mask_output ventricles_mask.nii.gz -f
 
-    a_factor=$fodf_metrics_a_factor
-    v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
-    a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
-    if (( \$(echo "\${a_threshold} < 0" | bc -l) )); then
-        a_threshold=0
+        echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
+
+        a_factor=$fodf_metrics_a_factor
+        v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
+
+        echo "Maximal peak value in ventricles : \${v_max}"
+
+        a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
+        if (( \$(echo "\${a_threshold} <= 0" | bc -l) )); then
+            a_threshold=1E-10
+        fi
+
+        echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
+
+        scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
+            $set_mask $sh_basis $absolute_peaks \
+            $peaks $peak_indices \
+            $afd_max $afd_total \
+            $afd_sum $nufo \
+            $relative_threshold --not_all --at \${a_threshold}
     fi
-
-    scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
-        $set_mask $sh_basis \
-        $peaks $peak_indices \
-        $afd_max $afd_total \
-        $afd_sum $nufo \
-        $relative_threshold --at \${a_threshold}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

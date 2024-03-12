@@ -74,6 +74,10 @@ testdata/scilpy:
   - modules/nf-scil/testdata/scilpy/**
   - tests/modules/nf-scil/testdata/scilpy/**
 
+testdata/sizeof:
+  - modules/nf-scil/testdata/sizeof/**
+  - tests/modules/nf-scil/testdata/sizeof/**
+
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
