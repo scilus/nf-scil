@@ -78,6 +78,10 @@ tracking/localtracking:
   - modules/nf-scil/tracking/localtracking/**
   - tests/modules/nf-scil/tracking/localtracking/**
 
+testdata/sizeof:
+  - modules/nf-scil/testdata/sizeof/**
+  - tests/modules/nf-scil/testdata/sizeof/**
+
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
