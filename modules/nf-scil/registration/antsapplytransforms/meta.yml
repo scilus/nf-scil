@@ -29,7 +29,7 @@ input:
 
   - transform:
       type: file
-      description: file or tuple of files, transformation file(s) to warp image or trk (*mat or [nii Warp, mat file]). antsApplyTransforms can also be used to inverse a given rigid or affine transform, by using -o Linear[inversedTransform,1] as its output parameter.
+      description: file or tuple of files, transformation file(s) to warp image or trk (*mat or [nii Warp, mat file]). If a rigid or affine transformation needs to be inverted before being applied, use antsApplyTransforms with the  -o Linear[inversedTransform,1], as this module does not handles it.
       pattern: "*.{nii,nii.gz,mat}"
 
 output:
