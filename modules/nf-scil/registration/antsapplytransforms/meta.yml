@@ -1,0 +1,48 @@
+---
+name: "registration_antsapplytransforms"
+description: register image from transform
+keywords:
+  - MRI
+  - registration
+  - medical imaging
+tools:
+  - "ANTs":
+      description: "perform registration using transform as input"
+      homepage: "https://antsx.github.io/ANTsRCore/reference/antsApplyTransforms.html"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - image:
+      type: file
+      description: Input image to register
+      pattern: "*.{nii.nii.gz}"
+
+  - reference:
+      type: file
+      description: Reference image for registration
+      pattern: "*.{nii.nii.gz}"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - warped:
+      type: file
+      description: Warped image
+      pattern: "*.{nii.nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scilus"
