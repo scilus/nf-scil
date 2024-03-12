@@ -7,7 +7,7 @@ process REGISTRATION_TRACTOGRAM {
         'scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(anat), path(transfo), path(centroids_dir), path(ref) /* optional, value = [] */
+    tuple val(meta), path(anat), path(transfo), path(centroids_dir), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*__*.trk"), emit: warped_bundle
@@ -17,15 +17,13 @@ process REGISTRATION_TRACTOGRAM {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def reference = "$ref" ? "--reference $ref" : ""
+    def reference = "ref" ? "--reference $ref" : ""
+    def in_deformation = "deformation" ? "--in_deformation $deformation" : ""
 
     def inverse = task.ext.inverse ? "--inverse " + task.ext.inverse : ""
-    def in_deformation = task.ext.in_deformation ? "--in_deformation " + task.ext.in_deformation : ""
     def reverse_operation = task.ext.reverse_operation ? "--reverse_operation " + task.ext.reverse_operation : ""
-    def remove_invalid = task.ext.remove_invalid ? "--remove_invalid " + task.ext.remove_invalid : ""
-    def keep_invalid = task.ext.keep_invalid ? "--keep_invalid " + task.ext.keep_invalid : ""
+    def invalid_action = task.ext.invalid_action ? "--" + task.ext.invalid_action : "--remove_invalid"
     def no_empty1 = task.ext.no_empty1 ? "--no_empty " + task.ext.no_empty1 : ""
     def force = task.ext.force ? "-f " + task.ext.force : ""
 
@@ -42,11 +40,10 @@ process REGISTRATION_TRACTOGRAM {
         bname=\$(basename \${bname} .trk)
 
         scil_apply_transform_to_tractogram.py $centroid $anat $transfo tmp.trk\
-                        $inverse\
                         $in_deformation\
+                        $inverse\
                         $reverse_operation\
-                        $remove_invalid\
-                        $keep_invalid\
+                        $invalid_action\
                         $no_empty1\
                         $force\
                         $reference
@@ -67,7 +64,6 @@ process REGISTRATION_TRACTOGRAM {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     touch ${prefix}__AF_L.trk
