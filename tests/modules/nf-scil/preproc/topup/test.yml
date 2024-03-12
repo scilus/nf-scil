@@ -1,8 +1,8 @@
 - name: preproc topup test_preproc_topup
   command: nextflow run ./tests/modules/nf-scil/preproc/topup -entry test_preproc_topup -c ./tests/config/nextflow.config
   tags:
-    - preproc/topup
     - preproc
+    - preproc/topup
   files:
     - path: output/preproc/test__b0_mean.nii.gz
       md5sum: ed0d43ea70a6595e3f6a3d135329627b
