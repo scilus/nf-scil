@@ -3,8 +3,7 @@
 nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
-include {
-    REGISTRATION_TRACTOGRAM as REGISTRATION_TRACTOGRAM_1; } from '../../../../../modules/nf-scil/registration/tractogram/main.nf'
+include { REGISTRATION_TRACTOGRAM } from '../../../../../modules/nf-scil/registration/tractogram/main.nf'
 
 workflow test_registration_tractogram {
 
@@ -20,5 +19,5 @@ workflow test_registration_tractogram {
             file("${test_data_directory}/fibercup_atlas")
     ]}
 
-    REGISTRATION_TRACTOGRAM_1 ( input )
+    REGISTRATION_TRACTOGRAM ( input )
 }
