@@ -1,0 +1,56 @@
+---
+name: "betcrop_synthbet"
+description: Perform brain extraction using mri_synthstrip on t1 image
+keywords:
+  - anatomical image
+  - BET
+  - freesurfer
+tools:
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+  - "Freesurfer":
+      description: "Software package for the analysis and visualization of structural and functional neuroimaging data."
+      homepage: "https://surfer.nmr.mgh.harvard.edu/fswiki"
+
+input:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - t1:
+      type: file
+      description: Nifti image volume to perform BET.
+      pattern: "*.{nii,nii.gz}"
+
+  - fs_license:
+      type: file
+      description: The path to your FreeSurfer license. To get one, go to https://surfer.nmr.mgh.harvard.edu/registration.html. Optional. If you have already set your license as prescribed by Freesurfer (copied to a .license file in your $FREESURFER_HOME), this is not required.
+      pattern: "*.txt"
+
+output:
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - bet_t1:
+      type: file
+      description: Nifti t1 volume brain-extracted.
+      pattern: "*t1_bet.{nii,nii.gz}"
+
+  - mask:
+      type: file
+      description: t1 mask brain-extracted and cropped.
+      pattern: "*t1_bet_mask.{nii,nii.gz}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+
+authors:
+  - "@scilus"

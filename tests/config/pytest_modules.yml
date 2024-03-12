@@ -1,0 +1,3 @@
+betcrop/synthbet:
+  - modules/nf-scil/betcrop/synthbet/**
+  - tests/modules/nf-scil/betcrop/synthbet/**
