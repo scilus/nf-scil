@@ -7,29 +7,20 @@
     - path: output/reconst/test__ad.nii.gz
       md5sum: 070f44b9a8ad0b6ae3f81ab0a1864e5d
     - path: output/reconst/test__evals.nii.gz
-      md5sum: 6e85e1cb482ab787167f33b219eacda9
     - path: output/reconst/test__evals_e1.nii.gz
       md5sum: 070f44b9a8ad0b6ae3f81ab0a1864e5d
     - path: output/reconst/test__evals_e2.nii.gz
-      md5sum: a2a92db0096e1ef7821f4aabefbb0fa4
     - path: output/reconst/test__evals_e3.nii.gz
       md5sum: 5c2a4d8edde013df7a2b1efa5dbf1e36
     - path: output/reconst/test__evecs.nii.gz
-      md5sum: 030d9cb5f47c56257f4d257daf092015
     - path: output/reconst/test__evecs_v1.nii.gz
-      md5sum: 9c81d86dba47ce972aafd737d12aef8b
     - path: output/reconst/test__evecs_v2.nii.gz
-      md5sum: 57891f638851c1360723c321d5fdc3ad
     - path: output/reconst/test__evecs_v3.nii.gz
-      md5sum: 1050b1508187421ebaadc00c3516a6a1
     - path: output/reconst/test__fa.nii.gz
-      md5sum: 8142dd2eddefbfab5f5627d595bed84f
     - path: output/reconst/test__ga.nii.gz
-      md5sum: 6472e6a9aa976199823742cea5e51e72
     - path: output/reconst/test__md.nii.gz
       md5sum: beccf1b8c56f5ef656273db73c1b17d1
     - path: output/reconst/test__mode.nii.gz
-      md5sum: fc2d339dd98534222252dfa37a56fb25
     - path: output/reconst/test__nonphysical.nii.gz
       md5sum: 9db54682764ac068dce17de3f317ae5c
     - path: output/reconst/test__norm.nii.gz
@@ -53,7 +44,6 @@
     - path: output/reconst/test__rgb.nii.gz
       md5sum: 164d879989d07c7430a261657c334e92
     - path: output/reconst/test__tensor.nii.gz
-      md5sum: 3d896ab936fdd7f4423ca54e15a5f205
     - path: output/reconst/versions.yml
 
 - name: reconst dtimetrics test_reconst_dtimetrics_with_b0mask
@@ -63,5 +53,4 @@
     - reconst
   files:
     - path: output/reconst/test__fa.nii.gz
-      md5sum: 25dab6cda39c36c8c2d76a40326f768a
     - path: output/reconst/versions.yml

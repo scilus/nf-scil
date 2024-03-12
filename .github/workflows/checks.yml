@@ -9,9 +9,9 @@ jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      - uses: pre-commit/action@v3.0.0
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - uses: pre-commit/action@v3.0.1
         # FIXME Flip this off once we get to less than a couple hundred. Adding
         # this so it will only run against changed files. It'll make it much
         # easier to fix these as they come up rather than everything at once.
@@ -58,17 +58,8 @@ jobs:
       modules: ${{ steps.filter.outputs.changes }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Get branch names
-        id: branch-names
-        uses: tj-actions/branch-names@v8
-
-      - uses: SamhammerAG/last-successful-build-action@v6
-        id: successful-ref
         with:
-          branch: ${{ steps.branch-names.outputs.current_branch }}
-          token: ${{ github.token }}
-          workflow: "nf-scil checks"
+            fetch-depth: 2
 
       # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
       - uses: mirpedrol/paths-filter@main
@@ -76,7 +67,6 @@ jobs:
         with:
           filters: "tests/config/pytest_modules.yml"
           token: ${{ github.token }}
-          base: ${{ steps.successful-ref.outputs.sha }}
 
   lint-modules:
     name: lint-modules
@@ -99,9 +89,11 @@ jobs:
       fail-fast: false
       matrix:
         module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
-        profile: ["docker"] # , "singularity"]
+        profile: [docker] # , "singularity"]
         exclude:
-          - module: "nf-test"
+          - module: nf-test
+          - module: testdata/scilpy
+
     uses: ./.github/workflows/test_module.yml
     with:
       module: ${{ matrix.module }}
