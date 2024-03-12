@@ -7,7 +7,11 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 workflow test_io_readbids {
 
-    input = file(params.test_data['io']['readbids']['bids_dir'], checkIfExists: true)
+    input_fetch = Channel.from( [ "i_bids" ] )  // pas sûre
+    LOAD_TEST_DATA ( input_fetch, "test.test_io_readbids" )
+
+    input = LOAD_TEST_DATA.out.test_data_directory
+        .map{ test_data_directory -> file("${test_data_directory}/i_bids", checkIfExists: true)}
 
     IO_READBIDS ( input, [], [] )
 }
