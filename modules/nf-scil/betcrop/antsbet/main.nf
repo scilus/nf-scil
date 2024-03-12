@@ -8,8 +8,7 @@ process BETCROP_ANTSBET {
         'scilus/scilus:1.6.0' }"
 
     input:
-
-    tuple val(meta), path(t1), path(template), path(map)
+    tuple val(meta), path(t1), path(template), path(tissues_probabilities)
 
     output:
     tuple val(meta), path("*t1_bet.nii.gz")     , emit: t1

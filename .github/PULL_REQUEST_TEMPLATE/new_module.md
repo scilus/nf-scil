@@ -1,6 +1,6 @@
 ## Describe your changes
 
-## Say which test data are used by your module
+## List test packages used by your module
 
 ## Checklist before requesting a review
 
@@ -12,7 +12,6 @@
   - [ ] Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`
   - [ ] Add test data locally for tests with the fork repository
   - [ ] Generate the test infrastructure and _md5sum_ for all outputs
-  - [ ] Test the module in a **REAL** DSL2 pipeline or a _dummy_ one
 - Ensure the syntax is correct :
   - [ ] Check indentation abides with the rest of the library (don't hesitate to correct others !)
   - [ ] Lint everything. Ensure your variables have good names.

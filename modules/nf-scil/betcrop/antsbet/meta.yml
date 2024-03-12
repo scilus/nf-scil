@@ -1,9 +1,9 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
 name: "betcrop_antsbet"
-description: Perform Brain extraction using antsBrainExtraction.sh on t1 image.
+description: Perform Brain extraction using antsBrainExtraction.sh on T1 image.
 keywords:
-  - t1
+  - T1
   - BET
   - ants
 tools:
@@ -34,7 +34,7 @@ input:
       description: Nifti Anatomical template to perform BET.
       pattern: "*.{nii,nii.gz}"
 
-  - map:
+  - tissues_probabilities:
       type: file
       description: Brain probability mask, with intensity range 1 (definitely brain) to 0 (definitely background).
       pattern: "*.{nii,nii.gz}"
@@ -48,12 +48,12 @@ output:
 
   - t1:
       type: file
-      description: Nifti t1 volume brain-extracted.
+      description: Nifti T1 volume brain-extracted.
       pattern: "*t1_bet.{nii,nii.gz}"
 
   - mask:
       type: file
-      description: t1 mask brain-extracted and cropped.
+      description: T1 mask brain-extracted and cropped.
       pattern: "*t1_bet_mask.{nii,nii.gz}"
 
   - versions:
