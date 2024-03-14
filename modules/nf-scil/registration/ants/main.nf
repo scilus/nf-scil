@@ -24,6 +24,7 @@ process REGISTRATION_ANTS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def ants = task.ext.quick ? "antsRegistrationSyNQuick.sh " :  "antsRegistrationSyN.sh "
     def dimension = task.ext.dimension ? "-d " + task.ext.dimension : "-d 3"
+    def seed = task.ext.random_seed ? " -e " + task.ext.random_seed : "-e 1234"
 
     if ( task.ext.threads ) args += "-n " + task.ext.threads
     if ( task.ext.initial_transform ) args += " -i " + task.ext.initial_transform
@@ -36,15 +37,13 @@ process REGISTRATION_ANTS {
     if ( task.ext.histogram_matching ) args += " -j " + task.ext.histogram_matching
     if ( task.ext.repro_mode ) args += " -y " + task.ext.repro_mode
     if ( task.ext.collapse_output ) args += " -z " + task.ext.collapse_output
-    if ( task.ext.random_seed ) args += " -e " + task.ext.random_seed
-
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    $ants $dimension -f $fixedimage -m $movingimage -o output $args
+    $ants $dimension -f $fixedimage -m $movingimage -o output $args $seed
 
     mv outputWarped.nii.gz ${prefix}__warped.nii.gz
     mv output0GenericAffine.mat ${prefix}__output0GenericAffine.mat
