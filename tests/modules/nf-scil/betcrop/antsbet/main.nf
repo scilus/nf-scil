@@ -14,7 +14,7 @@ workflow test_betcrop_antsbet {
     input = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
         [ id:'test', single_end:false ], // meta map
-        file("${test_data_directory}/t1.nii.gz"),
+        file("${test_data_directory}/t1_unaligned.nii.gz"),
         file("${test_data_directory}/t1_template.nii.gz"),
         file("${test_data_directory}/t1_brain_probability_map.nii.gz")
 
