@@ -1,0 +1,15 @@
+- name: register anattodwi test_register_anattodwi
+  command: nextflow run ./tests/modules/nf-scil/register/anattodwi -entry test_register_anattodwi -c ./tests/config/nextflow.config
+  tags:
+    - register/anattodwi
+    - register
+  files:
+    - path: output/register/test__output0GenericAffine.mat
+      md5sum: 043decee0d131e79a802e3dcc61c22f0
+    - path: output/register/test__output1InverseWarp.nii.gz
+      md5sum: 450c5f85d59a753cb8dd29c8de59905e
+    - path: output/register/test__output1Warp.nii.gz
+      md5sum: 4e3131a45dabb26b18122fdf5520ba2c
+    - path: output/register/test__t1_warped.nii.gz
+      md5sum: c5a57cfa815caceab567a61d57f07fb4
+    - path: output/register/versions.yml

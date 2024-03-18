@@ -38,6 +38,7 @@ jobs:
   pytest:
     runs-on: scilus-nf-scil-runners
     name: pytest-${{ inputs.module }}
+    if: inputs.module != ''
     env:
       NXF_ANSI_LOG: false
 
