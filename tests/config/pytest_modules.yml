@@ -1,3 +1,7 @@
+betcrop/antsbet:
+  - modules/nf-scil/betcrop/antsbet/**
+  - tests/modules/nf-scil/betcrop/antsbet/**
+
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
@@ -17,6 +21,10 @@ denoising/nlmeans:
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
+
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
 
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
@@ -58,6 +66,10 @@ reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
 
+register/anattodwi:
+  - modules/nf-scil/register/anattodwi/**
+  - tests/modules/nf-scil/register/anattodwi/**
+
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
   - tests/modules/nf-scil/segmentation/fastseg/**
@@ -81,6 +93,10 @@ tracking/localtracking:
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
+
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
 
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
