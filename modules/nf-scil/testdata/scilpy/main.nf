@@ -76,7 +76,7 @@ process TESTDATA_SCILPY {
             "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
             "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
             "topup_eddy.zip": "06e19426647c2a046c9e2c143c652316",
-            "bids.zip": "417fea0afc17953f67588f786f36952c",
+            "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
             "antsbet.zip": "9ef6502da1437bdc45301cf1a3a649ad"
         }
 

@@ -11,7 +11,7 @@ workflow test_io_readbids {
     LOAD_TEST_DATA ( input_fetch, "test.test_io_readbids" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
-        .map{ test_data_directory -> file("${test_data_directory}", checkIfExists: true)}
+        .map{ test_data_directory -> file("${test_data_directory}/i_bids", checkIfExists: true)}
 
     IO_READBIDS ( input, [], [] )
 }
