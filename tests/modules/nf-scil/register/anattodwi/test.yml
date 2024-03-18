@@ -5,15 +5,11 @@
     - register
   files:
     - path: output/register/test__output0GenericAffine.mat
-      contains:
-        - "Output transformation file"
+      md5sum: 043decee0d131e79a802e3dcc61c22f0
     - path: output/register/test__output1InverseWarp.nii.gz
-      contains:
-        - "Output inverse warp info map"
+      md5sum: 450c5f85d59a753cb8dd29c8de59905e
     - path: output/register/test__output1Warp.nii.gz
-      contains:
-        - "Output warp info map"
+      md5sum: 4e3131a45dabb26b18122fdf5520ba2c
     - path: output/register/test__t1_warped.nii.gz
-      contains:
-        - "Anatomical image warped in diffusion space"
+      md5sum: c5a57cfa815caceab567a61d57f07fb4
     - path: output/register/versions.yml

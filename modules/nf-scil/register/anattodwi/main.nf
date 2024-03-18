@@ -22,7 +22,7 @@ process REGISTER_ANATTODWI {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def cpus = task.ext.cpus ? "$task.ext.cpus" : "4"
+    def cpus = task.ext.cpus ? "$task.ext.cpus" : "1"
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.ext.cpus
