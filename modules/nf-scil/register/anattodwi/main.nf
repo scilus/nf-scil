@@ -57,7 +57,7 @@ process REGISTER_ANATTODWI {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        antsRegistration: \$(antsRegistration --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
+        ants: 2.4.3
     END_VERSIONS
     """
 
@@ -74,7 +74,7 @@ process REGISTER_ANATTODWI {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        antsRegistration: \$(antsRegistration --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
+        ants: 2.4.3
     END_VERSIONS
     """
 }
