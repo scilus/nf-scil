@@ -1,3 +1,7 @@
+betcrop/antsbet:
+  - modules/nf-scil/betcrop/antsbet/**
+  - tests/modules/nf-scil/betcrop/antsbet/**
+
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
