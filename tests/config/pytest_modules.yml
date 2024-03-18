@@ -18,6 +18,10 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
+
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
