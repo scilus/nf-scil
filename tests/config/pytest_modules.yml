@@ -18,10 +18,6 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
-image/resample:
-  - modules/nf-scil/image/resample/**
-  - tests/modules/nf-scil/image/resample/**
-
 io/readbids:
   - modules/nf-scil/io/readbids/**
   - tests/modules/nf-scil/io/readbids/**
