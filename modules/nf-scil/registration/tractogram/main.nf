@@ -66,7 +66,11 @@ process REGISTRATION_TRACTOGRAM {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    touch ${prefix}__AF_L.trk
+    for centroids in $centroids_dir/*.trk;
+        do bname=\${centroid/_centroid/}
+        bname=\$(basename \${bname} .trk)
+
+        touch ${prefix}__${bname}.trk
 
     scil_apply_transform_to_tractogram.py -h
     scil_remove_invalid_streamlines.py -h
