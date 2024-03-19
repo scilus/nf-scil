@@ -1,19 +1,19 @@
 - name: preproc topup test_preproc_topup
   command: nextflow run ./tests/modules/nf-scil/preproc/topup -entry test_preproc_topup -c ./tests/config/nextflow.config
   tags:
-    - preproc/topup
     - preproc
+    - preproc/topup
   files:
     - path: output/preproc/test__b0_mean.nii.gz
-      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+      md5sum: 29dec4a2603f4df348417fe58ec19f11
     - path: output/preproc/test__corrected_b0s.nii.gz
-      md5sum: 27bf13c95bea445c7d39d68630a1ee27
+      md5sum: 393a7f4b2b089d943aafaba44512bfdf
     - path: output/preproc/test__rev_b0_mean.nii.gz
-      md5sum: 9bdc8fa63e5bebbb9a8c1e4ea7e6c5ce
+      md5sum: 9955482a39b3e123fdb4980ed1bb6f30
     - path: output/preproc/test__rev_b0_warped.nii.gz
-      md5sum: 0fc24916631f62afeda8e55297b21ba6
+      md5sum: 497e15a29b72996eafe2dbdde529eef4
     - path: output/preproc/topup_results_fieldcoef.nii.gz
-      md5sum: f96c3c4942987bae1ffe028618bbf8d6
+      md5sum: 4f5f2d93ed08995e48e3f9112966fd74
     - path: output/preproc/topup_results_movpar.txt
-      md5sum: d76391c9fc30e542a5c1e35a0e961781
+      md5sum: 57542f26425b0842154410bda572c099
     - path: output/preproc/versions.yml
