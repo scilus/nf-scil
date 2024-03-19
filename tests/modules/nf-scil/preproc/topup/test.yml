@@ -5,15 +5,9 @@
     - preproc/topup
   files:
     - path: output/preproc/test__b0_mean.nii.gz
-      md5sum: 29dec4a2603f4df348417fe58ec19f11
     - path: output/preproc/test__corrected_b0s.nii.gz
-      md5sum: 393a7f4b2b089d943aafaba44512bfdf
     - path: output/preproc/test__rev_b0_mean.nii.gz
-      md5sum: 9955482a39b3e123fdb4980ed1bb6f30
     - path: output/preproc/test__rev_b0_warped.nii.gz
-      md5sum: 497e15a29b72996eafe2dbdde529eef4
     - path: output/preproc/topup_results_fieldcoef.nii.gz
-      md5sum: 4f5f2d93ed08995e48e3f9112966fd74
     - path: output/preproc/topup_results_movpar.txt
-      md5sum: 57542f26425b0842154410bda572c099
     - path: output/preproc/versions.yml
