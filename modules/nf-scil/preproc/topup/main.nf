@@ -67,6 +67,8 @@ process PREPROC_TOPUP {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
+        antsRegistration: 2.4.3
+        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
 
     END_VERSIONS
     """
@@ -91,6 +93,9 @@ process PREPROC_TOPUP {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
+        antsRegistration: 2.4.3
+        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
+
     END_VERSIONS
     """
 }

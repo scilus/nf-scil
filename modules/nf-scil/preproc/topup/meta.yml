@@ -75,14 +75,9 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - topup_corrected_b0s:
       type: file
-      description: Nifti volume b0 corrected
+      description: Nifti volume - b0 corrected
       pattern: "*__corrected_b0s.nii.gz"
 
   - topup_fieldcoef:
@@ -94,6 +89,26 @@ output:
       type: file
       description: Text file - topup movpart
       pattern: "*__movpar.txt"
+
+  - rev_b0_warped:
+      type: file
+      description: Nifti volume - rev b0 warped on b0
+      pattern: "*__rev_b0_warped.nii.gz"
+
+  - rev_b0_mean:
+      type: file
+      description: Nifti volume - rev b0 mean
+      pattern: "*__rev_b0_mean.nii.gz"
+
+  - b0_mean:
+      type: file
+      description: Nifti volume - b0 mean
+      pattern: "*__b0_mean.nii.gz"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@arnaudbore"
