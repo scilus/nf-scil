@@ -71,13 +71,14 @@ process REGISTRATION_ANTS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    antsRegistrationSyNQuick.sh -help
+    antsRegistrationSyNQuick.sh -h
+    antsApplyTransforms -h
 
     touch ${prefix}__t1_warped.nii.gz
-    touch ${prefix}__output0GenericAffine.mat
-    touch ${prefix}__revoutput0GenericAffine.mat
+    touch ${prefix}__output1GenericAffine.mat
+    touch ${prefix}__output0InverseAffine.mat
     touch ${prefix}__output1InverseWarp.nii.gz
-    touch ${prefix}__output1Warp.nii.gz
+    touch ${prefix}__output0Warp.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
