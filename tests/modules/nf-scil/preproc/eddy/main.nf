@@ -7,8 +7,8 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 workflow test_preproc_eddy {
 
-input_fetch = Channel.from( [ "topup_eddy.zip" ] )
-    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_topup" )
+    input_fetch = Channel.from( [ "topup_eddy.zip" ] )
+    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_eddy" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
         .map{ test_data_directory -> [

@@ -103,7 +103,7 @@ process PREPROC_EDDY {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-    scilpy: 1.6.0
+        scilpy: 1.6.0
 
     END_VERSIONS
     """
@@ -131,7 +131,7 @@ process PREPROC_EDDY {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-    scilpy: 1.6.0
+        scilpy: 1.6.0
 
     END_VERSIONS
     """
