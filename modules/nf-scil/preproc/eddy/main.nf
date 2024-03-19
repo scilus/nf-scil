@@ -59,12 +59,16 @@ process PREPROC_EDDY {
         dwi=${prefix}__concatenated_dwi.nii.gz
         bval=${prefix}__concatenated_dwi.bval
         bvec=${prefix}__concatenated_dwi.bvec
+    else
+        dwi=${dwi}
+        dwi=${bval}
+        dwi=${bvec}
     fi
 
     # If topup has been run before
     if [[ -f "$topup_fieldcoef" ]]
     then
-        scil_prepare_eddy_command.py $dwi $bval $bvec ${prefix}__b0_bet_mask.nii.gz\
+        scil_prepare_eddy_command.py \${dwi} \${bval} \${bvec} ${prefix}__b0_bet_mask.nii.gz\
             --topup $prefix_topup --eddy_cmd $eddy_cmd\
             --b0_thr $b0_thr_extract_b0\
             --encoding_direction $encoding\
@@ -74,7 +78,7 @@ process PREPROC_EDDY {
             $slice_drop_flag
         echo "--very_verbose" >> eddy.sh
         sh eddy.sh
-        scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz ${prefix}__dwi_corrected.nii.gz
+        scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
 
         if [[ \$number_rev_dwi -eq 0 ]]
         then
@@ -84,7 +88,7 @@ process PREPROC_EDDY {
             scil_validate_and_correct_eddy_gradients.py dwi_eddy_corrected.eddy_rotated_bvecs $bval \${number_rev_dwi} ${prefix}__dwi_eddy_corrected.bvec ${prefix}__bval_eddy
         fi
     else
-        scil_extract_b0.py $dwi $bval $bvec ${prefix}__b0.nii.gz --mean\
+        scil_extract_b0.py \${dwi} \${bval} \${bvec} ${prefix}__b0.nii.gz --mean\
             --b0_thr $b0_thr_extract_b0 --force_b0_threshold
         bet ${prefix}__b0.nii.gz ${prefix}__b0_bet.nii.gz -m -R -f $bet_prelim_f
         scil_image_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__b0_bet_mask.nii.gz --data_type uint8 -f
@@ -93,15 +97,15 @@ process PREPROC_EDDY {
         scil_image_math.py multiplication ${prefix}__b0.nii.gz ${prefix}__b0_bet_mask_dilated.nii.gz\
             ${prefix}__b0_bet.nii.gz
 
-        scil_prepare_eddy_command.py $dwi $bval $bvec ${prefix}__b0_bet_mask.nii.gz\
+        scil_prepare_eddy_command.py \${dwi} \${bval} \${bvec} ${prefix}__b0_bet_mask.nii.gz\
             --eddy_cmd $eddy_cmd --b0_thr $b0_thr_extract_b0\
             --encoding_direction $encoding\
             --readout $readout --out_script --fix_seed\
             $slice_drop_flag
         sh eddy.sh
-        fslmaths dwi_eddy_corrected.nii.gz -thr 0 ${prefix}__dwi_corrected.nii.gz
+        scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
         mv dwi_eddy_corrected.eddy_rotated_bvecs ${prefix}__dwi_eddy_corrected.bvec
-        mv $bval ${prefix}__bval_eddy
+        mv \${bval} ${prefix}__bval_eddy
     fi
 
     cat <<-END_VERSIONS > versions.yml

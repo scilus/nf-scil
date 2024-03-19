@@ -1,14 +1,38 @@
-- name: "preproc eddy"
+- name: preproc eddy test_preproc_eddy
   command: nextflow run ./tests/modules/nf-scil/preproc/eddy -entry test_preproc_eddy -c ./tests/config/nextflow.config
   tags:
-    - "preproc"
-    - "preproc/eddy"
+    - preproc/eddy
+    - preproc
   files:
-    - path: output/preproc/test__dwi_corrected.nii.gz
-      md5sum: ed0d43ea70a6595e3f6a3d135329627b
-    - path: output/preproc/test__bval_eddy
-      md5sum: ed0d43ea70a6595e3f6a3d135329627b
-    - path: output/preproc/test__dwi_eddy_corrected.bvec
-      md5sum: ed0d43ea70a6595e3f6a3d135329627b
     - path: output/preproc/test__b0_bet_mask.nii.gz
-      md5sum: ed0d43ea70a6595e3f6a3d135329627b
+      md5sum: e3051ee22b6e84eddbe5f77028a61425
+    - path: output/preproc/test__bval_eddy
+      md5sum: be4e72882f347bec4fcf5380f900719d
+    - path: output/preproc/test__dwi_corrected.nii.gz
+      md5sum: e3d97db20139ca92592ea89a11f508c8
+    - path: output/preproc/test__dwi_eddy_corrected.bvec
+      md5sum: 97e948b33375382034e0cc2ba4a437c2
+    - path: output/preproc/versions.yml
+    - path: output/testdata/test_data/topup_eddy/sub-01__corrected_b0s.nii.gz
+      md5sum: 393a7f4b2b089d943aafaba44512bfdf
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-AP_dwi.bval
+      md5sum: d070c09214fb3333dce17cae50202aa9
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-AP_dwi.bvec
+      md5sum: 2396ddb8fa2a1089c18b31f92473ed72
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-AP_dwi.nii.gz
+      md5sum: 7e679c569e03c97cb10fd6e3c8c380ed
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-AP_sbref.nii.gz
+      md5sum: b410ba92f1e23d2d5ff6248ece8387d8
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-PA_dwi.bval
+      md5sum: d070c09214fb3333dce17cae50202aa9
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-PA_dwi.bvec
+      md5sum: 2396ddb8fa2a1089c18b31f92473ed72
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-PA_dwi.nii.gz
+      md5sum: da0bf5d2d4320d096d7f11ae2e5442e9
+    - path: output/testdata/test_data/topup_eddy/sub-01_dir-PA_sbref.nii.gz
+      md5sum: 6212193c568bc6661b07270ab5f1f252
+    - path: output/testdata/test_data/topup_eddy/topup_results_fieldcoef.nii.gz
+      md5sum: 4f5f2d93ed08995e48e3f9112966fd74
+    - path: output/testdata/test_data/topup_eddy/topup_results_movpar.txt
+      md5sum: 57542f26425b0842154410bda572c099
+    - path: output/testdata/versions.yml
