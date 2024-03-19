@@ -1,3 +1,7 @@
+betcrop/antsbet:
+  - modules/nf-scil/betcrop/antsbet/**
+  - tests/modules/nf-scil/betcrop/antsbet/**
+
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
@@ -13,6 +17,14 @@ denoising/mppca:
 denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
+
+image/resample:
+  - modules/nf-scil/image/resample/**
+  - tests/modules/nf-scil/image/resample/**
+
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
 
 image/resample:
   - modules/nf-scil/image/resample/**
@@ -53,6 +65,10 @@ reconst/meanfrf:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
+
+register/anattodwi:
+  - modules/nf-scil/register/anattodwi/**
+  - tests/modules/nf-scil/register/anattodwi/**
 
 registration/ants:
   - modules/nf-scil/registration/ants/**
