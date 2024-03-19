@@ -32,6 +32,8 @@ process PREPROC_EDDY {
     def encoding = task.ext.encoding ? task.ext.encoding : ""
     def readout = task.ext.readout ? task.ext.readout : ""
     def dilate_b0_mask_prelim_brain_extraction = task.ext.dilate_b0_mask_prelim_brain_extraction ? task.ext.dilate_b0_mask_prelim_brain_extraction : ""
+    def eddy_cmd = task.ext.eddy_cmd ? task.ext.eddy_cmd : "eddy_cpu"
+    def bet_prelim_f = task.ext.bet_prelim_f ? task.ext.bet_prelim_f : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -41,6 +43,7 @@ process PREPROC_EDDY {
 
     orig_bval=$bval
     # Concatenate DWIs
+    number_rev_dwi=0
     if [[ -f "$rev_dwi" ]];
     then
         mrconvert $corrected_b0s b0_corrected.nii.gz -coord 3 0 -axes 0,1,2 -nthreads 1
@@ -51,7 +54,7 @@ process PREPROC_EDDY {
             --in_dwis ${dwi} ${rev_dwi} --in_bvals ${bval} ${rev_bval}\
             --in_bvecs ${bvec} ${rev_bvec}
 
-        rev_number_dir=\$(scil_print_header.py ${rev_dwi} --key dim | sed "s/  / /g" | sed "s/  / /g" | rev | cut -d' ' -f4-4 | rev)
+        number_rev_dwi=\$(scil_print_header.py ${rev_dwi} --key dim | sed "s/  / /g" | sed "s/  / /g" | rev | cut -d' ' -f4-4 | rev)
 
         dwi=${prefix}__concatenated_dwi.nii.gz
         bval=${prefix}__concatenated_dwi.bval
@@ -66,19 +69,19 @@ process PREPROC_EDDY {
             --b0_thr $b0_thr_extract_b0\
             --encoding_direction $encoding\
             --readout $readout --out_script --fix_seed\
-            --n_reverse ${number_rev_dwi}\
+            --n_reverse \${number_rev_dwi}\
             --lsr_resampling\
             $slice_drop_flag
         echo "--very_verbose" >> eddy.sh
         sh eddy.sh
         scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz ${prefix}__dwi_corrected.nii.gz
 
-        if [[ $number_rev_dwi -eq 0 ]]
+        if [[ \$number_rev_dwi -eq 0 ]]
         then
             mv dwi_eddy_corrected.eddy_rotated_bvecs ${prefix}__dwi_eddy_corrected.bvec
-            mv $orig_bval ${prefix}__bval_eddy
+            mv \${orig_bval} ${prefix}__bval_eddy
         else
-            scil_validate_and_correct_eddy_gradients.py dwi_eddy_corrected.eddy_rotated_bvecs $bval ${number_rev_dwi} ${prefix}__dwi_eddy_corrected.bvec ${prefix}__bval_eddy
+            scil_validate_and_correct_eddy_gradients.py dwi_eddy_corrected.eddy_rotated_bvecs $bval \${number_rev_dwi} ${prefix}__dwi_eddy_corrected.bvec ${prefix}__bval_eddy
         fi
     else
         scil_extract_b0.py $dwi $bval $bvec ${prefix}__b0.nii.gz --mean\
