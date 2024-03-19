@@ -75,7 +75,7 @@ process TESTDATA_SCILPY {
             "surface_vtk_fib.zip": "241f3afd6344c967d7176b43e4a99a41",
             "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
             "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
-            "topup_eddy.zip": "06e19426647c2a046c9e2c143c652316",
+            "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
             "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
             "antsbet.zip": "202358be14568560d0c24e644d9b2574"
         }
