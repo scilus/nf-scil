@@ -56,7 +56,7 @@ process PREPROC_TOPUP {
 
     antsRegistrationSyNQuick.sh -d 3 -f ${prefix}__b0_mean.nii.gz -m ${prefix}__rev_b0_mean.nii.gz -o output -t r -e 1
     mv outputWarped.nii.gz ${prefix}__rev_b0_warped.nii.gz
-    scil_prepare_topup_command.py $b0 ${prefix}__rev_b0_warped.nii.gz\
+    scil_prepare_topup_command.py ${prefix}__b0_mean.nii.gz ${prefix}__rev_b0_warped.nii.gz\
         --config $config_topup\
         --encoding_direction $encoding\
         --readout $readout --out_prefix $prefix_topup\
