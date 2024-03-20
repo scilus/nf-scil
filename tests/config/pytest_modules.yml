@@ -41,6 +41,10 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
+preproc/topup:
+  - modules/nf-scil/preproc/topup/**
+  - tests/modules/nf-scil/preproc/topup/**
+
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**

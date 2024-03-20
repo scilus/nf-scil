@@ -61,8 +61,8 @@ process PREPROC_EDDY {
         bvec=${prefix}__concatenated_dwi.bvec
     else
         dwi=${dwi}
-        dwi=${bval}
-        dwi=${bvec}
+        bval=${bval}
+        bvec=${bvec}
     fi
 
     # If topup has been run before
@@ -76,17 +76,6 @@ process PREPROC_EDDY {
             --n_reverse \${number_rev_dwi}\
             --lsr_resampling\
             $slice_drop_flag
-        echo "--very_verbose" >> eddy.sh
-        sh eddy.sh
-        scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
-
-        if [[ \$number_rev_dwi -eq 0 ]]
-        then
-            mv dwi_eddy_corrected.eddy_rotated_bvecs ${prefix}__dwi_eddy_corrected.bvec
-            mv \${orig_bval} ${prefix}__bval_eddy
-        else
-            scil_validate_and_correct_eddy_gradients.py dwi_eddy_corrected.eddy_rotated_bvecs $bval \${number_rev_dwi} ${prefix}__dwi_eddy_corrected.bvec ${prefix}__bval_eddy
-        fi
     else
         scil_extract_b0.py \${dwi} \${bval} \${bvec} ${prefix}__b0.nii.gz --mean\
             --b0_thr $b0_thr_extract_b0 --force_b0_threshold
@@ -102,16 +91,26 @@ process PREPROC_EDDY {
             --encoding_direction $encoding\
             --readout $readout --out_script --fix_seed\
             $slice_drop_flag
-        sh eddy.sh
-        scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
-        mv dwi_eddy_corrected.eddy_rotated_bvecs ${prefix}__dwi_eddy_corrected.bvec
-        mv \${bval} ${prefix}__bval_eddy
     fi
+
+    echo "--very_verbose" >> eddy.sh
+    sh eddy.sh
+    scil_image_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
+
+    if [[ \$number_rev_dwi -eq 0 ]]
+    then
+        mv dwi_eddy_corrected.eddy_rotated_bvecs ${prefix}__dwi_eddy_corrected.bvec
+        mv \${orig_bval} ${prefix}__bval_eddy
+    else
+        scil_validate_and_correct_eddy_gradients.py dwi_eddy_corrected.eddy_rotated_bvecs \${bval} \${number_rev_dwi} ${prefix}__dwi_eddy_corrected.bvec ${prefix}__bval_eddy
+    fi
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0
-
+        mrtrix: \$(dwidenoise -version 2>&1 | sed -n 's/== dwidenoise \\([0-9.]\\+\\).*/\\1/p')
+        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
 

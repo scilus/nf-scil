@@ -1,21 +1,19 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
-name: "preproc_eddy"
-description: Apply Eddy (and Topup if already run)
+name: "preproc_topup"
+description: Prepare data and apply FSL topup
 keywords:
-  - distorsion correction
-  - preproc
-  - eddy
+  - DWI
+  - distorsion
+  - topup
 tools:
-  - "scilpy":
-      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
-      homepage: "https://github.com/scilus/scilpy.git"
-  - "MRtrix3":
-      description: "Toolbox for image processing, analysis and visualisation of dMRI."
-      homepage: "https://mrtrix.readthedocs.io/en/latest/"
   - "FSL":
       description: "FSL Toolbox and Scilpy Toolbox"
       homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
+  - "Scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
+
 input:
   # Only when we have meta
   - meta:
@@ -39,6 +37,11 @@ input:
       description: B-values in FSL format [DWI].
       pattern: "*.bvec"
 
+  - b0:
+      type: file
+      description: b0 [DWI].
+      pattern: "*.bvec"
+
   - rev_dwi:
       type: file
       description: DWI Nifti image [rev-DWI].
@@ -54,9 +57,27 @@ input:
       description: B-vectors in FSL format [rev-DWI].
       pattern: "*.bvec"
 
-  - corrected_b0s:
+  - rev_b0:
       type: file
-      description: Nifti volume b0 corrected
+      description: Reversed b0 [rev-DWI].
+      pattern: "*.{nii,nii.gz}"
+
+  - config_topup:
+      type: file
+      description: topup config file
+      pattern: "*cnf"
+
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'test', single_end:false ]`
+
+  - topup_corrected_b0s:
+      type: file
+      description: Nifti volume - b0 corrected
       pattern: "*__corrected_b0s.nii.gz"
 
   - topup_fieldcoef:
@@ -69,33 +90,20 @@ input:
       description: Text file - topup movpart
       pattern: "*__movpar.txt"
 
-output:
-  #Only when we have meta
-  - meta:
-      type: map
-      description: |
-        Groovy Map containing sample information
-        e.g. `[ id:'test', single_end:false ]`
-
-  - dwi_corrected:
+  - rev_b0_warped:
       type: file
-      description: Nifti volume - DWI corrected
-      pattern: "*__dwi_corrected.nii.gz"
+      description: Nifti volume - rev b0 warped on b0
+      pattern: "*__rev_b0_warped.nii.gz"
 
-  - bval_corrected:
+  - rev_b0_mean:
       type: file
-      description: B-values corrected in FSL format
-      pattern: "*__bval_eddy"
+      description: Nifti volume - rev b0 mean
+      pattern: "*__rev_b0_mean.nii.gz"
 
-  - bvec_corrected:
+  - b0_mean:
       type: file
-      description: B-vectors corrected in FSL format
-      pattern: "*__dwi_eddy_corrected.bvec"
-
-  - b0_mask:
-      type: file
-      description: Nifti volume - Mask for b0 corrected
-      pattern: "*__b0_bet_mask.nii.gz"
+      description: Nifti volume - b0 mean
+      pattern: "*__b0_mean.nii.gz"
 
   - versions:
       type: file
