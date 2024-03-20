@@ -22,6 +22,9 @@ image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
 
+preproc/eddy:
+  - modules/nf-scil/preproc/eddy/**
+  - tests/modules/nf-scil/preproc/eddy/**
 io/readbids:
   - modules/nf-scil/io/readbids/**
   - tests/modules/nf-scil/io/readbids/**
