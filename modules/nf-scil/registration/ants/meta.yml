@@ -61,8 +61,8 @@ output:
 
   - transfo_trk:
       type: list
-      description: Tuple, Transformation files to warp trk (mat file, nii InverseWarp)
-      pattern: "*.{mat,nii,nii.gz}"
+      description: Tuple, Transformation files to warp trk (nii InverseWarp, mat file)
+      pattern: "*.{nii,nii.gz,mat}"
 
 authors:
   - "@ThoumyreStanislas"
