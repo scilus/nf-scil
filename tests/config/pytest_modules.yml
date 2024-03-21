@@ -18,6 +18,10 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
+
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
@@ -25,10 +29,6 @@ image/resample:
 preproc/eddy:
   - modules/nf-scil/preproc/eddy/**
   - tests/modules/nf-scil/preproc/eddy/**
-io/readbids:
-  - modules/nf-scil/io/readbids/**
-  - tests/modules/nf-scil/io/readbids/**
-
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -72,6 +72,10 @@ reconst/noddi:
 register/anattodwi:
   - modules/nf-scil/register/anattodwi/**
   - tests/modules/nf-scil/register/anattodwi/**
+
+registration/ants:
+  - modules/nf-scil/registration/ants/**
+  - tests/modules/nf-scil/registration/ants/**
 
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
