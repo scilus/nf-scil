@@ -44,11 +44,6 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - image:
       type: file
       description: Nifti volume after registration.
@@ -63,6 +58,11 @@ output:
       type: list
       description: Tuple, Transformation files to warp trk (nii InverseWarp, mat file)
       pattern: "*.{nii,nii.gz,mat}"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@ThoumyreStanislas"
