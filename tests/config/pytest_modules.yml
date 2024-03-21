@@ -77,6 +77,10 @@ registration/ants:
   - modules/nf-scil/registration/ants/**
   - tests/modules/nf-scil/registration/ants/**
 
+registration/antsapplytransforms:
+  - modules/nf-scil/registration/antsapplytransforms/**
+  - tests/modules/nf-scil/registration/antsapplytransforms/**
+
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
   - tests/modules/nf-scil/segmentation/fastseg/**
