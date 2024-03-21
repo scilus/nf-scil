@@ -26,6 +26,9 @@ image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
 
+preproc/eddy:
+  - modules/nf-scil/preproc/eddy/**
+  - tests/modules/nf-scil/preproc/eddy/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -37,6 +40,10 @@ preproc/n4:
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
+
+preproc/topup:
+  - modules/nf-scil/preproc/topup/**
+  - tests/modules/nf-scil/preproc/topup/**
 
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
