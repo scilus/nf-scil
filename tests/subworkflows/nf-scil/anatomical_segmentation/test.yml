@@ -1,12 +1,21 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core subworkflows create-test-yml anatomical_segmentation
-- name: "anatomical_segmentation"
-  command: nextflow run ./tests/subworkflows/nf-scil/ -entry test_anatomical_segmentation -c ./tests/config/nextflow.config
+- name: anatomical_segmentation test_anatomical_segmentation_fslfast
+  command: nextflow run ./tests/subworkflows/nf-core/anatomical_segmentation -entry test_anatomical_segmentation_fslfast -c ./tests/config/nextflow.config
   tags:
-    - "subworkflows"
-    - "subworkflows/anatomical_segmentation"
+    - segmentation
+    - segmentation/fastseg
+    - segmentation/freesurferseg
+    - subworkflows
+    - subworkflows/anatomical_segmentation
   files:
-    - path: "output/anatomical_segmentation/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: output/anatomical_segmentation/versions.yml
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+    - path: output/segmentation/test__map_csf.nii.gz
+      md5sum: 461c210c0a1b45fde9bfe7eeda418289
+    - path: output/segmentation/test__map_gm.nii.gz
+      md5sum: 4e14f969938ba3a933a8ffe18275c597
+    - path: output/segmentation/test__map_wm.nii.gz
+      md5sum: 96563c38fe5b09347bfeeb6323c0de67
+    - path: output/segmentation/test__mask_csf.nii.gz
+      md5sum: 5a93c78646c9d9ac83f74f1a7c76533d
+    - path: output/segmentation/test__mask_gm.nii.gz
+      md5sum: ca97f325d81e3962d31acff25a69037d
+    - path: output/segmentation/test__mask_wm.nii.gz
+      md5sum: 44d43bfd9e3a053eaf442ec5fd114513

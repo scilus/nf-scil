@@ -2,7 +2,7 @@
 
 nextflow.enable.dsl = 2
 
-include { ANATOMICAL_SEGMENTATION } from '../../../../subworkflows/nf-scil//main.nf'
+include { ANATOMICAL_SEGMENTATION } from '../../../../subworkflows/nf-scil/anatomical_segmentation/main.nf'
 
 workflow test_anatomical_segmentation_fslfast {
     
@@ -12,6 +12,19 @@ workflow test_anatomical_segmentation_fslfast {
     ]
     ch_freesurferseg = []
 
+    ANATOMICAL_SEGMENTATION ( ch_image, ch_freesurferseg )
+
+}
+
+workflow test_anatomical_segmentation_freesurferseg {
+
+    ch_image = []
+    ch_freesurferseg = [
+        [ id:'test', single_end:false ], // meta map
+        file(params.test_data['segmentation']['freesurferseg']['aparc_aseg'], checkIfExists: true),
+        file(params.test_data['segmentation']['freesurferseg']['wmparc'], checkIfExists: true)
+    ]
 
     ANATOMICAL_SEGMENTATION ( ch_image, ch_freesurferseg )
+
 }

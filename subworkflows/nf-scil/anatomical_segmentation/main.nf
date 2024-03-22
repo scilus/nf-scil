@@ -23,6 +23,9 @@ workflow ANATOMICAL_SEGMENTATION {
             wm_mask = SEGMENTATION_FREESURFERSEG.out.wm_mask
             gm_mask = SEGMENTATION_FREESURFERSEG.out.gm_mask
             csf_mask = SEGMENTATION_FREESURFERSEG.out.csf_mask
+            wm_map = Channel.empty()
+            gm_map = Channel.empty()
+            csf_map = Channel.empty()
         }
         else {
             // ** FSL fast segmentation ** //
@@ -39,14 +42,13 @@ workflow ANATOMICAL_SEGMENTATION {
         }
 
     emit:
-    // TODO nf-core: edit emitted channels
-    wm_mask   = wm_mask                     // channel: [ val(meta), [ wm_mask ] ]
-    gm_mask   = gm_mask                     // channel: [ val(meta), [ gm_mask ] ]
-    csf_mask  = csf_mask                    // channel: [ val(meta), [ csf_mask ] ]
-    wm_map    = wm_map, optional: true      // channel: [ val(meta), [ wm_map ] ]
-    gm_map    = gm_map, optional: true      // channel: [ val(meta), [ gm_map ] ]
-    csf_map   = csf_map, optional: true     // channel: [ val(meta), [ csf_map ] ]
+        wm_mask   = wm_mask                     // channel: [ val(meta), [ wm_mask ] ]
+        gm_mask   = gm_mask                     // channel: [ val(meta), [ gm_mask ] ]
+        csf_mask  = csf_mask                    // channel: [ val(meta), [ csf_mask ] ]
+        wm_map    = wm_map                      // channel: [ val(meta), [ wm_map ] ]
+        gm_map    = gm_map                      // channel: [ val(meta), [ gm_map ] ]
+        csf_map   = csf_map                     // channel: [ val(meta), [ csf_map ] ]
 
-    versions = ch_versions                     // channel: [ versions.yml ]
+        versions = ch_versions                  // channel: [ versions.yml ]
 }
 

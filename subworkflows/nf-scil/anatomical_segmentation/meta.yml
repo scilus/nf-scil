@@ -21,7 +21,6 @@ input:
         The input channel containing freesurfer parcellations files.
         Structure: [ val(meta), path(aparc_aseg), path(wm_parc) ]
       pattern: "*.mgz"
-## TODO nf-core: List all of the channels used as output with a descriptions and their structure
 output:
   - wm_mask:
       type: file
