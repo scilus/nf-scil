@@ -51,11 +51,13 @@ output:
       description: |
         Channel containing GM probability maps.
         Structure: [ val(meta), path(gm_maps) ]
+      pattern: "*.{nii,nii.gz}"
   - csf_maps:
       type: file
       description: |
         Channel containing CSF probability maps.
         Structure: [ val(meta), path(csf_maps) ]
+      pattern: "*.{nii,nii.gz}"
   - versions:
       type: file
       description: |

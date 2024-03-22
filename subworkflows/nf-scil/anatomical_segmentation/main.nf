@@ -4,11 +4,12 @@ include { SEGMENTATION_FREESURFERSEG } from '../../../modules/nf-scil/segmentati
 
 workflow ANATOMICAL_SEGMENTATION {
 
-    // ** Two input channels for the segmentation processes since they are using ** //
-    // ** different image files.                                                 ** //
+    // ** Two input channels for the segmentation processes since they are using   ** //
+    // ** different image files. Supplying an empty channel for the one that isn't ** //
+    // ** relevant will make the workflow run the appropriate module.              ** //
     take:
         ch_image            // channel: [ val(meta), [ image ] ]
-        ch_freesurferseg    // channel: [ val(meta), [ aparc_aseg, wmparc ] ], optional
+        ch_freesurferseg    // channel: [ val(meta), [ aparc_aseg, wmparc ] ]
 
     main:
 
