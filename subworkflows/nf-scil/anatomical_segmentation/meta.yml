@@ -1,0 +1,67 @@
+name: "anatomical_segmentation"
+description: Subworkflow performing anatomical segmentation to produce WM, GM and CSF maps/masks.
+keywords:
+  - Anatomical
+  - Segmentation
+  - Maps
+  - Masks
+components:
+  - segmentation/fastseg
+  - segmentation/freesurferseg
+input:
+  - ch_image:
+      type: file
+      description: |
+        The input channel containing the anatomical image.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_freesurferseg:
+      type: file
+      description: |
+        The input channel containing freesurfer parcellations files.
+        Structure: [ val(meta), path(aparc_aseg), path(wm_parc) ]
+      pattern: "*.mgz"
+## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+output:
+  - wm_mask:
+      type: file
+      description: |
+        Channel containing WM mask files.
+        Structure: [ val(meta), path(wm_mask) ]
+      pattern: "*.{nii,nii.gz}"
+  - gm_mask:
+      type: file
+      description: |
+        Channel containing GM mask files.
+        Structure: [ val(meta), path(gm_mask) ]
+      pattern: "*.{nii,nii.gz}"
+  - csf_mask:
+      type: file
+      description: |
+        Channel containing CSF mask files.
+        Structure: [ val(meta), path(csf_mask) ]
+      pattern: "*.{nii,nii.gz}"
+  - wm_maps:
+      type: file
+      description: |
+        Channel containing WM probability maps.
+        Structure: [ val(meta), path(wm_maps) ]
+      pattern: "*.{nii,nii.gz}"
+  - gm_maps:
+      type: file
+      description: |
+        Channel containing GM probability maps.
+        Structure: [ val(meta), path(gm_maps) ]
+  - csf_maps:
+      type: file
+      description: |
+        Channel containing CSF probability maps.
+        Structure: [ val(meta), path(csf_maps) ]
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@gagnonanthony"
