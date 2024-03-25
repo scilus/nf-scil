@@ -18,19 +18,19 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
       description: Nifti image file to correct
       pattern: "*.{nii,nii.gz}"
 
-  - b0:
+  - ref:
       type: file
-      description: Nifti image file - b0
+      description: Nifti image file to use as reference
       pattern: "*.{nii,nii.gz}"
 
-  - b0_mask:
+  - ref_mask:
       type: file
-      description: Nifti image file mask
+      description: Nifti image file mask to use as reference
       pattern: "*.{nii,nii.gz}"
 
 output:
@@ -40,7 +40,7 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
       description: DWI image N4 corrected
       pattern: "*.{nii,nii.gz}"
