@@ -3,6 +3,7 @@
 nextflow.enable.dsl = 2
 
 include { PREPROC_T1 } from '../../../../subworkflows/nf-scil/preproc_t1/main.nf'
+include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
 
 workflow test_preproc_t1 {
 
