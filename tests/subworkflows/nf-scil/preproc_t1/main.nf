@@ -6,18 +6,23 @@ include { PREPROC_T1 } from '../../../../subworkflows/nf-scil//main.nf'
 
 workflow test_preproc_t1 {
 
-    ch_image = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['preproc']['image'], checkIfExists: true)
-    ]
-    ch_template = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['preproc']['template'], checkIfExists: true)
-    ]
-    ch_probability_map = [
-        [ id:'test', single_end:false ], // meta map
-        file(params.test_data['preproc']['probability_map'], checkIfExists: true)
-    ]
+    input_fetch = Channel.from( [ "antsbet.zip" ] )
+    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_t1" )
 
+    ch_image = LOAD_TEST_DATA.out.test_data_directory
+    .map{ test_data_directory -> [
+        [ id:'test', single_end:false ],
+        file("${test_data_directory}/t1_unaligned.nii.gz")
+    ]}
+    ch_template = LOAD_TEST_DATA.out.test_data_directory
+    .map{ test_data_directory -> [
+        [ id:'test', single_end:false ],
+        file("${test_data_directory}/t1_template.nii.gz")
+    ]}
+        ch_probability_map = LOAD_TEST_DATA.out.test_data_directory
+    .map{ test_data_directory -> [
+        [ id:'test', single_end:false ],
+        file("${test_data_directory}/t1_brain_probability_map.nii.gz")
+    ]}
     PREPROC_T1 ( ch_image, ch_template, ch_probability_map )
 }
