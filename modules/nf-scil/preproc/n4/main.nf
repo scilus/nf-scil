@@ -10,8 +10,8 @@ process PREPROC_N4 {
     tuple val(meta), path(image), path(ref), path(ref_mask)
 
     output:
-    tuple val(meta), path("*_n4.nii.gz")     , emit: image
-    path "versions.yml"                         , emit: versions
+    tuple val(meta), path("*__image_n4.nii.gz")     , emit: image
+    path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -39,11 +39,11 @@ process PREPROC_N4 {
             -s $shrink_factor
 
         scil_apply_bias_field_on_dwi.py $image bias_field_ref.nii.gz\
-            ${prefix}__dwi_n4.nii.gz --mask $ref_mask -f
+            ${prefix}__image_n4.nii.gz --mask $ref_mask -f
 
     else
         N4BiasFieldCorrection -i $image\
-            -o [${prefix}_n4.nii.gz, bias_field_t1.nii.gz]\
+            -o [${prefix}__image_n4.nii.gz, bias_field_t1.nii.gz]\
             -c [300x150x75x50, 1e-6] -v 1
     fi
 
@@ -61,7 +61,7 @@ process PREPROC_N4 {
     N4BiasFieldCorrection.py -h
     scil_apply_bias_field_on_dwi -h
 
-    touch ${prefix}_n4.nii.gz
+    touch ${prefix}__image_n4.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

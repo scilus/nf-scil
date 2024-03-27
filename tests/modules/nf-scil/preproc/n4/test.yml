@@ -4,10 +4,8 @@
     - preproc
     - preproc/n4
   files:
-    - path: output/preproc/test__dwi_n4.nii.gz
+    - path: output/preproc/test__image_n4.nii.gz
       md5sum: 617da9e7a8783bf0180db0cfdf4a6132
-    - path: output/preproc/test__ref_n4.nii.gz
-      md5sum: 6bc2c9f153c3f5467151bb7e17531fdc
     - path: output/preproc/versions.yml
 
 - name: preproc n4 test_preproc_n4_t1
@@ -16,6 +14,6 @@
     - preproc
     - preproc/n4
   files:
-    - path: output/preproc/test_n4.nii.gz
+    - path: output/preproc/test__image_n4.nii.gz
       md5sum: 23be518e78c4f22f7e4f0b7b16e45583
     - path: output/preproc/versions.yml
