@@ -1,5 +1,5 @@
 - name: anatomical_segmentation test_anatomical_segmentation_fslfast
-  command: nextflow run ./tests/subworkflows/nf-core/anatomical_segmentation -entry test_anatomical_segmentation_fslfast -c ./tests/config/nextflow.config
+  command: nextflow run ./tests/subworkflows/nf-scil/anatomical_segmentation -entry test_anatomical_segmentation_fslfast -c ./tests/config/nextflow.config
   tags:
     - segmentation
     - segmentation/fastseg
@@ -19,3 +19,19 @@
       md5sum: ca97f325d81e3962d31acff25a69037d
     - path: output/segmentation/test__mask_wm.nii.gz
       md5sum: 44d43bfd9e3a053eaf442ec5fd114513
+
+- name: anatomical_segmentation test_anatomical_segmentation_freesurferseg
+  command: nextflow run ./tests/subworkflows/nf-scil/anatomical_segmentation -entry test_anatomical_segmentation_freesurferseg -c ./tests/config/nextflow.config
+  tags:
+    - segmentation
+    - segmentation/fastseg
+    - segmentation/freesurferseg
+    - subworkflows
+    - subworkflows/anatomical_segmentation
+  files:
+    - path: output/segmentation/test__mask_csf.nii.gz
+      md5sum: 7205df5a2f8943d56be08bb9dd988d2b
+    - path: output/segmentation/test__mask_gm.nii.gz
+      md5sum: 9b76673a8fef5781cd709cadf53a5d8f
+    - path: output/segmentation/test__mask_wm.nii.gz
+      md5sum: 9073e2189f83fb7893d16ba64b1ed0c1
