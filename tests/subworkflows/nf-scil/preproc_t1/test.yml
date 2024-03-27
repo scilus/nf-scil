@@ -1,0 +1,12 @@
+## TODO nf-core: Please run the following command to build this file:
+#                nf-core subworkflows create-test-yml preproc_t1
+- name: "preproc_t1"
+  command: nextflow run ./tests/subworkflows/nf-scil/ -entry test_preproc_t1 -c ./tests/config/nextflow.config
+  tags:
+    - "subworkflows"
+    - "subworkflows/preproc_t1"
+  files:
+    - path: "output/preproc_t1/test.bam"
+      md5sum: e667c7caad0bc4b7ac383fd023c654fc
+    - path: output/preproc_t1/versions.yml
+      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b

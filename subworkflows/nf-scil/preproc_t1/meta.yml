@@ -1,0 +1,49 @@
+name: "preproc_t1"
+description: Subworkflow for T1 image pre-processing, from denoising to bet/crop.
+keywords:
+  - T1
+  - preprocessing
+
+components:
+  - denoising/nlmeans
+  - preproc/n4
+  - image/resample
+  - betcrop/antsbet
+  - betcrop/cropvolume
+
+input:
+  - ch_image:
+      type: file
+      description: |
+        The input channel containing the anatomical image.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_template:
+      type: file
+      description: |
+        The input channel containing the anatomical template to perform BET.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_probability_map:
+      type: file
+      description: |
+        The input channel containing the brain probability mask, with intensity range 1 (definitely brain) to 0 (definitely background).
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+
+output:
+  - image:
+      type: file
+      description: |
+        Channel containing the anatomical image after preprocessing.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+
+authors:
+  - "@ThoumyreStanislas"
