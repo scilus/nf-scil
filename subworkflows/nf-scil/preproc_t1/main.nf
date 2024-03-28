@@ -19,22 +19,25 @@ workflow PREPROC_T1 {
         // ** Denoising ** //
         DENOISING_NLMEANS ( ch_image )
         ch_versions = ch_versions.mix(DENOISING_NLMEANS.out.versions.first())
-/*
-waiting for n4 modifications
+
         // ** N4 correction ** //
-        PREPROC_N4 ( DENOISING_NLMEANS.out.image )
+        ch_N4 = DENOISING_NLMEANS.out.image.map{[it[0], it[1],[],[]]}
+        PREPROC_N4 ( ch_N4 )
         ch_versions = ch_versions.mix(PREPROC_N4.out.versions.first())
-*/
+
         // ** Resampling ** //
-        IMAGE_RESAMPLE ( DENOISING_NLMEANS.out.image )
+        ch_resampling = PREPROC_N4.out.image.map{[it[0], it[1],[]]}
+        IMAGE_RESAMPLE ( ch_resampling )
         ch_versions = ch_versions.mix(IMAGE_RESAMPLE.out.versions.first())
 
         // ** Brain extraction ** //
-        BETCROP_ANTSBET ( IMAGE_RESAMPLE.out.image, ch_template, ch_probability_map )
+        ch_betcop = IMAGE_RESAMPLE.out.image.join(ch_template).join(ch_probability_map)
+        BETCROP_ANTSBET ( ch_betcop )
         ch_versions = ch_versions.mix(BETCROP_ANTSBET.out.versions.first())
 
         // ** crop ** //
-        BETCROP_CROPVOLUME ( BETCROP_ANTSBET.out.t1 )
+        ch_crop = BETCROP_ANTSBET.out.t1.map{[it[0], it[1],[]]}
+        BETCROP_CROPVOLUME ( ch_crop )
         ch_versions = ch_versions.mix(BETCROP_CROPVOLUME.out.versions.first())
 
     emit:

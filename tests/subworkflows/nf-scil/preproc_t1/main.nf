@@ -3,7 +3,7 @@
 nextflow.enable.dsl = 2
 
 include { PREPROC_T1 } from '../../../../subworkflows/nf-scil/preproc_t1/main.nf'
-include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
+include { LOAD_TEST_DATA } from '../../../../subworkflows/nf-scil/load_test_data/main.nf'
 
 workflow test_preproc_t1 {
 
@@ -13,7 +13,8 @@ workflow test_preproc_t1 {
     ch_image = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
         [ id:'test', single_end:false ],
-        file("${test_data_directory}/t1_unaligned.nii.gz")
+        file("${test_data_directory}/t1_unaligned.nii.gz"),
+        []
     ]}
     ch_template = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [

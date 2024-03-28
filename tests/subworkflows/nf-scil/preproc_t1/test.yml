@@ -1,12 +1,35 @@
-## TODO nf-core: Please run the following command to build this file:
-#                nf-core subworkflows create-test-yml preproc_t1
-- name: "preproc_t1"
-  command: nextflow run ./tests/subworkflows/nf-scil/ -entry test_preproc_t1 -c ./tests/config/nextflow.config
+- name: preproc_t1 test_preproc_t1
+  command: nextflow run ./tests/subworkflows/nf-scil/preproc_t1 -entry test_preproc_t1 -c ./tests/config/nextflow.config
   tags:
-    - "subworkflows"
-    - "subworkflows/preproc_t1"
+    - betcrop
+    - betcrop/antsbet
+    - betcrop/cropvolume
+    - denoising
+    - denoising/nlmeans
+    - image
+    - image/resample
+    - preproc
+    - preproc/n4
+    - subworkflows
+    - subworkflows/preproc_t1
   files:
-    - path: "output/preproc_t1/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: output/preproc_t1/versions.yml
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+    - path: output/betcrop/test__t1_bet.nii.gz
+      md5sum: ca9827439824eab28a79b57dc129cc0c
+    - path: output/betcrop/test__t1_bet_mask.nii.gz
+      md5sum: b998ed377188eb749dd0a16157e44cc9
+    - path: output/betcrop/test_cropped.nii.gz
+      md5sum: e49e79f5a2b929fe2e5d4e6c4bd335b2
+    - path: output/denoising/test_denoised.nii.gz
+      md5sum: de2c252de46ed66465266030738e6dcd
+    - path: output/image/test__resampled.nii.gz
+      md5sum: 3aa6b0857696b5cb19de7a639b32cd02
+    - path: output/preproc/test__image_n4.nii.gz
+      md5sum: 9ca20c622e9d96b5b7c857ce78dac7da
+    - path: output/testdata/test_data/antsbet/t1.nii.gz
+      md5sum: ba57c629e9dc29204215dceac36d65ae
+    - path: output/testdata/test_data/antsbet/t1_brain_probability_map.nii.gz
+      md5sum: bf7cbe066f4602e2f59d6ce2e0bb2bb0
+    - path: output/testdata/test_data/antsbet/t1_template.nii.gz
+      md5sum: ba57c629e9dc29204215dceac36d65ae
+    - path: output/testdata/test_data/antsbet/t1_unaligned.nii.gz
+      md5sum: d054cd7627415ecd91aa13a7b5c9de7d
