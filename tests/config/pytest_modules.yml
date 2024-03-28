@@ -89,6 +89,14 @@ segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
 
+segmentation/fsreconall:
+  - modules/nf-scil/segmentation/fsreconall/**
+  - tests/modules/nf-scil/segmentation/fsreconall/**
+
+segmentation/fsreconalldebug:
+  - modules/nf-scil/segmentation/fsreconalldebug/**
+  - tests/modules/nf-scil/segmentation/fsreconalldebug/**
+
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**

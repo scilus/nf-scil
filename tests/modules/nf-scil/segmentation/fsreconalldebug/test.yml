@@ -1,0 +1,7 @@
+- name: segmentation fsreconalldebug test_segmentation_fsreconalldebug
+  command: nextflow run ./tests/modules/nf-scil/segmentation/fsreconalldebug -entry test_segmentation_fsreconalldebug -c ./tests/config/nextflow.config
+  tags:
+    - segmentation
+    - segmentation/fsreconalldebug
+  files:
+    - path: output/segmentation/versions.yml
