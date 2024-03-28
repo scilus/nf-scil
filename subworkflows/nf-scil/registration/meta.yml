@@ -1,0 +1,62 @@
+name: "registration"
+description: Subworkflow to perform registration between a moving and a fixed image (e.g. T1 -> DWI). 
+keywords:
+  - Registration
+  - Transformations
+  - DWI
+  - Anatomical
+components:
+  - register/anattodwi
+  - registration/ants
+input:
+  - ch_image:
+      type: file
+      description: |
+        The input channel containing the moving image files.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_ref:
+      type: file
+      description: |
+        The input channel containing the fixed image files.
+        Structure: [ val(meta), path(ref) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_metric:
+      type: file
+      description: |
+        The input channel containing the metric files for AntsRegistration.
+        Structure: [ val(meta), path(metric) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_mask:
+      type: file
+      description: |
+        The input channel containing the mask files.
+        Structure: [ val(meta), path(mask) ]
+      pattern: "*.{nii,nii.gz}"
+output:
+  - image_warped:
+      type: file
+      description: |
+        Channel containing warped moving images.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - transfo_image:
+      type: file
+      description: |
+        Channel containing the image transformation files.
+        Structure: [ val(meta), [ path(warp), path(affine) ] ]
+      pattern: "*.{nii,nii.gz,mat}"
+  - transfo_trk:
+      type: file
+      description: |
+        Channel containing the tractogram transformation files.
+        Structure: [ val(meta), [ path(inversewarp), path(inverseaffine) ]
+      pattern: "*.{nii,nii.gz,mat}"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@gagnonanthony"
