@@ -94,7 +94,7 @@ subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
 
-subworkflows/register_anattodwi:
+subworkflows/registration:
   - subworkflows/nf-scil/register_anattodwi/**
   - tests/subworkflows/nf-scil/register_anattodwi/**
 
