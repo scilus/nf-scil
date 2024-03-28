@@ -1,5 +1,5 @@
 name: "registration"
-description: Subworkflow to perform registration between a moving and a fixed image (e.g. T1 -> DWI). 
+description: Subworkflow to perform registration between a moving and a fixed image (e.g. T1 -> DWI).
 keywords:
   - Registration
   - Transformations

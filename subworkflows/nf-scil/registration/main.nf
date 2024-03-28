@@ -12,7 +12,7 @@ workflow REGISTRATION {
         ch_image                  // channel: [ val(meta), [ image ] ]
         ch_ref                    // channel: [ val(meta), [ ref ] ]
         ch_metric                 // channel: [ val(meta), [ metric ] ], optional
-        ch_mask                   // channel: [ val(meta), [ mask ] ], optional  
+        ch_mask                   // channel: [ val(meta), [ mask ] ], optional
 
     main:
 
@@ -21,7 +21,7 @@ workflow REGISTRATION {
         if ( ch_metric ) {
             // ** Set up input channel ** //
             ch_register = ch_image.combine(ch_ref, by: 0)
-                                  .combine(ch_metric, by: 0)
+                                .combine(ch_metric, by: 0)
 
             // ** Registration using AntsRegistration ** //
             REGISTER_ANATTODWI ( ch_register )
@@ -36,7 +36,7 @@ workflow REGISTRATION {
             // ** Set up input channel, input are inversed compared to REGISTER_ANATTODWI. ** //
             if ( ch_mask ) {
                 ch_register = ch_ref.combine(ch_image, by: 0)
-                                    .combine(ch_mask, by: 0)  
+                                    .combine(ch_mask, by: 0)
             }
             else {
                 ch_register = ch_ref.combine(ch_image, by: 0)
@@ -45,7 +45,7 @@ workflow REGISTRATION {
 
             // ** Registration using antsRegistrationSyN.sh or antsRegistrationSyNQuick.sh. ** //
             // ** Has to be defined in the config file or else the default (SyN) will be    ** //
-            // ** used.                                                                     ** //       
+            // ** used.                                                                     ** //
             REGISTRATION_ANTS ( ch_register )
             ch_versions = ch_versions.mix(REGISTRATION_ANTS.out.versions.first())
 
