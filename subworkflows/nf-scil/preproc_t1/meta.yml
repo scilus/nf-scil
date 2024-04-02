@@ -3,6 +3,11 @@ description: Subworkflow for T1 image pre-processing, from denoising to bet/crop
 keywords:
   - T1
   - preprocessing
+  - nlmeans
+  - n4
+  - resample
+  - bet
+  - crop
 
 components:
   - denoising/nlmeans
