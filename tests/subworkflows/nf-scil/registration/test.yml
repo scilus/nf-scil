@@ -28,12 +28,12 @@
     - subworkflows/registration
   files:
     - path: output/registration/test__output0InverseAffine.mat
-      md5sum: 3708568fa59a2e19cc25d733cb6d06e7
+      md5sum: b30458b37b728d8ce97890b391ad9df9
     - path: output/registration/test__output0Warp.nii.gz
-      md5sum: 3661f11f8525ba33b190ecf031f822e9
+      md5sum: 1cc8863a565c9df46e1a3bb613154a17
     - path: output/registration/test__output1GenericAffine.mat
-      md5sum: ec5a132d6c53daf84218ccc7fa290073
+      md5sum: 3946e4d33c15911a9a1d72374fdbe4df
     - path: output/registration/test__output1InverseWarp.nii.gz
-      md5sum: cc04fdb62bbd99ae92145186843f2cf6
+      md5sum: 987bd5da0a356f1b12194acc4ab85750
     - path: output/registration/test__warped.nii.gz
-      md5sum: 9f6678db85757e5aceda21122e89b3a4
+      md5sum: 685cab659941bb735eaded4b4bfc93bf
