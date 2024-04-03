@@ -1,3 +1,7 @@
+betcrop/antsbet:
+  - modules/nf-scil/betcrop/antsbet/**
+  - tests/modules/nf-scil/betcrop/antsbet/**
+
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
@@ -18,6 +22,17 @@ denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
 
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
+
+image/resample:
+  - modules/nf-scil/image/resample/**
+  - tests/modules/nf-scil/image/resample/**
+
+preproc/eddy:
+  - modules/nf-scil/preproc/eddy/**
+  - tests/modules/nf-scil/preproc/eddy/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -30,9 +45,9 @@ preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
 
-tracking/localtracking:
-  - modules/nf-scil/tracking/localtracking/**
-  - tests/modules/nf-scil/tracking/localtracking/**
+preproc/topup:
+  - modules/nf-scil/preproc/topup/**
+  - tests/modules/nf-scil/preproc/topup/**
 
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
@@ -58,6 +73,18 @@ reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
 
+register/anattodwi:
+  - modules/nf-scil/register/anattodwi/**
+  - tests/modules/nf-scil/register/anattodwi/**
+
+registration/ants:
+  - modules/nf-scil/registration/ants/**
+  - tests/modules/nf-scil/registration/ants/**
+
+registration/antsapplytransforms:
+  - modules/nf-scil/registration/antsapplytransforms/**
+  - tests/modules/nf-scil/registration/antsapplytransforms/**
+
 segmentation/fastseg:
   - modules/nf-scil/segmentation/fastseg/**
   - tests/modules/nf-scil/segmentation/fastseg/**
@@ -74,6 +101,14 @@ testdata/scilpy:
   - modules/nf-scil/testdata/scilpy/**
   - tests/modules/nf-scil/testdata/scilpy/**
 
+testdata/sizeof:
+  - modules/nf-scil/testdata/sizeof/**
+  - tests/modules/nf-scil/testdata/sizeof/**
+
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
+
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
@@ -81,7 +116,3 @@ tracking/pfttracking:
 utils/extractb0:
   - modules/nf-scil/utils/extractb0/**
   - tests/modules/nf-scil/utils/extractb0/**
-
-image/resample:
-  - modules/nf-scil/image/resample/**
-  - tests/modules/nf-scil/image/resample/**

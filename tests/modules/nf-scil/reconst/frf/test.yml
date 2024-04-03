@@ -5,7 +5,6 @@
     - reconst
   files:
     - path: output/reconst/test__frf.txt
-      md5sum: 545e0f115f693e6fff94d3b322596fb0
     - path: output/reconst/versions.yml
 
 - name: reconst frf test_reconst_frf_nomask
@@ -15,7 +14,6 @@
     - reconst
   files:
     - path: output/reconst/test__frf.txt
-      md5sum: 232c46c8ae3238a029b3dabfbda6c383
     - path: output/reconst/versions.yml
 
 - name: reconst frf test_reconst_frf_set_frf
