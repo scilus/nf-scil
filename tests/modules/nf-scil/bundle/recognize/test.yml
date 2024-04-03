@@ -1,10 +1,192 @@
-- name: "bundle recognize"
+- name: bundle recognize test_bundle_recognize
   command: nextflow run ./tests/modules/nf-scil/bundle/recognize -entry test_bundle_recognize -c ./tests/config/nextflow.config
   tags:
-    - "bundle"
-    - "bundle/recognize"
+    - bundle/recognize
+    - bundle
   files:
-    - path: "output/bundle/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/bundle/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
+    - path: output/bundle/test__bundle_1_cleaned.trk
+      md5sum: 6a5c47dccc9f51087572a8de006183ae
+    - path: output/bundle/test__bundle_2_cleaned.trk
+      md5sum: 08e2bd3fe0432d4dd58b7db771c8080d
+    - path: output/bundle/test__bundle_3_cleaned.trk
+      md5sum: 313c4401e7771a966c26be3f73ea7730
+    - path: output/bundle/test__bundle_4_cleaned.trk
+      md5sum: b2e8e5a6b9077d6a36552b6bfa579de4
+    - path: output/bundle/test__bundle_5_cleaned.trk
+      md5sum: 3b975ace291d6fd4fd434ce37cc2263a
+    - path: output/bundle/versions.yml
+    - path: output/testdata/test_data/bundles/affine.txt
+      md5sum: 83b21d15a63fe98794ad420c0c50e4c2
+    - path: output/testdata/test_data/bundles/axial_3d.png
+      md5sum: 4d6de1be9f76a774e819efaad10c5361
+    - path: output/testdata/test_data/bundles/axial_glass.png
+      md5sum: 2ff9f619d2f253c1c2146e3ab8e4d928
+    - path: output/testdata/test_data/bundles/bash.sh
+      md5sum: 80db28a3f5fc6d4ebc495cc68d46f184
+    - path: output/testdata/test_data/bundles/bundle_0_binary.json
+      md5sum: 69d8d10f7294d6608eeed31a637915a0
+    - path: output/testdata/test_data/bundles/bundle_0_measures.json
+      md5sum: 0a801b1ef8cf51079bda95db76c13f12
+    - path: output/testdata/test_data/bundles/bundle_0_reco.tck
+      md5sum: bced7cce40d134d0ffdb20c140192ffb
+    - path: output/testdata/test_data/bundles/bundle_0_similarity.json
+      md5sum: fbbd8d987f17d0d99083561e7919ad2b
+    - path: output/testdata/test_data/bundles/bundle_all_1mm.nii.gz
+      md5sum: 034f76d0cf3d588636dba159508c3610
+    - path: output/testdata/test_data/bundles/bundle_all_1mm.trk
+      md5sum: 3ac194f7a92cfd20d3f260573919e70e
+    - path: output/testdata/test_data/bundles/bundle_all_1mm_ic.trk
+      md5sum: 3ac194f7a92cfd20d3f260573919e70e
+    - path: output/testdata/test_data/bundles/clusters.pkl
+      md5sum: 4b41822fb87358e5abb78bf17b788f92
+    - path: output/testdata/test_data/bundles/config.json
+      md5sum: 3d08d5f423a26cc2915a06d352a4482b
+    - path: output/testdata/test_data/bundles/coronal_3d.png
+      md5sum: 59f247bf292e5d4774d83b84f4606d80
+    - path: output/testdata/test_data/bundles/coronal_glass.png
+      md5sum: 5e3d7cb3f38d9d5ed0af70e54dfd54bd
+    - path: output/testdata/test_data/bundles/fibercup_atlas/.gitignore
+      md5sum: 5eefc3a06ba7d0c5830f8aeb74df64f4
+    - path: output/testdata/test_data/bundles/fibercup_atlas/bundle_all_1mm.nii.gz
+      md5sum: 034f76d0cf3d588636dba159508c3610
+    - path: output/testdata/test_data/bundles/fibercup_atlas/bundle_all_1mm.nii.gz.dvc
+      md5sum: 28a8d22214fcb9cf875667733ca87db5
+    - path: output/testdata/test_data/bundles/fibercup_atlas/default_config_sim.json
+      md5sum: c96c82296569afe566013a31490edd8e
+    - path: output/testdata/test_data/bundles/fibercup_atlas/default_config_sim.json.dvc
+      md5sum: 1744db2c781f3e50da9fdad5a05cba75
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/.gitignore
+      md5sum: cb329876e937bbd7154840352a9a13c4
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_0.trk
+      md5sum: bd05de7fecce77ad8268042b76b0467b
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_0.trk.dvc
+      md5sum: 3df330db4c869cca719b97b1f025cc1d
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_1.trk
+      md5sum: b95ccba791343d78e2541d07fc69fb92
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_1.trk.dvc
+      md5sum: aa86437e8e007925dafe6e0f183ddf02
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_2.trk
+      md5sum: 718b7b8cbd4f0aa8ffe7f289626670c7
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_2.trk.dvc
+      md5sum: f1b10bd1fd89be8e4ac11276b4c2f114
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_3.trk
+      md5sum: d7d7394c026b324d971bb4d2da7412a7
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_3.trk.dvc
+      md5sum: b8cbbe129c52805edb14faf15f7ee141
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_4.trk
+      md5sum: b60f42921e294c13e1191d4922261446
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_4.trk.dvc
+      md5sum: 51d28fb4ee7a269a80a3ee626b327dea
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_5.trk
+      md5sum: 764d74e364114d41d41548a08ad49953
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_5.trk.dvc
+      md5sum: f9017ae3dae3f479aee13808a7794c53
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_6.trk
+      md5sum: 2f4465d4f26b32820ac08262c265c929
+    - path: output/testdata/test_data/bundles/fibercup_atlas/ori/bundle_6.trk.dvc
+      md5sum: 83e215b969a535207cbf9c6237d122a8
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/.gitignore
+      md5sum: cb329876e937bbd7154840352a9a13c4
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_0.trk
+      md5sum: 6e14cc02b66d12d5dde0a0701918385a
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_0.trk.dvc
+      md5sum: b5a9b0474241b0f99256b534eae386da
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_1.trk
+      md5sum: ef5a759144ab7e8d2f5abf30a463a152
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_1.trk.dvc
+      md5sum: d53621470d51c633e0b0a9597d31f5cb
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_2.trk
+      md5sum: 824bcbf796cbce3e1c93e39d1c98dcf9
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_2.trk.dvc
+      md5sum: ae5ec923af50481d454731a08facef0c
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_3.trk
+      md5sum: 8877161b9aebaa6b12a4d7a8f8410407
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_3.trk.dvc
+      md5sum: 3adbb836c22a927b2097d710bf92814f
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_4.trk
+      md5sum: 6c8658b946154896952ca89e88fcf29f
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_4.trk.dvc
+      md5sum: ae176447d33f5ce1c3cefd9f1c7fdc2e
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_5.trk
+      md5sum: fa058f93d9bfe4bed2ff027e9acd5682
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_5.trk.dvc
+      md5sum: ff202330bdcf1432d710f5bb07cb4f35
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_6.trk
+      md5sum: 125e50561b4b0c5fd8ee23867c28bc51
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_1/bundle_6.trk.dvc
+      md5sum: 79fff0af6ed7c6796743b6925b5a745d
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/.gitignore
+      md5sum: cb329876e937bbd7154840352a9a13c4
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_0.trk
+      md5sum: 51bf27b3c49e3bc7d276ed14f613094b
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_0.trk.dvc
+      md5sum: 6ae0bd735074dd7c2febcf25e7c1486e
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_1.trk
+      md5sum: 56e53eee7be28640e464e9dd8a4e2c87
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_1.trk.dvc
+      md5sum: aed497376cc842a8905ccdac0bfd4c1c
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_2.trk
+      md5sum: b0e585041ae6001e4ae9d2c31b45d8aa
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_2.trk.dvc
+      md5sum: cb70928a930d2bf40a951411031c9c04
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_3.trk
+      md5sum: 46efd61ddda9f5578e9479359bae0ae5
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_3.trk.dvc
+      md5sum: 730478b5bf87bd4c34cb2e7957d6a8ee
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_4.trk
+      md5sum: 3211173fcd42c883f5722cda449b02c2
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_4.trk.dvc
+      md5sum: 329baa0c5e972f20bf9e9fca143179de
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_5.trk
+      md5sum: 1a8dac6d749afe3efcb74af64c067e2c
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_5.trk.dvc
+      md5sum: 001629fbe10f00a9eb0ada3f7faa86dc
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_6.trk
+      md5sum: 4b4b570f038ddd75978adfa44dd6d789
+    - path: output/testdata/test_data/bundles/fibercup_atlas/subj_2/bundle_6.trk.dvc
+      md5sum: a486e6bd7a18bbe917751b0130295f2d
+    - path: output/testdata/test_data/bundles/sagittal_3d.png
+      md5sum: 4325deb710d676f5402f1246d351e86e
+    - path: output/testdata/test_data/bundles/sagittal_glass.png
+      md5sum: 63249250c4a756db7197d6bb7d4f837a
+    - path: output/testdata/test_data/bundles/transformation_rigid.txt
+      md5sum: 32e5a710e6c43075fb5b6376bc8a2547
+    - path: output/testdata/test_data/bundles/voting_results/.gitignore
+      md5sum: af5731df7260810f1e2789d5e97e03b8
+    - path: output/testdata/test_data/bundles/voting_results/bundle_0.trk
+      md5sum: b91a979dd0e60a3afb99882a28e2b8b7
+    - path: output/testdata/test_data/bundles/voting_results/bundle_0.trk.dvc
+      md5sum: 6bf7fca2b148bc89e3e2aaf504dbac35
+    - path: output/testdata/test_data/bundles/voting_results/bundle_1.trk
+      md5sum: 2a832304e911ee15b2cbc7efc46edbd5
+    - path: output/testdata/test_data/bundles/voting_results/bundle_1.trk.dvc
+      md5sum: d06c77220f4bae2ab06d484b770ab6b3
+    - path: output/testdata/test_data/bundles/voting_results/bundle_2.trk
+      md5sum: 92199615ac999438fa1214afc4bbd971
+    - path: output/testdata/test_data/bundles/voting_results/bundle_2.trk.dvc
+      md5sum: 6993c68c7d3718b18f67e56d10f47784
+    - path: output/testdata/test_data/bundles/voting_results/bundle_3.trk
+      md5sum: 2eed231b7b35b245c377e9a7ae63b529
+    - path: output/testdata/test_data/bundles/voting_results/bundle_3.trk.dvc
+      md5sum: 40bb31ba8dd06c5f938b713515602a7d
+    - path: output/testdata/test_data/bundles/voting_results/bundle_4.trk
+      md5sum: 07343a2690703b5d1db91c49265e16dc
+    - path: output/testdata/test_data/bundles/voting_results/bundle_4.trk.dvc
+      md5sum: 196ab77d541e3824ecfe8aaf32202b4b
+    - path: output/testdata/test_data/bundles/voting_results/bundle_5.trk
+      md5sum: 5eaca363223ee3996e78ebc12275ab86
+    - path: output/testdata/test_data/bundles/voting_results/bundle_5.trk.dvc
+      md5sum: c8f6474bb407d6973355e230ce7606b1
+    - path: output/testdata/test_data/bundles/voting_results/bundle_6.trk
+      md5sum: 9229dd0c66a3dca71109f258652250d2
+    - path: output/testdata/test_data/bundles/voting_results/bundle_6.trk.dvc
+      md5sum: 6ead138880c4111185c49864b9a334ce
+    - path: output/testdata/test_data/bundles/voting_results/logfile.txt
+      md5sum: d03c70c71a12cf061e6d3636316ae933
+    - path: output/testdata/test_data/bundles/voting_results/logfile.txt.dvc
+      md5sum: 803b98d63d8e2e69ad48206693fba973
+    - path: output/testdata/test_data/bundles/voting_results/results.json
+      md5sum: 0d168183248e99e10374c1fa12c82fa4
+    - path: output/testdata/test_data/bundles/voting_results/results.json.dvc
+      md5sum: 90aad43d6db6e8155ffcb4cffcaf9d0c
+    - path: output/testdata/versions.yml

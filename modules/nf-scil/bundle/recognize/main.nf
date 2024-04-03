@@ -10,8 +10,8 @@ process BUNDLE_RECOGNIZE {
         tuple val(meta), path(tractograms), path(transform), path(config), path(directory)
 
     output:
-    tuple val(meta), path("${sid}__*_cleaned.trk")     , emit: bundles
-    path "versions.yml"                                , emit: versions
+    tuple val(meta), path("*_cleaned.trk")     , emit: bundles
+    path "versions.yml"                        , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -29,7 +29,7 @@ process BUNDLE_RECOGNIZE {
     scil_recognize_multi_bundles.py ${tractograms} ${config} ${directory}/ ${transform} --inverse --out_dir recobundles/ \
         --log_level DEBUG $minimal_vote_ratio $seed $rbx_processes
 
-    for bundle_file in recobundles/*; do
+    for bundle_file in recobundles/*.trk; do
         bname=\$(basename \${bundle_file} .trk)
         out_cleaned=${prefix}__\${bname}_cleaned.trk
         scil_outlier_rejection.py \${bundle_file} "\${out_cleaned}" ${outlier_alpha}
