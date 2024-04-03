@@ -6,6 +6,7 @@ keywords:
   - Diffusion MRI
   - Tractogram
   - Segmentation
+  - Bundles
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -44,15 +45,15 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - bundles:
       type: file
       description: Segmented and cleaned bundles
       pattern: "*.trk"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@CHrlS98"

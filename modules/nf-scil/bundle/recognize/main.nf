@@ -42,7 +42,6 @@ process BUNDLE_RECOGNIZE {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     scil_recognize_multi_bundles.py -h
