@@ -55,7 +55,7 @@ process TESTDATA_SCILPY {
     def get_testing_files_dict():
         return {
             "commit_amico.zip": "c190e6b9d22350b51e222c60febe13b4",
-            "bundles.zip": "54b6e2bf2dda579886efe4e2a8989486",
+            "bundles.zip": "6d3ebc21062bf320714483b7314a230a",
             "stats.zip": "2aeac4da5ab054b3a460fc5fdc5e4243",
             "bst.zip": "eed227fd246255e7417f92d49eb1066a",
             "filtering.zip": "19116ff4244d057c8214ee3fe8e05f71",
