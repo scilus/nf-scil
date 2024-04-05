@@ -1,0 +1,11 @@
+- name: preproc eddy test_preproc_eddy
+  command: nextflow run ./tests/modules/nf-scil/preproc/eddy -entry test_preproc_eddy -c ./tests/config/nextflow.config
+  tags:
+    - preproc
+    - preproc/eddy
+  files:
+    - path: output/preproc/test__b0_bet_mask.nii.gz
+    - path: output/preproc/test__bval_eddy
+    - path: output/preproc/test__dwi_corrected.nii.gz
+    - path: output/preproc/test__dwi_eddy_corrected.bvec
+    - path: output/preproc/versions.yml

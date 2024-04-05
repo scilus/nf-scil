@@ -4,8 +4,8 @@ nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
 include {
-    TRACKING_LOCALTRACKING as WM_TRACKING;
-    TRACKING_LOCALTRACKING as FA_TRACKING; } from '../../../../../modules/nf-scil/tracking/localtracking/main.nf'
+    TRACKING_LOCALTRACKING as TRACKING_WM;
+    TRACKING_LOCALTRACKING as TRACKING_FA; } from '../../../../../modules/nf-scil/tracking/localtracking/main.nf'
 
 workflow test_tracking_localtracking_wm {
 
@@ -21,7 +21,7 @@ workflow test_tracking_localtracking_wm {
             file("${test_data_directory}/fa.nii.gz")
     ]}
 
-    WM_TRACKING ( input_wm )
+    TRACKING_WM ( input_wm )
 }
 
 workflow test_tracking_localtracking_fa {
@@ -38,5 +38,5 @@ workflow test_tracking_localtracking_fa {
             file("${test_data_directory}/fa.nii.gz")
     ]}
 
-    FA_TRACKING ( input_fa )
+    TRACKING_FA ( input_fa )
 }

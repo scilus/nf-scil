@@ -1,0 +1,16 @@
+name: nf-scil PR checks
+on:
+  pull_request:
+    branches:
+      - main
+
+# Cancel if a newer run is started
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    if: github.repository == 'scilus/nf-scil'
+    uses: ./.github/workflows/checks.yml
+    secrets: inherit
