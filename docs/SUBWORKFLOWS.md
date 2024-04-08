@@ -114,7 +114,6 @@ emit:
 > As with `main`, you can create outputs containing several files using operators.
 
 Don't forget to also define the output for the version file :
-in the order in which they appear
 
 ```
     versions = ch_versions // channel: [ versions.yml ]
