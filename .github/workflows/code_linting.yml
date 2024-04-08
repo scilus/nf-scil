@@ -11,7 +11,7 @@ jobs:
       contains(github.event.comment.html_url, '/pull/') &&
       contains(github.event.comment.body, '@nf-scil-bot fix linting') &&
       github.repository == 'scilus/nf-scil'
-    runs-on: ubuntu-latest
+    runs-on: scilus-nf-scil-runners
     steps:
       # Use the @nf-scil-bot token to check out so we can push later
       - uses: actions/checkout@v4

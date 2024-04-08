@@ -1,10 +1,28 @@
+# Contributing to nf-scil
+
+- [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
+  - [Generate the template](#generate-the-template)
+  - [Edit the template](#edit-the-template)
+    - [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
+    - [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
+    - [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
+    - [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+  - [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
+  - [Lint your code](#lint-your-code)
+  - [Last safety test](#last-safety-test)
+  - [Submit your PR](#submit-your-pr)
+- [Defining processes optional parameters](#defining-processes-optional-parameters)
+- [Test data infrastructure](#test-data-infrastructure)
+  - [Using the .test_data directory](#using-the-test_data-directory)
+  - [Using Scilpy Fetcher](#using-scilpy-fetcher)
+
 # Adding a new module to nf-scil
 
 ## Generate the template
 
 First verify you are located at the root of this repository (not in `modules`), then run the following interactive command :
 
-```
+```bash
 nf-core modules create
 ```
 
@@ -19,7 +37,7 @@ to the following to ensure configuration abides with `nf-scil` :
 
 Alternatively, you can use the following command to supply nearly all information :
 
-```
+```bash
 nf-core modules create \
     --author @scilus \
     --label process_single \
@@ -79,7 +97,9 @@ already follow all guidelines. You will find related files in :
     In the script section, before the script definition (in `""" """`), unpack the
     optional argument into a `usable variable`. For a optional input `input1`, add :
 
-        def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    ```groovy
+    def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    ```
 
     The variable `optional_input1` is the one to use in the script.
 
@@ -135,12 +155,21 @@ already follow all guidelines. You will find related files in :
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but we
 don't need to specify them all. At least define the `keywords`, describe the process'
-`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process.
+`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process. The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`, `integer`, `float` and `boolean`.
 
 > [!IMPORTANT]
 > The `tool` documentation does not describe your module, but to the tools you use in
 > the module ! If you use scripts from `scilpy`, here you describe scilpy. If using
 > `ANTs`, describe ANts. Etcetera.
+
+Once done, commit your module and push the changes. Then, to look at the documentation it creates for your module, run :
+
+```bash
+nf-core modules \
+  --git-remote <your reository> \
+  --branch <your branch unless main branch> \
+  info <category/name>
+```
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
 
@@ -183,7 +212,7 @@ so output files that gets generated are checksum correctly.
 
 Run :
 
-```
+```bash
 nf-core modules create-test-yml \
     --run-tests \
     --force \
@@ -196,38 +225,18 @@ smoothly, look at the test metadata file produced : `tests/modules/nf-scil/<cate
 and validate that ALL outputs produced by test cases have been caught. Their `md5sum` is
 critical to ensure future executions of your test produce valid outputs.
 
-## Last safety test
+## Lint your code
 
-You're mostly done ! If every tests passes, your module is ready ! Still, you have not tested
-that `nf-core` is able to find and install your module in an actual pipeline. First, to test
-this, your module must be pushed only to your repository, so ensure that. Next, you need to
-either locate yourself in an already existing `DSL2` Nextflow pipeline, or create a `dummy`
-testing one.
+Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
 
-> [!NOTE]
-> To be valid, your `DSL2` Nextflow pipeline must have a `modules/` directory, as well as a
-> `writable` or non-existent `.modules.yml` file.
-
-> [!NOTE]
-> A `dummy` pipeline is simply a directory containing an empty `modules/` directory and a
-> `main.nf` file with the following content : `workflow {}`.
-
-Run the following command, to try installing the module :
-
-```
-nf-core module \
-  --git-remote https://github.com/scilus/nf-scil.git \
-  --branch <branch> \
-  install <category>/<tool>
+```bash
+nf-core modules \
+  --git-remote <your repository> \
+  --branch <your branch unless main branch> \
+  lint <category>/<tool>
 ```
 
-You'll get a message at the command line, indicating which `include` line to add to your
-pipeline to use your module. If you do it, add the module to your pipeline, run it and
-validate it's working, and you're done !
-
-> [!NOTE]
-> If working with the `dummy`, don't bother running it, we say it's working, so you can
-> delete the test and submit the PR !
+You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
 
 ## Submit your PR
 
@@ -300,11 +309,65 @@ process {
 
 # Test data infrastructure
 
-> [!WARNING]
-> WORK IN PROGRESS, WILL CHANGE SOON-ISH. 2 temporary ways are available now and will be
-> deprecated when the **DVC** infrastructure is ready.
+> [!IMPORTANT]
+> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR
+
+## Using Scilpy Fetcher
+
+The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
+depository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
+
+```groovy
+include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
+```
+
+The workflow has two inputs :
+
+- A channel containing a list of archives names to download. Refer to [this page](./SCILPY_DATA.md) for a
+  list of available archives and their content.
+
+- A name for the temporary directory where the data will be put.
+
+To call it, use the following syntax :
+
+```groovy
+archives = Channel.from( [ "<archive1>", "archive2", ... ] )
+LOAD_TEST_DATA( archives, "<directory>" )
+```
+
+> [!IMPORTANT]
+> This will download the `archives` and unpack them under the `directory`
+> specified, using the archive's names as `sub-directories` to unpack to.
+
+The archives contents are accessed using the output parameter of the workflow
+`LOAD_TEST_DATA.out.test_data_directory`. To create the test input from it for
+a given `PROCESS` to test use the `.map` operator :
+
+```groovy
+input = LOAD_TEST_DATA.out.test_data_directory
+  .map{ test_data_directory -> [
+    [ id:'test', single_end:false ], // meta map
+    file("${test_data_directory}/<file for input 1>"),
+    file("${test_data_directory}/<file for input 2>"),
+    ...
+  ] }
+```
+
+Then feed it to it :
+
+```groovy
+PROCESS( input )
+```
+
+> [!NOTE]
+> The subworkflow must be called individually in each test workflow, even if they download
+> the same archives, since there is no mechanism to pass data channels to them from the
+> outside, or share cache between them.
 
 ## Using the `.test_data` directory
+
+> [!WARNING]
+> This section is kept for legacy only, until the tests relying on it are updated.
 
 Some test datasets are available under the `.test_data` directory. You can use them as you wish,
 but inspect them before you do, since some dataset have been lean down and could not fit the
@@ -319,7 +382,7 @@ for the `dictionary key` : `params.test_data[<category>][<tool>][<input_name>]`.
 
 Thus, a new binding in `tests/config/test_data.config` should resemble the following
 
-```
+```groovy
 params {
     test_data {
         ...
@@ -346,7 +409,7 @@ You then use `params.test_data[<category>][<tool>][<input_name>]` in your test c
 attach the data to the test case, since the `params.test_data` collection is loaded
 automatically. To do so, in a test workflow, define an `input` object :
 
-```
+```groovy
 input = [
   [ id:'test', single_end:false ], // meta map
   params.test_data[<category>][<tool>][<input_name1>],
@@ -359,38 +422,3 @@ and use it as input to the processes to test.
 
 > [!IMPORTANT]
 > Keep the `meta map` in the first entry, modify it as necessary
-
-## Using Scilpy Fetcher
-
-The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
-depository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
-
-```
-include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
-```
-
-The workflow has two inputs :
-
-- A channel containing a list of archives names to download. Refer to [this page](./SCILPY_DATA.md) for a
-  list of available archives and their content.
-
-- A name for the temporary directory where the data will be put.
-
-The directories where the archives contents are unpacked are accessed using the output
-parameter of the workflow `LOAD_TEST_DATA.out.test_data_directory`. To create the test
-input from it, use the `.map` operator :
-
-```
-input = LOAD_TEST_DATA.out.test_data_directory
-  .map{ test_data_directory -> [
-    [ id:'test', single_end:false ], // meta map
-    file("${test_data_directory}/<file for input 1>"),
-    file("${test_data_directory}/<file for input 2>"),
-    ...
-  ] }
-```
-
-> [!NOTE]
-> The subworkflow must be called individually in each test workflow, even if they download
-> the same archives, since there is no mechanism to pass data channels to them from the
-> outside.

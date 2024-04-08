@@ -1,0 +1,35 @@
+- name: bundle recognize test_bundle_recognize_base
+  command: nextflow run ./tests/modules/nf-scil/bundle/recognize -entry test_bundle_recognize_base -c ./tests/config/nextflow.config
+  tags:
+    - bundle/recognize
+    - bundle
+  files:
+    - path: output/bundle/test__bundle_1_cleaned.trk
+      md5sum: 6a5c47dccc9f51087572a8de006183ae
+    - path: output/bundle/test__bundle_2_cleaned.trk
+      md5sum: 08e2bd3fe0432d4dd58b7db771c8080d
+    - path: output/bundle/test__bundle_3_cleaned.trk
+      md5sum: 313c4401e7771a966c26be3f73ea7730
+    - path: output/bundle/test__bundle_4_cleaned.trk
+      md5sum: b2e8e5a6b9077d6a36552b6bfa579de4
+    - path: output/bundle/test__bundle_5_cleaned.trk
+      md5sum: 3b975ace291d6fd4fd434ce37cc2263a
+    - path: output/bundle/versions.yml
+
+- name: bundle recognize test_bundle_recognize_params
+  command: nextflow run ./tests/modules/nf-scil/bundle/recognize -entry test_bundle_recognize_params -c ./tests/config/nextflow.config
+  tags:
+    - bundle/recognize
+    - bundle
+  files:
+    - path: output/bundle/test__bundle_1_cleaned.trk
+      md5sum: 4f5cb88d05f175d6b55509d0ad307ab3
+    - path: output/bundle/test__bundle_2_cleaned.trk
+      md5sum: 58b4c1381603d72ad6e72cc705b4606e
+    - path: output/bundle/test__bundle_3_cleaned.trk
+      md5sum: 8f24a8c534b6e2386bcc755bd8f0c4b9
+    - path: output/bundle/test__bundle_4_cleaned.trk
+      md5sum: eafac0796051d6ada4bfc5a5c576c536
+    - path: output/bundle/test__bundle_5_cleaned.trk
+      md5sum: 0d512bcaaf49325415a1f4860a167f5e
+    - path: output/bundle/versions.yml

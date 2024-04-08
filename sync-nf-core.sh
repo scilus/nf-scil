@@ -23,6 +23,9 @@ wget -O /workspaces/nf-scil/.prettierrc.yml \
 wget -O /workspaces/nf-scil/pytest.ini \
     https://github.com/nf-core/tools/raw/$nfcore_ver/pytest.ini
 
+wget -O /workspaces/nf-scil/requirements.txt \
+    https://github.com/nf-core/tools/raw/$nfcore_ver/requirements.txt
+
 wget -O /workspaces/nf-scil/.requirements.nf-core.new \
     https://github.com/nf-core/tools/raw/$nfcore_ver/requirements-dev.txt
 
