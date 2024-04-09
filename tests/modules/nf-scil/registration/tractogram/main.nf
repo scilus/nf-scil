@@ -7,17 +7,19 @@ include { REGISTRATION_TRACTOGRAM } from '../../../../../modules/nf-scil/registr
 
 workflow test_registration_tractogram {
 
-    input_fetch = Channel.from( [ "bst.zip" ] )
+    input_fetch = Channel.from( [ "bundles.zip" ] )
 
     LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
             .map{ test_data_directory -> [
             [ id:'test', single_end:false ], // meta map
-            file("${test_data_directory}/fa.nii.gz"),
-            file("${test_data_directory}/output0GenericAffine.mat"),
-            file("${test_data_directory}/fibercup_atlas")
+            file("${test_data_directory}/bundle_all_1mm.nii.gz"),
+            file("${test_data_directory}/affine.txt"),
+            file("${test_data_directory}/fibercup_atlas/subj_1/"),
+            [],
+            []
     ]}
 
-    REGISTRATION_TRACTOGRAM ( input )
+    REGISTRATION_BUNDLEREGISTRATION ( input )
 }
