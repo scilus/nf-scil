@@ -8,8 +8,8 @@ workflow test_betcrop_synthbet {
 
     input = [
         [ id:'test', single_end:false ], // meta map
-        file(params.test_data['betcrop']['synthbet']['t1'], checkIfExists: true),
-        file(params.test_data['betcrop']['synthbet']['license'], checkIfExists: true)
+        file("/workspaces/nf-scil/.test_data/heavy/anat/anat_image.nii.gz", checkIfExists: true),
+        file("/workspaces/nf-scil/.test_data/heavy/freesurfer/license.txt", checkIfExists: true)
     ]
 
     BETCROP_SYNTHBET ( input )

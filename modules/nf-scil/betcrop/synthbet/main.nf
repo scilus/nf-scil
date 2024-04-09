@@ -3,6 +3,7 @@ process BETCROP_SYNTHBET {
     label 'process_single'
 
     container "freesurfer/synthstrip:latest"
+    containerOptions "--entrypoint ''"
 
     input:
     tuple val(meta), path(t1), path(fs_license) /* optional, value = [] */
@@ -24,28 +25,13 @@ process BETCROP_SYNTHBET {
     def nocsf = task.ext.nocsf ? "--no-csf" : ""
 
     """
-    # Manage the license. (Save old one if existed.)
-    if [ $fs_license = [] ]; then
-        echo "License not given in input. Using default environment. "
-    else
-        cp $fs_license .license
-        here=`pwd`
-        export FS_LICENSE=\$here/.license
-    fi
-
-    # Run the main script
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
-    export SUBJECTS_DIR=`pwd`
 
-    mri_synthstrip --image $t1 --out ${prefix}__t1_bet.nii.gz --mask ${prefix}__t1_bet_mask.nii.gz $gpu $border $nocsf
-    #scil_image_math.py convert temp_mask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8
+    ln -sf $fs_license \$FREESURFER_HOME/license.txt
 
-    # Remove the license
-    if [ ! $fs_license = [] ]; then
-        rm .license
-    fi
+    mri_synthstrip -i $t1 --out ${prefix}__t1_bet.nii.gz --mask ${prefix}__t1_bet_mask.nii.gz $gpu $border $nocsf
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -60,7 +46,6 @@ process BETCROP_SYNTHBET {
 
     """
     mri_synthstrip -h
-    scil_image_math.py -h
 
     touch ${prefix}__t1_bet.nii.gz
     touch ${prefix}__t1_bet_mask.nii.gz

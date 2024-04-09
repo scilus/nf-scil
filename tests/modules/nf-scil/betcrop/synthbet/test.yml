@@ -1,11 +1,11 @@
-- name: "betcrop synthbet"
+- name: betcrop synthbet test_betcrop_synthbet
   command: nextflow run ./tests/modules/nf-scil/betcrop/synthbet -entry test_betcrop_synthbet -c ./tests/config/nextflow.config
   tags:
-    - "betcrop"
-    - "betcrop/synthbet"
+    - betcrop/synthbet
+    - betcrop
   files:
-    - path: "output/betcrop/test.bam"
-      md5sum: e667c7caad0bc4b7ac383fd023c654fc
-    - path: "output/betcrop/versions.yml"
-      md5sum: a01fe51bc4c6a3a6226fbf77b2c7cf3b
-
+    - path: output/betcrop/test__t1_bet.nii.gz
+      md5sum: b2bbd5595de3f7ee4115f33a166cc359
+    - path: output/betcrop/test__t1_bet_mask.nii.gz
+      md5sum: 088eb4a88948fec1ec874087b8eb3533
+    - path: output/betcrop/versions.yml
