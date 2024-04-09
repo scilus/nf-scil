@@ -7,6 +7,11 @@ betcrop/cropvolume:
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
+
+bundle/recognize:
+  - modules/nf-scil/bundle/recognize/**
+  - tests/modules/nf-scil/bundle/recognize/**
+
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
