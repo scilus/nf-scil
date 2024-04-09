@@ -134,21 +134,6 @@ jobs:
       - name: Setup nf-test
         uses: nf-core/setup-nf-test@v1
 
-      - name: Setup apptainer
-        if: inputs.profile == 'singularity'
-        uses: eWaterCycle/setup-apptainer@main
-
-      - name: Set up Singularity
-        if: inputs.profile == 'singularity'
-        run: |
-          mkdir -p $NXF_SINGULARITY_CACHEDIR
-          mkdir -p $NXF_SINGULARITY_LIBRARYDIR
-
-      - name: Pull scilus image into cache
-        if: inputs.profile == 'singularity'
-        run: |
-          apptainer pull docker://scilus/scilus:1.6.0
-
       - name: Run nf-test
         env:
           NFT_DIFF: "pdiff"
