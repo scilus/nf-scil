@@ -9,7 +9,7 @@ workflow test_betcrop_synthbet {
 
     input_fetch = Channel.from( [ "freesurfer.zip" ] )
 
-    LOAD_TEST_DATA ( input_fetch, "test.test_betcrop_synthbet" )
+    LOAD_TEST_DATA ( input_fetch, "test.load-test-data" )
 
     input = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
