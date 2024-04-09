@@ -127,7 +127,7 @@ jobs:
       module: ${{ matrix.module }}
       profile: ${{ matrix.profile }}
     secrets: inherit
-  
+
   nf-test-modules:
     name: nf-test-modules
     needs: [nf-test-changes]
