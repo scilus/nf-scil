@@ -69,12 +69,12 @@ jobs:
           NFT_DIFF: "pdiff"
           NFT_DIFF_ARGS: "--line-numbers --width 120 --expand-tabs=2"
         run: |
-          # use "docker_self_hosted" if it runs on self-hosted runner and input.profile=docker
-          if [ "${{ input.profile }}" == "docker" ]; then
+          # use "docker_self_hosted" if it runs on self-hosted runner and inputs.profile=docker
+          if [ "${{ inputs.profile }}" == "docker" ]; then
             PROFILE="docker_self_hosted"
-          else
-            PROFILE=${{ input.profile }}
-          fi
+          else 
+            PROFILE=${{ inputs.profile }}
+          fi 
 
           NFT_WORKDIR=/home/runner/_work \
           nf-test test \
