@@ -1,5 +1,5 @@
 ---
-name: "registration_tractogram"
+name: "registration_bundleregistration"
 description: Apply transform to bundles centroid
 keywords:
   - Diffusion MRI

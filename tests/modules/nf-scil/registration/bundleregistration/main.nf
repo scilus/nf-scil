@@ -3,9 +3,9 @@
 nextflow.enable.dsl = 2
 
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main.nf'
-include { REGISTRATION_TRACTOGRAM } from '../../../../../modules/nf-scil/registration/tractogram/main.nf'
+include { REGISTRATION_BUNDLEREGISTRATION } from '../../../../../modules/nf-scil/registration/bundleregistration/main.nf'
 
-workflow test_registration_tractogram {
+workflow test_registration_bundleregistration {
 
     input_fetch = Channel.from( [ "bundles.zip" ] )
 
