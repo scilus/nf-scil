@@ -23,33 +23,18 @@ primary focus of the library is to provide pre-built processes and processing se
 technologies and made easily available to pipeline's developers through the `nf-core`
 framework.
 
-- [Using modules from nf-scil](#using-modules-from-nf-scil)
-- [Developing in nf-scil](#developing-in-nf-scil)
-  - [Manual configuration](#manual-configuration)
-    - [Dependencies](#dependencies)
-    - [Python environment](#python-environment)
-    - [Loading the project's environment](#loading-the-projects-environment)
-    - [Working with VS Code](#working-with-vs-code)
-  - [Configuration via the devcontainer](#configuration-via-the-devcontainer-)
-  - [Contributing to the nf-scil project](#contributing-to-the-nf-scil-project)
-    - [Adding a new module to nf-scil](docs/MODULE.md#adding-a-new-module-to-nf-scil)
-      - [Generate the template](docs/MODULE.md#generate-the-template)
-      - [Edit the template](docs/MODULE.md#edit-the-template)
-        - [Editing the module's main.nf](docs/MODULE.md#editing-modulesnf-scilcategorytoolmainnf-)
-        - [Editing the module's meta.yml](docs/MODULE.md#editing-modulesnf-scilcategorytoolmetayml-)
-        - [Editing the tests' main.nf](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolmainnf-)
-        - [Editing the tests' nextflow.config](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
-      - [Run the tests to generate the test metadata file](docs/MODULE.md#run-the-tests-to-generate-the-test-metadata-file)
-      - [Lint your code](docs/MODULE.md#lint-your-code)
-      - [Last safety test](docs/MODULE.md#last-safety-test)
-      - [Submit your PR](docs/MODULE.md#submit-your-pr)
-    - [Defining processes optional parameters](docs/MODULE.md#defining-processes-optional-parameters)
-    - [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
-      - [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
-      - [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
-  - [Running tests](#running-tests)
-  - [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
-  - [Installing Prettier](#installing-prettier)
+* [Using modules from `nf-scil`](#using-modules-from-nf-scil)
+* [Developing in `nf-scil`](#developing-in-nf-scil)
+  * [Manual configuration](#manual-configuration)
+    * [Dependencies](#dependencies)
+    * [Python environment](#python-environment)
+    * [Loading the project's environment](#loading-the-projects-environment)
+    * [Working with VS Code](#working-with-vs-code)
+  * [Configuration via the `devcontainer` :](#configuration-via-the-devcontainer-)
+  * [Contributing to the `nf-scil` project](#contributing-to-the-nf-scil-project)
+  * [Running tests](#running-tests)
+  * [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
+  * [Installing Prettier](#installing-prettier)
 
 # Using modules from `nf-scil`
 
@@ -74,7 +59,11 @@ nf-core modules \
 
 # Developing in `nf-scil`
 
-The `nf-scil` project requires some specific tools to be installed on your system so that the development environment runs correctly. You can [install them manually](#manual-configuration), but if you desire to streamline the process and start coding faster, we highly recommend using the [VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a matter of minutes.
+The `nf-scil` project requires some specific tools to be installed on your system so that
+the development environment runs correctly. You can [install them manually](#manual-configuration),
+but if you desire to streamline the process and start coding faster, we highly recommend using the
+[VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a
+matter of minutes.
 
 ## Manual configuration
 
@@ -151,17 +140,19 @@ To exit the environment, simply enter the `exit` command in the shell.
 
 ### Working with VS Code
 
-The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the `nf-scil-extensions` package. You can find it easily on the [extension
-marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-scil-extensions).
+The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the
+`nf-scil-extensions` package. You can find it easily on the [extension marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-scil-extensions).
 
 ## Configuration via the `devcontainer` :
 
 The `devcontainer` definition for the project contains all required dependencies and setup
-steps are automatically executed. To use this installation method, you need to have **Docker** (refer to [this section](#configuring-docker-for-easy-usage) for configuration requirements or validate your configuration) and **Visual Studio Code** installed on your system.
+steps are automatically executed. To use this installation method, you need to have **Docker**
+(refer to [this section](#configuring-docker-for-easy-usage) for configuration requirements or
+validate your configuration) and **Visual Studio Code** installed on your system.
 
-Open the cloned repository in _VS Code_ and click on the arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
-will start a docker build, wait for a few minutes and enjoy your fully configured development
-environment.
+Open the cloned repository in _VS Code_ and click on the arrow box in the lower left corner, to
+get a prompt to `Reopen in container`. The procedure will start a docker build, wait for a few
+minutes and enjoy your fully configured development environment.
 
 - Available in the container :
 
@@ -185,12 +176,15 @@ aligned with `nf-core`, with some exceptions on process atomicity and how test d
 handled. Modules that don't abide to them won't be accepted and PR containing them will
 be closed automatically.
 
-## Running tests
+## nf-scil validation
 
-Tests are run through `nf-core`, using the command :
+All available `modules` and `subworkflows` in the `nf-scil` library are thoroughly tested
+and linted, to ensure they are compliant with the `nf-core` standards and that their usage
+is as straightforward as possible. The validation process is done using the `nf-core` suite
+of tools. Running tests for a `module` or a `subworkflow` is done using the following command :
 
 ```bash
-nf-core modules \
+nf-core <modules|subworkflows> \
   --git-remote https://github.com/scilus/nf-scil.git \
   test <category/tool>
 ```
@@ -199,9 +193,12 @@ The tool can be omitted to run tests for all modules in a category.
 
 ## Configuring Docker for easy usage
 
-The simplest way of installing everything Docker is to use [Docker Desktop](https://www.docker.com/products/docker-desktop). You can also go the [engine way](https://docs.docker.com/engine/install) and install Docker manually.
+The simplest way of installing everything Docker is to use
+[Docker Desktop](https://www.docker.com/products/docker-desktop). You can also
+go the [engine way](https://docs.docker.com/engine/install) and install Docker manually.
 
-Once installed, you need to configure some access rights to the Docker daemon. The easiest way to do this is to add your user to the `docker` group. This can be done with the following command :
+Once installed, you need to configure some access rights to the Docker daemon. The easiest
+way to do this is to add your user to the `docker` group. This can be done with the following command :
 
 ```bash
 sudo groupadd docker
@@ -212,15 +209,18 @@ After running this command, you need to log out and log back in to apply the cha
 
 ## Installing Prettier
 
-To install **Prettier** for the project, you need to have `node` and `npm` installed on your system to at least version 14. On Ubuntu, you can do it using snap :
+To install **Prettier** for the project, you need to have `node` and `npm` installed on
+your system to at least version 14. On Ubuntu, you can do it using snap :
 
 ```bash
 sudo snap install node --classic
 ```
 
-However, if you cannot install snap, or have another OS, refer to the [official documentation](https://nodejs.org/en/download/package-manager/) for the installation procedure.
+However, if you cannot install snap, or have another OS, refer to the
+[official documentation](https://nodejs.org/en/download/package-manager/) for the installation procedure.
 
-Under the current configuration for the _Development Container_, for this project, we use the following procedure, considering `${NODE_MAJOR}` is at least 14 for Prettier :
+Under the current configuration for the _Development Container_, for this project, we use
+the following procedure, considering `${NODE_MAJOR}` is at least 14 for Prettier :
 
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\

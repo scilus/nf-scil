@@ -1,22 +1,16 @@
-# Contributing to nf-scil
-
-- [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
-  - [Generate the template](#generate-the-template)
-  - [Edit the template](#edit-the-template)
-    - [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
-    - [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
-    - [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
-    - [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
-  - [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
-  - [Lint your code](#lint-your-code)
-  - [Last safety test](#last-safety-test)
-  - [Submit your PR](#submit-your-pr)
-- [Defining processes optional parameters](#defining-processes-optional-parameters)
-- [Test data infrastructure](#test-data-infrastructure)
-  - [Using the .test_data directory](#using-the-test_data-directory)
-  - [Using Scilpy Fetcher](#using-scilpy-fetcher)
-
 # Adding a new module to nf-scil
+
+* [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
+  * [Generate the template](#generate-the-template)
+    * [Edit `./modules/nf-scil/<category>/<tool>/main.nf`](#edit-modulesnf-scilcategorytoolmainnf)
+    * [Edit `./modules/nf-scil/<category>/<tool>/meta.yml`](#edit-modulesnf-scilcategorytoolmetayml)
+  * [Generate tests for the module](#generate-tests-for-the-module)
+    * [Edit `./tests/modules/nf-scil/<category>/<tool>/main.nf`](#edit-testsmodulesnf-scilcategorytoolmainnf)
+    * [Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`](#edit-testsmodulesnf-scilcategorytoolnextflowconfig)
+    * [Generate the test validation file](#generate-the-test-validation-file)
+  * [Lint your code](#lint-your-code)
+  * [Submit your PR](#submit-your-pr)
+* [Defining processes optional parameters](#defining-processes-optional-parameters)
 
 ## Generate the template
 
@@ -51,16 +45,13 @@ You will still have to interact with the **bioconda** prompt, still select `no`.
 > Once used to the conventions, adding `--empty-template` to the command will disable
 > auto-generation of comments, examples and TODOs and can be a time-saver.
 
-## Edit the template
-
 The template has to be edited in order to work with `nf-scil` and still be importable
 through `nf-core`. Refer to the `betcrop/fslbetcrop` module for an example as it should
 already follow all guidelines. You will find related files in :
 
 - `modules/nf-scil/betcrop/fslbetcrop`
-- `tests/modules/nf-scil/betcrop/fslbetcrop`
 
-### Editing `./modules/nf-scil/<category>/<tool>/main.nf` :
+### Edit `./modules/nf-scil/<category>/<tool>/main.nf`
 
 - Remove the line `conda "YOUR-TOOL-HERE"`.
 
@@ -151,11 +142,13 @@ already follow all guidelines. You will find related files in :
 
   - Call `touch <file>` to generate empty files for all required outputs.
 
-### Editing `./modules/nf-scil/<category>/<tool>/meta.yml` :
+### Edit `./modules/nf-scil/<category>/<tool>/meta.yml`
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but we
 don't need to specify them all. At least define the `keywords`, describe the process'
-`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process. The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`, `integer`, `float` and `boolean`.
+`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process.
+The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`,
+`integer`, `float` and `boolean`.
 
 > [!IMPORTANT]
 > The `tool` documentation does not describe your module, but to the tools you use in
@@ -171,7 +164,9 @@ nf-core modules \
   info <category/name>
 ```
 
-### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
+## Generate the tests
+
+### Edit `./tests/modules/nf-scil/<category>/<tool>/main.nf`
 
 The module's test suite is a collection of workflows containing isolated test cases. You
 can add as many more tests as your heart desire (not too much), in addition to the one
@@ -184,17 +179,17 @@ In any case, to get the test workflows working, do the following :
 
 - Either modify the auto-generated `input` object to add your test data or replace it with
   a _fetcher workflow_. You can do this at the end, when you have defined your test cases.
-  Refer to [this section](#test-data-infrastructure) to see which use case fits your tests
+  Refer to [this section](VALIDATION.md#test-data-infrastructure) to see which use case fits your tests
   better.
 
-### Editing `./tests/modules/nf-scil/<category>/<tool>/nextflow.config` :
+### Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`
 
 You don't need to touch anything here, except if you have defined optional parameters
 with `task.ext` and want to alter their values for some test cases. Refer to
 [this section](#defining-processes-optional-parameters) to see how to scope those parameters
 to specific tests using `selectors`.
 
-## Run the tests to generate the test metadata file
+### Create the validation file
 
 > [!WARNING]
 > Verify you are located at the root of `nf-scil` (not inside modules) before
@@ -227,7 +222,7 @@ critical to ensure future executions of your test produce valid outputs.
 
 ## Lint your code
 
-Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
+Run `prettier` on your new module, through the _nf-core_ command line :
 
 ```bash
 nf-core modules \
@@ -236,7 +231,8 @@ nf-core modules \
   lint <category>/<tool>
 ```
 
-You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
+and fix all `errors` and as much as the `warnings`as possible. Refer to
+[this section](VALIDATION.md#code-standards-and-formatting) for further information.
 
 ## Submit your PR
 
@@ -306,118 +302,3 @@ process {
 > [!IMPORTANT]
 > The same stands for **selectors** defined on multiple levels, implicit (`withName: WORKFLOW_X*`)
 > or explicit (`withName: WORKFLOW_Y:B`).
-
-# Test data infrastructure
-
-> [!IMPORTANT]
-> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR.
-
-## Using Scilpy Fetcher
-
-The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
-repository. Follow [this link](./TEST_DATA.md) for a global view of available test archives and links to download them. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
-
-```groovy
-include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
-```
-
-The workflow has two inputs :
-
-- A channel containing a list of archives names to download; names are available [here](./TEST_DATA.md).
-
-- A name for the temporary directory where the data will be put.
-
-To call it, use the following syntax :
-
-```groovy
-archives = Channel.from( [ "<archive1>", "archive2", ... ] )
-LOAD_TEST_DATA( archives, "<directory>" )
-```
-
-> [!IMPORTANT]
-> This will download the `archives` and unpack them under the `directory`
-> specified, using the archive's names as `sub-directories` to unpack to.
-
-The archives contents are accessed using the output parameter of the workflow
-`LOAD_TEST_DATA.out.test_data_directory`. To create the test input from it for
-a given `PROCESS` to test use the `.map` operator :
-
-```groovy
-input = LOAD_TEST_DATA.out.test_data_directory
-  .map{ test_data_directory -> [
-    [ id:'test', single_end:false ], // meta map
-    file("${test_data_directory}/<file for input 1>"),
-    file("${test_data_directory}/<file for input 2>"),
-    ...
-  ] }
-```
-
-Then feed it to it :
-
-```groovy
-PROCESS( input )
-```
-
-> [!NOTE]
-> The subworkflow must be called individually in each test workflow, even if they download
-> the same archives, since there is no mechanism to pass data channels to them from the
-> outside, or share cache between them.
-
-## Using the `.test_data` directory
-
-> [!WARNING]
-> This section is kept for legacy only, until the tests relying on it are updated.
-
-Some test datasets are available under the `.test_data` directory. You can use them as you wish,
-but inspect them before you do, since some dataset have been lean down and could not fit the
-reality of your test cases. **Do not add or modify data in this directory**. Tests packages are
-separated into `heavy` and `light` categories depending on their filesize. Inside, they are divided
-into relevant sub-categories (dwi, anat, ...).
-
-To bind data to test cases using this infrastructure, it first has to be added to `tests/config/test_data.config`
-in order to be visible. The configuration is a nesting of dictionaries, all test data
-files must be added to the `params.test_data` of this structure, using this convention
-for the `dictionary key` : `params.test_data[<category>][<tool>][<input_name>]`.
-
-Thus, a new binding in `tests/config/test_data.config` should resemble the following
-
-```groovy
-params {
-    test_data {
-        ...
-
-        "<category>": {
-            ...
-
-            "<tool>": {
-                ...
-
-                "<input_name1>": "${params.test_data_base}/<light or heavy>/.../<file1>"
-                "<input_name2>": "${params.test_data_base}/<light or heavy>/.../<file2>"
-
-                ...
-            }
-
-        ...
-        }
-    }
-}
-```
-
-You then use `params.test_data[<category>][<tool>][<input_name>]` in your test cases to
-attach the data to the test case, since the `params.test_data` collection is loaded
-automatically. To do so, in a test workflow, define an `input` object :
-
-```groovy
-input = [
-  [ id:'test', single_end:false ], // meta map
-  params.test_data[<category>][<tool>][<input_name1>],
-  params.test_data[<category>][<tool>][<input_name2>],
-  ...
-]
-```
-
-and use it as input to the processes to test.
-
-> [!IMPORTANT]
-> Keep the `meta map` in the first entry, modify it as necessary
