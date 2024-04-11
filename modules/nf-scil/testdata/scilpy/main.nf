@@ -77,7 +77,8 @@ process TESTDATA_SCILPY {
             "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
             "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
             "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
-            "antsbet.zip": "202358be14568560d0c24e644d9b2574"
+            "antsbet.zip": "202358be14568560d0c24e644d9b2574",
+            "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505"
         }
 
     def fetch_data(files_dict, keys=None):
