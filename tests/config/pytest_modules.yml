@@ -14,6 +14,10 @@ bundle/recognize:
   - modules/nf-scil/bundle/recognize/**
   - tests/modules/nf-scil/bundle/recognize/**
 
+bundle/coloring:
+  - modules/nf-scil/bundle/coloring/**
+  - tests/modules/nf-scil/bundle/coloring/**
+
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
