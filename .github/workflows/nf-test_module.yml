@@ -62,7 +62,7 @@ jobs:
         uses: nf-core/setup-nextflow@v2
 
       - name: Setup nf-test
-        uses: nf-core/setup-nf-test@v1
+        uses: AlexVCaron/setup-nf-test@main
 
       - name: Run nf-test
         env:
