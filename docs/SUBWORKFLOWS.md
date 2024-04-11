@@ -2,17 +2,17 @@
 
 ## Generate the template
 
-First verify you are located at the root of this repository (not in `subworkflows`), then run the following interactive command :
+First verify that we are located at the root of this repository (not in `subworkflows`), then we run the following interactive command :
 
 ```
-nf-core subwworkflows create
+nf-core subworkflows create
 ```
 
-That will ask you to give a name of your subworflow then the author name (github username).
-Alternatively, you can use the following command to supply directly those informations :
+That will ask us to give a name of our subworflow then the author name (github username).
+Alternatively, we can use the following command to supply directly those informations :
 
 ```
-nf-core subworkflows create name --author
+nf-core subworkflows create <name> --author <author>
 ```
 
 ## Generate the template
@@ -22,21 +22,21 @@ nf-core subworkflows create name --author
 We don’t have the choice to generate an empty template when we generate a subworflow, so the template is based on nf-core.
 
 - remove the different comment lines.
-- include your modules into your subworkflows.
-  - remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
+include your modules into your subworkflows.
+- remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
 
 ```
-include { <MODULES>	} from '../../../modules/nf-scil/<category/tool>/main'
+include { <MODULES>	} from '../../../modules/nf-scil/<category>/<tool>/main'
 ```
 
 > [!NOTE]
-> You can also include workflows into your subworkflow :
+> We can also include other subworkflows :
 
 ```
-include { <SUBWORKFLOWS> } from '../<subworkflows>/main'
+include { <SUBWORKFLOW> } from '../<subworkflow>/main'
 ```
 
-- If you need to use functions from another library you can import them after the lines to include modules.
+- If we need to use functions from another library we can import them after the lines to include modules.
 
 ```
 import <library.function>
@@ -58,7 +58,7 @@ take:
 
 #### Fill the `main:` section.
 
-Compose your workflow using the different modules and workflows you've included above.
+Now, we compose our workflow using the different modules and workflows we've included above.
 Modules using input channels just need to specify the appropriate channel :
 
 ```
@@ -83,7 +83,7 @@ channel_module3 = <MODULE2>.out.<output>.join(channel_data1).join(channel_data2)
 > There are different types of operator depending on your needs. For a complete list, please refer to the nextflow documentation: : https://www.nextflow.io/docs/latest/operator.html#
 
 > [!WARNING]
-> The same applies to workflows, you can link modules to workflows and vice versa.
+> The same applies to workflows, we can link modules to workflows and vice versa.
 
 At the same time, we need to edit the version files of our various modules. To do this, the first thing to do in the main is to create an empty channel:
 
@@ -91,7 +91,7 @@ At the same time, we need to edit the version files of our various modules. To d
 ch_versions = Channel.empty()
 ```
 
-Then, at the end of each module, incorporate the module version into the channel version.
+Then, at the end of each module, we incorporate the module version into the channel version.
 
 ```
 channel_module2 = <MODULE1>.out.<output>
@@ -101,7 +101,7 @@ ch_versions = ch_versions.mix(<MODULE2>.out.versions.first())
 
 #### define your Workflow outputs.
 
-Once your `main` finish you can define the output that you want from you different modules or workflows.
+Once our `main` finish we can define the output that we want from the different modules or workflows.
 A workflow can declare one or more output channels using the `emit` keyword.
 
 ```
@@ -111,7 +111,7 @@ emit:
 ```
 
 > [!NOTE]
-> As with `main`, you can create outputs containing several files using operators.
+> As with `main`, we can create outputs containing several files using operators.
 
 Don't forget to also define the output for the version file :
 
@@ -121,19 +121,17 @@ Don't forget to also define the output for the version file :
 
 ### Editing `./subworkflows/nf-scil/<name_of_your_workflow>/meta.yml` :
 
-Fill the sections you find relevant. There is a lot of metadata in this file, but we
+Fill the sections we find relevant. There is a lot of metadata in this file, but we
 don't need to specify them all. At least define 3 `keywords`, describe the workflow'
 `inputs` and `outputs` in the order in which they appear, and add a `short description` for the use of the subworkflow.
 
 ### Editing `./test/subworkflows/nf-scil/<name_of_your_workflow>/main.nf` :
 
-- define the channels of your different inputs.
+- define the channels of our different inputs.
   > You can check the possibilities given by nf-core to include your dataset in the nextflow documentation : https://www.nextflow.io/docs/latest/channel.html .
 
 ### Editing `./test/subworkflows/nf-scil/<name_of_your_workflow>/nextflow.config` :
 
 ## Run the tests to generate the test metadata file
-
-## Last safety test
 
 ## Submit your PR
