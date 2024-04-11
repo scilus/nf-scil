@@ -4,10 +4,10 @@
   * [Generate the template](#generate-the-template)
     * [Edit `./modules/nf-scil/<category>/<tool>/main.nf`](#edit-modulesnf-scilcategorytoolmainnf)
     * [Edit `./modules/nf-scil/<category>/<tool>/meta.yml`](#edit-modulesnf-scilcategorytoolmetayml)
-  * [Generate tests for the module](#generate-tests-for-the-module)
+  * [Generate the tests](#generate-the-tests)
     * [Edit `./tests/modules/nf-scil/<category>/<tool>/main.nf`](#edit-testsmodulesnf-scilcategorytoolmainnf)
     * [Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`](#edit-testsmodulesnf-scilcategorytoolnextflowconfig)
-    * [Generate the test validation file](#generate-the-test-validation-file)
+    * [Create the validation file](#create-the-validation-file)
   * [Lint your code](#lint-your-code)
   * [Submit your PR](#submit-your-pr)
 * [Defining processes optional parameters](#defining-processes-optional-parameters)
@@ -179,7 +179,7 @@ In any case, to get the test workflows working, do the following :
 
 - Either modify the auto-generated `input` object to add your test data or replace it with
   a _fetcher workflow_. You can do this at the end, when you have defined your test cases.
-  Refer to [this section](VALIDATION.md#test-data-infrastructure) to see which use case fits your tests
+  Refer to [this section](./VALIDATION.md#test-data-infrastructure) to see which use case fits your tests
   better.
 
 ### Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`
@@ -232,7 +232,7 @@ nf-core modules \
 ```
 
 and fix all `errors` and as much as the `warnings`as possible. Refer to
-[this section](VALIDATION.md#code-standards-and-formatting) for further information.
+[this section](./VALIDATION.md#code-standards-and-formatting) for further information.
 
 ## Submit your PR
 

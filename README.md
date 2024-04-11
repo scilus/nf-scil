@@ -32,9 +32,28 @@ framework.
     * [Working with VS Code](#working-with-vs-code)
   * [Configuration via the `devcontainer` :](#configuration-via-the-devcontainer-)
   * [Contributing to the `nf-scil` project](#contributing-to-the-nf-scil-project)
-  * [Running tests](#running-tests)
+    * [Adding a new module to nf-scil](./docs/MODULE.md#adding-a-new-module-to-nf-scil)
+      * [Generate the template](./docs/MODULE.md#generate-the-template)
+        * [Edit `./modules/nf-scil/<category>/<tool>/main.nf`](./docs/MODULE.md#edit-modulesnf-scilcategorytoolmainnf)
+        * [Edit `./modules/nf-scil/<category>/<tool>/meta.yml`](./docs/MODULE.md#edit-modulesnf-scilcategorytoolmetayml)
+      * [Generate the tests](./docs/MODULE.md#generate-the-tests)
+        * [Edit `./tests/modules/nf-scil/<category>/<tool>/main.nf`](./docs/MODULE.md#edit-testsmodulesnf-scilcategorytoolmainnf)
+        * [Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`](./docs/MODULE.md#edit-testsmodulesnf-scilcategorytoolnextflowconfig)
+        * [Create the validation file](./docs/MODULE.md#create-the-validation-file)
+      * [Lint your code](./docs/MODULE.md#lint-your-code)
+      * [Submit your PR](./docs/MODULE.md#submit-your-pr)
+    * [Defining processes optional parameters](./docs/MODULE.md#defining-processes-optional-parameters)
+  * [nf-scil validation](#nf-scil-validation)
+    * [Code standards and formatting](./docs/VALIDATION.md#code-standards-and-formatting)
+      * [Code linting](./docs/VALIDATION.md#code-linting)
+      * [Prettier installation](./docs/VALIDATION.md#prettier-installation)
+    * [Testing infrastructure](./docs/VALIDATION.md#testing-infrastructure)
+      * [Running tests](./docs/VALIDATION.md#running-tests)
+      * [Developing test cases with nf-test](./docs/VALIDATION.md#developing-test-cases-with-nf-test)
+      * [Test data infrastructure](./docs/VALIDATION.md#test-data-infrastructure)
+        * [Using Scilpy Fetcher](./docs/VALIDATION.md#using-scilpy-fetcher)
+        * [Using the `.test_data` directory](./docs/VALIDATION.md#using-the-test_data-directory)
   * [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
-  * [Installing Prettier](#installing-prettier)
 
 # Using modules from `nf-scil`
 
@@ -74,7 +93,7 @@ matter of minutes.
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
-- Node &geq; 14 and Prettier (see [below](#installing-prettier))
+- Node &geq; 14 and Prettier (see [here](./docs/VALIDATION.md#prettier-installation))
 
 > [!IMPORTANT]
 > Nextflow might not detect the right `Java virtual machine` by default, more so if
@@ -186,10 +205,12 @@ of tools. Running tests for a `module` or a `subworkflow` is done using the foll
 ```bash
 nf-core <modules|subworkflows> \
   --git-remote https://github.com/scilus/nf-scil.git \
-  test <category/tool>
+  test <category/tool|subworkflow>
 ```
 
-The tool can be omitted to run tests for all modules in a category.
+For more information on running test suites, or on the test framework itself, refer to the
+[following section](./docs/VALIDATION.md#testing-infrastructure). For information on the whole
+validation framework, refer to [here](./docs/VALIDATION.md).
 
 ## Configuring Docker for easy usage
 
@@ -206,27 +227,3 @@ sudo usermod -aG docker $USER
 ```
 
 After running this command, you need to log out and log back in to apply the changes.
-
-## Installing Prettier
-
-To install **Prettier** for the project, you need to have `node` and `npm` installed on
-your system to at least version 14. On Ubuntu, you can do it using snap :
-
-```bash
-sudo snap install node --classic
-```
-
-However, if you cannot install snap, or have another OS, refer to the
-[official documentation](https://nodejs.org/en/download/package-manager/) for the installation procedure.
-
-Under the current configuration for the _Development Container_, for this project, we use
-the following procedure, considering `${NODE_MAJOR}` is at least 14 for Prettier :
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
-apt-get install -y nodejs
-
-npm install --save-dev --save-exact prettier
-
-echo "function prettier() { npm exec prettier $@; }" >> ~/.bashrc
-```

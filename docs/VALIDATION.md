@@ -3,26 +3,81 @@
 
 Standards and formatting are aligned closely with `nf-core`, with minor simplifications. Refer to
 the [nf-core documentation](https://nf-co.re/docs/contributing/modules) to get the full list of
-guidelines and conventions
+guidelines and conventions.
+
+* [Code standards and formatting](#code-standards-and-formatting)
+  * [Code linting](#code-linting)
+  * [Prettier installation](#prettier-installation)
+* [Testing infrastructure](#testing-infrastructure)
+  * [Running tests](#running-tests)
+  * [Developing test cases with nf-test](#developing-test-cases-with-nf-test)
+  * [Test data infrastructure](#test-data-infrastructure)
+    * [Using Scilpy Fetcher](#using-scilpy-fetcher)
+    * [Using the `.test_data` directory](#using-the-test_data-directory)
 
 ## Code linting
 
-Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly
-linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_
-command line :
+Code linting is done by [prettier](https://prettier.io/). It is available through `Node.js`, refer to
+[this section](#prettier-installation) for installation instructions. Once done, linting a `module` or
+subworkflow is done through the _nf-core_ command line :
 
 ```bash
-nf-core modules \
+nf-core <modules|subworkflows> \
   --git-remote <your repository> \
   --branch <your branch unless main branch> \
-  lint <category>/<tool>
+  lint <category/tool|subworkflow>
 ```
 
-You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_
-syntax and more. You need to fix all `errors` and as much as the `warnings`as possible.
+The command outputs a list of `passing checks`, as well as `warnings` and `errors`, that should all be
+fixed, if possible. Other files in the repository can require linting, but cannot be processed using
+`nf-core`. In this case, use the `prettier` command line tool :
 
+```bash
+prettier --write <file>
+```
+
+to fix the formatting of the file.
+
+## Prettier installation
+
+To install **Prettier** for the project, you need to have `node` and `npm` installed on
+your system to at least version 14. On Ubuntu, you can do it using snap :
+
+```bash
+sudo snap install node --classic
+```
+
+However, if you cannot install snap, or have another OS, refer to the
+[official documentation](https://nodejs.org/en/download/package-manager/) for the installation procedure.
+
+Under the current configuration for the _Development Container_, for this project, we use
+the following procedure, considering `${NODE_MAJOR}` is at least 14 for Prettier :
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
+apt-get install -y nodejs
+
+npm install --save-dev --save-exact prettier
+
+echo "function prettier() { npm exec prettier $@; }" >> ~/.bashrc
+```
 
 # Testing infrastructure
+
+## Running tests
+
+All tests are run using the `nf-core` commands for either `modules` or `subworkflows` :
+
+```bash
+nf-core <modules|subworkflows> \
+  --git-remote <remote-url> \
+  test <category/tool|subworkflow>
+```
+
+When running tests for `modules`, the `tool` can be omitted to run tests for all modules in a category. Test
+cases are located under the `tests` directory for legacy tests using `pytest-workflow`. For new tests, using the
+`nf-test` framework instead, they are located aside the `module` or `subworkflow` code, in the same directory as
+it's `main.nf`.
 
 ## Developing test cases with nf-test
 
