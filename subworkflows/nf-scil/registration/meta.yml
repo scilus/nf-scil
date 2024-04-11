@@ -2,11 +2,11 @@ name: "registration"
 description: |
   Subworkflow to perform registration between a moving and a fixed image (e.g. T1 -> DWI).
   It requires as input at least a moving (ch_image) and a reference image (ch_ref) to properly
-  perform registration. Two modes are available: 
-  1) if a metric file is supplied (ch_metric), the subworkflow will use the REGISTER_ANATTODWI
-     module calling AntsRegistration and
-  2) if a metric file is NOT supplied, the subworkflow will use the REGISTRATION_ANTS module calling
-     antsRegistrationSyN.sh or antsRegistrationSyNQuick.sh.
+  perform registration. Two modes are available:
+  1)  if a metric file is supplied (ch_metric), the subworkflow will use the REGISTER_ANATTODWI
+      module calling AntsRegistration and
+  2)  if a metric file is NOT supplied, the subworkflow will use the REGISTRATION_ANTS module calling
+      antsRegistrationSyN.sh or antsRegistrationSyNQuick.sh.
   Typical next steps after this subworkflow would be ANATOMICAL_SEGMENTATION or TRACKING.
 keywords:
   - Registration
@@ -36,7 +36,7 @@ input:
       description: |
         The input channel containing the metric files. Supplying this channel will make the subworkflow
         use the module REGISTER_ANATTODWI calling AntsRegistration using the moving, reference and metric
-        image. For a T1 -> DWI registration, this is typically a FA map. 
+        image. For a T1 -> DWI registration, this is typically a FA map.
         Structure: [ val(meta), path(metric) ]
       pattern: "*.{nii,nii.gz}"
   - ch_mask:

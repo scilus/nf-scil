@@ -21,7 +21,7 @@ workflow REGISTRATION {
         if ( ch_metric ) {
             // ** Set up input channel ** //
             ch_register = ch_image.combine(ch_ref, by: 0)
-                                  .combine(ch_metric, by: 0)
+                                    .combine(ch_metric, by: 0)
 
             // ** Registration using AntsRegistration ** //
             REGISTER_ANATTODWI ( ch_register )
