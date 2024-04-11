@@ -25,7 +25,7 @@ repository = "https://github.com/scilus/nf-scil.git"
 [tool.poetry.dependencies]
 
 python = "<3.13,>=3.9"
-nf-core = { git = "https://github.com/gagnonanthony/nf-core-tools.git", branch = "nf-scil-test-fix" }
+nf-core = "^2.13.1"
 nibabel = "^5.1.0"
 numpy = "^1.24"
 requests = "^2.28"

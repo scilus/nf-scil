@@ -50,8 +50,8 @@ jobs:
       - name: Run ECLint check
         run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
-  failing-modules:
-    name: failing-modules
+  pytest-changes:
+    name: pytest-changes
     runs-on: ubuntu-latest
     outputs:
       # Expose matched filters as job 'modules' output variable
@@ -68,27 +68,55 @@ jobs:
           filters: "tests/config/pytest_modules.yml"
           token: ${{ github.token }}
 
+  nf-test-changes:
+    name: nf-test-changes
+    runs-on: ubuntu-latest
+    outputs:
+      # Expose matched filters as job 'modules' output variable
+      modules: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # To retrieve the preceding commit.
+
+      - name: Combine all tags.yml files
+        id: get_tags
+        run: find . -name "tags.yml" -not -path "./.github/*" -exec cat {} + > .github/tags.yml
+
+      - name: debug
+        run: cat .github/tags.yml
+
+      # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
+      - uses: mirpedrol/paths-filter@main
+        id: filter
+        with:
+          filters: ".github/tags.yml"
+          token: ${{ github.token }}
+
   lint-modules:
     name: lint-modules
-    needs: [failing-modules]
-    if: needs.failing-modules.outputs.modules != '[]'
+    needs: [pytest-changes, nf-test-changes]
+    if: ${{ (needs.pytest-changes.outputs.modules != '[]') || (needs.nf-test-changes.outputs.modules != '[]') }}
     strategy:
       fail-fast: false
       matrix:
-        module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
+        module: [
+          "${{ fromJson(needs.pytest-changes.outputs.modules) }}",
+          "${{ fromJson(needs.nf-test-changes.outputs.modules) }}",
+          ]
     uses: ./.github/workflows/lint_module.yml
     with:
       module: ${{ matrix.module }}
     secrets: inherit
 
-  test-modules:
-    name: test-modules
-    needs: [failing-modules]
-    if: needs.failing-modules.outputs.modules != '[]'
+  pytest-modules:
+    name: pytest-modules
+    needs: [pytest-changes]
+    if: needs.pytest-changes.outputs.modules != '[]'
     strategy:
       fail-fast: false
       matrix:
-        module: ["${{ fromJson(needs.failing-modules.outputs.modules) }}"]
+        module: ["${{ fromJson(needs.pytest-changes.outputs.modules) }}"]
         profile: [docker] # , "singularity"]
         exclude:
           - module: nf-test
@@ -100,9 +128,28 @@ jobs:
       profile: ${{ matrix.profile }}
     secrets: inherit
 
+  nf-test-modules:
+    name: nf-test-modules
+    needs: [nf-test-changes]
+    if: needs.nf-test-changes.outputs.modules != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ["${{ fromJson(needs.nf-test-changes.outputs.modules) }}"]
+        profile: ["docker"]
+        exclude:
+          - module: nf-test
+          - module: testdata/scilpy
+
+    uses: ./.github/workflows/nf-test_module.yml
+    with:
+      module: ${{ matrix.module }}
+      profile: ${{ matrix.profile }}
+    secrets: inherit
+
   confirm-pass:
     runs-on: ubuntu-latest
-    needs: [prettier, editorconfig, failing-modules, lint-modules, test-modules]
+    needs: [prettier, editorconfig, pytest-changes, nf-test-changes, lint-modules, pytest-modules, nf-test-modules]
     if: ${{ !cancelled() }}
     steps:
       - name: All tests ok

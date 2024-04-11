@@ -1,11 +1,12 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
-name: "preproc_n4"
-description: Bias field correction using N4
+name: "bundle_recognize"
+description: Extract bundles from one (or more) tractograms
 keywords:
-  - correction
-  - N4
-  - bias field
+  - Diffusion MRI
+  - Tractogram
+  - Segmentation
+  - Bundles
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -18,20 +19,24 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - image:
+  - tractograms:
       type: file
-      description: Nifti image file to correct
-      pattern: "*.{nii,nii.gz}"
+      description: Tractogram file(s) for bundle extraction
+      pattern: "*.trk"
 
-  - ref:
+  - transform:
       type: file
-      description: Nifti image file for the reference
-      pattern: "*.{nii,nii.gz}"
+      description: Transform matrix bringing the atlas to native space
+      pattern: "*.mat"
 
-  - ref_mask:
+  - config:
       type: file
-      description: Nifti image file mask for the reference
-      pattern: "*.{nii,nii.gz}"
+      description: Bundle atlas configuration file
+      pattern: "*.json"
+
+  - directory:
+      type: directory
+      description: Directory containing the reference atlas
 
 output:
   - meta:
@@ -40,10 +45,10 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - image:
+  - bundles:
       type: file
-      description: N4 corrected image
-      pattern: "*.{nii,nii.gz}"
+      description: Segmented and cleaned bundles
+      pattern: "*.trk"
 
   - versions:
       type: file
@@ -51,4 +56,4 @@ output:
       pattern: "versions.yml"
 
 authors:
-  - "@arnaudbore"
+  - "@CHrlS98"
