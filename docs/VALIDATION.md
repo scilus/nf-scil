@@ -1,11 +1,14 @@
 
 # Code standards and formatting
 
-Standards and formatting are aligned closely with `nf-core`, with minor simplifications. Refer to
-the [nf-core documentation](https://nf-co.re/docs/contributing/modules) to get the full list of
-guidelines and conventions.
+Standards and formatting are aligned closely with `nf-core`. Refer to the
+[nf-core documentation](https://nf-co.re/docs/contributing/modules) to get the full
+list of guidelines and conventions.
 
 * [Code standards and formatting](#code-standards-and-formatting)
+  * [Module standards](#module-standards)
+    * [Standards applying to the `process`](#standards-applying-to-the-process)
+    * [Standards applying to `meta.yml` files](#standards-applying-to-metayml-files)
   * [Code linting](#code-linting)
   * [Prettier installation](#prettier-installation)
 * [Testing infrastructure](#testing-infrastructure)
@@ -15,10 +18,80 @@ guidelines and conventions.
     * [Using Scilpy Fetcher](#using-scilpy-fetcher)
     * [Using the `.test_data` directory](#using-the-test_data-directory)
 
+## Standards applying to the `process`
+
+### name
+
+the name is CAPITALIZED, and is composed of the category the module belongs to, followed its tool name, separated by an underscore. e.g. : `DENOISING_NLMEANS`.
+
+### label
+
+the resources for the module are assigned dynamically, using different classes
+defined by `process resource labels`. It is required to define one (you can define
+many), so the resources assigned are tailored correctly to the module's need :
+
+- process_single : single core with increasing memory
+- process_low, process_medium, process_high : increasing core count and memory size
+- process_long : increased process wall-time before timeout
+- process_high_memory : increased memory size
+
+Values will assigned to those `labels` by various configuration profiles, such as
+the ones of a pipeline, through it's `nextflow.config` file.
+
+### output
+
+List **all** possible outputs of the module, someone might need them ! Make them
+optional if required.
+
+### stub
+
+The rule of thumb for the stub is simple : create `all` possible outputs of the
+module. A simple way in bash is to use `touch` to create empty files for each of
+them. Also create a `version.yml` file, containing the version of the commands and
+libraries used by the module.
+
+### version.yml
+
+The version file is a simple YAML file containing the version of the commands and
+libraries used by the module. Use `cat` to add them all in a single file, at the end
+of the `script` :
+
+```bash
+cat << EOF > version.yml
+    <command> : $(<command to get the version>),
+    <command> : <hardcoded version>
+    ...
+EOF
+```
+
+## Standards applying to `meta.yml` files
+
+Those files are the backbone of `nf-scil` command line interfaces. When a user wants
+to `list` available modules and subworkflows, he'll also get basic infos on them.
+When he further investigate a module or subworkflow to get `info`, he'll get the
+full description, with a list of the awaited inputs and expected outputs of the
+module, all ready for him to use.
+
+The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`,
+`integer`, `float` and `boolean`.
+
+### description
+
+Give a good, but concise description of what the module does. If there is multiple
+use-case, or that specifying some inputs changes the behavior of the module, mention
+it clearly here.
+
+### inputs and outputs
+
+List all inputs and outputs of the module, in the same order as they are supplied
+or produced by the module. For each, give a short description, specify if it is
+optional or not. Be sure to mention all kinds an input can be, if there is multiple
+even so.
+
 ## Code linting
 
 Code linting is done by [prettier](https://prettier.io/). It is available through `Node.js`, refer to
-[this section](#prettier-installation) for installation instructions. Once done, linting a `module` or
+[this section](#prettier-installation) for installation instructions. Linting a `module` or
 subworkflow is done through the _nf-core_ command line :
 
 ```bash
@@ -28,15 +101,13 @@ nf-core <modules|subworkflows> \
   lint <category/tool|subworkflow>
 ```
 
-The command outputs a list of `passing checks`, as well as `warnings` and `errors`, that should all be
-fixed, if possible. Other files in the repository can require linting, but cannot be processed using
-`nf-core`. In this case, use the `prettier` command line tool :
+The command outputs a list of  `warnings` and `errors`, that should all be fixed, if possible. Other
+files in the repository can require linting, but cannot be processed using `nf-core`. In this case,
+use the `prettier` command line tool :
 
 ```bash
 prettier --write <file>
 ```
-
-to fix the formatting of the file.
 
 ## Prettier installation
 

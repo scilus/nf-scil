@@ -62,7 +62,7 @@ already follow all guidelines. You will find related files in :
 
   `biocontainers/YOUR-TOOL-HERE` &DoubleLongRightArrow; `scilus/scilus:1.6.0`
 
-- Add your inputs in the `input:` section :
+- Add your input channels in the `input:` section :
 
   > Each line below `input:` defines an input channel for the process. A channel can
   > receive one (`val`, `path`, ...) or more (`tuple`) values per item.
@@ -71,13 +71,19 @@ already follow all guidelines. You will find related files in :
   > listing them in the `input:` section (see [this section](#defining-processes-optional-parameters)
   > for more information).
 
-  - All inputs are assumed to be `required` by default.
+  - All input channels are assumed to be `required` by default.
 
-  - If an input is scoped to a subject, the line MUST start with `tuple val(meta), `.
+  - To bind a channel to a specific id (e.g. a subject), use a `tuple` and the
+    `meta`map :
 
-  - An input `path` CAN be optional (though it is not officially supported). You simply
-    have to pass it an empty list `[]` for Nextflow to consider its value empty, but
-    correct.
+    ```groovy
+    tuple val(meta), path(f1), path(f2), ...
+    ```
+
+  - A `path` CAN be optional (though it is not officially supported). If it is
+    supplied an empty list `[]` latter on, then it's value will evaluate to `false`
+    in the process' `script`. This mechanism can be used to disable some processing
+    steps.
 
     > If you decide an input `path` value is optional, add `/* optional, value = [] */`
     > aside the parameter (e.g. f1 is optional, so `path(f1) /* optional, value = [] */`
@@ -85,24 +91,20 @@ already follow all guidelines. You will find related files in :
     > syntaxes). This will make input lines long, but they will be detectable. When we
     > can define input tuples on multiple lines, we'll deal with this.
 
-    In the script section, before the script definition (in `""" """`), unpack the
-    optional argument into a `usable variable`. For a optional input `input1`, add :
+  - If the value must be prepared before being used in the script, use `groovy` code,
+    before the script definition (in `""" """`) to do so. For example, if an optional
+    input must be delt with beforehand, use :
 
     ```groovy
-    def optional_input1 = input1 ? "<unpack input1>" : "<default if input1 unusable>"
+    def optional_input1 = input1 ? "<unpack input1>" : "<default value>"
     ```
 
-    The variable `optional_input1` is the one to use in the script.
-
-    > At its most simple, a variable is `usable` if its conversion to a string is valid
-    > in the script (e.g. : if a variable can be empty or null, then its conversion to an
-    > empty string must be valid in the sense of the script for the variable to be considered
-    > `usable`).
+    Then, use the variable `optional_input1` in the script.
 
 - Add all outputs in the `output` section :
 
-  - As for inputs, each line defines an output channel. If an output is scoped to a
-    subject, the line MUST start with `tuple val(meta), `.
+  - As for inputs, each line defines an output channel. Binding a channel to a
+    specific id (e.g. a subject) is done the same way.
 
   - File extensions MUST ALWAYS be defined (e.g. `path("*.{nii,nii.gz}")`).
 
@@ -113,8 +115,9 @@ already follow all guidelines. You will find related files in :
 
 - Fill the `script` section :
 
-  - Use the `prefix` variable to name the scoped output files. If needed, modify the
-    variable definition in the groovy pre-script.
+  - If an output is bound to a specific id (e.g. a subject), use the `prefix`
+    variable when naming it (e.g. `${prefix}_name.ext`). If needed, modify the
+    `prefix` variable definition in the groovy pre-script.
 
   - Define dependencies versions :
 
@@ -127,28 +130,16 @@ already follow all guidelines. You will find related files in :
     END_VERSIONS
     ```
 
-    remove the lines in between the `cat` and the `END_VERSIONS` line. In it, add
-    for each dependency a new line in the format : `<name>: <version>`.
+    replace the content already present with the versions of your tools. Refer to
+    [this section](./VALIDATION.md#version.yml) for more information.
 
-    > You can hard-bake the version as a number here, but if possible extract if from
-    > the dependency dynamically. Refer to the `betcrop/fslbetcrop` module, in `main.nf`
-    > for examples on how to extract the version number correctly.
-
-- Fill the `stub` section :
-
-  Using the same conventions as for the `script` section, define a simple test stub :
-
-  - Call the helps of all scripts used, if possible.
-
-  - Call `touch <file>` to generate empty files for all required outputs.
+- Fill the `stub` section, following the [guidelines](./VALIDATION.md#stub).
 
 ### Edit `./modules/nf-scil/<category>/<tool>/meta.yml`
 
-Fill the sections you find relevant. There is a lot of metadata in this file, but we
-don't need to specify them all. At least define the `keywords`, describe the process'
-`inputs` and `outputs`, and add a `short documentation` for the tool(s) used in the process.
-The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `directory`, `string`,
-`integer`, `float` and `boolean`.
+Fill the sections following the [guidelines](./VALIDATION.md#standards-applying-to-metayml-files).
+In addition, describe the `tools` used by the module and define `keywords` to
+facilitate its search with `nf-core` commands.
 
 > [!IMPORTANT]
 > The `tool` documentation does not describe your module, but to the tools you use in
@@ -166,59 +157,7 @@ nf-core modules \
 
 ## Generate the tests
 
-### Edit `./tests/modules/nf-scil/<category>/<tool>/main.nf`
-
-The module's test suite is a collection of workflows containing isolated test cases. You
-can add as many more tests as your heart desire (not too much), in addition to the one
-provided.
-
-> [!IMPORTANT]
-> Each workflow is atomic, in which it does not contain more than a single test to run.
-
-In any case, to get the test workflows working, do the following :
-
-- Either modify the auto-generated `input` object to add your test data or replace it with
-  a _fetcher workflow_. You can do this at the end, when you have defined your test cases.
-  Refer to [this section](./VALIDATION.md#test-data-infrastructure) to see which use case fits your tests
-  better.
-
-### Edit `./tests/modules/nf-scil/<category>/<tool>/nextflow.config`
-
-You don't need to touch anything here, except if you have defined optional parameters
-with `task.ext` and want to alter their values for some test cases. Refer to
-[this section](#defining-processes-optional-parameters) to see how to scope those parameters
-to specific tests using `selectors`.
-
-### Create the validation file
-
-> [!WARNING]
-> Verify you are located at the root of `nf-scil` (not inside modules) before
-> running commands !
-
-Once the test data has been pushed to the desired location and been made available to the
-test infrastructure using the relevant configurations, the test module has to be pre-tested
-so output files that gets generated are checksum correctly.
-
-> [!IMPORTANT]
-> The test infrastructure uses `pytest-workflow` to run the tests. It is `git-aware`,
-> meaning that only files either `committed` or `staged` will be considered by
-> the tests. To verify that your file will be loaded correctly, check that it is
-> listed by `git ls-files`.
-
-Run :
-
-```bash
-nf-core modules create-test-yml \
-    --run-tests \
-    --force \
-    --no-prompts \
-    <category>/<tool>
-```
-
-All the test case you defined will be run, watch out for errors ! Once everything runs
-smoothly, look at the test metadata file produced : `tests/modules/nf-scil/<category/<tool>/test.yml`
-and validate that ALL outputs produced by test cases have been caught. Their `md5sum` is
-critical to ensure future executions of your test produce valid outputs.
+In construction
 
 ## Lint your code
 
