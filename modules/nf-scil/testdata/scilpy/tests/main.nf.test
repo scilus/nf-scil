@@ -13,7 +13,7 @@ nextflow_process {
     tag "testdata"
     tag "testdata/scilpy"
 
-    test("load_bids") {
+    test("load_bids - temp") {
 
         when {
             process {
@@ -33,7 +33,27 @@ nextflow_process {
 
     }
 
-    test("load_bids - stub") {
+    test("load_bids - work") {
+
+        when {
+            process {
+                """
+                input[0] = "bids_json.zip"
+                input[1] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("load_bids - temp - stub") {
 
         options "-stub"
 
