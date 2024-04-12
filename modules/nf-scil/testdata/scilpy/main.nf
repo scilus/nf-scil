@@ -36,6 +36,9 @@ process TESTDATA_SCILPY {
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
 
+    print(os.stat("test_data"))
+    print(os.stat("$test_data_path"))
+
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
             CHUNK_SIZE = 32768
@@ -85,7 +88,7 @@ process TESTDATA_SCILPY {
         scilpy_home = get_home()
 
         if not os.path.exists(scilpy_home):
-            os.makedirs(scilpy_home)
+            os.makedirs(scilpy_home, exist_ok=True)
 
         if keys is None:
             keys = files_dict.keys()
