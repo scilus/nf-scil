@@ -22,7 +22,7 @@ nf-core subworkflows create <name> --author <author>
 You don’t have the choice to generate an empty template when you generate a subworflow, so the template is based on nf-core.
 
 - remove the different comment lines.
-Include your modules into your subworkflows.
+  Include your modules into your subworkflows.
 - remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
 
 ```
