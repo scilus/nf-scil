@@ -149,6 +149,8 @@ process TESTDATA_SCILPY {
     stub:
     def args = task.ext.args ?: ''
     """
+    mkdir -p test_data/${file(archive).simpleName}
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0

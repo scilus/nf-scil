@@ -19,7 +19,7 @@ nextflow_process {
             process {
                 """
                 input[0] = "bids_json.zip"
-                input[1] = Files.createTempDirectory("test.test-data.scilpy.bids-json")
+                input[1] = File.createTempFile("test.test-data.scilpy.bids-json", "").getAbsolutePath()
                 """
             }
         }
@@ -40,10 +40,8 @@ nextflow_process {
         when {
             process {
                 """
-                import java.nio.file.Files
-
                 input[0] = "bids_json.zip"
-                input[1] = Files.createTempDirectory("test.test-data.scilpy.bids-json")
+                input[1] = File.createTempFile("test.test-data.scilpy.bids-json", "").getAbsolutePath()
                 """
             }
         }
