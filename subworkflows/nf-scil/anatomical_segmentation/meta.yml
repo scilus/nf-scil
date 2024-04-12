@@ -4,7 +4,7 @@ description: |
   two type of input channels, either an anatomical image (most likely T1) or freesurfer parcellations
   files. Depending on which channel is provided, the subworkflow will perform either of the following:
   1)  Channel with an anatomical image will result in using FSL's fast segmentation producing WM, GM,
-      and CSF masks/maps. 
+      and CSF masks/maps.
   2)  Channel with FreeSurfer's parcellations files will result in using Scilpy's tools to produce
       WM, GM, and CSF masks (probability maps are not produced with this option).
   Typical next steps after this subworkflow would be to combine the resulting masks/maps with fODF
