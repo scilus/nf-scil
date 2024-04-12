@@ -1,5 +1,7 @@
 // TODO nf-core: Once you have added the required tests, please run the following command to build this file:
 // nf-core modules test testdata/scilpy
+import java.nio.file.Files
+
 nextflow_process {
 
     name "Test Process TESTDATA_SCILPY"
@@ -16,8 +18,6 @@ nextflow_process {
         when {
             process {
                 """
-                import java.nio.file.Files
-
                 input[0] = "bids_json.zip"
                 input[1] = Files.createTempDirectory("test.test-data.scilpy.bids-json")
                 """
