@@ -16,6 +16,8 @@ nextflow_process {
         when {
             process {
                 """
+                import java.nio.file.Files
+
                 input[0] = "bids_json.zip"
                 input[1] = Files.createTempDirectory("test.test-data.scilpy.bids-json")
                 """
@@ -38,6 +40,8 @@ nextflow_process {
         when {
             process {
                 """
+                import java.nio.file.Files
+
                 input[0] = "bids_json.zip"
                 input[1] = Files.createTempDirectory("test.test-data.scilpy.bids-json")
                 """
