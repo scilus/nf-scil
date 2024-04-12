@@ -14,6 +14,7 @@ nextflow_workflow {
     tag "registration"
     tag "registration/ants"
 
+    tag "load_test_data"
 
     setup {
         run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
