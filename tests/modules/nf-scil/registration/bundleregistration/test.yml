@@ -1,8 +1,8 @@
 - name: registration bundleregistration test_registration_bundleregistration
   command: nextflow run ./tests/modules/nf-scil/registration/bundleregistration -entry test_registration_bundleregistration -c ./tests/config/nextflow.config
   tags:
-    - registration/bundleregistration
     - registration
+    - registration/bundleregistration
   files:
     - path: output/registration/test__bundle_0.trk
       md5sum: 6e14cc02b66d12d5dde0a0701918385a
