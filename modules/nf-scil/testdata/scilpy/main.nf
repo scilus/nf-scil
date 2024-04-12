@@ -36,8 +36,10 @@ process TESTDATA_SCILPY {
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
 
-    print(os.stat("test_data"))
-    print(os.stat("$test_data_path"))
+    ${test_data_path ? 'print(os.stat("$test_data_path"))': ''}
+    if os.path.exists("test_data"):
+        print(os.stat("test_data"))
+
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
