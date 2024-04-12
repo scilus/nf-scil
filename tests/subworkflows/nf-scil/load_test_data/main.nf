@@ -8,5 +8,5 @@ workflow test_load_test_data {
 
     input = Channel.from( [ "bids_json.zip", "plot.zip", "stats.zip" ] )
 
-    LOAD_TEST_DATA ( input, "test.load-test-data" )
+    LOAD_TEST_DATA ( input, "test.load-test-data-h" )
 }
