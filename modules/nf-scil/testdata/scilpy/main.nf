@@ -26,6 +26,8 @@ process TESTDATA_SCILPY {
         ln -s $test_data_path test_data
     fi
 
+    ls -lha
+
     python - << EOF
     import logging
     import hashlib
@@ -36,10 +38,9 @@ process TESTDATA_SCILPY {
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
 
-    ${test_data_path ? 'print(os.stat("$test_data_path"))': ''}
+    ${test_data_path ? 'print(os.stat("' + test_data_path + '"))' : ''}
     if os.path.exists("test_data"):
         print(os.stat("test_data"))
-
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
@@ -55,7 +56,7 @@ process TESTDATA_SCILPY {
         save_response_content(response, destination)
 
     def get_home():
-        return "${test_data_path ?: 'test_data'}"
+        return "test_data"
 
     def get_testing_files_dict():
         return {
@@ -90,7 +91,7 @@ process TESTDATA_SCILPY {
         scilpy_home = get_home()
 
         if not os.path.exists(scilpy_home):
-            os.makedirs(scilpy_home, exist_ok=True)
+            os.makedirs(scilpy_home)
 
         if keys is None:
             keys = files_dict.keys()
