@@ -2,6 +2,7 @@
 .work/
 .venv/
 .nextflow*
+.nf-test*
 *.pyc
 *.vsix
 .DS_Store
