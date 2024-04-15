@@ -9,7 +9,7 @@ include { PREPROC_DWI } from '../../../../subworkflows/nf-scil/preproc_dwi/main.
 workflow test_preproc_dwi_norev {
 
     input_fetch = Channel.from( [ "processing.zip" ] )
-    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_t1" )
+    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_dwi_norev" )
 
     ch_dwi = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
@@ -30,7 +30,7 @@ workflow test_preproc_dwi_norev {
 workflow test_preproc_dwi_rev {
 
     input_fetch = Channel.from( [ "processing.zip" ] )
-    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_t1" )
+    LOAD_TEST_DATA ( input_fetch, "test.test_preproc_dwi_rev" )
 
     ch_dwi = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
