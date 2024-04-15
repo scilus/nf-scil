@@ -31,10 +31,9 @@ include { <MODULES>	} from '../../../modules/nf-scil/<category>/<tool>/main'
 > [!NOTE]
 > You can also include other subworkflows :
 >
->```
->include { <SUBWORKFLOW> } from '../<subworkflow>/main'
->```
->
+> ```
+> include { <SUBWORKFLOW> } from '../<subworkflow>/main'
+> ```
 
 #### Define your Workflow inputs.
 
@@ -130,6 +129,7 @@ Run prettier on your new module, through the nf-core command line :
     --branch <your branch unless main branch> \
     lint <subworkflow>
 ```
+
 and fix all errors and as much as the warnings as possible. Refer to this section for further information.
 
 ## Submit your PR
