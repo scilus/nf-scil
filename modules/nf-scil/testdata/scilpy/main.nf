@@ -26,6 +26,8 @@ process TESTDATA_SCILPY {
         ln -s $test_data_path test_data
     fi
 
+    ls -lha
+
     python - << EOF
     import logging
     import hashlib
@@ -35,6 +37,12 @@ process TESTDATA_SCILPY {
     import zipfile
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
+
+    print(os.getcwd())
+    print(os.listdir())
+    ${test_data_path ? 'print(os.stat("' + test_data_path + '"))' : ''}
+    if os.path.exists("test_data"):
+        print(os.stat("test_data"))
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
@@ -50,7 +58,7 @@ process TESTDATA_SCILPY {
         save_response_content(response, destination)
 
     def get_home():
-        return "${test_data_path ?: 'test_data'}"
+        return "test_data"
 
     def get_testing_files_dict():
         return {
@@ -143,6 +151,8 @@ process TESTDATA_SCILPY {
     stub:
     def args = task.ext.args ?: ''
     """
+    mkdir -p test_data/${file(archive).simpleName}
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0

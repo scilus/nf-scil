@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "betcrop_antsbet"
 description: Perform Brain extraction using antsBrainExtraction.sh on T1 image.
 keywords:
