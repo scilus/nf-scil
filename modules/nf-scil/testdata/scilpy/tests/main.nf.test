@@ -9,7 +9,7 @@ nextflow_process {
     process "TESTDATA_SCILPY"
 
     tag "modules"
-    tag "modules_nfscil"
+    tag "modules_nfcore"
     tag "testdata"
     tag "testdata/scilpy"
 
