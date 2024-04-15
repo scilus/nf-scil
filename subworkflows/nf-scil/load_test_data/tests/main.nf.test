@@ -7,7 +7,7 @@ nextflow_workflow {
     workflow "LOAD_TEST_DATA"
 
     tag "subworkflows"
-    tag "subworkflows_nfscil"
+    tag "subworkflows_nfcore"
     tag "subworkflows/load_test_data"
     tag "testdata"
     tag "testdata/scilpy"
