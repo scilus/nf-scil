@@ -67,9 +67,6 @@ registration/antsapplytransforms:
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
-testdata/scilpy:
-  - modules/nf-scil/testdata/scilpy/**
-  - tests/modules/nf-scil/testdata/scilpy/**
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**

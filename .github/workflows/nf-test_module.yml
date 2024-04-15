@@ -76,6 +76,8 @@ jobs:
             PROFILE=${{ inputs.profile }}
           fi
 
+          mkdir -p /home/runner/_work/tmpdir
+          TMPDIR=/home/runner/_work/tmpdir \
           NFT_WORKDIR=/home/runner/_work \
           nf-test test \
             --profile=$PROFILE \
