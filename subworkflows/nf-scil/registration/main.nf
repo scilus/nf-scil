@@ -20,7 +20,7 @@ workflow REGISTRATION {
 
         if ( ch_metric ) {
             // ** Set up input channel ** //
-            ch_register = ch_image.combine(ch_ref, by: 0)
+            ch_register =   ch_image.combine(ch_ref, by: 0)
                                     .combine(ch_metric, by: 0)
 
             // ** Registration using AntsRegistration ** //
@@ -33,14 +33,14 @@ workflow REGISTRATION {
             transfo_trk = REGISTER_ANATTODWI.out.transfo_trk
         }
         else {
-            // ** Set up input channel, input are inversed compared to REGISTER_ANATTODWI. ** //
+            // ** Set up input channel, input are inverted compared to REGISTER_ANATTODWI. ** //
             if ( ch_mask ) {
                 ch_register = ch_ref.combine(ch_image, by: 0)
                                     .combine(ch_mask, by: 0)
             }
             else {
                 ch_register = ch_ref.combine(ch_image, by: 0)
-                                    .map{ [it[0], it[1], it[2], []] }
+                                    .map{ it + [[]] }
             }
 
             // ** Registration using antsRegistrationSyN.sh or antsRegistrationSyNQuick.sh. ** //
@@ -58,7 +58,7 @@ workflow REGISTRATION {
     emit:
         image_warped  = image_warped           // channel: [ val(meta), [ image ] ]
         transfo_image = transfo_image          // channel: [ val(meta), [ warp, affine ] ]
-        transfo_trk   = transfo_trk            // channel: [ val(meta), [ inversewarp, inverseaffine ] ]
+        transfo_trk   = transfo_trk            // channel: [ val(meta), [ inverseAffine, inverseWarp ] ]
 
         versions = ch_versions                 // channel: [ versions.yml ]
 }
