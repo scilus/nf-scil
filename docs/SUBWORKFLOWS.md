@@ -21,7 +21,7 @@ nf-core subworkflows create <name> --author <author>
 
 You don’t have the choice to generate an empty template when you generate a subworflow, so the template is based on nf-core.
 
-- remove the different comment lines.
+- Remove the different comment lines.
 - Include your modules into your subworkflows. Remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
 
 ```
@@ -58,14 +58,14 @@ For inputs channels, use it as follows:
 <MODULE1> (channel_data1)
 ```
 
-To connect two modules together you need to create a channel which takes one of the outputs of the first module. To do this, use the `.out` which allows you to select the outputs of the first module. Finally, specify which of the module's outputs you want :
+To connect two modules together, you need to create a channel which takes one of the outputs of the first module and feeds it to the other. To do this, use the `.out` attribute and select the desired output by name :
 
 ```
 channel_module2 = <MODULE1>.out.<output>
 <MODULE2> (channel_module2)
 ```
 
-When a module requires multiple inputs, don't create several channels. Create one that contains the different inputs required by the modules. For this, you need an operator, one of the most useful is `.join`. Attention, here we're talking about inputs and not channels, if one of the elements is part of a channel made up of several elements, you'll need to specify the chosen element. Plus, the order is important and must correspond to the desired order in the module :
+To assemble the outputs of one or multiple modules together in a new channel, use the [join](https://www.nextflow.io/docs/latest/operator.html#join), [combine](https://www.nextflow.io/docs/latest/operator.html#combine) and [groupTuple](https://www.nextflow.io/docs/latest/operator.html#grouptuple) operators. For example :
 
 ```
 channel_module3 = <MODULE2>.out.<output>.join(channel_data1).join(channel_data2.data3)
@@ -78,13 +78,19 @@ channel_module3 = <MODULE2>.out.<output>.join(channel_data1).join(channel_data2.
 > [!WARNING]
 > The same applies to workflows, you can link modules to workflows and vice versa.
 
-At the same time, you need to edit the version files of our various modules. The first thing to do in the main is to create an empty channel:
+To select a subset of values emitted by a channel (e.g. a channel emits tuples of the shape `[meta, out1, out2, out3]`, `out2` and `out3` are desired but not `out1`), use the `map` operator, for example :
+
+```
+channel_subset = channel_data.map{ meta, out1, out2, out3 -> [meta, out2, out3] }
+```
+
+For validation, you need to collect the version files of the modules and subworkflows included in yours. The first thing to do in the main is to create an empty channel:
 
 ```
 ch_versions = Channel.empty()
 ```
 
-Then, at the end of each module, incorporate the module version into the channel version.
+Then, after each module call, add its version file into the channel:
 
 ```
 channel_module2 = <MODULE1>.out.<output>
@@ -116,12 +122,11 @@ Don't forget to also define the output for the version file :
 ### Edit `./subworkflows/nf-scil/<name_of_your_workflow>/meta.yml`
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but you
-don't need to specify them all. At least define 3 `keywords`, describe the workflow'
-`inputs` and `outputs` in the order in which they appear, and add a `complete description` for the use of the subworkflow (Use-cases, expected output file, workflow variation based on optional inputs, workflow positioning in relation to other).
+don't need to specify them all. Provide at least 3 relevant `keywords` and list all modules and subworkflows used in the `components` section. List all `inputs` and `outputs` in the order in which you defined them. Give a complete `description` of the subworkflow, describing all potential uses and variations of inputs and their effects on expected outputs.
 
 ## Lint your code
 
-Run prettier on your new module, through the nf-core command line :
+Run `prettier` on your new module, through the `nf-core` command line :
 
 ```
   nf-core subworkflows \
@@ -130,11 +135,11 @@ Run prettier on your new module, through the nf-core command line :
     lint <subworkflow>
 ```
 
-and fix all errors and as much as the warnings as possible. Refer to this section for further information.
+and fix all `errors` and as many `warnings` as possible.
 
 ## Submit your PR
 
-Open a PR to the nf-scil repository master. We'll test everything, make sure it's
+Open a PR to the nf-scil repository `main` branch. We'll test everything, make sure it's
 working and that code follows standards.
 
 Once LGTM has been declared, wave to the maintainers and look at your hard work paying off.
