@@ -33,7 +33,6 @@ input:
       description: Path to directory containing
       pattern: "*.trk"
 
-
 output:
   - meta:
       type: map
