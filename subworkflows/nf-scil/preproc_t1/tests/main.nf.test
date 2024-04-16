@@ -1,0 +1,63 @@
+nextflow_workflow {
+
+    name "Test Subworkflow PREPROC_T1"
+    script "../main.nf"
+    workflow "PREPROC_T1"
+    config "./nextflow.config"
+
+    tag "subworkflows"
+    tag "subworkflows_nfcore"
+    tag "subworkflows/preproc_t1"
+
+    tag "denoising/nlmeans"
+    tag "N4"
+    tag "resampling"
+    tag "ants/bet"
+    tag "crop"
+
+    tag "load_test_data"
+
+        setup {
+            run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+                script "../../load_test_data/main.nf"
+                process {
+                    """
+                    input[0] = Channel.from( [ "antsbet.zip" ] )
+                    input[1] = "test.load-test-data"
+                    """
+                }
+            }
+        }
+
+    test("preproc_t1") {
+
+        when {
+            workflow {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_unaligned.nii.gz")
+                    ]}
+                input[1] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_template.nii.gz")
+                    ]}
+                input[2] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_brain_probability_map.nii.gz")
+                    ]}
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match()}
+            )
+        }
+    }
+}

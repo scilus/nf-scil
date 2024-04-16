@@ -1,0 +1,135 @@
+{
+    "preproc_t1": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_denoised.nii.gz:md5,b6d25b37b1101fea5c77bbbc711757c3"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_n4.nii.gz:md5,ef0d9af46aa1e330c5d7679ead500596"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__resampled.nii.gz:md5,88bae6bfeea1734111621b437e09548d"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_bet.nii.gz:md5,016f12c75e3543c27987a91eb2160a19"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_bet_mask.nii.gz:md5,cf0cc416ca8b352d3cba58d9132ab0da"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_cropped.nii.gz:md5,f4bea1286a90760eecf348dd9bffd2e6"
+                    ]
+                ],
+                "6": [
+                    "versions.yml:md5,15044237a18a642d172b2bdb3abcad78",
+                    "versions.yml:md5,34e64786c37df4e14d2ee9f57c93b0e3",
+                    "versions.yml:md5,37327d900785469fe8aba4e90c045be3",
+                    "versions.yml:md5,792251134d89d9f82a5c75d6d323ae0f",
+                    "versions.yml:md5,b2baa0cca8ea5661b95a16dd3e8b45ca"
+                ],
+                "image": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_cropped.nii.gz:md5,f4bea1286a90760eecf348dd9bffd2e6"
+                    ]
+                ],
+                "image_N4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_n4.nii.gz:md5,ef0d9af46aa1e330c5d7679ead500596"
+                    ]
+                ],
+                "image_bet": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_bet.nii.gz:md5,016f12c75e3543c27987a91eb2160a19"
+                    ]
+                ],
+                "image_nlmeans": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_denoised.nii.gz:md5,b6d25b37b1101fea5c77bbbc711757c3"
+                    ]
+                ],
+                "image_resample": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__resampled.nii.gz:md5,88bae6bfeea1734111621b437e09548d"
+                    ]
+                ],
+                "mask_bet": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_bet_mask.nii.gz:md5,cf0cc416ca8b352d3cba58d9132ab0da"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,15044237a18a642d172b2bdb3abcad78",
+                    "versions.yml:md5,34e64786c37df4e14d2ee9f57c93b0e3",
+                    "versions.yml:md5,37327d900785469fe8aba4e90c045be3",
+                    "versions.yml:md5,792251134d89d9f82a5c75d6d323ae0f",
+                    "versions.yml:md5,b2baa0cca8ea5661b95a16dd3e8b45ca"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-16T19:32:06.617869"
+    }
+}

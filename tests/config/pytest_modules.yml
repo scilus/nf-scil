@@ -7,11 +7,9 @@ betcrop/cropvolume:
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
-
 bundle/recognize:
   - modules/nf-scil/bundle/recognize/**
   - tests/modules/nf-scil/bundle/recognize/**
-
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
@@ -27,7 +25,6 @@ io/readbids:
 preproc/eddy:
   - modules/nf-scil/preproc/eddy/**
   - tests/modules/nf-scil/preproc/eddy/**
-
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -73,10 +70,6 @@ segmentation/freesurferseg:
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
-subworkflows/preproc_t1:
-  - subworkflows/nf-scil/preproc_t1/**
-  - tests/subworkflows/nf-scil/preproc_t1/**
-
 testdata/scilpy:
   - modules/nf-scil/testdata/scilpy/**
   - tests/modules/nf-scil/testdata/scilpy/**
