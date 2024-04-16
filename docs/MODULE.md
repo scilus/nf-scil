@@ -131,7 +131,7 @@ already follow all guidelines. You will find related files in :
     ```
 
     replace the content already present with the versions of your tools. Refer to
-    [this section](./VALIDATION.md#version.yml) for more information.
+    [this section](./VALIDATION.md#versionyml) for more information.
 
 - Fill the `stub` section, following the [guidelines](./VALIDATION.md#stub).
 
