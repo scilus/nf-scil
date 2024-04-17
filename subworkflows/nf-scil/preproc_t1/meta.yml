@@ -1,5 +1,34 @@
 name: "preproc_t1"
-description: Subworkflow for T1 image pre-processing, from denoising to bet/crop.
+description: |
+  Subworkflow for T1 image pre-processing, from denoising to bet/crop.
+  It requires three input channels, one with a raw T1 image you want to process (ch_image),
+  one with a T1 template (ch_template) and one with a brain probability mask (ch_probability_map).
+  The aim of the pipeline is to carry out the first stages of pre-processing on T1 image, through denoising,
+  N4 correction, resampling and bet, right up to the cropping stage.
+  The final file resulting from this subworkflow is a T1 that has been corrected, resampled and cropped.
+  You can retrieve the file after each step if you don't want to run the entire subworkflow.
+  The next steps would be to register the resulting T1-corrected image with the DWI-corrected image
+  with, for example, the Registration subworkflow.
+  -----------  Steps  -----------
+  Denoising (nlmeans, scil).
+    Used to remove the noise induced by the MRI acquisition,
+    enhance the signal to noise ratio and improve the image quality and following metrics.
+    The denoising is performed in the original spatial resolution and uses the nlmeans method.
+  N4 Bias Correction (N4BiasFieldCorrection, ANTs).
+    The N4 Bias Correction normalizes the image intensities
+    and reduces this intensity bias (the center of the brain is less intense than its outer boundary due
+    to multi-channel head coils).
+  Resample (DIPY).
+    The T1 is resampled to 1 mm isotropic spatial resolution,  which generally corresponds to the
+    standard spatial resolution and enables easy registration with corrected DWI images.
+    This spatial resolution is modifiable in the configuration file.
+  Brain Extraction (bet, ANTs).
+    Brain extraction extracts brain tissue from the rest of the body and also realizes a binary brain mask.
+    This brain extraction is required for the T1 to DWI Registration.
+  Cropping (scil).
+    Crop the empty planes around the brain to optimize the next processing step.
+  See Tractoflow for more details, https://www.sciencedirect.com/science/article/pii/S105381192030375X?via%3Dihub
+
 keywords:
   - T1
   - preprocessing
@@ -37,10 +66,40 @@ input:
       pattern: "*.{nii,nii.gz}"
 
 output:
+  - image_nlmeans:
+      type: file
+      description: |
+        Channel containing the anatomical image after the nlmeans denoising.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - image_N4:
+      type: file
+      description: |
+        Channel containing the anatomical image after the N4 correction.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - image_resample:
+      type: file
+      description: |
+        Channel containing the anatomical image after the resampling.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - image_bet:
+      type: file
+      description: |
+        Channel containing the anatomical image after the brain-extraction.
+        Structure: [ val(meta), path(t1) ]
+      pattern: "*.{nii,nii.gz}"
+  - mask_bet:
+      type: file
+      description: |
+        Channel containing the binary mask after the brain-extraction.
+        Structure: [ val(meta), path(mask) ]
+      pattern: "*.{nii,nii.gz}"
   - image:
       type: file
       description: |
-        Channel containing the anatomical image after preprocessing.
+        Channel containing the anatomical image after the all preprocessing.
         Structure: [ val(meta), path(image) ]
       pattern: "*.{nii,nii.gz}"
   - versions:

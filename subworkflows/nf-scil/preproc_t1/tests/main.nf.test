@@ -10,10 +10,10 @@ nextflow_workflow {
     tag "subworkflows/preproc_t1"
 
     tag "denoising/nlmeans"
-    tag "N4"
-    tag "resampling"
-    tag "ants/bet"
-    tag "crop"
+    tag "preproc/n4"
+    tag "image/resample"
+    tag "betcrop/antsbet"
+    tag "betcrop/cropvolume"
 
     tag "load_test_data"
 
