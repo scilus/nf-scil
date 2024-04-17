@@ -120,7 +120,6 @@ jobs:
         profile: [docker] # , "singularity"]
         exclude:
           - module: nf-test
-          - module: testdata/scilpy
 
     uses: ./.github/workflows/test_module.yml
     with:
@@ -139,7 +138,6 @@ jobs:
         profile: ["docker"]
         exclude:
           - module: nf-test
-          - module: testdata/scilpy
 
     uses: ./.github/workflows/nf-test_module.yml
     with:
