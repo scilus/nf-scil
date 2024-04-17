@@ -19,10 +19,10 @@ nf-core subworkflows create <name> --author <author>
 
 ### Edit `./subworkflows/nf-scil/<name_of_your_workflow>/main.nf`
 
-You don’t have the choice to generate an empty template when you generate a subworflow, so the template is based on nf-core.
+You can't select an empty template when you generate a new subworkflow, so the template is based on nf-core. You will need to replace some of their sections for your use case:
 
 - Remove the different comment lines.
-- Include your modules into your subworkflows. Remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
+- Include your modules into your subworkflows (a subworkflow should include at least **two** modules). Remove the modules `{ SAMTOOLS_SORT}` and `{ SAMTOOLS_INDEX }` then includes yours with the good pathway:
 
 ```
 include { <MODULES>	} from '../../../modules/nf-scil/<category>/<tool>/main'
@@ -35,15 +35,15 @@ include { <MODULES>	} from '../../../modules/nf-scil/<category>/<tool>/main'
 > include { <SUBWORKFLOW> } from '../<subworkflow>/main'
 > ```
 
-#### Define your Workflow inputs.
+#### Define your Subworkflow inputs.
 
-A workflow can declare one or more input channels using the `take` keyword.
+A workflow can declare one or more input channels using the `take` keyword. If some of your input channels are optional, add an optional tag after the channel specification.
 Multiple inputs must be specified on separate lines:
 
 ```
 take:
     channel_data1  // channel: [ val(meta), [ data1 ] ]
-    channel_data2  // channel: [ val(meta), [ data2 ], [ data3 ] ]
+    channel_data2  // channel: [ val(meta), [ data2 ] ], optional
 ```
 
 > [!NOTE]
@@ -68,7 +68,7 @@ channel_module2 = <MODULE1>.out.<output>
 To assemble the outputs of one or multiple modules together in a new channel, use the [join](https://www.nextflow.io/docs/latest/operator.html#join), [combine](https://www.nextflow.io/docs/latest/operator.html#combine) and [groupTuple](https://www.nextflow.io/docs/latest/operator.html#grouptuple) operators. For example :
 
 ```
-channel_module3 = <MODULE2>.out.<output>.join(channel_data1).join(channel_data2.data3)
+channel_module3 = <MODULE2>.out.<output>.join(channel_data1).join(channel_data2)
 <MODULE3> (channel_module3)
 ```
 
