@@ -5,8 +5,8 @@ include { UTILS_EXTRACTB0 } from '../../../modules/nf-scil/utils/extractb0/main'
 
 workflow TOPUP_EDDY {
 
-    // ** The subworkflow will run topup if a reverse b0 or reverse DWI is provided ** //
-    // ** the EDDY and finally it will also extract a b0 from corrected DWI         ** //
+    // ** The subworkflow will optionally run topup if a reverse b0 or reverse DWI is provided.   ** //
+    // ** In both cases, it will perform EDDY and also extract a b0 from the corrected DWI image. ** //
 
     take:
         ch_dwi // channel: [ val(meta), [ dwi, bval, bvec ]

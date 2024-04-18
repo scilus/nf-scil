@@ -3,6 +3,13 @@ description: |
   Subworkflow performing distorsions correction/eddy correction/motion correction.
   If a reverse B0 or a reverse DWI is provided it will run topup and then eddy,
   otherwise only eddy will run.
+  ---------  Steps  --------------------
+  PREPROC_TOPUP (topup, FSL)
+    Prepare data and apply FSL topup
+  PREPROC_EDDY (eddy, FSL)
+    Apply Eddy (and Topup if already run)
+  UTILS_EXTRACTb0 (scilpy, scilus)
+    Extract a b0 volume from a DWI image.
 keywords:
   - preprocessing
   - dwi
@@ -15,7 +22,6 @@ components:
   - preproc/eddy
   - utils/extractb0
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
@@ -34,41 +40,40 @@ input:
 
   - bvec:
       type: file
-      description: B-values in FSL format [DWI].
+      description: B-vectors in FSL format [DWI].
       pattern: "*.bvec"
 
   - b0:
       type: file
-      description: b0 [DWI].
-      pattern: "*.bvec"
+      description: b0 [DWI]. Optional
+      pattern: "*.{nii,nii.gz}"
 
   - rev_dwi:
       type: file
-      description: DWI Nifti image [rev-DWI].
+      description: DWI Nifti image [rev-DWI]. Optional
       pattern: "*.{nii,nii.gz}"
 
   - rev_bval:
       type: file
-      description: B-values in FSL format [rev-DWI].
+      description: B-values in FSL format [rev-DWI]. Optional
       pattern: "*.bval"
 
   - rev_bvec:
       type: file
-      description: B-vectors in FSL format [rev-DWI].
+      description: B-vectors in FSL format [rev-DWI]. Optional
       pattern: "*.bvec"
 
   - rev_b0:
       type: file
-      description: Reversed b0 [rev-DWI].
+      description: Reversed b0 [rev-DWI]. Optional
       pattern: "*.{nii,nii.gz}"
 
   - config_topup:
       type: file
-      description: topup config file
+      description: topup config file. Optional. See https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide#Configuration_files
       pattern: "*cnf"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
@@ -92,7 +97,7 @@ output:
 
   - b0:
       type: file
-      description: Nifti volume - Mask for b0 corrected
+      description: Nifti volume - b0 corrected
       pattern: "*__b0_mask.nii.gz"
 
   - b0_mask:
