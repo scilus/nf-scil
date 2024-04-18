@@ -15,3 +15,10 @@ RUN python3 -m pip install pipx && \
 
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - &&\
     apt-get install -y nodejs
+
+WORKDIR /
+RUN mkdir -p nf-test/bin
+
+WORKDIR /nf-test/bin/
+RUN curl -fsSL https://code.askimed.com/install/nf-test | bash
+ENV PATH=$PATH:/nf-test/bin

@@ -31,9 +31,10 @@ process IMAGE_RESAMPLE {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_resample_volume.py $voxel_size $volume_size $reference $iso_min \
-        $f $enforce_dimensions $interp \
-        $image ${prefix}__resampled.nii.gz \
+    scil_resample_volume.py $image ${prefix}__resampled.nii.gz \
+        $voxel_size $volume_size $reference $iso_min \
+        $f $enforce_dimensions $interp
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

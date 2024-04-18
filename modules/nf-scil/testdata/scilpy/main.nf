@@ -26,6 +26,8 @@ process TESTDATA_SCILPY {
         ln -s $test_data_path test_data
     fi
 
+    ls -lha
+
     python - << EOF
     import logging
     import hashlib
@@ -35,6 +37,12 @@ process TESTDATA_SCILPY {
     import zipfile
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
+
+    print(os.getcwd())
+    print(os.listdir())
+    ${test_data_path ? 'print(os.stat("' + test_data_path + '"))' : ''}
+    if os.path.exists("test_data"):
+        print(os.stat("test_data"))
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
@@ -50,12 +58,12 @@ process TESTDATA_SCILPY {
         save_response_content(response, destination)
 
     def get_home():
-        return "${test_data_path ?: 'test_data'}"
+        return "test_data"
 
     def get_testing_files_dict():
         return {
             "commit_amico.zip": "c190e6b9d22350b51e222c60febe13b4",
-            "bundles.zip": "54b6e2bf2dda579886efe4e2a8989486",
+            "bundles.zip": "6d3ebc21062bf320714483b7314a230a",
             "stats.zip": "2aeac4da5ab054b3a460fc5fdc5e4243",
             "bst.zip": "eed227fd246255e7417f92d49eb1066a",
             "filtering.zip": "19116ff4244d057c8214ee3fe8e05f71",
@@ -77,7 +85,8 @@ process TESTDATA_SCILPY {
             "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
             "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
             "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
-            "antsbet.zip": "202358be14568560d0c24e644d9b2574"
+            "antsbet.zip": "202358be14568560d0c24e644d9b2574",
+            "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505"
         }
 
     def fetch_data(files_dict, keys=None):
@@ -142,6 +151,8 @@ process TESTDATA_SCILPY {
     stub:
     def args = task.ext.args ?: ''
     """
+    mkdir -p test_data/${file(archive).simpleName}
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 1.6.0

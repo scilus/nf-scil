@@ -80,19 +80,17 @@ jobs:
       - name: Run pytest-workflow
         # only use one thread for pytest-workflow to avoid race condition on conda cache.
         run: |
-            TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwdof --git-aware --color=yes
+            TMPDIR=/home/runner/_work PROFILE=${{ inputs.profile }} pytest --tag ${{ inputs.module }} --symlink --kwd --git-aware --color=yes
 
       - name: Setting global variables
         uses: actions/github-script@v6
-        if: failure()
         id: parsed
         with:
           script: |
             return '${{ inputs.module }}'.toLowerCase().replaceAll(/\//g, '-').trim('-').trim('"')
           result-encoding: string
 
-      - name: Upload logs on failure
-        if: failure()
+      - name: Upload logs
         uses: actions/upload-artifact@v3
         with:
           name: logs-${{ inputs.profile }}-${{ steps.parsed.outputs.result }}
@@ -100,7 +98,7 @@ jobs:
             /home/runner/_work/pytest_workflow_*/*/.nextflow.log
             /home/runner/_work/pytest_workflow_*/*/log.out
             /home/runner/_work/pytest_workflow_*/*/log.err
-            /home/runner/_work/pytest_workflow_*/**/.command.log
-            /home/runner/_work/pytest_workflow_*/**/.command.sh
-            /home/runner/_work/pytest_workflow_*/**/.command.run
+            /home/runner/_work/pytest_workflow_*/**/work/**/.command.log
+            /home/runner/_work/pytest_workflow_*/**/work/**/.command.sh
+            /home/runner/_work/pytest_workflow_*/**/work/**/.command.run
             !${{ github.workspace }}/.singularity
