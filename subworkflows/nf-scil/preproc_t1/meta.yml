@@ -63,7 +63,30 @@ input:
         The input channel containing the brain probability mask, with intensity range 1 (definitely brain) to 0 (definitely background).
         Structure: [ val(meta), path(image) ]
       pattern: "*.{nii,nii.gz}"
-
+  - ch_mask_nlmeans:
+      type: file
+      description: |
+        The input channel containing the brain mask for the nlmeans denoising.
+        Structure: [ val(meta), path(mask) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_ref_n4:
+      type: file
+      description: |
+        The input channel containing the reference and the reference mask for the n4 correction.
+        Structure: [ val(meta), path(ref), path(mask_ref) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_ref_resample:
+      type: file
+      description: |
+        The input channel containing the reference for the resampling.
+        Structure: [ val(meta), path(ref) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_mask_crop:
+      type: file
+      description: |
+        The input channel containing the mask for thee cropping.
+        Structure: [ val(meta), path(mask) ]
+      pattern: "*.{nii,nii.gz}"
 output:
   - image_nlmeans:
       type: file
@@ -99,6 +122,12 @@ output:
       type: file
       description: |
         Channel containing the anatomical image after the all preprocessing.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{nii,nii.gz}"
+  - crop_box:
+      type: file
+      description: |
+        Channel containing the bouding box defining the limits of the crop.
         Structure: [ val(meta), path(image) ]
       pattern: "*.{nii,nii.gz}"
   - versions:

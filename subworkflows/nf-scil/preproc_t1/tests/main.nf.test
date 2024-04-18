@@ -49,6 +49,27 @@ nextflow_workflow {
                         [ id:'test', single_end:false ],
                         file("\${test_data_directory}/t1_brain_probability_map.nii.gz")
                     ]}
+                input[3] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        []
+                    ]}
+                input[4] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        [],
+                        []
+                    ]}
+                input[5] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        []
+                    ]}
+                input[6] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        []
+                    ]}
                 """
             }
         }
