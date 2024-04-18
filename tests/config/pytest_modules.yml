@@ -67,9 +67,6 @@ registration/antsapplytransforms:
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
-subworkflows/topup_eddy:
-  - subworkflows/nf-scil/topup_eddy/**
-  - tests/subworkflows/nf-scil/topup_eddy/**
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**

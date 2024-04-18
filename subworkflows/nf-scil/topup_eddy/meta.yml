@@ -1,14 +1,19 @@
 name: "topup_eddy"
-description: toto toto
+description: |
+  Subworkflow performing distorsions correction/eddy correction/motion correction.
+  If a reverse B0 or a reverse DWI is provided it will run topup and then eddy,
+  otherwise only eddy will run.
 keywords:
   - preprocessing
   - dwi
   - topup
   - eddy
   - distorsion
+  - extract_b0
 components:
   - preproc/topup
   - preproc/eddy
+  - utils/extractb0
 input:
   # Only when we have meta
   - meta:
@@ -84,6 +89,11 @@ output:
       type: file
       description: B-vectors corrected in FSL format
       pattern: "*__dwi_eddy_corrected.bvec"
+
+  - b0:
+      type: file
+      description: Nifti volume - Mask for b0 corrected
+      pattern: "*__b0_mask.nii.gz"
 
   - b0_mask:
       type: file

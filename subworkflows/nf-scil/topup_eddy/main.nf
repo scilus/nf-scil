@@ -1,38 +1,60 @@
 // ** Importing modules from nf-scil ** //
-include { TOPUP } from '../../../modules/nf-scil/preproc/topup/main'
-include { EDDY } from '../../../modules/nf-scil/preproc/eddy/main'
+include { PREPROC_TOPUP } from '../../../modules/nf-scil/preproc/topup/main'
+include { PREPROC_EDDY } from '../../../modules/nf-scil/preproc/eddy/main'
+include { UTILS_EXTRACTB0 } from '../../../modules/nf-scil/utils/extractb0/main'
 
 workflow TOPUP_EDDY {
 
-    // **
-    // **
-    // **
+    // ** The subworkflow will run topup if a reverse b0 or reverse DWI is provided ** //
+    // ** the EDDY and finally it will also extract a b0 from corrected DWI         ** //
 
     take:
-        ch_image // channel: [ val(meta), [ dwi, bval, bvec, b0, rev_dwi, rev_bval, rev_bvec, rev_b0 ] ]
-        config_topup // channel: [ config_topup ]
+        ch_dwi // channel: [ val(meta), [ dwi, bval, bvec ]
+        ch_b0 // channel: [ val(meta), b0 ]
+        ch_rev_dwi // channel: [ val(meta), [ rev_dwi, rev_bval, rev_bvec ]
+        ch_rev_b0 // channel: [ val(meta), rev_b0 ]
+        ch_config_topup // channel
 
     main:
-
         ch_versions = Channel.empty()
 
-        if ( config_topup and ( ch_image.rev_dwi or ch_image.rev_b0 ))
+        if ( ch_rev_dwi || ch_rev_b0 )
         {
-            TOPUP ( ch_image, config_topup )
-            ch_versions = ch_versions.mix(TOPUP.out.versions.first())
-            EDDY ( [ch_image.dwi, ch_image.bval, ch_image.bvec, ch_image.b0, ch_image.rev_dwi, ch_image.rev_bval, ch_image.rev_bvec, ch_image.rev_b0, TOPUP.out.topup_corrected_b0s, TOPUP.out.topup_fieldcoef, TOPUP.out.topup_movpart] )
+            // ** Create channel for TOPUP ** //
+            ch_image =    ch_dwi.combine(ch_b0, by: 0)
+                                .combine(ch_rev_dwi, by: 0)
+                                .combine(ch_rev_b0, by: 0)
+
+            // ** RUN TOPUP ** //
+            PREPROC_TOPUP ( ch_image, ch_config_topup )
+            ch_versions = ch_versions.mix(PREPROC_TOPUP.out.versions.first())
+
+            // ** Create channel for EDDY ** //
+            ch_eddy_input =   ch_dwi.combine(ch_rev_dwi, by: 0)
+                                    .combine(PREPROC_TOPUP.out.topup_corrected_b0s, by: 0)
+                                    .combine(PREPROC_TOPUP.out.topup_fieldcoef, by: 0)
+                                    .combine(PREPROC_TOPUP.out.topup_movpart, by: 0)
+            // ** RUN EDDY ** //
+            PREPROC_EDDY ( ch_eddy_input )
         }
         else
         {
-            EDDY ( ch_image )
+            // ** RUN EDDY ** //
+            PREPROC_EDDY ( ch_dwi )
         }
 
-        ch_versions = ch_versions.mix(EDDY.out.versions.first())
+        ch_dwi_extract_b0 =   PREPROC_EDDY.out.dwi_corrected.combine(PREPROC_EDDY.out.bval_corrected, by: 0)
+                                                            .combine(PREPROC_EDDY.out.bvec_corrected, by: 0)
+        UTILS_EXTRACTB0 { ch_dwi_extract_b0 }
+
+        ch_versions = ch_versions.mix(UTILS_EXTRACTB0.out.versions.first())
+        ch_versions = ch_versions.mix(PREPROC_EDDY.out.versions.first())
 
     emit:
-        dwi      = EDDY.out.dwi_corrected       // channel: [ val(meta), [ dwi_corrected ] ]
-        bval     = EDDY.out.bval_corrected      // channel: [ val(meta), [ bval_corrected ] ]
-        bvec     = EDDY.out.bvec_corrected      // channel: [ val(meta), [ bvec_corrected ] ]
-        b0_mask  = EDDY.out.b0_mask             // channel: [ val(meta), [ b0_mask ] ]
+        dwi      = PREPROC_EDDY.out.dwi_corrected       // channel: [ val(meta), [ dwi_corrected ] ]
+        bval     = PREPROC_EDDY.out.bval_corrected      // channel: [ val(meta), [ bval_corrected ] ]
+        bvec     = PREPROC_EDDY.out.bvec_corrected      // channel: [ val(meta), [ bvec_corrected ] ]
+        b0       = UTILS_EXTRACTB0.out.b0               // channel: [ val(meta), [ b0 ] ]
+        b0_mask  = PREPROC_EDDY.out.b0_mask             // channel: [ val(meta), [ b0_mask ] ]
         versions = ch_versions                  // channel: [ versions.yml ]
 }
