@@ -1,33 +1,32 @@
 name: "preproc_t1"
 description: |
-  Subworkflow for T1 image pre-processing, from denoising to bet/crop.
+  Subworkflow for T1 image pre-processing, from denoising to brain extraction and cropping.
   It requires three input channels, one with a raw T1 image you want to process (ch_image),
   one with a T1 template (ch_template) and one with a brain probability mask (ch_probability_map).
-  The aim of the pipeline is to carry out the first stages of pre-processing on T1 image, through denoising,
-  N4 correction, resampling and bet, right up to the cropping stage.
-  The final file resulting from this subworkflow is a T1 that has been corrected, resampled and cropped.
+  The aim of the workflow is to carry out the first stages of pre-processing, through denoising,
+  N4 correction, resampling and brain extraction, right up to the cropping stage.
+  The resulting T1 is corrected, resampled, brain extracted and cropped.
   You can retrieve the file after each step if you don't want to run the entire subworkflow.
   The next steps would be to register the resulting T1-corrected image with the DWI-corrected image
-  with, for example, the Registration subworkflow.
+  with, for example, the REGISTRATION subworkflow.
   -----------  Steps  -----------
   Denoising (nlmeans, scil).
     Used to remove the noise induced by the MRI acquisition,
     enhance the signal to noise ratio and improve the image quality and following metrics.
     The denoising is performed in the original spatial resolution and uses the nlmeans method.
-  N4 Bias Correction (N4BiasFieldCorrection, ANTs).
-    The N4 Bias Correction normalizes the image intensities
-    and reduces this intensity bias (the center of the brain is less intense than its outer boundary due
-    to multi-channel head coils).
+  N4 Image Intensities Bias Correction (N4BiasFieldCorrection, ANTs).
+    Used to normalize the image intensities and reduce biases (e.g. signal loss with distance in
+    multi-channel head coils), while preserving contrasts between tissues.
   Resample (DIPY).
-    The T1 is resampled to 1 mm isotropic spatial resolution,  which generally corresponds to the
-    standard spatial resolution and enables easy registration with corrected DWI images.
+    Resamples the T1 to an isotropic spatial resolution. The default is 1mm, a standard in humans which
+    usually facilitate registration with corrected DWI images.
     This spatial resolution is modifiable in the configuration file.
   Brain Extraction (bet, ANTs).
-    Brain extraction extracts brain tissue from the rest of the body and also realizes a binary brain mask.
+    Isolates the brain tissue voxels from the remaining image. Also creates a binary brain mask.
     This brain extraction is required for the T1 to DWI Registration.
   Cropping (scil).
-    Crop the empty planes around the brain to optimize the next processing step.
-  See Tractoflow for more details, https://www.sciencedirect.com/science/article/pii/S105381192030375X?via%3Dihub
+    Crops the empty planes around the brain to optimize the next processing steps.
+  Subworkflow based on Tractoflow : https://www.sciencedirect.com/science/article/pii/S105381192030375X?via%3Dihub
 
 keywords:
   - T1
