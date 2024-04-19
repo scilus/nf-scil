@@ -62,7 +62,7 @@ jobs:
         uses: nf-core/setup-nextflow@v2
 
       - name: Setup nf-test
-        uses: AlexVCaron/setup-nf-test@main
+        uses: AlexVCaron/setup-nf-test@2c5a31b90b34d97abf155b57ee0f79c7f5aa118a
 
       - name: Run nf-test
         env:
@@ -72,10 +72,12 @@ jobs:
           # use "docker_self_hosted" if it runs on self-hosted runner and inputs.profile=docker
           if [ "${{ inputs.profile }}" == "docker" ]; then
             PROFILE="docker_self_hosted"
-          else 
+          else
             PROFILE=${{ inputs.profile }}
-          fi 
+          fi
 
+          mkdir -p /home/runner/_work/tmpdir
+          TMPDIR=/home/runner/_work/tmpdir \
           NFT_WORKDIR=/home/runner/_work \
           nf-test test \
             --profile=$PROFILE \
