@@ -84,7 +84,7 @@ process PREPROC_EDDY {
         maskfilter ${prefix}__b0_bet_mask.nii.gz dilate ${prefix}__b0_bet_mask_dilated.nii.gz\
             --npass $dilate_b0_mask_prelim_brain_extraction -nthreads 1
         scil_image_math.py multiplication ${prefix}__b0.nii.gz ${prefix}__b0_bet_mask_dilated.nii.gz\
-            ${prefix}__b0_bet.nii.gz
+            ${prefix}__b0_bet.nii.gz --data_type float32 -f
 
         scil_prepare_eddy_command.py \${dwi} \${bval} \${bvec} ${prefix}__b0_bet_mask.nii.gz\
             --eddy_cmd $eddy_cmd --b0_thr $b0_thr_extract_b0\

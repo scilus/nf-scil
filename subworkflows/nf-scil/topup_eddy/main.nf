@@ -40,7 +40,8 @@ workflow TOPUP_EDDY {
         else
         {
             // ** RUN EDDY ** //
-            PREPROC_EDDY ( ch_dwi )
+            ch_image =    ch_dwi.map{ it + [[]] + [[]] + [[]] + [[]] + [[]] + [[]] }
+            PREPROC_EDDY ( ch_image )
         }
 
         ch_dwi_extract_b0 =   PREPROC_EDDY.out.dwi_corrected.combine(PREPROC_EDDY.out.bval_corrected, by: 0)
