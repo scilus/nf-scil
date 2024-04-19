@@ -23,10 +23,10 @@ input:
       description: Nifti image file to crop
       pattern: "*.{nii,nii.gz}"
 
-  - mask:
+  - bounding_box:
       type: file
-      description: Nifti image file used to mask the input image
-      pattern: "*.{nii,nii.gz}"
+      description: Input bounding box to use to crop the image
+      pattern: "*.{pkl}"
 
 output:
   - meta:
