@@ -28,6 +28,81 @@ nextflow_workflow {
         }
     }
 
+    test("eddy") {
+
+        when {
+            workflow {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz"),
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bval"),
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bvec")
+                    ]}
+                input[1] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/sub-01_dir-AP_sbref.nii.gz")
+                    ]}
+                input[2] = []
+                input[3] = []
+                input[4] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match()}
+            )
+        }
+    }
+
+    test("topup_eddy_rev_b0") {
+
+        when {
+            workflow {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz"),
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bval"),
+                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bvec")
+                    ]}
+                input[1] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/sub-01_dir-AP_sbref.nii.gz")
+                    ]}
+                input[2] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        [],
+                        [],
+                        []
+                    ]}
+
+                input[3] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/sub-01_dir-PA_sbref.nii.gz")
+                    ]}
+                input[4] = []
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success},
+                { assert snapshot(workflow.out).match()}
+            )
+        }
+    }
+
     test("topup_eddy_rev_dwi") {
 
         when {
@@ -70,71 +145,4 @@ nextflow_workflow {
         }
     }
 
-    test("topup_eddy_rev_b0") {
-
-        when {
-            workflow {
-                """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz"),
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bval"),
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bvec")
-                    ]}
-                input[1] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/sub-01_dir-AP_sbref.nii.gz")
-                    ]}
-                input[2] = []
-                input[3] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/sub-01_dir-PA_sbref.nii.gz")
-                    ]}
-                input[4] = []
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
-        }
-    }
-
-    test("eddy") {
-
-        when {
-            workflow {
-                """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz"),
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bval"),
-                        file("\${test_data_directory}/sub-01_dir-AP_dwi.bvec")
-                    ]}
-                input[1] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        file("\${test_data_directory}/sub-01_dir-AP_sbref.nii.gz")
-                    ]}
-                input[2] = []
-                input[3] = []
-                input[4] = []
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
-        }
-    }
 }

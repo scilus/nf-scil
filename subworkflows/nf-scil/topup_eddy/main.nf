@@ -20,11 +20,12 @@ workflow TOPUP_EDDY {
 
         if ( ch_rev_dwi || ch_rev_b0 )
         {
+            log.info("HEREEE")
             // ** Create channel for TOPUP ** //
-            ch_image =    ch_dwi.combine(ch_b0, by: 0)
-                                .combine(ch_rev_dwi, by: 0)
-                                .combine(ch_rev_b0, by: 0)
-
+            ch_image =    ch_dwi.join(ch_b0)
+                                .join(ch_rev_dwi)
+                                .join(ch_rev_b0)
+            log.info("ch_image")
             // ** RUN TOPUP ** //
             PREPROC_TOPUP ( ch_image, ch_config_topup )
             ch_versions = ch_versions.mix(PREPROC_TOPUP.out.versions.first())
@@ -40,7 +41,7 @@ workflow TOPUP_EDDY {
         else
         {
             // ** RUN EDDY ** //
-            ch_image =    ch_dwi.map{ it + [[]] + [[]] + [[]] + [[]] + [[]] + [[]] }
+            ch_image =    ch_dwi.map{ it + [[], [], [], [], [], []] }
             PREPROC_EDDY ( ch_image )
         }
 

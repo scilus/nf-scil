@@ -3,59 +3,12 @@
         "content": [
             {
                 "0": [
-                    
-                ],
-                "1": [
-                    
-                ],
-                "2": [
-                    
-                ],
-                "3": [
-                    
-                ],
-                "4": [
-                    
-                ],
-                "5": [
-                    
-                ],
-                "b0": [
-                    
-                ],
-                "b0_mask": [
-                    
-                ],
-                "bval": [
-                    
-                ],
-                "bvec": [
-                    
-                ],
-                "dwi": [
-                    
-                ],
-                "versions": [
-                    
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
-        },
-        "timestamp": "2024-04-19T01:44:20.097114"
-    },
-    "topup_eddy": {
-        "content": [
-            {
-                "0": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                        "test__dwi_corrected.nii.gz:md5,8d779e1b00bd01ba1669aec9380f1928"
                     ]
                 ],
                 "1": [
@@ -64,7 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
                     ]
                 ],
                 "2": [
@@ -73,7 +26,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                        "test__dwi_eddy_corrected.bvec:md5,2c0f7386203f5bc715d5fd8f94e9695d"
                     ]
                 ],
                 "3": [
@@ -82,7 +35,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_b0.nii.gz:md5,9abd674ae7018880c17e9aa2b7d9864d"
+                        "test_b0.nii.gz:md5,dbc6369ceb0f1b727d779d0c565b46a7"
                     ]
                 ],
                 "4": [
@@ -105,7 +58,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_b0.nii.gz:md5,9abd674ae7018880c17e9aa2b7d9864d"
+                        "test_b0.nii.gz:md5,dbc6369ceb0f1b727d779d0c565b46a7"
                     ]
                 ],
                 "b0_mask": [
@@ -123,7 +76,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
                     ]
                 ],
                 "bvec": [
@@ -132,7 +85,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                        "test__dwi_eddy_corrected.bvec:md5,2c0f7386203f5bc715d5fd8f94e9695d"
                     ]
                 ],
                 "dwi": [
@@ -141,7 +94,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                        "test__dwi_corrected.nii.gz:md5,8d779e1b00bd01ba1669aec9380f1928"
                     ]
                 ],
                 "versions": [
@@ -155,7 +108,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-18T18:13:20.489862"
+        "timestamp": "2024-04-19T18:33:11.210573"
     },
     "eddy": {
         "content": [
@@ -166,7 +119,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,332f0e8fa6455fa8bf177aced534ca6c"
+                        "test__dwi_corrected.nii.gz:md5,c75726a5049f49f6eb144802d56b05db"
                     ]
                 ],
                 "1": [
@@ -184,7 +137,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,1823d0d1ad564c305f717e9b7f957931"
+                        "test__dwi_eddy_corrected.bvec:md5,007c00eb987bbd60863ce197d718f080"
                     ]
                 ],
                 "3": [
@@ -242,7 +195,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,1823d0d1ad564c305f717e9b7f957931"
+                        "test__dwi_eddy_corrected.bvec:md5,007c00eb987bbd60863ce197d718f080"
                     ]
                 ],
                 "dwi": [
@@ -251,7 +204,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,332f0e8fa6455fa8bf177aced534ca6c"
+                        "test__dwi_corrected.nii.gz:md5,c75726a5049f49f6eb144802d56b05db"
                     ]
                 ],
                 "versions": [
@@ -264,7 +217,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-19T02:19:59.669197"
+        "timestamp": "2024-04-19T20:01:50.534191"
     },
     "topup_eddy_rev_dwi": {
         "content": [
@@ -275,7 +228,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                        "test__dwi_corrected.nii.gz:md5,e3ed28b06111b04ff5cf11d6ce2dc179"
                     ]
                 ],
                 "1": [
@@ -293,7 +246,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                        "test__dwi_eddy_corrected.bvec:md5,56e99dc9078c6ca56ab98cff4678bfd5"
                     ]
                 ],
                 "3": [
@@ -302,7 +255,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_b0.nii.gz:md5,9abd674ae7018880c17e9aa2b7d9864d"
+                        "test_b0.nii.gz:md5,a87dfb0ab4fd485391a765e4a4b26c42"
                     ]
                 ],
                 "4": [
@@ -325,7 +278,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_b0.nii.gz:md5,9abd674ae7018880c17e9aa2b7d9864d"
+                        "test_b0.nii.gz:md5,a87dfb0ab4fd485391a765e4a4b26c42"
                     ]
                 ],
                 "b0_mask": [
@@ -352,7 +305,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                        "test__dwi_eddy_corrected.bvec:md5,56e99dc9078c6ca56ab98cff4678bfd5"
                     ]
                 ],
                 "dwi": [
@@ -361,7 +314,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                        "test__dwi_corrected.nii.gz:md5,e3ed28b06111b04ff5cf11d6ce2dc179"
                     ]
                 ],
                 "versions": [
@@ -375,6 +328,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-19T01:44:11.543052"
+        "timestamp": "2024-04-19T19:12:41.645057"
     }
 }
