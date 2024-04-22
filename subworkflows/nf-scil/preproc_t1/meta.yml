@@ -66,27 +66,27 @@ input:
   - ch_mask_nlmeans:
       type: file
       description: |
-        The input channel containing the brain mask for the nlmeans denoising.
+        The input channel containing the brain mask for the nlmeans denoising. Optional
         Structure: [ val(meta), path(mask) ]
       pattern: "*.{nii,nii.gz}"
   - ch_ref_n4:
       type: file
       description: |
-        The input channel containing the reference and the reference mask for the n4 correction.
+        The input channel containing the reference and the reference mask for the n4 correction. Optional
         Structure: [ val(meta), path(ref), path(mask_ref) ]
       pattern: "*.{nii,nii.gz}"
   - ch_ref_resample:
       type: file
       description: |
-        The input channel containing the reference for the resampling.
+        The input channel containing the reference for the resampling. Optional
         Structure: [ val(meta), path(ref) ]
       pattern: "*.{nii,nii.gz}"
-  - ch_mask_crop:
+  - ch_input_bbox:
       type: file
       description: |
-        The input channel containing the mask for thee cropping.
+        The input channel containing the bounding box for the cropping. Optional
         Structure: [ val(meta), path(mask) ]
-      pattern: "*.{nii,nii.gz}"
+      pattern: "*.{pkl}"
 output:
   - image_nlmeans:
       type: file
@@ -118,16 +118,22 @@ output:
         Channel containing the binary mask after the brain-extraction.
         Structure: [ val(meta), path(mask) ]
       pattern: "*.{nii,nii.gz}"
-  - image:
-      type: file
-      description: |
-        Channel containing the anatomical image after the all preprocessing.
-        Structure: [ val(meta), path(image) ]
-      pattern: "*.{nii,nii.gz}"
   - crop_box:
       type: file
       description: |
         Channel containing the bouding box defining the limits of the crop.
+        Structure: [ val(meta), path(image) ]
+      pattern: "*.{pkl}"
+  - mask_final:
+      type: file
+      description: |
+        Channel containing the binary mask after the all preprocessing.
+        Structure: [ val(meta), path(mask) ]
+      pattern: "*.{nii,nii.gz}"
+  - t1_final:
+      type: file
+      description: |
+        Channel containing the anatomical image after the all preprocessing.
         Structure: [ val(meta), path(image) ]
       pattern: "*.{nii,nii.gz}"
   - versions:
