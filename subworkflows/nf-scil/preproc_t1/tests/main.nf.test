@@ -69,11 +69,6 @@ nextflow_workflow {
                         [ id:'test', single_end:false ],
                         []
                     ]}
-                input[6] = ch_split_test_data.others.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        []
-                    ]}
                 """
             }
         }
@@ -127,11 +122,6 @@ nextflow_workflow {
                     test_data_directory -> [
                         [ id:'test', single_end:false ],
                         file("\${test_data_directory}/fa.nii.gz")
-                    ]}
-                input[6] = ch_split_test_data.others.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ],
-                        []
                     ]}
                 """
             }

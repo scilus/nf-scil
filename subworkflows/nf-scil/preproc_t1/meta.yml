@@ -81,12 +81,6 @@ input:
         The input channel containing the reference for the resampling. Optional
         Structure: [ val(meta), path(ref) ]
       pattern: "*.{nii,nii.gz}"
-  - ch_input_bbox:
-      type: file
-      description: |
-        The input channel containing the bounding box for the cropping. Optional
-        Structure: [ val(meta), path(mask) ]
-      pattern: "*.{pkl}"
 output:
   - image_nlmeans:
       type: file

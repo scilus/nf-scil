@@ -15,7 +15,6 @@ workflow PREPROC_T1 {
         ch_mask_nlmeans    // channel: [ val(meta), [ mask ] ]            , optional
         ch_ref_n4          // channel: [ val(meta), [ ref, ref_mask ] ]   , optional
         ch_ref_resample    // channel: [ val(meta), [ ref ] ]             , optional
-        ch_input_bbox      // channel: [ val(meta), [ bounding_box] ]     , optional
 
     main:
 
@@ -42,7 +41,7 @@ workflow PREPROC_T1 {
         ch_versions = ch_versions.mix(BETCROP_ANTSBET.out.versions.first())
 
         // ** crop image ** //
-        ch_crop = BETCROP_ANTSBET.out.t1.join(ch_input_bbox)
+        ch_crop = BETCROP_ANTSBET.out.t1.map{it + [[]]}
         BETCROP_CROPVOLUME_T1 ( ch_crop )
         ch_versions = ch_versions.mix(BETCROP_CROPVOLUME_T1.out.versions.first())
 
