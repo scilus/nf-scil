@@ -34,7 +34,6 @@ process REGISTRATION_BUNDLEREGISTRATION {
     def no_empty2 = task.ext.no_empty2 ? "--no_empty" : ""
 
     """
-    echo ${centroids_dir}
     for centroid in ${centroids_dir};
         do bname=\${centroid/_centroid/}
         bname=\$(basename \${bname} .trk)
