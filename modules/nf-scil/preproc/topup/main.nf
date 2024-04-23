@@ -36,7 +36,7 @@ process PREPROC_TOPUP {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
-    export ANTS_RANDOM_SEED=44
+    export ANTS_RANDOM_SEED=7468
 
     if [[ -f "$b0" ]];
     then
