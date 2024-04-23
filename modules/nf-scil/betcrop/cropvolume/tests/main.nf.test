@@ -1,0 +1,61 @@
+nextflow_process {
+
+    name "Test Process BETCROP_CROPVOLUME"
+    script "../main.nf"
+    process "BETCROP_CROPVOLUME"
+    config "./nextflow.config"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "betcrop"
+    tag "betcrop/cropvolume"
+
+    test("betcrop - cropvolume") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test', single_end:false ], // meta map
+                    file(params.test_data['betcrop']['cropvolume']['image'], checkIfExists: true),
+                    []
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("betcrop - cropvolume - outputbbox") {
+
+        config "./nextflow_bbox.config"
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test', single_end:false ], // meta map
+                    file(params.test_data['betcrop']['cropvolume']['image'], checkIfExists: true),
+                    []
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}

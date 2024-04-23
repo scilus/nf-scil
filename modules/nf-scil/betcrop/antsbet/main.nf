@@ -4,8 +4,8 @@ process BETCROP_ANTSBET {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
     tuple val(meta), path(t1), path(template), path(tissues_probabilities)
@@ -29,12 +29,12 @@ process BETCROP_ANTSBET {
     export ANTS_RANDOM_SEED=1234
 
     antsBrainExtraction.sh -d 3 -a $t1 -e $template -o bet/ -m $tissues_probabilities -u 0
-    scil_image_math.py convert bet/BrainExtractionMask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8
+    scil_volume_math.py convert bet/BrainExtractionMask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8
     mrcalc $t1 ${prefix}__t1_bet_mask.nii.gz -mult ${prefix}__t1_bet.nii.gz -nthreads 1
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
         ants: 2.4.3
     END_VERSIONS
@@ -46,7 +46,7 @@ process BETCROP_ANTSBET {
 
         """
     antsBrainExtraction.sh -h
-    scil_image_math.py -h
+    scil_volume_math.py -h
     mrcalc -h
 
     touch ${prefix}__t1_bet.nii.gz
@@ -54,7 +54,7 @@ process BETCROP_ANTSBET {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
         ants: 2.4.3
     END_VERSIONS
