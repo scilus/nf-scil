@@ -1,5 +1,5 @@
-include { BETCROP_FSLBETCROP as BET_PRELIM } from '../../../modules/nf-scil/betcrop/fslbetcrop/main'
 include { DENOISING_MPPCA as DENOISE_DWI } from '../../../modules/nf-scil/denoising/mppca/main'
+include { DENOISING_MPPCA as DENOISE_REVDWI } from '../../../modules/nf-scil/denoising/mppca/main'
 include { UTILS_EXTRACTB0 } from '../../../modules/nf-scil/utils/extractb0/main'
 include { BETCROP_FSLBETCROP } from '../../../modules/nf-scil/betcrop/fslbetcrop/main'
 include { PREPROC_N4 as N4_DWI } from '../../../modules/nf-scil/preproc/n4/main'
@@ -13,6 +13,7 @@ workflow PREPROC_DWI {
     take:
        ch_dwi           // channel: [ val(meta), [ dwi, bval, bvec ] ]
        ch_rev_dwi       // channel: [ val(meta), [ rev_dwi, bval, bvec ] ], optional
+       ch_b0            // Channel: [ val(meta), [ b0 ] ], optional
        ch_rev_b0        // channel: [ val(meta), [ reverse b0 ] ], optional
        ch_config_topup  // channel: [ 'config_topup' ], optional
 
@@ -20,22 +21,20 @@ workflow PREPROC_DWI {
 
         ch_versions = Channel.empty()
 
-        // ** Preliminary BET DWI ** //
-        BET_PRELIM ( ch_dwi.dwi )
-        ch_versions = ch_versions.mix(BET_PRELIM.out.versions.first())
-
         // ** Denoised DWI ** //
-        DENOISE_DWI ( BET_PRELIM.out.image )
+        DENOISE_DWI ( ch_dwi.dwi )
         ch_versions = ch_versions.mix(DENOISE_DWI.out.versions.first())
 
-        // ** Extract b0 ** //
-        ch_extract_b0 = DENOISE_DWI.out.dwi_corrected.join(ch_dwi.bval, ch_dwi.bvec)
-        UTILS_EXTRACTB0 ( ch_extract_b0 )
-        ch_versions = ch_versions.mix(UTILS_EXTRACTB0.out.versions.first())
+        if ( ch_rev_dwi )
+        {
+            // ** Denoised reverse DWI ** //
+            DENOISE_REVDWI ( ch_rev_dwi.dwi )
+        }
 
-        // ** Eddy Topup DWI ** //
-        ch_topup_eddy_dwi = DENOISING_MPPCA.out.image.join(ch_dwi.bval, ch_dwi.bvec)
-        TOPUP_EDDY ( ch_topup_eddy_dwi, UTILS_EXTRACTB0.out.b0, ch_rev_dwi, ch_rev_b0, ch_config_topup )
+        // ** Eddy Topup ** //
+        ch_topup_eddy_dwi = DENOISE_DWI.out.image.join(ch_dwi.bval, ch_dwi.bvec)
+        ch_topup_eddy_rev_dwi = DENOISE_REVDWI.out.image.join(ch_rev_dwi.bval, ch_rev_dwi.bvec)
+        TOPUP_EDDY ( ch_topup_eddy_dwi, ch_b0, ch_topup_eddy_rev_dwi, ch_rev_b0, ch_config_topup )
         ch_versions = ch_versions.mix(TOPUP_EDDY.out.versions.first())
 
         // ** Bet-crop DWI ** //
@@ -61,7 +60,7 @@ workflow PREPROC_DWI {
         ch_versions = ch_versions.mix(NORMALIZE_DWI.out.versions.first())
 
         // ** Resampling DWI ** //
-        ch_resampling = NORMALIZE_DWI.out.dwi.map{[it[0], it[1],[]]}
+        ch_resampling = NORMALIZE_DWI.out.dwi.map{ it + [[]] }
         RESAMPLE_DWI ( ch_resampling )
         ch_versions = ch_versions.mix(RESAMPLE_DWI.out.versions.first()))
 

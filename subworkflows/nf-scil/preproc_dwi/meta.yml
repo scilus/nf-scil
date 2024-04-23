@@ -65,16 +65,22 @@ input:
         The input channel containing the reverse DWI file, reverse B-values and reverse B-vectors in FSL format files
         Structure: [ val(meta), path(rev_dwi), path(bval), path(bvec) ]
       pattern: "*.{nii,nii.gz|bval|bvec}"
+  - ch_b0:
+      type: file
+      description: |
+        The input channel containing the b0 file. This input is optional.
+        Structure: [ val(meta), path(rev_b0) ]
+      pattern: "*.{nii,nii.gz}"
   - ch_rev_b0:
       type: file
       description: |
-        The input channel containing the reverse b0 files. This input is optional.
+        The input channel containing the reverse b0 file. This input is optional.
         Structure: [ val(meta), path(rev_b0) ]
       pattern: "*.{nii,nii.gz}"
   - ch_config_topup:
       type: file
       description: |
-        The input channel containing the config files for Topup. This input is optional. See https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide#Configuration_files
+        The input channel containing the config file for Topup. This input is optional. See https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide#Configuration_files
         Structure: [ path(config_file) ]
       pattern: "*.{cnf}"
 output:
