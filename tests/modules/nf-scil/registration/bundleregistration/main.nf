@@ -16,7 +16,7 @@ workflow test_registration_bundleregistration {
             [ id:'test', single_end:false ], // meta map
             file("${test_data_directory}/bundle_all_1mm.nii.gz"),
             file("${test_data_directory}/affine.txt"),
-            file("${test_data_directory}/fibercup_atlas/subj_1/"),
+            file("${test_data_directory}/fibercup_atlas/subj_1/*.trk"),
             [],
             []
     ]}

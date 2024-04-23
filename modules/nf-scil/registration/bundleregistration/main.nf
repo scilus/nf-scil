@@ -7,7 +7,7 @@ process REGISTRATION_BUNDLEREGISTRATION {
         'scilus/scilus:1.6.0' }"
 
     input:
-    tuple val(meta), path(anat), path(transfo), path(centroids_dir), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
+    tuple val(meta), path(anat), path(transfo), path(centroids_dir, stageAs: 'centroids/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*__*.trk"), emit: warped_bundle
@@ -34,7 +34,8 @@ process REGISTRATION_BUNDLEREGISTRATION {
     def no_empty2 = task.ext.no_empty2 ? "--no_empty" : ""
 
     """
-    for centroid in ${centroids_dir}/*.trk;
+    echo ${centroids_dir}
+    for centroid in ${centroids_dir};
         do bname=\${centroid/_centroid/}
         bname=\$(basename \${bname} .trk)
 
@@ -66,7 +67,7 @@ process REGISTRATION_BUNDLEREGISTRATION {
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    for centroid in $centroids_dir/*.trk;
+    for centroid in ${centroids_dir};
         do bname=\${centroid/_centroid/}
         bname=\$(basename \${bname} .trk)
 
