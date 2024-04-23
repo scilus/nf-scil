@@ -16,7 +16,6 @@ denoising/mppca:
 denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
-
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
@@ -26,7 +25,6 @@ io/readbids:
 preproc/eddy:
   - modules/nf-scil/preproc/eddy/**
   - tests/modules/nf-scil/preproc/eddy/**
-
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -69,19 +67,12 @@ registration/antsapplytransforms:
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
-
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
-
-subworkflows/preproc_dwi:
-  - subworkflows/nf-scil/preproc_dwi/**
-  - tests/subworkflows/nf-scil/preproc_dwi/**
-
 testdata/scilpy:
   - modules/nf-scil/testdata/scilpy/**
   - tests/modules/nf-scil/testdata/scilpy/**
-
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
