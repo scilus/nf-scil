@@ -1,9 +1,10 @@
----
-name: "betcrop_cropvolume"
+name: betcrop_fslbetcrop
+
 channels:
   - Docker
   - Apptainer
+
 dependencies:
-  - "Scilpy"
-  - "FSL"
-  - "Mrtrix"
+  - FSL
+  - Mrtrix
+  - Scilpy

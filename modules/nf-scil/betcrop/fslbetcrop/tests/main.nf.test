@@ -10,7 +10,7 @@ nextflow_process {
     tag "betcrop/fslbetcrop"
 
     tag "subworkflows"
-    tag "subworkflows/load-test-data"
+    tag "subworkflows/load_test_data"
 
     setup {
         run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
