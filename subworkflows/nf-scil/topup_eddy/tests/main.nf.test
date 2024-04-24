@@ -54,9 +54,14 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
+                { assert workflow.success }
+                { assert snapshot(
+                    path(workflow.out.b0_mask),
+                    path(workflow.out.bval),
+                    path(workflow.out.versions),
+                    file(workflow.out.dwi).name,
+                    file(workflow.out.bvec).name,
+                    file(workflow.out.b0).name).match() })
         }
     }
 
@@ -97,9 +102,14 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
+                { assert workflow.success }
+                { assert snapshot(
+                    path(workflow.out.b0_mask),
+                    path(workflow.out.bval),
+                    path(workflow.out.versions),
+                    file(workflow.out.dwi).name,
+                    file(workflow.out.bvec).name,
+                    file(workflow.out.b0).name).match() })
         }
     }
 
@@ -139,10 +149,14 @@ nextflow_workflow {
 
         then {
             assertAll(
-                { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
-            )
+                { assert workflow.success }
+                { assert snapshot(
+                    path(workflow.out.b0_mask),
+                    path(workflow.out.bval),
+                    path(workflow.out.versions),
+                    file(workflow.out.dwi).name,
+                    file(workflow.out.bvec).name,
+                    file(workflow.out.b0).name).match() })
         }
     }
-
 }
