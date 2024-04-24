@@ -1,0 +1,7 @@
+---
+name: "bundle_recognize"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "Scilpy"
