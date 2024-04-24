@@ -57,7 +57,7 @@
                     ]
                 ],
                 "6": [
-                    "versions.yml:md5,5b03756c1608a3147c6307e0334c0790"
+                    "versions.yml:md5,9e086ab052cde49b01096c3bc8f524c0"
                 ],
                 "b0_mean": [
                     [
@@ -114,7 +114,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,5b03756c1608a3147c6307e0334c0790"
+                    "versions.yml:md5,9e086ab052cde49b01096c3bc8f524c0"
                 ]
             }
         ],
@@ -122,6 +122,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-24T20:52:46.227783"
+        "timestamp": "2024-04-24T21:00:19.157707"
     }
 }
