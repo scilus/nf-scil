@@ -18,7 +18,7 @@ list of guidelines and conventions.
     * [Using Scilpy Fetcher](#using-scilpy-fetcher)
     * [Using the `.test_data` directory](#using-the-test_data-directory)
 
-## Standards applying to the `process`
+## Standards applying to the `process` (in `<MODULE>/main.nf`)
 
 ### name
 
@@ -77,9 +77,10 @@ The types allowed for the `inputs` and `outputs` are : `map`, `list`, `file`, `d
 
 ### description
 
-Give a good, but concise description of what the module does. If there is multiple
-use-case, or that specifying some inputs changes the behavior of the module, mention
-it clearly here.
+Give a good, but concise description of what the `module` or `subworkflow` does. If there
+are multiple use-case, or that specifying some inputs changes some behaviors, mention it
+clearly here. For `subworkflows`, give a thorough listing of the steps included and describe
+them briefly, referring to the `modules` and `subworkflows` used to perform them.
 
 ### inputs and outputs
 
@@ -156,14 +157,8 @@ it's `main.nf`.
 
 ## Test data infrastructure
 
-> [!IMPORTANT]
-> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded,
-> signal it to your reviewers when submitting your PR
-
-### Using Scilpy Fetcher
-
 The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
-depository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
+repository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
 
 ```groovy
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
@@ -211,62 +206,3 @@ PROCESS( input )
 > The subworkflow must be called individually in each test workflow, even if they download
 > the same archives, since there is no mechanism to pass data channels to them from the
 > outside, or share cache between them.
-
-### Using the `.test_data` directory
-
-> [!WARNING]
-> This section is kept for legacy only, until the tests relying on it are updated.
-
-Some test datasets are available under the `.test_data` directory. You can use them as you wish,
-but inspect them before you do, since some dataset have been lean down and could not fit the
-reality of your test cases. **Do not add or modify data in this directory**. Tests packages are
-separated into `heavy` and `light` categories depending on their filesize. Inside, they are divided
-into relevant sub-categories (dwi, anat, ...).
-
-To bind data to test cases using this infrastructure, it first has to be added to `tests/config/test_data.config`
-in order to be visible. The configuration is a nesting of dictionaries, all test data
-files must be added to the `params.test_data` of this structure, using this convention
-for the `dictionary key` : `params.test_data[<category>][<tool>][<input_name>]`.
-
-Thus, a new binding in `tests/config/test_data.config` should resemble the following
-
-```groovy
-params {
-    test_data {
-        ...
-
-        "<category>": {
-            ...
-
-            "<tool>": {
-                ...
-
-                "<input_name1>": "${params.test_data_base}/<light or heavy>/.../<file1>"
-                "<input_name2>": "${params.test_data_base}/<light or heavy>/.../<file2>"
-
-                ...
-            }
-
-        ...
-        }
-    }
-}
-```
-
-You then use `params.test_data[<category>][<tool>][<input_name>]` in your test cases to
-attach the data to the test case, since the `params.test_data` collection is loaded
-automatically. To do so, in a test workflow, define an `input` object :
-
-```groovy
-input = [
-  [ id:'test', single_end:false ], // meta map
-  params.test_data[<category>][<tool>][<input_name1>],
-  params.test_data[<category>][<tool>][<input_name2>],
-  ...
-]
-```
-
-and use it as input to the processes to test.
-
-> [!IMPORTANT]
-> Keep the `meta map` in the first entry, modify it as necessary
