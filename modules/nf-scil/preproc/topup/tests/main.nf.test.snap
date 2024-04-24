@@ -1,0 +1,127 @@
+{
+    "topup": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__corrected_b0s.nii:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "topup_results_fieldcoef.nii:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "topup_results_movpar.txt:md5,57542f26425b0842154410bda572c099"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__rev_b0_warped.nii.gz:md5,64d2123d221d60d8b34d07ef8283c367"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__rev_b0_mean.nii.gz:md5,a0c63d7a8a234d85eeb63045ae2a8f60"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__b0_mean.nii.gz:md5,f50e652bcdd1d45f7a4c592df7eb851a"
+                    ]
+                ],
+                "6": [
+                    "versions.yml:md5,5b03756c1608a3147c6307e0334c0790"
+                ],
+                "b0_mean": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__b0_mean.nii.gz:md5,f50e652bcdd1d45f7a4c592df7eb851a"
+                    ]
+                ],
+                "rev_b0_mean": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__rev_b0_mean.nii.gz:md5,a0c63d7a8a234d85eeb63045ae2a8f60"
+                    ]
+                ],
+                "rev_b0_warped": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__rev_b0_warped.nii.gz:md5,64d2123d221d60d8b34d07ef8283c367"
+                    ]
+                ],
+                "topup_corrected_b0s": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__corrected_b0s.nii:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
+                    ]
+                ],
+                "topup_fieldcoef": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "topup_results_fieldcoef.nii:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
+                    ]
+                ],
+                "topup_movpart": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "topup_results_movpar.txt:md5,57542f26425b0842154410bda572c099"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,5b03756c1608a3147c6307e0334c0790"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-24T20:52:46.227783"
+    }
+}

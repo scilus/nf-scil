@@ -1,0 +1,8 @@
+---
+name: "preproc_topup"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "FSL"
+  - "scilpy"
