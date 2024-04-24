@@ -12,8 +12,8 @@ process PREPROC_TOPUP {
         path(config_topup)
 
     output:
-        tuple val(meta), path("*__corrected_b0s.nii"), emit: topup_corrected_b0s
-        tuple val(meta), path("*_fieldcoef.nii"), emit: topup_fieldcoef
+        tuple val(meta), path("*__corrected_b0s.nii.gz"), emit: topup_corrected_b0s
+        tuple val(meta), path("*_fieldcoef.nii.gz"), emit: topup_fieldcoef
         tuple val(meta), path("*_movpar.txt"), emit: topup_movpart
         tuple val(meta), path("*__rev_b0_warped.nii.gz"), emit: rev_b0_warped
         tuple val(meta), path("*__rev_b0_mean.nii.gz"), emit: rev_b0_mean
@@ -37,7 +37,6 @@ process PREPROC_TOPUP {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
     export ANTS_RANDOM_SEED=1234
-    export FSLOUTPUTTYPE=NIFTI
 
     if [[ -f "$b0" ]];
     then
@@ -63,7 +62,7 @@ process PREPROC_TOPUP {
         --readout $readout --out_prefix $prefix_topup\
         --out_script
     sh topup.sh
-    cp corrected_b0s.nii ${prefix}__corrected_b0s.nii
+    cp corrected_b0s.nii.gz ${prefix}__corrected_b0s.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
@@ -84,11 +83,11 @@ process PREPROC_TOPUP {
     antsRegistrationSyNQuick.sh -h
     scil_dwi_prepare_topup_command.py -h
 
-    touch ${prefix}__corrected_b0s.nii
+    touch ${prefix}__corrected_b0s.nii.gz
     touch ${prefix}__rev_b0_warped.nii.gz
     touch ${prefix}__rev_b0_mean.nii.gz
     touch ${prefix}__b0_mean.nii.gz
-    touch ${prefix_topup}_fieldcoef.nii
+    touch ${prefix_topup}_fieldcoef.nii.gz
     touch ${prefix_topup}_movpar.txt
 
     cat <<-END_VERSIONS > versions.yml

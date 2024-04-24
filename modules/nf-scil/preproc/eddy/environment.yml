@@ -1,0 +1,8 @@
+---
+name: "preproc_eddy"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "FSL"
+  - "scilpy"

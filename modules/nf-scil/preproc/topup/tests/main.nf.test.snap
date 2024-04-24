@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__corrected_b0s.nii:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
+                        "test__corrected_b0s.nii.gz:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
                     ]
                 ],
                 "1": [
@@ -17,7 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "topup_results_fieldcoef.nii:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
+                        "topup_results_fieldcoef.nii.gz:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
                     ]
                 ],
                 "2": [
@@ -92,7 +92,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__corrected_b0s.nii:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
+                        "test__corrected_b0s.nii.gz:md5,df45f8ec14b11f3f9abcebbfc3e874c0"
                     ]
                 ],
                 "topup_fieldcoef": [
@@ -101,7 +101,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "topup_results_fieldcoef.nii:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
+                        "topup_results_fieldcoef.nii.gz:md5,acf4f66cd5d2d4a918da04a5f43d22c6"
                     ]
                 ],
                 "topup_movpart": [
@@ -122,6 +122,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-24T21:00:19.157707"
+        "timestamp": "2024-04-24T21:57:24.414591"
     }
 }

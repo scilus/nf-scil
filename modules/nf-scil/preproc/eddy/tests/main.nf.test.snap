@@ -1,0 +1,91 @@
+{
+    "eddy": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,1c2c685cb98f1bf0f13cafba895dd451"
+                ],
+                "b0_mask": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
+                    ]
+                ],
+                "bval_corrected": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                    ]
+                ],
+                "bvec_corrected": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__dwi_eddy_corrected.bvec:md5,97e948b33375382034e0cc2ba4a437c2"
+                    ]
+                ],
+                "dwi_corrected": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__dwi_corrected.nii.gz:md5,09d850a2b7460ab6a6159d14a93a02d7"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,1c2c685cb98f1bf0f13cafba895dd451"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-04-24T21:41:03.094675"
+    }
+}
