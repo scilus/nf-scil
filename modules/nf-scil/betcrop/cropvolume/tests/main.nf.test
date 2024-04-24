@@ -10,16 +10,30 @@ nextflow_process {
     tag "betcrop"
     tag "betcrop/cropvolume"
 
+    setup {
+        run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+            script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
+            process {
+                """
+                input[0] = Channel.from( [ "heavy.zip" ] )
+                input[1] = "test.load-test-data"
+                """
+            }
+        }
+    }
+
     test("betcrop - cropvolume") {
 
         when {
             process {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.test_data['betcrop']['cropvolume']['image'], checkIfExists: true),
-                    []
-                ]
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat_image.nii.gz"),
+                        []
+                    ]
+                }
                 """
             }
         }
@@ -40,11 +54,13 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.test_data['betcrop']['cropvolume']['image'], checkIfExists: true),
-                    []
-                ]
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat_image.nii.gz"),
+                        []
+                    ]
+                }
                 """
             }
         }

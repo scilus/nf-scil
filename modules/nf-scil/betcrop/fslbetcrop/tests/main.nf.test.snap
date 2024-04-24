@@ -3,64 +3,28 @@
         "content": [
             {
                 "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test__b0_bet.nii.gz:md5,88d9cf75a5e270b893f20cac06aa194d",
-                            "test__image_bet.nii.gz:md5,cf4cd471df9fa1d4e8b32fa13c2da016"
-                        ]
-                    ]
+                    
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test__b0_bet_mask.nii.gz:md5,23864b4bb35840287bb73c72529779a4",
-                            "test__image_bet_mask.nii.gz:md5,bfe292b871bc66c2f7a6d38e71475af3"
-                        ]
-                    ]
+                    
                 ],
                 "2": [
                     
                 ],
                 "3": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ],
                 "bbox": [
                     
                 ],
                 "image": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test__b0_bet.nii.gz:md5,88d9cf75a5e270b893f20cac06aa194d",
-                            "test__image_bet.nii.gz:md5,cf4cd471df9fa1d4e8b32fa13c2da016"
-                        ]
-                    ]
+                    
                 ],
                 "mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test__b0_bet_mask.nii.gz:md5,23864b4bb35840287bb73c72529779a4",
-                            "test__image_bet_mask.nii.gz:md5,bfe292b871bc66c2f7a6d38e71475af3"
-                        ]
-                    ]
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ]
             }
         ],
@@ -68,70 +32,34 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T16:42:42.142214"
+        "timestamp": "2024-04-24T15:30:21.733873"
     },
     "betcrop - fslbetcrop - t1": {
         "content": [
             {
                 "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet.nii.gz:md5,687ccd83b5f7d49608e3372ee48f10c5"
-                    ]
+                    
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet_mask.nii.gz:md5,8ab73e89ef64b280ff3ae93b84899bd9"
-                    ]
+                    
                 ],
                 "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_boundingBox.pkl:md5,9433c088cb929add71ecbe76844628e9"
-                    ]
+                    
                 ],
                 "3": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ],
                 "bbox": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_boundingBox.pkl:md5,9433c088cb929add71ecbe76844628e9"
-                    ]
+                    
                 ],
                 "image": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet.nii.gz:md5,687ccd83b5f7d49608e3372ee48f10c5"
-                    ]
+                    
                 ],
                 "mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet_mask.nii.gz:md5,8ab73e89ef64b280ff3ae93b84899bd9"
-                    ]
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ]
             }
         ],
@@ -139,70 +67,34 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T16:36:43.652804"
+        "timestamp": "2024-04-24T15:30:37.485041"
     },
     "betcrop - fslbetcrop - t1 - dilate": {
         "content": [
             {
                 "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet.nii.gz:md5,687ccd83b5f7d49608e3372ee48f10c5"
-                    ]
+                    
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet_mask.nii.gz:md5,8af0f9025e28e2c96a62e3a4cb01ab48"
-                    ]
+                    
                 ],
                 "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_boundingBox.pkl:md5,9433c088cb929add71ecbe76844628e9"
-                    ]
+                    
                 ],
                 "3": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ],
                 "bbox": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_boundingBox.pkl:md5,9433c088cb929add71ecbe76844628e9"
-                    ]
+                    
                 ],
                 "image": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet.nii.gz:md5,687ccd83b5f7d49608e3372ee48f10c5"
-                    ]
+                    
                 ],
                 "mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__image_bet_mask.nii.gz:md5,8af0f9025e28e2c96a62e3a4cb01ab48"
-                    ]
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
+                    
                 ]
             }
         ],
@@ -210,6 +102,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T16:37:07.729622"
+        "timestamp": "2024-04-24T15:30:52.805155"
     }
 }

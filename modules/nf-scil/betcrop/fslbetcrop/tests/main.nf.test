@@ -17,7 +17,7 @@ nextflow_process {
             script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
             process {
                 """
-                input[0] = Channel.from( [ "others.zip" ] )
+                input[0] = Channel.from( [ "heavy.zip" ] )
                 input[1] = "test.load-test-data"
                 """
             }
@@ -29,12 +29,14 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.test_data['betcrop']['fslbetcrop']['dwi'], checkIfExists: true),
-                    file(params.test_data['betcrop']['fslbetcrop']['bval'], checkIfExists: true),
-                    file(params.test_data['betcrop']['fslbetcrop']['bvec'], checkIfExists: true)
-                ]
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/dwi.nii.gz"),
+                        file("\${test_data_directory}/dwi.bval"),
+                        file("\${test_data_directory}/dwi.bvec")
+                    ]
+                }
                 """
             }
         }
@@ -58,7 +60,7 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/t1.nii.gz"),
+                        file("\${test_data_directory}/anat_image.nii.gz"),
                         [],
                         []
                     ]
@@ -86,7 +88,7 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/t1.nii.gz"),
+                        file("\${test_data_directory}/anat_image.nii.gz"),
                         [],
                         []
                     ]
