@@ -30,12 +30,10 @@ nextflow_process {
         when {
             process {
                 """
-                // TODO nf-core: define inputs of the process here. Example:
-                
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file(\${test_data_directory}/anat/anat_image.nii.gz)
+                        file("\${test_data_directory}/dwi/dwi.nii.gz")
                     ]
                 }
                 """

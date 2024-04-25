@@ -10,16 +10,33 @@ nextflow_process {
     tag "denoising"
     tag "denoising/nlmeans"
 
+    tag "subworkflows"
+    tag "subworkflows/load_test_data"
+
+    setup {
+        run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+            script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
+            process {
+                """
+                input[0] = Channel.from( [ "heavy.zip" ] )
+                input[1] = "test.load-test-data"
+                """
+            }
+        }
+    }
+
     test("denoising - nlmeans") {
 
         when {
             process {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.test_data['denoising']['nlmeans']['image'], checkIfExists: true),
-                    []
-                ]
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat/anat_image.nii.gz"),
+                        []
+                    ]
+                }
                 """
             }
         }
@@ -38,11 +55,13 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = [
-                    [ id:'test', single_end:false ], // meta map
-                    file(params.test_data['denoising']['nlmeans']['image'], checkIfExists: true),
-                    file(params.test_data['denoising']['nlmeans']['mask'], checkIfExists: true)
-                ]
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat/anat_image.nii.gz"),
+                        file("\${test_data_directory}/anat/anat_mask.nii.gz")
+                    ]
+                }
                 """
             }
         }
