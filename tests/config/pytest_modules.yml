@@ -10,9 +10,6 @@ betcrop/fslbetcrop:
 bundle/recognize:
   - modules/nf-scil/bundle/recognize/**
   - tests/modules/nf-scil/bundle/recognize/**
-denoising/nlmeans:
-  - modules/nf-scil/denoising/nlmeans/**
-  - tests/modules/nf-scil/denoising/nlmeans/**
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
