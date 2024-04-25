@@ -1,333 +1,106 @@
 {
     "topup_eddy_rev_b0": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,8d779e1b00bd01ba1669aec9380f1928"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,2c0f7386203f5bc715d5fd8f94e9695d"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,dbc6369ceb0f1b727d779d0c565b46a7"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
-                ],
-                "b0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,dbc6369ceb0f1b727d779d0c565b46a7"
-                    ]
-                ],
-                "b0_mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                    ]
-                ],
-                "bval": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
-                    ]
-                ],
-                "bvec": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,2c0f7386203f5bc715d5fd8f94e9695d"
-                    ]
-                ],
-                "dwi": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,8d779e1b00bd01ba1669aec9380f1928"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
+                ]
+            ],
+            [
+                "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
+                "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
+                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            ],
+            "test__dwi_corrected.nii.gz",
+            "test__dwi_eddy_corrected.bvec",
+            "test_b0.nii.gz"
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T18:03:22.465919"
+        "timestamp": "2024-04-25T16:03:55.680588"
     },
     "eddy": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,c75726a5049f49f6eb144802d56b05db"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,007c00eb987bbd60863ce197d718f080"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,aa90afbd2efc20bf0a66d7273c6150dd"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,3574cc8f29da429a0f610f2572c4886c"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
-                ],
-                "b0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,aa90afbd2efc20bf0a66d7273c6150dd"
-                    ]
-                ],
-                "b0_mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,3574cc8f29da429a0f610f2572c4886c"
-                    ]
-                ],
-                "bval": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
-                    ]
-                ],
-                "bvec": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,007c00eb987bbd60863ce197d718f080"
-                    ]
-                ],
-                "dwi": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,c75726a5049f49f6eb144802d56b05db"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__b0_bet_mask.nii.gz:md5,3574cc8f29da429a0f610f2572c4886c"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
+                ]
+            ],
+            [
+                "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
+                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            ],
+            "test__dwi_corrected.nii.gz",
+            "test__dwi_eddy_corrected.bvec",
+            "test_b0.nii.gz"
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T17:59:06.389978"
+        "timestamp": "2024-04-25T15:35:56.386137"
     },
     "topup_eddy_rev_dwi": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,e3ed28b06111b04ff5cf11d6ce2dc179"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,56e99dc9078c6ca56ab98cff4678bfd5"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,a87dfb0ab4fd485391a765e4a4b26c42"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
-                ],
-                "b0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_b0.nii.gz:md5,a87dfb0ab4fd485391a765e4a4b26c42"
-                    ]
-                ],
-                "b0_mask": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                    ]
-                ],
-                "bval": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
-                    ]
-                ],
-                "bvec": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_eddy_corrected.bvec:md5,56e99dc9078c6ca56ab98cff4678bfd5"
-                    ]
-                ],
-                "dwi": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__dwi_corrected.nii.gz:md5,e3ed28b06111b04ff5cf11d6ce2dc179"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
-                    "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
-                    "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                ]
+            ],
+            [
+                "versions.yml:md5,5af3f2becfc5b99563365a86fc38fc21",
+                "versions.yml:md5,76cab382c75fc0f861e01b34532789a4",
+                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+            ],
+            "test__dwi_corrected.nii.gz",
+            "test__dwi_eddy_corrected.bvec",
+            "test_b0.nii.gz"
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-23T18:21:02.068502"
+        "timestamp": "2024-04-25T16:13:13.589347"
     }
 }

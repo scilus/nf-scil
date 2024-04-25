@@ -33,16 +33,13 @@ workflow TOPUP_EDDY {
                                     .combine(PREPROC_TOPUP.out.topup_corrected_b0s, by: 0)
                                     .combine(PREPROC_TOPUP.out.topup_fieldcoef, by: 0)
                                     .combine(PREPROC_TOPUP.out.topup_movpart, by: 0)
-            // ** RUN EDDY ** //
-            PREPROC_EDDY ( ch_eddy_input )
         }
         else
         {
             // ** RUN EDDY ** //
-            ch_image =    ch_dwi.map{ it + [[], [], [], [], [], []] }
-            PREPROC_EDDY ( ch_image )
+            ch_eddy_input =    ch_dwi.map{ it + [[], [], [], [], [], []] }
         }
-
+        PREPROC_EDDY ( ch_eddy_input )
         ch_dwi_extract_b0 =   PREPROC_EDDY.out.dwi_corrected.combine(PREPROC_EDDY.out.bval_corrected, by: 0)
                                                             .combine(PREPROC_EDDY.out.bvec_corrected, by: 0)
         UTILS_EXTRACTB0 { ch_dwi_extract_b0 }

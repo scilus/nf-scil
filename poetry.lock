@@ -1305,13 +1305,13 @@ plot = ["matplotlib", "scipy", "seaborn"]
 
 [[package]]
 name = "pipestat"
-version = "0.9.0"
+version = "0.9.1"
 description = "A pipeline results reporter"
 optional = false
 python-versions = "*"
 files = [
-    {file = "pipestat-0.9.0-py3-none-any.whl", hash = "sha256:0b41ac13dae5f58e4174c5e0b796ba6ca2e33494739016f8ef42b6cc8338c9a0"},
-    {file = "pipestat-0.9.0.tar.gz", hash = "sha256:821f01ea4a70ab2f27c08a9792cc27788f7554bff572e310088e18c5aabf3fea"},
+    {file = "pipestat-0.9.1-py3-none-any.whl", hash = "sha256:9d3dd33fef1562bb4f9bc25bef45a4e81d92e97939c38ccd8545b31a8788329f"},
+    {file = "pipestat-0.9.1.tar.gz", hash = "sha256:61c44726612bb06c34cf608dc2e45d8bb0e2b71b5249f1a2010addd32b4678dc"},
 ]
 
 [package.dependencies]
@@ -2131,13 +2131,13 @@ widechars = ["wcwidth"]
 
 [[package]]
 name = "textual"
-version = "0.57.1"
+version = "0.58.0"
 description = "Modern Text User Interface framework"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "textual-0.57.1-py3-none-any.whl", hash = "sha256:7a0a660525b207dd2ef5d95b7b9585f13d59ec0112de4c8f0a8dd0ffb2b9a6c4"},
-    {file = "textual-0.57.1.tar.gz", hash = "sha256:91029212b28c0cc73adad1e8b9fcda0b53947d4d81a1e8df4efbcb1346638744"},
+    {file = "textual-0.58.0-py3-none-any.whl", hash = "sha256:9daddf713cb64d186fa1ae647fea482dc84b643c9284132cd87adb99cd81d638"},
+    {file = "textual-0.58.0.tar.gz", hash = "sha256:5c8c3322308e2b932c4550b0ae9f70daebc39716de3f920831cda96d1640b383"},
 ]
 
 [package.dependencies]
