@@ -1,0 +1,59 @@
+nextflow_process {
+
+    name "Test Process DENOISING_NLMEANS"
+    script "../main.nf"
+    process "DENOISING_NLMEANS"
+    config "./nextflow.config"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "denoising"
+    tag "denoising/nlmeans"
+
+    test("denoising - nlmeans") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test', single_end:false ], // meta map
+                    file(params.test_data['denoising']['nlmeans']['image'], checkIfExists: true),
+                    []
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+    test("denoising - nlmeans - withmask") {
+
+        when {
+            process {
+                """
+                input[0] = [
+                    [ id:'test', single_end:false ], // meta map
+                    file(params.test_data['denoising']['nlmeans']['image'], checkIfExists: true),
+                    file(params.test_data['denoising']['nlmeans']['mask'], checkIfExists: true)
+                ]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+
+}
