@@ -12,10 +12,10 @@ process PREPROC_EDDY {
         tuple val(meta), path(dwi), path(bval), path(bvec), path(rev_dwi), path(rev_bval), path(rev_bvec), path(corrected_b0s), path(topup_fieldcoef), path(topup_movpart)
 
     output:
-    tuple val(meta), path("*__dwi_corrected.nii.gz"), emit: dwi_corrected
-    tuple val(meta), path("*__bval_eddy"), emit: bval_corrected
-    tuple val(meta), path("*__dwi_eddy_corrected.bvec"), emit: bvec_corrected
-    tuple val(meta), path("*__b0_bet_mask.nii.gz"), emit: b0_mask
+        tuple val(meta), path("*__dwi_corrected.nii.gz"), emit: dwi_corrected
+        tuple val(meta), path("*__bval_eddy"), emit: bval_corrected
+        tuple val(meta), path("*__dwi_eddy_corrected.bvec"), emit: bvec_corrected
+        tuple val(meta), path("*__b0_bet_mask.nii.gz"), emit: b0_mask
 
     path "versions.yml"           , emit: versions
 
@@ -39,17 +39,13 @@ process PREPROC_EDDY {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
-    export ANTS_RANDOM_SEED=1234
+    export ANTS_RANDOM_SEED=7468
 
     orig_bval=$bval
     # Concatenate DWIs
     number_rev_dwi=0
     if [[ -f "$rev_dwi" ]];
     then
-        mrconvert $corrected_b0s b0_corrected.nii.gz -coord 3 0 -axes 0,1,2 -nthreads 1
-        bet b0_corrected.nii.gz ${prefix}__b0_bet.nii.gz -m -R\
-            -f $bet_topup_before_eddy_f
-
         scil_concatenate_dwi.py ${prefix}__concatenated_dwi.nii.gz ${prefix}__concatenated_dwi.bval ${prefix}__concatenated_dwi.bvec -f\
             --in_dwis ${dwi} ${rev_dwi} --in_bvals ${bval} ${rev_bval}\
             --in_bvecs ${bvec} ${rev_bvec}
@@ -68,6 +64,10 @@ process PREPROC_EDDY {
     # If topup has been run before
     if [[ -f "$topup_fieldcoef" ]]
     then
+        mrconvert $corrected_b0s b0_corrected.nii.gz -coord 3 0 -axes 0,1,2 -nthreads 1
+        bet b0_corrected.nii.gz ${prefix}__b0_bet.nii.gz -m -R\
+            -f $bet_topup_before_eddy_f
+
         scil_prepare_eddy_command.py \${dwi} \${bval} \${bvec} ${prefix}__b0_bet_mask.nii.gz\
             --topup $prefix_topup --eddy_cmd $eddy_cmd\
             --b0_thr $b0_thr_extract_b0\
@@ -84,7 +84,7 @@ process PREPROC_EDDY {
         maskfilter ${prefix}__b0_bet_mask.nii.gz dilate ${prefix}__b0_bet_mask_dilated.nii.gz\
             --npass $dilate_b0_mask_prelim_brain_extraction -nthreads 1
         scil_image_math.py multiplication ${prefix}__b0.nii.gz ${prefix}__b0_bet_mask_dilated.nii.gz\
-            ${prefix}__b0_bet.nii.gz
+            ${prefix}__b0_bet.nii.gz --data_type float32 -f
 
         scil_prepare_eddy_command.py \${dwi} \${bval} \${bvec} ${prefix}__b0_bet_mask.nii.gz\
             --eddy_cmd $eddy_cmd --b0_thr $b0_thr_extract_b0\
