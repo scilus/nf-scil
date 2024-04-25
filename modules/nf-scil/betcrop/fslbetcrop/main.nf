@@ -48,9 +48,9 @@ process BETCROP_FSLBETCROP {
     if [ "$task.ext.crop" = "true" ];
     then
         scil_volume_crop.py ${prefix}__image_bet.nii.gz ${prefix}__image_bet.nii.gz -f \
-            --output_bbox ${prefix}__image_boundingBox.pkl -f
+            --output_bbox ${prefix}__image_boundingBox.pkl
         scil_volume_crop.py ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz -f\
-            --input_bbox ${prefix}__image_boundingBox.pkl -f
+            --input_bbox ${prefix}__image_boundingBox.pkl
         scil_volume_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz \
             --data_type uint8 -f
     fi

@@ -10,6 +10,9 @@ nextflow_process {
     tag "betcrop"
     tag "betcrop/cropvolume"
 
+    tag "subworkflows"
+    tag "subworkflows/load_test_data"
+
     setup {
         run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
             script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
@@ -30,7 +33,7 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat_image.nii.gz"),
+                        file("\${test_data_directory}/anat/anat_image.nii.gz"),
                         []
                     ]
                 }
@@ -57,7 +60,7 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat_image.nii.gz"),
+                        file("\${test_data_directory}/anat/anat_image.nii.gz"),
                         []
                     ]
                 }

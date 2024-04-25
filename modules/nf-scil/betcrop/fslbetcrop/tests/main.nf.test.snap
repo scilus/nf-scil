@@ -3,63 +3,147 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        [
+                            "test__b0_bet.nii.gz:md5,ec3c7d679119b7f973e3f67a269587c8",
+                            "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
+                        ]
+                    ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        [
+                            "test__b0_bet_mask.nii.gz:md5,a765fc95e778a7a89d933c566143b65c",
+                            "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
+                        ]
+                    ]
                 ],
                 "2": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,7a2508ff4c6ee3a0c16828411f42ea6a"
+                    ]
                 ],
                 "3": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ],
                 "bbox": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,7a2508ff4c6ee3a0c16828411f42ea6a"
+                    ]
                 ],
                 "image": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        [
+                            "test__b0_bet.nii.gz:md5,ec3c7d679119b7f973e3f67a269587c8",
+                            "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
+                        ]
+                    ]
                 ],
                 "mask": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        [
+                            "test__b0_bet_mask.nii.gz:md5,a765fc95e778a7a89d933c566143b65c",
+                            "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
+                        ]
+                    ]
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "unknown"
         },
-        "timestamp": "2024-04-24T15:30:21.733873"
+        "timestamp": "2024-04-24T16:03:09.174263"
     },
     "betcrop - fslbetcrop - t1": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet.nii.gz:md5,3c983126d6226c914030e8d6a5c63f6e"
+                    ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet_mask.nii.gz:md5,c5d967b9ef5ffb31b543fecb87ef8479"
+                    ]
                 ],
                 "2": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,8eb94c27b3db4e2f7e233eff697597fc"
+                    ]
                 ],
                 "3": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ],
                 "bbox": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,8eb94c27b3db4e2f7e233eff697597fc"
+                    ]
                 ],
                 "image": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet.nii.gz:md5,3c983126d6226c914030e8d6a5c63f6e"
+                    ]
                 ],
                 "mask": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet_mask.nii.gz:md5,c5d967b9ef5ffb31b543fecb87ef8479"
+                    ]
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ]
             }
         ],
@@ -67,41 +151,77 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-24T15:30:37.485041"
+        "timestamp": "2024-04-24T15:44:11.896043"
     },
     "betcrop - fslbetcrop - t1 - dilate": {
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet.nii.gz:md5,3c983126d6226c914030e8d6a5c63f6e"
+                    ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet_mask.nii.gz:md5,78a93e32e7ff3093649509e59256645b"
+                    ]
                 ],
                 "2": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,8eb94c27b3db4e2f7e233eff697597fc"
+                    ]
                 ],
                 "3": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ],
                 "bbox": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_boundingBox.pkl:md5,8eb94c27b3db4e2f7e233eff697597fc"
+                    ]
                 ],
                 "image": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet.nii.gz:md5,3c983126d6226c914030e8d6a5c63f6e"
+                    ]
                 ],
                 "mask": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__image_bet_mask.nii.gz:md5,78a93e32e7ff3093649509e59256645b"
+                    ]
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,5336fac953810299feeb1a62e824ad35"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "unknown"
         },
-        "timestamp": "2024-04-24T15:30:52.805155"
+        "timestamp": "2024-04-24T16:03:41.240199"
     }
 }
