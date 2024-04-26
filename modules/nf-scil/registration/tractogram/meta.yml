@@ -1,6 +1,6 @@
 ---
-name: "registration_bundleregistration"
-description: Apply transform to bundles centroid
+name: "registration_tractogram"
+description: Apply a transform to a tractogram or multiple tractograms
 keywords:
   - Diffusion MRI
   - Registration
@@ -42,7 +42,7 @@ output:
 
   - tractogram:
       type: file
-      description: Warped tractogram
+      description: Warped tractogram(s)
       pattern: "*.trk"
 
   - versions:
