@@ -31,7 +31,7 @@ input:
   - tractograms_dir:
       type: directory
       description: Path to directory containing tractograms to register
-      pattern: "*.trk"
+      pattern: "*.{trk,tck}"
 
 output:
   - meta:
@@ -43,7 +43,7 @@ output:
   - tractogram:
       type: file
       description: Warped tractogram(s)
-      pattern: "*.trk"
+      pattern: "*.{trk,tck}"
 
   - versions:
       type: file

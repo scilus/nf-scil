@@ -10,7 +10,7 @@ process REGISTRATION_TRACTOGRAM {
     tuple val(meta), path(anat), path(transfo), path(tractograms_dir, stageAs: 'tractograms/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
 
     output:
-    tuple val(meta), path("*__*.trk"), emit: warped_tractogram
+    tuple val(meta), path("*__*.{trk,tck}"), emit: warped_tractogram
     path "versions.yml"           , emit: versions
 
     when:
@@ -36,9 +36,10 @@ process REGISTRATION_TRACTOGRAM {
     """
     for tractogram in ${tractograms_dir};
         do bname=\${tractogram/_centroid/}
-        bname=\$(basename \${bname} .trk)
+        ext=\${tractogram#*.}
+        bname=\$(basename \${bname} .\${ext})
 
-        scil_apply_transform_to_tractogram.py \$tractogram $anat $transfo tmp.trk\
+        scil_apply_transform_to_tractogram.py \$tractogram $anat $transfo tmp.\${ext}\
                         $in_deformation\
                         $inverse\
                         $reverse_operation\
@@ -47,7 +48,7 @@ process REGISTRATION_TRACTOGRAM {
                         $force\
                         $reference
 
-        scil_remove_invalid_streamlines.py tmp.trk ${prefix}__\${bname}.trk\
+        scil_remove_invalid_streamlines.py tmp.trk ${prefix}__\${bname}.\${ext}\
                         $cut_invalid\
                         $remove_single_point\
                         $remove_overlapping_points\
@@ -68,9 +69,10 @@ process REGISTRATION_TRACTOGRAM {
     """
     for tractogram in ${tractograms_dir};
         do bname=\${tractogram/_centroid/}
-        bname=\$(basename \${bname} .trk)
+        ext=\${tractogram#*.}
+        bname=\$(basename \${bname} .\${ext})
 
-        touch ${prefix}__\${bname}.trk
+        touch ${prefix}__\${bname}.\${ext}
     done
 
     scil_apply_transform_to_tractogram.py -h
