@@ -86,7 +86,9 @@ process TESTDATA_SCILPY {
             "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
             "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
             "antsbet.zip": "66850bea7af7c1f3fc4e7d371d12d6e8",
-            "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505"
+            "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505",
+            "light.zip": "f2a3a8bddf43d1f67a5e8867ce9ebaa2",
+            "heavy.zip": "6f2cd0bbdb162455e71de1c7d3b4eb18"
         }
 
     def fetch_data(files_dict, keys=None):
