@@ -1,6 +1,5 @@
 include { DENOISING_MPPCA as DENOISE_DWI } from '../../../modules/nf-scil/denoising/mppca/main'
 include { DENOISING_MPPCA as DENOISE_REVDWI } from '../../../modules/nf-scil/denoising/mppca/main'
-include { UTILS_EXTRACTB0 } from '../../../modules/nf-scil/utils/extractb0/main'
 include { BETCROP_FSLBETCROP } from '../../../modules/nf-scil/betcrop/fslbetcrop/main'
 include { PREPROC_N4 as N4_DWI } from '../../../modules/nf-scil/preproc/n4/main'
 include { PREPROC_NORMALIZE as NORMALIZE_DWI } from '../../../modules/nf-scil/preproc/normalize/main'
@@ -68,8 +67,8 @@ workflow PREPROC_DWI {
         dwi_resample        = RESAMPLE_DWI.out.image        // channel: [ val(meta), [ dwi_resample ] ]
         bval                = TOPUP_EDDY.out.bval_corrected // channel: [ val(meta), [ bval_corrected ] ]
         bvec                = TOPUP_EDDY.out.bvec_corrected // channel: [ val(meta), [ bvec_corrected ] ]
-        b0                  = UTILS_EXTRACTB0.out.b0        // channel: [ val(meta), [ b0 ] ]
-        b0_mask             = TOPUP_EDDY.out.out.b0_mask    // channel: [ val(meta), [ b0_mask ] ]
+        b0                  = TOPUP_EDDY.out.b0              // channel: [ val(meta), [ b0 ] ]
+        b0_mask             = TOPUP_EDDY.out.b0_mask    // channel: [ val(meta), [ b0_mask ] ]
         dwi_bounding_box    = BETCROP_FSLBETCROP.out.bbox   // channel: [ val(meta), [ dwi_bounding_box ] ]
         dwi_topup_eddy      = TOPUP_EDDY.out.dwi_corrected  // channel: [ val(meta), [ dwi_topup_eddy ] ]
         dwi_n4              = N4_DWI.out.image              // channel: [ val(meta), [ dwi_n4 ] ]

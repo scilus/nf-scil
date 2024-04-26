@@ -8,8 +8,8 @@ nextflow_workflow {
     tag "subworkflows"
     tag "subworkflows_nfcore"
     tag "subworkflows/preproc_dwi"
-    tag "subworkflows/topup_eddy"
 
+    tag "subworkflows/topup_eddy"
     tag "betcrop/fslbetcrop"
     tag "denoising/mppca"
     tag "image/resample"
