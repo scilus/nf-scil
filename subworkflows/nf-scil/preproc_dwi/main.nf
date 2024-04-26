@@ -61,16 +61,16 @@ workflow PREPROC_DWI {
         // ** Resampling DWI ** //
         ch_resampling = NORMALIZE_DWI.out.dwi.map{ it + [[]] }
         RESAMPLE_DWI ( ch_resampling )
-        ch_versions = ch_versions.mix(RESAMPLE_DWI.out.versions.first()))
+        ch_versions = ch_versions.mix(RESAMPLE_DWI.out.versions.first())
 
     emit:
-        dwi_resample        = RESAMPLE_DWI.out.image        // channel: [ val(meta), [ dwi_resample ] ]
-        bval                = TOPUP_EDDY.out.bval_corrected // channel: [ val(meta), [ bval_corrected ] ]
-        bvec                = TOPUP_EDDY.out.bvec_corrected // channel: [ val(meta), [ bvec_corrected ] ]
-        b0                  = TOPUP_EDDY.out.b0              // channel: [ val(meta), [ b0 ] ]
-        b0_mask             = TOPUP_EDDY.out.b0_mask    // channel: [ val(meta), [ b0_mask ] ]
-        dwi_bounding_box    = BETCROP_FSLBETCROP.out.bbox   // channel: [ val(meta), [ dwi_bounding_box ] ]
-        dwi_topup_eddy      = TOPUP_EDDY.out.dwi_corrected  // channel: [ val(meta), [ dwi_topup_eddy ] ]
-        dwi_n4              = N4_DWI.out.image              // channel: [ val(meta), [ dwi_n4 ] ]
-        versions            = ch_versions                   // channel: [ versions.yml ]
+        dwi_resample        = RESAMPLE_DWI.out.image            // channel: [ val(meta), [ dwi_resample ] ]
+        bval                = TOPUP_EDDY.out.bval_corrected     // channel: [ val(meta), [ bval_corrected ] ]
+        bvec                = TOPUP_EDDY.out.bvec_corrected     // channel: [ val(meta), [ bvec_corrected ] ]
+        b0                  = TOPUP_EDDY.out.b0                 // channel: [ val(meta), [ b0 ] ]
+        b0_mask             = TOPUP_EDDY.out.b0_mask            // channel: [ val(meta), [ b0_mask ] ]
+        dwi_bounding_box    = BETCROP_FSLBETCROP.out.bbox       // channel: [ val(meta), [ dwi_bounding_box ] ]
+        dwi_topup_eddy      = TOPUP_EDDY.out.dwi_corrected      // channel: [ val(meta), [ dwi_topup_eddy ] ]
+        dwi_n4              = N4_DWI.out.image                  // channel: [ val(meta), [ dwi_n4 ] ]
+        versions            = ch_versions                       // channel: [ versions.yml ]
 }
