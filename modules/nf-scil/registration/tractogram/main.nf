@@ -1,4 +1,4 @@
-process REGISTRATION_BUNDLEREGISTRATION {
+process REGISTRATION_TRACTOGRAM {
     tag "$meta.id"
     label 'process_single'
 
