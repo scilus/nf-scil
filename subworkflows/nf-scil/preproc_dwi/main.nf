@@ -4,7 +4,7 @@ include { BETCROP_FSLBETCROP } from '../../../modules/nf-scil/betcrop/fslbetcrop
 include { PREPROC_N4 as N4_DWI } from '../../../modules/nf-scil/preproc/n4/main'
 include { PREPROC_NORMALIZE as NORMALIZE_DWI } from '../../../modules/nf-scil/preproc/normalize/main'
 include { IMAGE_RESAMPLE as RESAMPLE_DWI } from '../../../modules/nf-scil/image/resample/main'
-include { TOPUP_EDDY } from '../../../subworflows/nf-scil/topup_eddy/main'
+include { TOPUP_EDDY } from '../../subworkflows/nf-scil/topup_eddy/main'
 
 
 workflow PREPROC_DWI {

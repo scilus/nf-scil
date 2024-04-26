@@ -51,7 +51,8 @@ components:
   - preproc/n4
   - preproc/normalize
   - utils/extractb0
-  - subworkflows/topup_eddy
+  - preproc/topup
+  - preproc/eddy
 input:
   - ch_dwi:
       type: file
