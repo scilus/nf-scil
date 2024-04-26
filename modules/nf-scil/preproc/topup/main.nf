@@ -1,12 +1,10 @@
-params.scilpy_version = "2.0.0"
-
 process PREPROC_TOPUP {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        "https://scil.usherbrooke.ca/containers/scilus_${params.scilpy_version}.sif":
-        "scilus/scilus:${params.scilpy_version}"}"
+        "https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif":
+        "scilus/scilus:2.0.0"}"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec), path(b0), path(rev_dwi), path(rev_bval), path(rev_bvec), path(rev_b0)
@@ -67,7 +65,7 @@ process PREPROC_TOPUP {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: ${params.scilpy_version}
+        scilpy: 2.0.0
         antsRegistration: 2.4.3
         fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
 
@@ -93,7 +91,7 @@ process PREPROC_TOPUP {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: ${params.scilpy_version}
+        scilpy: 2.0.0
         antsRegistration: 2.4.3
         fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
 
