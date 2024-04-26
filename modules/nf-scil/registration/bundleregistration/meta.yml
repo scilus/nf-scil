@@ -28,9 +28,9 @@ input:
       description: ANTs affine transform
       pattern: "*.mat"
 
-  - centroid_dir:
+  - tractograms_dir:
       type: directory
-      description: Path to directory containing
+      description: Path to directory containing tractograms to register
       pattern: "*.trk"
 
 output:
@@ -40,9 +40,9 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - bundle:
+  - tractogram:
       type: file
-      description: Warped bundle to atlas
+      description: Warped tractogram
       pattern: "*.trk"
 
   - versions:
