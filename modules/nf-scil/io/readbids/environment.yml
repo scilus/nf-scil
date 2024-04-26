@@ -1,5 +1,5 @@
 ---
-name: "segmentation_fastseg"
+name: "io_readbids"
 channels:
   - Docker
   - Apptainer
