@@ -9,12 +9,14 @@ nextflow_workflow {
     tag "subworkflows_nfcore"
     tag "subworkflows/preproc_dwi"
 
-    tag "subworkflows/topup_eddy"
+    tag "betcrop/cropvolume"
     tag "betcrop/fslbetcrop"
     tag "denoising/mppca"
     tag "image/resample"
     tag "preproc/n4"
     tag "preproc/normalize"
+    tag "utils/extractb0"
+    tag "topup_eddy"
 
     tag "load_test_data"
 
