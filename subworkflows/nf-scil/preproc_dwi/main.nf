@@ -6,7 +6,8 @@ include { PREPROC_N4 as N4_DWI } from '../../../modules/nf-scil/preproc/n4/main'
 include { PREPROC_NORMALIZE as NORMALIZE_DWI } from '../../../modules/nf-scil/preproc/normalize/main'
 include {   IMAGE_RESAMPLE as RESAMPLE_DWI;
             IMAGE_RESAMPLE as RESAMPLE_MASK } from '../../../modules/nf-scil/image/resample/main'
-include { UTILS_EXTRACTB0 } from '../../../modules/nf-scil/utils/extractb0/main'
+include {   UTILS_EXTRACTB0 as EXTRACTB0_RESAMPLE;
+            UTILS_EXTRACTB0 as EXTRACTB0_TOPUP } from '../../../modules/nf-scil/utils/extractb0/main'
 include { TOPUP_EDDY } from '../topup_eddy/main'
 
 
@@ -47,11 +48,18 @@ workflow PREPROC_DWI {
         }
         else
         {
-            ch_topup_eddy_rev_dwi = null    // or Channel.empty()
+            ch_topup_eddy_rev_dwi = []    // or Channel.empty()
         }
 
         // ** Eddy Topup ** //
         ch_topup_eddy_dwi = DENOISE_DWI.out.image.join(ch_denoise_dwi.bvs_files)
+
+        if ( ! ch_b0 ) {
+            EXTRACTB0_TOPUP { ch_topup_eddy_dwi }
+            ch_versions = ch_versions.mix(EXTRACTB0_TOPUP.out.versions.first())
+            ch_b0 = EXTRACTB0_TOPUP.out.b0
+        }
+
         TOPUP_EDDY ( ch_topup_eddy_dwi, ch_b0, ch_topup_eddy_rev_dwi, ch_rev_b0, ch_config_topup )
         ch_versions = ch_versions.mix(TOPUP_EDDY.out.versions.first())
 
@@ -93,7 +101,8 @@ workflow PREPROC_DWI {
             .join(TOPUP_EDDY.out.bval)
             .join(TOPUP_EDDY.out.bvec)
 
-        UTILS_EXTRACTB0 { ch_dwi_extract_b0 }
+        EXTRACTB0_RESAMPLE { ch_dwi_extract_b0 }
+        ch_versions = ch_versions.mix(EXTRACTB0_RESAMPLE.out.versions.first())
 
         // ** Resample mask ** //
         ch_resample_mask = BETCROP_FSLBETCROP.out.mask.map{ it + [[]] }
@@ -104,7 +113,7 @@ workflow PREPROC_DWI {
         dwi_resample        = RESAMPLE_DWI.out.image            // channel: [ val(meta), [ dwi_resample ] ]
         bval                = TOPUP_EDDY.out.bval     // channel: [ val(meta), [ bval_corrected ] ]
         bvec                = TOPUP_EDDY.out.bvec     // channel: [ val(meta), [ bvec_corrected ] ]
-        b0                  = UTILS_EXTRACTB0.out.b0                 // channel: [ val(meta), [ b0 ] ]
+        b0                  = EXTRACTB0_RESAMPLE.out.b0                 // channel: [ val(meta), [ b0 ] ]
         b0_mask             = RESAMPLE_MASK.out.image            // channel: [ val(meta), [ b0_mask ] ]
         dwi_bounding_box    = BETCROP_FSLBETCROP.out.bbox       // channel: [ val(meta), [ dwi_bounding_box ] ]
         dwi_topup_eddy      = TOPUP_EDDY.out.dwi      // channel: [ val(meta), [ dwi_topup_eddy ] ]
