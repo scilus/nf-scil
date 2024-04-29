@@ -14,11 +14,11 @@ include { TOPUP_EDDY } from '../topup_eddy/main'
 workflow PREPROC_DWI {
 
     take:
-       ch_dwi           // channel: [ val(meta), [ dwi, bval, bvec ] ]
-       ch_rev_dwi       // channel: [ val(meta), [ rev_dwi, bval, bvec ] ], optional
-       ch_b0            // Channel: [ val(meta), [ b0 ] ], optional
-       ch_rev_b0        // channel: [ val(meta), [ reverse b0 ] ], optional
-       ch_config_topup  // channel: [ 'config_topup' ], optional
+        ch_dwi           // channel: [ val(meta), [ dwi, bval, bvec ] ]
+        ch_rev_dwi       // channel: [ val(meta), [ rev_dwi, bval, bvec ] ], optional
+        ch_b0            // Channel: [ val(meta), [ b0 ] ], optional
+        ch_rev_b0        // channel: [ val(meta), [ reverse b0 ] ], optional
+        ch_config_topup  // channel: [ 'config_topup' ], optional
 
     main:
 
