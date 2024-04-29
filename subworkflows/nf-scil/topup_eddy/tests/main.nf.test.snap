@@ -16,7 +16,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
+                    "test__bval_eddy:md5,8192e97b08e8032382397bb844b31892"
                 ]
             ],
             [
@@ -32,7 +32,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-26T18:19:53.926549"
+        "timestamp": "2024-04-29T16:45:05.559117"
     },
     "eddy": {
         "content": [
@@ -51,7 +51,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__bval_eddy:md5,d070c09214fb3333dce17cae50202aa9"
+                    "test__bval_eddy:md5,8192e97b08e8032382397bb844b31892"
                 ]
             ],
             [
@@ -66,7 +66,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-26T18:14:34.739652"
+        "timestamp": "2024-04-29T16:43:47.157381"
     },
     "topup_eddy_rev_dwi": {
         "content": [
@@ -85,7 +85,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__bval_eddy:md5,be4e72882f347bec4fcf5380f900719d"
+                    "test__bval_eddy:md5,4c61c53078316c31b4d5daf446a3d6ac"
                 ]
             ],
             [
@@ -101,6 +101,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-26T19:23:03.326457"
+        "timestamp": "2024-04-29T16:46:43.753231"
     }
 }
