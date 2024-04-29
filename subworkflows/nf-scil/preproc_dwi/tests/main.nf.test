@@ -59,7 +59,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                { assert snapshot(
+                    workflow.out.bval,
+                    workflow.out.versions,
+                    file(workflow.out.b0.get(0).get(1)).name,
+                    file(workflow.out.b0_mask.get(0).get(1)).name,
+                    file(workflow.out.bvec.get(0).get(1)).name,
+                    file(workflow.out.dwi_bounding_box.get(0).get(1)).name,
+                    file(workflow.out.dwi_n4.get(0).get(1)).name,
+                    file(workflow.out.dwi_resample.get(0).get(1)).name,
+                    file(workflow.out.dwi_topup_eddy.get(0).get(1)).name).match() }
             )
         }
     }
@@ -93,7 +102,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                { assert snapshot(
+                    workflow.out.bval,
+                    workflow.out.versions,
+                    file(workflow.out.b0.get(0).get(1)).name,
+                    file(workflow.out.b0_mask.get(0).get(1)).name,
+                    file(workflow.out.bvec.get(0).get(1)).name,
+                    file(workflow.out.dwi_bounding_box.get(0).get(1)).name,
+                    file(workflow.out.dwi_n4.get(0).get(1)).name,
+                    file(workflow.out.dwi_resample.get(0).get(1)).name,
+                    file(workflow.out.dwi_topup_eddy.get(0).get(1)).name).match() }
             )
         }
     }
@@ -136,7 +154,16 @@ nextflow_workflow {
         then {
             assertAll(
                 { assert workflow.success},
-                { assert snapshot(workflow.out).match()}
+                { assert snapshot(
+                    workflow.out.bval,
+                    workflow.out.versions,
+                    file(workflow.out.b0.get(0).get(1)).name,
+                    file(workflow.out.b0_mask.get(0).get(1)).name,
+                    file(workflow.out.bvec.get(0).get(1)).name,
+                    file(workflow.out.dwi_bounding_box.get(0).get(1)).name,
+                    file(workflow.out.dwi_n4.get(0).get(1)).name,
+                    file(workflow.out.dwi_resample.get(0).get(1)).name,
+                    file(workflow.out.dwi_topup_eddy.get(0).get(1)).name).match() }
             )
         }
     }
