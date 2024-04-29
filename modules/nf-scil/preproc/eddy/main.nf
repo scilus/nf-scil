@@ -32,6 +32,7 @@ process PREPROC_EDDY {
     def dilate_b0_mask_prelim_brain_extraction = task.ext.dilate_b0_mask_prelim_brain_extraction ? task.ext.dilate_b0_mask_prelim_brain_extraction : ""
     def eddy_cmd = task.ext.eddy_cmd ? task.ext.eddy_cmd : "eddy_cpu"
     def bet_prelim_f = task.ext.bet_prelim_f ? task.ext.bet_prelim_f : ""
+    def extra_args = task.ext.extra_args ?: ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -91,7 +92,7 @@ process PREPROC_EDDY {
             $slice_drop_flag
     fi
 
-    echo "--very_verbose" >> eddy.sh
+    echo "--very_verbose $extra_args" >> eddy.sh
     sh eddy.sh
     scil_volume_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
 
