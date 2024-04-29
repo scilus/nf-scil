@@ -38,13 +38,15 @@ workflow PREPROC_DWI {
         {
             ch_denoise_rev_dwi = ch_rev_dwi
                 .multiMap { meta, dwi, bval, bvec ->
-                    rev_dwi:    [ meta, dwi ]
+                    rev_dwi:    [ [id: "${meta.id}_rev", cache: meta], dwi ]
                     rev_bvs_files: [ meta, bval, bvec ]
                 }
             // ** Denoised reverse DWI ** //
             DENOISE_REVDWI ( ch_denoise_rev_dwi.rev_dwi )
 
-            ch_topup_eddy_rev_dwi = DENOISE_REVDWI.out.image.join(ch_denoise_rev_dwi.rev_bvs_files)
+            ch_topup_eddy_rev_dwi = DENOISE_REVDWI.out.image
+                .map{ meta, dwi -> [ meta.cache, dwi ] }
+                .join(ch_denoise_rev_dwi.rev_bvs_files)
         }
         else
         {
