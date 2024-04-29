@@ -9,9 +9,9 @@ nextflow_workflow {
     tag "subworkflows_nfcore"
     tag "subworkflows/topup_eddy"
 
-    // tag "preproc"
-    // tag "preproc/topup"
-    // tag "preproc/eddy"
+    tag "preproc"
+    tag "preproc/topup"
+    tag "preproc/eddy"
     tag "utils/extractb0"
 
     tag "load_test_data"
