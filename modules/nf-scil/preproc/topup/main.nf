@@ -42,7 +42,7 @@ process PREPROC_TOPUP {
         scil_volume_math.py concatenate $b0 $b0 ${prefix}__concatenated_b0.nii.gz
         scil_volume_math.py mean ${prefix}__concatenated_b0.nii.gz ${prefix}__b0_mean.nii.gz
     else
-        scil_dwi_extract_b0.py $dwi $bval $bvec ${prefix}__b0_mean.nii.gz --mean ----b0_threshold $b0_thr_extract_b0 --skip_b0_check
+        scil_dwi_extract_b0.py $dwi $bval $bvec ${prefix}__b0_mean.nii.gz --mean --b0_threshold $b0_thr_extract_b0 --skip_b0_check
     fi
 
     if [[ -f "$rev_b0" ]];
@@ -50,7 +50,7 @@ process PREPROC_TOPUP {
         scil_volume_math.py concatenate $rev_b0 $rev_b0 ${prefix}__concatenated_rev_b0.nii.gz
         scil_volume_math.py mean ${prefix}__concatenated_rev_b0.nii.gz ${prefix}__rev_b0_mean.nii.gz
     else
-        scil_dwi_extract_b0.py $rev_dwi $rev_bval $rev_bvec ${prefix}__rev_b0_mean.nii.gz --mean ----b0_threshold $b0_thr_extract_b0 --skip_b0_check
+        scil_dwi_extract_b0.py $rev_dwi $rev_bval $rev_bvec ${prefix}__rev_b0_mean.nii.gz --mean --b0_threshold $b0_thr_extract_b0 --skip_b0_check
     fi
 
     antsRegistrationSyNQuick.sh -d 3 -f ${prefix}__b0_mean.nii.gz -m ${prefix}__rev_b0_mean.nii.gz -o output -t r -e 1
