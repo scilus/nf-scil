@@ -4,10 +4,10 @@ include { BETCROP_FSLBETCROP } from '../../../modules/nf-scil/betcrop/fslbetcrop
 include { BETCROP_CROPVOLUME } from '../../../modules/nf-scil/betcrop/cropvolume/main'
 include { PREPROC_N4 as N4_DWI } from '../../../modules/nf-scil/preproc/n4/main'
 include { PREPROC_NORMALIZE as NORMALIZE_DWI } from '../../../modules/nf-scil/preproc/normalize/main'
-include {   IMAGE_RESAMPLE as RESAMPLE_DWI;
-            IMAGE_RESAMPLE as RESAMPLE_MASK } from '../../../modules/nf-scil/image/resample/main'
-include {   UTILS_EXTRACTB0 as EXTRACTB0_RESAMPLE;
-            UTILS_EXTRACTB0 as EXTRACTB0_TOPUP } from '../../../modules/nf-scil/utils/extractb0/main'
+include { IMAGE_RESAMPLE as RESAMPLE_DWI } from '../../../modules/nf-scil/image/resample/main'
+include { IMAGE_RESAMPLE as RESAMPLE_MASK } from '../../../modules/nf-scil/image/resample/main'
+include { UTILS_EXTRACTB0 as EXTRACTB0_RESAMPLE } from '../../../modules/nf-scil/utils/extractb0/main'
+include { UTILS_EXTRACTB0 as EXTRACTB0_TOPUP } from '../../../modules/nf-scil/utils/extractb0/main'
 include { TOPUP_EDDY } from '../topup_eddy/main'
 
 
@@ -43,6 +43,7 @@ workflow PREPROC_DWI {
                 }
             // ** Denoised reverse DWI ** //
             DENOISE_REVDWI ( ch_denoise_rev_dwi.rev_dwi )
+            ch_versions = ch_versions.mix(DENOISE_REVDWI.out.versions.first())
 
             ch_topup_eddy_rev_dwi = DENOISE_REVDWI.out.image
                 .map{ meta, dwi -> [ meta.cache, dwi ] }
