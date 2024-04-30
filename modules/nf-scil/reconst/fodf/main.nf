@@ -4,11 +4,11 @@ process RECONST_FODF {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(fa), path(md), path(frf), val(method)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(fa), path(md), path(frf)
 
     output:
         tuple val(meta), path("*fodf.nii.gz")           , emit: fodf, optional: true
@@ -38,18 +38,16 @@ process RECONST_FODF {
     def fodf_shells = task.ext.fodf_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$min_fodf_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
     def sh_order = task.ext.sh_order ? "--sh_order " + task.ext.sh_order : ""
     def sh_basis = task.ext.sh_basis ? "--sh_basis " + task.ext.sh_basis : ""
-    def set_method = method ?: "ssst_fodf"
-
+    def set_method = task.ext.method ?: "ssst"
+    def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
+    def set_mask = mask ? "--mask $mask" : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
     def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
     def fa_threshold = task.ext.fa_threshold ? "--fa_t " + task.ext.fa_threshold : ""
     def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
-    def abs_peaks_values = task.ext.abs_peaks_values ? "--abs_peaks_and_values" : ""
-
-    def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
-    def set_mask = mask ? "--mask $mask" : ""
     def absolute_peaks = task.ext.absolute_peaks ? "--abs_peaks_and_values" : ""
 
+    /* if (set_method != "ssst_fodf" || set_method != "msmt_fodf") error "ERROR";*/
     if ( task.ext.wm_fodf ) wm_fodf = "--wm_out_fODF ${prefix}__wm_fodf.nii.gz" else wm_fodf = ""
     if ( task.ext.gm_fodf ) gm_fodf = "--gm_out_fODF ${prefix}__gm_fodf.nii.gz" else gm_fodf = ""
     if ( task.ext.csf_fodf ) csf_fodf = "--csf_out_fODF ${prefix}__csf_fodf.nii.gz" else csf_fodf = ""
@@ -74,7 +72,8 @@ process RECONST_FODF {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    if [ "$set_method" = "ssst_fodf" ]; then
+    if [ "$set_method" = "ssst" ]
+    then
 
         scil_extract_dwi_shell.py $dwi $bval $bvec $fodf_shells \
             dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
@@ -86,7 +85,8 @@ process RECONST_FODF {
 
     fi
 
-    if [ "$set_method" = "msmt_fodf" ]; then
+    elif [ "$set_method" = "msmt" ]
+    then
 
         scil_compute_msmt_fodf.py $dwi $bval $bvec $frf \
             $sh_order $sh_basis $set_mask $processes $dwi_shell_tolerance \
@@ -157,7 +157,7 @@ process RECONST_FODF {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }

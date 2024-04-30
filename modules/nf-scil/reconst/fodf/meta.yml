@@ -1,10 +1,10 @@
 ---
 name: "reconst_fodf"
-description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells. 
-  Note that multiple choices of FODF reconstruction method are available through the method argument. 
-  The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst_fodf.
-  The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst_fodf.
-  The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt_fodf.
+description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells.
+  Note that multiple choices of FODF reconstruction method are available through the method argument.
+  The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst as method.
+  The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst as method.
+  The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt as method.
 keywords:
   - FODF
   - Local Model
@@ -56,12 +56,6 @@ input:
         should be a list of files containing the wm_frf, gm_frf and csf_frf, in that order.
       pattern: "*.txt"
 
-  - method:
-      type: string
-      description: Reconstruction method. Either ssst_fodf or msmt_fodf. This choice 
-        changes the frf input and all the output, be careful.
-      pattern: "*_fodf"
-
 output:
   - meta:
       type: map
@@ -103,6 +97,11 @@ output:
       type: file
       description: Peaks file.
       pattern: "*peaks.nii.gz"
+
+  - peak_values:
+      type: file
+      description: Peak values file.
+      pattern: "*peak_values.nii.gz"
 
   - peak_indices:
       type: file
