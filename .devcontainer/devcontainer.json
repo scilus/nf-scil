@@ -18,7 +18,7 @@
     "mounts": [
         {
             "source": "nf-scil-venv",
-            "target": "/workspaces/nf-scil/.venv",
+            "target": "/root/.cache/pypoetry/virtualenvs/",
             "type": "volume"
         },
         {
@@ -35,7 +35,7 @@
                 "python.createEnvironment.trigger": "off",
                 "python.terminal.activateEnvironment": true,
                 "python.poetryPath": "/root/.local/bin/poetry",
-                "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+                "python.defaultInterpreterPath": "/root/.cache/pypoetry/virtualenvs/",
                 "python.analysis.exclude": [
                     "${workspaceFolder}/.dvc",
                     "${workspaceFolder}/.pytest_cache",
@@ -58,7 +58,8 @@
             "extensions": [
                 "AlexVCaron.nf-scil-extensions",
                 "ms-python.autopep8",
-                "ms-python.vscode-pylance"
+                "ms-python.vscode-pylance",
+                "mutantdino.resourcemonitor"
             ]
         }
     },

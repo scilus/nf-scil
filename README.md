@@ -9,40 +9,42 @@
 [![Imports: nf-core](https://img.shields.io/badge/nf--core-nf?label=import&style=flat&labelColor=ef8336&color=24B064)](https://pycqa.github.io/nf-core/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-![Code Linting](https://github.com/scilus/nf-scil/workflows/Code%20Linting/badge.svg)
-![Modules Tests](https://github.com/scilus/nf-scil/workflows/Modules%20Tests/badge.svg)
+![Checks](https://github.com/scilus/nf-scil/workflows/nf-scil%20merge%20checks/badge.svg)
 
-Welcome to `nf-scil` ! A **Nextflow** modules and workflows repository for neuroimaging
+Welcome to the `nf-scil` project ! A **Nextflow** modules and workflows repository for neuroimaging
 maintained by the [SCIL team](https://scil-documentation.readthedocs.io/en/latest/). The
 primary focus of the library is to provide pre-built processes and processing sequences for
-**diffusion Magnetic Resonance Imaging**, optimized for _Nextflow DLS2_, based on open-source
+**diffusion Magnetic Resonance Imaging**, optimized for _Nextflow DSL2_, based on open-source
 technologies and made easily available to pipeline's developers through the `nf-core`
 framework.
 
-- [Using modules from nf-scil](README.md#using-modules-from-nf-scil)
-- [Developing in nf-scil](README.md#developing-in-nf-scil)
-  - [Dependencies](README.md#dependencies)
-  - [Developer installation](README.md#developer-installation)
-  - [Loading the project's environment](README.md#loading-the-projects-environment)
-  - [Working with VS Code](README.md#working-with-vs-code)
-    - [Manual configuration of the VS Code project :](README.md#manual-configuration-of-the-vs-code-project-)
-    - [Configuration via the devcontainer :](README.md#configuration-via-the-devcontainer-)
-  - [Contributing to nf-scil](README.md#contributing-to-nf-scil)
+- [Using modules from nf-scil](#using-modules-from-nf-scil)
+- [Developing in nf-scil](#developing-in-nf-scil)
+  - [Manual configuration](#manual-configuration)
+    - [Dependencies](#dependencies)
+    - [Python environment](#python-environment)
+    - [Loading the project's environment](#loading-the-projects-environment)
+    - [Working with VS Code](#working-with-vs-code)
+  - [Configuration via the devcontainer](#configuration-via-the-devcontainer-)
+  - [Contributing to the nf-scil project](#contributing-to-the-nf-scil-project)
     - [Adding a new module to nf-scil](docs/MODULE.md#adding-a-new-module-to-nf-scil)
       - [Generate the template](docs/MODULE.md#generate-the-template)
       - [Edit the template](docs/MODULE.md#edit-the-template)
-        - [Editing the main](docs/MODULE.md#editing-modulesnf-scilcategorytoolmainnf-)
-        - [Editing the metadata](docs/MODULE.md#editing--modulesnf-scilcategorytoolmetayml-)
-        - [Editing the test cases](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolmainnf-)
-        - [Editing the tests configuration](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+        - [Editing the module's main.nf](docs/MODULE.md#editing-modulesnf-scilcategorytoolmainnf-)
+        - [Editing the module's meta.yml](docs/MODULE.md#editing-modulesnf-scilcategorytoolmetayml-)
+        - [Editing the tests' main.nf](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolmainnf-)
+        - [Editing the tests' nextflow.config](docs/MODULE.md#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
       - [Run the tests to generate the test metadata file](docs/MODULE.md#run-the-tests-to-generate-the-test-metadata-file)
+      - [Lint your code](docs/MODULE.md#lint-your-code)
       - [Last safety test](docs/MODULE.md#last-safety-test)
       - [Submit your PR](docs/MODULE.md#submit-your-pr)
     - [Defining processes optional parameters](docs/MODULE.md#defining-processes-optional-parameters)
     - [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
       - [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
       - [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
-  - [Running tests](README.md#running-tests)
+  - [Running tests](#running-tests)
+  - [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
+  - [Installing Prettier](#installing-prettier)
 
 # Using modules from `nf-scil`
 
@@ -67,13 +69,18 @@ nf-core modules \
 
 # Developing in `nf-scil`
 
-## Dependencies
+The `nf-scil` project requires some specific tools to be installed on your system so that the development environment runs correctly. You can [install them manually](#manual-configuration), but if you desire to streamline the process and start coding faster, we highly recommend using the [VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a matter of minutes.
+
+## Manual configuration
+
+### Dependencies
 
 - Python &geq; 3.8, < 3.13
+- Docker &geq; 24 (we recommend using [Docker Desktop](https://www.docker.com/products/docker-desktop))
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
-- Node &geq; 14 and Prettier (seel [below](#installing-prettier))
+- Node &geq; 14 and Prettier (see [below](#installing-prettier))
 
 > [!IMPORTANT]
 > Nextflow might not detect the right `Java virtual machine` by default, more so if
@@ -87,7 +94,7 @@ nf-core modules \
 >   runtime version (named `jdk<inner version>_1<runtime version>.jdk`) and use the
 >   following : `/Library/Java/JavaVirtualMachines/dk<inner version>_1<runtime version>.jdk/Contents/Home`.
 
-## Developer installation
+### Python environment
 
 The project uses _poetry_ to manage python dependencies. To install it using pipx,
 run the following commands :
@@ -112,7 +119,7 @@ Once done, install the project with :
 poetry install
 ```
 
-## Loading the project's environment
+### Loading the project's environment
 
 > [!IMPORTANT]
 > Make sure no python environment is activated before running commands !
@@ -137,18 +144,17 @@ To exit the environment, simply enter the `exit` command in the shell.
 > the environment gracefully, making it so you won't be able to reactivate it without
 > exiting the shell.
 
-## Working with VS Code
+### Working with VS Code
 
-### Manual configuration of the VS Code project :
-
-First install the `nf-scil-extensions` package. You can find it easily on the [extension
+The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the `nf-scil-extensions` package. You can find it easily on the [extension
 marketplace](https://marketplace.visualstudio.com/items?itemName=AlexVCaron.nf-scil-extensions).
 
-### Configuration via the `devcontainer` :
+## Configuration via the `devcontainer` :
 
 The `devcontainer` definition for the project contains all required dependencies and setup
-steps are automatically executed. Open the cloned repository in _VS Code_ and click on the
-arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
+steps are automatically executed. To use this installation method, you need to have **Docker** (refer to [this section](#configuring-docker-for-easy-usage) for configuration requirements or validate your configuration) and **Visual Studio Code** installed on your system.
+
+Open the cloned repository in _VS Code_ and click on the arrow box in the lower left corner, to get a prompt to `Reopen in container`. The procedure
 will start a docker build, wait for a few minutes and enjoy your fully configured development
 environment.
 
@@ -166,7 +172,7 @@ environment.
   - Github Pull Requests management
   - Github flavored markdown previewing
 
-## Contributing to `nf-scil`
+## Contributing to the `nf-scil` project
 
 If you want to propose a new `module` to the repository, follow the guidelines in the
 [module creation](./docs/MODULE.md) documentation. We follow standards closely
@@ -186,7 +192,20 @@ nf-core modules \
 
 The tool can be omitted to run tests for all modules in a category.
 
-# Installing Prettier
+## Configuring Docker for easy usage
+
+The simplest way of installing everything Docker is to use [Docker Desktop](https://www.docker.com/products/docker-desktop). You can also go the [engine way](https://docs.docker.com/engine/install) and install Docker manually.
+
+Once installed, you need to configure some access rights to the Docker daemon. The easiest way to do this is to add your user to the `docker` group. This can be done with the following command :
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+
+After running this command, you need to log out and log back in to apply the changes.
+
+## Installing Prettier
 
 To install **Prettier** for the project, you need to have `node` and `npm` installed on your system to at least version 14. On Ubuntu, you can do it using snap :
 
