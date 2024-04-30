@@ -16,9 +16,6 @@ denoising/nlmeans:
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
-io/readbids:
-  - modules/nf-scil/io/readbids/**
-  - tests/modules/nf-scil/io/readbids/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
