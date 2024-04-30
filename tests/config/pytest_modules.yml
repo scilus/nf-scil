@@ -1,18 +1,6 @@
-betcrop/antsbet:
-  - modules/nf-scil/betcrop/antsbet/**
-  - tests/modules/nf-scil/betcrop/antsbet/**
-betcrop/cropvolume:
-  - modules/nf-scil/betcrop/cropvolume/**
-  - tests/modules/nf-scil/betcrop/cropvolume/**
-betcrop/fslbetcrop:
-  - modules/nf-scil/betcrop/fslbetcrop/**
-  - tests/modules/nf-scil/betcrop/fslbetcrop/**
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
-io/readbids:
-  - modules/nf-scil/io/readbids/**
-  - tests/modules/nf-scil/io/readbids/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
