@@ -36,10 +36,9 @@ process BETCROP_FSLBETCROP {
         scil_dwi_extract_b0.py $image $bval $bvec ${prefix}__b0.nii.gz --mean \
             $b0_thr --skip_b0_check
 
-        bet ${prefix}__b0.nii.gz ${prefix}__b0_bet.nii.gz -m -R $bet_f
-        scil_volume_math.py convert ${prefix}__b0_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
-        mrcalc $image ${prefix}__b0_bet_mask.nii.gz -mult ${prefix}__image_bet.nii.gz -quiet -nthreads 1
-
+        bet ${prefix}__b0.nii.gz ${prefix}__image_bet.nii.gz -m -R $bet_f
+        scil_volume_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
+        mrcalc $image ${prefix}__image_bet_mask.nii.gz -mult ${prefix}__image_bet.nii.gz -quiet -nthreads 1 -force
     else
         bet $image ${prefix}__image_bet.nii.gz -m -R $bet_f
         scil_volume_math.py convert ${prefix}__image_bet_mask.nii.gz ${prefix}__image_bet_mask.nii.gz --data_type uint8 -f
