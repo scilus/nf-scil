@@ -14,7 +14,7 @@
     - betcrop
     - betcrop/cropvolume
   files:
-    - path: output/betcrop/test_bbox.pkl
+    - path: output/betcrop/test_cropped_bbox.pkl
       md5sum: 860d7150c20b1808abd8015fea624fa7
     - path: output/betcrop/test_cropped.nii.gz
       md5sum: 8d945f5e2108477d8bdd1ed093dcd7fc

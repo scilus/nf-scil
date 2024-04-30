@@ -1,0 +1,11 @@
+- name: betcrop antsbet test_betcrop_antsbet
+  command: nextflow run ./tests/modules/nf-scil/betcrop/antsbet -entry test_betcrop_antsbet -c ./tests/config/nextflow.config
+  tags:
+    - betcrop/antsbet
+    - betcrop
+  files:
+    - path: output/betcrop/test__t1_bet.nii.gz
+      md5sum: e88c7e63cf220562a97f16c92be0d87b
+    - path: output/betcrop/test__t1_bet_mask.nii.gz
+      md5sum: 846bd8fc8a212dcffcd728a0846a711c
+    - path: output/betcrop/versions.yml

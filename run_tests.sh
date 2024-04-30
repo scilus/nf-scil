@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NO_RUN_TESTS=("reconst/diffusivitypriors" "reconst/noddi" "reconst/fodf" "tracking/pfttracking" "segmentation/freesurferseg")
+NO_RUN_TESTS=( )
 
 if [ -f "failed_tests.txt" ]
 then

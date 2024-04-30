@@ -114,6 +114,7 @@
         "subworkflows",
         "testdata",
         "todi",
+        "topup",
         "tractogram",
         "tractograms",
         "tractometry",
@@ -122,5 +123,6 @@
         "voxels",
         "wmparc",
         "xform"
-    ]
+    ],
+    "markdown.extension.toc.updateOnSave": false
 }
