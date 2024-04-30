@@ -12,7 +12,7 @@ nextflow_process {
     tag "subworkflows"
     tag "subworkflows/load_test_data"
 
-    test("sarscov2 - bam") {
+    test("io - readbids - folder") {
 
         setup {
             run("LOAD_TEST_DATA", alias: "LOAD_DATA") {

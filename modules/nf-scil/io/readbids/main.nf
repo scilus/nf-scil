@@ -11,7 +11,7 @@ process IO_READBIDS {
         path(bidsignore)
 
     output:
-        path("tractoflow_bids_struct.json")             , emit: bids
+        path("tractoflow_bids_struct.json")             , emit: bidsstructure
         path "versions.yml"                             , emit: versions
 
 
