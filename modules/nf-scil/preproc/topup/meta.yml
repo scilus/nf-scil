@@ -64,7 +64,7 @@ input:
 
   - config_topup:
       type: file
-      description: topup config file
+      description: topup config file. See https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide#Configuration_files
       pattern: "*cnf"
 
 output:

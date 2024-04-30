@@ -7,9 +7,6 @@ betcrop/cropvolume:
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
-bundle/recognize:
-  - modules/nf-scil/bundle/recognize/**
-  - tests/modules/nf-scil/bundle/recognize/**
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
@@ -19,9 +16,6 @@ denoising/nlmeans:
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
-preproc/eddy:
-  - modules/nf-scil/preproc/eddy/**
-  - tests/modules/nf-scil/preproc/eddy/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -31,9 +25,6 @@ preproc/n4:
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
-preproc/topup:
-  - modules/nf-scil/preproc/topup/**
-  - tests/modules/nf-scil/preproc/topup/**
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
@@ -64,6 +55,12 @@ registration/antsapplytransforms:
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
+subworkflows/load_test_data:
+  - subworkflows/nf-scil/load_test_data/**
+  - tests/subworkflows/nf-scil/load_test_data/**
+testdata/scilpy:
+  - modules/nf-scil/testdata/scilpy/**
+  - tests/modules/nf-scil/testdata/scilpy/**
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**

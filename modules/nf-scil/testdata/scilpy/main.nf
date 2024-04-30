@@ -84,6 +84,7 @@ process TESTDATA_SCILPY {
             "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
             "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
             "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
+            "topup_eddy_light.zip": "54369410cfd0587e1d8916047945c1fd",
             "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
             "antsbet.zip": "66850bea7af7c1f3fc4e7d371d12d6e8",
             "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505",
