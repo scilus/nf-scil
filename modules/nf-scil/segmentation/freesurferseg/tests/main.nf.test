@@ -1,0 +1,32 @@
+nextflow_process {
+
+    name "Test Process SEGMENTATION_FREESURFERSEG"
+    script "../main.nf"
+    process "SEGMENTATION_FREESURFERSEG"
+
+    tag "modules"
+    tag "modules_nfcore"
+    tag "segmentation"
+    tag "segmentation/freesurferseg"
+
+    test("segmentation - freesurferseg") {
+        when {
+            process {
+                """
+            input[0] = [
+                [ id:'test', single_end:false ], // meta map
+                file(params.test_data['segmentation']['freesurferseg']['aparc_aseg'], checkIfExists: true),
+                file(params.test_data['segmentation']['freesurferseg']['wmparc'], checkIfExists: true)]
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+
+    }
+}

@@ -39,7 +39,7 @@
                     
                 ],
                 "6": [
-                    "versions.yml:md5,e7c6099100bcaa3691e03060e8c16f64"
+                    "versions.yml:md5,18dfcb72144006d4f3e2afc759d2ee6b"
                 ],
                 "csf_map": [
                     
@@ -66,7 +66,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,e7c6099100bcaa3691e03060e8c16f64"
+                    "versions.yml:md5,18dfcb72144006d4f3e2afc759d2ee6b"
                 ],
                 "wm_map": [
                     
@@ -86,7 +86,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-12T11:32:06.5329"
+        "timestamp": "2024-04-30T20:34:30.082148"
     },
     "anatomical_segmentation - fslfast": {
         "content": [
