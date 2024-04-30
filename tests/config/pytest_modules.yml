@@ -1,42 +1,48 @@
+betcrop/antsbet:
+  - modules/nf-scil/betcrop/antsbet/**
+  - tests/modules/nf-scil/betcrop/antsbet/**
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
-
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
-
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
-
 denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
-
+image/resample:
+  - modules/nf-scil/image/resample/**
+  - tests/modules/nf-scil/image/resample/**
+io/readbids:
+  - modules/nf-scil/io/readbids/**
+  - tests/modules/nf-scil/io/readbids/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
-
 preproc/n4:
   - modules/nf-scil/preproc/n4/**
   - tests/modules/nf-scil/preproc/n4/**
-
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
-
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
-
 reconst/dtimetrics:
   - modules/nf-scil/reconst/dtimetrics/**
   - tests/modules/nf-scil/reconst/dtimetrics/**
-
+reconst/fodf:
+  - modules/nf-scil/reconst/fodf/**
+  - tests/modules/nf-scil/reconst/fodf/**
 reconst/frf:
   - modules/nf-scil/reconst/frf/**
   - tests/modules/nf-scil/reconst/frf/**
+reconst/meanfrf:
+  - modules/nf-scil/reconst/meanfrf/**
+  - tests/modules/nf-scil/reconst/meanfrf/**
 
 reconst/ihmt:
   - modules/nf-scil/reconst/ihmt/**
@@ -45,19 +51,33 @@ reconst/ihmt:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-
-segmentation/fastseg:
-  - modules/nf-scil/segmentation/fastseg/**
-  - tests/modules/nf-scil/segmentation/fastseg/**
-
+register/anattodwi:
+  - modules/nf-scil/register/anattodwi/**
+  - tests/modules/nf-scil/register/anattodwi/**
+registration/ants:
+  - modules/nf-scil/registration/ants/**
+  - tests/modules/nf-scil/registration/ants/**
+registration/antsapplytransforms:
+  - modules/nf-scil/registration/antsapplytransforms/**
+  - tests/modules/nf-scil/registration/antsapplytransforms/**
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
-
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
-
+testdata/scilpy:
+  - modules/nf-scil/testdata/scilpy/**
+  - tests/modules/nf-scil/testdata/scilpy/**
+testdata/sizeof:
+  - modules/nf-scil/testdata/sizeof/**
+  - tests/modules/nf-scil/testdata/sizeof/**
+tracking/localtracking:
+  - modules/nf-scil/tracking/localtracking/**
+  - tests/modules/nf-scil/tracking/localtracking/**
+tracking/pfttracking:
+  - modules/nf-scil/tracking/pfttracking/**
+  - tests/modules/nf-scil/tracking/pfttracking/**
 utils/extractb0:
   - modules/nf-scil/utils/extractb0/**
   - tests/modules/nf-scil/utils/extractb0/**

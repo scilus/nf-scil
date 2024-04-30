@@ -49,8 +49,10 @@ process TRACKING_LOCALTRACKING {
             --data_type uint8
 
     elif [ "${local_tracking_mask}" == "fa" ]; then
-        mrcalc $fa $local_fa_tracking_mask_threshold -ge ${prefix}__local_tracking_mask.nii.gz\
-            --datatype uint8
+        scil_image_math.py lower_threshold $fa \
+            $local_fa_tracking_mask_threshold \
+            ${prefix}__local_tracking_mask.nii.gz \
+            --data_type uint8
     fi
 
     if [ "${local_seeding_mask}" == "wm" ]; then
@@ -58,8 +60,10 @@ process TRACKING_LOCALTRACKING {
             --data_type uint8
 
     elif [ "${local_seeding_mask}" == "fa" ]; then
-        mrcalc $fa $local_fa_seeding_mask_threshold -ge ${prefix}__local_seeding_mask.nii.gz\
-            -datatype uint8
+        scil_image_math.py lower_threshold $fa \
+            $local_fa_seeding_mask_threshold \
+            ${prefix}__local_seeding_mask.nii.gz \
+            --data_type uint8
     fi
 
     scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz tmp.trk\
@@ -103,7 +107,6 @@ process TRACKING_LOCALTRACKING {
     scil_compute_local_tracking.py -h
     scil_remove_invalid_streamlines.py -h
     scil_image_math -h
-    mrcalc -h
 
     touch ${prefix}__local_tracking.trk
     touch ${prefix}__local_tracking_config.json

@@ -1,0 +1,164 @@
+name: nf-scil checks
+on:
+  workflow_call:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - uses: pre-commit/action@v3.0.1
+        # FIXME Flip this off once we get to less than a couple hundred. Adding
+        # this so it will only run against changed files. It'll make it much
+        # easier to fix these as they come up rather than everything at once.
+        with:
+          extra_args: ""
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Prettier
+        run: npm install -g prettier
+
+      - name: Run Prettier --check
+        run: prettier --check .
+
+  editorconfig:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install editorconfig-checker
+        run: npm install -g editorconfig-checker
+
+      - name: Run ECLint check
+        run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
+
+  pytest-changes:
+    name: pytest-changes
+    runs-on: ubuntu-latest
+    outputs:
+      # Expose matched filters as job 'modules' output variable
+      modules: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+            fetch-depth: 2
+
+      # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
+      - uses: mirpedrol/paths-filter@main
+        id: filter
+        with:
+          filters: "tests/config/pytest_modules.yml"
+          token: ${{ github.token }}
+
+  nf-test-changes:
+    name: nf-test-changes
+    runs-on: ubuntu-latest
+    outputs:
+      # Expose matched filters as job 'modules' output variable
+      modules: ${{ steps.filter.outputs.changes }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # To retrieve the preceding commit.
+
+      - name: Combine all tags.yml files
+        id: get_tags
+        run: find . -name "tags.yml" -not -path "./.github/*" -exec cat {} + > .github/tags.yml
+
+      - name: debug
+        run: cat .github/tags.yml
+
+      # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
+      - uses: mirpedrol/paths-filter@main
+        id: filter
+        with:
+          filters: ".github/tags.yml"
+          token: ${{ github.token }}
+
+  lint-modules:
+    name: lint-modules
+    needs: [pytest-changes, nf-test-changes]
+    if: ${{ (needs.pytest-changes.outputs.modules != '[]') || (needs.nf-test-changes.outputs.modules != '[]') }}
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [
+          "${{ fromJson(needs.pytest-changes.outputs.modules) }}",
+          "${{ fromJson(needs.nf-test-changes.outputs.modules) }}",
+          ]
+    uses: ./.github/workflows/lint_module.yml
+    with:
+      module: ${{ matrix.module }}
+    secrets: inherit
+
+  pytest-modules:
+    name: pytest-modules
+    needs: [pytest-changes]
+    if: needs.pytest-changes.outputs.modules != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ["${{ fromJson(needs.pytest-changes.outputs.modules) }}"]
+        profile: [docker] # , "singularity"]
+        exclude:
+          - module: nf-test
+
+    uses: ./.github/workflows/test_module.yml
+    with:
+      module: ${{ matrix.module }}
+      profile: ${{ matrix.profile }}
+    secrets: inherit
+
+  nf-test-modules:
+    name: nf-test-modules
+    needs: [nf-test-changes]
+    if: needs.nf-test-changes.outputs.modules != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ["${{ fromJson(needs.nf-test-changes.outputs.modules) }}"]
+        profile: ["docker"]
+        exclude:
+          - module: nf-test
+
+    uses: ./.github/workflows/nf-test_module.yml
+    with:
+      module: ${{ matrix.module }}
+      profile: ${{ matrix.profile }}
+    secrets: inherit
+
+  confirm-pass:
+    runs-on: ubuntu-latest
+    needs: [prettier, editorconfig, pytest-changes, nf-test-changes, lint-modules, pytest-modules, nf-test-modules]
+    if: ${{ !cancelled() }}
+    steps:
+      - name: All tests ok
+        if: ${{ success() || !contains(needs.*.result, 'failure') }}
+        run: exit 0
+      - name: One or more tests failed
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
+
+      - name: debug-print
+        if: ${{ !cancelled() }}
+        run: |
+          echo "toJSON(needs) = ${{ toJSON(needs) }}"
+          echo "toJSON(needs.*.result) = ${{ toJSON(needs.*.result) }}"

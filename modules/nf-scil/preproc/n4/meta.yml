@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "preproc_n4"
 description: Bias field correction using N4
 keywords:
@@ -18,19 +18,19 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
       description: Nifti image file to correct
       pattern: "*.{nii,nii.gz}"
 
-  - b0:
+  - ref:
       type: file
-      description: Nifti image file - b0
+      description: Nifti image file for the reference
       pattern: "*.{nii,nii.gz}"
 
-  - b0_mask:
+  - ref_mask:
       type: file
-      description: Nifti image file mask
+      description: Nifti image file mask for the reference
       pattern: "*.{nii,nii.gz}"
 
 output:
@@ -40,9 +40,9 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - dwi:
+  - image:
       type: file
-      description: DWI image N4 corrected
+      description: N4 corrected image
       pattern: "*.{nii,nii.gz}"
 
   - versions:

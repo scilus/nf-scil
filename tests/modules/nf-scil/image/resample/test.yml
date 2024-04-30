@@ -1,0 +1,49 @@
+- name: image resample test_image_resample_voxsize
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_voxsize -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: a41ff35a73920630c99c9950236a82db
+    - path: output/image/versions.yml
+
+- name: image resample test_image_resample_volsize
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_volsize -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: 83687e530f98cd0956d75030ca9c8465
+    - path: output/image/versions.yml
+
+- name: image resample test_image_resample_isomin
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_isomin -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: ec122d3ec28ef0aa1007b6cd4308f555
+    - path: output/image/versions.yml
+
+- name: image resample test_image_resample_ref
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_ref -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: 17056fa2eb671dfec85895cf84e48b57
+    - path: output/image/versions.yml
+
+- name: image resample test_image_resample_nn
+  command: nextflow run ./tests/modules/nf-scil/image/resample -entry test_image_resample_nn -c ./tests/config/nextflow.config
+  tags:
+    - image
+    - image/resample
+  files:
+    - path: output/image/test__resampled.nii.gz
+      md5sum: e4731e9556d4dbbed6ff2f714916fc62
+    - path: output/image/versions.yml
