@@ -8,10 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        [
-                            "test__b0_bet.nii.gz:md5,ec3c7d679119b7f973e3f67a269587c8",
-                            "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
-                        ]
+                        "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
                     ]
                 ],
                 "1": [
@@ -20,10 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        [
-                            "test__b0_bet_mask.nii.gz:md5,a765fc95e778a7a89d933c566143b65c",
-                            "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
-                        ]
+                        "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
                     ]
                 ],
                 "2": [
@@ -53,10 +47,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        [
-                            "test__b0_bet.nii.gz:md5,ec3c7d679119b7f973e3f67a269587c8",
-                            "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
-                        ]
+                        "test__image_bet.nii.gz:md5,6a3960fdbf0f4dc6e52e1a240aab3e77"
                     ]
                 ],
                 "mask": [
@@ -65,10 +56,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        [
-                            "test__b0_bet_mask.nii.gz:md5,a765fc95e778a7a89d933c566143b65c",
-                            "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
-                        ]
+                        "test__image_bet_mask.nii.gz:md5,aad98ede91402c7f8494d5af1900ac93"
                     ]
                 ],
                 "versions": [
@@ -78,9 +66,9 @@
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "unknown"
+            "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-24T16:03:09.174263"
+        "timestamp": "2024-04-29T22:26:45.898928"
     },
     "betcrop - fslbetcrop - t1": {
         "content": [
