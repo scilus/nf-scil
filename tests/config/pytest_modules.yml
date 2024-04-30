@@ -37,11 +37,6 @@ reconst/dtimetrics:
 reconst/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
-
-reconst/fodfmetrics:
-  - modules/nf-scil/reconst/fodfmetrics/**
-  - tests/modules/nf-scil/reconst/fodfmetrics/**
-
 reconst/frf:
   - modules/nf-scil/reconst/frf/**
   - tests/modules/nf-scil/reconst/frf/**
@@ -51,6 +46,9 @@ reconst/meanfrf:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
+reconst/shmetrics:
+  - modules/nf-scil/reconst/shmetrics/**
+  - tests/modules/nf-scil/reconst/shmetrics/**
 register/anattodwi:
   - modules/nf-scil/register/anattodwi/**
   - tests/modules/nf-scil/register/anattodwi/**
