@@ -5,11 +5,11 @@ process RECONST_FRF {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(wm_mask), path(gm_mask), path(csf_mask), val(method)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(wm_mask), path(gm_mask), path(csf_mask)
 
     output:
         tuple val(meta), path("*__frf.txt")             , emit: frf, optional: true
@@ -32,7 +32,7 @@ process RECONST_FRF {
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
     // Test that this really gives the right dti_shells! (for dtimetrics also)
     def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
-    def set_method = method ?: "ssst_frf"
+    def set_method = task.ext.method ?: "ssst"
 
     def fa_thr_wm = task.ext.fa_thr_wm ? "--fa_thr_wm " + task.ext.fa_thr_wm : ""
     def fa_thr_gm = task.ext.fa_thr_gm ? "--fa_thr_gm " + task.ext.fa_thr_gm : ""
@@ -42,6 +42,7 @@ process RECONST_FRF {
     def md_thr_csf = task.ext.md_thr_csf ? "--md_thr_csf " + task.ext.md_thr_csf : ""
 
     def fix_frf = task.ext.manual_frf ? task.ext.manual_frf : ""
+    // TODO Verify that the test has the right diffusivities (and format)
     def fix_wm_frf = task.ext.manual_wm_frf ? task.ext.manual_wm_frf : ""
     def fix_gm_frf = task.ext.manual_gm_frf ? task.ext.manual_gm_frf : ""
     def fix_csf_frf = task.ext.manual_csf_frf ? task.ext.manual_csf_frf : ""
@@ -55,7 +56,8 @@ process RECONST_FRF {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    if [ "$set_method" = "ssst_frf" ]; then
+    if [ "$set_method" = "ssst" ]
+    then
 
         scil_extract_dwi_shell.py $dwi $bval $bvec $dti_shells \
                 dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
@@ -71,7 +73,8 @@ process RECONST_FRF {
 
     fi
 
-    if [ "$set_method" = "msmt_frf" ]; then
+    elif [ "$set_method" = "msmt" ]
+    then
 
         scil_compute_msmt_frf.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
             ${prefix}__wm_frf.txt ${prefix}__gm_frf.txt ${prefix}__csf_frf.txt \
@@ -92,7 +95,7 @@ process RECONST_FRF {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
@@ -112,7 +115,7 @@ process RECONST_FRF {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }
