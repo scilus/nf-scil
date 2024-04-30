@@ -1,8 +1,8 @@
-- name: reconst fodfmetrics test_reconst_fodf_metrics
-  command: nextflow run ./tests/modules/nf-scil/reconst/fodfmetrics -entry test_reconst_fodf_metrics -c ./tests/config/nextflow.config
+- name: reconst shmetrics test_reconst_sh_metrics
+  command: nextflow run ./tests/modules/nf-scil/reconst/shmetrics -entry test_reconst_sh_metrics -c ./tests/config/nextflow.config
   tags:
     - reconst
-    - reconst/fodfmetrics
+    - reconst/shmetrics
   files:
     - path: output/reconst/test__afd_max.nii.gz
       md5sum: a2e9ab89d04dc0edf65deba59107049c

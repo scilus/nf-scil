@@ -1,14 +1,14 @@
 
-process RECONST_FODFMETRICS {
+process RECONST_SHMETRICS {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
-        tuple val(meta), path(fodf), path(mask), path(fa), path(md)
+        tuple val(meta), path(sh), path(mask), path(fa), path(md)
 
     output:
         tuple val(meta), path("*peaks.nii.gz")          , emit: peaks, optional: true
@@ -18,6 +18,7 @@ process RECONST_FODFMETRICS {
         tuple val(meta), path("*afd_total.nii.gz")      , emit: afd_total, optional: true
         tuple val(meta), path("*afd_sum.nii.gz")        , emit: afd_sum, optional: true
         tuple val(meta), path("*nufo.nii.gz")           , emit: nufo, optional: true
+        tuple val(meta), path("*ventricles_mask.nii.gz"), emit: vent_mask, optional: true
         path "versions.yml"                             , emit: versions
 
     when:
@@ -32,7 +33,7 @@ process RECONST_FODFMETRICS {
     def fa_threshold = task.ext.fa_threshold ? "--fa_t " + task.ext.fa_threshold : ""
     def md_threshold = task.ext.md_threshold ? "--md_t " + task.ext.md_threshold : ""
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
-    def abs_peaks_values = task.ext.abs_peaks_values ? "--abs_peaks_and_values" : ""
+    def absolute_peaks = task.ext.absolute_peaks ? "--abs_peaks_and_values" : ""
     def set_mask = mask ? "--mask $mask" : ""
 
     if ( task.ext.peaks ) peaks = "--peaks ${prefix}__peaks.nii.gz" else peaks = ""
@@ -42,34 +43,41 @@ process RECONST_FODFMETRICS {
     if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else afd_total = ""
     if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else afd_sum = ""
     if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else nufo = ""
+    if ( task.ext.ventricles_mask ) vent_mask = "--mask_output ${prefix}__ventricles_mask.nii.gz" else vent_mask = ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_fodf_max_in_ventricles.py $fodf $fa $md \
+    scil_compute_fodf_max_in_ventricles.py $sh $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
-        $fa_threshold $md_threshold -f
+        $fa_threshold $md_threshold $vent_mask -f
+
+    echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
 
     a_factor=$fodf_metrics_a_factor
     v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
+
+    echo "Maximal peak value in ventricles : \${v_max}"
+
     a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
     if (( \$(echo "\${a_threshold} < 0" | bc -l) )); then
         a_threshold=0
     fi
 
-    scil_compute_fodf_metrics.py $fodf \
-        $set_mask $sh_basis --not_all \
-        $peaks $peak_values $peak_indices \
-        $afd_max $afd_total \
-        $afd_sum $nufo \
-        $relative_threshold --at \${a_threshold} \
-        $processes $abs_peaks_values
+    echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
+
+    scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
+            $set_mask $sh_basis $absolute_peaks \
+            $peaks $peak_values $peak_indices \
+            $afd_max $afd_total \
+            $afd_sum $nufo \
+            $relative_threshold --not_all --at \${a_threshold}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
@@ -87,10 +95,11 @@ process RECONST_FODFMETRICS {
     touch ${prefix}__afd_total.nii.gz
     touch ${prefix}__afd_sum.nii.gz
     touch ${prefix}__nufo.nii.gz
+    touch ${prefix}__ventricles_mask.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }

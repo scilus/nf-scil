@@ -24,6 +24,7 @@ process RECONST_FODF {
         tuple val(meta), path("*afd_total.nii.gz")      , emit: afd_total, optional: true
         tuple val(meta), path("*afd_sum.nii.gz")        , emit: afd_sum, optional: true
         tuple val(meta), path("*nufo.nii.gz")           , emit: nufo, optional: true
+        tuple val(meta), path("*ventricles_mask.nii.gz"), emit: vent_mask, optional: true
         path "versions.yml"                             , emit: versions
 
     when:
@@ -61,6 +62,7 @@ process RECONST_FODF {
     if ( task.ext.afd_total ) afd_total = "--afd_total ${prefix}__afd_total.nii.gz" else afd_total = ""
     if ( task.ext.afd_sum ) afd_sum = "--afd_sum ${prefix}__afd_sum.nii.gz" else afd_sum = ""
     if ( task.ext.nufo ) nufo = "--nufo ${prefix}__nufo.nii.gz" else nufo = ""
+    if ( task.ext.ventricles_mask ) vent_mask = "--mask_output ${prefix}__ventricles_mask.nii.gz" else vent_mask = ""
 
     def run_fodf_metrics = [
         task.ext.peaks, task.ext.peak_values, task.ext.peak_indices, task.ext.afd_max,
@@ -101,7 +103,7 @@ process RECONST_FODF {
 
         scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
-        $fa_threshold $md_threshold --mask_output ventricles_mask.nii.gz -f
+        $fa_threshold $md_threshold $vent_mask -f
 
         echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
 
@@ -127,7 +129,7 @@ process RECONST_FODF {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
@@ -154,6 +156,7 @@ process RECONST_FODF {
     touch ${prefix}__afd_total.nii.gz
     touch ${prefix}__afd_sum.nii.gz
     touch ${prefix}__nufo.nii.gz
+    touch ${prefix}__ventricles_mask.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

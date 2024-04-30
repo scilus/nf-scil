@@ -1,8 +1,9 @@
 ---
-name: "reconst_fodfmetrics"
+name: "reconst_shmetrics"
 description: Compute FODF metrics from given FODF or SH map.
 keywords:
   - FODF
+  - SH
   - Metrics
 tools:
   - "Scilpy":
@@ -16,10 +17,10 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - fodf:
+  - sh:
       type: file
-      description: FODF map.
-      pattern: "*fodf.nii.gz"
+      description: SH or FODF map.
+      pattern: "*.{nii,nii.gz}"
 
   - mask:
       type: file
@@ -73,11 +74,15 @@ output:
       description: Number of Fiber Orientation (NuFO) map.
       pattern: "*nufo.nii.gz"
 
+  - vent_mask:
+      type: file
+      description: Ventricles mask.
+      pattern: "*ventricles_mask.nii.gz"
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
 
 authors:
-  - "@gagnonanthony"
   - "@karanphil"
