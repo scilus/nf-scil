@@ -1,9 +1,3 @@
-denoising/mppca:
-  - modules/nf-scil/denoising/mppca/**
-  - tests/modules/nf-scil/denoising/mppca/**
-denoising/nlmeans:
-  - modules/nf-scil/denoising/nlmeans/**
-  - tests/modules/nf-scil/denoising/nlmeans/**
 image/resample:
   - modules/nf-scil/image/resample/**
   - tests/modules/nf-scil/image/resample/**
