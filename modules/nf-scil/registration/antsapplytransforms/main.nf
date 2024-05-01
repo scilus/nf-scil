@@ -10,7 +10,7 @@ process REGISTRATION_ANTSAPPLYTRANSFORMS {
     tuple val(meta), path(image), path(reference), path(transform)
 
     output:
-    tuple val(meta), path("*__warped.nii.gz"), emit: warpedimage
+    tuple val(meta), path("*__warped.nii.gz"), emit: warped_image
     path "versions.yml"           , emit: versions
 
     when:

@@ -34,15 +34,6 @@ reconst/meanfrf:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-register/anattodwi:
-  - modules/nf-scil/register/anattodwi/**
-  - tests/modules/nf-scil/register/anattodwi/**
-registration/ants:
-  - modules/nf-scil/registration/ants/**
-  - tests/modules/nf-scil/registration/ants/**
-registration/antsapplytransforms:
-  - modules/nf-scil/registration/antsapplytransforms/**
-  - tests/modules/nf-scil/registration/antsapplytransforms/**
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**

@@ -1,0 +1,77 @@
+{
+    "register - anattodwi": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output0GenericAffine.mat:md5,043decee0d131e79a802e3dcc61c22f0",
+                        "test__output1InverseWarp.nii.gz:md5,62d6287e60dd36ffd477e71061f23077"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1Warp.nii.gz:md5,f896e4fef21f26c84bf834afd7fb5d55",
+                        "test__output0GenericAffine.mat:md5,043decee0d131e79a802e3dcc61c22f0"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_warped.nii.gz:md5,ff651c76f4ea493de0a06a202e9f9fb2"
+                    ]
+                ],
+                "3": [
+                    "versions.yml:md5,6c0ee74526552d351c4f525ae8737a84"
+                ],
+                "t1_warped": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_warped.nii.gz:md5,ff651c76f4ea493de0a06a202e9f9fb2"
+                    ]
+                ],
+                "transfo_image": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1Warp.nii.gz:md5,f896e4fef21f26c84bf834afd7fb5d55",
+                        "test__output0GenericAffine.mat:md5,043decee0d131e79a802e3dcc61c22f0"
+                    ]
+                ],
+                "transfo_trk": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output0GenericAffine.mat:md5,043decee0d131e79a802e3dcc61c22f0",
+                        "test__output1InverseWarp.nii.gz:md5,62d6287e60dd36ffd477e71061f23077"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,6c0ee74526552d351c4f525ae8737a84"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T13:53:14.585418"
+    }
+}

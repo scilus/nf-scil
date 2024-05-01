@@ -1,0 +1,6 @@
+name: "register_anattodwi"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "ANTS"
