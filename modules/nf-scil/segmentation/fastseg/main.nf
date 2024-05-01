@@ -1,4 +1,3 @@
-
 process SEGMENTATION_FASTSEG {
     tag "$meta.id"
     label 'process_single'
