@@ -1,0 +1,6 @@
+name: "registration_antsapplytransforms"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "ANTS"

@@ -1,9 +1,0 @@
-- name: registration antsapplytransforms test_registration_applytransforms
-  command: nextflow run ./tests/modules/nf-scil/registration/antsapplytransforms -entry test_registration_applytransforms -c ./tests/config/nextflow.config
-  tags:
-    - registration/antsapplytransforms
-    - registration
-  files:
-    - path: output/registration/test__warped.nii.gz
-      md5sum: 0e519a41c55a670d3660d033c8e5fb8c
-    - path: output/registration/versions.yml
