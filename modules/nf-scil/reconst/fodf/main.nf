@@ -36,10 +36,11 @@ process RECONST_FODF {
     def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
     def min_fodf_shell_value = task.ext.min_fodf_shell_value ?: 100     /* Default value for min_fodf_shell_value */
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10        /* Default value for b0_thr_extract_b0 */
-    def fodf_shells = task.ext.fodf_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$min_fodf_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
+    def b0_threshold = task.ext.b0_thr_extract_b0 ? "--b0_threshold $task.ext.b0_thr_extract_b0" : ""
+    def fodf_shells = task.ext.fodf_shells ? "0 " + task.ext.fodf_shells : "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$min_fodf_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
     def sh_order = task.ext.sh_order ? "--sh_order " + task.ext.sh_order : ""
     def sh_basis = task.ext.sh_basis ? "--sh_basis " + task.ext.sh_basis : ""
-    def set_method = task.ext.method ?: "ssst"
+    def set_method = task.ext.method ? task.ext.method : "ssst"
     def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
     def set_mask = mask ? "--mask $mask" : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
@@ -74,23 +75,23 @@ process RECONST_FODF {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
+    echo $sh_basis
+
     if [ "$set_method" = "ssst" ]
     then
 
-        scil_extract_dwi_shell.py $dwi $bval $bvec $fodf_shells \
+        scil_dwi_extract_shell.py $dwi $bval $bvec $fodf_shells \
             dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
             $dwi_shell_tolerance -f
 
-        scil_compute_ssst_fodf.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf ${prefix}__fodf.nii.gz \
-            $sh_order $sh_basis --force_b0_threshold \
+        scil_fodf_ssst.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf ${prefix}__fodf.nii.gz \
+            $sh_order $sh_basis $b0_threshold \
             $set_mask $processes
-
-    fi
 
     elif [ "$set_method" = "msmt" ]
     then
 
-        scil_compute_msmt_fodf.py $dwi $bval $bvec $frf \
+        scil_fodf_msmt.py $dwi $bval $bvec $frf \
             $sh_order $sh_basis $set_mask $processes $dwi_shell_tolerance \
             --not_all $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
 
@@ -101,7 +102,7 @@ process RECONST_FODF {
     if $run_fodf_metrics
     then
 
-        scil_compute_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
+        scil_fodf_max_in_ventricles.py ${prefix}__fodf.nii.gz $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
         $fa_threshold $md_threshold $vent_mask -f
 
@@ -119,7 +120,7 @@ process RECONST_FODF {
 
         echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
 
-        scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
+        scil_fodf_metrics.py ${prefix}__fodf.nii.gz \
             $set_mask $sh_basis $absolute_peaks \
             $peaks $peak_values $peak_indices \
             $afd_max $afd_total \
@@ -137,11 +138,11 @@ process RECONST_FODF {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_extract_dwi_shell.py -h
-    scil_compute_ssst_fodf.py -h
-    scil_compute_msmt_fodf.py -h
-    scil_compute_fodf_max_in_ventricles.py -h
-    scil_compute_fodf_metrics.py -h
+    scil_dwi_extract_shell.py -h
+    scil_fodf_ssst.py -h
+    scil_fodf_msmt.py -h
+    scil_fodf_max_in_ventricles.py -h
+    scil_fodf_metrics.py -h
 
     touch ${prefix}__fodf.nii.gz
     touch ${prefix}__wm_fodf.nii.gz

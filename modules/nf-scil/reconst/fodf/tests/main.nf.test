@@ -3,7 +3,6 @@ nextflow_process {
     name "Test Process RECONST_FODF"
     script "../main.nf"
     process "RECONST_FODF"
-    config "./nextflow.config"
 
     tag "modules"
     tag "modules_nfcore"
@@ -27,6 +26,8 @@ nextflow_process {
 
     test("reconst - fodf") {
 
+        config "./nextflow.config"
+
         when {
             process {
                 """
@@ -44,7 +45,7 @@ nextflow_process {
                         file("\${test_data_directory}/cc.nii.gz"),
                         file("\${test_data_directory}/fa.nii.gz"),
                         file("\${test_data_directory}/md.nii.gz"),
-                        file("\${test_data_directory}/frf.txt"))
+                        file("\${test_data_directory}/frf.txt")
                     ]
                 }
                 """
@@ -81,7 +82,7 @@ nextflow_process {
                         file("\${test_data_directory}/cc.nii.gz"),
                         file("\${test_data_directory}/fa.nii.gz"),
                         file("\${test_data_directory}/md.nii.gz"),
-                        file("\${test_data_directory}/frf.txt"))
+                        file("\${test_data_directory}/frf.txt")
                     ]
                 }
                 """
@@ -98,6 +99,8 @@ nextflow_process {
     }
 
     test("reconst - fodf_no_mask") {
+
+        config "./nextflow.config"
 
         when {
             process {
@@ -116,7 +119,7 @@ nextflow_process {
                         [],
                         file("\${test_data_directory}/fa.nii.gz"),
                         file("\${test_data_directory}/md.nii.gz"),
-                        file("\${test_data_directory}/frf.txt"))
+                        file("\${test_data_directory}/frf.txt")
                     ]
                 }
                 """
@@ -153,7 +156,7 @@ nextflow_process {
                         file("\${test_data_directory}/cc.nii.gz"),
                         file("\${test_data_directory}/fa.nii.gz"),
                         file("\${test_data_directory}/md.nii.gz"),
-                        file("\${test_data_directory}/frf.txt"))
+                        file("\${test_data_directory}/frf.txt")
                     ]
                 }
                 """
@@ -190,9 +193,9 @@ nextflow_process {
                         file("\${test_data_directory}/mask.nii.gz"),
                         file("\${test_data_directory}/fa.nii.gz"),
                         file("\${test_data_directory}/md.nii.gz"),
-                        file("\${test_data_directory}/wm_frf.txt"),
+                        [file("\${test_data_directory}/wm_frf.txt"),
                         file("\${test_data_directory}/gm_frf.txt"),
-                        file("\${test_data_directory}/csf_frf.txt"))
+                        file("\${test_data_directory}/csf_frf.txt")]
 
                     ]
                 }

@@ -1,5 +1,5 @@
 {
-    "reconst - dtimetrics_with_b0mask": {
+    "reconst - fodf_msmt": {
         "content": [
             {
                 "0": [
@@ -8,7 +8,12 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,62435c2b9b70e30e2d91bbaf0679371c"
+                        [
+                            "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e",
+                            "test__fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae",
+                            "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2",
+                            "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                        ]
                     ]
                 ],
                 "1": [
@@ -17,7 +22,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs.nii.gz:md5,a90a1669b6d4e96427240e28836db4bf"
+                        "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
                     ]
                 ],
                 "10": [
@@ -26,7 +31,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ga.nii.gz:md5,524fed0aa8386d386bc4fcb2d41a7e0a"
+                        "test__afd_total.nii.gz:md5,8a23b62444f521a993d9d64f89a6414e"
                     ]
                 ],
                 "11": [
@@ -35,7 +40,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__rgb.nii.gz:md5,0c73e96c1088738063f38c9c1ae4c4b8"
+                        "test__afd_sum.nii.gz:md5,07022835080fd49b08377e9452475f96"
                     ]
                 ],
                 "12": [
@@ -44,65 +49,14 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__md.nii.gz:md5,6ebcbd6c82996a00107e15d3c41bb963"
+                        "test__nufo.nii.gz:md5,105cf44f2b133b5b652c74e799ffc846"
                     ]
                 ],
                 "13": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,47ce0fbf203b7d380ba77b22e9758543"
-                    ]
-                ],
-                "14": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,0010eaa058a965272d92b2e1a81ffc33"
-                    ]
-                ],
-                "15": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rd.nii.gz:md5,eaf8de78c8628790e82b403f8f526d89"
-                    ]
-                ],
-                "16": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,977f7db770e407d44abe811685f6abfe"
-                    ]
-                ],
-                "17": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,b32518a39295cf30f9e2b82fbb999e0f"
-                    ]
-                ],
-                "18": [
                     
                 ],
-                "19": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual.nii.gz:md5,2399fa1692b210886565594da0ac509d"
-                    ]
+                "14": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
                 ],
                 "2": [
                     [
@@ -110,65 +64,8 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v1.nii.gz:md5,6d1e3abf689f76976ca89961659c69b3"
+                        "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2"
                     ]
-                ],
-                "20": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "21": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_mean_residuals.npy:md5,946edcf751ae3e882286731ace8e4ddc"
-                    ]
-                ],
-                "22": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "23": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "24": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,edb437fe320dc9ba2f89a274ba9952c3"
-                    ]
-                ],
-                "25": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,d1037f962bba270c4f38688e35ae5d50"
-                    ]
-                ],
-                "26": [
-                    "versions.yml:md5,f057a83131297624fb6d9db93df8d749"
                 ],
                 "3": [
                     [
@@ -176,7 +73,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v2.nii.gz:md5,95787ea9153ebb148f78f40cc8a459b2"
+                        "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e"
                     ]
                 ],
                 "4": [
@@ -185,7 +82,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v3.nii.gz:md5,6506340c1dc374c07d2bf69f379af594"
+                        "test__vf.nii.gz:md5,f43c29a0269ef641cd6492d95273921f"
                     ]
                 ],
                 "5": [
@@ -194,7 +91,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals.nii.gz:md5,34c78f7e27017ad690c2a8ae93240e92"
+                        "test__vf_rgb.nii.gz:md5,0a26f29ef00aaec6fd32988f097a6704"
                     ]
                 ],
                 "6": [
@@ -203,7 +100,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e1.nii.gz:md5,62435c2b9b70e30e2d91bbaf0679371c"
+                        "test__peaks.nii.gz:md5,010d75b2a4e7768ca8aad1070b34bbde"
                     ]
                 ],
                 "7": [
@@ -212,7 +109,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e2.nii.gz:md5,e8b6b9d002e99443b12185d76ce9e577"
+                        "test__peak_values.nii.gz:md5,e9583c1410b00458862e65df7242b3fa"
                     ]
                 ],
                 "8": [
@@ -221,7 +118,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e3.nii.gz:md5,4ad08712da89e76eeed346a97f57c586"
+                        "test__peak_indices.nii.gz:md5,3ea0945965c83edf94780608163be8f0"
                     ]
                 ],
                 "9": [
@@ -230,239 +127,136 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__fa.nii.gz:md5,2faf9f0eb4fa3617611ffb26467dad46"
+                        "test__afd_max.nii.gz:md5,3344b5514c4ec2762902c3bb90a7225f"
                     ]
                 ],
-                "ad": [
+                "afd_max": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,62435c2b9b70e30e2d91bbaf0679371c"
+                        "test__afd_max.nii.gz:md5,3344b5514c4ec2762902c3bb90a7225f"
                     ]
                 ],
-                "evals": [
+                "afd_sum": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals.nii.gz:md5,34c78f7e27017ad690c2a8ae93240e92"
+                        "test__afd_sum.nii.gz:md5,07022835080fd49b08377e9452475f96"
                     ]
                 ],
-                "evals_e1": [
+                "afd_total": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e1.nii.gz:md5,62435c2b9b70e30e2d91bbaf0679371c"
+                        "test__afd_total.nii.gz:md5,8a23b62444f521a993d9d64f89a6414e"
                     ]
                 ],
-                "evals_e2": [
+                "csf_fodf": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e2.nii.gz:md5,e8b6b9d002e99443b12185d76ce9e577"
+                        "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e"
                     ]
                 ],
-                "evals_e3": [
+                "fodf": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e3.nii.gz:md5,4ad08712da89e76eeed346a97f57c586"
+                        [
+                            "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e",
+                            "test__fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae",
+                            "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2",
+                            "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                        ]
                     ]
                 ],
-                "evecs": [
+                "gm_fodf": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs.nii.gz:md5,a90a1669b6d4e96427240e28836db4bf"
+                        "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2"
                     ]
                 ],
-                "evecs_v1": [
+                "nufo": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v1.nii.gz:md5,6d1e3abf689f76976ca89961659c69b3"
+                        "test__nufo.nii.gz:md5,105cf44f2b133b5b652c74e799ffc846"
                     ]
                 ],
-                "evecs_v2": [
+                "peak_indices": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v2.nii.gz:md5,95787ea9153ebb148f78f40cc8a459b2"
+                        "test__peak_indices.nii.gz:md5,3ea0945965c83edf94780608163be8f0"
                     ]
                 ],
-                "evecs_v3": [
+                "peak_values": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evecs_v3.nii.gz:md5,6506340c1dc374c07d2bf69f379af594"
+                        "test__peak_values.nii.gz:md5,e9583c1410b00458862e65df7242b3fa"
                     ]
                 ],
-                "fa": [
+                "peaks": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__fa.nii.gz:md5,2faf9f0eb4fa3617611ffb26467dad46"
+                        "test__peaks.nii.gz:md5,010d75b2a4e7768ca8aad1070b34bbde"
                     ]
                 ],
-                "ga": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ga.nii.gz:md5,524fed0aa8386d386bc4fcb2d41a7e0a"
-                    ]
-                ],
-                "md": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__md.nii.gz:md5,6ebcbd6c82996a00107e15d3c41bb963"
-                    ]
-                ],
-                "mode": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,47ce0fbf203b7d380ba77b22e9758543"
-                    ]
-                ],
-                "nonphysical": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,b32518a39295cf30f9e2b82fbb999e0f"
-                    ]
-                ],
-                "norm": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,0010eaa058a965272d92b2e1a81ffc33"
-                    ]
-                ],
-                "pulsation_std_dwi": [
+                "vent_mask": [
                     
                 ],
-                "rd": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rd.nii.gz:md5,eaf8de78c8628790e82b403f8f526d89"
-                    ]
-                ],
-                "residual": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual.nii.gz:md5,2399fa1692b210886565594da0ac509d"
-                    ]
-                ],
-                "residual_iqr_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_mean_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_mean_residuals.npy:md5,946edcf751ae3e882286731ace8e4ddc"
-                    ]
-                ],
-                "residual_q1_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_q3_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_residuals_stats": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,edb437fe320dc9ba2f89a274ba9952c3"
-                    ]
-                ],
-                "residual_std_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,d1037f962bba270c4f38688e35ae5d50"
-                    ]
-                ],
-                "rgb": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rgb.nii.gz:md5,0c73e96c1088738063f38c9c1ae4c4b8"
-                    ]
-                ],
-                "tensor": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,977f7db770e407d44abe811685f6abfe"
-                    ]
-                ],
                 "versions": [
-                    "versions.yml:md5,f057a83131297624fb6d9db93df8d749"
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "vf": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__vf.nii.gz:md5,f43c29a0269ef641cd6492d95273921f"
+                    ]
+                ],
+                "vf_rgb": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__vf_rgb.nii.gz:md5,0a26f29ef00aaec6fd32988f097a6704"
+                    ]
+                ],
+                "wm_fodf": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                    ]
                 ]
             }
         ],
@@ -470,9 +264,9 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T19:12:27.112242"
+        "timestamp": "2024-05-01T20:42:26.970238"
     },
-    "reconst - dtimetrics": {
+    "reconst - fodf": {
         "content": [
             {
                 "0": [
@@ -481,17 +275,11 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
                     ]
                 ],
                 "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs.nii.gz:md5,12a42297c1c257336f1b5cb04cd18a45"
-                    ]
+                    
                 ],
                 "10": [
                     [
@@ -499,7 +287,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ga.nii.gz:md5,209ab956ff7e59217db0929c5dff08fa"
+                        "test__afd_total.nii.gz:md5,9bac465d58b8662c3dce2c4937300a5a"
                     ]
                 ],
                 "11": [
@@ -508,7 +296,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__rgb.nii.gz:md5,601b67930e79dbf23dfaeb5aafe6f3e7"
+                        "test__afd_sum.nii.gz:md5,a849e3eb8c67cc176e88daca01669eef"
                     ]
                 ],
                 "12": [
@@ -517,158 +305,26 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__md.nii.gz:md5,d9a6ca6d7ad205b8ec0a90f0db4c53d9"
+                        "test__nufo.nii.gz:md5,711f0ee8d01e71166099ffdf4c684b5f"
                     ]
                 ],
                 "13": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,015a1e5541e9fbb720e1c4110ebbcc46"
-                    ]
-                ],
-                "14": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,9b90f4e4af148a4d0395596fb48b5bef"
-                    ]
-                ],
-                "15": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rd.nii.gz:md5,d33a7089844a53184c0548cdf8899efa"
-                    ]
-                ],
-                "16": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,9eac2b7afe5db2d65650f1307e3b8166"
-                    ]
-                ],
-                "17": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,7da6de5ad6e7c37518f9f3962f066f89"
-                    ]
-                ],
-                "18": [
                     
                 ],
-                "19": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual.nii.gz:md5,4d91b617b09018cdc3feb07256665d1b"
-                    ]
+                "14": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
                 ],
                 "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v1.nii.gz:md5,b9b02ffa0ba41ec5e9e52f18c7741f18"
-                    ]
-                ],
-                "20": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "21": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_mean_residuals.npy:md5,2247858eaf51c6e973649418f8721477"
-                    ]
-                ],
-                "22": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "23": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "24": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,18ce14e9e554c8f5fb1cf0c87af36f9f"
-                    ]
-                ],
-                "25": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,5e526c12b8a13b611bd1b2e00d4e1448"
-                    ]
-                ],
-                "26": [
-                    "versions.yml:md5,f057a83131297624fb6d9db93df8d749"
+                    
                 ],
                 "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v2.nii.gz:md5,2189cde6872fb140683a1cd6c5eb1e9e"
-                    ]
+                    
                 ],
                 "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v3.nii.gz:md5,af227812521827a9064e3a8596fffcda"
-                    ]
+                    
                 ],
                 "5": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals.nii.gz:md5,464d861a0ddda845824b8a4c778d1b6b"
-                    ]
+                    
                 ],
                 "6": [
                     [
@@ -676,7 +332,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e1.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
+                        "test__peaks.nii.gz:md5,fbc8af94bce991a6ebe3bfb837d39a52"
                     ]
                 ],
                 "7": [
@@ -685,7 +341,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e2.nii.gz:md5,286b867f7ae908fad963a80c9ba74d30"
+                        "test__peak_values.nii.gz:md5,4fd4a44c18544413c0e9bb672e60f709"
                     ]
                 ],
                 "8": [
@@ -694,7 +350,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e3.nii.gz:md5,1b33203d97ec61d5fd6d1b1a579431ec"
+                        "test__peak_indices.nii.gz:md5,d39ad843a7b86ac7042c44b87356e68b"
                     ]
                 ],
                 "9": [
@@ -703,239 +359,101 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__fa.nii.gz:md5,9bb468c2186f77775d70ebb17ec33a07"
+                        "test__afd_max.nii.gz:md5,96b7a2dbab6306ca053b45bfad21be55"
                     ]
                 ],
-                "ad": [
+                "afd_max": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
+                        "test__afd_max.nii.gz:md5,96b7a2dbab6306ca053b45bfad21be55"
                     ]
                 ],
-                "evals": [
+                "afd_sum": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals.nii.gz:md5,464d861a0ddda845824b8a4c778d1b6b"
+                        "test__afd_sum.nii.gz:md5,a849e3eb8c67cc176e88daca01669eef"
                     ]
                 ],
-                "evals_e1": [
+                "afd_total": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__evals_e1.nii.gz:md5,ece4e1d0fc03f4bafc882b63285984d3"
+                        "test__afd_total.nii.gz:md5,9bac465d58b8662c3dce2c4937300a5a"
                     ]
                 ],
-                "evals_e2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e2.nii.gz:md5,286b867f7ae908fad963a80c9ba74d30"
-                    ]
-                ],
-                "evals_e3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evals_e3.nii.gz:md5,1b33203d97ec61d5fd6d1b1a579431ec"
-                    ]
-                ],
-                "evecs": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs.nii.gz:md5,12a42297c1c257336f1b5cb04cd18a45"
-                    ]
-                ],
-                "evecs_v1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v1.nii.gz:md5,b9b02ffa0ba41ec5e9e52f18c7741f18"
-                    ]
-                ],
-                "evecs_v2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v2.nii.gz:md5,2189cde6872fb140683a1cd6c5eb1e9e"
-                    ]
-                ],
-                "evecs_v3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__evecs_v3.nii.gz:md5,af227812521827a9064e3a8596fffcda"
-                    ]
-                ],
-                "fa": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fa.nii.gz:md5,9bb468c2186f77775d70ebb17ec33a07"
-                    ]
-                ],
-                "ga": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__ga.nii.gz:md5,209ab956ff7e59217db0929c5dff08fa"
-                    ]
-                ],
-                "md": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__md.nii.gz:md5,d9a6ca6d7ad205b8ec0a90f0db4c53d9"
-                    ]
-                ],
-                "mode": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mode.nii.gz:md5,015a1e5541e9fbb720e1c4110ebbcc46"
-                    ]
-                ],
-                "nonphysical": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__nonphysical.nii.gz:md5,7da6de5ad6e7c37518f9f3962f066f89"
-                    ]
-                ],
-                "norm": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__norm.nii.gz:md5,9b90f4e4af148a4d0395596fb48b5bef"
-                    ]
-                ],
-                "pulsation_std_dwi": [
+                "csf_fodf": [
                     
                 ],
-                "rd": [
+                "fodf": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__rd.nii.gz:md5,d33a7089844a53184c0548cdf8899efa"
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
                     ]
                 ],
-                "residual": [
+                "gm_fodf": [
+                    
+                ],
+                "nufo": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__residual.nii.gz:md5,4d91b617b09018cdc3feb07256665d1b"
+                        "test__nufo.nii.gz:md5,711f0ee8d01e71166099ffdf4c684b5f"
                     ]
                 ],
-                "residual_iqr_residuals": [
+                "peak_indices": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__residual_iqr_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
+                        "test__peak_indices.nii.gz:md5,d39ad843a7b86ac7042c44b87356e68b"
                     ]
                 ],
-                "residual_mean_residuals": [
+                "peak_values": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__residual_mean_residuals.npy:md5,2247858eaf51c6e973649418f8721477"
+                        "test__peak_values.nii.gz:md5,4fd4a44c18544413c0e9bb672e60f709"
                     ]
                 ],
-                "residual_q1_residuals": [
+                "peaks": [
                     [
                         {
                             "id": "test",
                             "single_end": false
                         },
-                        "test__residual_q1_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
+                        "test__peaks.nii.gz:md5,fbc8af94bce991a6ebe3bfb837d39a52"
                     ]
                 ],
-                "residual_q3_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_q3_residuals.npy:md5,4a71d46303bb3ac67088fe5cdaa5694a"
-                    ]
-                ],
-                "residual_residuals_stats": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_residuals_stats.png:md5,18ce14e9e554c8f5fb1cf0c87af36f9f"
-                    ]
-                ],
-                "residual_std_residuals": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__residual_std_residuals.npy:md5,5e526c12b8a13b611bd1b2e00d4e1448"
-                    ]
-                ],
-                "rgb": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__rgb.nii.gz:md5,601b67930e79dbf23dfaeb5aafe6f3e7"
-                    ]
-                ],
-                "tensor": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__tensor.nii.gz:md5,9eac2b7afe5db2d65650f1307e3b8166"
-                    ]
+                "vent_mask": [
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,f057a83131297624fb6d9db93df8d749"
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "vf": [
+                    
+                ],
+                "vf_rgb": [
+                    
+                ],
+                "wm_fodf": [
+                    
                 ]
             }
         ],
@@ -943,6 +461,513 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T19:11:59.341747"
+        "timestamp": "2024-05-01T19:21:03.487368"
+    },
+    "reconst - fodf_no_metrics": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "10": [
+                    
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "9": [
+                    
+                ],
+                "afd_max": [
+                    
+                ],
+                "afd_sum": [
+                    
+                ],
+                "afd_total": [
+                    
+                ],
+                "csf_fodf": [
+                    
+                ],
+                "fodf": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
+                    ]
+                ],
+                "gm_fodf": [
+                    
+                ],
+                "nufo": [
+                    
+                ],
+                "peak_indices": [
+                    
+                ],
+                "peak_values": [
+                    
+                ],
+                "peaks": [
+                    
+                ],
+                "vent_mask": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "vf": [
+                    
+                ],
+                "vf_rgb": [
+                    
+                ],
+                "wm_fodf": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T20:22:29.171158"
+    },
+    "reconst - fodf_with_shells": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "10": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_total.nii.gz:md5,9bac465d58b8662c3dce2c4937300a5a"
+                    ]
+                ],
+                "11": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_sum.nii.gz:md5,a849e3eb8c67cc176e88daca01669eef"
+                    ]
+                ],
+                "12": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__nufo.nii.gz:md5,711f0ee8d01e71166099ffdf4c684b5f"
+                    ]
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peaks.nii.gz:md5,fbc8af94bce991a6ebe3bfb837d39a52"
+                    ]
+                ],
+                "7": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_values.nii.gz:md5,4fd4a44c18544413c0e9bb672e60f709"
+                    ]
+                ],
+                "8": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_indices.nii.gz:md5,d39ad843a7b86ac7042c44b87356e68b"
+                    ]
+                ],
+                "9": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_max.nii.gz:md5,96b7a2dbab6306ca053b45bfad21be55"
+                    ]
+                ],
+                "afd_max": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_max.nii.gz:md5,96b7a2dbab6306ca053b45bfad21be55"
+                    ]
+                ],
+                "afd_sum": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_sum.nii.gz:md5,a849e3eb8c67cc176e88daca01669eef"
+                    ]
+                ],
+                "afd_total": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_total.nii.gz:md5,9bac465d58b8662c3dce2c4937300a5a"
+                    ]
+                ],
+                "csf_fodf": [
+                    
+                ],
+                "fodf": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,c45f0391a462d358930809502dd2da15"
+                    ]
+                ],
+                "gm_fodf": [
+                    
+                ],
+                "nufo": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__nufo.nii.gz:md5,711f0ee8d01e71166099ffdf4c684b5f"
+                    ]
+                ],
+                "peak_indices": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_indices.nii.gz:md5,d39ad843a7b86ac7042c44b87356e68b"
+                    ]
+                ],
+                "peak_values": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_values.nii.gz:md5,4fd4a44c18544413c0e9bb672e60f709"
+                    ]
+                ],
+                "peaks": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peaks.nii.gz:md5,fbc8af94bce991a6ebe3bfb837d39a52"
+                    ]
+                ],
+                "vent_mask": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "vf": [
+                    
+                ],
+                "vf_rgb": [
+                    
+                ],
+                "wm_fodf": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T20:38:04.916377"
+    },
+    "reconst - fodf_no_mask": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,1c0aa14841e90acbdc048c6f0b117ce2"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "10": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_total.nii.gz:md5,713fae8f03e15434034c21dc647f4a20"
+                    ]
+                ],
+                "11": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_sum.nii.gz:md5,e907c21b54410ad69531b58b2c6a5e5d"
+                    ]
+                ],
+                "12": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__nufo.nii.gz:md5,0e58d2571878aa13882f858cb4e572ad"
+                    ]
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peaks.nii.gz:md5,3919c8117b3b800f52fc7319f523eb13"
+                    ]
+                ],
+                "7": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_values.nii.gz:md5,e92f556fe1a926d088590dd2a7d970d6"
+                    ]
+                ],
+                "8": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_indices.nii.gz:md5,ab4c1129a3ede2db638115e71258a288"
+                    ]
+                ],
+                "9": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_max.nii.gz:md5,db6d8bd847e08e2857173f572b46670a"
+                    ]
+                ],
+                "afd_max": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_max.nii.gz:md5,db6d8bd847e08e2857173f572b46670a"
+                    ]
+                ],
+                "afd_sum": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_sum.nii.gz:md5,e907c21b54410ad69531b58b2c6a5e5d"
+                    ]
+                ],
+                "afd_total": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__afd_total.nii.gz:md5,713fae8f03e15434034c21dc647f4a20"
+                    ]
+                ],
+                "csf_fodf": [
+                    
+                ],
+                "fodf": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,1c0aa14841e90acbdc048c6f0b117ce2"
+                    ]
+                ],
+                "gm_fodf": [
+                    
+                ],
+                "nufo": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__nufo.nii.gz:md5,0e58d2571878aa13882f858cb4e572ad"
+                    ]
+                ],
+                "peak_indices": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_indices.nii.gz:md5,ab4c1129a3ede2db638115e71258a288"
+                    ]
+                ],
+                "peak_values": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peak_values.nii.gz:md5,e92f556fe1a926d088590dd2a7d970d6"
+                    ]
+                ],
+                "peaks": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__peaks.nii.gz:md5,3919c8117b3b800f52fc7319f523eb13"
+                    ]
+                ],
+                "vent_mask": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,8f5a73278d63aac3bf8073c5d0ef488b"
+                ],
+                "vf": [
+                    
+                ],
+                "vf_rgb": [
+                    
+                ],
+                "wm_fodf": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T19:50:32.073387"
     }
 }
