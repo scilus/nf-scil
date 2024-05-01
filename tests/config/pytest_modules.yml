@@ -19,9 +19,6 @@ preproc/normalize:
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
-reconst/fodf:
-  - modules/nf-scil/reconst/fodf/**
-  - tests/modules/nf-scil/reconst/fodf/**
 reconst/frf:
   - modules/nf-scil/reconst/frf/**
   - tests/modules/nf-scil/reconst/frf/**
