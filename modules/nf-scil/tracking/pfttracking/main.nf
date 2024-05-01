@@ -4,8 +4,8 @@ process TRACKING_PFTTRACKING {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
         tuple val(meta), path(wm), path(gm), path(csf), path(fodf), path(fa)
@@ -49,15 +49,15 @@ process TRACKING_PFTTRACKING {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_maps_for_particle_filter_tracking.py $wm $gm $csf \
+    scil_tracking_pft_maps.py $wm $gm $csf \
         --include ${prefix}__map_include.nii.gz \
         --exclude ${prefix}__map_exclude.nii.gz \
         --interface ${prefix}__interface.nii.gz -f
 
     if [ "${pft_seeding_mask}" == "wm" ]; then
-        scil_image_math.py convert $wm ${prefix}__mask_wm.nii.gz \
+        scil_volume_math.py convert $wm ${prefix}__mask_wm.nii.gz \
             --data_type uint8
-        scil_image_math.py union ${prefix}__mask_wm.nii.gz \
+        scil_volume_math.py union ${prefix}__mask_wm.nii.gz \
             ${prefix}__interface.nii.gz ${prefix}__pft_seeding_mask.nii.gz\
             --data_type uint8
 
@@ -69,14 +69,14 @@ process TRACKING_PFTTRACKING {
             -datatype uint8
     fi
 
-    scil_compute_pft.py $fodf ${prefix}__pft_seeding_mask.nii.gz \
+    scil_tracking_pft.py $fodf ${prefix}__pft_seeding_mask.nii.gz \
         ${prefix}__map_include.nii.gz ${prefix}__map_exclude.nii.gz tmp.trk\
         $pft_algo $pft_seeding_type $pft_nbr_seeds \
         $pft_random_seed $pft_step $pft_theta\
         $pft_sfthres $pft_sfthres_init $pft_min_len $pft_max_len\
         $pft_particles $pft_back $pft_front $compress $basis
 
-    scil_remove_invalid_streamlines.py tmp.trk ${prefix}__pft_tracking.trk\
+    scil_tractogram_remove_invalid.py tmp.trk ${prefix}__pft_tracking.trk\
         --remove_single_point
 
     cat <<-TRACKING_INFO > ${prefix}__pft_tracking_config.json
@@ -101,7 +101,7 @@ process TRACKING_PFTTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
@@ -110,11 +110,11 @@ process TRACKING_PFTTRACKING {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_compute_pft.py -h
-    scil_compute_maps_for_particle_filter_tracking.py -h
-    scil_image_math.py -h
+    scil_tracking_pft.py -h
+    scil_tracking_pft_maps.py -h
+    scil_volume_math.py -h
     mrcalc -h
-    scil_remove_invalid_streamlines.py -h
+    scil_tractogram_remove_invalid.py -h
 
     touch ${prefix}__map_include.nii.gz
     touch ${prefix}__map_exclude.nii.gz
@@ -124,7 +124,7 @@ process TRACKING_PFTTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """

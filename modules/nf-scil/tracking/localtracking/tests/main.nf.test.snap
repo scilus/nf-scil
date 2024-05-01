@@ -1,0 +1,180 @@
+{
+    "stracking - localtracking - wm": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,51cf5adf9d575b69b917d56a183779e3"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_config.json:md5,5eac37e6262a85d8d1b33c92e1f35796"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_seeding_mask.nii.gz:md5,6180aeda681e4443e56287ef1e1aee83"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_mask.nii.gz:md5,6180aeda681e4443e56287ef1e1aee83"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,398a8d6f98e880f0d1cd9ba5b5cd3323"
+                ],
+                "config": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_config.json:md5,5eac37e6262a85d8d1b33c92e1f35796"
+                    ]
+                ],
+                "seedmask": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_seeding_mask.nii.gz:md5,6180aeda681e4443e56287ef1e1aee83"
+                    ]
+                ],
+                "trackmask": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_mask.nii.gz:md5,6180aeda681e4443e56287ef1e1aee83"
+                    ]
+                ],
+                "trk": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,51cf5adf9d575b69b917d56a183779e3"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,398a8d6f98e880f0d1cd9ba5b5cd3323"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T17:38:02.561021"
+    },
+    "stracking - localtracking - fa": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,f733cd364bfaee913c23e1f91b8ff073"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_config.json:md5,a082f8d2f2b92cb3f2912a796942a786"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_seeding_mask.nii.gz:md5,0484a2e44ff153caa79819a8646cc33c"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_mask.nii.gz:md5,0484a2e44ff153caa79819a8646cc33c"
+                    ]
+                ],
+                "4": [
+                    "versions.yml:md5,398a8d6f98e880f0d1cd9ba5b5cd3323"
+                ],
+                "config": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_config.json:md5,a082f8d2f2b92cb3f2912a796942a786"
+                    ]
+                ],
+                "seedmask": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_seeding_mask.nii.gz:md5,0484a2e44ff153caa79819a8646cc33c"
+                    ]
+                ],
+                "trackmask": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking_mask.nii.gz:md5,0484a2e44ff153caa79819a8646cc33c"
+                    ]
+                ],
+                "trk": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,f733cd364bfaee913c23e1f91b8ff073"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,398a8d6f98e880f0d1cd9ba5b5cd3323"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-01T17:27:38.030456"
+    }
+}
