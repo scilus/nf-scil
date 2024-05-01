@@ -1,2 +1,2 @@
-register/anattodwi:
-  - "modules/nf-scil/register/anattodwi/**"
+registration/anattodwi:
+  - "modules/nf-scil/registration/anattodwi/**"
