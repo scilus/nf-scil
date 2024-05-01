@@ -1,13 +1,13 @@
 nextflow_process {
 
-    name "Test Process REGISTER_ANATTODWI"
+    name "Test Process REGISTRATION_ANATTODWI"
     script "../main.nf"
-    process "REGISTER_ANATTODWI"
+    process "REGISTRATION_ANATTODWI"
 
     tag "modules"
     tag "modules_nfcore"
-    tag "register"
-    tag "register/anattodwi"
+    tag "registration"
+    tag "registration/anattodwi"
 
     tag "subworkflows"
     tag "subworkflows/load_test_data"
@@ -26,7 +26,7 @@ nextflow_process {
             }
         }
 
-    test("register - anattodwi") {
+    test("registration - anattodwi") {
         when {
             process {
              """

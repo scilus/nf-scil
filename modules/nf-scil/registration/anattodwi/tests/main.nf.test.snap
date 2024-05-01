@@ -1,5 +1,5 @@
 {
-    "register - anattodwi": {
+    "registration - anattodwi": {
         "content": [
             {
                 "0": [
@@ -32,7 +32,7 @@
                     ]
                 ],
                 "3": [
-                    "versions.yml:md5,6c0ee74526552d351c4f525ae8737a84"
+                    "versions.yml:md5,3b94092e010fc0f6bf505074a393ddcc"
                 ],
                 "t1_warped": [
                     [
@@ -64,7 +64,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,6c0ee74526552d351c4f525ae8737a84"
+                    "versions.yml:md5,3b94092e010fc0f6bf505074a393ddcc"
                 ]
             }
         ],
@@ -72,6 +72,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T13:53:14.585418"
+        "timestamp": "2024-05-01T18:20:24.065842"
     }
 }
