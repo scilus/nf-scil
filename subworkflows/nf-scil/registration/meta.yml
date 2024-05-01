@@ -17,7 +17,7 @@ keywords:
   - DWI
   - Anatomical
 components:
-  - register/anattodwi
+  - registration/anattodwi
   - registration/ants
 input:
   - ch_image:

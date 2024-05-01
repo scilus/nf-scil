@@ -9,8 +9,8 @@ nextflow_workflow {
     tag "subworkflows_nfcore"
     tag "subworkflows/registration"
 
-    tag "register"
-    tag "register/anattodwi"
+    tag "registration"
+    tag "registration/anattodwi"
     tag "registration"
     tag "registration/ants"
 
