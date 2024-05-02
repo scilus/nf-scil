@@ -9,10 +9,10 @@
                             "single_end": false
                         },
                         [
-                            "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e",
-                            "test__fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae",
-                            "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2",
-                            "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                            "test__csf_fodf.nii.gz:md5,5634ad1ed70a8967e31bf523ccf27919",
+                            "test__fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173",
+                            "test__gm_fodf.nii.gz:md5,feeb5e58f832953a6cc2a6663dc98d7b",
+                            "test__wm_fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173"
                         ]
                     ]
                 ],
@@ -22,7 +22,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                        "test__wm_fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173"
                     ]
                 ],
                 "10": [
@@ -31,7 +31,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_total.nii.gz:md5,8a23b62444f521a993d9d64f89a6414e"
+                        "test__afd_total.nii.gz:md5,5a2cb9ba073afb5cbf3de01db99cd469"
                     ]
                 ],
                 "11": [
@@ -40,7 +40,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_sum.nii.gz:md5,07022835080fd49b08377e9452475f96"
+                        "test__afd_sum.nii.gz:md5,c0ba08401e8a44a5cb7960a73c7c6cd9"
                     ]
                 ],
                 "12": [
@@ -49,7 +49,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__nufo.nii.gz:md5,105cf44f2b133b5b652c74e799ffc846"
+                        "test__nufo.nii.gz:md5,c0a0f757222bdd9277c4cb6464f71b80"
                     ]
                 ],
                 "13": [
@@ -64,7 +64,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2"
+                        "test__gm_fodf.nii.gz:md5,feeb5e58f832953a6cc2a6663dc98d7b"
                     ]
                 ],
                 "3": [
@@ -73,7 +73,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e"
+                        "test__csf_fodf.nii.gz:md5,5634ad1ed70a8967e31bf523ccf27919"
                     ]
                 ],
                 "4": [
@@ -82,7 +82,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__vf.nii.gz:md5,f43c29a0269ef641cd6492d95273921f"
+                        "test__vf.nii.gz:md5,879427359a6da8aaa7e45df978c9fedc"
                     ]
                 ],
                 "5": [
@@ -91,7 +91,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__vf_rgb.nii.gz:md5,0a26f29ef00aaec6fd32988f097a6704"
+                        "test__vf_rgb.nii.gz:md5,d3e6f90fd8ddec87253058ed142f1a3f"
                     ]
                 ],
                 "6": [
@@ -100,7 +100,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peaks.nii.gz:md5,010d75b2a4e7768ca8aad1070b34bbde"
+                        "test__peaks.nii.gz:md5,1151bd57fc61edd4cc56ffb35e6568a8"
                     ]
                 ],
                 "7": [
@@ -109,7 +109,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_values.nii.gz:md5,e9583c1410b00458862e65df7242b3fa"
+                        "test__peak_values.nii.gz:md5,008f520b97dee751fdba8576c14e267a"
                     ]
                 ],
                 "8": [
@@ -118,7 +118,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_indices.nii.gz:md5,3ea0945965c83edf94780608163be8f0"
+                        "test__peak_indices.nii.gz:md5,9631070f5a4e127c432bfece26d6ff1f"
                     ]
                 ],
                 "9": [
@@ -127,7 +127,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_max.nii.gz:md5,3344b5514c4ec2762902c3bb90a7225f"
+                        "test__afd_max.nii.gz:md5,fb295604464f961553067cceebad6b9d"
                     ]
                 ],
                 "afd_max": [
@@ -136,7 +136,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_max.nii.gz:md5,3344b5514c4ec2762902c3bb90a7225f"
+                        "test__afd_max.nii.gz:md5,fb295604464f961553067cceebad6b9d"
                     ]
                 ],
                 "afd_sum": [
@@ -145,7 +145,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_sum.nii.gz:md5,07022835080fd49b08377e9452475f96"
+                        "test__afd_sum.nii.gz:md5,c0ba08401e8a44a5cb7960a73c7c6cd9"
                     ]
                 ],
                 "afd_total": [
@@ -154,7 +154,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__afd_total.nii.gz:md5,8a23b62444f521a993d9d64f89a6414e"
+                        "test__afd_total.nii.gz:md5,5a2cb9ba073afb5cbf3de01db99cd469"
                     ]
                 ],
                 "csf_fodf": [
@@ -163,7 +163,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e"
+                        "test__csf_fodf.nii.gz:md5,5634ad1ed70a8967e31bf523ccf27919"
                     ]
                 ],
                 "fodf": [
@@ -173,10 +173,10 @@
                             "single_end": false
                         },
                         [
-                            "test__csf_fodf.nii.gz:md5,cb270c0a169ac0a9069d99a7caa1ff0e",
-                            "test__fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae",
-                            "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2",
-                            "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                            "test__csf_fodf.nii.gz:md5,5634ad1ed70a8967e31bf523ccf27919",
+                            "test__fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173",
+                            "test__gm_fodf.nii.gz:md5,feeb5e58f832953a6cc2a6663dc98d7b",
+                            "test__wm_fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173"
                         ]
                     ]
                 ],
@@ -186,7 +186,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__gm_fodf.nii.gz:md5,c83d03331b7ca315f2ff6a9152d326f2"
+                        "test__gm_fodf.nii.gz:md5,feeb5e58f832953a6cc2a6663dc98d7b"
                     ]
                 ],
                 "nufo": [
@@ -195,7 +195,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__nufo.nii.gz:md5,105cf44f2b133b5b652c74e799ffc846"
+                        "test__nufo.nii.gz:md5,c0a0f757222bdd9277c4cb6464f71b80"
                     ]
                 ],
                 "peak_indices": [
@@ -204,7 +204,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_indices.nii.gz:md5,3ea0945965c83edf94780608163be8f0"
+                        "test__peak_indices.nii.gz:md5,9631070f5a4e127c432bfece26d6ff1f"
                     ]
                 ],
                 "peak_values": [
@@ -213,7 +213,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_values.nii.gz:md5,e9583c1410b00458862e65df7242b3fa"
+                        "test__peak_values.nii.gz:md5,008f520b97dee751fdba8576c14e267a"
                     ]
                 ],
                 "peaks": [
@@ -222,7 +222,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peaks.nii.gz:md5,010d75b2a4e7768ca8aad1070b34bbde"
+                        "test__peaks.nii.gz:md5,1151bd57fc61edd4cc56ffb35e6568a8"
                     ]
                 ],
                 "vent_mask": [
@@ -237,7 +237,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__vf.nii.gz:md5,f43c29a0269ef641cd6492d95273921f"
+                        "test__vf.nii.gz:md5,879427359a6da8aaa7e45df978c9fedc"
                     ]
                 ],
                 "vf_rgb": [
@@ -246,7 +246,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__vf_rgb.nii.gz:md5,0a26f29ef00aaec6fd32988f097a6704"
+                        "test__vf_rgb.nii.gz:md5,d3e6f90fd8ddec87253058ed142f1a3f"
                     ]
                 ],
                 "wm_fodf": [
@@ -255,7 +255,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__wm_fodf.nii.gz:md5,21168d2da0383dbc1e3488378003adae"
+                        "test__wm_fodf.nii.gz:md5,3ed65439dc8c842ea5f845beab156173"
                     ]
                 ]
             }
@@ -264,7 +264,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T20:42:26.970238"
+        "timestamp": "2024-05-01T20:56:31.878315"
     },
     "reconst - fodf": {
         "content": [
