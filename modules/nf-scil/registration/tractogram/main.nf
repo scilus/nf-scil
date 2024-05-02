@@ -35,7 +35,7 @@ process REGISTRATION_TRACTOGRAM {
 
     """
     for tractogram in ${tractograms_dir};
-        do bname=\${tractogram/_centroid/}
+        do bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
         bname=\$(basename \${bname} .\${ext})
 
