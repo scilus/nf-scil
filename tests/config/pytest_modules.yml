@@ -19,18 +19,12 @@ preproc/normalize:
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
-reconst/frf:
-  - modules/nf-scil/reconst/frf/**
-  - tests/modules/nf-scil/reconst/frf/**
 reconst/meanfrf:
   - modules/nf-scil/reconst/meanfrf/**
   - tests/modules/nf-scil/reconst/meanfrf/**
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-reconst/shmetrics:
-  - modules/nf-scil/reconst/shmetrics/**
-  - tests/modules/nf-scil/reconst/shmetrics/**
 register/anattodwi:
   - modules/nf-scil/register/anattodwi/**
   - tests/modules/nf-scil/register/anattodwi/**

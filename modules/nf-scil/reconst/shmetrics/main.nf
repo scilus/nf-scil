@@ -50,25 +50,25 @@ process RECONST_SHMETRICS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_fodf_max_in_ventricles.py $sh $fa $md \
+    scil_fodf_max_in_ventricles.py $sh $fa $md \
         --max_value_output ventricles_fodf_max_value.txt $sh_basis \
         $fa_threshold $md_threshold $vent_mask -f
 
-    echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
+        echo "Maximal peak value in ventricle in file : \$(cat ventricles_fodf_max_value.txt)"
 
-    a_factor=$fodf_metrics_a_factor
-    v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
+        a_factor=$fodf_metrics_a_factor
+        v_max=\$(sed -E 's/([+-]?[0-9.]+)[eE]\\+?(-?)([0-9]+)/(\\1*10^\\2\\3)/g' <<<"\$(cat ventricles_fodf_max_value.txt)")
 
-    echo "Maximal peak value in ventricles : \${v_max}"
+        echo "Maximal peak value in ventricles : \${v_max}"
 
-    a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
-    if (( \$(echo "\${a_threshold} < 0" | bc -l) )); then
-        a_threshold=0
-    fi
+        a_threshold=\$(echo "scale=10; \${a_factor} * \${v_max}" | bc)
+        if (( \$(echo "\${a_threshold} <= 0" | bc -l) )); then
+            a_threshold=1E-10
+        fi
 
-    echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
+        echo "Computing fodf metrics with absolute threshold : \${a_threshold}"
 
-    scil_compute_fodf_metrics.py ${prefix}__fodf.nii.gz \
+        scil_fodf_metrics.py $sh \
             $set_mask $sh_basis $absolute_peaks \
             $peaks $peak_values $peak_indices \
             $afd_max $afd_total \
@@ -85,8 +85,8 @@ process RECONST_SHMETRICS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_compute_fodf_max_in_ventricles.py -h
-    scil_compute_fodf_metrics.py -h
+    scil_fodf_max_in_ventricles.py -h
+    scil_fodf_metrics.py -h
 
     touch ${prefix}__peaks.nii.gz
     touch ${prefix}__peak_values.nii.gz
