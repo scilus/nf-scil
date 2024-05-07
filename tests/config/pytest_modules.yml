@@ -22,11 +22,6 @@ reconst/diffusivitypriors:
 reconst/dtimetrics:
   - modules/nf-scil/reconst/dtimetrics/**
   - tests/modules/nf-scil/reconst/dtimetrics/**
-
-reconst/freewater:
-  - modules/nf-scil/reconst/freewater/**
-  - tests/modules/nf-scil/reconst/freewater/**
-
 reconst/fodf:
   - modules/nf-scil/reconst/fodf/**
   - tests/modules/nf-scil/reconst/fodf/**
