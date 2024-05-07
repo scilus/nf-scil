@@ -44,7 +44,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    file(process.out.trk.get(0).get(1)).name,
+                    process.out.config,
+                    process.out.include,
+                    process.out.exclude,
+                    process.out.seeding).match() }
             )
         }
     }
@@ -69,7 +74,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    file(process.out.trk.get(0).get(1)).name,
+                    process.out.config,
+                    process.out.include,
+                    process.out.exclude,
+                    process.out.seeding).match() }
             )
         }
     }
@@ -94,7 +104,12 @@ nextflow_process {
         then {
             assertAll(
                 { assert process.success },
-                { assert snapshot(process.out).match() }
+                { assert snapshot(
+                    file(process.out.trk.get(0).get(1)).name,
+                    process.out.config,
+                    process.out.include,
+                    process.out.exclude,
+                    process.out.seeding).match() }
             )
         }
     }

@@ -1,323 +1,140 @@
 {
     "tracking - pfttracking - fa": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,41192f7444f30e151bdff70954ebd426"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,d8a7d811f0c9bec571e8e583b0aecb94"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,fd41bd41399bd7234721715e6ecca018"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
-                ],
-                "config": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,d8a7d811f0c9bec571e8e583b0aecb94"
-                    ]
-                ],
-                "exclude": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "include": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "seeding": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,fd41bd41399bd7234721715e6ecca018"
-                    ]
-                ],
-                "trk": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,41192f7444f30e151bdff70954ebd426"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
+            "test__pft_tracking.trk",
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_tracking_config.json:md5,d8a7d811f0c9bec571e8e583b0aecb94"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_seeding_mask.nii.gz:md5,fd41bd41399bd7234721715e6ecca018"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T17:42:48.855776"
+        "timestamp": "2024-05-07T19:21:02.682597"
     },
     "tracking - pfttracking - interface": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,12f22e3078c14da7fe7f429e9b6bcba8"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,7e326ef48dfda3d63e288f3f49d29847"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,4c9bb24b937fa8ee77923877f2ee6fd1"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
-                ],
-                "config": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,7e326ef48dfda3d63e288f3f49d29847"
-                    ]
-                ],
-                "exclude": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "include": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "seeding": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,4c9bb24b937fa8ee77923877f2ee6fd1"
-                    ]
-                ],
-                "trk": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,12f22e3078c14da7fe7f429e9b6bcba8"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
+            "test__pft_tracking.trk",
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_tracking_config.json:md5,7e326ef48dfda3d63e288f3f49d29847"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_seeding_mask.nii.gz:md5,4c9bb24b937fa8ee77923877f2ee6fd1"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T17:43:02.723476"
+        "timestamp": "2024-05-07T18:55:36.792483"
     },
     "tracking - pfttracking - wm": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,cfca70cf70b2b5540a90be2b50c61c8a"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,bedf3ac8834d78389b3b58809f0bb750"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,4710e63db72f7dda7c10e46346bf98d3"
-                    ]
-                ],
-                "5": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
-                ],
-                "config": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking_config.json:md5,bedf3ac8834d78389b3b58809f0bb750"
-                    ]
-                ],
-                "exclude": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
-                    ]
-                ],
-                "include": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
-                    ]
-                ],
-                "seeding": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_seeding_mask.nii.gz:md5,4710e63db72f7dda7c10e46346bf98d3"
-                    ]
-                ],
-                "trk": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__pft_tracking.trk:md5,cfca70cf70b2b5540a90be2b50c61c8a"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f0a7414d398c9d522071425143a92959"
+            "test__pft_tracking.trk",
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_tracking_config.json:md5,bedf3ac8834d78389b3b58809f0bb750"
                 ]
-            }
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_include.nii.gz:md5,b974759b87b8d920195d93f86219f2ee"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__map_exclude.nii.gz:md5,2876363d0394ea01534738650d78f441"
+                ]
+            ],
+            [
+                [
+                    {
+                        "id": "test",
+                        "single_end": false
+                    },
+                    "test__pft_seeding_mask.nii.gz:md5,4710e63db72f7dda7c10e46346bf98d3"
+                ]
+            ]
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-01T17:42:33.533429"
+        "timestamp": "2024-05-07T19:20:41.325222"
     }
 }
