@@ -31,11 +31,6 @@ reconst/frf:
 reconst/meanfrf:
   - modules/nf-scil/reconst/meanfrf/**
   - tests/modules/nf-scil/reconst/meanfrf/**
-
-reconst/ihmt:
-  - modules/nf-scil/reconst/ihmt/**
-  - tests/modules/nf-scil/reconst/ihmt/**
-
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**

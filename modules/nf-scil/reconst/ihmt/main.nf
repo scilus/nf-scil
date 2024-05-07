@@ -4,8 +4,8 @@ process RECONST_IHMT {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
     tuple val(meta), path(altpn), path(altnp), path(pos), path(neg), path(mtoff_pd),
@@ -39,25 +39,25 @@ process RECONST_IHMT {
         --in_negative $neg --in_mtoff_pd $mtoff_pd $set_mtoff_t1 --out_prefix $prefix \
         $set_mask $set_jsons $set_acq_params $set_b1 $set_b1_method \
         $set_b1_fitvalues $b1_nominal $b1_smooth
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_mti_maps_ihmt.py -h
     mkdir ihMT_native_maps
     mkdir Complementary_maps
-    
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }
