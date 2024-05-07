@@ -1,6 +1,6 @@
 
 
-process REGISTER_ANATTODWI {
+process REGISTRATION_ANATTODWI {
     tag "$meta.id"
     label 'process_single'
 
