@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "reconst_frf"
 description: Compute a Fiber Response Function (FRF) from a DWI.
-  Note that multiple types of FRF are available through the method argument. 
+  Note that multiple types of FRF are available through the method argument.
   The single-shell single-tissue (ssst) FRF can be performed by choosing ssst_frf.
   The multi-shell multi-tissue (msmt) FRF can be performed by choosing msmt_frf.
 keywords:
@@ -54,7 +54,7 @@ input:
       type: file
       description: Nifti binary GM mask.
       pattern: "*.{nii,nii.gz}"
-  
+
   - csf_mask:
       type: file
       description: Nifti binary CSF mask.
@@ -62,7 +62,7 @@ input:
 
   - method:
       type: string
-      description: Reconstruction method. Either ssst_frf or msmt_frf. This choice 
+      description: Reconstruction method. Either ssst_frf or msmt_frf. This choice
         change the input masks and the output FRF, be careful.
       pattern: "*_frf"
 
