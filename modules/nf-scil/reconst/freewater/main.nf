@@ -4,8 +4,8 @@ process RECONST_FREEWATER {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(kernels)
@@ -35,9 +35,9 @@ process RECONST_FREEWATER {
     def b_thr = task.ext.b_thr ? "--b_thr " + task.ext.b_thr : ""
     def set_kernels = kernels ? "--load_kernels $kernels" : "--save_kernels kernels/ --compute_only"
     def set_mask = mask ? "--mask $mask" : ""
-    
+
     """
-    scil_compute_freewater.py $dwi $bval $bvec $para_diff $perp_diff_min \
+    scil_freewater_maps.py $dwi $bval $bvec $para_diff $perp_diff_min \
         $perp_diff_max $iso_diff $lambda1 $lambda2 $nb_threads $b_thr \
         $set_mask $set_kernels
 
@@ -54,15 +54,15 @@ process RECONST_FREEWATER {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
-    scil_compute_freewater.py -h
+    scil_freewater_maps.py -h
     mkdir kernels
     touch "${prefix}__dwi_fw_corrected.nii.gz"
     touch "${prefix}__FIT_dir.nii.gz"
@@ -72,7 +72,7 @@ process RECONST_FREEWATER {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }
