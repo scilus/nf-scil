@@ -8,7 +8,7 @@ process RECONST_FODF {
         'scilus/scilus:2.0.0' }"
 
     input:
-        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(fa), path(md), path(frf)
+        tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(fa), path(md), path(wm_frf), path(gm_frf), path(csf_frf)
 
     output:
         tuple val(meta), path("*fodf.nii.gz")           , emit: fodf, optional: true
@@ -84,14 +84,14 @@ process RECONST_FODF {
             dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
             $dwi_shell_tolerance -f
 
-        scil_fodf_ssst.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $frf ${prefix}__fodf.nii.gz \
+        scil_fodf_ssst.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $wm_frf ${prefix}__fodf.nii.gz \
             $sh_order $sh_basis $b0_threshold \
             $set_mask $processes
 
     elif [ "$set_method" = "msmt" ]
     then
 
-        scil_fodf_msmt.py $dwi $bval $bvec $frf \
+        scil_fodf_msmt.py $dwi $bval $bvec $wm_frf $gm_frf $csf_frf \
             $sh_order $sh_basis $set_mask $processes $dwi_shell_tolerance \
             --not_all $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
 

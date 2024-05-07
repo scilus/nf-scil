@@ -8,6 +8,7 @@ description: Perform FODF reconstruction and compute FODF metrics from a dwi vol
 keywords:
   - FODF
   - Local Model
+  - Reconst
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -50,10 +51,23 @@ input:
       description: MD map.
       pattern: "*.{nii,nii.gz}"
 
-  - frf:
-      type: file or list
-      description: Fiber Response Function (FRF). In the case of msmt_fodf method,
-        should be a list of files containing the wm_frf, gm_frf and csf_frf, in that order.
+  - wm_frf:
+      type: file
+      description: Fiber Response Function (FRF) for the white matter (WM).
+        In the case of single-shell method, this should be the only input FRF.
+        In the case of multi-shell method, gm_frf and csf_frf are also mandatory.
+      pattern: "*.txt"
+
+  - gm_frf:
+      type: file
+      description: Fiber Response Function (FRF) for the grey matter (GM).
+        Only use with multi-shell method, along with wm_frf and csf_frf.
+      pattern: "*.txt"
+
+  - csf_frf:
+      type: file
+      description: Fiber Response Function (FRF) for the CSF.
+        Only use with multi-shell method, along with wm_frf and gm_frf.
       pattern: "*.txt"
 
 output:
