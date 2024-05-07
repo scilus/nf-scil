@@ -4,8 +4,8 @@ process BETCROP_CROPVOLUME {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
     tuple val(meta), path(image), path(bounding_box)
@@ -26,27 +26,26 @@ process BETCROP_CROPVOLUME {
     def output_bbox = task.ext.output_bbox ? "--output_bbox ${prefix}_${suffix}_bbox.pkl" : ""
 
     """
-    scil_crop_volume.py $image ${prefix}_${suffix}.nii.gz $input_bbox $output_bbox
+    scil_volume_crop.py $image ${prefix}_${suffix}.nii.gz $input_bbox $output_bbox
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def suffix = task.ext.first_suffix ? "${task.ext.first_suffix}_cropped" : "cropped"
 
     """
-    scil_crop_volume.py -h
+    scil_volume_crop.py -h
 
     touch ${prefix}_${suffix}.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }

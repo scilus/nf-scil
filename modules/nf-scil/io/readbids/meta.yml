@@ -1,25 +1,22 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "io_readbids"
-description: read bids file
+description: Module reading bids specification for an input folder.
 keywords:
-  - sort
-  - example
-  - genomics
+  - Bids
+  - Input
+  - Structure
 tools:
   - "Scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
       homepage: "https://github.com/scilus/scilpy.git"
 
 input:
-  # Only when we have meta
-
   - bids_folder:
       type: directory
       description: Folder containing bids file
       pattern: "*"
 
-  - fs_folder:
+  - fsfolder:
       type: directory
       description: Folder containing fs file
       pattern: "*"
@@ -35,7 +32,7 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
 
-  - tractoflow_bids_struct.json:
+  - bidsstructure:
       type: file
       description: json file containing tractoflow bids structure
       pattern: "*.{json}"
