@@ -68,7 +68,7 @@ process REGISTRATION_TRACTOGRAM {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     for tractogram in ${tractograms_dir};
-        do bname=\${tractogram/_centroid/}
+        do bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
         bname=\$(basename \${bname} .\${ext})
 
