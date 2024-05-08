@@ -3,15 +3,15 @@ process IMAGE_RESAMPLE {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
-        'scilus/scilus:2.0.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
+        'scilus/scilus:2.0.1' }"
 
     input:
-    tuple val(meta), path(image), path(ref) /* optional, value = [] */
+    tuple val(meta), path(image), path(ref) /* optional, input = [] */
 
     output:
-    tuple val(meta), path("*_resampled.nii.gz"), emit: image
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("*_resampled.nii.gz") , emit: image
+    path "versions.yml"                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -38,7 +38,7 @@ process IMAGE_RESAMPLE {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: 2.0.1
     END_VERSIONS
     """
 
@@ -52,7 +52,7 @@ process IMAGE_RESAMPLE {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: 2.0.1
     END_VERSIONS
     """
 }
