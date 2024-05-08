@@ -155,7 +155,7 @@ def main():
                         return f.replace("__", "\\_\\_").replace("_.", "\\_.")
                     md_file.writelines(
                         [f"- {_fmt(file)}\n" for file in files
-                         if file.split(".")[-1] != "dvc"])
+                            if file.split(".")[-1] != "dvc"])
 
 
 if __name__ == '__main__':
