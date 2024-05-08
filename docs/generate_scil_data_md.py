@@ -105,8 +105,7 @@ def main():
             "\n",
             "Datasets available in the SCIL DVC data repository.\n"
             "\n",
-            "Entries are indexed by archive name.\n"
-            "\n"])
+            "Entries are indexed by archive name.\n"])
 
         with TemporaryDirectory() as tmp_dir:
 
@@ -150,10 +149,13 @@ def main():
                     temp_data_dir, archive, test_dict, fetch_data)
                 link = f"{DVC_URL}/{md5[:2]}/{md5[2:]}"
 
-                md_file.writelines([f"## [{archive}]({link})\n"])
+                md_file.writelines(["\n", f"## [{archive}]({link})\n", "\n"])
                 for root, _, files in os.walk(data_root):
+                    def _fmt(f):
+                        return f.replace("__", "\\_\\_").replace("_.", "\\_.")
                     md_file.writelines(
-                        [f"  - {file}\n" for file in files if file.split(".")[-1] != "dvc"])
+                        [f"- {_fmt(file)}\n" for file in files
+                         if file.split(".")[-1] != "dvc"])
 
 
 if __name__ == '__main__':
