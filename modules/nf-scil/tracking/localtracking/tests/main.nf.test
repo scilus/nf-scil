@@ -47,7 +47,7 @@ nextflow_process {
         }
     }
 
-    test("stracking - localtracking - wm") {
+    test("tracking - localtracking - wm") {
         config "./nextflow_wm.config"
         when {
             process {

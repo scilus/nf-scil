@@ -43,7 +43,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:21:02.682597"
+        "timestamp": "2024-05-08T19:04:05.041832"
     },
     "tracking - pfttracking - interface": {
         "content": [
@@ -89,7 +89,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T18:55:36.792483"
+        "timestamp": "2024-05-08T19:04:24.841117"
     },
     "tracking - pfttracking - wm": {
         "content": [
@@ -135,6 +135,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:20:41.325222"
+        "timestamp": "2024-05-08T19:03:38.044381"
     }
 }
