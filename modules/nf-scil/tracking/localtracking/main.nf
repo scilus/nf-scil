@@ -115,7 +115,11 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
+<<<<<<< HEAD
         scilpy: 2.0.1
+=======
+        scilpy: 2.0.0
+>>>>>>> 7a767e829d1e1897ce421b11bd80ca70e498ee0c
     END_VERSIONS
     """
 }

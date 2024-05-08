@@ -4,4 +4,4 @@ channels:
   - Apptainer
 dependencies:
   - "MRtrix"
-  - "scilpy"
+  - "Scilpy"

@@ -930,13 +930,13 @@ testing-docutils = ["pygments", "pytest (>=7,<8)", "pytest-param-files (>=0.3.4,
 
 [[package]]
 name = "nf-core"
-version = "2.13.1"
+version = "2.14.0"
 description = "Helper tools for use with nf-core Nextflow pipelines."
 optional = false
-python-versions = ">=3.8, <4"
+python-versions = "<4,>=3.8"
 files = [
-    {file = "nf-core-2.13.1.tar.gz", hash = "sha256:297bb52144a0651b3b718325726b10a14bef0b1b3a1d65a0eadb4badb47c8a6f"},
-    {file = "nf_core-2.13.1-py3-none-any.whl", hash = "sha256:17759bbefcc9c0347f2670882d0a525ae24304e35a83ba3b8260ad6293d0733a"},
+    {file = "nf_core-2.14.0-py3-none-any.whl", hash = "sha256:95fe6e40b6beb05bb98fb551a8e31d5079b67c3c442b047a5710d9a8024b1808"},
+    {file = "nf_core-2.14.0.tar.gz", hash = "sha256:3280777e8b0ad913bd75631db846de7bfb3df26a8747e48f4d720e54002a55f5"},
 ]
 
 [package.dependencies]
@@ -952,7 +952,7 @@ pillow = "*"
 pre-commit = "*"
 prompt-toolkit = ">=3.0.3"
 pytest = ">=7.0.0"
-pytest-workflow = ">=1.6.0"
+pytest-workflow = ">=2.0.0"
 pyyaml = "*"
 questionary = ">=1.8.0"
 refgenie = "*"

@@ -37,7 +37,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-08T23:30:41.226288"
+        "timestamp": "2024-05-08T23:46:42.749206"
     },
     "tracking - localtracking - fa": {
         "content": [
@@ -77,6 +77,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-08T23:30:26.830389"
+        "timestamp": "2024-05-08T23:46:28.766414"
     }
 }
