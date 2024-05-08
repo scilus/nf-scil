@@ -24,34 +24,6 @@ def download_file_from_google_drive(url, destination):
 
     save_response_content(response, destination)
 
-def get_testing_files_dict():
-    return {
-        "commit_amico.zip": "c190e6b9d22350b51e222c60febe13b4",
-        "bundles.zip": "6d3ebc21062bf320714483b7314a230a",
-        "stats.zip": "2aeac4da5ab054b3a460fc5fdc5e4243",
-        "bst.zip": "eed227fd246255e7417f92d49eb1066a",
-        "filtering.zip": "19116ff4244d057c8214ee3fe8e05f71",
-        "ihMT.zip": "08fcf44848ba2649aad5a5a470b3cb06",
-        "tractometry.zip": "890bfa70e44b15c0d044085de54e00c6",
-        "bids_json.zip": "97fd9a414849567fbfdfdb0ef400488b",
-        "MT.zip": "1f4345485248683b3652c97f2630950e",
-        "btensor_testdata.zip": "7ada72201a767292d56634e0a7bbd9ad",
-        "tracking.zip": "4793a470812318ce15f1624e24750e4d",
-        "atlas.zip": "dc34e073fc582476504b3caf127e53ef",
-        "anatomical_filtering.zip": "5282020575bd485e15d3251257b97e01",
-        "connectivity.zip": "fe8c47f444d33067f292508d7050acc4",
-        "plot.zip": "a1dc54cad7e1d17e55228c2518a1b34e",
-        "others.zip": "82248b4888a63b0aeffc8070cc206995",
-        "fodf_filtering.zip": "5985c0644321ecf81fd694fb91e2c898",
-        "processing.zip": "eece5cdbf437b8e4b5cb89c797872e28",
-        "surface_vtk_fib.zip": "241f3afd6344c967d7176b43e4a99a41",
-        "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
-        "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
-        "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
-        "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
-        "antsbet.zip": "202358be14568560d0c24e644d9b2574",
-        "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505"
-    }
 
 def fetch_data(files_dict, keys=None):
     scilpy_home = os.environ["SCILPY_HOME"]
@@ -105,7 +77,7 @@ def fetch_data(files_dict, keys=None):
 
 def create_parser():
     _p = argparse.ArgumentParser(
-        description='Generate markdown reference for Scil data')
+        description='Generate markdown reference for test data')
 
     _p.add_argument("output_file")
 
@@ -129,10 +101,12 @@ def main():
     with open(args.output_file, "w+") as md_file:
 
         md_file.writelines([
-            "# Scilpy fetcher datasets\n"
+            "# Available test datasets\n"
             "\n",
-            "Datasets available in Scilpy data.\n",
-            "Entries are indexed by archive name.\n"])
+            "Datasets available in the SCIL DVC data repository.\n"
+            "\n",
+            "Entries are indexed by archive name.\n"
+            "\n"])
 
         with TemporaryDirectory() as tmp_dir:
 
@@ -163,19 +137,23 @@ def main():
                 "tractograms.zip": "5497d0bf3ccc35f8f4f117829d790267",
                 "registration.zip": "95ebaa64866bac18d8b0fcd96cd10958",
                 "topup_eddy.zip": "7847496510dc85fb205ba9586f0011ff",
+                "topup_eddy_light.zip": "54369410cfd0587e1d8916047945c1fd",
                 "bids.zip": "68b9efa1e009a59a83adef3aeea9b469",
-                "antsbet.zip": "202358be14568560d0c24e644d9b2574",
-                "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505"
+                "antsbet.zip": "66850bea7af7c1f3fc4e7d371d12d6e8",
+                "freesurfer.zip": "3b876fba6fd77d4962243ac9647bc505",
+                "light.zip": "f2a3a8bddf43d1f67a5e8867ce9ebaa2",
+                "heavy.zip": "6f2cd0bbdb162455e71de1c7d3b4eb18"
             }
 
-            for archive, _ in test_dict.items():
+            for archive, md5 in test_dict.items():
                 data_root = _unpack_archive(
                     temp_data_dir, archive, test_dict, fetch_data)
+                link = f"{DVC_URL}/{md5[:2]}/{md5[2:]}"
 
-                md_file.writelines([f" - {archive}\n"])
+                md_file.writelines([f"## [{archive}]({link})\n"])
                 for root, _, files in os.walk(data_root):
                     md_file.writelines(
-                        [f"     - {file}\n" for file in files])
+                        [f"  - {file}\n" for file in files if file.split(".")[-1] != "dvc"])
 
 
 if __name__ == '__main__':
