@@ -11,6 +11,10 @@
     - path: output/betcrop/versions.yml
     - path: output/testdata/test_data/freesurfer/anat_image.nii.gz
       md5sum: ba57c629e9dc29204215dceac36d65ae
+    - path: output/testdata/test_data/freesurfer/fa.nii.gz
+      md5sum: 0e76e9378500de64d66ba3d787a147ca
     - path: output/testdata/test_data/freesurfer/license.txt
       md5sum: 3db0fa4e1860b4774c7855980e406275
+    - path: output/testdata/test_data/freesurfer/t1.nii.gz
+      md5sum: a6ade205420f594737ad67f9fb246f0f
     - path: output/testdata/versions.yml

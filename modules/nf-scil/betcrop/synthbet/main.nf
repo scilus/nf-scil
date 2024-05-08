@@ -35,7 +35,6 @@ process BETCROP_SYNTHBET {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
         freesurfer: 7.4
     END_VERSIONS
     """
@@ -52,7 +51,6 @@ process BETCROP_SYNTHBET {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
         freesurfer: 7.4
     END_VERSIONS
     """
