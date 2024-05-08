@@ -49,6 +49,7 @@ nextflow_process {
                     process.out.config,
                     process.out.include,
                     process.out.exclude,
+                    process.out.versions,
                     process.out.seeding).match() }
             )
         }
@@ -79,6 +80,7 @@ nextflow_process {
                     process.out.config,
                     process.out.include,
                     process.out.exclude,
+                    process.out.versions,
                     process.out.seeding).match() }
             )
         }
@@ -109,6 +111,7 @@ nextflow_process {
                     process.out.config,
                     process.out.include,
                     process.out.exclude,
+                    process.out.versions,
                     process.out.seeding).match() }
             )
         }
