@@ -37,13 +37,16 @@
                     },
                     "test__pft_seeding_mask.nii.gz:md5,fd41bd41399bd7234721715e6ecca018"
                 ]
+            ],
+            [
+                "versions.yml:md5,6fa5c5e21149198626b41120de3947c3"
             ]
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:21:02.682597"
+        "timestamp": "2024-05-08T23:37:39.780934"
     },
     "tracking - pfttracking - interface": {
         "content": [
@@ -129,12 +132,15 @@
                     },
                     "test__pft_seeding_mask.nii.gz:md5,4710e63db72f7dda7c10e46346bf98d3"
                 ]
+            ],
+            [
+                "versions.yml:md5,6fa5c5e21149198626b41120de3947c3"
             ]
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:20:41.325222"
+        "timestamp": "2024-05-08T23:37:24.957669"
     }
 }
