@@ -24,7 +24,7 @@ nextflow_process {
             }
         }
 
-    test("stracking - localtracking - fa") {
+    test("tracking - localtracking - fa") {
         config "./nextflow_fa.config"
         when {
             process {
