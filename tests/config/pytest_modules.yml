@@ -1,18 +1,3 @@
-betcrop/antsbet:
-  - modules/nf-scil/betcrop/antsbet/**
-  - tests/modules/nf-scil/betcrop/antsbet/**
-betcrop/cropvolume:
-  - modules/nf-scil/betcrop/cropvolume/**
-  - tests/modules/nf-scil/betcrop/cropvolume/**
-betcrop/fslbetcrop:
-  - modules/nf-scil/betcrop/fslbetcrop/**
-  - tests/modules/nf-scil/betcrop/fslbetcrop/**
-denoising/mppca:
-  - modules/nf-scil/denoising/mppca/**
-  - tests/modules/nf-scil/denoising/mppca/**
-denoising/nlmeans:
-  - modules/nf-scil/denoising/nlmeans/**
-  - tests/modules/nf-scil/denoising/nlmeans/**
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
@@ -40,15 +25,6 @@ reconst/meanfrf:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-register/anattodwi:
-  - modules/nf-scil/register/anattodwi/**
-  - tests/modules/nf-scil/register/anattodwi/**
-registration/ants:
-  - modules/nf-scil/registration/ants/**
-  - tests/modules/nf-scil/registration/ants/**
-registration/antsapplytransforms:
-  - modules/nf-scil/registration/antsapplytransforms/**
-  - tests/modules/nf-scil/registration/antsapplytransforms/**
 segmentation/freesurferseg:
   - modules/nf-scil/segmentation/freesurferseg/**
   - tests/modules/nf-scil/segmentation/freesurferseg/**
