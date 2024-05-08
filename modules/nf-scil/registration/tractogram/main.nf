@@ -23,28 +23,25 @@ process REGISTRATION_TRACTOGRAM {
 
     def inverse = task.ext.inverse ? "--inverse" : ""
     def reverse_operation = task.ext.reverse_operation ? "--reverse_operation" : ""
-    def invalid_action = task.ext.invalid_action ? "--" + task.ext.invalid_action : "--remove_invalid"
-    def no_empty1 = task.ext.no_empty1 ? "--no_empty" : ""
     def force = task.ext.force ? "-f" : ""
 
     def cut_invalid = task.ext.cut_invalid ? "--cut_invalid" : ""
     def remove_single_point = task.ext.remove_single_point ? "--remove_single_point" : ""
     def remove_overlapping_points = task.ext.remove_overlapping_points ? "--remove_overlapping_points" : ""
     def threshold = task.ext.threshold ? "--threshold " + task.ext.threshold : ""
-    def no_empty2 = task.ext.no_empty2 ? "--no_empty" : ""
+    def no_empty = task.ext.no_empty ? "--no_empty" : ""
 
     """
     for tractogram in ${tractograms_dir};
-        do bname=\${tractogram/${prefix}_/_}
+        do \
+        bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
         bname=\$(basename \${bname} .\${ext})
 
-        scil_apply_transform_to_tractogram.py \$tractogram $anat $transfo tmp.\${ext}\
+        scil_apply_transform_to_tractogram.py \$tractogram $anat $transfo tmp.trk\
                         $in_deformation\
                         $inverse\
                         $reverse_operation\
-                        $invalid_action\
-                        $no_empty1\
                         $force\
                         $reference
 
@@ -53,8 +50,7 @@ process REGISTRATION_TRACTOGRAM {
                         $remove_single_point\
                         $remove_overlapping_points\
                         $threshold\
-                        $no_empty2\
-                        $reference\
+                        $no_empty\
                         -f
     done
 
@@ -68,7 +64,8 @@ process REGISTRATION_TRACTOGRAM {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     for tractogram in ${tractograms_dir};
-        do bname=\${tractogram/${prefix}_/_}
+        do \
+        bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
         bname=\$(basename \${bname} .\${ext})
 
