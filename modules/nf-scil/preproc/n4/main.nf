@@ -3,8 +3,8 @@ process PREPROC_N4 {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
+        'scilus/scilus:2.0.1' }"
 
     input:
     tuple val(meta), path(image), path(ref), path(ref_mask)
@@ -38,7 +38,7 @@ process PREPROC_N4 {
             -b [\${knot_spacing}, 3] \
             -s $shrink_factor
 
-        scil_apply_bias_field_on_dwi.py $image bias_field_ref.nii.gz\
+        scil_dwi_apply_bias_field.py $image bias_field_ref.nii.gz\
             ${prefix}__image_n4.nii.gz --mask $ref_mask -f
 
     else
@@ -49,7 +49,7 @@ process PREPROC_N4 {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.1
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
@@ -59,13 +59,13 @@ process PREPROC_N4 {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     N4BiasFieldCorrection.py -h
-    scil_apply_bias_field_on_dwi -h
+    scil_dwi_apply_bias_field -h
 
     touch ${prefix}__image_n4.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.1
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """

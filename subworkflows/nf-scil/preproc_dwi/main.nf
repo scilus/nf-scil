@@ -88,9 +88,9 @@ workflow PREPROC_DWI {
 
         // ** Normalize DWI ** //
         ch_normalize = N4_DWI.out.image
-            .join(BETCROP_FSLBETCROP.out.mask)
             .join(TOPUP_EDDY.out.bval)
             .join(TOPUP_EDDY.out.bvec)
+            .join(BETCROP_FSLBETCROP.out.mask)
         NORMALIZE_DWI ( ch_normalize )
         ch_versions = ch_versions.mix(NORMALIZE_DWI.out.versions.first())
 
