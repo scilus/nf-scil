@@ -39,7 +39,7 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - warped:
+  - warped_image:
       type: file
       description: Warped image
       pattern: "*.{nii.nii.gz}"
