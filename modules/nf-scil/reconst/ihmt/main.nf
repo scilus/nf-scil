@@ -12,9 +12,9 @@ process RECONST_IHMT {
         path(mtoff_t1), path(mask), path(jsons), val(acq_params), path(b1), path(b1_fit)
 
     output:
-    path("ihMT_native_maps")        , emit: ihmt_maps
-    path("Complementary_maps")      , emit: comp_maps, optional: true
-    path "versions.yml"           , emit: versions
+    tuple val(meta), path("ihMT_native_maps")        , emit: ihmt_maps
+    tuple val(meta), path("Complementary_maps")      , emit: comp_maps, optional: true
+    path "versions.yml"                              , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -25,7 +25,7 @@ process RECONST_IHMT {
     def extended = task.ext.extended ? "--extended" : ""
     def filtering = task.ext.filtering ? "--filtering" : ""
     def set_jsons = jsons ? "--in_jsons $jsons" : ""
-    def set_acq_params = acq_params ? "--in_acq_parameters $acq_params" : ""
+    def set_acq_params = acq_params ? "--in_acq_parameters ${acq_params.join(" ")}" : ""
     def set_mtoff_t1 = mtoff_t1 ? "--in_mtoff_t1 $mtoff_t1" : ""
     def set_mask = mask ? "--mask $mask" : ""
     def set_b1 = b1 ? "--in_B1_map $b1" : ""
