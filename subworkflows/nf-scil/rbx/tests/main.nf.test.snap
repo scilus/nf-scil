@@ -1,0 +1,25 @@
+{
+    "rbx - base - no_atlas_folder": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4"
+                ],
+                "bundles": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-09T16:37:03.86855"
+    }
+}

@@ -1,0 +1,53 @@
+name: "rbx"
+description: |
+  Subworkflow to perform RecoBundlesX (RBX) to extract major white matter bundle from a tractogram.
+keywords:
+  - RBX
+  - Bundles
+  - Tractogram
+  - Segmentation
+components:
+  - registration
+  - bundle/recognize
+input:
+  - ch_fa:
+      type: file
+      description: |
+        The input channel containing the FA map. This map is used to compute the transformation between the subject's
+        space and the atlas' space. 
+        Structure: [ val(meta), path(fa) ]
+      pattern: "*.{nii,nii.gz}"
+  - ch_tractogram:
+      type: file
+      description: |
+        The input channel containing the whole-brain tractogram to be segemented. 
+        Structure: [ val(meta), path(tractogram) ]
+      pattern: "*.trk"
+  - config:
+      type: file
+      description: |
+        The input channel containing the bundle atlas config file. 
+        Structure: [ path(config) ]
+      pattern: "*.json"
+  - config:
+      type: directory
+      description: |
+        The input channel containing the atlas directory. 
+        Structure: [ path(directory) ]
+output:
+  - bundles:
+      type: file
+      description: |
+        Channel containing all the segmented bundle files.
+        Structure: [ val(meta), path(bundles) ]
+      pattern: "*.trk"
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+authors:
+  - "@gagnonanthony"
+maintainers:
+  - "@gagnonanthony"
