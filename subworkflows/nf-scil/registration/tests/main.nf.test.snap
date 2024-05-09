@@ -32,7 +32,7 @@
                     ]
                 ],
                 "3": [
-                    "versions.yml:md5,2207e66bf22435748071842a500885f7"
+                    "versions.yml:md5,9c255f4c751382be7bf6fe6ffb0d635d"
                 ],
                 "image_warped": [
                     [
@@ -64,7 +64,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,2207e66bf22435748071842a500885f7"
+                    "versions.yml:md5,9c255f4c751382be7bf6fe6ffb0d635d"
                 ]
             }
         ],
@@ -72,7 +72,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-12T10:46:36.252304"
+        "timestamp": "2024-05-01T19:09:12.780118"
     },
     "registration - SyNQuick": {
         "content": [

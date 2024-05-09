@@ -19,7 +19,7 @@ nextflow_process {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "freesurfer.zip" ] )
+                    input[0] = Channel.from( [ "heavy.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
@@ -33,8 +33,8 @@ nextflow_process {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/aparc_aseg.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/wmparc.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
+                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true)
                     ]
                 }
                 """
