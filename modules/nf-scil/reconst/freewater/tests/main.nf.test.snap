@@ -33,7 +33,7 @@
                     ]
                 ],
                 "6": [
-                    "versions.yml:md5,0001163071030ed740adb1e9be1bc7e1"
+                    "versions.yml:md5,7b72374ea2a5697229daddcc69e16e02"
                 ],
                 "dir": [
                     
@@ -66,7 +66,7 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,0001163071030ed740adb1e9be1bc7e1"
+                    "versions.yml:md5,7b72374ea2a5697229daddcc69e16e02"
                 ]
             }
         ],
@@ -74,7 +74,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:05:35.552627"
+        "timestamp": "2024-05-09T15:32:51.14411"
     },
     "reconst - freewater": {
         "content": [
@@ -110,7 +110,7 @@
                     ]
                 ],
                 "6": [
-                    "versions.yml:md5,0001163071030ed740adb1e9be1bc7e1"
+                    "versions.yml:md5,7b72374ea2a5697229daddcc69e16e02"
                 ],
                 "dir": [
                     
@@ -143,7 +143,7 @@
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,0001163071030ed740adb1e9be1bc7e1"
+                    "versions.yml:md5,7b72374ea2a5697229daddcc69e16e02"
                 ]
             }
         ],
@@ -151,6 +151,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-07T19:04:35.513399"
+        "timestamp": "2024-05-09T15:31:50.167532"
     }
 }
