@@ -5,7 +5,7 @@ keywords:
   - resample
   - nifti
   - volume
-  - scilpy
+  - Scilpy
 tools:
   - "scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -23,7 +23,7 @@ input:
       description: Nifti image file to resample to
       pattern: "*.{nii,nii.gz}"
 
-  - reference:
+  - ref:
       type: file
       description: Nifti reference image file
       pattern: "*.{nii,nii.gz}"
