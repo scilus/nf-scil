@@ -30,7 +30,6 @@ process RECONST_FRF {
     def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
     def max_dti_shell_value = task.ext.max_dti_shell_value ?: 1500
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
-    def b0_threshold = task.ext.b0_thr_extract_b0 ? "--b0_threshold $task.ext.b0_thr_extract_b0" : ""
     def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
     def set_method = task.ext.method ? task.ext.method : "ssst"
 
@@ -63,7 +62,7 @@ process RECONST_FRF {
                 $dwi_shell_tolerance -f
 
         scil_frf_ssst.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells ${prefix}__frf.txt \
-            $set_mask $fa $fa_min $nvox_min $roi_radius $b0_threshold
+            $set_mask $fa $fa_min $nvox_min $roi_radius --b0_threshold $b0_thr_extract_b0
 
         if ( "$task.ext.set_frf" = true ); then
             scil_frf_set_diffusivities.py ${prefix}__frf.txt "${fix_frf}" \

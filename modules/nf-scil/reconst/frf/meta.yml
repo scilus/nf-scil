@@ -60,12 +60,6 @@ input:
       description: Nifti binary CSF mask.
       pattern: "*.{nii,nii.gz}"
 
-  - method:
-      type: string
-      description: Reconstruction method. Either ssst_frf or msmt_frf. This choice
-        change the input masks and the output FRF, be careful.
-      pattern: "*_frf"
-
 output:
   - meta:
       type: map
