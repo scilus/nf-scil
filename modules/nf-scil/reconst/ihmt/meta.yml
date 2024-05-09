@@ -22,50 +22,50 @@ input:
 
   - altpn:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         alternation of positive and negative frequency saturation pulse.
       pattern: "*atlpn*.{nii,nii.gz}"
 
   - altnp:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         alternation of negative and positive frequency saturation pulse.
       pattern: "*altnp*.{nii,nii.gz}"
 
   - pos:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         positive frequency saturation pulse.
       pattern: "*pos*.{nii,nii.gz}"
 
   - neg:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         negative frequency saturation pulse.
       pattern: "*neg*.{nii,nii.gz}"
 
   - mtoff_pd:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         predominant PD (proton density) weighting images with no saturation pulse.
       pattern: "*mtoff_pd*.{nii,nii.gz}"
 
   - mtoff_t1:
       type: list
-      description:  List of files (path to all echoes) corresponding to the
+      description: List of files (path to all echoes) corresponding to the
         predominant T1 weighting images with no saturation pulse.
       pattern: "*mtoff_t1*.{nii,nii.gz}"
 
   - jsons:
       type: list
-      description:  List of json files for acquisition parameters extraction
+      description: List of json files for acquisition parameters extraction
         in the case of a Philips acquisition, otherwise use acq_params. Should
         be a json file for the mtoff_pd and mtoff_t1 files, in that order.
       pattern: "*.json"
 
   - acq_params:
       type: list
-      description:  List of values for acquisition parameters extraction. Should
+      description: List of values for acquisition parameters extraction. Should
         be in that order; flip angle of mtoff_pd, flip angle of mtoff_t1, TR of
         mtoff_pd, TR of mtoff_t1 (where TR = repetition time).
 
