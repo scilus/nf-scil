@@ -310,12 +310,12 @@ process {
 # Test data infrastructure
 
 > [!IMPORTANT]
-> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR
+> Do not use the .test_data directory for your tests, use the Scilpy fetcher. If you need data to be uploaded, signal it to your reviewers when submitting your PR.
 
 ## Using Scilpy Fetcher
 
 The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
-depository. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
+repository. Follow [this link](./TEST_DATA.md) for a global view of available test archives and links to download them. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
 
 ```groovy
 include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_data/main'
@@ -323,8 +323,7 @@ include { LOAD_TEST_DATA } from '../../../../../subworkflows/nf-scil/load_test_d
 
 The workflow has two inputs :
 
-- A channel containing a list of archives names to download. Refer to [this page](./SCILPY_DATA.md) for a
-  list of available archives and their content.
+- A channel containing a list of archives names to download; names are available [here](./TEST_DATA.md).
 
 - A name for the temporary directory where the data will be put.
 

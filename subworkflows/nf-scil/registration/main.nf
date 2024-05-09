@@ -1,11 +1,11 @@
-include { REGISTER_ANATTODWI  } from '../../../modules/nf-scil/register/anattodwi/main'
+include { REGISTRATION_ANATTODWI  } from '../../../modules/nf-scil/registration/anattodwi/main'
 include { REGISTRATION_ANTS   } from '../../../modules/nf-scil/registration/ants/main'
 
 workflow REGISTRATION {
 
     // ** The subworkflow requires at least ch_image and ch_ref as inputs to   ** //
     // ** properly perform the registration. Supplying a ch_metric will select ** //
-    // ** the REGISTER_ANATTODWI module meanwhile NOT supplying a ch_metric    ** //
+    // ** the REGISTRATION_ANATTODWI module meanwhile NOT supplying a ch_metric    ** //
     // ** will select the REGISTRATION_ANTS (SyN or SyNQuick) module.          ** //
 
     take:
@@ -24,16 +24,16 @@ workflow REGISTRATION {
                                     .combine(ch_metric, by: 0)
 
             // ** Registration using AntsRegistration ** //
-            REGISTER_ANATTODWI ( ch_register )
-            ch_versions = ch_versions.mix(REGISTER_ANATTODWI.out.versions.first())
+            REGISTRATION_ANATTODWI ( ch_register )
+            ch_versions = ch_versions.mix(REGISTRATION_ANATTODWI.out.versions.first())
 
             // ** Setting outputs ** //
-            image_warped = REGISTER_ANATTODWI.out.t1_warped
-            transfo_image = REGISTER_ANATTODWI.out.transfo_image
-            transfo_trk = REGISTER_ANATTODWI.out.transfo_trk
+            image_warped = REGISTRATION_ANATTODWI.out.t1_warped
+            transfo_image = REGISTRATION_ANATTODWI.out.transfo_image
+            transfo_trk = REGISTRATION_ANATTODWI.out.transfo_trk
         }
         else {
-            // ** Set up input channel, input are inverted compared to REGISTER_ANATTODWI. ** //
+            // ** Set up input channel, input are inverted compared to REGISTRATION_ANATTODWI. ** //
             if ( ch_mask ) {
                 ch_register = ch_ref.combine(ch_image, by: 0)
                                     .combine(ch_mask, by: 0)
