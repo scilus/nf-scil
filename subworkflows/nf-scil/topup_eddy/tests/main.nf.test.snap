@@ -22,7 +22,7 @@
             [
                 "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
                 "versions.yml:md5,3e57e2f1a94bbabf9be75f50b4cbcdb0",
-                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
             ],
             "test__dwi_corrected.nii.gz",
             "test__dwi_eddy_corrected.bvec",
@@ -32,7 +32,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T16:45:05.559117"
+        "timestamp": "2024-05-09T00:17:01.349981"
     },
     "eddy": {
         "content": [
@@ -56,7 +56,7 @@
             ],
             [
                 "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
-                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
             ],
             "test__dwi_corrected.nii.gz",
             "test__dwi_eddy_corrected.bvec",
@@ -66,7 +66,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T16:43:47.157381"
+        "timestamp": "2024-05-09T00:15:24.300649"
     },
     "topup_eddy_rev_dwi": {
         "content": [
@@ -91,7 +91,7 @@
             [
                 "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
                 "versions.yml:md5,3e57e2f1a94bbabf9be75f50b4cbcdb0",
-                "versions.yml:md5,f4dfd5f1c68f28be5dc9abe67eb673e4"
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
             ],
             "test__dwi_corrected.nii.gz",
             "test__dwi_eddy_corrected.bvec",
@@ -101,6 +101,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T16:46:43.753231"
+        "timestamp": "2024-05-09T00:19:03.319712"
     }
 }

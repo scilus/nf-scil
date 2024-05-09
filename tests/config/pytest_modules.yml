@@ -46,6 +46,3 @@ tracking/localtracking:
 tracking/pfttracking:
   - modules/nf-scil/tracking/pfttracking/**
   - tests/modules/nf-scil/tracking/pfttracking/**
-utils/extractb0:
-  - modules/nf-scil/utils/extractb0/**
-  - tests/modules/nf-scil/utils/extractb0/**

@@ -11,16 +11,16 @@
                 ]
             ],
             [
-                "versions.yml:md5,054ed5e3f19bcd691db58b11d47581f1",
                 "versions.yml:md5,1662ab8cb093ea6d16798a8fa82639e1",
-                "versions.yml:md5,4f7a89ba455d122508e2c3dd5553c8ca",
                 "versions.yml:md5,55e94706d9e485c8a8c64ebb565bb013",
                 "versions.yml:md5,5dce7a8c0b0d6b91ef7826f88c86370e",
                 "versions.yml:md5,962f76092c8795ce5e6d768304e2d230",
                 "versions.yml:md5,977c7cd0a14188f1dfeb0f69a819b79e",
                 "versions.yml:md5,b4c068383da080f871c90828b1de0082",
                 "versions.yml:md5,c7a4760b17ed27d9d4df828d3677acee",
+                "versions.yml:md5,d3010f785c88ee5946806a8a758e7efb",
                 "versions.yml:md5,ea1ce12c71e2655bfff08c00836416ec",
+                "versions.yml:md5,f041502e22449973d84ac1c618e8ebf9",
                 "versions.yml:md5,f8e51f2cdc7ca029d03c0c92b0f5cd73"
             ],
             "test_b0.nii.gz",
@@ -35,7 +35,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T22:22:16.327973"
+        "timestamp": "2024-05-09T00:24:02.713347"
     },
     "preproc_dwi_rev_b0": {
         "content": [
@@ -49,15 +49,15 @@
                 ]
             ],
             [
-                "versions.yml:md5,054ed5e3f19bcd691db58b11d47581f1",
-                "versions.yml:md5,4f7a89ba455d122508e2c3dd5553c8ca",
                 "versions.yml:md5,55e94706d9e485c8a8c64ebb565bb013",
                 "versions.yml:md5,5dce7a8c0b0d6b91ef7826f88c86370e",
                 "versions.yml:md5,962f76092c8795ce5e6d768304e2d230",
                 "versions.yml:md5,977c7cd0a14188f1dfeb0f69a819b79e",
                 "versions.yml:md5,b4c068383da080f871c90828b1de0082",
                 "versions.yml:md5,c7a4760b17ed27d9d4df828d3677acee",
+                "versions.yml:md5,d3010f785c88ee5946806a8a758e7efb",
                 "versions.yml:md5,ea1ce12c71e2655bfff08c00836416ec",
+                "versions.yml:md5,f041502e22449973d84ac1c618e8ebf9",
                 "versions.yml:md5,f8e51f2cdc7ca029d03c0c92b0f5cd73"
             ],
             "test_b0.nii.gz",
@@ -72,7 +72,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T22:18:33.366866"
+        "timestamp": "2024-05-09T00:21:29.739709"
     },
     "preproc_dwi_all_options": {
         "content": [
@@ -87,7 +87,6 @@
             ],
             [
                 "versions.yml:md5,1662ab8cb093ea6d16798a8fa82639e1",
-                "versions.yml:md5,4f7a89ba455d122508e2c3dd5553c8ca",
                 "versions.yml:md5,55e94706d9e485c8a8c64ebb565bb013",
                 "versions.yml:md5,5dce7a8c0b0d6b91ef7826f88c86370e",
                 "versions.yml:md5,962f76092c8795ce5e6d768304e2d230",
@@ -95,6 +94,7 @@
                 "versions.yml:md5,b4c068383da080f871c90828b1de0082",
                 "versions.yml:md5,c7a4760b17ed27d9d4df828d3677acee",
                 "versions.yml:md5,ea1ce12c71e2655bfff08c00836416ec",
+                "versions.yml:md5,f041502e22449973d84ac1c618e8ebf9",
                 "versions.yml:md5,f8e51f2cdc7ca029d03c0c92b0f5cd73"
             ],
             "test_b0.nii.gz",
@@ -109,6 +109,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-29T22:26:23.082935"
+        "timestamp": "2024-05-09T00:26:35.407647"
     }
 }
