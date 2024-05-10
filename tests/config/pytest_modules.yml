@@ -34,15 +34,6 @@ registration/ants:
 registration/antsapplytransforms:
   - modules/nf-scil/registration/antsapplytransforms/**
   - tests/modules/nf-scil/registration/antsapplytransforms/**
-registration/tractogram:
-  - modules/nf-scil/registration/tractogram/**
-  - tests/modules/nf-scil/registration/tractogram/**
-segmentation/fastseg:
-  - modules/nf-scil/segmentation/fastseg/**
-  - tests/modules/nf-scil/segmentation/fastseg/**
-segmentation/freesurferseg:
-  - modules/nf-scil/segmentation/freesurferseg/**
-  - tests/modules/nf-scil/segmentation/freesurferseg/**
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**

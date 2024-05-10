@@ -930,13 +930,13 @@ testing-docutils = ["pygments", "pytest (>=7,<8)", "pytest-param-files (>=0.3.4,
 
 [[package]]
 name = "nf-core"
-version = "2.14.0"
+version = "2.14.1"
 description = "Helper tools for use with nf-core Nextflow pipelines."
 optional = false
 python-versions = "<4,>=3.8"
 files = [
-    {file = "nf_core-2.14.0-py3-none-any.whl", hash = "sha256:95fe6e40b6beb05bb98fb551a8e31d5079b67c3c442b047a5710d9a8024b1808"},
-    {file = "nf_core-2.14.0.tar.gz", hash = "sha256:3280777e8b0ad913bd75631db846de7bfb3df26a8747e48f4d720e54002a55f5"},
+    {file = "nf_core-2.14.1-py3-none-any.whl", hash = "sha256:660252ff71b7e74cea6209a157d3046e798986ba5f1d519af6633dccc8ec746b"},
+    {file = "nf_core-2.14.1.tar.gz", hash = "sha256:35bd8d73ecca4eb87443fada31bc7b2562429de3a4bfbf7261db348d14bf54bb"},
 ]
 
 [package.dependencies]
