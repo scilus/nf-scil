@@ -3,8 +3,8 @@ process PREPROC_N4 {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
-        'scilus/scilus:2.0.1' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
     tuple val(meta), path(image), path(ref), path(ref_mask)
@@ -49,7 +49,7 @@ process PREPROC_N4 {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.1
+        scilpy: 2.0.2
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
@@ -65,7 +65,7 @@ process PREPROC_N4 {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.1
+        scilpy: 2.0.2
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
