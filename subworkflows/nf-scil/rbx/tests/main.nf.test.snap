@@ -10,26 +10,21 @@
                         },
                         [
                             "test__AF_L_cleaned.trk:md5,b9a6567efffa206202f37c11afea2391",
-                            "test__AF_R_cleaned.trk:md5,36ad2f6bc0333de2c3047e19df9fd122",
-                            "test__CC_Fr_1_cleaned.trk:md5,122f7573437035e37581a6525a5f9ef0",
                             "test__CC_Fr_2_cleaned.trk:md5,ad18f4415d6d5baae1ec81359ccffecb",
-                            "test__CC_Pa_cleaned.trk:md5,9df69b87252fdf7a0eee90774d433cb3",
-                            "test__CC_Pr_Po_cleaned.trk:md5,42f6d0aa58fdca8c2104f6184460e807",
-                            "test__FAT_R_cleaned.trk:md5,e6578f8637fd5cc683e85e0b55e6a0af",
-                            "test__FPT_L_Brainstem_cleaned.trk:md5,8df02afad80747922b8fda408d2e87a8",
-                            "test__FPT_L_cleaned.trk:md5,6af39bbd85cc396d95c667734c4876e5",
-                            "test__FPT_R_Brainstem_cleaned.trk:md5,625c397e54e5fc45dd4266a8fadfafd0",
-                            "test__FPT_R_cleaned.trk:md5,3b508bf4f3d0c45f623564e6e4681380",
-                            "test__IFOF_R_cleaned.trk:md5,44bd133c97909ba344a0df98381f59b5",
+                            "test__CC_Pr_Po_cleaned.trk:md5,dca763cddc2decfa64baf452cc035b5a",
+                            "test__CG_R_An_cleaned.trk:md5,79c5f2469b1fcae2599247ced8d68e07",
+                            "test__CG_R_cleaned.trk:md5,79c5f2469b1fcae2599247ced8d68e07",
+                            "test__FPT_L_Brainstem_cleaned.trk:md5,d6c9af62d9ad65d95257093148bf4d9a",
+                            "test__FPT_L_cleaned.trk:md5,d6c9af62d9ad65d95257093148bf4d9a",
                             "test__ILF_L_cleaned.trk:md5,00f9f6e33e59bfe8bbe3a5afd18b0f2e",
-                            "test__MCP_cleaned.trk:md5,a1eaaedc048cf82d67569660a3afab70",
+                            "test__MCP_cleaned.trk:md5,ed86370180b35e125ae410aa3d520625",
+                            "test__OR_ML_L_cleaned.trk:md5,721b658ed8a4de104c4e7c207d4fe170",
                             "test__POPT_R_Brainstem_cleaned.trk:md5,6c07d476650f4bca894c4c2454a1783f",
                             "test__POPT_R_cleaned.trk:md5,6c07d476650f4bca894c4c2454a1783f",
                             "test__PYT_L_cleaned.trk:md5,ac9973ef987c34ecee0328004033ea46",
                             "test__PYT_R_Brainstem_cleaned.trk:md5,28b4be34422e356030b6b081efca31d5",
-                            "test__PYT_R_cleaned.trk:md5,2babf062dcc87252950ec47a72ab347c",
-                            "test__SLF_L_cleaned.trk:md5,fad793fed68b24672da1d468641f7500",
-                            "test__SLF_R_cleaned.trk:md5,83068144984abd0fd55936903c61016c"
+                            "test__PYT_R_cleaned.trk:md5,50f8127bbaab6f4b9fea790a7c11679d",
+                            "test__SLF_L_cleaned.trk:md5,3660a62ee7e0e413f7417e80c1842e60"
                         ]
                     ]
                 ],
@@ -45,26 +40,21 @@
                         },
                         [
                             "test__AF_L_cleaned.trk:md5,b9a6567efffa206202f37c11afea2391",
-                            "test__AF_R_cleaned.trk:md5,36ad2f6bc0333de2c3047e19df9fd122",
-                            "test__CC_Fr_1_cleaned.trk:md5,122f7573437035e37581a6525a5f9ef0",
                             "test__CC_Fr_2_cleaned.trk:md5,ad18f4415d6d5baae1ec81359ccffecb",
-                            "test__CC_Pa_cleaned.trk:md5,9df69b87252fdf7a0eee90774d433cb3",
-                            "test__CC_Pr_Po_cleaned.trk:md5,42f6d0aa58fdca8c2104f6184460e807",
-                            "test__FAT_R_cleaned.trk:md5,e6578f8637fd5cc683e85e0b55e6a0af",
-                            "test__FPT_L_Brainstem_cleaned.trk:md5,8df02afad80747922b8fda408d2e87a8",
-                            "test__FPT_L_cleaned.trk:md5,6af39bbd85cc396d95c667734c4876e5",
-                            "test__FPT_R_Brainstem_cleaned.trk:md5,625c397e54e5fc45dd4266a8fadfafd0",
-                            "test__FPT_R_cleaned.trk:md5,3b508bf4f3d0c45f623564e6e4681380",
-                            "test__IFOF_R_cleaned.trk:md5,44bd133c97909ba344a0df98381f59b5",
+                            "test__CC_Pr_Po_cleaned.trk:md5,dca763cddc2decfa64baf452cc035b5a",
+                            "test__CG_R_An_cleaned.trk:md5,79c5f2469b1fcae2599247ced8d68e07",
+                            "test__CG_R_cleaned.trk:md5,79c5f2469b1fcae2599247ced8d68e07",
+                            "test__FPT_L_Brainstem_cleaned.trk:md5,d6c9af62d9ad65d95257093148bf4d9a",
+                            "test__FPT_L_cleaned.trk:md5,d6c9af62d9ad65d95257093148bf4d9a",
                             "test__ILF_L_cleaned.trk:md5,00f9f6e33e59bfe8bbe3a5afd18b0f2e",
-                            "test__MCP_cleaned.trk:md5,a1eaaedc048cf82d67569660a3afab70",
+                            "test__MCP_cleaned.trk:md5,ed86370180b35e125ae410aa3d520625",
+                            "test__OR_ML_L_cleaned.trk:md5,721b658ed8a4de104c4e7c207d4fe170",
                             "test__POPT_R_Brainstem_cleaned.trk:md5,6c07d476650f4bca894c4c2454a1783f",
                             "test__POPT_R_cleaned.trk:md5,6c07d476650f4bca894c4c2454a1783f",
                             "test__PYT_L_cleaned.trk:md5,ac9973ef987c34ecee0328004033ea46",
                             "test__PYT_R_Brainstem_cleaned.trk:md5,28b4be34422e356030b6b081efca31d5",
-                            "test__PYT_R_cleaned.trk:md5,2babf062dcc87252950ec47a72ab347c",
-                            "test__SLF_L_cleaned.trk:md5,fad793fed68b24672da1d468641f7500",
-                            "test__SLF_R_cleaned.trk:md5,83068144984abd0fd55936903c61016c"
+                            "test__PYT_R_cleaned.trk:md5,50f8127bbaab6f4b9fea790a7c11679d",
+                            "test__SLF_L_cleaned.trk:md5,3660a62ee7e0e413f7417e80c1842e60"
                         ]
                     ]
                 ],
@@ -78,6 +68,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-10T10:09:49.979137"
+        "timestamp": "2024-05-10T16:13:50.537397"
     }
 }

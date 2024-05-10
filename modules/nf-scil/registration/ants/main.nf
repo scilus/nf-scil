@@ -12,8 +12,8 @@ process REGISTRATION_ANTS {
 
     output:
     tuple val(meta), path("*_warped.nii.gz")                                  , emit: image
-    tuple val(meta), path("*output0Warp.nii.gz"), path("*1GenericAffine.mat") , emit: transfo_image
-    tuple val(meta), path("*0InverseAffine.mat"), path("*1InverseWarp.nii.gz"), emit: transfo_trk
+    tuple val(meta), path("*__output{0Warp.nii.gz,1GenericAffine.mat}")       , emit: transfo_image
+    tuple val(meta), path("*__output{0,1}Inverse{Warp.nii.gz,Affine.mat}")    , emit: transfo_trk
     path "versions.yml"                                                       , emit: versions
 
     when:

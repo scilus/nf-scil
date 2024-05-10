@@ -83,7 +83,7 @@ workflow RBX {
         ch_versions = ch_versions.mix(REGISTRATION_ANTS.out.versions.first())
 
         // ** Perform bundle recognition and segmentation ** //
-        ch_recognize_bundle =  ch_tractogram.combine(REGISTRATION_ANTS.out.transfo_image.map{ [it[0], it[2]] }, by: 0)
+        ch_recognize_bundle =  ch_tractogram.join(REGISTRATION_ANTS.out.transfo_image)
                                             .combine(atlas_config)
                                             .combine(atlas_directory)
 
@@ -92,7 +92,7 @@ workflow RBX {
 
 
     emit:
-        bundles      = BUNDLE_RECOGNIZE.out.bundles         // channel: [ val(meta), [ bundles ] ]
+        bundles = BUNDLE_RECOGNIZE.out.bundles              // channel: [ val(meta), [ bundles ] ]
 
         versions = ch_versions                              // channel: [ versions.yml ]
 }
