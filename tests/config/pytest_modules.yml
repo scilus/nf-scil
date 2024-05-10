@@ -43,6 +43,3 @@ testdata/scilpy:
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
-utils/extractb0:
-  - modules/nf-scil/utils/extractb0/**
-  - tests/modules/nf-scil/utils/extractb0/**
