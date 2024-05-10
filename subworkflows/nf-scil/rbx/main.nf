@@ -61,8 +61,9 @@ workflow RBX {
 
         // ** Setting up Atlas reference channels. ** //
         if ( atlas_directory ) {
-            atlas_anat = Channel.fromPath("$atlas_directory/atlas_masked.nii.gz")
-            atlas_config = Channel.fromPath("$atlas_directory/config.json")
+            atlas_anat = Channel.fromPath("$atlas_directory/mni_masked.nii.gz")
+            atlas_config = Channel.fromPath("$atlas_directory/config_fss_1.json")
+            atlas_directory = Channel.fromPath("$atlas_directory/atlas/")
         }
         else {
             fetch_rbx_atlas("https://zenodo.org/records/10103446/files/atlas.zip?download=1",
@@ -70,7 +71,7 @@ workflow RBX {
                             "${workflow.workDir}/")
             atlas_anat = Channel.fromPath("$workflow.workDir/atlas/mni_masked.nii.gz")
             atlas_config = Channel.fromPath("$workflow.workDir/config/config_fss_1.json")
-            atlas_directory = Channel.fromPath("$workflow.workDir/atlas/")
+            atlas_directory = Channel.fromPath("$workflow.workDir/atlas/atlas/")
         }
 
         // ** Register subject's FA map to atlas space. Set up atlas file as moving image ** //
@@ -82,10 +83,10 @@ workflow RBX {
         ch_versions = ch_versions.mix(REGISTRATION_ANTS.out.versions.first())
 
         // ** Perform bundle recognition and segmentation ** //
-        ch_recognize_bundle =  ch_tractogram.combine(REGISTRATION_ANTS.out.transfo_trk.map{ 
-                                                meta, inversemat, inversewarp -> [ meta, inversemat ] }, by: 0)
+        ch_recognize_bundle =  ch_tractogram.combine(REGISTRATION_ANTS.out.transfo_trk.map{ [it[0], it[1]] }, by: 0)
                                             .combine(atlas_config)
                                             .combine(atlas_directory)
+
         BUNDLE_RECOGNIZE ( ch_recognize_bundle )
         ch_versions = ch_versions.mix(BUNDLE_RECOGNIZE.out.versions.first())
 

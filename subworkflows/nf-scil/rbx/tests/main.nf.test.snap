@@ -3,16 +3,30 @@
         "content": [
             {
                 "0": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__PYT_R_cleaned.trk:md5,b033d5855d7ec8ebdceb32707572ca9b"
+                    ]
                 ],
                 "1": [
-                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4"
+                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4",
+                    "versions.yml:md5,8e980532374a325f98b429fef9402b60"
                 ],
                 "bundles": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__PYT_R_cleaned.trk:md5,b033d5855d7ec8ebdceb32707572ca9b"
+                    ]
                 ],
                 "versions": [
-                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4"
+                    "versions.yml:md5,37c2b88d8a04154aa38bce1c43ff26e4",
+                    "versions.yml:md5,8e980532374a325f98b429fef9402b60"
                 ]
             }
         ],
@@ -20,6 +34,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-09T16:37:03.86855"
+        "timestamp": "2024-05-09T21:59:57.730416"
     }
 }

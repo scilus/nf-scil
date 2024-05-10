@@ -11,8 +11,8 @@ nextflow_workflow {
 
     tag "bundle/recognize"
     tag "registration/ants"
-    
-    tag "subworkflows/load_test_data"
+
+    tag "load_test_data"
 
     setup {
         run("LOAD_TEST_DATA", alias: "LOAD_DATA") {

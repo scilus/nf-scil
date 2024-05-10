@@ -1,13 +1,24 @@
 name: "rbx"
 description: |
-  Subworkflow to perform RecoBundlesX (RBX) to extract major white matter bundle from a tractogram.
+  Subworkflow to perform RecoBundlesX/BundleSeg [1] to extract major white matter bundle from a tractogram.
+
+  [1] St-Onge, Etienne, Kurt G. Schilling, and Francois Rheault.
+      "BundleSeg: A versatile,reliable and reproducible approach to white
+      matter bundle segmentation." International Workshop on Computational
+      Diffusion MRI. Cham: Springer Nature Switzerland (2023)
+
+  ---------  Steps  --------------------
+  Antomical Registration (ANTs)
+      Use the FA map from the subject to register the atlas anatomical file and compute the transformations.
+  Bundle Recognition (scilpy)
+      Perform bundle recognition and extraction using BundleSeg.
 keywords:
   - RBX
   - Bundles
   - Tractogram
   - Segmentation
 components:
-  - registration
+  - registration/ants
   - bundle/recognize
 input:
   - ch_fa:
@@ -23,16 +34,19 @@ input:
         The input channel containing the whole-brain tractogram to be segemented. 
         Structure: [ val(meta), path(tractogram) ]
       pattern: "*.trk"
-  - config:
-      type: file
-      description: |
-        The input channel containing the bundle atlas config file. 
-        Structure: [ path(config) ]
-      pattern: "*.json"
-  - config:
+  - atlas_directory:
       type: directory
       description: |
-        The input channel containing the atlas directory. 
+        The input channel containing the atlas directory. The folder MUST follow this specific structure:
+              atlas_directory
+              ├── atlas
+              │   └── pop_average
+              ├── centroids
+              ├── config_fss_1.json
+              ├── config_fss_2.json
+              └── mni_masked.nii.gz
+        If no directory is provided, the subworkflow will automatically fetch the atlas archive available on
+        Zenodo (https://zenodo.org/records/10103446).
         Structure: [ path(directory) ]
 output:
   - bundles:
