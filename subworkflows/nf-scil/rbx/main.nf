@@ -16,7 +16,7 @@ def fetch_rbx_atlas(atlasUrl, configUrl, dest) {
     def config = new File("$dest/config.zip").withOutputStream { out ->
         new URL(configUrl).withInputStream { from -> out << from; }
     }
-    
+
     def atlasFile = new ZipFile("$dest/atlas.zip")
     atlasFile.entries().each { it ->
         def path = Paths.get("$dest/atlas/" + it.name)

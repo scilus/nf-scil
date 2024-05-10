@@ -25,13 +25,13 @@ input:
       type: file
       description: |
         The input channel containing the FA map. This map is used to compute the transformation between the subject's
-        space and the atlas' space. 
+        space and the atlas' space.
         Structure: [ val(meta), path(fa) ]
       pattern: "*.{nii,nii.gz}"
   - ch_tractogram:
       type: file
       description: |
-        The input channel containing the whole-brain tractogram to be segemented. 
+        The input channel containing the whole-brain tractogram to be segemented.
         Structure: [ val(meta), path(tractogram) ]
       pattern: "*.trk"
   - atlas_directory:
