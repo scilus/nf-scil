@@ -52,12 +52,6 @@ testdata/scilpy:
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
-tracking/localtracking:
-  - modules/nf-scil/tracking/localtracking/**
-  - tests/modules/nf-scil/tracking/localtracking/**
-tracking/pfttracking:
-  - modules/nf-scil/tracking/pfttracking/**
-  - tests/modules/nf-scil/tracking/pfttracking/**
 utils/extractb0:
   - modules/nf-scil/utils/extractb0/**
   - tests/modules/nf-scil/utils/extractb0/**
