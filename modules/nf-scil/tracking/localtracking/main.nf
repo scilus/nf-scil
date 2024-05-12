@@ -3,8 +3,8 @@ process TRACKING_LOCALTRACKING {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
+        'scilus/scilus:2.0.1' }"
 
     input:
     tuple val(meta), path(wm), path(fodf), path(fa)
@@ -45,34 +45,34 @@ process TRACKING_LOCALTRACKING {
     export OPENBLAS_NUM_THREADS=1
 
     if [ "${local_tracking_mask}" == "wm" ]; then
-        scil_image_math.py convert $wm ${prefix}__local_tracking_mask.nii.gz \
+        scil_volume_math.py convert $wm ${prefix}__local_tracking_mask.nii.gz \
             --data_type uint8
 
     elif [ "${local_tracking_mask}" == "fa" ]; then
-        scil_image_math.py lower_threshold $fa \
+        scil_volume_math.py lower_threshold $fa \
             $local_fa_tracking_mask_threshold \
             ${prefix}__local_tracking_mask.nii.gz \
             --data_type uint8
     fi
 
     if [ "${local_seeding_mask}" == "wm" ]; then
-        scil_image_math.py convert $wm ${prefix}__local_seeding_mask.nii.gz \
+        scil_volume_math.py convert $wm ${prefix}__local_seeding_mask.nii.gz \
             --data_type uint8
 
     elif [ "${local_seeding_mask}" == "fa" ]; then
-        scil_image_math.py lower_threshold $fa \
+        scil_volume_math.py lower_threshold $fa \
             $local_fa_seeding_mask_threshold \
             ${prefix}__local_seeding_mask.nii.gz \
             --data_type uint8
     fi
 
-    scil_compute_local_tracking.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz tmp.trk\
+    scil_tracking_local.py $fodf ${prefix}__local_seeding_mask.nii.gz ${prefix}__local_tracking_mask.nii.gz tmp.trk\
             $local_algo $local_seeding $local_nbr_seeds\
             $local_random_seed $local_step $local_theta\
             $local_sfthres $local_min_len\
             $local_max_len $compress $basis
 
-    scil_remove_invalid_streamlines.py tmp.trk\
+    scil_tractogram_remove_invalid.py tmp.trk\
             ${prefix}__local_tracking.trk\
             --remove_single_point
 
@@ -97,16 +97,16 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.1
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    scil_compute_local_tracking.py -h
-    scil_remove_invalid_streamlines.py -h
-    scil_image_math -h
+    scil_tracking_local.py -h
+    scil_tractogram_remove_invalid.py -h
+    scil_volume_math.py -h
 
     touch ${prefix}__local_tracking.trk
     touch ${prefix}__local_tracking_config.json
@@ -115,7 +115,7 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.1
     END_VERSIONS
     """
 }

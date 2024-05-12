@@ -19,9 +19,15 @@ reconst/meanfrf:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-segmentation/freesurferseg:
-  - modules/nf-scil/segmentation/freesurferseg/**
-  - tests/modules/nf-scil/segmentation/freesurferseg/**
+register/anattodwi:
+  - modules/nf-scil/register/anattodwi/**
+  - tests/modules/nf-scil/register/anattodwi/**
+registration/ants:
+  - modules/nf-scil/registration/ants/**
+  - tests/modules/nf-scil/registration/ants/**
+registration/antsapplytransforms:
+  - modules/nf-scil/registration/antsapplytransforms/**
+  - tests/modules/nf-scil/registration/antsapplytransforms/**
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
@@ -31,12 +37,3 @@ testdata/scilpy:
 testdata/sizeof:
   - modules/nf-scil/testdata/sizeof/**
   - tests/modules/nf-scil/testdata/sizeof/**
-tracking/localtracking:
-  - modules/nf-scil/tracking/localtracking/**
-  - tests/modules/nf-scil/tracking/localtracking/**
-tracking/pfttracking:
-  - modules/nf-scil/tracking/pfttracking/**
-  - tests/modules/nf-scil/tracking/pfttracking/**
-utils/extractb0:
-  - modules/nf-scil/utils/extractb0/**
-  - tests/modules/nf-scil/utils/extractb0/**

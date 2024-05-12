@@ -1,11 +1,10 @@
-
 process SEGMENTATION_FASTSEG {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
         tuple val(meta), path(image)
@@ -32,16 +31,16 @@ process SEGMENTATION_FASTSEG {
 
     fast -t 1 -n 3\
         -H 0.1 -I 4 -l 20.0 -g -o t1.nii.gz $image
-    scil_image_math.py convert t1_seg_2.nii.gz ${prefix}__mask_wm.nii.gz --data_type uint8
-    scil_image_math.py convert t1_seg_1.nii.gz ${prefix}__mask_gm.nii.gz --data_type uint8
-    scil_image_math.py convert t1_seg_0.nii.gz ${prefix}__mask_csf.nii.gz --data_type uint8
+    scil_volume_math.py convert t1_seg_2.nii.gz ${prefix}__mask_wm.nii.gz --data_type uint8
+    scil_volume_math.py convert t1_seg_1.nii.gz ${prefix}__mask_gm.nii.gz --data_type uint8
+    scil_volume_math.py convert t1_seg_0.nii.gz ${prefix}__mask_csf.nii.gz --data_type uint8
     mv t1_pve_2.nii.gz ${prefix}__map_wm.nii.gz
     mv t1_pve_1.nii.gz ${prefix}__map_gm.nii.gz
     mv t1_pve_0.nii.gz ${prefix}__map_csf.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
@@ -51,7 +50,7 @@ process SEGMENTATION_FASTSEG {
 
     """
     fast -h
-    scil_image_math.py -h
+    scil_volume_math.py -h
 
     touch ${prefix}__mask_wm.nii.gz
     touch ${prefix}__mask_gm.nii.gz
@@ -62,7 +61,7 @@ process SEGMENTATION_FASTSEG {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
         fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
