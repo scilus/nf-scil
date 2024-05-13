@@ -3,11 +3,11 @@ process PREPROC_NORMALIZE {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(dwi), path(mask), path(bval), path(bvec)
+    tuple val(meta), path(dwi), path(bval), path(bvec), path(mask)
 
     output:
     tuple val(meta), path("*dwi_normalized.nii.gz")     , emit: dwi
@@ -29,11 +29,11 @@ process PREPROC_NORMALIZE {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_extract_dwi_shell.py $dwi $bval $bvec $dti_info dwi_dti.nii.gz \
+    scil_dwi_extract_shell.py $dwi $bval $bvec $dti_info dwi_dti.nii.gz \
         bval_dti bvec_dti $dwi_shell_tolerance
 
-    scil_compute_dti_metrics.py dwi_dti.nii.gz bval_dti bvec_dti --mask $mask \
-        --not_all --fa fa.nii.gz --force_b0_threshold
+    scil_dti_metrics.py dwi_dti.nii.gz bval_dti bvec_dti --mask $mask \
+        --not_all --fa fa.nii.gz --skip_b0_check
 
     mrthreshold fa.nii.gz ${prefix}_fa_wm_mask.nii.gz $fa_mask_threshold \
         -nthreads 1
@@ -43,7 +43,7 @@ process PREPROC_NORMALIZE {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
         mrtrix: \$(dwidenoise -version 2>&1 | sed -n 's/== dwidenoise \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """
@@ -53,8 +53,8 @@ process PREPROC_NORMALIZE {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_extract_dwi_shell.py -h
-    scil_compute_dti_metrics.py -h
+    scil_dwi_extract_shell.py -h
+    scil_dti_metrics.py -h
     mrthreshold -h
     dwinormalise -h
 
@@ -63,7 +63,7 @@ process PREPROC_NORMALIZE {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
         mrtrix: \$(dwidenoise -version 2>&1 | sed -n 's/== dwidenoise \\([0-9.]\\+\\).*/\\1/p')
     END_VERSIONS
     """

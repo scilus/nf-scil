@@ -1,12 +1,3 @@
-preproc/gibbs:
-  - modules/nf-scil/preproc/gibbs/**
-  - tests/modules/nf-scil/preproc/gibbs/**
-preproc/n4:
-  - modules/nf-scil/preproc/n4/**
-  - tests/modules/nf-scil/preproc/n4/**
-preproc/normalize:
-  - modules/nf-scil/preproc/normalize/**
-  - tests/modules/nf-scil/preproc/normalize/**
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
