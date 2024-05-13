@@ -1,13 +1,13 @@
 nextflow_workflow {
 
-    name "Test Subworkflow RBX"
+    name "Test Subworkflow BUNDLE_SEG"
     script "../main.nf"
-    workflow "RBX"
+    workflow "BUNDLE_SEG"
     config "./nextflow.config"
 
     tag "subworkflows"
     tag "subworkflows_nfcore"
-    tag "subworkflows/rbx"
+    tag "subworkflows/bundle_seg"
 
     tag "bundle/recognize"
     tag "registration/ants"

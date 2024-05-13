@@ -1,6 +1,6 @@
-name: "rbx"
+name: "bundle_seg"
 description: |
-  Subworkflow to perform RecoBundlesX/BundleSeg [1] to extract major white matter bundle from a tractogram.
+  Subworkflow to perform BundleSeg [1] to extract major white matter bundle from a tractogram.
 
   [1] St-Onge, Etienne, Kurt G. Schilling, and Francois Rheault.
       "BundleSeg: A versatile,reliable and reproducible approach to white
@@ -13,8 +13,8 @@ description: |
   Bundle Recognition (scilpy)
       Perform bundle recognition and extraction using BundleSeg.
 keywords:
-  - RBX
-  - Bundles
+  - BundleSeg
+  - WM bundles
   - Tractogram
   - Segmentation
 components:
@@ -24,14 +24,14 @@ input:
   - ch_fa:
       type: file
       description: |
-        The input channel containing the FA map. This map is used to compute the transformation between the subject's
-        space and the atlas' space.
+        The input channel containing the FA map. This map is used to compute the transformation between the atlas'
+        space and the subject's space.
         Structure: [ val(meta), path(fa) ]
       pattern: "*.{nii,nii.gz}"
   - ch_tractogram:
       type: file
       description: |
-        The input channel containing the whole-brain tractogram to be segemented.
+        The input channel containing the whole-brain tractogram to be segmented.
         Structure: [ val(meta), path(tractogram) ]
       pattern: "*.trk"
   - atlas_directory:
@@ -42,9 +42,8 @@ input:
               ├── atlas
               │   └── pop_average
               ├── centroids
-              ├── config_fss_1.json
-              ├── config_fss_2.json
-              └── mni_masked.nii.gz
+              ├── *.json          (config file)
+              └── *.{nii,nii.gz}  (atlas anatomical file)
         If no directory is provided, the subworkflow will automatically fetch the atlas archive available on
         Zenodo (https://zenodo.org/records/10103446).
         Structure: [ path(directory) ]

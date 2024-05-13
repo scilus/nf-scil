@@ -1,2 +1,0 @@
-subworkflows/rbx:
-  - subworkflows/nf-scil/rbx/**

@@ -1,4 +1,3 @@
-import java.util.zip.*
 import org.apache.commons.io.FileUtils
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -7,7 +6,7 @@ import java.util.zip.ZipFile
 include { REGISTRATION_ANTS                 } from '../../../modules/nf-scil/registration/ants/main'
 include { BUNDLE_RECOGNIZE                  } from '../../../modules/nf-scil/bundle/recognize/main'
 
-def fetch_rbx_atlas(atlasUrl, configUrl, dest) {
+def fetch_bundleseg_atlas(atlasUrl, configUrl, dest) {
 
     def atlas = new File("$dest/atlas.zip").withOutputStream { out ->
         new URL(atlasUrl).withInputStream { from -> out << from; }
@@ -48,7 +47,7 @@ def fetch_rbx_atlas(atlasUrl, configUrl, dest) {
     }
 }
 
-workflow RBX {
+workflow BUNDLE_SEG {
 
     take:
         ch_fa               // channel: [ val(meta), [ fa ] ]
@@ -61,21 +60,21 @@ workflow RBX {
 
         // ** Setting up Atlas reference channels. ** //
         if ( atlas_directory ) {
-            atlas_anat = Channel.fromPath("$atlas_directory/mni_masked.nii.gz")
-            atlas_config = Channel.fromPath("$atlas_directory/config_fss_1.json")
+            atlas_anat = Channel.fromPath("$atlas_directory/*.{nii,nii.gz}")
+            atlas_config = Channel.fromPath("$atlas_directory/*.json")
             atlas_directory = Channel.fromPath("$atlas_directory/atlas/")
         }
         else {
-            fetch_rbx_atlas("https://zenodo.org/records/10103446/files/atlas.zip?download=1",
-                            "https://zenodo.org/records/10103446/files/config.zip?download=1",
-                            "${workflow.workDir}/")
+            fetch_bundleseg_atlas(  "https://zenodo.org/records/10103446/files/atlas.zip?download=1",
+                                    "https://zenodo.org/records/10103446/files/config.zip?download=1",
+                                    "${workflow.workDir}/")
             atlas_anat = Channel.fromPath("$workflow.workDir/atlas/mni_masked.nii.gz")
             atlas_config = Channel.fromPath("$workflow.workDir/config/config_fss_1.json")
             atlas_directory = Channel.fromPath("$workflow.workDir/atlas/atlas/")
         }
 
-        // ** Register subject's FA map to atlas space. Set up atlas file as moving image ** //
-        // ** and subject anat as fixed image.                                            ** //
+        // ** Register the atlas to subject's space. Set up atlas file as moving image ** //
+        // ** and subject anat as fixed image.                                         ** //
         ch_register =  ch_fa.combine(atlas_anat)
                             .map{ it + [[]] }
 
