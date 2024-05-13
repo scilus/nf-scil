@@ -29,8 +29,10 @@ process RECONST_FRF {
     def roi_radius = task.ext.roi_radius ? "--roi_radii " + task.ext.roi_radius : ""
     def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
     def max_dti_shell_value = task.ext.max_dti_shell_value ?: 1500
+    def min_fodf_shell_value = task.ext.min_fodf_shell_value ?: 100
     def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
     def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
+    def fodf_shells = task.ext.fodf_shells ? "0 " + task.ext.fodf_shells : "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v>=$min_fodf_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
     def set_method = task.ext.method ? task.ext.method : "ssst"
 
     def fa_thr_wm = task.ext.fa_thr_wm ? "--fa_thr_wm " + task.ext.fa_thr_wm : ""
@@ -72,7 +74,11 @@ process RECONST_FRF {
     elif [ "$set_method" = "msmt" ]
     then
 
-        scil_frf_msmt.py $dwi $bval $bvec \
+        scil_dwi_extract_shell.py $dwi $bval $bvec $fodf_shells \
+            dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
+            $dwi_shell_tolerance -f
+
+        scil_frf_msmt.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
             ${prefix}__wm_frf.txt ${prefix}__gm_frf.txt ${prefix}__csf_frf.txt \
             $set_mask $set_wm_mask $set_gm_mask $set_csf_mask $fa_thr_wm $fa_thr_gm \
             $fa_thr_csf $md_thr_wm $md_thr_gm $md_thr_csf $nvox_min $roi_radius \
