@@ -2,9 +2,13 @@
 name: "reconst_fodf"
 description: Perform FODF reconstruction and compute FODF metrics from a dwi volume for a selected number of shells.
   Note that multiple choices of FODF reconstruction method are available through the method argument.
-  The single-shell single-tissue (ssst) method can be performed by selecting only one shell and choosing ssst as method.
-  The multi-shell single-tissue (msst) method (default) can be performed by selecting multiple shells and choosing ssst as method.
-  The multi-shell multi-tissue (msmt) method can be performed by selecting multiple shells and choosing msmt as method.
+  The single-shell single-tissue (ssst) method is performed by selecting only one shell (task.ext.fodf_shells)
+  and choosing the ssst method (task.ext.method).
+  The multi-shell single-tissue (msst) method (default) is performed by selecting multiple shells (task.ext.fodf_shells)
+  and choosing the ssst method (task.ext.method). Both ssst and msst are expected to output only WM FODF.
+  The multi-shell multi-tissue (msmt) method is performed by selecting multiple shells (task.ext.fodf_shells)
+  and choosing the msmt method (task.ext.method). The msmt method is expected to output WM FODF, GM FODF and CSF FODF,
+  along with volume fraction (vf) maps. In every case, chosen FODF metrics are outputed.
 keywords:
   - FODF
   - Local Model

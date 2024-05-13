@@ -74,12 +74,12 @@ process RECONST_FODF {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
+    scil_dwi_extract_shell.py $dwi $bval $bvec $fodf_shells \
+        dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
+        $dwi_shell_tolerance -f
+
     if [ "$set_method" = "ssst" ]
     then
-
-        scil_dwi_extract_shell.py $dwi $bval $bvec $fodf_shells \
-            dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
-            $dwi_shell_tolerance -f
 
         scil_fodf_ssst.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells $wm_frf ${prefix}__fodf.nii.gz \
             $sh_order $sh_basis --b0_threshold $b0_thr_extract_b0 \
@@ -88,7 +88,8 @@ process RECONST_FODF {
     elif [ "$set_method" = "msmt" ]
     then
 
-        scil_fodf_msmt.py $dwi $bval $bvec $wm_frf $gm_frf $csf_frf \
+        scil_fodf_msmt.py dwi_fodf_shells.nii.gz bval_fodf_shells bvec_fodf_shells \
+            $wm_frf $gm_frf $csf_frf \
             $sh_order $sh_basis $set_mask $processes $dwi_shell_tolerance \
             --not_all $wm_fodf $gm_fodf $csf_fodf $vf $vf_rgb
 

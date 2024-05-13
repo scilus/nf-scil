@@ -3,8 +3,10 @@
 name: "reconst_frf"
 description: Compute a Fiber Response Function (FRF) from a DWI.
   Note that multiple types of FRF are available through the method argument.
-  The single-shell single-tissue (ssst) FRF can be performed by choosing ssst_frf.
-  The multi-shell multi-tissue (msmt) FRF can be performed by choosing msmt_frf.
+  The single-shell single-tissue (ssst) FRF is performed by choosing the ssst method (task.ext.method).
+  This is expected to output a single WM FRF.
+  The multi-shell multi-tissue (msmt) FRF is performed by choosing the msmt method (task.ext.method).
+  This is expected to output a WM FRF, a GM FRF and a CSF FRF, each containing values for every shells.
 keywords:
   - Fiber Orientation Distribution Function
   - Diffusion MRI
