@@ -1,6 +1,3 @@
-image/resample:
-  - modules/nf-scil/image/resample/**
-  - tests/modules/nf-scil/image/resample/**
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
