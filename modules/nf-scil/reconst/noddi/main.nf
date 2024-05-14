@@ -29,16 +29,17 @@ process RECONST_NODDI {
     def lambda1 = task.ext.lambda1 ? "--lambda1 " + task.ext.lambda1 : ""
     def lambda2 = task.ext.lambda2 ? "--lambda2 " + task.ext.lambda2 : ""
     def nb_threads = task.ext.nb_threads ? "--processes " + task.ext.nb_threads : ""
-    def b_thr = task.ext.b_thr ? "--b_thr " + task.ext.b_thr : ""
-    def set_kernels = kernels ? "--load_kernels $kernels" : "--save_kernels kernels/ --compute_only"
+    def b_thr = task.ext.b_thr ? "--tolerance " + task.ext.b_thr : ""
+    def set_kernels = kernels ? "--load_kernels $kernels" : "--save_kernels kernels/"
     def set_mask = mask ? "--mask $mask" : ""
+    def compute_only = task.ext.compute_only && !kernels ? "--compute_only" : ""
 
     """
     scil_NODDI_maps.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
-        $lambda2 $nb_threads $b_thr $set_mask $set_kernels
+        $lambda2 $nb_threads $b_thr $set_mask $set_kernels --skip_b0_check $compute_only
 
-
-    if [ -d "$kernels" ]; then
+    if [ -z "${compute_only}" ];
+    then
         mv results/FIT_dir.nii.gz ${prefix}__FIT_dir.nii.gz
         mv results/FIT_ICVF.nii.gz ${prefix}__FIT_ICVF.nii.gz
         mv results/FIT_ISOVF.nii.gz ${prefix}__FIT_ISOVF.nii.gz
