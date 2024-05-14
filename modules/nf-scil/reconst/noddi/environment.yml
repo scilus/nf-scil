@@ -1,0 +1,6 @@
+---
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"

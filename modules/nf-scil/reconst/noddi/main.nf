@@ -1,11 +1,10 @@
-
 process RECONST_NODDI {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(kernels)
@@ -35,7 +34,7 @@ process RECONST_NODDI {
     def set_mask = mask ? "--mask $mask" : ""
 
     """
-    scil_compute_NODDI.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
+    scil_NODDI_maps.py $dwi $bval $bvec $para_diff $iso_diff $lambda1 \
         $lambda2 $nb_threads $b_thr $set_mask $set_kernels
 
 
@@ -45,7 +44,7 @@ process RECONST_NODDI {
         mv results/FIT_ISOVF.nii.gz ${prefix}__FIT_ISOVF.nii.gz
         mv results/FIT_OD.nii.gz ${prefix}__FIT_OD.nii.gz
 
-        scil_image_math.py subtraction 1 ${prefix}__FIT_ISOVF.nii.gz \
+        scil_volume_math.py subtraction 1 ${prefix}__FIT_ISOVF.nii.gz \
             ${prefix}__FIT_ECVF.nii.gz --exclude_background
 
         rm -rf results
@@ -53,7 +52,7 @@ process RECONST_NODDI {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
@@ -61,8 +60,8 @@ process RECONST_NODDI {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_compute_NODDI.py -h
-    scil_image_math.py -h
+    scil_NODDI_maps.py -h
+    scil_volume_math.py -h
     mkdir kernels
     touch "${prefix}__FIT_dir.nii.gz"
     touch "${prefix}__FIT_ISOVF.nii.gz"
@@ -72,7 +71,7 @@ process RECONST_NODDI {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }

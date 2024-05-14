@@ -1,12 +1,6 @@
-reconst/diffusivitypriors:
-  - modules/nf-scil/reconst/diffusivitypriors/**
-  - tests/modules/nf-scil/reconst/diffusivitypriors/**
 reconst/meanfrf:
   - modules/nf-scil/reconst/meanfrf/**
   - tests/modules/nf-scil/reconst/meanfrf/**
-reconst/noddi:
-  - modules/nf-scil/reconst/noddi/**
-  - tests/modules/nf-scil/reconst/noddi/**
 register/anattodwi:
   - modules/nf-scil/register/anattodwi/**
   - tests/modules/nf-scil/register/anattodwi/**
