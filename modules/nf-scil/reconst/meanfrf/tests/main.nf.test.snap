@@ -3,16 +3,16 @@
         "content": [
             {
                 "0": [
-                    
+                    "mean_frf.txt:md5,95c48b03c21742a71bf338fa9c76944a"
                 ],
                 "1": [
-                    
+                    "versions.yml:md5,0726c38b1e767e3e19f34b087306a364"
                 ],
                 "meanfrf": [
-                    
+                    "mean_frf.txt:md5,95c48b03c21742a71bf338fa9c76944a"
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,0726c38b1e767e3e19f34b087306a364"
                 ]
             }
         ],
@@ -20,6 +20,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-13T20:33:35.3028"
+        "timestamp": "2024-05-14T13:48:51.452623"
     }
 }
