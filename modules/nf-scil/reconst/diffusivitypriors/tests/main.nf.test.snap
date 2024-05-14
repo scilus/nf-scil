@@ -66,7 +66,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-14T13:56:17.565717"
+        "timestamp": "2024-05-14T19:15:29.241456"
     },
     "reconst - diffusivitypriors - compute_priors": {
         "content": [
@@ -81,28 +81,32 @@
                     
                 ],
                 "3": [
-                    
+                    [
+                        "test__iso_diff.txt:md5,3ee78992c128f9b9048549df1cc22c8e",
+                        "test__para_diff.txt:md5,8942c91713e155a00bad625911d62f8c",
+                        "test__perp_diff.txt:md5,b20dd3f07be6d7317004b929781ae085"
+                    ]
                 ],
                 "4": [
-                    
+                    "mean_para_diff.txt:md5,8942c91713e155a00bad625911d62f8c"
                 ],
                 "5": [
                     
                 ],
                 "6": [
-                    
+                    "mean_iso_diff.txt:md5,3ee78992c128f9b9048549df1cc22c8e"
                 ],
                 "7": [
-                    
+                    "versions.yml:md5,bc73c7d541abf11e86b32e2c596a3dfd"
                 ],
                 "iso_diff": [
                     
                 ],
                 "mean_iso_diff": [
-                    
+                    "mean_iso_diff.txt:md5,3ee78992c128f9b9048549df1cc22c8e"
                 ],
                 "mean_para_diff": [
-                    
+                    "mean_para_diff.txt:md5,8942c91713e155a00bad625911d62f8c"
                 ],
                 "mean_perp_diff": [
                     
@@ -114,10 +118,14 @@
                     
                 ],
                 "priors": [
-                    
+                    [
+                        "test__iso_diff.txt:md5,3ee78992c128f9b9048549df1cc22c8e",
+                        "test__para_diff.txt:md5,8942c91713e155a00bad625911d62f8c",
+                        "test__perp_diff.txt:md5,b20dd3f07be6d7317004b929781ae085"
+                    ]
                 ],
                 "versions": [
-                    
+                    "versions.yml:md5,bc73c7d541abf11e86b32e2c596a3dfd"
                 ]
             }
         ],
@@ -125,6 +133,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-14T13:56:01.905875"
+        "timestamp": "2024-05-14T19:15:10.632882"
     }
 }

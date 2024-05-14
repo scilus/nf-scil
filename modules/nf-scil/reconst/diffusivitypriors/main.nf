@@ -59,7 +59,7 @@ process RECONST_DIFFUSIVITYPRIORS {
     cat $priors_directory/*__iso_diff.txt > all_iso_diff.txt
     awk '{ total += \$1; count++ } END { print total/count }' all_iso_diff.txt > mean_iso_diff.txt
 
-    if [[ -f "$priors_directory/*__perp_diff.txt" ]];
+    if [[ -e $priors_directory/*__perp_diff.txt ]]
     then
         cat $priors_directory/*__perp_diff.txt > all_perp_diff.txt
         awk '{ total += \$1; count++ } END { print total/count }' all_perp_diff.txt > mean_perp_diff.txt

@@ -82,7 +82,7 @@ output:
 
   - priors:
       type: directory
-      description: Folder containg text files for iso and para diffusivity values.
+      description: Folder containing text files for iso and para diffusivity values.
       pattern: "priors"
 
   - versions:
