@@ -1,6 +1,3 @@
-reconst/meanfrf:
-  - modules/nf-scil/reconst/meanfrf/**
-  - tests/modules/nf-scil/reconst/meanfrf/**
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**

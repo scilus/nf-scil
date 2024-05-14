@@ -2131,13 +2131,31 @@ widechars = ["wcwidth"]
 
 [[package]]
 name = "textual"
+<<<<<<< HEAD
 version = "0.60.0"
+=======
+<<<<<<< HEAD
+version = "0.58.1"
+=======
+version = "0.59.0"
+>>>>>>> 7cb01f5b83389c9353d58e83ceba98b49ae57c88
+>>>>>>> main
 description = "Modern Text User Interface framework"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
+<<<<<<< HEAD
     {file = "textual-0.60.0-py3-none-any.whl", hash = "sha256:be7870ed12014cf7a91ea9f96a3c49b1a52f93e0e76686a5fa276951d65867a7"},
     {file = "textual-0.60.0.tar.gz", hash = "sha256:5a9117d6fd48d105ba9671fe6eca8197d607fd2d20fe5405681621fc34b17cfe"},
+=======
+<<<<<<< HEAD
+    {file = "textual-0.58.1-py3-none-any.whl", hash = "sha256:9902ebb4b00481f6fdb0e7db821c007afa45797d81e1d0651735a07de25ece87"},
+    {file = "textual-0.58.1.tar.gz", hash = "sha256:3a01be0b583f2bce38b8e9786b75ed33dddc816bba502d8e7a9ca3ca2ead3957"},
+=======
+    {file = "textual-0.59.0-py3-none-any.whl", hash = "sha256:61d6187704731a9425da0d20217a737c8738c1649c644041f868afb6963e0022"},
+    {file = "textual-0.59.0.tar.gz", hash = "sha256:0fb0001ed393a9eb2c6c8598a5436cde588658a9726b5e099ae3bfb6f3ac257d"},
+>>>>>>> 7cb01f5b83389c9353d58e83ceba98b49ae57c88
+>>>>>>> main
 ]
 
 [package.dependencies]

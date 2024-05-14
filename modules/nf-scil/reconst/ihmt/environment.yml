@@ -1,0 +1,6 @@
+name: "reconst_ihmt"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"

@@ -175,7 +175,7 @@ environment.
 ## Contributing to the `nf-scil` project
 
 If you want to propose a new `module` to the repository, follow the guidelines in the
-[module creation](./docs/MODULE.md) documentation. we follow standards closely
+[module creation](./docs/MODULE.md) documentation. We follow standards closely
 aligned with `nf-core`, with some exceptions on process atomicity and how test data is
 handled. Modules that don't abide to them won't be accepted and PR containing them will
 be closed automatically.
