@@ -1,0 +1,6 @@
+name: "reconst_freewater"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
