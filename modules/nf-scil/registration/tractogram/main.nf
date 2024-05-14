@@ -3,8 +3,8 @@ process REGISTRATION_TRACTOGRAM {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
     tuple val(meta), path(anat), path(transfo), path(tractograms_dir, stageAs: 'tractograms/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
@@ -38,14 +38,14 @@ process REGISTRATION_TRACTOGRAM {
         ext=\${tractogram#*.}
         bname=\$(basename \${bname} .\${ext})
 
-        scil_apply_transform_to_tractogram.py \$tractogram $anat $transfo tmp.trk\
+        scil_tractogram_apply_transform.py \$tractogram $anat $transfo tmp.trk\
                         $in_deformation\
                         $inverse\
                         $reverse_operation\
                         $force\
                         $reference
 
-        scil_remove_invalid_streamlines.py tmp.trk ${prefix}__\${bname}.\${ext}\
+        scil_tractogram_remove_invalid.py tmp.trk ${prefix}__\${bname}.\${ext}\
                         $cut_invalid\
                         $remove_single_point\
                         $remove_overlapping_points\
