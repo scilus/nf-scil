@@ -28,6 +28,11 @@ input:
       description: Nifti DTI AD volume.
       pattern: "*.{nii,nii.gz}"
 
+  - rd:
+      type: file
+      description: Nifti DTI AD volume.
+      pattern: "*.{nii,nii.gz}"
+
   - md:
       type: file
       description: Nifti DTI MD volume.
@@ -50,6 +55,11 @@ output:
       description: Text files for para diffusivity values.
       pattern: "*.txt"
 
+  - perp_diff:
+      type: file
+      description: Text files for para diffusivity values.
+      pattern: "*.txt"
+
   - iso_diff:
       type: file
       description: Text files for iso diffusivity values.
@@ -58,6 +68,11 @@ output:
   - mean_para_diff:
       type: file
       description: Text file for average para diffusivity value.
+      pattern: "*.txt"
+
+  - mean_perp_diff:
+      type: file
+      description: Text file for average perp diffusivity value.
       pattern: "*.txt"
 
   - mean_iso_diff:
