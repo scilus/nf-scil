@@ -8,7 +8,7 @@ process RECONST_MEANFRF {
         'scilus/scilus:2.0.2' }"
 
     input:
-        path(frf_list)
+        tuple path(frf_list)
 
     output:
         path("mean_frf.txt")                            , emit: meanfrf
