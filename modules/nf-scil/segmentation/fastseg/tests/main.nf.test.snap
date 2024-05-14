@@ -57,7 +57,7 @@
                     ]
                 ],
                 "6": [
-                    "versions.yml:md5,6accf12cf290105dc058afe63197fec7"
+                    "versions.yml:md5,e9c2afb5537207544dc1b54cbdc389a4"
                 ],
                 "csf_map": [
                     [
@@ -96,7 +96,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,6accf12cf290105dc058afe63197fec7"
+                    "versions.yml:md5,e9c2afb5537207544dc1b54cbdc389a4"
                 ],
                 "wm_map": [
                     [
@@ -122,6 +122,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-04-08T17:01:49.065542"
+        "timestamp": "2024-05-01T15:30:44.012472"
     }
 }

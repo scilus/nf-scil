@@ -4,8 +4,8 @@ process RECONST_DTIMETRICS {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
+        'scilus/scilus:2.0.0' }"
 
     input:
         tuple val(meta), path(dwi), path(bval), path(bvec), path(b0mask)
@@ -45,9 +45,13 @@ process RECONST_DTIMETRICS {
     script:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def mask =[]
+    def dwi_shell_tolerance = task.ext.dwi_shell_tolerance ? "--tolerance " + task.ext.dwi_shell_tolerance : ""
+    def max_dti_shell_value = task.ext.max_dti_shell_value ?: 1500
+    def b0_thr_extract_b0 = task.ext.b0_thr_extract_b0 ?: 10
+    def b0_threshold = task.ext.b0_thr_extract_b0 ? "--b0_threshold $task.ext.b0_thr_extract_b0" : ""
+    def dti_shells = task.ext.dti_shells ?: "\$(cut -d ' ' --output-delimiter=\$'\\n' -f 1- $bval | awk -F' ' '{v=int(\$1)}{if(v<=$max_dti_shell_value|| v<=$b0_thr_extract_b0)print v}' | uniq)"
 
-    if (b0mask) mask += ["--mask $b0mask"]
+    if ( b0mask ) args += " --mask $b0mask"
     if ( task.ext.ad ) args += " --ad ${prefix}__ad.nii.gz"
     if ( task.ext.evecs ) args += " --evecs ${prefix}__evecs.nii.gz"
     if ( task.ext.evals ) args += " --evals ${prefix}__evals.nii.gz"
@@ -69,11 +73,16 @@ process RECONST_DTIMETRICS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_compute_dti_metrics.py $dwi $bval $bvec ${mask.join(" ")} --not_all $args -f --force_b0_threshold
+    scil_dwi_extract_shell.py $dwi $bval $bvec $dti_shells \
+                dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+                $dwi_shell_tolerance -f
+
+    scil_dti_metrics.py dwi_dti_shells.nii.gz bval_dti_shells bvec_dti_shells \
+        --not_all $args $b0_threshold -f
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 
@@ -82,7 +91,8 @@ process RECONST_DTIMETRICS {
     def prefix = task.ext.prefix ?: "${meta.id}"
 
     """
-    scil_compute_dti_metrics.py -h
+    scil_dwi_extract_shell.py -h
+    scil_dti_metrics.py -h
 
     touch ${prefix}__ad.nii.gz
     touch ${prefix}__evecs.nii.gz
@@ -113,7 +123,7 @@ process RECONST_DTIMETRICS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.0
     END_VERSIONS
     """
 }

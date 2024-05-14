@@ -1,0 +1,7 @@
+---
+name: "preproc_gibbs"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "MRtrix"
