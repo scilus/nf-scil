@@ -1,21 +1,6 @@
 reconst/meanfrf:
   - modules/nf-scil/reconst/meanfrf/**
   - tests/modules/nf-scil/reconst/meanfrf/**
-<<<<<<< HEAD
-register/anattodwi:
-  - modules/nf-scil/register/anattodwi/**
-  - tests/modules/nf-scil/register/anattodwi/**
-registration/ants:
-  - modules/nf-scil/registration/ants/**
-  - tests/modules/nf-scil/registration/ants/**
-registration/antsapplytransforms:
-  - modules/nf-scil/registration/antsapplytransforms/**
-  - tests/modules/nf-scil/registration/antsapplytransforms/**
-=======
-reconst/noddi:
-  - modules/nf-scil/reconst/noddi/**
-  - tests/modules/nf-scil/reconst/noddi/**
->>>>>>> main
 subworkflows/load_test_data:
   - subworkflows/nf-scil/load_test_data/**
   - tests/subworkflows/nf-scil/load_test_data/**
