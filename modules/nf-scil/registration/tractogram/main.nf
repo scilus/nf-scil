@@ -7,7 +7,7 @@ process REGISTRATION_TRACTOGRAM {
         'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(anat), path(transfo), path(tractogram, stageAs: 'tractograms/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
+    tuple val(meta), path(anat), path(transfo), path(tractogram), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*__*.{trk,tck}"), emit: warped_tractogram
@@ -18,6 +18,7 @@ process REGISTRATION_TRACTOGRAM {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def suffix = task.ext.suffix ? "_${task.ext.suffix}" : ""
     def reference = "$ref" ? "--reference $ref" : ""
     def in_deformation = "$deformation" ? "--in_deformation $deformation" : ""
 
@@ -34,9 +35,8 @@ process REGISTRATION_TRACTOGRAM {
     """
     for tractogram in ${tractogram};
         do \
-        bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
-        bname=\$(basename \${bname} .\${ext})
+        bname=\$(basename \${tractogram} .\${ext})
 
         scil_tractogram_apply_transform.py \$tractogram $anat $transfo tmp.trk\
                         $in_deformation\
@@ -45,7 +45,7 @@ process REGISTRATION_TRACTOGRAM {
                         $force\
                         $reference
 
-        scil_tractogram_remove_invalid.py tmp.trk ${prefix}__\${bname}.\${ext}\
+        scil_tractogram_remove_invalid.py tmp.trk ${prefix}__\${bname}${suffix}.\${ext}\
                         $cut_invalid\
                         $remove_single_point\
                         $remove_overlapping_points\
