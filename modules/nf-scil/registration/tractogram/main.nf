@@ -58,28 +58,27 @@ process REGISTRATION_TRACTOGRAM {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    scil_apply_transform_to_tractogram.py -h
-    scil_remove_invalid_streamlines.py -h
+    scil_tractogram_apply_transform.py -h
+    scil_tractogram_remove_invalid.py -h
 
-    for tractogram in ${tractograms_dir};
+    for tractogram in ${tractogram};
         do \
-        bname=\${tractogram/${prefix}_/_}
         ext=\${tractogram#*.}
-        bname=\$(basename \${bname} .\${ext})
+        bname=\$(basename \${tractogram} .\${ext})
 
-        touch ${prefix}__\${bname}.\${ext}
+        touch ${prefix}__\${bname}${suffix}.\${ext}
     done
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }

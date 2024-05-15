@@ -29,9 +29,19 @@ input:
       pattern: "*.mat"
 
   - tractogram:
-      type: directory
+      type: file
       description: Tractogram or a list of bundles to register
       pattern: "*.{trk,tck}"
+
+  - ref:
+      type: file
+      description: Reference anatomy for tck/vtk/fib/dpy file support (.nii or .nii.gz) (optional)
+      pattern: "*.{tck,vtk,fib,dpy}"
+
+  - deformation:
+      type: file
+      description: Path to the file containing a deformation field (optional)
+      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
