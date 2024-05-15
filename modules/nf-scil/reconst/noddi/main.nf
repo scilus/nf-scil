@@ -10,11 +10,11 @@ process RECONST_NODDI {
         tuple val(meta), path(dwi), path(bval), path(bvec), path(mask), path(kernels)
 
     output:
-        tuple val(meta), path("*__FIT_dir.nii.gz")      , emit: dir, optional: true
-        tuple val(meta), path("*__FIT_ISOVF.nii.gz")    , emit: isovf, optional: true
-        tuple val(meta), path("*__FIT_ICVF.nii.gz")     , emit: icvf, optional: true
-        tuple val(meta), path("*__FIT_ECVF.nii.gz")     , emit: ecvf, optional: true
-        tuple val(meta), path("*__FIT_OD.nii.gz")       , emit: od, optional: true
+        tuple val(meta), path("*__fit_dir.nii.gz")      , emit: dir, optional: true
+        tuple val(meta), path("*__fit_FWF.nii.gz")      , emit: fwf, optional: true
+        tuple val(meta), path("*__fit_NDI.nii.gz")      , emit: ndi, optional: true
+        tuple val(meta), path("*__fit_ECVF.nii.gz")     , emit: ecvf, optional: true
+        tuple val(meta), path("*__fit_ODI.nii.gz")      , emit: odi, optional: true
         path("kernels")                                 , emit: kernels, optional: true
         path "versions.yml"                             , emit: versions
 
@@ -40,13 +40,13 @@ process RECONST_NODDI {
 
     if [ -z "${compute_only}" ];
     then
-        mv results/FIT_dir.nii.gz ${prefix}__FIT_dir.nii.gz
-        mv results/FIT_ICVF.nii.gz ${prefix}__FIT_ICVF.nii.gz
-        mv results/FIT_ISOVF.nii.gz ${prefix}__FIT_ISOVF.nii.gz
-        mv results/FIT_OD.nii.gz ${prefix}__FIT_OD.nii.gz
+        mv results/fit_dir.nii.gz ${prefix}__fit_dir.nii.gz
+        mv results/fit_NDI.nii.gz ${prefix}__fit_NDI.nii.gz # ICVF -> NDI
+        mv results/fit_FWF.nii.gz ${prefix}__fit_FWF.nii.gz # ISOVF/FISO -> FWF
+        mv results/fit_ODI.nii.gz ${prefix}__fit_ODI.nii.gz # OD -> ODI
 
-        scil_volume_math.py subtraction 1 ${prefix}__FIT_ISOVF.nii.gz \
-            ${prefix}__FIT_ECVF.nii.gz --exclude_background
+        scil_volume_math.py subtraction 1 ${prefix}__fit_FWF.nii.gz \
+            ${prefix}__fit_ECVF.nii.gz --exclude_background
 
         rm -rf results
     fi
@@ -64,11 +64,11 @@ process RECONST_NODDI {
     scil_NODDI_maps.py -h
     scil_volume_math.py -h
     mkdir kernels
-    touch "${prefix}__FIT_dir.nii.gz"
-    touch "${prefix}__FIT_ISOVF.nii.gz"
-    touch "${prefix}__FIT_ICVF.nii.gz"
-    touch "${prefix}__FIT_ECVF.nii.gz"
-    touch "${prefix}__FIT_OD.nii.gz"
+    touch "${prefix}__fit_dir.nii.gz"
+    touch "${prefix}__fit_FWF.nii.gz"
+    touch "${prefix}__fit_NDI.nii.gz"
+    touch "${prefix}__fit_ECVF.nii.gz"
+    touch "${prefix}__fit_ODI.nii.gz"I
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

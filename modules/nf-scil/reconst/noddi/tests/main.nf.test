@@ -12,8 +12,6 @@ nextflow_process {
     tag "subworkflows"
     tag "subworkflows/load_test_data"
 
-    config "./nextflow.config"
-
     setup {
             run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
@@ -26,8 +24,9 @@ nextflow_process {
             }
         }
 
-    test("reconst - noddi - save_kernels") {
+    test("reconst - noddi - save_kernels - no mask") {
         when {
+            config "./nextflow_compute_only.config"
             process {
             """
                 input[0] = LOAD_DATA.out.test_data_directory
@@ -36,7 +35,7 @@ nextflow_process {
                         file("\${test_data_directory}/dwi.nii.gz"),
                         file("\${test_data_directory}/dwi.bval"),
                         file("\${test_data_directory}/dwi.bvec"),
-                        file("\${test_data_directory}/mask.nii.gz"),
+                        [],
                         []
                 ]}
             """
@@ -51,8 +50,9 @@ nextflow_process {
 
     }
 
-    test("reconst - noddi - no mask") {
+    test("reconst - noddi - extract_metrics") {
         when {
+            config "./nextflow_extract_metrics.config"
             process {
             """
                 input[0] = LOAD_DATA.out.test_data_directory
@@ -61,7 +61,7 @@ nextflow_process {
                         file("\${test_data_directory}/dwi.nii.gz"),
                         file("\${test_data_directory}/dwi.bval"),
                         file("\${test_data_directory}/dwi.bvec"),
-                        [],
+                        file("\${test_data_directory}/mask.nii.gz"),
                         []
                 ]}
             """
