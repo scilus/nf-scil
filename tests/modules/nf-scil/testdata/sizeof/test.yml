@@ -1,7 +1,0 @@
-- name: testdata sizeof test_get_sizeof_datatypes
-  command: nextflow run ./tests/modules/nf-scil/testdata/sizeof -entry test_get_sizeof_datatypes -c ./tests/config/nextflow.config
-  tags:
-    - testdata/sizeof
-    - testdata
-  files:
-    - path: output/testdata/versions.yml
