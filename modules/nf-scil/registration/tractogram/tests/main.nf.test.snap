@@ -1,5 +1,5 @@
 {
-    "registration - tractogram": {
+    "registration - tractogram_bundles": {
         "content": [
             {
                 "0": [
@@ -48,6 +48,41 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-14T19:00:59.054465"
+        "timestamp": "2024-05-15T14:08:29.638099"
+    },
+    "registration - tractogram": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__corrected_tractogram.trk:md5,824bcbf796cbce3e1c93e39d1c98dcf9"
+                    ]
+                ],
+                "1": [
+                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                ],
+                "versions": [
+                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                ],
+                "warped_tractogram": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__corrected_tractogram.trk:md5,824bcbf796cbce3e1c93e39d1c98dcf9"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-05-15T14:22:07.804431"
     }
 }
