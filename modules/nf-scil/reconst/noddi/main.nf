@@ -45,8 +45,8 @@ process RECONST_NODDI {
         mv results/fit_FWF.nii.gz ${prefix}__fit_FWF.nii.gz # ISOVF/FISO -> FWF
         mv results/fit_ODI.nii.gz ${prefix}__fit_ODI.nii.gz # OD -> ODI
 
-        scil_volume_math.py subtraction 1 ${prefix}__fit_FWF.nii.gz \
-            ${prefix}__fit_ECVF.nii.gz --exclude_background
+        mrcalc 1 ${prefix}__fit_FWF.nii.gz -subtract \
+            ${prefix}__fit_ECVF.nii.gz
 
         rm -rf results
     fi
@@ -68,7 +68,7 @@ process RECONST_NODDI {
     touch "${prefix}__fit_FWF.nii.gz"
     touch "${prefix}__fit_NDI.nii.gz"
     touch "${prefix}__fit_ECVF.nii.gz"
-    touch "${prefix}__fit_ODI.nii.gz"I
+    touch "${prefix}__fit_ODI.nii.gz"
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
