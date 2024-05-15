@@ -20,10 +20,10 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                    "versions.yml:md5,609469c08e60062eed7528276deddf5e"
                 ],
                 "versions": [
-                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                    "versions.yml:md5,609469c08e60062eed7528276deddf5e"
                 ],
                 "warped_tractogram": [
                     [
@@ -48,7 +48,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-15T18:03:31.870674"
+        "timestamp": "2024-05-15T19:11:42.198039"
     },
     "registration - tractogram": {
         "content": [
@@ -63,10 +63,10 @@
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                    "versions.yml:md5,609469c08e60062eed7528276deddf5e"
                 ],
                 "versions": [
-                    "versions.yml:md5,3187cd99d70afaf2bf4a7c7e4086a384"
+                    "versions.yml:md5,609469c08e60062eed7528276deddf5e"
                 ],
                 "warped_tractogram": [
                     [
@@ -83,6 +83,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-15T17:37:53.87135"
+        "timestamp": "2024-05-15T19:11:52.03634"
     }
 }
