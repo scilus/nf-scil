@@ -3,15 +3,13 @@ name: "segmentation_fastsurfer"
 description: write your description here
 keywords:
   - segmentation
+  - fastsurfer
+  - deepmi
+
 tools:
-  - "segmentation":
-      ## TODO nf-core: Add a description and other details for the software below
-      description: ""
-      homepage: ""
-      documentation: ""
-      tool_dev_url: ""
-      doi: ""
-      licence:
+  - "Fastsurfer":
+      description: "The FastSurfer pipeline consists of two main parts for segmentation and surface reconstruction."
+      homepage: "https://github.com/Deep-MI/FastSurfer"
 
 ## TODO nf-core: Add a description of all of the variables used as input
 input:
@@ -24,8 +22,13 @@ input:
 
   - anat:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: An anatomy (ex, .nii.gz).
+      pattern: "*.{nii,nii.gz,mgz}"
+
+  - fs_license:
+      type: file
+      description: The path to your FreeSurfer license. To get one, go to https://surfer.nmr.mgh.harvard.edu/registration.html. Optional. If you have already set your license as prescribed by Freesurfer (copied to a .license file in your $FREESURFER_HOME), this is not required.
+      pattern: "*.txt"
 
 output:
   - meta:
