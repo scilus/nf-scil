@@ -4,12 +4,3 @@ reconst/diffusivitypriors:
 reconst/noddi:
   - modules/nf-scil/reconst/noddi/**
   - tests/modules/nf-scil/reconst/noddi/**
-subworkflows/load_test_data:
-  - subworkflows/nf-scil/load_test_data/**
-  - tests/subworkflows/nf-scil/load_test_data/**
-testdata/scilpy:
-  - modules/nf-scil/testdata/scilpy/**
-  - tests/modules/nf-scil/testdata/scilpy/**
-testdata/sizeof:
-  - modules/nf-scil/testdata/sizeof/**
-  - tests/modules/nf-scil/testdata/sizeof/**
