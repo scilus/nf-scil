@@ -7,7 +7,7 @@ process REGISTRATION_TRACTOGRAM {
         'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(anat), path(transfo), path(tractogram), path(bundles_dir, stageAs: 'tractograms/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
+    tuple val(meta), path(anat), path(transfo), path(tractogram, stageAs: 'tractograms/'), path(ref) /* optional, value = [] */, path(deformation) /* optional, value = [] */
 
     output:
     tuple val(meta), path("*__*.{trk,tck}"), emit: warped_tractogram
@@ -32,48 +32,29 @@ process REGISTRATION_TRACTOGRAM {
     def no_empty = task.ext.no_empty ? "--no_empty" : ""
 
     """
-    if [[ -f "$tractogram" ]]
-    then
-        scil_tractogram_apply_transform.py $tractogram $anat $transfo tmp.trk\
+    for tractogram in ${tractogram};
+        do \
+        bname=\${tractogram/${prefix}_/_}
+        ext=\${tractogram#*.}
+        bname=\$(basename \${bname} .\${ext})
+
+        scil_tractogram_apply_transform.py \$tractogram $anat $transfo tmp.trk\
                         $in_deformation\
                         $inverse\
                         $reverse_operation\
                         $force\
                         $reference
 
-        scil_tractogram_remove_invalid.py tmp.trk ${prefix}__corrected_tractogram.trk\
+        scil_tractogram_remove_invalid.py tmp.trk ${prefix}__\${bname}.\${ext}\
                         $cut_invalid\
                         $remove_single_point\
                         $remove_overlapping_points\
                         $threshold\
                         $no_empty\
                         -f
+    done
 
-    else
 
-        for tractogram in ${bundles_dir};
-            do \
-            bname=\${tractogram/${prefix}_/_}
-            ext=\${tractogram#*.}
-            bname=\$(basename \${bname} .\${ext})
-
-            scil_tractogram_apply_transform.py \$tractogram $anat $transfo tmp.trk\
-                            $in_deformation\
-                            $inverse\
-                            $reverse_operation\
-                            $force\
-                            $reference
-
-            scil_tractogram_remove_invalid.py tmp.trk ${prefix}__\${bname}.\${ext}\
-                            $cut_invalid\
-                            $remove_single_point\
-                            $remove_overlapping_points\
-                            $threshold\
-                            $no_empty\
-                            -f
-        done
-
-    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

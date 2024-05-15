@@ -38,7 +38,6 @@ nextflow_process {
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/bundle_all_1mm.nii.gz", checkIfExists: true),
                         file("\${test_data_directory}/affine.txt", checkIfExists: true),
-                        [],
                         file("\${test_data_directory}/fibercup_atlas/subj_1/*.trk", checkIfExists: true),
                         [],
                         []
@@ -69,7 +68,6 @@ nextflow_process {
                         file("\${test_data_directory}/bundle_all_1mm.nii.gz", checkIfExists: true),
                         file("\${test_data_directory}/affine.txt", checkIfExists: true),
                         file("\${test_data_directory}/fibercup_atlas/subj_1/bundle_2.trk", checkIfExists: true),
-                        [],
                         [],
                         []
                     ]

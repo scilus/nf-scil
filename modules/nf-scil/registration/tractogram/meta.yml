@@ -30,12 +30,7 @@ input:
 
   - tractogram:
       type: directory
-      description: Path to directory containing the tractogram to register
-      pattern: "*.{trk,tck}"
-
-  - bundles_dir:
-      type: directory
-      description: Path to directory containing list of bundles to register
+      description: Tractogram or a list of bundles to register
       pattern: "*.{trk,tck}"
 
 output:
