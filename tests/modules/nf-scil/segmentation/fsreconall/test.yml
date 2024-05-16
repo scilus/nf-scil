@@ -1,5 +1,0 @@
-- name: segmentation fsreconall test_segmentation_fsreconall
-  command: nextflow run ./tests/modules/nf-scil/segmentation/fsreconall -entry test_segmentation_fsreconall -c ./tests/config/nextflow.config
-  tags:
-    - segmentation/fsreconall
-    - segmentation

@@ -4,13 +4,13 @@ process SEGMENTATION_FSRECONALL {
 
     // Note. Freesurfer is already on Docker. See documentation on
     // https://hub.docker.com/r/freesurfer/freesurfer
-    container "freesurfer/freesurfer:7.1.1"
+    container "freesurfer/freesurfer:7.4.1"
 
     input:
         tuple val(meta), path(anat), path(fs_license) /* optional, value = [] */
 
     output:
-        path("*__recon_all")                    , emit: recon_all_out_folder
+        tuple val(meta), path("*__recon_all")   , emit: recon_all_out_folder
         path "versions.yml"                     , emit: versions
 
     when:
@@ -20,6 +20,7 @@ process SEGMENTATION_FSRECONALL {
     // Removed here.
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def dev_debug_test = task.ext.debug ? task.ext.debug : ""  // If true, we will only run the help (for unit tests )
     """
     # Manage the license. (Save old one if existed.)
     if [ $fs_license = [] ]; then
@@ -30,9 +31,16 @@ process SEGMENTATION_FSRECONALL {
         export FS_LICENSE=\$here/.license
     fi
 
-    # Run the main script
-    export SUBJECTS_DIR=`pwd`
-    recon-all -i $anat -s ${prefix}__recon_all -all
+    if [ -z $dev_debug_test ]
+    then
+        # Run the main script
+        export SUBJECTS_DIR=`pwd`
+        recon-all -i $anat -s ${prefix}__recon_all -all
+    else
+        # (for developers: unit tests: skip the long processing. help only.)
+        export SUBJECTS_DIR=`pwd`
+        recon-all -i $anat -s ${prefix}__recon_all -autorecon1 -dontrun
+    fi
 
     # Remove the license
     if [ ! $fs_license = [] ]; then
@@ -43,20 +51,20 @@ process SEGMENTATION_FSRECONALL {
     # Finish
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        freesurfer: 7.1.1
+        freesurfer: \$(recon-all -version)
     END_VERSIONS
     """
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
-    recon-all -help
+    recon-all --help
 
     mkdir ${prefix}__recon_all
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        freesurfer: 7.1.1
+        freesurfer: \$(recon-all -version)
     END_VERSIONS
     """
 }
