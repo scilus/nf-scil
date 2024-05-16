@@ -23,10 +23,11 @@ process SEGMENTATION_FSRECONALL {
     def dev_debug_test = task.ext.debug ? task.ext.debug : ""  // If true, we will only run the help (for unit tests )
     """
     # Manage the license. (Save old one if existed.)
-    if [ $fs_license = [] ]; then
-        echo "License not given in input. Will probably fail. "
+    if [[ ! -f "$fs_license" ]]
+    then
+        echo "License not given in input, or not found. Will probably fail. "
     else
-        cp $fs_license .license
+        cp "$fs_license" .license
         here=`pwd`
         export FS_LICENSE=\$here/.license
     fi

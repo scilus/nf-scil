@@ -14,8 +14,6 @@ nextflow_process {
     tag "subworkflows"
     tag "subworkflows/load_test_data"
 
-    config "./nextflow.config"
-
     setup {
         run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
             script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
@@ -31,6 +29,8 @@ nextflow_process {
     test("segmentation - fsreconall") {
 
         when {
+            config "./nextflow_debug.config"
+
             process {
                 """
                 input[0] = LOAD_DATA.out.test_data_directory.map{
@@ -49,6 +49,33 @@ nextflow_process {
                 { assert snapshot(
                     file(process.out.recon_all_out_folder.get(0).get(1)).name
                 ).match() }
+            )
+        }
+
+    }
+
+
+    test("segmentation - fsreconall - nolicense") {
+
+        when {
+            // Not in mode debug + no license = should fail.
+            config "./nextflow.config"
+
+            process {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat_image.nii.gz"),
+                        []
+                    ]}
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert ! process.success }
             )
         }
 
