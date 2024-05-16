@@ -24,7 +24,7 @@ process SEGMENTATION_FSRECONALL {
     """
     # Manage the license. (Save old one if existed.)
     if [ $fs_license = [] ]; then
-        echo "License not given in input. Using default environment. "
+        echo "License not given in input. Will probably fail. "
     else
         cp $fs_license .license
         here=`pwd`
