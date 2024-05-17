@@ -30,7 +30,7 @@ input:
 
   - tractogram:
       type: file
-      description: Tractogram or a list of bundles to register
+      description: Tractogram or list of tractograms to register
       pattern: "*.{trk,tck}"
 
   - ref:
