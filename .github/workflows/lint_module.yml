@@ -49,13 +49,12 @@ jobs:
 
       - name: Install nf-core tools
         run: |
-          echo "worker cache : $XDG_CACHE_HOME"
-          echo "worker config : $XDG_CONFIG_HOME"
-          echo "home : $HOME"
           python -m pip install --upgrade --force-reinstall nf-core==2.14.*
 
       - name: Lint module ${{ inputs.module }}
-        run: nf-core modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
+        run: |
+          mkdir -p /home/runner/_work/nf-scil-cache
+          XDG_CACHE_HOME=/home/runner/_work/nf-scil-cache nf-core modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
         if: ${{ !startsWith(inputs.module, 'subworkflows/') }}
 
       - name: Remove substring from matrix.tags
@@ -63,5 +62,7 @@ jobs:
         run: echo subworkflow_names=$(echo "${{ inputs.module }}" | sed 's/subworkflows\///g') >> $GITHUB_OUTPUT
 
       - name: Lint subworkflow ${{ inputs.module }}
-        run: nf-core subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
+        run: |
+          mkdir -p /home/runner/_work/nf-scil-cache
+          XDG_CACHE_HOME=/home/runner/_work/nf-scil-cache nf-core subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
         if: ${{ startsWith(inputs.module, 'subworkflows/') }}
