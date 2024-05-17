@@ -43,6 +43,7 @@ process TESTDATA_SCILPY {
     ${test_data_path ? 'print(os.stat("' + test_data_path + '"))' : ''}
     if os.path.exists("test_data"):
         print(os.stat("test_data"))
+        print("dummy message for nothing")
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
