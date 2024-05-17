@@ -4,11 +4,13 @@ process SEGMENTATION_FASTSURFER {
 
     container "${ 'deepmi/fastsurfer:cpu-v2.2.0' }"
 
+    containerOptions '--entrypoint ""'
+
     input:
         tuple val(meta), path(anat), path(fs_license)
 
     output:
-        tuple val(meta), path("${prefix}/")    , emit: fastsurferdirectory
+        tuple val(meta), path("${prefix}_fastsurfer/")    , emit: fastsurferdirectory
         path "versions.yml"                 , emit: versions
 
     when:
@@ -17,14 +19,16 @@ process SEGMENTATION_FASTSURFER {
     script:
         def prefix = task.ext.prefix ?: "${meta.id}"
         def acq3T = task.ext.acq3T ? "--3T" : ""
-        def FASTSURFER_HOME="/fastsurfer"
+        def FASTSURFER_HOME = "/fastsurfer"
+        def SUBJECTS_DIR = "${prefix}_fastsurfer"
     """
-    $FASTSURFER_HOME/run_fastsurfer.sh --fs_license $fs_license \
-                                        --t1 ${anat} \
-                                        --sd "." \
+    mkdir ${prefix}_fastsurfer/
+    $FASTSURFER_HOME/run_fastsurfer.sh  --allow_root \
+                                        --fs_license $fs_license \
+                                        --t1 \$(realpath ${anat}) \
+                                        --sd ${SUBJECTS_DIR}/ \
                                         --sid ${prefix} \
                                         --seg_only --py python3 \
-                                        --allow_root \
                                         ${acq3T}
 
 
