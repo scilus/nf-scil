@@ -53,8 +53,8 @@ jobs:
 
       - name: Lint module ${{ inputs.module }}
         run: |
-          mkdir -p /home/runner/_work/nf-scil-cache
-          XDG_CACHE_HOME=/home/runner/_work/nf-scil-cache nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
+          ls -R /home/runner/.config
+          nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
         if: ${{ !startsWith(inputs.module, 'subworkflows/') }}
 
       - name: Remove substring from matrix.tags
