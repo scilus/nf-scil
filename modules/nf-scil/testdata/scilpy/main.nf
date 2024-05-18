@@ -21,13 +21,6 @@ process TESTDATA_SCILPY {
     script:
     def args = task.ext.args ?: ''
     """
-    if [ -d "$test_data_path" ]
-    then
-        ln -s $test_data_path test_data
-    fi
-
-    ls -lha
-
     python - << EOF
     import logging
     import hashlib
@@ -37,13 +30,6 @@ process TESTDATA_SCILPY {
     import zipfile
 
     DVC_URL = "https://scil.usherbrooke.ca/scil_test_data/dvc-store/files/md5"
-
-    print(os.getcwd())
-    print(os.listdir())
-    ${test_data_path ? 'print(os.stat("' + test_data_path + '"))' : ''}
-    if os.path.exists("test_data"):
-        print(os.stat("test_data"))
-        print("dummy message for nothing")
 
     def download_file_from_google_drive(url, destination):
         def save_response_content(response, destination):
