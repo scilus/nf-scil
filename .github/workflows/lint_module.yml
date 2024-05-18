@@ -52,10 +52,9 @@ jobs:
           python -m pip install --upgrade --force-reinstall nf-core==2.14.*
 
       - name: Lint module ${{ inputs.module }}
-        run: |
-          ls -R /home/runner/.config
-          git clone -v --progress -- https://github.com/scilus/nf-scil.git /home/runner/.config/nfcore/scilus/nf-scil
-          nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
+        env:
+          GIT_CLONE_PROTECTION_ACTIVE: false
+        run: nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
         if: ${{ !startsWith(inputs.module, 'subworkflows/') }}
 
       - name: Remove substring from matrix.tags
@@ -63,7 +62,7 @@ jobs:
         run: echo subworkflow_names=$(echo "${{ inputs.module }}" | sed 's/subworkflows\///g') >> $GITHUB_OUTPUT
 
       - name: Lint subworkflow ${{ inputs.module }}
-        run: |
-          mkdir -p /home/runner/_work/nf-scil-cache
-          XDG_CACHE_HOME=/home/runner/_work/nf-scil-cache nf-core --verbose subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
+        env:
+          GIT_CLONE_PROTECTION_ACTIVE: false
+        run: nf-core --verbose subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
         if: ${{ startsWith(inputs.module, 'subworkflows/') }}
