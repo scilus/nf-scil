@@ -54,7 +54,7 @@ jobs:
       - name: Lint module ${{ inputs.module }}
         run: |
           ls -R /home/runner/.config
-          mkdir -p /home/runner/.config/nf-core/scilus
+          git clone -v --progress -- https://github.com/scilus/nf-scil.git /home/runner/.config/nfcore/scilus/nf-scil
           nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
         if: ${{ !startsWith(inputs.module, 'subworkflows/') }}
 
