@@ -3,6 +3,7 @@ nextflow_process {
     name "Test Process TRACTOGRAM_REMOVEINVALID"
     script "../main.nf"
     process "TRACTOGRAM_REMOVEINVALID"
+    config "./nextflow.config"
 
     tag "modules"
     tag "modules_nfcore"
