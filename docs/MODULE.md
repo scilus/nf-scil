@@ -42,7 +42,7 @@ nf-core modules create \
     --author @scilus \
     --label process_single \
     --meta \
-    <category/tool>
+    <category>/<tool>
 ```
 
 You will still have to interact with the **bioconda** prompt, still select `no`.
@@ -217,7 +217,7 @@ nf-core modules create-test-yml \
     --run-tests \
     --force \
     --no-prompts \
-    <category/tool>
+    <category>/<tool>
 ```
 
 All the test case you defined will be run, watch out for errors ! Once everything runs
