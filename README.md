@@ -11,6 +11,11 @@
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
 ![Checks](https://github.com/scilus/nf-scil/workflows/nf-scil%20merge%20checks/badge.svg)
 
+> [!WARNING]
+> A `nf-scil` legacy dependency in `git-lfs`, which is affected by recent `git` [security updates](https://github.com/git-lfs/git-lfs/issues/5749), may pose problems.
+> Cloning the repository may generate an error, even if the procedure was successful. To disable the behavior, until the problem is
+> patched, prepend your `git clone` command with `GIT_CLONE_PROTECTION_ACTIVE=false` or add it to your environment.
+
 Welcome to the `nf-scil` project ! A **Nextflow** modules and workflows repository for neuroimaging
 maintained by the [SCIL team](https://scil-documentation.readthedocs.io/en/latest/). The
 primary focus of the library is to provide pre-built processes and processing sequences for
