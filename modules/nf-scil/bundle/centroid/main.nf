@@ -10,8 +10,8 @@ process BUNDLE_CENTROID {
         tuple val(meta), path(bundles), path(centroids)
 
     output:
-        tuple val(meta), path("*.trk")      , emit: centroids
-        path "versions.yml"                 , emit: versions
+        tuple val(meta), path("*_centroid_{*}.{trk,tck}")   , emit: centroids
+        path "versions.yml"                                 , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

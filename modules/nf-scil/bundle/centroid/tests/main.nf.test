@@ -12,24 +12,29 @@ nextflow_process {
 
     tag "subworkflows/load_test_data"
 
-    test("bundle - compute centroids - from bundle") {
-
-        setup {
-            run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
-                script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
-                process {
-                    """
-                    input[0] = Channel.from( [ "bundles.zip" ] )
-                    input[1] = "test.load-test-data"
-                    """
-                }
+    setup {
+        run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+            script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
+            process {
+                """
+                input[0] = Channel.from( [ "bundles.zip", "filtering.zip" ] )
+                input[1] = "test.load-test-data"
+                """
             }
         }
+    }
+
+    test("bundle - compute centroids - from bundle") {
 
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        bundles: it.simpleName == "bundles"
+                        filtering: it.simpleName == "filtering"
+                    }
+                input[0] = ch_split_test_data.bundles.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/fibercup_atlas/subj_1/*.trk", checkIfExists: true),
@@ -51,22 +56,15 @@ nextflow_process {
 
     test("bundle - resample centroids") {
 
-        setup {
-            run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
-                script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
-                process {
-                    """
-                    input[0] = Channel.from( [ "filtering.zip" ] )
-                    input[1] = "test.load-test-data"
-                    """
-                }
-            }
-        }
-
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
+                ch_split_test_data = LOAD_DATA.out.test_data_directory
+                    .branch{
+                        bundles: it.simpleName == "bundles"
+                        filtering: it.simpleName == "filtering"
+                    }
+                input[0] = ch_split_test_data.filtering.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         [],

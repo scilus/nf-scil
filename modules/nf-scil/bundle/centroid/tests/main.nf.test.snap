@@ -9,7 +9,6 @@
                             "single_end": false
                         },
                         [
-                            "centroid.trk:md5,e348b3a077872adce3019d1bfe12d4b6",
                             "test__bundle_0_centroid_12.trk:md5,96a387f8ecead333654d9883cc23a4f9",
                             "test__bundle_1_centroid_12.trk:md5,515f5133992f5da233764147c318fb6d",
                             "test__bundle_2_centroid_12.trk:md5,22afdbd80dbc7c7d48ad93693af0edcb",
@@ -30,7 +29,6 @@
                             "single_end": false
                         },
                         [
-                            "centroid.trk:md5,e348b3a077872adce3019d1bfe12d4b6",
                             "test__bundle_0_centroid_12.trk:md5,96a387f8ecead333654d9883cc23a4f9",
                             "test__bundle_1_centroid_12.trk:md5,515f5133992f5da233764147c318fb6d",
                             "test__bundle_2_centroid_12.trk:md5,22afdbd80dbc7c7d48ad93693af0edcb",
@@ -50,7 +48,7 @@
             "nf-test": "0.8.4",
             "nextflow": "24.04.1"
         },
-        "timestamp": "2024-05-21T14:29:26.865644"
+        "timestamp": "2024-05-21T15:02:18.69291"
     },
     "bundle - resample centroids": {
         "content": [
