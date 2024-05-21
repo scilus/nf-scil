@@ -8,11 +8,10 @@ keywords:
   - label
   - centroid
 tools:
-  - "Scilpy":
+  - "scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
       homepage: "https://github.com/scilus/scilpy.git"
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
@@ -30,7 +29,6 @@ input:
       pattern: "*.{trk}"
 
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
@@ -42,18 +40,21 @@ output:
       description: File containing software versions
       pattern: "versions.yml"
 
-  - label:
+  - labels:
       type: file
       description: List of Nifti image. The pixel intensity corresponds to the label
       pattern: "*.{nii.gz}"
+
   - distance:
       type: file
       description: List of Nifti image. The pixel intensity corresponds to the distance to the centroid
       pattern: "*.{nii.gz}"
-  - label_trk:
+
+  - labels_trk:
       type: file
       description: List of trk. The streamline color corresponds to the label
       pattern: "*.{trk}"
+
   - distance_trk:
       type: file
       description: List of Nifti image for each bundle. The streamline color corresponds to the distance to the centroid

@@ -1,18 +1,18 @@
 
-process BUNDLE_LABEL_AND_DISTANCE_MAPS {
+process BUNDLE_LABELMAP {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
         tuple val(meta), path(bundles), path(centroids)
 
     output:
-    tuple val(meta), path("*_labels.nii.gz")    , emit: label
-    tuple val(meta), path("*_labels.trk")       , emit: label_trk
+    tuple val(meta), path("*_labels.nii.gz")    , emit: labels
+    tuple val(meta), path("*_labels.trk")       , emit: labels_trk
     tuple val(meta), path("*_distances.nii.gz") , emit: distances
     tuple val(meta), path("*_distances.trk")    , emit: distances_trk
     path "versions.yml"                         , emit: versions
@@ -24,9 +24,8 @@ process BUNDLE_LABEL_AND_DISTANCE_MAPS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def nb_points = task.ext.nb_points ?: ''
 
-    String bundles_list = bundles.join(", ").replace(',', '')
     """
-    for bundle in $bundles_list;
+    for bundle in $bundles;
         do if [[ \$bundle == *"__"* ]]; then
             pos=\$((\$(echo \$bundle | grep -b -o __ | cut -d: -f1)+2))
             bname=\${bundle:\$pos}
@@ -51,7 +50,7 @@ process BUNDLE_LABEL_AND_DISTANCE_MAPS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' ))
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
@@ -60,6 +59,7 @@ process BUNDLE_LABEL_AND_DISTANCE_MAPS {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     scil_bundle_label_map.py -h
+
     touch ${prefix}__bundlename_labels.nii.gz
     touch ${prefix}__bundlename_labels.trk
     touch ${prefix}__bundlename_distances.nii.gz
@@ -67,7 +67,7 @@ process BUNDLE_LABEL_AND_DISTANCE_MAPS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        : \$(echo \$(samtools --version 2>&1) | sed 's/^.*samtools //; s/Using.*\$//' ))
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }
