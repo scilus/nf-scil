@@ -1,35 +1,24 @@
 betcrop/cropvolume:
   - modules/nf-scil/betcrop/cropvolume/**
   - tests/modules/nf-scil/betcrop/cropvolume/**
-
 betcrop/fslbetcrop:
   - modules/nf-scil/betcrop/fslbetcrop/**
   - tests/modules/nf-scil/betcrop/fslbetcrop/**
-
-bundle/fixelafd:
-  - modules/nf-scil/bundle/fixelafd/**
-  - tests/modules/nf-scil/bundle/fixelafd/**
-
 denoising/mppca:
   - modules/nf-scil/denoising/mppca/**
   - tests/modules/nf-scil/denoising/mppca/**
-
 denoising/nlmeans:
   - modules/nf-scil/denoising/nlmeans/**
   - tests/modules/nf-scil/denoising/nlmeans/**
-
 preproc/gibbs:
   - modules/nf-scil/preproc/gibbs/**
   - tests/modules/nf-scil/preproc/gibbs/**
-
 preproc/n4:
   - modules/nf-scil/preproc/n4/**
   - tests/modules/nf-scil/preproc/n4/**
-
 preproc/normalize:
   - modules/nf-scil/preproc/normalize/**
   - tests/modules/nf-scil/preproc/normalize/**
-
 reconst/diffusivitypriors:
   - modules/nf-scil/reconst/diffusivitypriors/**
   - tests/modules/nf-scil/reconst/diffusivitypriors/**
