@@ -41,7 +41,7 @@ process BUNDLE_CENTROID {
                 ${prefix}__\${bname}_centroid_${nb_points}.\${ext} --auto
         done
     else
-        # Resampling centroid if provided. 
+        # Resampling centroid if provided.
         for centroid in ${centroids};
             do
             ext=\${centroid#*.}
