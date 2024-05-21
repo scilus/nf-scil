@@ -1,0 +1,86 @@
+name: Test nf-scil module
+
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: "A tag describing the module"
+        required: true
+        type: string
+      profile:
+        description: "Which profile to use to run the module's tests"
+        required: true
+        default: 'docker'
+        type: choice
+        options:
+          - docker
+          - singularity
+  workflow_call:
+    inputs:
+      module:
+        description: "A tag describing the module"
+        required: true
+        type: string
+      profile:
+        description: |
+          Which profile to use to run the module's tests, either :
+            - docker
+            - singularity
+        required: true
+        type: string
+
+env:
+  NXF_SINGULARITY_CACHEDIR: /home/runner/.singularity_cache/.singularity
+  NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
+
+run-name: Test ${{ inputs.module }}
+jobs:
+  nf-test:
+    runs-on: scilus-nf-scil-runners
+    name: nf-test-${{ inputs.module }}
+    if: inputs.module != ''
+    env:
+      NXF_ANSI_LOG: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip pytest-workflow cryptography
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Setup Nextflow
+        uses: nf-core/setup-nextflow@v2
+
+      - name: Setup nf-test
+        uses: AlexVCaron/setup-nf-test@2c5a31b90b34d97abf155b57ee0f79c7f5aa118a
+
+      - name: Run nf-test
+        env:
+          NFT_DIFF: "pdiff"
+          NFT_DIFF_ARGS: "--line-numbers --width 120 --expand-tabs=2"
+        run: |
+          # use "docker_self_hosted" if it runs on self-hosted runner and inputs.profile=docker
+          if [ "${{ inputs.profile }}" == "docker" ]; then
+            PROFILE="docker_self_hosted"
+          else
+            PROFILE=${{ inputs.profile }}
+          fi
+
+          mkdir -p /home/runner/_work/tmpdir
+          TMPDIR=/home/runner/_work/tmpdir \
+          NFT_WORKDIR=/home/runner/_work \
+          nf-test test \
+            --profile=$PROFILE \
+            --tag ${{ inputs.module }} \
+            --tap=test.tap \
+            --verbose

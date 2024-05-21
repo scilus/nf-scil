@@ -1,0 +1,7 @@
+---
+name: "reconst_shmetrics"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "Scilpy"

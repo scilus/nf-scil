@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "reconst_noddi"
 description: Run NODDI modelling pipeline using AMICO from DWI data.
 keywords:
@@ -84,7 +84,7 @@ output:
 
   - kernels:
       type: directory
-      description: Folder containg kernels.
+      description: Folder containing kernels.
       pattern: "kernels"
 
   - versions:

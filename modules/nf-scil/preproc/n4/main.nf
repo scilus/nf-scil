@@ -3,15 +3,15 @@ process PREPROC_N4 {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(dwi), path(b0), path(b0_mask)
+    tuple val(meta), path(image), path(ref), path(ref_mask)
 
     output:
-    tuple val(meta), path("*dwi_n4.nii.gz")     , emit: dwi
-    path "versions.yml"                         , emit: versions
+    tuple val(meta), path("*__image_n4.nii.gz")     , emit: image
+    path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -22,26 +22,34 @@ process PREPROC_N4 {
     def bspline_knot_per_voxel = task.ext.bspline_knot_per_voxel ? "$task.ext.bspline_knot_per_voxel" : "1"
     def shrink_factor = task.ext.shrink_factor ? "$task.ext.shrink_factor" : "1"
     """
-    export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
+    export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
     export ANTS_RANDOM_SEED=1234
 
-    spacing=\$(mrinfo -spacing $b0 | tr " " "\\n" | sort -n | tail -1)
-    knot_spacing=\$(echo "\$spacing/$bspline_knot_per_voxel" | bc -l)
+    if [[ -f "$ref" ]]
+    then
+        spacing=\$(mrinfo -spacing $ref | tr " " "\\n" | sort -n | tail -1)
+        knot_spacing=\$(echo "\$spacing/$bspline_knot_per_voxel" | bc -l)
 
-    N4BiasFieldCorrection -i $b0\
-        -o [${prefix}__b0_n4.nii.gz, bias_field_b0.nii.gz]\
-        -c [300x150x75x50, 1e-6] -v 1\
-        -b [\${knot_spacing}, 3] \
-        -s $shrink_factor
+        N4BiasFieldCorrection -i $ref\
+            -o [${prefix}__ref_n4.nii.gz, bias_field_ref.nii.gz]\
+            -c [300x150x75x50, 1e-6] -v 1\
+            -b [\${knot_spacing}, 3] \
+            -s $shrink_factor
 
-    scil_apply_bias_field_on_dwi.py $dwi bias_field_b0.nii.gz\
-        ${prefix}__dwi_n4.nii.gz --mask $b0_mask -f
+        scil_dwi_apply_bias_field.py $image bias_field_ref.nii.gz\
+            ${prefix}__image_n4.nii.gz --mask $ref_mask -f
+
+    else
+        N4BiasFieldCorrection -i $image\
+            -o [${prefix}__image_n4.nii.gz, bias_field_t1.nii.gz]\
+            -c [300x150x75x50, 1e-6] -v 1
+    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
@@ -51,13 +59,13 @@ process PREPROC_N4 {
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     N4BiasFieldCorrection.py -h
-    scil_apply_bias_field_on_dwi -h
+    scil_dwi_apply_bias_field -h
 
-    touch ${prefix}_dwi_n4.nii.gz
+    touch ${prefix}__image_n4.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
         N4BiasFieldCorrection: \$(N4BiasFieldCorrection --version 2>&1 | sed -n 's/ANTs Version: v\\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """

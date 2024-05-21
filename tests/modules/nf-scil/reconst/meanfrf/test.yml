@@ -1,9 +1,0 @@
-- name: reconst meanfrf test_reconst_meanfrf
-  command: nextflow run ./tests/modules/nf-scil/reconst/meanfrf -entry test_reconst_meanfrf -c ./tests/config/nextflow.config
-  tags:
-    - reconst/meanfrf
-    - reconst
-  files:
-    - path: output/reconst/mean_frf.txt
-      md5sum: 95c48b03c21742a71bf338fa9c76944a
-    - path: output/reconst/versions.yml

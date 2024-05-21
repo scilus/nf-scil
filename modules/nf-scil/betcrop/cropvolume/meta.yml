@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
+# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/modules/meta-schema.json
 name: "betcrop_cropvolume"
 description: Crop empty planes around the data in a volume
 keywords:
@@ -23,10 +23,10 @@ input:
       description: Nifti image file to crop
       pattern: "*.{nii,nii.gz}"
 
-  - mask:
+  - bounding_box:
       type: file
-      description: Nifti image file used to mask the input image
-      pattern: "*.{nii,nii.gz}"
+      description: Input bounding box to use to crop the image
+      pattern: "*.{pkl}"
 
 output:
   - meta:
