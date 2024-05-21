@@ -40,7 +40,7 @@ input:
 
   - priors:
       type: directory
-      description: Folder containg text files for iso and para diffusivity values.
+      description: Folder containg text files for isotropic and parallel diffusivity values.
       pattern: "priors"
 
 output:
@@ -52,7 +52,7 @@ output:
 
   - para_diff:
       type: file
-      description: Text files for para diffusivity values.
+      description: Text files for parallel diffusivity values.
       pattern: "*.txt"
 
   - perp_diff:
@@ -62,27 +62,27 @@ output:
 
   - iso_diff:
       type: file
-      description: Text files for iso diffusivity values.
+      description: Text files for isotropic diffusivity values.
       pattern: "*.txt"
 
   - mean_para_diff:
       type: file
-      description: Text file for average para diffusivity value.
+      description: Text file for average parallel diffusivity value.
       pattern: "*.txt"
 
   - mean_perp_diff:
       type: file
-      description: Text file for average perp diffusivity value.
+      description: Text file for average perpendicular diffusivity value.
       pattern: "*.txt"
 
   - mean_iso_diff:
       type: file
-      description: Text file for average iso diffusivity value.
+      description: Text file for average isotropic diffusivity value.
       pattern: "*.txt"
 
   - priors:
       type: directory
-      description: Folder containing text files for iso, para and perp diffusivity values.
+      description: Folder containing text files for isotropic, parallel and perpendicular diffusivity values.
       pattern: "priors"
 
   - versions:
