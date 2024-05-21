@@ -8,24 +8,26 @@
             "test__fit_ODI.nii.gz",
             [
                 "versions.yml:md5,7d60348ede01d2f9bd3a2fe9da61741d"
-            ]
+            ],
+            114
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-15T10:59:38.313332"
+        "timestamp": "2024-05-21T15:00:54.163407"
     },
     "reconst - noddi - save_kernels - no mask": {
         "content": [
             [
                 "versions.yml:md5,7d60348ede01d2f9bd3a2fe9da61741d"
-            ]
+            ],
+            114
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-15T01:19:11.908184"
+        "timestamp": "2024-05-21T14:57:35.955489"
     }
 }
