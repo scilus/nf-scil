@@ -1,0 +1,7 @@
+---
+name: "tractogram_removeinvalid"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
