@@ -74,6 +74,11 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
+                    file(process.out.dir.get(0).get(1)).name,
+                    file(process.out.fwf.get(0).get(1)).name,
+                    file(process.out.ndi.get(0).get(1)).name,
+                    file(process.out.ecvf.get(0).get(1)).name,
+                    file(process.out.odi.get(0).get(1)).name,
                     process.out.versions,
                     file(process.out.kernels.get(0)).listFiles().size()
                 ).match() }
