@@ -30,7 +30,7 @@ input:
 
   - rd:
       type: file
-      description: Nifti DTI AD volume.
+      description: Nifti DTI RD volume.
       pattern: "*.{nii,nii.gz}"
 
   - md:
@@ -57,7 +57,7 @@ output:
 
   - perp_diff:
       type: file
-      description: Text files for para diffusivity values.
+      description: Text files for perpendicular diffusivity values.
       pattern: "*.txt"
 
   - iso_diff:
@@ -82,7 +82,7 @@ output:
 
   - priors:
       type: directory
-      description: Folder containing text files for iso and para diffusivity values.
+      description: Folder containing text files for iso, para and perp diffusivity values.
       pattern: "priors"
 
   - versions:
