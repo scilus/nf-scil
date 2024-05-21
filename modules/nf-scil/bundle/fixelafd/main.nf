@@ -3,15 +3,15 @@ process BUNDLE_FIXELAFD {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_1.6.0.sif':
-        'scilus/scilus:1.6.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
         tuple val(meta), path(bundles), path(fodf)
 
     output:
         tuple val(meta), path("*_afd_metric.nii.gz"), emit: fixel_afd
-        path "versions.yml"           , emit: versions
+        path "versions.yml"                         , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -36,7 +36,7 @@ process BUNDLE_FIXELAFD {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
@@ -52,7 +52,7 @@ process BUNDLE_FIXELAFD {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 1.6.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }
