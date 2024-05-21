@@ -60,27 +60,27 @@ output:
   - dir:
       type: file
       description: Nifti file main direction.
-      pattern: "*__FIT_dir.{nii,nii.gz}"
+      pattern: "*__fit_dir.{nii,nii.gz}"
 
-  - isovf:
+  - fwf:
       type: file
-      description: Nifti file for isotropic volume fraction.
-      pattern: "*__FIT_ISOVF.{nii,nii.gz}"
+      description: Nifti file for Free Water Fraction.
+      pattern: "*__fit_FWF.{nii,nii.gz}"
 
-  - icvf:
+  - ndi:
       type: file
-      description: Nifti file for intra-compartment volume fraction.
-      pattern: "*__FIT_ICVF.{nii,nii.gz}"
+      description: Nifti file for Neurite Density Index
+      pattern: "*__fit_NDI.{nii,nii.gz}"
 
   - ecvf:
       type: file
-      description: Nifti file for intra-compartment volume fraction.
-      pattern: "*__FIT_ECVF.{nii,nii.gz}"
+      description: Nifti file for Extra-Compartment Volume Fraction.
+      pattern: "*__fit_ECVF.{nii,nii.gz}"
 
-  - od:
+  - odi:
       type: file
-      description: Nifti file for orientation distribution.
-      pattern: "*__FIT_OD.{nii,nii.gz}"
+      description: Nifti file for Orientation Dispersion Index.
+      pattern: "*__fit_ODI.{nii,nii.gz}"
 
   - kernels:
       type: directory
