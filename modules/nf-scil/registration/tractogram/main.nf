@@ -64,6 +64,7 @@ process REGISTRATION_TRACTOGRAM {
 
     stub:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def suffix = task.ext.suffix ? "_${task.ext.suffix}" : ""
     """
     scil_tractogram_apply_transform.py -h
     scil_tractogram_remove_invalid.py -h
