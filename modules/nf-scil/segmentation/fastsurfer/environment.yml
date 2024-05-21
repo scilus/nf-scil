@@ -1,0 +1,8 @@
+name: "segmentation_fastsurfer"
+
+channels:
+  - Docker
+  - Apptainer
+
+dependencies:
+  - "fastsurfer"
