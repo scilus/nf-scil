@@ -49,40 +49,5 @@
             "nextflow": "24.04.1"
         },
         "timestamp": "2024-05-21T15:02:18.69291"
-    },
-    "bundle - resample centroids": {
-        "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__centroids_centroid_12.trk:md5,5c1fe115f1ff18a5b58844b863575157"
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,1ad23d8544b582c16d079661d328e764"
-                ],
-                "centroids": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__centroids_centroid_12.trk:md5,5c1fe115f1ff18a5b58844b863575157"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,1ad23d8544b582c16d079661d328e764"
-                ]
-            }
-        ],
-        "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "24.04.1"
-        },
-        "timestamp": "2024-05-21T14:29:44.86476"
     }
 }

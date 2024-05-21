@@ -25,13 +25,6 @@ input:
         the module will compute centroids.
       pattern: "*.{trk,tck}"
 
-  - centroids:
-      type: file
-      description: |
-        List of centroids to resample. If this input is supplied,
-        the module will resample centroids.
-      pattern: "*.{trk,tck}"
-
 output:
   - meta:
       type: map
@@ -47,7 +40,7 @@ output:
   - centroids:
       type: file
       description: |
-        Computed/reasampled centroids.
+        Computed centroids.
       pattern: "*.{trk,tck}"
 
 authors:
