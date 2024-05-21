@@ -50,24 +50,6 @@ jobs:
       - name: Run ECLint check
         run: editorconfig-checker -exclude README.md $(git ls-files | grep -v test)
 
-  pytest-changes:
-    name: pytest-changes
-    runs-on: ubuntu-latest
-    outputs:
-      # Expose matched filters as job 'modules' output variable
-      modules: ${{ steps.filter.outputs.changes }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-            fetch-depth: 2
-
-      # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
-      - uses: mirpedrol/paths-filter@main
-        id: filter
-        with:
-          filters: "tests/config/pytest_modules.yml"
-          token: ${{ github.token }}
-
   nf-test-changes:
     name: nf-test-changes
     runs-on: ubuntu-latest
