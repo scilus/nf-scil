@@ -28,10 +28,20 @@ input:
       description: ANTs affine transform
       pattern: "*.mat"
 
-  - tractograms_dir:
-      type: directory
-      description: Path to directory containing tractograms to register
+  - tractogram:
+      type: file
+      description: Tractogram or list of tractograms to register
       pattern: "*.{trk,tck}"
+
+  - ref:
+      type: file
+      description: Reference anatomy for tck/vtk/fib/dpy file support (.nii or .nii.gz) (optional)
+      pattern: "*.{tck,vtk,fib,dpy}"
+
+  - deformation:
+      type: file
+      description: Path to the file containing a deformation field (optional)
+      pattern: "*.{nii,nii.gz}"
 
 output:
   - meta:
