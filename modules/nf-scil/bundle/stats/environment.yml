@@ -1,0 +1,7 @@
+---
+name: "bundle_stats"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
