@@ -25,7 +25,6 @@ nextflow_process {
         }
     }
     test("bundle - uniformize") {
-
         when {
             process {
                 """  
@@ -45,14 +44,12 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
         test("bundle - uniformize_axis") {
 
@@ -77,14 +74,12 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
         test("bundle - uniformize_centroid") {
 
@@ -109,13 +104,11 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 }
