@@ -56,7 +56,7 @@ process BUNDLE_UNIFORMIZE {
 
     stub:
     def args = task.ext.args ?: ''
- """
+    """
     scil_bundle_uniformize_endpoints.py -h
 
     for bundles in ${bundles};

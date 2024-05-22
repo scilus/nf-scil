@@ -22,7 +22,7 @@ input:
       type: file
       description: Bundle or list of bundles to uniformize.
       pattern: "*.trk"
-      
+
   - centroids:
       type: file
       description: Match endpoints of the streamlines to align it to a reference unique streamline (centroid). (optional)
@@ -38,7 +38,7 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'sample1', single_end:false ]`
-  
+
   - versions:
       type: file
       description: File containing software versions
