@@ -1,6 +1,5 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/yaml-schema.json
-name: "bundle_label_and_distance_maps"
+name: "bundle_labelmap"
 description: Perform SCILPY scil_bundle_label_map.py. Compute the label image (Nifti) from a centroid and tractograms (all representing the same bundle). The label image represents the coverage of the bundle, segmented into regions labelled from 0 to --nb_pts, starting from the head, ending in the tail. Each voxel will have the label of its nearest centroid point. The number of labels will be the same as the centroid's number of points.
 keywords:
   - bundle
@@ -45,7 +44,7 @@ output:
       description: List of Nifti image. The pixel intensity corresponds to the label
       pattern: "*.{nii,nii.gz}"
 
-  - distance:
+  - distances:
       type: file
       description: List of Nifti image. The pixel intensity corresponds to the distance to the centroid
       pattern: "*.{nii,nii.gz}"
@@ -55,7 +54,7 @@ output:
       description: List of trk. The streamline color corresponds to the label
       pattern: "*.{trk}"
 
-  - distance_trk:
+  - distances_trk:
       type: file
       description: List of Nifti image for each bundle. The streamline color corresponds to the distance to the centroid
       pattern: "*.{trk}"
