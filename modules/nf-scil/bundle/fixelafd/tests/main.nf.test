@@ -26,7 +26,6 @@ nextflow_process {
     }
 
     test("bundle - fixelafd") {
-
         when {
             process {
                 """
@@ -40,7 +39,6 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
