@@ -34,16 +34,13 @@ process BUNDLE_LABELMAP {
         do ext=\${bundles[index]#*.}
         bname=\$(basename \${bundles[index]} .\${ext})
 
-        if [[ -f \${centroids[index]} ]]; then
-            scil_bundle_label_map.py \${bundles[index]} \${centroids[index]} \
-                tmp_out $nb_points $colormap $new_labelling -f
+        scil_bundle_label_map.py \${bundles[index]} \${centroids[index]} \
+            tmp_out $nb_points $colormap $new_labelling -f
 
-            mv tmp_out/labels_map.nii.gz ${prefix}__\${bname}_labels.nii.gz
-            mv tmp_out/distance_map.nii.gz ${prefix}__\${bname}_distances.nii.gz
-
-            mv tmp_out/labels.trk ${prefix}__\${bname}_labels.trk
-            mv tmp_out/distance.trk ${prefix}__\${bname}_distances.trk
-        fi
+        mv tmp_out/labels_map.nii.gz ${prefix}__\${bname}_labels.nii.gz
+        mv tmp_out/distance_map.nii.gz ${prefix}__\${bname}_distances.nii.gz
+        mv tmp_out/labels.trk ${prefix}__\${bname}_labels.trk
+        mv tmp_out/distance.trk ${prefix}__\${bname}_distances.trk
     done
 
     cat <<-END_VERSIONS > versions.yml
