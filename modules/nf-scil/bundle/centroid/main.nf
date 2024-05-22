@@ -10,7 +10,7 @@ process BUNDLE_CENTROID {
         tuple val(meta), path(bundles)
 
     output:
-        tuple val(meta), path("*_centroid_{*}.{trk,tck}")   , emit: centroids
+        tuple val(meta), path("*_centroid_{*}.trk")         , emit: centroids
         path "versions.yml"                                 , emit: versions
 
     when:
@@ -18,7 +18,7 @@ process BUNDLE_CENTROID {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def nb_points = task.ext.nb_points ? "${task.ext.nb_points}" : "5"
+    def nb_points = task.ext.nb_points ?: 5
 
     """
     for bundle in ${bundles};
