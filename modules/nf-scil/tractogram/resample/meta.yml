@@ -23,7 +23,7 @@ input:
       description: |
         List of tractograms to resample. If the tractogram is a centroid file
         with a specific number of points, please use the nb_points parameter.
-      pattern: "*.{trk,tck}"
+      pattern: "*.{trk}"
 
 output:
   - meta:
@@ -41,7 +41,7 @@ output:
       type: file
       description: |
         Resampled tractograms.
-      pattern: "*.{trk,tck}"
+      pattern: "*.{trk}"
 
 authors:
   - "@gagnonanthony"
