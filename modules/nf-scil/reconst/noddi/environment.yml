@@ -1,0 +1,7 @@
+---
+name: "reconst_noddi"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
