@@ -1,5 +1,5 @@
 ---
-name: "reconst_dtimetrics"
+name: "bundle_fixelafd"
 channels:
   - Docker
   - Apptainer

@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "tracking_afd_metric.nii.gz:md5,01ac9796dc0ff6861c2992d513d690d3"
+                        "test__tracking_afd_metric.nii.gz:md5,01ac9796dc0ff6861c2992d513d690d3"
                     ]
                 ],
                 "1": [
@@ -20,7 +20,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "tracking_afd_metric.nii.gz:md5,01ac9796dc0ff6861c2992d513d690d3"
+                        "test__tracking_afd_metric.nii.gz:md5,01ac9796dc0ff6861c2992d513d690d3"
                     ]
                 ],
                 "versions": [
@@ -32,6 +32,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-21T19:42:40.340032"
+        "timestamp": "2024-05-22T18:04:46.370916"
     }
 }

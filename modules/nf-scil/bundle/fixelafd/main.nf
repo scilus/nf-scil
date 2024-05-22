@@ -20,18 +20,11 @@ process BUNDLE_FIXELAFD {
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
 
-    String bundles_list = bundles.join(", ").replace(',', '')
     """
-    for bundle in $bundles_list;
-        do if [[ \$bundle == *"__"* ]]; then
-            pos=\$((\$(echo \$bundle | grep -b -o __ | cut -d: -f1)+2))
-            bname=\${bundle:\$pos}
-            bname=\$(basename \$bname .trk)
-        else
-            bname=\$(basename \$bundle .trk)
-        fi
-        bname=\${bname/$params.bundle_suffix_to_remove/}
-        scil_compute_mean_fixel_afd_from_bundles.py \$bundle $fodf \${bname}_afd_metric.nii.gz
+    for bundle in $bundles;
+        do\
+        bname=\$(basename \${bundle} .trk)
+        scil_compute_mean_fixel_afd_from_bundles.py \$bundle $fodf ${prefix}__\${bname}_afd_metric.nii.gz
     done
 
     cat <<-END_VERSIONS > versions.yml
