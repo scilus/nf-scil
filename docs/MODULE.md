@@ -157,7 +157,7 @@ nf-core modules \
 
 ## Generate the tests
 
-In construction
+**In construction**
 
 ## Lint your code
 

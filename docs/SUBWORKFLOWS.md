@@ -98,7 +98,7 @@ channel_module2 = <MODULE1>.out.<output>
 ch_versions = ch_versions.mix(<MODULE2>.out.versions.first())
 ```
 
-#### define your Workflow outputs.
+#### Define your Workflow outputs.
 
 Once the `main` finished you can define the output that you want from the different modules or workflows, be sure to assign just one output per channel. Please list as many outputs as possible for your workflow, so that it can be better reused and adapted.
 
@@ -123,6 +123,10 @@ Don't forget to also define the output for the version file :
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but you
 don't need to specify them all. Provide at least 3 relevant `keywords` and list all modules and subworkflows used in the `components` section. List all `inputs` and `outputs` in the order in which you defined them. Give a complete `description` of the subworkflow, describing all potential uses and variations of inputs and their effects on expected outputs.
+
+## Create test cases
+
+**In construction**
 
 ## Lint your code
 

@@ -6,17 +6,22 @@ Standards and formatting are aligned closely with `nf-core`. Refer to the
 list of guidelines and conventions.
 
 * [Code standards and formatting](#code-standards-and-formatting)
-  * [Module standards](#module-standards)
-    * [Standards applying to the `process`](#standards-applying-to-the-process)
-    * [Standards applying to `meta.yml` files](#standards-applying-to-metayml-files)
+  * [Standards applying to the `process` (in `<MODULE>/main.nf`)](#standards-applying-to-the-process-in-modulemainnf)
+    * [name](#name)
+    * [label](#label)
+    * [output](#output)
+    * [stub](#stub)
+    * [version.yml](#versionyml)
+  * [Standards applying to `meta.yml` files](#standards-applying-to-metayml-files)
+    * [description](#description)
+    * [inputs and outputs](#inputs-and-outputs)
   * [Code linting](#code-linting)
   * [Prettier installation](#prettier-installation)
 * [Testing infrastructure](#testing-infrastructure)
   * [Running tests](#running-tests)
   * [Developing test cases with nf-test](#developing-test-cases-with-nf-test)
-  * [Test data infrastructure](#test-data-infrastructure)
-    * [Using Scilpy Fetcher](#using-scilpy-fetcher)
-    * [Using the `.test_data` directory](#using-the-test_data-directory)
+  * [Fetching data for tests](#fetching-data-for-tests)
+
 
 ## Standards applying to the `process` (in `<MODULE>/main.nf`)
 
