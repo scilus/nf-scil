@@ -18,11 +18,11 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'sample1', single_end:false ]`
 
-  - centroids:
+  - tractograms:
       type: file
       description: |
-        List of centroids to resample. If this input is supplied,
-        the module will resample centroids.
+        List of tractograms to resample. If the tractogram is a centroid file
+        with a specific number of points, please use the nb_points parameter.
       pattern: "*.{trk,tck}"
 
 output:
@@ -31,16 +31,16 @@ output:
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'sample1', single_end:false ]`
-  
+
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
 
-  - centroids:
+  - tractograms:
       type: file
       description: |
-        Resampled centroids.
+        Resampled tractograms.
       pattern: "*.{trk,tck}"
 
 authors:
