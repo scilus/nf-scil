@@ -1,91 +1,18 @@
 {
     "bundle - labelmap": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_labels.nii.gz:md5,5642be1fda227b865de52000f9117123"
-                    ]
-                ],
-                "1": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_labels.trk:md5,2c7dd1f33c9201a0ce8d86e13c4639d6"
-                    ]
-                ],
-                "2": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_distances.nii.gz:md5,72fdc04b0abdf55de4306e03cc4d162a"
-                    ]
-                ],
-                "3": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_distances.trk:md5,8cd4154a3c4349c2c5141597ce2216bf"
-                    ]
-                ],
-                "4": [
-                    "versions.yml:md5,c126a7422f280ed6bd664cc0f6636931"
-                ],
-                "distances": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_distances.nii.gz:md5,72fdc04b0abdf55de4306e03cc4d162a"
-                    ]
-                ],
-                "distances_trk": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_distances.trk:md5,8cd4154a3c4349c2c5141597ce2216bf"
-                    ]
-                ],
-                "labels": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_labels.nii.gz:md5,5642be1fda227b865de52000f9117123"
-                    ]
-                ],
-                "labels_trk": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__IFGWM_labels.trk:md5,2c7dd1f33c9201a0ce8d86e13c4639d6"
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,c126a7422f280ed6bd664cc0f6636931"
-                ]
-            }
+            [
+                "versions.yml:md5,c126a7422f280ed6bd664cc0f6636931"
+            ],
+            "test__IFGWM_labels.nii.gz",
+            "test__IFGWM_labels.trk",
+            "test__IFGWM_distances.nii.gz",
+            "test__IFGWM_distances.trk"
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "24.04.1"
         },
-        "timestamp": "2024-05-22T12:29:44.806002"
+        "timestamp": "2024-05-22T16:31:38.189887"
     }
 }
