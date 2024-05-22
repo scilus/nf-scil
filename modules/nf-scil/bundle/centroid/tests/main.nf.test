@@ -17,7 +17,7 @@ nextflow_process {
             script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
             process {
                 """
-                input[0] = Channel.from( [ "bundles.zip", "filtering.zip" ] )
+                input[0] = Channel.from( [ "bundles.zip" ] )
                 input[1] = "test.load-test-data"
                 """
             }
@@ -25,63 +25,23 @@ nextflow_process {
     }
 
     test("bundle - compute centroids - from bundle") {
-
         when {
             process {
                 """
-                ch_split_test_data = LOAD_DATA.out.test_data_directory
-                    .branch{
-                        bundles: it.simpleName == "bundles"
-                        filtering: it.simpleName == "filtering"
-                    }
-                input[0] = ch_split_test_data.bundles.map{
+                input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/fibercup_atlas/subj_1/*.trk", checkIfExists: true),
-                        []
+                        file("\${test_data_directory}/fibercup_atlas/subj_1/*.trk", checkIfExists: true)
                     ]
                 }
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
-
-    test("bundle - resample centroids") {
-
-        when {
-            process {
-                """
-                ch_split_test_data = LOAD_DATA.out.test_data_directory
-                    .branch{
-                        bundles: it.simpleName == "bundles"
-                        filtering: it.simpleName == "filtering"
-                    }
-                input[0] = ch_split_test_data.filtering.map{
-                    test_data_directory -> [
-                        [ id:'test', single_end:false ], // meta map
-                        [],
-                        file("\${test_data_directory}/centroids.trk", checkIfExists: true)
-                    ]
-                }
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(process.out).match() }
-            )
-        }
-
-    }
-
 }

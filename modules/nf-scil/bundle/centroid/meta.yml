@@ -23,14 +23,7 @@ input:
       description: |
         List of bundles to compute centroids for. If this input is supplied,
         the module will compute centroids.
-      pattern: "*.{trk,tck}"
-
-  - centroids:
-      type: file
-      description: |
-        List of centroids to resample. If this input is supplied,
-        the module will resample centroids.
-      pattern: "*.{trk,tck}"
+      pattern: "*.trk"
 
 output:
   - meta:
@@ -47,8 +40,8 @@ output:
   - centroids:
       type: file
       description: |
-        Computed/reasampled centroids.
-      pattern: "*.{trk,tck}"
+        Computed centroids.
+      pattern: "*.trk"
 
 authors:
   - "@gagnonanthony"
