@@ -43,12 +43,12 @@ output:
   - labels:
       type: file
       description: List of Nifti image. The pixel intensity corresponds to the label
-      pattern: "*.{nii.gz}"
+      pattern: "*.{nii,nii.gz}"
 
   - distance:
       type: file
       description: List of Nifti image. The pixel intensity corresponds to the distance to the centroid
-      pattern: "*.{nii.gz}"
+      pattern: "*.{nii,nii.gz}"
 
   - labels_trk:
       type: file

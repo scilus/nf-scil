@@ -22,22 +22,21 @@ process BUNDLE_LABELMAP {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def nb_points = task.ext.nb_points ?: ''
+    def nb_points = task.ext.nb_points ? "--nb_pts ${task.ext.nb_points} ": ""
+    def colormap = task.ext.colormap ? "--colormap ${task.ext.colormap} ": ""
+    def new_labelling = task.ext.new_labelling ? "--new_labelling ": ""
 
     """
-    for bundle in $bundles;
-        do if [[ \$bundle == *"__"* ]]; then
-            pos=\$((\$(echo \$bundle | grep -b -o __ | cut -d: -f1)+2))
-            bname=\${bundle:\$pos}
-            bname=\$(basename \$bname .trk)
-        else
-            bname=\$(basename \$bundle .trk)
-        fi
-        bname=\${bname/_ic/}
+    bundles=(${bundles.join(" ")})
+    centroids=(${centroids.join(" ")})
 
-        centroid=${prefix}__\${bname}_centroid_${nb_points}.trk
-        if [[ -f \${centroid} ]]; then
-            scil_bundle_label_map.py \$bundle \${centroid} tmp_out -f
+    for index in \${!bundles[@]};
+        do ext=\${bundles[index]#*.}
+        bname=\$(basename \${bundles[index]} .\${ext})
+
+        if [[ -f \${centroids[index]} ]]; then
+            scil_bundle_label_map.py \${bundles[index]} \${centroids[index]} \
+                tmp_out $nb_points $colormap $new_labelling -f
 
             mv tmp_out/labels_map.nii.gz ${prefix}__\${bname}_labels.nii.gz
             mv tmp_out/distance_map.nii.gz ${prefix}__\${bname}_distances.nii.gz
@@ -45,7 +44,6 @@ process BUNDLE_LABELMAP {
             mv tmp_out/labels.trk ${prefix}__\${bname}_labels.trk
             mv tmp_out/distance.trk ${prefix}__\${bname}_distances.trk
         fi
-
     done
 
     cat <<-END_VERSIONS > versions.yml
@@ -55,7 +53,6 @@ process BUNDLE_LABELMAP {
     """
 
     stub:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     """
     scil_bundle_label_map.py -h
