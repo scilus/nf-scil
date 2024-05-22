@@ -155,6 +155,8 @@ it's `main.nf`.
 
 **In construction**
 
+## Fetching data for tests
+
 The Scilpy Fetcher is a tool that allows you to download datasets from the Scilpy test data
 repository. Follow [this link](./TEST_DATA.md) for a global view of available test archives and links to download them. To use it, first include the _fetcher workflow_ in your test's `main.nf` :
 
@@ -198,8 +200,3 @@ Then feed it to it :
 ```groovy
 PROCESS( input )
 ```
-
-> [!NOTE]
-> The subworkflow must be called individually in each test workflow, even if they download
-> the same archives, since there is no mechanism to pass data channels to them from the
-> outside, or share cache between them.
