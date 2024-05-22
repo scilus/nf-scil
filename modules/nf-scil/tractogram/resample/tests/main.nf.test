@@ -40,8 +40,6 @@ nextflow_process {
             }
         }
         then {
-            //println file(process.out.tractograms.get(0).get(1).toList().get(0))
-            //println file(process.out.tractograms.get(0).get(1).toList().get(1))
             assertAll(
                 { assert process.success },
                 { assert snapshot(

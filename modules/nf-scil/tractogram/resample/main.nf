@@ -10,7 +10,7 @@ process TRACTOGRAM_RESAMPLE {
         tuple val(meta), path(tractograms)
 
     output:
-        tuple val(meta), path("*_resampled*.trk")       , emit: tractograms
+        tuple val(meta), path("*_resampled.trk")       , emit: tractograms
         path "versions.yml"                             , emit: versions
 
     when:

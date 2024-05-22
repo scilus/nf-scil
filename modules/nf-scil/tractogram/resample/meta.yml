@@ -41,7 +41,7 @@ output:
       type: file
       description: |
         Resampled tractograms.
-      pattern: "*.{trk}"
+      pattern: "*_resampled.trk"
 
 authors:
   - "@gagnonanthony"
