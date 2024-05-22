@@ -36,43 +36,16 @@
     },
     "tractogram - resample - tractogram": {
         "content": [
-            {
-                "0": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test_IFGWM_color_resampled.trk:md5,db696117b3fa248aaa1c537ea1575a12",
-                            "test_IFGWM_resampled.trk:md5,db696117b3fa248aaa1c537ea1575a12"
-                        ]
-                    ]
-                ],
-                "1": [
-                    "versions.yml:md5,f593a3a81a06f02aaa1ba17ba0baccfd"
-                ],
-                "tractograms": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        [
-                            "test_IFGWM_color_resampled.trk:md5,db696117b3fa248aaa1c537ea1575a12",
-                            "test_IFGWM_resampled.trk:md5,db696117b3fa248aaa1c537ea1575a12"
-                        ]
-                    ]
-                ],
-                "versions": [
-                    "versions.yml:md5,f593a3a81a06f02aaa1ba17ba0baccfd"
-                ]
-            }
+            [
+                "versions.yml:md5,f593a3a81a06f02aaa1ba17ba0baccfd"
+            ],
+            "test_IFGWM_color_resampled.trk",
+            "test_IFGWM_resampled.trk"
         ],
         "meta": {
             "nf-test": "0.8.4",
             "nextflow": "24.04.1"
         },
-        "timestamp": "2024-05-22T15:02:24.478286"
+        "timestamp": "2024-05-22T16:20:10.024974"
     }
 }
