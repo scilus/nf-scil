@@ -6,4 +6,4 @@ channels:
 dependencies:
   - "ANTs"
   - "Mrtrix"
-  - "Scilpy"
+  - "scilpy"

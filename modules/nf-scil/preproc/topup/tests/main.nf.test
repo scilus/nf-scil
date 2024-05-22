@@ -55,7 +55,9 @@ nextflow_process {
                     file(process.out.topup_movpart.get(0).get(1)).name,
                     file(process.out.rev_b0_warped.get(0).get(1)).name,
                     process.out.rev_b0_mean,
-                    process.out.b0_mean).match() }
+                    process.out.b0_mean,
+                    process.out.versions
+                    ).match() }
             )
         }
     }

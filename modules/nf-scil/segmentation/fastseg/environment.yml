@@ -5,4 +5,4 @@ channels:
   - Apptainer
 dependencies:
   - "FSL"
-  - "Scilpy"
+  - "scilpy"
