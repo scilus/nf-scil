@@ -37,7 +37,6 @@ nextflow_process {
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/fibercup_atlas/subj_1/*.trk"),
-                        [],
                         []
                     ]
                 }
@@ -67,7 +66,6 @@ nextflow_process {
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/fibercup_atlas/subj_1/bundle_0.trk"),
-                        [],
                         []
                     ]
                 }
@@ -97,8 +95,7 @@ nextflow_process {
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/IFGWM.trk"),
-                        file("\${test_data_directory}/IFGWM_uni_c_10.trk"),
-                        []
+                        file("\${test_data_directory}/IFGWM_uni_c_10.trk")
                     ]
                 }
                 """

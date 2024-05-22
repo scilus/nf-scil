@@ -7,7 +7,7 @@ process BUNDLE_UNIFORMIZE {
         'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(bundles), path(centroids)/* optional*/, path(ref)/* optional*/
+    tuple val(meta), path(bundles), path(centroids)
 
     output:
     tuple val(meta), path("*_uniformized.trk"), emit: bundles
@@ -19,33 +19,28 @@ process BUNDLE_UNIFORMIZE {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def method = task.ext.method ? "--${task.ext.method}"  : "--auto"
-    def reference = "$ref" ? "--reference $ref" : ""
     def swap = task.ext.swap ? "--swap" : ""
     def force = task.ext.force ? "-f" : ""
 
     """
     bundles=(${bundles.join(" ")})
 
-    if [[ "$method" == "--centroid" ]]; then
+    if [[ -f "$centroids" ]]; then
         centroids=(${centroids.join(" ")})
     fi
 
     for index in \${!bundles[@]};
         do \
         bname=\$(basename \${bundles[index]} .trk)
-        if [[ "$method" == "--centroid" ]]; then
-            scil_bundle_uniformize_endpoints.py \${bundles[index]} ${prefix}__\${bname}_uniformized.trk\
-                $method \${centroids[index]}\
-                $reference\
-                $swap\
-                $force
+        if [[ -f "$centroids" ]]; then
+            option="--centroid \${centroids[index]}"
         else
-            scil_bundle_uniformize_endpoints.py \${bundles[index]} ${prefix}__\${bname}_uniformized.trk\
-                $method\
-                $reference\
-                $swap\
-                $force
+            option="$method"
         fi
+        scil_bundle_uniformize_endpoints.py \${bundles[index]} ${prefix}__\${bname}_uniformized.trk\
+            \${option}\
+            $swap\
+            $force
     done
 
     cat <<-END_VERSIONS > versions.yml
