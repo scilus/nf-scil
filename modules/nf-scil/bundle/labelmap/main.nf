@@ -1,4 +1,3 @@
-
 process BUNDLE_LABELMAP {
     tag "$meta.id"
     label 'process_single'

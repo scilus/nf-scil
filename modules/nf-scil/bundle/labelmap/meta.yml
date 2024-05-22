@@ -41,23 +41,23 @@ output:
 
   - labels:
       type: file
-      description: List of Nifti image. The pixel intensity corresponds to the label
-      pattern: "*.{nii,nii.gz}"
+      description: Labels map, each pixel intensity corresponds to the label of the nearest centroid.
+      pattern: "*_labels.nii.gz"
 
   - distances:
       type: file
-      description: List of Nifti image. The pixel intensity corresponds to the distance to the centroid
-      pattern: "*.{nii,nii.gz}"
+      description: Distance map. The pixel intensity corresponds to the distance to the nearest centroid.
+      pattern: "*_distances.nii.gz"
 
   - labels_trk:
       type: file
-      description: List of trk. The streamline color corresponds to the label
-      pattern: "*.{trk}"
+      description: Colored by labels bundle file. The streamline color corresponds to the label of the nearest centroid.
+      pattern: "*_labels.trk"
 
   - distances_trk:
       type: file
-      description: List of Nifti image for each bundle. The streamline color corresponds to the distance to the centroid
-      pattern: "*.{trk}"
+      description: Colored by distance bundle file. The streamline color corresponds to the distance to the nearest centroid.
+      pattern: "*_distances.trk"
 
 authors:
-  - "@gabknight"
+  - "@gagnonanthony"
