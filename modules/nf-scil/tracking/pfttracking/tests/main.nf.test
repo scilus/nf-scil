@@ -25,7 +25,9 @@ nextflow_process {
         }
 
     test("tracking - pfttracking - wm") {
+
         config "./nextflow_wm.config"
+
         when {
             process {
                 """
@@ -56,7 +58,9 @@ nextflow_process {
     }
 
     test("tracking - pfttracking - fa") {
+
         config "./nextflow_fa.config"
+
         when {
             process {
             """
@@ -87,7 +91,9 @@ nextflow_process {
     }
 
     test("tracking - pfttracking - interface") {
+
         config "./nextflow_interface.config"
+
         when {
             process {
             """

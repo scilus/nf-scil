@@ -30,7 +30,7 @@
                 ],
                 "1": [
                     "versions.yml:md5,0e994f9824f1e014fd5e939e0bce7061",
-                    "versions.yml:md5,e63f6133bb2e78ce211054111993be59"
+                    "versions.yml:md5,5ab498390fc1f2d08a8bd6ed0f1cd4e4"
                 ],
                 "bundles": [
                     [
@@ -60,14 +60,14 @@
                 ],
                 "versions": [
                     "versions.yml:md5,0e994f9824f1e014fd5e939e0bce7061",
-                    "versions.yml:md5,e63f6133bb2e78ce211054111993be59"
+                    "versions.yml:md5,5ab498390fc1f2d08a8bd6ed0f1cd4e4"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.1"
         },
-        "timestamp": "2024-05-13T15:58:13.048892"
+        "timestamp": "2024-05-23T03:43:59.818197"
     }
 }

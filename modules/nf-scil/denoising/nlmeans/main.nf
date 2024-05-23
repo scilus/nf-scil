@@ -1,4 +1,3 @@
-
 process DENOISING_NLMEANS {
     tag "$meta.id"
     label 'process_single'

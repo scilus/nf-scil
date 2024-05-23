@@ -1,4 +1,3 @@
-
 process RECONST_SHMETRICS {
     tag "$meta.id"
     label 'process_single'

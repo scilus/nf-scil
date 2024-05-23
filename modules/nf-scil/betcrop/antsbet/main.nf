@@ -1,4 +1,3 @@
-
 process BETCROP_ANTSBET {
     tag "$meta.id"
     label 'process_single'

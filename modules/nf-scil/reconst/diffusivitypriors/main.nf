@@ -11,7 +11,6 @@ def compute_noddi_priors ( fa, ad, rd, md, fa_min, fa_max, md_min, roi_radius, p
     """
 }
 
-
 def is_directory ( pathlike ) {
     return !(pathlike instanceof BlankSeparatedList) && pathlike.isDirectory()
 }

@@ -146,6 +146,11 @@ output:
       description: Number of Fiber Orientation (NuFO) map.
       pattern: "*nufo.nii.gz"
 
+  - vent_mask:
+      type: file
+      description: Ventricules mask.
+      pattern: "*ventricles_mask.nii.gz"
+
   - versions:
       type: file
       description: File containing software versions

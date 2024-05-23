@@ -25,7 +25,9 @@ nextflow_process {
         }
 
     test("registration - ants") {
+
         config "./nextflow.config"
+
         when {
             process {
                 """
@@ -48,7 +50,9 @@ nextflow_process {
     }
 
     test("registration - ants - quick") {
+
         config "./nextflow_quick.config"
+
         when {
             process {
                 """
@@ -71,7 +75,9 @@ nextflow_process {
     }
 
     test("registration - ants - options") {
+
         config "./nextflow_options.config"
+
         when {
             process {
                 """

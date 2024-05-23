@@ -7,7 +7,7 @@ process TRACTOGRAM_REMOVEINVALID {
         'scilus/scilus:2.0.2' }"
 
     input:
-        tuple val(meta), path(tractogram)
+        tuple val(meta), path(tractograms)
 
     output:
         tuple val(meta), path("*.{trk,tck}"), emit: tractograms

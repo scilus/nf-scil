@@ -30,7 +30,7 @@
                     ]
                 ],
                 "3": [
-                    "versions.yml:md5,dd077c4856c884d1e8ce02900eaf4163"
+                    "versions.yml:md5,6aaa50346ccfbb298945a071cd3df37e"
                 ],
                 "csf_mask": [
                     [
@@ -51,7 +51,7 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,dd077c4856c884d1e8ce02900eaf4163"
+                    "versions.yml:md5,6aaa50346ccfbb298945a071cd3df37e"
                 ],
                 "wm_mask": [
                     [
@@ -66,8 +66,8 @@
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.1"
         },
-        "timestamp": "2024-05-09T18:15:41.585876"
+        "timestamp": "2024-05-22T18:05:16.576243"
     }
 }

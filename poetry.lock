@@ -2130,13 +2130,13 @@ widechars = ["wcwidth"]
 
 [[package]]
 name = "textual"
-version = "0.62.0"
+version = "0.63.1"
 description = "Modern Text User Interface framework"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "textual-0.62.0-py3-none-any.whl", hash = "sha256:5208c1df961848889ff0a0c7628f203a2bc773fc2a45d6e842b27a8e34c15499"},
-    {file = "textual-0.62.0.tar.gz", hash = "sha256:563c1c13a087c8f4fef8a47aae43e1274139e85d00e0b0898b8eb89c5e494997"},
+    {file = "textual-0.63.1-py3-none-any.whl", hash = "sha256:10ccbd60b30582fab545e734ccb9ff3d1cb8550dc520bc1862274f3d8427ca04"},
+    {file = "textual-0.63.1.tar.gz", hash = "sha256:281803c428c7207e1bbdb6c7e9f831556fc585d5b9bd5ad33f39ee288def616c"},
 ]
 
 [package.dependencies]

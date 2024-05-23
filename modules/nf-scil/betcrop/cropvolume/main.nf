@@ -1,4 +1,3 @@
-
 process BETCROP_CROPVOLUME {
     tag "$meta.id"
     label 'process_single'

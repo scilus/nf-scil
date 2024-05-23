@@ -1,5 +1,3 @@
-
-
 process RECONST_FRF {
     tag "$meta.id"
     label 'process_single'

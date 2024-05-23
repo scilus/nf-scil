@@ -1,5 +1,3 @@
-
-
 process TESTDATA_SCILPY {
     label 'process_single'
 

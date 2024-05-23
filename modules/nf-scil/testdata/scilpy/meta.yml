@@ -25,7 +25,7 @@ input:
       pattern: "*"
 
 output:
-  - test_data_path:
+  - test_data_directory:
       type: file
       description: Directory where to store the test data
       pattern: "*"

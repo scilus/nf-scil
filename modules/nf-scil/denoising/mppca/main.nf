@@ -1,4 +1,3 @@
-
 process DENOISING_MPPCA {
     tag "$meta.id"
     label 'process_single'

@@ -50,7 +50,6 @@ nextflow_process {
                 ).match() }
             )
         }
-
     }
 
     test("reconst - noddi - extract_metrics") {

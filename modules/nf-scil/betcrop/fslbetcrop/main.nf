@@ -1,4 +1,3 @@
-
 process BETCROP_FSLBETCROP {
     tag "$meta.id"
     label 'process_single'

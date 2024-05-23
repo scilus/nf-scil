@@ -21,7 +21,7 @@
                     ]
                 ],
                 "2": [
-                    "versions.yml:md5,7eb8e64496eab011bfb2b89f9035729a"
+                    "versions.yml:md5,3b089d55a1116feffa69d739ced1d99f"
                 ],
                 "bounding_box": [
                     [
@@ -42,15 +42,15 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,7eb8e64496eab011bfb2b89f9035729a"
+                    "versions.yml:md5,3b089d55a1116feffa69d739ced1d99f"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.1"
         },
-        "timestamp": "2024-04-24T19:11:45.676513"
+        "timestamp": "2024-05-22T16:33:33.247096"
     },
     "betcrop - cropvolume": {
         "content": [
@@ -65,13 +65,25 @@
                     ]
                 ],
                 "1": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_cropped_bbox.pkl:md5,d6a03b61669b07683e8c4b21a613f16c"
+                    ]
                 ],
                 "2": [
-                    "versions.yml:md5,7eb8e64496eab011bfb2b89f9035729a"
+                    "versions.yml:md5,3b089d55a1116feffa69d739ced1d99f"
                 ],
                 "bounding_box": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_cropped_bbox.pkl:md5,d6a03b61669b07683e8c4b21a613f16c"
+                    ]
                 ],
                 "image": [
                     [
@@ -83,14 +95,14 @@
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,7eb8e64496eab011bfb2b89f9035729a"
+                    "versions.yml:md5,3b089d55a1116feffa69d739ced1d99f"
                 ]
             }
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.1"
         },
-        "timestamp": "2024-04-24T19:11:33.750977"
+        "timestamp": "2024-05-22T17:07:29.720031"
     }
 }

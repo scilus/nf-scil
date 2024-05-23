@@ -1,4 +1,3 @@
-
 process RECONST_IHMT {
     tag "$meta.id"
     label 'process_single'

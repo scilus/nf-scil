@@ -67,7 +67,7 @@ output:
       description: Output filename for the second eigenvector.
       pattern: "*__evecs_v2.{nii,nii.gz}"
 
-  - evec_v3:
+  - evecs_v3:
       type: file
       description: Output filename for the third eigenvector.
       pattern: "*__evecs_v3.{nii,nii.gz}"

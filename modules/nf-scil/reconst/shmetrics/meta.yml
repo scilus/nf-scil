@@ -49,6 +49,11 @@ output:
       description: Peaks file.
       pattern: "*peaks.nii.gz"
 
+  - peak_values:
+      type: file
+      description: Peak values file.
+      pattern: "*peak_values.nii.gz"
+
   - peak_indices:
       type: file
       description: Peak indices file.

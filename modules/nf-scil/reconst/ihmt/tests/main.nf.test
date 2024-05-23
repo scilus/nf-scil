@@ -27,7 +27,6 @@ nextflow_process {
         }
 
     test("reconst - ihmt") {
-
         when {
             process {
                 """
@@ -63,18 +62,15 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("reconst - ihmt_no_mask") {
-
         when {
             process {
                 """
@@ -110,18 +106,15 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("reconst - ihmt_no_t1") {
-
         when {
             process {
                 """
@@ -154,18 +147,15 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("reconst - ihmt_single_echo") {
-
         when {
             process {
                 """
@@ -189,18 +179,15 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("reconst - ihmt_acq_params") {
-
         when {
             process {
                 """
@@ -235,14 +222,11 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
-
 }

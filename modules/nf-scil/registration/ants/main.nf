@@ -1,4 +1,3 @@
-
 process REGISTRATION_ANTS {
     tag "$meta.id"
     label 'process_single'
