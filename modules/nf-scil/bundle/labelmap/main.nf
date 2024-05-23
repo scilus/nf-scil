@@ -53,10 +53,15 @@ process BUNDLE_LABELMAP {
     """
     scil_bundle_label_map.py -h
 
-    touch ${prefix}__labels.nii.gz
-    touch ${prefix}__labels.trk
-    touch ${prefix}__distances.nii.gz
-    touch ${prefix}__distances.trk
+    for index in \${!bundles[@]};
+        do ext=\${bundles[index]#*.}
+        bname=\$(basename \${bundles[index]} .\${ext})
+
+        touch ${prefix}__\${bname}_labels.nii.gz
+        touch ${prefix}__\${bname}_labels.trk
+        touch ${prefix}__\${bname}_distances.nii.gz
+        touch ${prefix}__\${bname}_distances.trk
+    done
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
