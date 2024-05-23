@@ -53,10 +53,10 @@ process BUNDLE_LABELMAP {
     """
     scil_bundle_label_map.py -h
 
-    touch ${prefix}__bundlename_labels.nii.gz
-    touch ${prefix}__bundlename_labels.trk
-    touch ${prefix}__bundlename_distances.nii.gz
-    touch ${prefix}__bundlename_distances.trk
+    touch ${prefix}__labels.nii.gz
+    touch ${prefix}__labels.trk
+    touch ${prefix}__distances.nii.gz
+    touch ${prefix}__distances.trk
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
