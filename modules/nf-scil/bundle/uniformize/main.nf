@@ -20,7 +20,6 @@ process BUNDLE_UNIFORMIZE {
     def prefix = task.ext.prefix ?: "${meta.id}"
     def method = task.ext.method ? "--${task.ext.method}"  : "--auto"
     def swap = task.ext.swap ? "--swap" : ""
-    def force = task.ext.force ? "-f" : ""
 
     """
     bundles=(${bundles.join(" ")})
@@ -39,8 +38,7 @@ process BUNDLE_UNIFORMIZE {
         fi
         scil_bundle_uniformize_endpoints.py \${bundles[index]} ${prefix}__\${bname}_uniformized.trk\
             \${option}\
-            $swap\
-            $force
+            $swap -f
     done
 
     cat <<-END_VERSIONS > versions.yml
