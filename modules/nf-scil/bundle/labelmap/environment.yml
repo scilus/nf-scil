@@ -1,0 +1,7 @@
+---
+name: "bundle_labelmap"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
