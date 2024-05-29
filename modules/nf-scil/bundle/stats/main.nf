@@ -36,7 +36,7 @@ process BUNDLE_STATS {
     def streamline_count = task.ext.streamline_count ?: ""
     def volume_per_labels = task.ext.volume_per_labels ?: ""
     def mean_std_per_point = task.ext.mean_std_per_point ?: ""
-    
+
     """
     bundles=( ${bundles.join(" ")} )
     label_map=( ${voxel_labels_map.join(" ")} )
@@ -83,7 +83,7 @@ process BUNDLE_STATS {
         if [[ "$volume" ]];
         then
             scil_bundle_shape_measures.py \${bundles[index]} > \${bname}_volume.json
-  
+
         elif [[ "$streamline_count" ]];
         then
             scil_tractogram_count_streamlines.py \${bundles[index]} > \${bname}_streamlines.json
@@ -116,7 +116,7 @@ process BUNDLE_STATS {
         scil_json_merge_entries.py *_endpoints_raw.json ${prefix}__endpoints_map_raw.json \
             --no_list --add_parent_key ${prefix}
 
-     #Bundle_Metrics_Stats_In_Endpoints
+    #Bundle_Metrics_Stats_In_Endpoints
 
         scil_json_merge_entries.py *_tail.json *_head.json ${prefix}__endpoints_metric_stats.json \
             --no_list --add_parent_key ${prefix}
@@ -146,7 +146,7 @@ process BUNDLE_STATS {
         scil_json_merge_entries.py *_volume_label.json ${prefix}__volume_per_label.json --no_list \
             --add_parent_key ${prefix}
     fi
-    
+
     #Bundle_Mean_Std_Per_Point
     if [[ "$mean_std_per_point" ]];
     then
@@ -157,13 +157,13 @@ process BUNDLE_STATS {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 2.0.2
-    END_VERSIONS  
+    END_VERSIONS
     """
 
     stub:
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
-    
+
     """
     scil_tractogram_print_info.py -h
     scil_bundle_compute_endpoints_map.py -h
@@ -186,7 +186,7 @@ process BUNDLE_STATS {
     touch ${prefix}_endpoints_map_head.nii.gz
     touch ${prefix}_endpoints_map_tail.nii.gz
     touch ${prefix}_endpoints_metric.nii.gz
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         scilpy: 2.0.2
