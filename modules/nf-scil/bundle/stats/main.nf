@@ -18,7 +18,9 @@ process BUNDLE_STATS {
     tuple val(meta), path("*__streamline_count.json")      , emit: streamline_count, optional: true
     tuple val(meta), path("*__volume_per_label.json")      , emit: volume_per_labels, optional: true
     tuple val(meta), path("*__mean_std_per_point.json")    , emit: mean_std_per_point, optional: true
-    tuple val(meta), path("*_endpoints_metric.nii.gz")     , emit: endpoints_metric, optional: true
+    tuple val(meta), path("*_endpoints_map_head.nii.gz")    , emit: endpoints_head, optional: true
+    tuple val(meta), path("*_endpoints_map_tail.nii.gz")    , emit: endpoints_tail, optional: true
+    tuple val(meta), path("*_endpoints_metric.trk")        , emit: endpoints_metric, optional: true
     path "versions.yml"                                    , emit: versions
 
     when:

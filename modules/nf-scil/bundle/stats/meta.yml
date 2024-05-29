@@ -93,7 +93,7 @@ output:
   - endpoints_metric:
       type: file
       description: Projects maps extracted from a map onto the points of streamlines.
-      pattern: "*_endpoints_metric.nii.gz"
+      pattern: "*_endpoints_metric.trk"
 
   - versions:
       type: file
