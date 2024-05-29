@@ -21,15 +21,6 @@
                     ]
                 ],
                 "10": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_metric.trk:md5,647f6cca0436b5eeb79bbb063bf93159"
-                    ]
-                ],
-                "11": [
                     "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
                 ],
                 "2": [
@@ -105,15 +96,6 @@
                             "single_end": false
                         },
                         "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
-                    ]
-                ],
-                "endpoints_metric": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_metric.trk:md5,647f6cca0436b5eeb79bbb063bf93159"
                     ]
                 ],
                 "endpoints_metric_stats": [
@@ -200,7 +182,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-29T16:18:49.592901"
+        "timestamp": "2024-05-29T17:39:37.143775"
     },
     "bundle - stats - light": {
         "content": [
@@ -212,9 +194,6 @@
                     
                 ],
                 "10": [
-                    
-                ],
-                "11": [
                     "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
                 ],
                 "2": [
@@ -248,9 +227,6 @@
                     
                 ],
                 "endpoints_head": [
-                    
-                ],
-                "endpoints_metric": [
                     
                 ],
                 "endpoints_metric_stats": [
@@ -295,6 +271,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-29T16:19:00.457461"
+        "timestamp": "2024-05-29T17:39:49.869437"
     }
 }

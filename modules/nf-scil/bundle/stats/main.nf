@@ -20,7 +20,6 @@ process BUNDLE_STATS {
     tuple val(meta), path("*__mean_std_per_point.json")    , emit: mean_std_per_point, optional: true
     tuple val(meta), path("*_endpoints_map_head.nii.gz")    , emit: endpoints_head, optional: true
     tuple val(meta), path("*_endpoints_map_tail.nii.gz")    , emit: endpoints_tail, optional: true
-    tuple val(meta), path("*_endpoints_metric.trk")        , emit: endpoints_metric, optional: true
     path "versions.yml"                                    , emit: versions
 
     when:
@@ -72,8 +71,6 @@ process BUNDLE_STATS {
             scil_volume_stats_in_ROI.py \${bname}_endpoints_map_tail.nii.gz $normalize_weights\
                 --metrics \${b_metrics} > \${bname}_tail.json;
 
-            scil_tractogram_project_map_to_streamlines.py \${bundles[index]}\
-                \${bname}_endpoints_metric.trk --in_maps \${b_metrics} --out_dpp_name \${bname}
         fi
 
         if [[ "$mean_std" ]];

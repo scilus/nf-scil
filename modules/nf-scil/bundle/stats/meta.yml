@@ -1,5 +1,4 @@
 ---
-# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
 name: "bundle_stats"
 description: write your description here
 keywords:
@@ -89,11 +88,6 @@ output:
       type: file
       description: Endpoint tail map of bundle. The endpoint tail map is simply a count of the number of streamlines that end in each voxel.
       pattern: "*.nii.gz"
-
-  - endpoints_metric:
-      type: file
-      description: Projects maps extracted from a map onto the points of streamlines.
-      pattern: "*_endpoints_metric.trk"
 
   - versions:
       type: file
