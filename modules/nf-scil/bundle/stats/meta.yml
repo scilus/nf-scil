@@ -12,7 +12,6 @@ tools:
       homepage: "https://github.com/scilus/scilpy.git"
 
 input:
-
   - meta:
       type: map
       description: |
@@ -35,13 +34,12 @@ input:
       pattern: "*.nii.gz"
 
 output:
-
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. `[ id:'sample1', single_end:false ]`
-  
+
   - length:
       type: file
       description: Information on a tractogram, number of streamlines, mean / min / max / std of length in number of points, length in mm and step size.
