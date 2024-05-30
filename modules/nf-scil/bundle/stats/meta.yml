@@ -1,10 +1,12 @@
 ---
 name: "bundle_stats"
-description: write your description here
+description: Compile statistics on bundle profiles.
+
 keywords:
   - Bundle
   - statistic
   - json
+
 tools:
   - "scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
@@ -19,7 +21,7 @@ input:
 
   - bundles:
       type: file
-      description: Fiber bundle file to compute statistics on
+      description: Fiber bundle file to compute statistics on.
       pattern: "*.trk"
 
   - voxel_labels_map:

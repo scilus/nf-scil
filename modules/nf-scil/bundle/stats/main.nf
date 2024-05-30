@@ -18,8 +18,8 @@ process BUNDLE_STATS {
     tuple val(meta), path("*__streamline_count.json")      , emit: streamline_count, optional: true
     tuple val(meta), path("*__volume_per_label.json")      , emit: volume_per_labels, optional: true
     tuple val(meta), path("*__mean_std_per_point.json")    , emit: mean_std_per_point, optional: true
-    tuple val(meta), path("*_endpoints_map_head.nii.gz")    , emit: endpoints_head, optional: true
-    tuple val(meta), path("*_endpoints_map_tail.nii.gz")    , emit: endpoints_tail, optional: true
+    tuple val(meta), path("*_endpoints_map_head.nii.gz")   , emit: endpoints_head, optional: true
+    tuple val(meta), path("*_endpoints_map_tail.nii.gz")   , emit: endpoints_tail, optional: true
     path "versions.yml"                                    , emit: versions
 
     when:
@@ -170,7 +170,7 @@ process BUNDLE_STATS {
     scil_bundle_mean_std.py -h
     scil_bundle_shape_measures.py -h
     scil_tractogram_count_streamlines.py -h
-    cil_bundle_volume_per_label.py -h
+    scil_bundle_volume_per_label.py -h
     scil_bundle_mean_std.py -h
     scil_json_merge_entries.py -h
 
@@ -184,7 +184,6 @@ process BUNDLE_STATS {
     touch ${prefix}__mean_std_per_point.json
     touch ${prefix}_endpoints_map_head.nii.gz
     touch ${prefix}_endpoints_map_tail.nii.gz
-    touch ${prefix}_endpoints_metric.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
