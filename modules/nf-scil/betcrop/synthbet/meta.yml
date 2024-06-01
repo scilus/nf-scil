@@ -1,6 +1,6 @@
 ---
 name: "betcrop_synthbet"
-description: Perform brain extraction using mri_synthstrip on t1 image
+description: Perform brain extraction using synthstrip on image
 keywords:
   - anatomical image
   - BET
@@ -17,10 +17,15 @@ input:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - t1:
+  - image:
       type: file
       description: Nifti image volume to perform BET.
       pattern: "*.{nii,nii.gz}"
+
+  - weights:
+      type: file
+      description: Alternative model weights
+      pattern: "*.{nii.nii.gz}"
 
 output:
   - meta:
@@ -29,15 +34,15 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - bet_t1:
+  - bet_image:
       type: file
-      description: Nifti t1 volume brain-extracted.
+      description: Nifti brain-extracted volume.
       pattern: "*t1_bet.{nii,nii.gz}"
 
-  - mask:
+  - brain_mask:
       type: file
-      description: t1 mask brain-extracted and cropped.
-      pattern: "*t1_bet_mask.{nii,nii.gz}"
+      description: Brain-extracted image mask .
+      pattern: "*__brain_mask.{nii,nii.gz}"
 
   - versions:
       type: file
@@ -45,4 +50,4 @@ output:
       pattern: "versions.yml"
 
 authors:
-  - "@scilus"
+  - "@anroy1"

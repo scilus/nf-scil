@@ -14,7 +14,8 @@ workflow test_betcrop_synthbet {
     input = LOAD_TEST_DATA.out.test_data_directory
     .map{ test_data_directory -> [
         [ id:'test', single_end:false ], // meta map
-        file("${test_data_directory}/anat_image.nii.gz")
+        file("${test_data_directory}/anat_image.nii.gz"),
+        []
 
     ]}
 
