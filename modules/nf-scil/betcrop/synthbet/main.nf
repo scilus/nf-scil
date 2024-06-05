@@ -9,8 +9,8 @@ process BETCROP_SYNTHBET {
     tuple val(meta), path(image), path(weights) /* optional, input = [] */
 
     output:
-    tuple val(meta), path("*__bet_image.nii.gz"), emit: bet_t1
-    tuple val(meta), path("*__brain_mask.nii.gz"), emit: mask
+    tuple val(meta), path("*__bet_image.nii.gz"), emit: bet_image
+    tuple val(meta), path("*__brain_mask.nii.gz"), emit: brain_mask
     path "versions.yml"           , emit: versions
 
     when:
@@ -22,14 +22,14 @@ process BETCROP_SYNTHBET {
     def gpu = task.ext.gpu ? "--gpu" : ""
     def border = task.ext.border ? "-b " + task.ext.border : ""
     def nocsf = task.ext.nocsf ? "--no-csf" : ""
-    def model = "$weights" ? "--model $weights"
+    def model = "$weights" ? "--model $weights" : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    mri_synthstrip -i $t1 --out ${prefix}__bet_image.nii.gz --mask ${prefix}__brain_mask.nii.gz $gpu $border $nocsf $model
+    mri_synthstrip -i $image --out ${prefix}__bet_image.nii.gz --mask ${prefix}__brain_mask.nii.gz $gpu $border $nocsf $model
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

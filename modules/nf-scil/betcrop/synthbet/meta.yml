@@ -37,7 +37,7 @@ output:
   - bet_image:
       type: file
       description: Nifti brain-extracted volume.
-      pattern: "*t1_bet.{nii,nii.gz}"
+      pattern: "*__bet_image.{nii,nii.gz}"
 
   - brain_mask:
       type: file

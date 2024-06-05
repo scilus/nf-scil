@@ -16,7 +16,6 @@ workflow test_betcrop_synthbet {
         [ id:'test', single_end:false ], // meta map
         file("${test_data_directory}/anat_image.nii.gz"),
         []
-
     ]}
 
     BETCROP_SYNTHBET ( input )
