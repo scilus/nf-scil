@@ -25,7 +25,7 @@ input:
   - weights:
       type: file
       description: Alternative model weights
-      pattern: "*.{nii.nii.gz}"
+      pattern: "*.pt"
 
 output:
   - meta:
