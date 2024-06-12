@@ -1,7 +1,7 @@
 ---
 name: "bundle_stats"
 description: |
-  Compile statistics on bundle profiles. Uses the data after segmenting the tractogram into different bundles, which in turn are segmented into different sections. 
+  Compile statistics on bundle profiles. Uses the data after segmenting the tractogram into different bundles, which in turn are segmented into different sections.
   This module allows you to perform statistical analysis on bundles using metrics maps. You can choose from several types of statistics.
   -----------  Available statistics  -----------
   volume:
@@ -27,9 +27,9 @@ description: |
     - number of streamlines in a tractogram. (as this information is given by the volume stat you can choose to want only the streamlines count by deactivating volume and activating streamlines count.)
 
   volume per labels:
-    - bundle volume per label in mm3. This script supports anisotropic voxels resolution. 
+    - bundle volume per label in mm3. This script supports anisotropic voxels resolution.
       Volume is estimated by counting the number of voxel occupied by each label and multiplying it by the volume of a single voxel.
-  
+
   mean std per labels:
     - mean and std for each metric along the bundle for each point(labels).
 
@@ -65,14 +65,15 @@ input:
 
   - labels_map:
       type: file
-      description: label map of the corresponding fiber bundle. this file must have the same dimension than bundle file and have datatype in int.
-      If you have multiple bundes, it must have the same numbers of sections.
+      description:
+        label map of the corresponding fiber bundle. this file must have the same dimension than bundle file and have datatype in int.
+        If you have multiple bundes, it must have the same numbers of sections.
       pattern: "*.nii.gz"
 
   - metrics:
       type: file
       description: Nifti file to compute statistics on. Probably some tractometry measure(s) such as FA, MD, RD, ...
-      The metrics has to follow a specific naming convention.
+        The metrics has to follow a specific naming convention.
       pattern: "*_{bundle_name}_{metric_name}.nii.gz"
 
 output:
