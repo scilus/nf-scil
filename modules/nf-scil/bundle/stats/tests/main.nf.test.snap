@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__length_stats.json:md5,72873da12072e254f369ec316911df28"
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
                     ]
                 ],
                 "1": [
@@ -17,11 +17,11 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
                     ]
                 ],
                 "10": [
-                    "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
                     [
@@ -29,7 +29,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
                     ]
                 ],
                 "3": [
@@ -38,7 +38,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
                     ]
                 ],
                 "4": [
@@ -47,7 +47,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
                     ]
                 ],
                 "5": [
@@ -59,7 +59,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
                 ],
                 "7": [
@@ -68,7 +68,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
                     ]
                 ],
                 "8": [
@@ -104,7 +104,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
                     ]
                 ],
                 "endpoints_raw": [
@@ -113,7 +113,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
                     ]
                 ],
                 "endpoints_tail": [
@@ -131,7 +131,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__length_stats.json:md5,72873da12072e254f369ec316911df28"
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
                     ]
                 ],
                 "mean_std": [
@@ -140,7 +140,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
                     ]
                 ],
                 "mean_std_per_point": [
@@ -149,14 +149,14 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
                     ]
                 ],
                 "streamline_count": [
                     
                 ],
                 "versions": [
-                    "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "volume": [
                     [
@@ -164,7 +164,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
                     ]
                 ],
                 "volume_per_labels": [
@@ -173,7 +173,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
                 ]
             }
@@ -182,7 +182,7 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-29T17:39:37.143775"
+        "timestamp": "2024-06-12T14:39:41.886782"
     },
     "bundle - stats - light": {
         "content": [
@@ -194,7 +194,7 @@
                     
                 ],
                 "10": [
-                    "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
                     
@@ -211,7 +211,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
+                        "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
                 ],
                 "6": [
@@ -253,11 +253,11 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
+                        "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,4eb4fdf7390c520819c0084762c6adc6"
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "volume": [
                     
@@ -271,6 +271,6 @@
             "nf-test": "0.8.4",
             "nextflow": "23.10.1"
         },
-        "timestamp": "2024-05-29T17:39:49.869437"
+        "timestamp": "2024-06-12T14:39:53.476493"
     }
 }

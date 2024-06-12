@@ -7,17 +7,17 @@ process BUNDLE_STATS {
         'scilus/scilus:2.0.2' }"
 
     input:
-    tuple val(meta), path(bundles), path(voxel_labels_map), path(metrics)
+    tuple val(meta), path(bundles), path(labels_map), path(metrics)
 
     output:
-    tuple val(meta), path("*__length_stats.json")          , emit: length, optional: true
-    tuple val(meta), path("*__endpoints_map_raw.json")     , emit: endpoints_raw, optional: true
-    tuple val(meta), path("*__endpoints_metric_stats.json"), emit: endpoints_metric_stats, optional: true
-    tuple val(meta), path("*__mean_std.json")              , emit: mean_std, optional: true
-    tuple val(meta), path("*__volume.json")                , emit: volume, optional: true
-    tuple val(meta), path("*__streamline_count.json")      , emit: streamline_count, optional: true
-    tuple val(meta), path("*__volume_per_label.json")      , emit: volume_per_labels, optional: true
-    tuple val(meta), path("*__mean_std_per_point.json")    , emit: mean_std_per_point, optional: true
+    tuple val(meta), path("*_length_stats.json")           , emit: length, optional: true
+    tuple val(meta), path("*_endpoints_map_raw.json")      , emit: endpoints_raw, optional: true
+    tuple val(meta), path("*_endpoints_metric_stats.json") , emit: endpoints_metric_stats, optional: true
+    tuple val(meta), path("*_mean_std.json")               , emit: mean_std, optional: true
+    tuple val(meta), path("*_volume.json")                 , emit: volume, optional: true
+    tuple val(meta), path("*_streamline_count.json")       , emit: streamline_count, optional: true
+    tuple val(meta), path("*_volume_per_label.json")       , emit: volume_per_labels, optional: true
+    tuple val(meta), path("*_mean_std_per_point.json")     , emit: mean_std_per_point, optional: true
     tuple val(meta), path("*_endpoints_map_head.nii.gz")   , emit: endpoints_head, optional: true
     tuple val(meta), path("*_endpoints_map_tail.nii.gz")   , emit: endpoints_tail, optional: true
     path "versions.yml"                                    , emit: versions
@@ -40,116 +40,109 @@ process BUNDLE_STATS {
 
     """
     bundles=( ${bundles.join(" ")} )
-    label_map=( ${voxel_labels_map.join(" ")} )
+    label_map=( ${labels_map.join(" ")} )
 
     for index in \${!bundles[@]};
-        do\
-        bname=\$(basename \${bundles[index]} .trk);
-        b_metrics="$metrics";
-        b_metrics=\$(echo \$b_metrics | tr ' ' '\n' | grep -v "_afd_metric" | tr '\n' ' ');
+    do\
+    bname=\$(basename \${bundles[index]} .trk);
+    b_metrics="$metrics";
 
-        if [[ -f \${bname}_ic_afd_metric.nii.gz ]];
-        then
-            mv \${bname}_ic_afd_metric.nii.gz afd_metric.nii.gz
-            b_metrics+=" afd_metric.nii.gz"
-        fi
+    if [[ "$length_stats" ]];
+    then
+        scil_tractogram_print_info.py \${bundles[index]} > \${bname}_length.json
+    fi
 
-        if [[ "$length_stats" ]];
-        then
-            scil_tractogram_print_info.py \${bundles[index]} > \${bname}_length.json
-        fi
+    if [[ "$endpoints" ]];
+    then
+        scil_bundle_compute_endpoints_map.py \${bundles[index]} \
+            \${bname}_endpoints_map_head.nii.gz \
+            \${bname}_endpoints_map_tail.nii.gz >\
+            ${prefix}__\${bname}_endpoints_raw.json;
 
-        if [[ "$endpoints" ]];
-        then
-            scil_bundle_compute_endpoints_map.py \${bundles[index]} \
-                \${bname}_endpoints_map_head.nii.gz \
-                \${bname}_endpoints_map_tail.nii.gz >\
-                ${prefix}__\${bname}_endpoints_raw.json;
+        scil_volume_stats_in_ROI.py \${bname}_endpoints_map_head.nii.gz $normalize_weights\
+            --metrics \${b_metrics} > \${bname}_head.json
+        scil_volume_stats_in_ROI.py \${bname}_endpoints_map_tail.nii.gz $normalize_weights\
+            --metrics \${b_metrics} > \${bname}_tail.json;
 
-            scil_volume_stats_in_ROI.py \${bname}_endpoints_map_head.nii.gz $normalize_weights\
-                --metrics \${b_metrics} > \${bname}_head.json
-            scil_volume_stats_in_ROI.py \${bname}_endpoints_map_tail.nii.gz $normalize_weights\
-                --metrics \${b_metrics} > \${bname}_tail.json;
+    fi
 
-        fi
+    if [[ "$mean_std" ]];
+    then
+        scil_bundle_mean_std.py $density_weighting \${bundles[index]} \${b_metrics} >\
+            \${bname}_std.json
+    fi
 
-        if [[ "$mean_std" ]];
-        then
-            scil_bundle_mean_std.py $density_weighting \${bundles[index]} \${b_metrics} >\
-                \${bname}_std.json
-        fi
+    if [[ "$volume" ]];
+    then
+        scil_bundle_shape_measures.py \${bundles[index]} > \${bname}_volume_stat.json
 
-        if [[ "$volume" ]];
-        then
-            scil_bundle_shape_measures.py \${bundles[index]} > \${bname}_volume.json
+    elif [[ "$streamline_count" ]];
+    then
+        scil_tractogram_count_streamlines.py \${bundles[index]} > \${bname}_streamlines.json
+    fi
 
-        elif [[ "$streamline_count" ]];
-        then
-            scil_tractogram_count_streamlines.py \${bundles[index]} > \${bname}_streamlines.json
-        fi
+    if [[ "$volume_per_labels" ]];
+    then
+        scil_bundle_volume_per_label.py \${label_map[index]} \$bname --sort_keys >\
+            \${bname}_volume_label.json
+    fi
 
-        if [[ "$volume_per_labels" ]];
-        then
-            scil_bundle_volume_per_label.py \${label_map[index]} \$bname --sort_keys >\
-                \${bname}_volume_label.json
-        fi
+    if [[ "$mean_std_per_point" ]];
+    then
+        scil_bundle_mean_std.py \${bundles[index]} \${b_metrics}\
+            --per_point \${label_map[index]} --sort_keys $density_weighting > \${bname}_std_per_point.json
+    fi;
 
-        if [[ "$mean_std_per_point" ]];
-        then
-            scil_bundle_mean_std.py \${bundles[index]} \${b_metrics}\
-                --per_point \${label_map[index]} --sort_keys $density_weighting > \${bname}_std_per_point.json
-        fi;
-
-        done
+    done
 
     #Bundle_Length_Stats
     if [[ "$length_stats" ]];
     then
-        scil_json_merge_entries.py *_length.json ${prefix}__length_stats.json --add_parent_key ${prefix} \
+        scil_json_merge_entries.py *_length.json ${prefix}_length_stats.json --add_parent_key ${prefix} \
                 --keep_separate
     fi
 
     #Bundle_Endpoints_Map
     if [[ "$endpoints" ]];
     then
-        scil_json_merge_entries.py *_endpoints_raw.json ${prefix}__endpoints_map_raw.json \
+        scil_json_merge_entries.py *_endpoints_raw.json ${prefix}_endpoints_map_raw.json \
             --no_list --add_parent_key ${prefix}
 
     #Bundle_Metrics_Stats_In_Endpoints
 
-        scil_json_merge_entries.py *_tail.json *_head.json ${prefix}__endpoints_metric_stats.json \
+        scil_json_merge_entries.py *_tail.json *_head.json ${prefix}_endpoints_metric_stats.json \
             --no_list --add_parent_key ${prefix}
     fi
 
     #Bundle_Mean_Std
     if [[ "$mean_std" ]];
     then
-        scil_json_merge_entries.py *_std.json ${prefix}__mean_std.json --no_list --add_parent_key ${prefix}
+        scil_json_merge_entries.py *_std.json ${prefix}_mean_std.json --no_list --add_parent_key ${prefix}
     fi
 
     #Bundle_Volume
     if [[ "$volume" ]];
     then
-        scil_json_merge_entries.py *_volume.json ${prefix}__volume.json --no_list --add_parent_key ${prefix}
+        scil_json_merge_entries.py *_volume_stat.json ${prefix}_volume.json --no_list --add_parent_key ${prefix}
 
     #Bundle_Streamline_Count
     elif [[ "$streamline_count" ]];
     then
-        scil_json_merge_entries.py *_streamlines.json ${prefix}__streamline_count.json --no_list \
+        scil_json_merge_entries.py *_streamlines.json ${prefix}_streamline_count.json --no_list \
             --add_parent_key ${prefix}
     fi
 
     #Bundle_Volume_Per_Label
     if [[ "$volume_per_labels" ]];
     then
-        scil_json_merge_entries.py *_volume_label.json ${prefix}__volume_per_label.json --no_list \
+        scil_json_merge_entries.py *_volume_label.json ${prefix}_volume_per_label.json --no_list \
             --add_parent_key ${prefix}
     fi
 
     #Bundle_Mean_Std_Per_Point
     if [[ "$mean_std_per_point" ]];
     then
-        scil_json_merge_entries.py *_std_per_point.json ${prefix}__mean_std_per_point.json --no_list \
+        scil_json_merge_entries.py *_std_per_point.json ${prefix}_mean_std_per_point.json --no_list \
             --add_parent_key ${prefix}
     fi
 
