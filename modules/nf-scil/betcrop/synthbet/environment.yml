@@ -1,0 +1,8 @@
+name: betcrop_synthbet
+
+channels:
+  - Docker
+  - Apptainer
+
+dependencies:
+  - "Freesurfer:synthstrip"
