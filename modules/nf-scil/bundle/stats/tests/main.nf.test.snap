@@ -1,0 +1,276 @@
+{
+    "bundle - stats": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                    ]
+                ],
+                "10": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                    ]
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                    ]
+                ],
+                "7": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "8": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "9": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "endpoints_head": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "endpoints_metric_stats": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                    ]
+                ],
+                "endpoints_raw": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                    ]
+                ],
+                "endpoints_tail": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "length": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
+                    ]
+                ],
+                "mean_std": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                    ]
+                ],
+                "mean_std_per_point": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "streamline_count": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "volume": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                    ]
+                ],
+                "volume_per_labels": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-06-12T14:39:41.886782"
+    },
+    "bundle - stats - light": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "10": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
+                    ]
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "9": [
+                    
+                ],
+                "endpoints_head": [
+                    
+                ],
+                "endpoints_metric_stats": [
+                    
+                ],
+                "endpoints_raw": [
+                    
+                ],
+                "endpoints_tail": [
+                    
+                ],
+                "length": [
+                    
+                ],
+                "mean_std": [
+                    
+                ],
+                "mean_std_per_point": [
+                    
+                ],
+                "streamline_count": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "volume": [
+                    
+                ],
+                "volume_per_labels": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.8.4",
+            "nextflow": "23.10.1"
+        },
+        "timestamp": "2024-06-12T14:39:53.476493"
+    }
+}
