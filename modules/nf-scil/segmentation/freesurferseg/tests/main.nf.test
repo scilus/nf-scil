@@ -34,7 +34,8 @@ nextflow_process {
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true),
+                        []
                     ]
                 }
                 """
@@ -47,6 +48,29 @@ nextflow_process {
                 { assert snapshot(process.out).match() }
             )
         }
+    }
 
+    test("segmentation - freesurferseg - lesion") {
+        when {
+            process {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
+                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true),
+                        [],
+                    ]
+                }
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
     }
 }
