@@ -28,7 +28,7 @@ process TRACTOGRAM_REMOVEINVALID {
     def no_empty = task.ext.no_empty ? "--no_empty" : ""
 
     """
-    for tractogram in ${tractogram};
+    for tractogram in ${tractograms};
         do \
         ext=\${tractogram#*.}
         bname=\$(basename \${tractogram} .\${ext})
