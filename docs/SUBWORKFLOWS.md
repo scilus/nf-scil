@@ -1,15 +1,15 @@
 # Adding a new subworkflow to nf-scil
 
-* [Adding a new subworkflow to nf-scil](#adding-a-new-subworkflow-to-nf-scil)
-  * [Generate the template](#generate-the-template)
-  * [Generate the template](#generate-the-template-1)
-    * [Edit the subworkflow's main.nf](#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
-      * [Define your Subworkflow inputs.](#define-your-subworkflow-inputs)
-      * [Fill the `main:` section.](#fill-the-main-section)
-      * [define your Workflow outputs.](#define-your-workflow-outputs)
-    * [Edit the subworkflow's meta.yml](#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
-  * [Lint your code](#lint-your-code)
-  * [Submit your PR](#submit-your-pr)
+- [Adding a new subworkflow to nf-scil](#adding-a-new-subworkflow-to-nf-scil)
+  - [Generate the template](#generate-the-template)
+  - [Generate the template](#generate-the-template-1)
+    - [Edit the subworkflow's main.nf](#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
+      - [Define your Subworkflow inputs.](#define-your-subworkflow-inputs)
+      - [Fill the `main:` section.](#fill-the-main-section)
+      - [define your Workflow outputs.](#define-your-workflow-outputs)
+    - [Edit the subworkflow's meta.yml](#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+  - [Lint your code](#lint-your-code)
+  - [Submit your PR](#submit-your-pr)
 
 ## Generate the template
 
