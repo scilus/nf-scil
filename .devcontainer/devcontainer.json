@@ -23,6 +23,11 @@
             "type": "volume"
         },
         {
+            "source": "nf-scil-nf-test",
+            "target": "${containerWorkspaceFolder}/.nf-test",
+            "type": "volume"
+        },
+        {
             "target": "/tmp",
             "type": "volume"
         },
