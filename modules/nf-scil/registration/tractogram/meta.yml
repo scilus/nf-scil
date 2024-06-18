@@ -50,7 +50,7 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'test', single_end:false ]`
 
-  - tractogram:
+  - warped_tractogram:
       type: file
       description: Warped tractogram(s)
       pattern: "*.{trk,tck}"

@@ -26,7 +26,6 @@ nextflow_process {
     }
 
     test("denoising - nlmeans") {
-
         when {
             process {
                 """
@@ -40,18 +39,15 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("denoising - nlmeans - withmask") {
-
         when {
             process {
                 """
@@ -65,14 +61,11 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
-
 }

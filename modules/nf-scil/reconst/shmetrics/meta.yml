@@ -6,7 +6,7 @@ keywords:
   - SH
   - Metrics
 tools:
-  - "Scilpy":
+  - "scilpy":
       description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
       homepage: "https://github.com/scilus/scilpy.git"
 
@@ -48,6 +48,11 @@ output:
       type: file
       description: Peaks file.
       pattern: "*peaks.nii.gz"
+
+  - peak_values:
+      type: file
+      description: Peak values file.
+      pattern: "*peak_values.nii.gz"
 
   - peak_indices:
       type: file

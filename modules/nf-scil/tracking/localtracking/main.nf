@@ -3,8 +3,8 @@ process TRACKING_LOCALTRACKING {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
-        'scilus/scilus:2.0.1' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
     tuple val(meta), path(wm), path(fodf), path(fa)
@@ -97,7 +97,7 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.1
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
@@ -115,7 +115,7 @@ process TRACKING_LOCALTRACKING {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.1
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }

@@ -7,4 +7,4 @@ channels:
 dependencies:
   - FSL
   - Mrtrix
-  - Scilpy
+  - scilpy

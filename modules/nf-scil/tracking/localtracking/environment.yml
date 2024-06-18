@@ -3,4 +3,4 @@ channels:
   - Docker
   - Apptainer
 dependencies:
-  - "Scilpy"
+  - "scilpy"

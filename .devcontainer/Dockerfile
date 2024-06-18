@@ -1,4 +1,4 @@
-FROM scilus/scilus:1.6.0
+FROM scilus/scilus:2.0.2
 
 ENV NODE_MAJOR=18
 

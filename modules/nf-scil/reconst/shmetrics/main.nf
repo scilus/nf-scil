@@ -1,11 +1,10 @@
-
 process RECONST_SHMETRICS {
     tag "$meta.id"
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
-        'scilus/scilus:2.0.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
         tuple val(meta), path(sh), path(mask), path(fa), path(md)
@@ -77,7 +76,7 @@ process RECONST_SHMETRICS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 
@@ -99,7 +98,7 @@ process RECONST_SHMETRICS {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: 2.0.2
     END_VERSIONS
     """
 }

@@ -25,7 +25,9 @@ nextflow_process {
         }
 
     test("utils - extractb0") {
+
         config "./nextflow.config"
+
         when {
             process {
                 """
@@ -48,7 +50,9 @@ nextflow_process {
     }
 
     test("utils - extractb0 - all4d") {
+
         config "./nextflow_all4d.config"
+
         when {
             process {
                 """
@@ -71,7 +75,9 @@ nextflow_process {
     }
 
     test("utils - extractb0 - allseries") {
+
         config "./nextflow_allseries.config"
+
         when {
             process {
                 """
@@ -94,7 +100,9 @@ nextflow_process {
     }
 
     test("utils - extractb0 - clusterfirst") {
+
         config "./nextflow_clusterfirst.config"
+
         when {
             process {
                 """
@@ -117,7 +125,9 @@ nextflow_process {
     }
 
     test("utils - extractb0 - clustermean") {
+
         config "./nextflow_clustermean.config"
+
         when {
             process {
                 """
@@ -140,7 +150,9 @@ nextflow_process {
     }
 
     test("utils - extractb0 - mean") {
+
         config "./nextflow_mean.config"
+
         when {
             process {
                 """

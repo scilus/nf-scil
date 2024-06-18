@@ -25,7 +25,9 @@ nextflow_process {
         }
 
     test("preproc - normalize") {
+
         config "./nextflow.config"
+
         when {
             process {
                 """
@@ -40,7 +42,6 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
@@ -50,7 +51,9 @@ nextflow_process {
     }
 
     test("preproc - normalize - dti shells") {
+
         config "./nextflow_with_dti_shells.config"
+
         when {
             process {
                 """

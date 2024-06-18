@@ -7,7 +7,7 @@ process TRACTOGRAM_REMOVEINVALID {
         'scilus/scilus:2.0.2' }"
 
     input:
-        tuple val(meta), path(tractogram)
+        tuple val(meta), path(tractograms)
 
     output:
         tuple val(meta), path("*.{trk,tck}"), emit: tractograms
@@ -28,7 +28,7 @@ process TRACTOGRAM_REMOVEINVALID {
     def no_empty = task.ext.no_empty ? "--no_empty" : ""
 
     """
-    for tractogram in ${tractogram};
+    for tractogram in ${tractograms};
         do \
         ext=\${tractogram#*.}
         bname=\$(basename \${tractogram} .\${ext})

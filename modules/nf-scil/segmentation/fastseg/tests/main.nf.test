@@ -28,7 +28,6 @@ nextflow_process {
     }
 
     test("segmentation - fastseg") {
-
         when {
             process {
                 """
@@ -41,13 +40,11 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 }

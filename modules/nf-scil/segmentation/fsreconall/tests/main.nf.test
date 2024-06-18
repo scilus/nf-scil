@@ -26,9 +26,9 @@ nextflow_process {
 
     test("segmentation - fsreconall") {
 
-        when {
-            config "./nextflow_debug.config"
+        config "./nextflow_debug.config"
 
+        when {
             process {
                 """
                 input[0] = LOAD_DATA.out.test_data_directory.map{
@@ -40,7 +40,6 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
@@ -56,10 +55,10 @@ nextflow_process {
 
     test("segmentation - fsreconall - nolicense") {
 
-        when {
             // Not in mode debug + no license = should fail.
             config "./nextflow.config"
 
+            when {
             process {
                 """
                 input[0] = LOAD_DATA.out.test_data_directory.map{
@@ -71,13 +70,10 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert ! process.success }
             )
         }
-
     }
-
 }

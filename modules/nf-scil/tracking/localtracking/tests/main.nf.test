@@ -25,7 +25,9 @@ nextflow_process {
         }
 
     test("tracking - localtracking - fa") {
+
         config "./nextflow_fa.config"
+
         when {
             process {
                 """
@@ -53,7 +55,9 @@ nextflow_process {
     }
 
     test("tracking - localtracking - wm") {
+
         config "./nextflow_wm.config"
+
         when {
             process {
                 """
@@ -79,5 +83,4 @@ nextflow_process {
             )
         }
     }
-
 }
