@@ -22,3 +22,5 @@ RUN mkdir -p nf-test/bin
 WORKDIR /nf-test/bin/
 RUN curl -fsSL https://code.askimed.com/install/nf-test | bash
 ENV PATH=$PATH:/nf-test/bin
+
+ENTRYPOINT [ "bash entrypoint.sh" ]

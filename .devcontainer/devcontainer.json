@@ -2,7 +2,8 @@
     "name": "NF-SCIL development container",
     "build": { "dockerfile": "Dockerfile" },
     "forwardPorts": [3000],
-    "onCreateCommand": "bash .devcontainer/setup_container.sh",
+    "onCreateCommand": "bash .devcontainer/onCreateCommand.sh",
+    "updateContentCommand": "bash .devcontainer/updateContentCommand.sh",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
