@@ -1,0 +1,7 @@
+---
+name: "tractogram_resample"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "scilpy"
