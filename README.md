@@ -72,6 +72,25 @@ nf-core modules \
   list remote
 ```
 
+The same can be done for subworkflows, replacing `modules` in the `nf-core` command by `subworkflows, e.g. :
+
+```bash
+nf-core subworkflows \
+  --git-remote https://github.com/scilus/nf-scil.git \
+  install <category>/<subworkflow>
+```
+
+It can become heavy to always prepend the commands with `--git-remote`, even so if you need to specify a `--branch` where to fetch the information. You can instead define the `git-remote` and `branch` using *Environment Variables* :
+
+```bash
+export NFCORE_MODULES_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_MODULES_GIT_BRANCH=main
+export NFCORE_SUBWORKFLOWS_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_SUBWORKFLOWS_GIT_BRANCH=main
+```
+
+and call all commands without specifying the `--git-remote` and `--branch` options, while still targeting the `nf-scil` repository.
+
 # Developing in `nf-scil`
 
 The `nf-scil` project requires some specific tools to be installed on your system so that the development environment runs correctly. You can [install them manually](#manual-configuration), but if you desire to streamline the process and start coding faster, we highly recommend using the [VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a matter of minutes.
@@ -149,6 +168,19 @@ To exit the environment, simply enter the `exit` command in the shell.
 > the environment gracefully, making it so you won't be able to reactivate it without
 > exiting the shell.
 
+### Global environment
+
+Set the following environment variables in your `.bashrc` (or whatever is the equivalent for your shell) :
+
+```bash
+export NFCORE_MODULES_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_MODULES_GIT_BRANCH=main
+export NFCORE_SUBWORKFLOWS_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_SUBWORKFLOWS_GIT_BRANCH=main
+```
+
+This will make it so the `nf-core` commands target the right repository by default. Else, you'll need to add `--git-remote` and `--branch` options to pretty much all commands relating to `modules` and `subworkflows`.
+
 ### Working with VS Code
 
 The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the `nf-scil-extensions` package. You can find it easily on the [extension
@@ -167,6 +199,7 @@ environment.
 
   - `nf-scil`, `nf-core` all accessible through the terminal, which is configured to load
     the `poetry` environment in shells automatically
+  - `nf-scil` configured as the main repository for all `nf-core` commands, using `NFCORE_*` environment variables
   - `git`, `git-lfs`, `github-cli`
   - `curl`, `wget`, `apt-get`
   - `nextflow`, `docker`, `tmux`
@@ -190,9 +223,7 @@ be closed automatically.
 Tests are run through `nf-core`, using the command :
 
 ```bash
-nf-core modules \
-  --git-remote https://github.com/scilus/nf-scil.git \
-  test <category/tool>
+nf-core modules test <category/tool>
 ```
 
 The tool can be omitted to run tests for all modules in a category.

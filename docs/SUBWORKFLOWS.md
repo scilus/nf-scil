@@ -116,7 +116,7 @@ emit:
 Don't forget to also define the output for the version file :
 
 ```
-    versions = ch_versions // channel: [ versions.yml ]
+versions = ch_versions // channel: [ versions.yml ]
 ```
 
 ### Edit `./subworkflows/nf-scil/<name_of_your_workflow>/meta.yml`
@@ -129,10 +129,7 @@ don't need to specify them all. Provide at least 3 relevant `keywords` and list 
 Run `prettier` on your new module, through the `nf-core` command line :
 
 ```
-  nf-core subworkflows \
-    --git-remote <your repository> \
-    --branch <your branch unless main branch> \
-    lint <subworkflow>
+nf-core subworkflows lint <subworkflow>
 ```
 
 and fix all `errors` and as many `warnings` as possible.
