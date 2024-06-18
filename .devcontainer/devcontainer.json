@@ -23,8 +23,16 @@
             "type": "volume"
         },
         {
-            "source": "nf-scil-tmp",
             "target": "/tmp",
+            "type": "volume"
+        },
+        {
+            "source": "nf-scil-profile",
+            "target": "/root",
+            "type": "volume"
+        },
+        {
+            "target": "/root/.vscode-server",
             "type": "volume"
         }
     ],
