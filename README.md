@@ -47,6 +47,16 @@ framework.
     - [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
       - [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
       - [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
+    - [Adding a new subworkflow to nf-scil](docs/SUBWORKFLOWS.md#adding-a-new-subworkflow-to-nf-scil)
+      - [Generate the template](docs/SUBWORKFLOWS.md#generate-the-template)
+      - [Generate the template](docs/SUBWORKFLOWS.md#generate-the-template-1)
+        - [Edit the subworkflow's main.nf](docs/SUBWORKFLOWS.md#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
+          - [Define your Subworkflow inputs.](docs/SUBWORKFLOWS.md#define-your-subworkflow-inputs)
+          - [Fill the `main:` section.](docs/SUBWORKFLOWS.md#fill-the-main-section)
+          - [define your Workflow outputs.](docs/SUBWORKFLOWS.md#define-your-workflow-outputs)
+        - [Edit the subworkflow's meta.yml](docs/SUBWORKFLOWS.md#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+      - [Lint your code](docs/SUBWORKFLOWS.md#lint-your-code)
+      - [Submit your PR](docs/SUBWORKFLOWS.md#submit-your-pr)
   - [Running tests](#running-tests)
   - [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
   - [Installing Prettier](#installing-prettier)
@@ -80,7 +90,7 @@ nf-core subworkflows \
   install <category>/<subworkflow>
 ```
 
-It can become heavy to always prepend the commands with `--git-remote`, even so if you need to specify a `--branch` where to fetch the information. You can instead define the `git-remote` and `branch` using *Environment Variables* :
+It can become heavy to always prepend the commands with `--git-remote`, even so if you need to specify a `--branch` where to fetch the information. You can instead define the `git-remote` and `branch` using _Environment Variables_ :
 
 ```bash
 export NFCORE_MODULES_GIT_REMOTE=https://github.com/scilus/nf-scil.git
@@ -212,11 +222,7 @@ environment.
 
 ## Contributing to the `nf-scil` project
 
-If you want to propose a new `module` to the repository, follow the guidelines in the
-[module creation](./docs/MODULE.md) documentation. We follow standards closely
-aligned with `nf-core`, with some exceptions on process atomicity and how test data is
-handled. Modules that don't abide to them won't be accepted and PR containing them will
-be closed automatically.
+If you want to propose a new `module` to the repository, follow the guidelines in the [module creation](./docs/MODULE.md) documentation. The same goes for `subworkflows`, using [these guidelines](./docs/SUBWORKFLOWS.md) instead. We follow standards closely aligned with `nf-core`, with some exceptions on process atomicity and how test data is handled. Modules that don't abide to them won't be accepted and PR containing them will be closed automatically.
 
 ## Running tests
 
