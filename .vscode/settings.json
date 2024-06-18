@@ -1,6 +1,5 @@
 {
     "editor.detectIndentation": false,
-    "python.languageServer": "Pylance",
     "python.missingPackage.severity": "Warning",
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.terminal.focusAfterLaunch": true,
@@ -11,11 +10,6 @@
     "python.analysis.exclude": ["**/__pycache__"],
     "python.analysis.ignore": ["**/__pycache__"],
     "python.analysis.importFormat": "relative",
-    "python.analysis.logLevel": "Warning",
-    "git.allowForcePush": true,
-    "git.confirmForcePush": true,
-    "git.useForcePushIfIncludes": true,
-    "git.useForcePushWithLease": true,
     "git.branchProtection": ["main"],
     "git.branchProtectionPrompt": "alwaysPrompt",
     "github.branchProtection": true,
@@ -123,6 +117,5 @@
         "voxels",
         "wmparc",
         "xform"
-    ],
-    "markdown.extension.toc.updateOnSave": false
+    ]
 }
