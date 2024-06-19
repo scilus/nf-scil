@@ -165,10 +165,7 @@ don't need to specify them all. At least define the `keywords`, describe the pro
 Once done, commit your module and push the changes. Then, to look at the documentation it creates for your module, run :
 
 ```bash
-nf-core modules \
-  --git-remote <your reository> \
-  --branch <your branch unless main branch> \
-  info <category/name>
+nf-core modules info <category/name>
 ```
 
 ### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
@@ -213,11 +210,7 @@ so output files that gets generated are checksum correctly.
 Run :
 
 ```bash
-nf-core modules create-test-yml \
-    --run-tests \
-    --force \
-    --no-prompts \
-    <category>/<tool>
+nf-core modules create-test-yml --run-tests --force --no-prompts <category>/<tool>
 ```
 
 All the test case you defined will be run, watch out for errors ! Once everything runs
@@ -230,10 +223,7 @@ critical to ensure future executions of your test produce valid outputs.
 Before submitting to _nf-scil_, once you've commit and push everything, the code need to be correctly linted, else the checks won't pass. This is done using `prettier` on your new module, through the _nf-core_ command line :
 
 ```bash
-nf-core modules \
-  --git-remote <your repository> \
-  --branch <your branch unless main branch> \
-  lint <category>/<tool>
+nf-core modules lint <category>/<tool>
 ```
 
 You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.

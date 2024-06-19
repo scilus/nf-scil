@@ -1,8 +1,14 @@
 {
     "name": "NF-SCIL development container",
-    "build": { "dockerfile": "Dockerfile" },
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "NFTEST_VERSION": "0.9.0-rc1"
+        }
+    },
     "forwardPorts": [3000],
-    "onCreateCommand": "bash .devcontainer/setup_container.sh",
+    "onCreateCommand": "bash .devcontainer/onCreateCommand.sh",
+    "updateContentCommand": "bash .devcontainer/updateContentCommand.sh",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
@@ -18,48 +24,67 @@
     "mounts": [
         {
             "source": "nf-scil-venv",
-            "target": "/root/.cache/pypoetry/virtualenvs/",
+            "target": "${containerWorkspaceFolder}/.venv",
             "type": "volume"
         },
         {
-            "source": "nf-scil-tmp",
+            "source": "nf-scil-nf-test",
+            "target": "${containerWorkspaceFolder}/.nf-test",
+            "type": "volume"
+        },
+        {
             "target": "/tmp",
+            "type": "volume"
+        },
+        {
+            "source": "nf-scil-profile",
+            "target": "/root",
+            "type": "volume"
+        },
+        {
+            "target": "/root/.vscode-server",
             "type": "volume"
         }
     ],
     "customizations": {
         "vscode": {
             "settings": {
-                "pythonIndent.keepHangingBracketOnLine": true,
-                "pythonIndent.trimLinesWithOnlyWhitespace": true,
-                "python.createEnvironment.trigger": "off",
-                "python.terminal.activateEnvironment": true,
-                "python.poetryPath": "/root/.local/bin/poetry",
-                "python.defaultInterpreterPath": "/root/.cache/pypoetry/virtualenvs/",
                 "python.analysis.exclude": [
-                    "${workspaceFolder}/.dvc",
-                    "${workspaceFolder}/.pytest_cache",
-                    "${workspaceFolder}/.test_data",
-                    "${workspaceFolder}/.vscode",
-                    "${workspaceFolder}/nf-scil-extensions",
+                    "${containerWorkspaceFolder}/.dvc",
+                    "${containerWorkspaceFolder}/.pytest_cache",
+                    "${containerWorkspaceFolder}/.test_data",
+                    "${containerWorkspaceFolder}/.vscode",
+                    "${containerWorkspaceFolder}/.venv",
+                    "${containerWorkspaceFolder}/nf-scil-extensions",
                     "**/__pycache__",
-                    "${workspaceFolder}/.git"
+                    "${containerWorkspaceFolder}/.git"
                 ],
                 "python.analysis.ignore": [
-                    "${workspaceFolder}/.dvc",
-                    "${workspaceFolder}/.pytest_cache",
-                    "${workspaceFolder}/.test_data",
-                    "${workspaceFolder}/.vscode",
-                    "${workspaceFolder}/nf-scil-extensions",
+                    "${containerWorkspaceFolder}/.dvc",
+                    "${containerWorkspaceFolder}/.pytest_cache",
+                    "${containerWorkspaceFolder}/.test_data",
+                    "${containerWorkspaceFolder}/.vscode",
+                    "${containerWorkspaceFolder}/.venv",
+                    "${containerWorkspaceFolder}/nf-scil-extensions",
                     "**/__pycache__",
-                    "${workspaceFolder}/.git"
-                ]
+                    "${containerWorkspaceFolder}/.git"
+                ],
+                "python.createEnvironment.trigger": "off",
+                "python.interpreter.infoVisibility": "always",
+                "python.poetryPath": "poetry",
+                "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv",
+                "python.terminal.activateEnvironment": true,
+                "python.terminal.activateEnvInCurrentTerminal": true,
+                "python.terminal.focusAfterLaunch": true,
+                "pythonIndent.keepHangingBracketOnLine": true,
+                "pythonIndent.trimLinesWithOnlyWhitespace": true
             },
             "extensions": [
                 "AlexVCaron.nf-scil-extensions",
                 "ms-python.autopep8",
                 "ms-python.vscode-pylance",
-                "mutantdino.resourcemonitor"
+                "mutantdino.resourcemonitor",
+                "KorbinianEckstein.niivue"
             ]
         }
     },

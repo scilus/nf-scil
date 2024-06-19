@@ -1,5 +1,16 @@
 # Adding a new subworkflow to nf-scil
 
+- [Adding a new subworkflow to nf-scil](#adding-a-new-subworkflow-to-nf-scil)
+  - [Generate the template](#generate-the-template)
+  - [Generate the template](#generate-the-template-1)
+    - [Edit the subworkflow's main.nf](#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
+      - [Define your Subworkflow inputs.](#define-your-subworkflow-inputs)
+      - [Fill the `main:` section.](#fill-the-main-section)
+      - [define your Workflow outputs.](#define-your-workflow-outputs)
+    - [Edit the subworkflow's meta.yml](#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+  - [Lint your code](#lint-your-code)
+  - [Submit your PR](#submit-your-pr)
+
 ## Generate the template
 
 First verify you are located at the root of this repository (not in `subworkflows`), then run the following interactive command :
@@ -116,7 +127,7 @@ emit:
 Don't forget to also define the output for the version file :
 
 ```
-    versions = ch_versions // channel: [ versions.yml ]
+versions = ch_versions // channel: [ versions.yml ]
 ```
 
 ### Edit `./subworkflows/nf-scil/<name_of_your_workflow>/meta.yml`
@@ -129,10 +140,7 @@ don't need to specify them all. Provide at least 3 relevant `keywords` and list 
 Run `prettier` on your new module, through the `nf-core` command line :
 
 ```
-  nf-core subworkflows \
-    --git-remote <your repository> \
-    --branch <your branch unless main branch> \
-    lint <subworkflow>
+nf-core subworkflows lint <subworkflow>
 ```
 
 and fix all `errors` and as many `warnings` as possible.

@@ -47,6 +47,16 @@ framework.
     - [Test data infrastructure](docs/MODULE.md#test-data-infrastructure)
       - [Using the .test_data directory](docs/MODULE.md#using-the-test_data-directory)
       - [Using Scilpy Fetcher](docs/MODULE.md#using-scilpy-fetcher)
+    - [Adding a new subworkflow to nf-scil](docs/SUBWORKFLOWS.md#adding-a-new-subworkflow-to-nf-scil)
+      - [Generate the template](docs/SUBWORKFLOWS.md#generate-the-template)
+      - [Generate the template](docs/SUBWORKFLOWS.md#generate-the-template-1)
+        - [Edit the subworkflow's main.nf](docs/SUBWORKFLOWS.md#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
+          - [Define your Subworkflow inputs.](docs/SUBWORKFLOWS.md#define-your-subworkflow-inputs)
+          - [Fill the `main:` section.](docs/SUBWORKFLOWS.md#fill-the-main-section)
+          - [define your Workflow outputs.](docs/SUBWORKFLOWS.md#define-your-workflow-outputs)
+        - [Edit the subworkflow's meta.yml](docs/SUBWORKFLOWS.md#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+      - [Lint your code](docs/SUBWORKFLOWS.md#lint-your-code)
+      - [Submit your PR](docs/SUBWORKFLOWS.md#submit-your-pr)
   - [Running tests](#running-tests)
   - [Configuring Docker for easy usage](#configuring-docker-for-easy-usage)
   - [Installing Prettier](#installing-prettier)
@@ -72,6 +82,25 @@ nf-core modules \
   list remote
 ```
 
+The same can be done for subworkflows, replacing `modules` in the `nf-core` command by `subworkflows, e.g. :
+
+```bash
+nf-core subworkflows \
+  --git-remote https://github.com/scilus/nf-scil.git \
+  install <category>/<subworkflow>
+```
+
+It can become heavy to always prepend the commands with `--git-remote`, even so if you need to specify a `--branch` where to fetch the information. You can instead define the `git-remote` and `branch` using _Environment Variables_ :
+
+```bash
+export NFCORE_MODULES_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_MODULES_GIT_BRANCH=main
+export NFCORE_SUBWORKFLOWS_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_SUBWORKFLOWS_GIT_BRANCH=main
+```
+
+and call all commands without specifying the `--git-remote` and `--branch` options, while still targeting the `nf-scil` repository.
+
 # Developing in `nf-scil`
 
 The `nf-scil` project requires some specific tools to be installed on your system so that the development environment runs correctly. You can [install them manually](#manual-configuration), but if you desire to streamline the process and start coding faster, we highly recommend using the [VS Code development container](#configuration-via-the-devcontainer) to get fully configured in a matter of minutes.
@@ -85,6 +114,7 @@ The `nf-scil` project requires some specific tools to be installed on your syste
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
+- nf-test &geq; 0.9.0-rc1
 - Node &geq; 14 and Prettier (see [below](#installing-prettier))
 
 > [!IMPORTANT]
@@ -149,6 +179,19 @@ To exit the environment, simply enter the `exit` command in the shell.
 > the environment gracefully, making it so you won't be able to reactivate it without
 > exiting the shell.
 
+### Global environment
+
+Set the following environment variables in your `.bashrc` (or whatever is the equivalent for your shell) :
+
+```bash
+export NFCORE_MODULES_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_MODULES_GIT_BRANCH=main
+export NFCORE_SUBWORKFLOWS_GIT_REMOTE=https://github.com/scilus/nf-scil.git
+export NFCORE_SUBWORKFLOWS_GIT_BRANCH=main
+```
+
+This will make it so the `nf-core` commands target the right repository by default. Else, you'll need to add `--git-remote` and `--branch` options to pretty much all commands relating to `modules` and `subworkflows`.
+
 ### Working with VS Code
 
 The `nf-scil` project curates a bundle of useful extensions for Visual Studio Code, the `nf-scil-extensions` package. You can find it easily on the [extension
@@ -167,9 +210,10 @@ environment.
 
   - `nf-scil`, `nf-core` all accessible through the terminal, which is configured to load
     the `poetry` environment in shells automatically
+  - `nf-scil` configured as the main repository for all `nf-core` commands, using `NFCORE_*` environment variables
   - `git`, `git-lfs`, `github-cli`
   - `curl`, `wget`, `apt-get`
-  - `nextflow`, `docker`, `tmux`
+  - `nextflow`, `nf-test`, `docker`, `tmux`
 
 - Available in the VS Code IDE through extensions :
   - Docker images and containers management
@@ -179,20 +223,14 @@ environment.
 
 ## Contributing to the `nf-scil` project
 
-If you want to propose a new `module` to the repository, follow the guidelines in the
-[module creation](./docs/MODULE.md) documentation. We follow standards closely
-aligned with `nf-core`, with some exceptions on process atomicity and how test data is
-handled. Modules that don't abide to them won't be accepted and PR containing them will
-be closed automatically.
+If you want to propose a new `module` to the repository, follow the guidelines in the [module creation](./docs/MODULE.md) documentation. The same goes for `subworkflows`, using [these guidelines](./docs/SUBWORKFLOWS.md) instead. We follow standards closely aligned with `nf-core`, with some exceptions on process atomicity and how test data is handled. Modules that don't abide to them won't be accepted and PR containing them will be closed automatically.
 
 ## Running tests
 
 Tests are run through `nf-core`, using the command :
 
 ```bash
-nf-core modules \
-  --git-remote https://github.com/scilus/nf-scil.git \
-  test <category/tool>
+nf-core modules test <category/tool>
 ```
 
 The tool can be omitted to run tests for all modules in a category.
