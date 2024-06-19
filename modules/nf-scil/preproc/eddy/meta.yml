@@ -7,15 +7,15 @@ keywords:
   - preproc
   - eddy
 tools:
-  - "scilpy":
-      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
-      homepage: "https://github.com/scilus/scilpy.git"
+  - "FSL":
+      description: "FSL Toolbox"
+      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
   - "MRtrix3":
       description: "Toolbox for image processing, analysis and visualisation of dMRI."
       homepage: "https://mrtrix.readthedocs.io/en/latest/"
-  - "FSL":
-      description: "FSL Toolbox and Scilpy Toolbox"
-      homepage: "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki"
+  - "scilpy":
+      description: "The Sherbrooke Connectivity Imaging Lab (SCIL) Python dMRI processing toolbox."
+      homepage: "https://github.com/scilus/scilpy.git"
 input:
   # Only when we have meta
   - meta:
