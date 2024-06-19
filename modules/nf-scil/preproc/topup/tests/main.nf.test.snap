@@ -1,33 +1,20 @@
 {
     "topup": {
         "content": [
-            "test__corrected_b0s.nii.gz",
-            "topup_results_fieldcoef.nii.gz",
+            "8049b102bc198966d660e5e74fc1e875",
+            "5745c8977899db38b37349f29878b681",
             "topup_results_movpar.txt",
-            "test__rev_b0_warped.nii.gz",
+            "ffd9d860d3ffb77229f573fe4d76a957",
+            "bb9d101a2ab23aac4698526494963122",
+            "a77f49baffcac12bd6d8dfbca26469db",
             [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__rev_b0_mean.nii.gz:md5,a0c63d7a8a234d85eeb63045ae2a8f60"
-                ]
-            ],
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__b0_mean.nii.gz:md5,f50e652bcdd1d45f7a4c592df7eb851a"
-                ]
+                "versions.yml:md5,0e863a080c48837427583c1e93791262"
             ]
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-04-29T15:40:07.558114"
+        "timestamp": "2024-06-19T16:11:34.60011"
     }
 }

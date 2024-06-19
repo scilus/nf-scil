@@ -56,12 +56,12 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.b0_mask,
+                    path(workflow.out.b0_mask.get(0).get(1)).textGzip.md5(),
                     workflow.out.bval,
                     workflow.out.versions,
-                    file(workflow.out.dwi.get(0).get(1)).name,
+                    path(workflow.out.dwi.get(0).get(1)).textGzip.md5(),
                     file(workflow.out.bvec.get(0).get(1)).name,
-                    file(workflow.out.b0.get(0).get(1)).name).match() })
+                    path(workflow.out.b0.get(0).get(1)).textGzip.md5()).match() })
         }
     }
 
@@ -103,12 +103,12 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.b0_mask,
+                    path(workflow.out.b0_mask.get(0).get(1)).textGzip.md5(),
                     workflow.out.bval,
                     workflow.out.versions,
-                    file(workflow.out.dwi.get(0).get(1)).name,
+                    path(workflow.out.dwi.get(0).get(1)).textGzip.md5(),
                     file(workflow.out.bvec.get(0).get(1)).name,
-                    file(workflow.out.b0.get(0).get(1)).name).match() })
+                    path(workflow.out.b0.get(0).get(1)).textGzip.md5()).match() })
         }
     }
 
@@ -150,12 +150,12 @@ nextflow_workflow {
             assertAll(
                 { assert workflow.success },
                 { assert snapshot(
-                    workflow.out.b0_mask,
+                    path(workflow.out.b0_mask.get(0).get(1)).textGzip.md5(),
                     workflow.out.bval,
                     workflow.out.versions,
-                    file(workflow.out.dwi.get(0).get(1)).name,
+                    path(workflow.out.dwi.get(0).get(1)).textGzip.md5(),
                     file(workflow.out.bvec.get(0).get(1)).name,
-                    file(workflow.out.b0.get(0).get(1)).name).match() })
+                    path(workflow.out.b0.get(0).get(1)).textGzip.md5()).match() })
         }
     }
 }

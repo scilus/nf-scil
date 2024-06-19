@@ -1,15 +1,7 @@
 {
     "topup_eddy_rev_b0": {
         "content": [
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                ]
-            ],
+            "a0748933b27efa6ee6e695afc6b4c790",
             [
                 [
                     {
@@ -20,31 +12,23 @@
                 ]
             ],
             [
-                "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
-                "versions.yml:md5,3e57e2f1a94bbabf9be75f50b4cbcdb0",
-                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
+                "versions.yml:md5,8e020d16eb155f4ed91c255e434ebbca",
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220",
+                "versions.yml:md5,e691244d855638e0afdfec0fc414e8f2"
             ],
-            "test__dwi_corrected.nii.gz",
+            "20158a26212bc71af02f10af1ca83a3c",
             "test__dwi_eddy_corrected.bvec",
-            "test_b0.nii.gz"
+            "d415422ac5fecdbc4b41b8a9dec7034e"
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-09T00:17:01.349981"
+        "timestamp": "2024-06-19T16:21:55.093646"
     },
     "eddy": {
         "content": [
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__b0_bet_mask.nii.gz:md5,3574cc8f29da429a0f610f2572c4886c"
-                ]
-            ],
+            "f45c9d47dd50e4c2daa9aee11497d487",
             [
                 [
                     {
@@ -55,30 +39,22 @@
                 ]
             ],
             [
-                "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
-                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220",
+                "versions.yml:md5,e691244d855638e0afdfec0fc414e8f2"
             ],
-            "test__dwi_corrected.nii.gz",
+            "033ca2b322c2c395cc53b7151c87f4c6",
             "test__dwi_eddy_corrected.bvec",
-            "test_b0.nii.gz"
+            "4203a3d9639bea4c7c3ecba616c2ca51"
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-09T00:15:24.300649"
+        "timestamp": "2024-06-19T16:20:17.003673"
     },
     "topup_eddy_rev_dwi": {
         "content": [
-            [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                ]
-            ],
+            "a0748933b27efa6ee6e695afc6b4c790",
             [
                 [
                     {
@@ -89,18 +65,18 @@
                 ]
             ],
             [
-                "versions.yml:md5,1210f8705c10f136e83e5f07c0d77b70",
-                "versions.yml:md5,3e57e2f1a94bbabf9be75f50b4cbcdb0",
-                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220"
+                "versions.yml:md5,8e020d16eb155f4ed91c255e434ebbca",
+                "versions.yml:md5,dc9478b4d3cb93d93799e493aefe5220",
+                "versions.yml:md5,e691244d855638e0afdfec0fc414e8f2"
             ],
-            "test__dwi_corrected.nii.gz",
+            "9661e938fb401b34ff83c1d2ce9ca284",
             "test__dwi_eddy_corrected.bvec",
-            "test_b0.nii.gz"
+            "ecbb73895384b3340912383dcc34c9cb"
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-09T00:19:03.319712"
+        "timestamp": "2024-06-19T16:24:03.039968"
     }
 }

@@ -1,7 +1,7 @@
 {
     "eddy": {
         "content": [
-            "test__dwi_corrected.nii.gz",
+            "9661e938fb401b34ff83c1d2ce9ca284",
             [
                 [
                     {
@@ -12,20 +12,15 @@
                 ]
             ],
             "test__dwi_eddy_corrected.bvec",
+            "a0748933b27efa6ee6e695afc6b4c790",
             [
-                [
-                    {
-                        "id": "test",
-                        "single_end": false
-                    },
-                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
-                ]
+                "versions.yml:md5,137e3ce0fd25e5b16de2d8cc5a5aefca"
             ]
         ],
         "meta": {
             "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-04-29T16:11:13.561798"
+        "timestamp": "2024-06-19T16:07:38.295401"
     }
 }

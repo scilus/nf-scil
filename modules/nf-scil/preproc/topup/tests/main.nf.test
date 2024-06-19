@@ -50,12 +50,13 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
-                    file(process.out.topup_corrected_b0s.get(0).get(1)).name,
-                    file(process.out.topup_fieldcoef.get(0).get(1)).name,
+                    path(process.out.topup_corrected_b0s.get(0).get(1)).textGzip.md5(),
+                    path(process.out.topup_fieldcoef.get(0).get(1)).textGzip.md5(),
                     file(process.out.topup_movpart.get(0).get(1)).name,
-                    file(process.out.rev_b0_warped.get(0).get(1)).name,
-                    process.out.rev_b0_mean,
-                    process.out.b0_mean).match() }
+                    path(process.out.rev_b0_warped.get(0).get(1)).textGzip.md5(),
+                    path(process.out.rev_b0_mean.get(0).get(1)).textGzip.md5(),
+                    path(process.out.b0_mean.get(0).get(1)).textGzip.md5(),
+                    process.out.versions).match() }
             )
         }
     }

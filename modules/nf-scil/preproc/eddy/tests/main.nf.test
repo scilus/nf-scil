@@ -50,11 +50,11 @@ nextflow_process {
             assertAll(
                 { assert process.success },
                 { assert snapshot(
-                    file(process.out.dwi_corrected.get(0).get(1)).name,
+                    path(process.out.dwi_corrected.get(0).get(1)).textGzip.md5(),
                     process.out.bval_corrected,
                     file(process.out.bvec_corrected.get(0).get(1)).name,
-                    process.out.b0_mask,
-                ).match() }
+                    path(process.out.b0_mask.get(0).get(1)).textGzip.md5(),
+                    process.out.versions).match() }
             )
         }
     }
