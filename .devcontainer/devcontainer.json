@@ -1,6 +1,11 @@
 {
     "name": "NF-SCIL development container",
-    "build": { "dockerfile": "Dockerfile" },
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "NFTEST_VERSION": "0.9.0-rc1"
+        }
+    },
     "forwardPorts": [3000],
     "onCreateCommand": "bash .devcontainer/onCreateCommand.sh",
     "updateContentCommand": "bash .devcontainer/updateContentCommand.sh",

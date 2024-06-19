@@ -114,6 +114,7 @@ The `nf-scil` project requires some specific tools to be installed on your syste
 - Java Runtime &geq; 11, &leq; 17
   - On Ubuntu, install `openjdk-jre-<version>` packages
 - Nextflow &geq; 21.04.3
+- nf-test &geq; 0.9.0-rc1
 - Node &geq; 14 and Prettier (see [below](#installing-prettier))
 
 > [!IMPORTANT]
@@ -212,7 +213,7 @@ environment.
   - `nf-scil` configured as the main repository for all `nf-core` commands, using `NFCORE_*` environment variables
   - `git`, `git-lfs`, `github-cli`
   - `curl`, `wget`, `apt-get`
-  - `nextflow`, `docker`, `tmux`
+  - `nextflow`, `nf-test`, `docker`, `tmux`
 
 - Available in the VS Code IDE through extensions :
   - Docker images and containers management
