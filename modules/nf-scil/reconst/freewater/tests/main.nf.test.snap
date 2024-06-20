@@ -19,17 +19,17 @@
                 ],
                 "5": [
                     [
-                        "A_001.npy:md5,21363070a99f8b8e390f713642bdd580",
-                        "A_002.npy:md5,142af968949cc3a15766e3fe35be0bf6",
-                        "A_003.npy:md5,837697b75af5e2207151c0b8c5fe007b",
-                        "A_004.npy:md5,7bfdaf0b3ae6b2e25ec58b74edc3d87e",
-                        "A_005.npy:md5,994ce19ed55493bb96b7759a625b1891",
-                        "A_006.npy:md5,d100c9ee3b05b72a05b219a31dd3192f",
-                        "A_007.npy:md5,84d18ac92409ac364cc1b5809803e214",
-                        "A_008.npy:md5,5073410af3faf70a4ad8d011edb1bf1e",
-                        "A_009.npy:md5,0450dd684224c913794acf8534b12958",
-                        "A_010.npy:md5,6cd83ae58dd4b2b46239a4add9490d21",
-                        "A_011.npy:md5,11a85a7f246689c9f23022f9b1cd45a3"
+                        "A_001.npy:md5,11fe274731023f323146616ea5051c24",
+                        "A_002.npy:md5,edc3da71ae9049a2bb768f3a9ce3b0d6",
+                        "A_003.npy:md5,57324deb5eef1754ce5d5320bd4f44e2",
+                        "A_004.npy:md5,074ff1605268308f029c0cfb1c9b2169",
+                        "A_005.npy:md5,adca9ff0a85f38717fd6d771213d31d8",
+                        "A_006.npy:md5,a59dafdf34e0135f20e22b185b017ff9",
+                        "A_007.npy:md5,2d03444bae1b663f13b24cfb10b01bad",
+                        "A_008.npy:md5,6a05008dbf09c6fb28481980a74bb356",
+                        "A_009.npy:md5,1e083dab9c8253c4fb1ec1b60ef5d83f",
+                        "A_010.npy:md5,3206fc1a74b43496d45c5e4c4bc30d5e",
+                        "A_011.npy:md5,fdfafdc3d2d465a44988a54670d12c10"
                     ]
                 ],
                 "6": [
@@ -49,17 +49,17 @@
                 ],
                 "kernels": [
                     [
-                        "A_001.npy:md5,21363070a99f8b8e390f713642bdd580",
-                        "A_002.npy:md5,142af968949cc3a15766e3fe35be0bf6",
-                        "A_003.npy:md5,837697b75af5e2207151c0b8c5fe007b",
-                        "A_004.npy:md5,7bfdaf0b3ae6b2e25ec58b74edc3d87e",
-                        "A_005.npy:md5,994ce19ed55493bb96b7759a625b1891",
-                        "A_006.npy:md5,d100c9ee3b05b72a05b219a31dd3192f",
-                        "A_007.npy:md5,84d18ac92409ac364cc1b5809803e214",
-                        "A_008.npy:md5,5073410af3faf70a4ad8d011edb1bf1e",
-                        "A_009.npy:md5,0450dd684224c913794acf8534b12958",
-                        "A_010.npy:md5,6cd83ae58dd4b2b46239a4add9490d21",
-                        "A_011.npy:md5,11a85a7f246689c9f23022f9b1cd45a3"
+                        "A_001.npy:md5,11fe274731023f323146616ea5051c24",
+                        "A_002.npy:md5,edc3da71ae9049a2bb768f3a9ce3b0d6",
+                        "A_003.npy:md5,57324deb5eef1754ce5d5320bd4f44e2",
+                        "A_004.npy:md5,074ff1605268308f029c0cfb1c9b2169",
+                        "A_005.npy:md5,adca9ff0a85f38717fd6d771213d31d8",
+                        "A_006.npy:md5,a59dafdf34e0135f20e22b185b017ff9",
+                        "A_007.npy:md5,2d03444bae1b663f13b24cfb10b01bad",
+                        "A_008.npy:md5,6a05008dbf09c6fb28481980a74bb356",
+                        "A_009.npy:md5,1e083dab9c8253c4fb1ec1b60ef5d83f",
+                        "A_010.npy:md5,3206fc1a74b43496d45c5e4c4bc30d5e",
+                        "A_011.npy:md5,fdfafdc3d2d465a44988a54670d12c10"
                     ]
                 ],
                 "nrmse": [
@@ -71,10 +71,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-14T17:14:18.647389"
+        "timestamp": "2024-06-19T21:49:35.157948"
     },
     "reconst - freewater": {
         "content": [
@@ -96,17 +96,17 @@
                 ],
                 "5": [
                     [
-                        "A_001.npy:md5,21363070a99f8b8e390f713642bdd580",
-                        "A_002.npy:md5,142af968949cc3a15766e3fe35be0bf6",
-                        "A_003.npy:md5,837697b75af5e2207151c0b8c5fe007b",
-                        "A_004.npy:md5,7bfdaf0b3ae6b2e25ec58b74edc3d87e",
-                        "A_005.npy:md5,994ce19ed55493bb96b7759a625b1891",
-                        "A_006.npy:md5,d100c9ee3b05b72a05b219a31dd3192f",
-                        "A_007.npy:md5,84d18ac92409ac364cc1b5809803e214",
-                        "A_008.npy:md5,5073410af3faf70a4ad8d011edb1bf1e",
-                        "A_009.npy:md5,0450dd684224c913794acf8534b12958",
-                        "A_010.npy:md5,6cd83ae58dd4b2b46239a4add9490d21",
-                        "A_011.npy:md5,11a85a7f246689c9f23022f9b1cd45a3"
+                        "A_001.npy:md5,11fe274731023f323146616ea5051c24",
+                        "A_002.npy:md5,edc3da71ae9049a2bb768f3a9ce3b0d6",
+                        "A_003.npy:md5,57324deb5eef1754ce5d5320bd4f44e2",
+                        "A_004.npy:md5,074ff1605268308f029c0cfb1c9b2169",
+                        "A_005.npy:md5,adca9ff0a85f38717fd6d771213d31d8",
+                        "A_006.npy:md5,a59dafdf34e0135f20e22b185b017ff9",
+                        "A_007.npy:md5,2d03444bae1b663f13b24cfb10b01bad",
+                        "A_008.npy:md5,6a05008dbf09c6fb28481980a74bb356",
+                        "A_009.npy:md5,1e083dab9c8253c4fb1ec1b60ef5d83f",
+                        "A_010.npy:md5,3206fc1a74b43496d45c5e4c4bc30d5e",
+                        "A_011.npy:md5,fdfafdc3d2d465a44988a54670d12c10"
                     ]
                 ],
                 "6": [
@@ -126,17 +126,17 @@
                 ],
                 "kernels": [
                     [
-                        "A_001.npy:md5,21363070a99f8b8e390f713642bdd580",
-                        "A_002.npy:md5,142af968949cc3a15766e3fe35be0bf6",
-                        "A_003.npy:md5,837697b75af5e2207151c0b8c5fe007b",
-                        "A_004.npy:md5,7bfdaf0b3ae6b2e25ec58b74edc3d87e",
-                        "A_005.npy:md5,994ce19ed55493bb96b7759a625b1891",
-                        "A_006.npy:md5,d100c9ee3b05b72a05b219a31dd3192f",
-                        "A_007.npy:md5,84d18ac92409ac364cc1b5809803e214",
-                        "A_008.npy:md5,5073410af3faf70a4ad8d011edb1bf1e",
-                        "A_009.npy:md5,0450dd684224c913794acf8534b12958",
-                        "A_010.npy:md5,6cd83ae58dd4b2b46239a4add9490d21",
-                        "A_011.npy:md5,11a85a7f246689c9f23022f9b1cd45a3"
+                        "A_001.npy:md5,11fe274731023f323146616ea5051c24",
+                        "A_002.npy:md5,edc3da71ae9049a2bb768f3a9ce3b0d6",
+                        "A_003.npy:md5,57324deb5eef1754ce5d5320bd4f44e2",
+                        "A_004.npy:md5,074ff1605268308f029c0cfb1c9b2169",
+                        "A_005.npy:md5,adca9ff0a85f38717fd6d771213d31d8",
+                        "A_006.npy:md5,a59dafdf34e0135f20e22b185b017ff9",
+                        "A_007.npy:md5,2d03444bae1b663f13b24cfb10b01bad",
+                        "A_008.npy:md5,6a05008dbf09c6fb28481980a74bb356",
+                        "A_009.npy:md5,1e083dab9c8253c4fb1ec1b60ef5d83f",
+                        "A_010.npy:md5,3206fc1a74b43496d45c5e4c4bc30d5e",
+                        "A_011.npy:md5,fdfafdc3d2d465a44988a54670d12c10"
                     ]
                 ],
                 "nrmse": [
@@ -148,9 +148,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-14T17:13:16.769048"
+        "timestamp": "2024-06-19T21:49:11.215059"
     }
 }
