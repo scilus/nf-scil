@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/scilus/nf-scil/main/subworkflows/meta-schema.json
 name: "load_test_data"
 
 description: |
