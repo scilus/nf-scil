@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peaks.nii.gz:md5,0f11af5b33b853edbe55fc2239a4966d"
+                        "test__peaks.nii.gz:md5,fde9309c76cac51a1abd4f6693aa3cde"
                     ]
                 ],
                 "1": [
@@ -17,7 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_values.nii.gz:md5,6470a18e37a61f08900516cbbf529327"
+                        "test__peak_values.nii.gz:md5,9620c7f4c14f5fbd581e689203d3f901"
                     ]
                 ],
                 "2": [
@@ -26,7 +26,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_indices.nii.gz:md5,ab95b28218d8901af8336b45baec9b6e"
+                        "test__peak_indices.nii.gz:md5,eea56d9bd15b321df120f9983b5ef0bd"
                     ]
                 ],
                 "3": [
@@ -119,7 +119,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_indices.nii.gz:md5,ab95b28218d8901af8336b45baec9b6e"
+                        "test__peak_indices.nii.gz:md5,eea56d9bd15b321df120f9983b5ef0bd"
                     ]
                 ],
                 "peak_values": [
@@ -128,7 +128,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peak_values.nii.gz:md5,6470a18e37a61f08900516cbbf529327"
+                        "test__peak_values.nii.gz:md5,9620c7f4c14f5fbd581e689203d3f901"
                     ]
                 ],
                 "peaks": [
@@ -137,7 +137,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__peaks.nii.gz:md5,0f11af5b33b853edbe55fc2239a4966d"
+                        "test__peaks.nii.gz:md5,fde9309c76cac51a1abd4f6693aa3cde"
                     ]
                 ],
                 "vent_mask": [
@@ -155,9 +155,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-02T13:16:48.656406"
+        "timestamp": "2024-06-20T16:07:38.145888"
     }
 }
