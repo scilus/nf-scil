@@ -63,6 +63,8 @@ jobs:
 
       - name: Setup nf-test
         uses: AlexVCaron/setup-nf-test@2c5a31b90b34d97abf155b57ee0f79c7f5aa118a
+        with:
+          version: 0.9.0-rc1
 
       - name: Run nf-test
         env:
