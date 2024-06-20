@@ -47,7 +47,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                        "test_volume.json:md5,9093e9ccfc7b47dd0fdfc6abde6a5c8e"
                     ]
                 ],
                 "5": [
@@ -164,7 +164,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                        "test_volume.json:md5,9093e9ccfc7b47dd0fdfc6abde6a5c8e"
                     ]
                 ],
                 "volume_per_labels": [
@@ -179,10 +179,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-06-12T14:39:41.886782"
+        "timestamp": "2024-06-19T21:31:18.935167"
     },
     "bundle - stats - light": {
         "content": [
