@@ -11,7 +11,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__wm_frf.txt:md5,a2dc216b0823abfe6e24782933cd2bd5"
+                        "test__wm_frf.txt:md5,ce7fd9c6297bac00072a94845a36f801"
                     ]
                 ],
                 "2": [
@@ -20,7 +20,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__gm_frf.txt:md5,8686ef6b46948c8caae7e0ec3ccfa2f7"
+                        "test__gm_frf.txt:md5,c5c4b64fa2e67b8b49c661bcc95fa1ea"
                     ]
                 ],
                 "3": [
@@ -29,7 +29,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__csf_frf.txt:md5,6d3c65d0527eff61df72bb0a47614fe9"
+                        "test__csf_frf.txt:md5,9e8a041fee5bead632bf7df65e27bcba"
                     ]
                 ],
                 "4": [
@@ -41,7 +41,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__csf_frf.txt:md5,6d3c65d0527eff61df72bb0a47614fe9"
+                        "test__csf_frf.txt:md5,9e8a041fee5bead632bf7df65e27bcba"
                     ]
                 ],
                 "frf": [
@@ -53,7 +53,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__gm_frf.txt:md5,8686ef6b46948c8caae7e0ec3ccfa2f7"
+                        "test__gm_frf.txt:md5,c5c4b64fa2e67b8b49c661bcc95fa1ea"
                     ]
                 ],
                 "versions": [
@@ -65,16 +65,16 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__wm_frf.txt:md5,a2dc216b0823abfe6e24782933cd2bd5"
+                        "test__wm_frf.txt:md5,ce7fd9c6297bac00072a94845a36f801"
                     ]
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-07T13:57:06.530857"
+        "timestamp": "2024-06-20T16:05:01.210347"
     },
     "reconst - frf_set_frf_no_mask": {
         "content": [
@@ -138,7 +138,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__frf.txt:md5,57a8ee81673a789b3fd701bdef64fc6c"
+                        "test__frf.txt:md5,0daed6995447070554aeb9092addae51"
                     ]
                 ],
                 "1": [
@@ -162,7 +162,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__frf.txt:md5,57a8ee81673a789b3fd701bdef64fc6c"
+                        "test__frf.txt:md5,0daed6995447070554aeb9092addae51"
                     ]
                 ],
                 "gm_frf": [
@@ -177,10 +177,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-07T13:52:05.772068"
+        "timestamp": "2024-06-20T16:04:02.582538"
     },
     "reconst - frf_set_frf": {
         "content": [
@@ -244,7 +244,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__frf.txt:md5,1b4e89fc6d6e56ccc2cc90f9108e0708"
+                        "test__frf.txt:md5,8737d508a9f4ccfcc9fd08cf20514a4c"
                     ]
                 ],
                 "1": [
@@ -268,7 +268,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__frf.txt:md5,1b4e89fc6d6e56ccc2cc90f9108e0708"
+                        "test__frf.txt:md5,8737d508a9f4ccfcc9fd08cf20514a4c"
                     ]
                 ],
                 "gm_frf": [
@@ -283,10 +283,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-07T13:52:24.684102"
+        "timestamp": "2024-06-20T16:04:18.763161"
     },
     "reconst - frf_msmt_set_frf": {
         "content": [
