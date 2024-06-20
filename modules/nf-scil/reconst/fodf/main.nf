@@ -1,7 +1,7 @@
 
 process RECONST_FODF {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_high'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':

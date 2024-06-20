@@ -6,9 +6,7 @@ process IO_READBIDS {
         'scilus/scilus:2.0.0' }"
 
     input:
-        path(bids_folder)
-        path(fsfolder)
-        path(bidsignore)
+        tuple path(bids_folder), path(fsfolder), path(bidsignore)
 
     output:
         path("tractoflow_bids_struct.json")             , emit: bidsstructure
