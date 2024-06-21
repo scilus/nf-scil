@@ -2,8 +2,14 @@
 
 
 GIT_REMOTE=$(git remote get-url origin)
+CURRENT_BRANCH=
 # Get tracked remote branch associated to current branch (default to main)
-CURRENT_BRANCH=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null || echo "main")
+{
+    git rev-parse --abbrev-ref --symbolic-full-name  @{u} 2>/dev/null &&
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+} || {
+    CURRENT_BRANCH="main"
+}
 
 cat <<EOF > $XDG_CONFIG_HOME/nf-scil/.env
 # This file is used to store environment variables for the project.
