@@ -18,8 +18,8 @@ process IO_READBIDS {
 
     script:
     def args = task.ext.args ?: ''
-    def fsfolder = task.ext.fs_folder ? "--fs " + task.ext.fs_folder : ''
-    def bidsignore = task.ext.bidsignore ? "--bids_ignore " + task.ext.bidsignore : ''
+    def fsfolder = fsfolder ? "--fs $fsfolder" : ''
+    def bidsignore = bidsignore ? "--bids_ignore $bidsignore" : ''
     def readout = task.ext.readout ? "--readout " + task.ext.readout : ""
     def clean_flag = task.ext.clean_bids ? '--clean ' : ''
 

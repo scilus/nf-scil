@@ -38,7 +38,7 @@ nextflow_workflow {
                         file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true),
                         []
                     ]}
-                input[1] = []
+                input[1] = Channel.empty()
                 """
             }
         }
@@ -56,7 +56,35 @@ nextflow_workflow {
         when {
             workflow {
                 """
-                input[0] = []
+                input[0] = Channel.empty()
+                input[1] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
+                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true)
+                    ]}
+                """
+            }
+        }
+
+        then {
+            assertAll(
+                { assert workflow.success },
+                { assert snapshot(workflow.out).match() }
+            )
+        }
+    }
+
+    test("anatomical_segmentation - both") {
+
+        when {
+            workflow {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true)
+                    ]}
                 input[1] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map

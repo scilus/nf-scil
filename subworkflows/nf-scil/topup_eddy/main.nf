@@ -9,9 +9,9 @@ workflow TOPUP_EDDY {
     // ** In both cases, it will perform EDDY and also extract a b0 from the corrected DWI image. ** //
 
     take:
-        ch_dwi          // channel: [ val(meta), [ dwi, bval, bvec ]
+        ch_dwi          // channel: [ val(meta), dwi, bval, bvec ]
         ch_b0           // channel: [ val(meta), b0 ]
-        ch_rev_dwi      // channel: [ val(meta), [ rev_dwi, rev_bval, rev_bvec ]
+        ch_rev_dwi      // channel: [ val(meta), rev_dwi, rev_bval, rev_bvec ]
         ch_rev_b0       // channel: [ val(meta), rev_b0 ]
         ch_config_topup // channel
 
@@ -23,19 +23,16 @@ workflow TOPUP_EDDY {
             .join(ch_b0, remainder: true)
             .map{ it[0..3] + [it[4] ?: []] }
 
-        ch_topup_reverse = ch_rev_dwi
-            .join(ch_rev_b0, remainder: true)
-            .filter{ it ? it[1] : false }
-            .map{ it[0..3] + [it[4] ?: []] }
-
         ch_topup = ch_topup
-            .join(ch_topup_reverse, remainder: true)
+            .join(ch_rev_dwi, remainder: true)
+            .map{ it[5] ? it : it[0..4] + [[], [], []] }
+            .join(ch_rev_b0, remainder: true)
             .branch{
                 with_topup: it[5] || it[8]
             }
 
         // ** RUN TOPUP ** //
-        PREPROC_TOPUP ( ch_topup.with_topup, ch_config_topup )
+        PREPROC_TOPUP ( ch_topup.with_topup.view(), ch_config_topup.view() )
         ch_versions = ch_versions.mix(PREPROC_TOPUP.out.versions.first())
 
         // ** Create channel for EDDY ** //
