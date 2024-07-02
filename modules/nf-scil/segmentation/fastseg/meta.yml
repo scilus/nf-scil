@@ -26,6 +26,11 @@ input:
       description: Nifti T1 volume to segment into tissue maps.
       pattern: "*.{nii,nii.gz}"
 
+  - lesion:
+      type: file
+      description: Nifti lesion volume to correct the white matter with a lesion mask.
+      pattern: "*.{nii,nii.gz}"
+
 output:
   - meta:
       type: map

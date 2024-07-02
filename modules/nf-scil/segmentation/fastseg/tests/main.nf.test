@@ -28,14 +28,14 @@ nextflow_process {
     }
 
     test("segmentation - fastseg") {
-
         when {
             process {
                 """
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true,),
+                        []
                     ]
                 }
                 """
@@ -48,6 +48,27 @@ nextflow_process {
                 { assert snapshot(process.out).match() }
             )
         }
+    }
+    test("segmentation - fastseg - lesion") {
+        when {
+            process {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map
+                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true,),
+                        file("\${test_data_directory}/anat/anat_mask.nii.gz", checkIfExists: true)
+                    ]
+                }
+                """
+            }
+        }
 
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
     }
 }

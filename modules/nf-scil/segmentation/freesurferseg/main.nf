@@ -7,7 +7,7 @@ process SEGMENTATION_FREESURFERSEG {
         'scilus/scilus:2.0.0' }"
 
     input:
-        tuple val(meta), path(aparc_aseg), path(wmparc)
+        tuple val(meta), path(aparc_aseg), path(wmparc), path(lesion)
 
     output:
         tuple val(meta), path("*__mask_wm.nii.gz")              , emit: wm_mask
@@ -79,6 +79,11 @@ process SEGMENTATION_FREESURFERSEG {
     scil_volume_math.py convert ${prefix}__mask_wm.nii.gz ${prefix}__mask_wm.nii.gz --data_type uint8 -f
     scil_volume_math.py convert ${prefix}__mask_gm.nii.gz ${prefix}__mask_gm.nii.gz --data_type uint8 -f
     scil_volume_math.py convert ${prefix}__mask_csf.nii.gz ${prefix}__mask_csf.nii.gz --data_type uint8 -f
+
+    if [[ -f "$lesion" ]];
+    then
+        scil_volume_math.py union ${prefix}__mask_wm.nii.gz $lesion ${prefix}__mask_wm.nii.gz --data_type uint8 -f
+    fi
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

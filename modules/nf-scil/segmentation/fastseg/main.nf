@@ -3,11 +3,11 @@ process SEGMENTATION_FASTSEG {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
-        'scilus/scilus:2.0.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
-        tuple val(meta), path(image)
+        tuple val(meta), path(image), path(lesion)
 
     output:
         tuple val(meta), path("*mask_wm.nii.gz")                , emit: wm_mask
@@ -38,9 +38,14 @@ process SEGMENTATION_FASTSEG {
     mv t1_pve_1.nii.gz ${prefix}__map_gm.nii.gz
     mv t1_pve_0.nii.gz ${prefix}__map_csf.nii.gz
 
+    if [[ -f "$lesion" ]];
+    then
+        scil_volume_math.py union ${prefix}__mask_wm.nii.gz $lesion ${prefix}__mask_wm.nii.gz --data_type uint8 -f
+    fi
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        scilpy: 2.0.0
+        scilpy: 2.0.2
         fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
     END_VERSIONS
     """
