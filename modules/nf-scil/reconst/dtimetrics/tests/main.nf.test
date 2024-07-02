@@ -26,7 +26,6 @@ nextflow_process {
         }
 
     test("reconst - dtimetrics") {
-
         when {
             process {
                 """
@@ -42,20 +41,16 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 
     test("reconst - dtimetrics_with_b0mask") {
-
         config "./nextflow_light.config"
-
         when {
             process {
                 """
@@ -71,13 +66,11 @@ nextflow_process {
                 """
             }
         }
-
         then {
             assertAll(
                 { assert process.success },
                 { assert snapshot(process.out).match() }
             )
         }
-
     }
 }
