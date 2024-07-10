@@ -59,7 +59,7 @@ nextflow_process {
 
         when {
             process {
-                """                
+                """
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
