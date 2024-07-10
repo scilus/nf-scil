@@ -1,6 +1,6 @@
 ---
 name: "segmentation_freesurferseg"
-description: Performs Brain Tissues Segmentation using the FreeSurfer aparc and wmparc output files.
+description: Performs Brain Tissues Segmentation using the FreeSurfer aparc and wmparc output files.  Optionally, a binary mask of lesion can be add to correct the white matter mask.
 keywords:
   - FreeSurfer
   - Segmentation
@@ -32,7 +32,7 @@ input:
 
   - lesion:
       type: file
-      description: Nifti lesion volume to correct the white matter with a lesion mask.
+      description: Nifti lesion volume to correct the white matter with a lesion mask.  The lesion mask must be a binary mask.
       pattern: "*.{nii,nii.gz}"
 
 output:
