@@ -5,8 +5,8 @@ GIT_REMOTE=$(git remote get-url origin)
 CURRENT_BRANCH=
 # Get tracked remote branch associated to current branch (default to main)
 {
-    git rev-parse --abbrev-ref --symbolic-full-name  @{u} 2>/dev/null &&
-    CURRENT_BRANCH=$(git rev-parse --abbrev-ref @{u} 2>/dev/null)
+    git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null &&
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD 2>/dev/null)
 } || {
     CURRENT_BRANCH="main"
 }

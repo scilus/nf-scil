@@ -28,12 +28,12 @@ nextflow_process {
     test("bundle - uniformize") {
         when {
             process {
-                """  
+                """
                 ch_split_test_data = LOAD_DATA.out.test_data_directory
                     .branch{
                         bundles: it.simpleName == "bundles"
                         tractometry: it.simpleName == "tractometry"
-                    } 
+                    }
                 input[0] = ch_split_test_data.bundles.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
@@ -51,7 +51,7 @@ nextflow_process {
             )
         }
     }
-    
+
     test("bundle - uniformize_axis") {
 
         config "./nextflow_axis.config"
@@ -63,7 +63,7 @@ nextflow_process {
                     .branch{
                         bundles: it.simpleName == "bundles"
                         tractometry: it.simpleName == "tractometry"
-                    }   
+                    }
                 input[0] = ch_split_test_data.bundles.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
@@ -81,19 +81,19 @@ nextflow_process {
             )
         }
     }
-        
+
     test("bundle - uniformize_centroid") {
 
         config "./nextflow_centroid.config"
 
         when {
             process {
-                """  
+                """
                 ch_split_test_data = LOAD_DATA.out.test_data_directory
                     .branch{
                         bundles: it.simpleName == "bundles"
                         tractometry: it.simpleName == "tractometry"
-                    } 
+                    }
                 input[0] = ch_split_test_data.tractometry.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
