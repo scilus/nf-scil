@@ -30,13 +30,12 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
-                        [file("\${test_data_directory}/frf.txt"),
-                         file("\${test_data_directory}/mfrf.txt"),
-                         file("\${test_data_directory}/nfrf.txt")]
-                    ]
-                }
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [[
+                        file("\${test_data_directory}/frf.txt"),
+                        file("\${test_data_directory}/mfrf.txt"),
+                        file("\${test_data_directory}/nfrf.txt")
+                    ]]}
                 """
             }
         }
