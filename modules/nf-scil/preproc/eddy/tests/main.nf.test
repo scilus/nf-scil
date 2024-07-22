@@ -54,6 +54,7 @@ nextflow_process {
                     process.out.bval_corrected,
                     file(process.out.bvec_corrected.get(0).get(1)).name,
                     process.out.b0_mask,
+                    process.out.version
                 ).match() }
             )
         }
