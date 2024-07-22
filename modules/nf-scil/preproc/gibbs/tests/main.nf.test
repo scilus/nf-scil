@@ -29,13 +29,13 @@ nextflow_process {
     test("preproc - gibbs") {
         when {
             process {
-             """
-             input[0] = LOAD_DATA.out.test_data_directory
-                 .map{ test_data_directory -> [
-                 [ id:'test', single_end:false ], // meta map
-                 file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz", checkIfExists: true)
-                 ]}
-             """
+                """
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                    [ id:'test', single_end:false ], // meta map
+                    file("\${test_data_directory}/sub-01_dir-AP_dwi.nii.gz", checkIfExists: true)
+                    ]}
+                """
             }
         }
         then {

@@ -28,14 +28,14 @@ nextflow_process {
         config "./nextflow_dwi.config"
         when {
             process {
-             """
-             input[0] = LOAD_DATA.out.test_data_directory
-                 .map{ test_data_directory -> [
-                 [ id:'test', single_end:false ], // meta map
-                 file("\${test_data_directory}/dwi_with_b0/dwi.nii.gz", checkIfExists: true),
-                 file("\${test_data_directory}/dwi_with_b0/b0.nii.gz", checkIfExists: true),
-                 file("\${test_data_directory}/dwi_with_b0/mask.nii.gz", checkIfExists: true)]}
-             """
+                """
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                    [ id:'test', single_end:false ], // meta map
+                    file("\${test_data_directory}/dwi_with_b0/dwi.nii.gz", checkIfExists: true),
+                    file("\${test_data_directory}/dwi_with_b0/b0.nii.gz", checkIfExists: true),
+                    file("\${test_data_directory}/dwi_with_b0/mask.nii.gz", checkIfExists: true)]}
+                """
             }
         }
         then {
@@ -49,14 +49,14 @@ nextflow_process {
     test("preproc - n4 - anat") {
         when {
             process {
-             """
-             input[0] = LOAD_DATA.out.test_data_directory
-                 .map{ test_data_directory -> [
-                 [ id:'test', single_end:false ], // meta map
-                 file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true),
-                 [],
-                 []]}
-             """
+                """
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                    [ id:'test', single_end:false ], // meta map
+                    file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true),
+                    [],
+                    []]}
+                """
             }
         }
         then {
