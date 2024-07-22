@@ -29,13 +29,13 @@ nextflow_process {
         when {
             process {
                 """
-             input[0] = LOAD_DATA.out.test_data_directory
-                     .map{ test_data_directory -> [
-                     [ id:'test', single_end:false ],
-                     file("\${test_data_directory}/t1_crop.nii.gz"),
-                     file("\${test_data_directory}/t1_resample.nii.gz"),
-                     []
-             ]}
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_crop.nii.gz"),
+                        file("\${test_data_directory}/t1_resample.nii.gz"),
+                        []
+                    ]}
                 """
             }
         }
@@ -52,13 +52,13 @@ nextflow_process {
         when {
             process {
                 """
-             input[0] = LOAD_DATA.out.test_data_directory
-                     .map{ test_data_directory -> [
-                     [ id:'test', single_end:false ],
-                     file("\${test_data_directory}/t1_crop.nii.gz"),
-                     file("\${test_data_directory}/t1_resample.nii.gz"),
-                     []
-             ]}
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_crop.nii.gz"),
+                        file("\${test_data_directory}/t1_resample.nii.gz"),
+                        []
+                    ]}
                 """
             }
         }
@@ -75,13 +75,13 @@ nextflow_process {
         when {
             process {
                 """
-             input[0] = LOAD_DATA.out.test_data_directory
-                     .map{ test_data_directory -> [
-                     [ id:'test', single_end:false ],
-                     file("\${test_data_directory}/t1_crop.nii.gz"),
-                     file("\${test_data_directory}/t1_resample.nii.gz"),
-                     []
-             ]}
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
+                        [ id:'test', single_end:false ],
+                        file("\${test_data_directory}/t1_crop.nii.gz"),
+                        file("\${test_data_directory}/t1_resample.nii.gz"),
+                        []
+                    ]}
                 """
             }
         }
