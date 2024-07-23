@@ -8,8 +8,9 @@ workflow ANATOMICAL_SEGMENTATION {
     // ** different image files. Supplying an empty channel for the one that isn't ** //
     // ** relevant will make the workflow run the appropriate module.              ** //
     take:
-        ch_image            // channel: [ val(meta), [ image ] ]
-        ch_freesurferseg    // channel: [ val(meta), [ aparc_aseg, wmparc ] ]
+        ch_image            // channel: [ val(meta), image ], optional
+        ch_freesurferseg    // channel: [ val(meta), aparc_aseg, wmparc ], optional
+        ch_lesions          // channel: [ val(meta), lesions ], optional
 
     main:
 
@@ -17,7 +18,11 @@ workflow ANATOMICAL_SEGMENTATION {
 
         // ** FSL fast segmentation ** //
         // TODO: Add lesion mask
-        SEGMENTATION_FASTSEG ( ch_image.map{ it + [""] } )
+        SEGMENTATION_FASTSEG (
+            ch_image
+                .join(ch_lesions, remainder: true)
+                .map{ it[0..1] + [it[2] ?: []] }
+        )
         ch_versions = ch_versions.mix(SEGMENTATION_FASTSEG.out.versions.first())
 
         // ** Setting outputs ** //
@@ -29,7 +34,11 @@ workflow ANATOMICAL_SEGMENTATION {
         csf_map = SEGMENTATION_FASTSEG.out.csf_map
 
         // ** Freesurfer segmentation ** //
-        SEGMENTATION_FREESURFERSEG ( ch_freesurferseg )
+        SEGMENTATION_FREESURFERSEG (
+            ch_freesurferseg
+                .join(ch_lesions, remainder: true)
+                .map{ it[0..2] + [it[3] ?: []] }
+        )
         ch_versions = ch_versions.mix(SEGMENTATION_FREESURFERSEG.out.versions.first())
 
         // ** Setting outputs ** //
