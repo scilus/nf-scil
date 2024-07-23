@@ -8,9 +8,9 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_dwi_resampled.nii.gz:md5,6db9e5b9e0cda99717ac7e32a797862c",
+                        "test_dwi_resampled.nii.gz:md5,c9cbd6494df9e42abcdc7e5cfcbf828c",
                         "test__bval_eddy:md5,7995daabbd74fcf7c365a39a779f67e9",
-                        "test__dwi_eddy_corrected.bvec:md5,3544093830861901af949343f69e7a10"
+                        "test__dwi_eddy_corrected.bvec:md5,b1c4e58303885b66d6b267aa13571f5b"
                     ]
                 ],
                 "1": [
@@ -23,26 +23,15 @@
                     ]
                 ],
                 "10": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__local_tracking.trk:md5,509d71fccb26821e65789240fe8414fd",
-                        "test__local_tracking_config.json:md5,a278ccc2af912b62c0c4ecabff20db1f"
-                    ]
+                    
                 ],
                 "11": [
                     
                 ],
                 "12": [
-                    "versions.yml:md5,3a3c674e9221f19ed409a1890bc2eb39",
-                    "versions.yml:md5,402c3604be37f571df13f983b1b5dd68",
                     "versions.yml:md5,689514aa26a4f84f83063f34c0e38190",
                     "versions.yml:md5,a3d1c964db9fa1079b738398a64219f7",
-                    "versions.yml:md5,a986b4e17262e999e378666d281e9ef3",
                     "versions.yml:md5,ad06aa4db03ace5de5712b3fa021bf89",
-                    "versions.yml:md5,b365d463ddf58fc7b47cd51c70876a11",
                     "versions.yml:md5,ba57313cd97586c885868a3aef7314a3",
                     "versions.yml:md5,fc6a2d3923b6ecd60b833ce5f09f8877"
                 ],
@@ -52,7 +41,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_warped.nii.gz:md5,310171fa6f46f5d32a9ff904592b65f4"
+                        "test__t1_warped.nii.gz:md5,7dd7bd555aafd6d6483e5e5509a6b6bc"
                     ]
                 ],
                 "3": [
@@ -61,22 +50,14 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__output1Warp.nii.gz:md5,0edcb8ad87b53d83d4fe410247cc6c1f",
-                        "test__output0GenericAffine.mat:md5,4030a29e7c4a4aec3a893ea2feda59e3",
-                        "test__output0GenericAffine.mat:md5,4030a29e7c4a4aec3a893ea2feda59e3",
-                        "test__output1InverseWarp.nii.gz:md5,217d7238692c049c4fb63d04ef868c06"
+                        "test__output1Warp.nii.gz:md5,b4c0e54d52f84719157f934bd1894d34",
+                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
+                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
+                        "test__output1InverseWarp.nii.gz:md5,cda5cb395702d69d2515eb23d21d4337"
                     ]
                 ],
                 "4": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mask_wm.nii.gz:md5,100b4de46ddf5828da7459c5e724feef",
-                        "test__mask_gm.nii.gz:md5,7a2f778efbfd08e0de332bd765649d4b",
-                        "test__mask_csf.nii.gz:md5,25b8c11928a2feab71900f2d4cc5de12"
-                    ]
+                    
                 ],
                 "5": [
                     
@@ -87,7 +68,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__tensor.nii.gz:md5,7b670547328c2f53b9d5b5e5b96ca521"
+                        "test__tensor.nii.gz:md5,70acf24a5221bb3035489cd0c6804754"
                     ]
                 ],
                 "7": [
@@ -96,47 +77,29 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,11c162fc83f9b3ea4cdeb9220906d706",
-                        "test__rd.nii.gz:md5,ec74fd816e198af0953c638aa184b6fc",
-                        "test__md.nii.gz:md5,7da8aae4115c5cd18eaa2719f5343c1a",
-                        "test__fa.nii.gz:md5,311956c30a0eda6ba18481d69a9f2f77",
-                        "test__ga.nii.gz:md5,da60890c479602bd9f1c913e16f38800",
-                        "test__rgb.nii.gz:md5,d77c33aeb865130636e56c5b16a70c87",
-                        "test__evecs_v1.nii.gz:md5,aed7b0de70f3c374aed914cdbf78dc54",
-                        "test__evecs_v2.nii.gz:md5,eaede582b120ed48ac66b3fdd65bdb87",
-                        "test__evecs_v3.nii.gz:md5,b07308487465f13efc7528d7dfd77672",
-                        "test__evals_e1.nii.gz:md5,11c162fc83f9b3ea4cdeb9220906d706",
-                        "test__evals_e2.nii.gz:md5,14f855488ec6800a84d6336740b7a10d",
-                        "test__evals_e3.nii.gz:md5,8e9eec05cd1d86b9b40ebdf68ab2c841",
-                        "test__residual.nii.gz:md5,77d8ea73ef9506750b31c6bc5ad2c4f7",
+                        "test__ad.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
+                        "test__rd.nii.gz:md5,eafd81c8f57fe192d981c991303297b1",
+                        "test__md.nii.gz:md5,04bd3997273a1469f9b847a61a5704f8",
+                        "test__fa.nii.gz:md5,e99a8363a6bb7dbe786a176dccf3118c",
+                        "test__ga.nii.gz:md5,798fb5e848824aa7808f59c6cf6ac5eb",
+                        "test__rgb.nii.gz:md5,10eae95841a5d0e675f1d8c91a1dcc79",
+                        "test__evecs_v1.nii.gz:md5,d1e2bf1db0f37886595ab0c1a6aeda20",
+                        "test__evecs_v2.nii.gz:md5,2416618f6c952c0bf22fc66508a07b84",
+                        "test__evecs_v3.nii.gz:md5,ef758b5da72652ea195a8a1be3836b20",
+                        "test__evals_e1.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
+                        "test__evals_e2.nii.gz:md5,a9dd902d19da24826e9719437be7779e",
+                        "test__evals_e3.nii.gz:md5,6af6733f2bea6f93aefd5b7e11a446e5",
+                        "test__residual.nii.gz:md5,ec5be059884f53d000e395c52781e2bb",
                         "test__nonphysical.nii.gz:md5,f4b5b404b0e5275fcb269f0e18d2d344",
-                        "test__mode.nii.gz:md5,c959f553163c9258971726fadb94cedc",
-                        "test__norm.nii.gz:md5,1f1c9135f82fdd86190e4118a7848f7b"
+                        "test__mode.nii.gz:md5,ccb386d99394a03f8648c949759d2e27",
+                        "test__norm.nii.gz:md5,0abb675167529634edd35e3b576d1884"
                     ]
                 ],
                 "8": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__frf.txt:md5,f7a4f04e590b9e124382e0ac3ce83d96",
-                        [
-                            
-                        ],
-                        [
-                            
-                        ]
-                    ]
+                    
                 ],
                 "9": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fodf.nii.gz:md5,25394d554892205115c5dd1a66cff63b"
-                    ]
+                    
                 ],
                 "brain_mask": [
                     [
@@ -153,22 +116,22 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,11c162fc83f9b3ea4cdeb9220906d706",
-                        "test__rd.nii.gz:md5,ec74fd816e198af0953c638aa184b6fc",
-                        "test__md.nii.gz:md5,7da8aae4115c5cd18eaa2719f5343c1a",
-                        "test__fa.nii.gz:md5,311956c30a0eda6ba18481d69a9f2f77",
-                        "test__ga.nii.gz:md5,da60890c479602bd9f1c913e16f38800",
-                        "test__rgb.nii.gz:md5,d77c33aeb865130636e56c5b16a70c87",
-                        "test__evecs_v1.nii.gz:md5,aed7b0de70f3c374aed914cdbf78dc54",
-                        "test__evecs_v2.nii.gz:md5,eaede582b120ed48ac66b3fdd65bdb87",
-                        "test__evecs_v3.nii.gz:md5,b07308487465f13efc7528d7dfd77672",
-                        "test__evals_e1.nii.gz:md5,11c162fc83f9b3ea4cdeb9220906d706",
-                        "test__evals_e2.nii.gz:md5,14f855488ec6800a84d6336740b7a10d",
-                        "test__evals_e3.nii.gz:md5,8e9eec05cd1d86b9b40ebdf68ab2c841",
-                        "test__residual.nii.gz:md5,77d8ea73ef9506750b31c6bc5ad2c4f7",
+                        "test__ad.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
+                        "test__rd.nii.gz:md5,eafd81c8f57fe192d981c991303297b1",
+                        "test__md.nii.gz:md5,04bd3997273a1469f9b847a61a5704f8",
+                        "test__fa.nii.gz:md5,e99a8363a6bb7dbe786a176dccf3118c",
+                        "test__ga.nii.gz:md5,798fb5e848824aa7808f59c6cf6ac5eb",
+                        "test__rgb.nii.gz:md5,10eae95841a5d0e675f1d8c91a1dcc79",
+                        "test__evecs_v1.nii.gz:md5,d1e2bf1db0f37886595ab0c1a6aeda20",
+                        "test__evecs_v2.nii.gz:md5,2416618f6c952c0bf22fc66508a07b84",
+                        "test__evecs_v3.nii.gz:md5,ef758b5da72652ea195a8a1be3836b20",
+                        "test__evals_e1.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
+                        "test__evals_e2.nii.gz:md5,a9dd902d19da24826e9719437be7779e",
+                        "test__evals_e3.nii.gz:md5,6af6733f2bea6f93aefd5b7e11a446e5",
+                        "test__residual.nii.gz:md5,ec5be059884f53d000e395c52781e2bb",
                         "test__nonphysical.nii.gz:md5,f4b5b404b0e5275fcb269f0e18d2d344",
-                        "test__mode.nii.gz:md5,c959f553163c9258971726fadb94cedc",
-                        "test__norm.nii.gz:md5,1f1c9135f82fdd86190e4118a7848f7b"
+                        "test__mode.nii.gz:md5,ccb386d99394a03f8648c949759d2e27",
+                        "test__norm.nii.gz:md5,0abb675167529634edd35e3b576d1884"
                     ]
                 ],
                 "dti_tensor": [
@@ -177,7 +140,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__tensor.nii.gz:md5,7b670547328c2f53b9d5b5e5b96ca521"
+                        "test__tensor.nii.gz:md5,70acf24a5221bb3035489cd0c6804754"
                     ]
                 ],
                 "dwi": [
@@ -186,44 +149,19 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_dwi_resampled.nii.gz:md5,6db9e5b9e0cda99717ac7e32a797862c",
+                        "test_dwi_resampled.nii.gz:md5,c9cbd6494df9e42abcdc7e5cfcbf828c",
                         "test__bval_eddy:md5,7995daabbd74fcf7c365a39a779f67e9",
-                        "test__dwi_eddy_corrected.bvec:md5,3544093830861901af949343f69e7a10"
+                        "test__dwi_eddy_corrected.bvec:md5,b1c4e58303885b66d6b267aa13571f5b"
                     ]
                 ],
                 "fodf": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__fodf.nii.gz:md5,25394d554892205115c5dd1a66cff63b"
-                    ]
+                    
                 ],
                 "frf": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__frf.txt:md5,f7a4f04e590b9e124382e0ac3ce83d96",
-                        [
-                            
-                        ],
-                        [
-                            
-                        ]
-                    ]
+                    
                 ],
                 "local_tractogram": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__local_tracking.trk:md5,509d71fccb26821e65789240fe8414fd",
-                        "test__local_tracking_config.json:md5,a278ccc2af912b62c0c4ecabff20db1f"
-                    ]
+                    
                 ],
                 "pft_tractogram": [
                     
@@ -234,7 +172,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_warped.nii.gz:md5,310171fa6f46f5d32a9ff904592b65f4"
+                        "test__t1_warped.nii.gz:md5,7dd7bd555aafd6d6483e5e5509a6b6bc"
                     ]
                 ],
                 "t1_to_b0_transformations": [
@@ -243,34 +181,22 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__output1Warp.nii.gz:md5,0edcb8ad87b53d83d4fe410247cc6c1f",
-                        "test__output0GenericAffine.mat:md5,4030a29e7c4a4aec3a893ea2feda59e3",
-                        "test__output0GenericAffine.mat:md5,4030a29e7c4a4aec3a893ea2feda59e3",
-                        "test__output1InverseWarp.nii.gz:md5,217d7238692c049c4fb63d04ef868c06"
+                        "test__output1Warp.nii.gz:md5,b4c0e54d52f84719157f934bd1894d34",
+                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
+                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
+                        "test__output1InverseWarp.nii.gz:md5,cda5cb395702d69d2515eb23d21d4337"
                     ]
                 ],
                 "tissues_maps": [
                     
                 ],
                 "tissues_masks": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test__mask_wm.nii.gz:md5,100b4de46ddf5828da7459c5e724feef",
-                        "test__mask_gm.nii.gz:md5,7a2f778efbfd08e0de332bd765649d4b",
-                        "test__mask_csf.nii.gz:md5,25b8c11928a2feab71900f2d4cc5de12"
-                    ]
+                    
                 ],
                 "versions": [
-                    "versions.yml:md5,3a3c674e9221f19ed409a1890bc2eb39",
-                    "versions.yml:md5,402c3604be37f571df13f983b1b5dd68",
                     "versions.yml:md5,689514aa26a4f84f83063f34c0e38190",
                     "versions.yml:md5,a3d1c964db9fa1079b738398a64219f7",
-                    "versions.yml:md5,a986b4e17262e999e378666d281e9ef3",
                     "versions.yml:md5,ad06aa4db03ace5de5712b3fa021bf89",
-                    "versions.yml:md5,b365d463ddf58fc7b47cd51c70876a11",
                     "versions.yml:md5,ba57313cd97586c885868a3aef7314a3",
                     "versions.yml:md5,fc6a2d3923b6ecd60b833ce5f09f8877"
                 ]
@@ -280,6 +206,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-05T02:09:28.140631"
+        "timestamp": "2024-07-23T14:39:42.244333"
     }
 }

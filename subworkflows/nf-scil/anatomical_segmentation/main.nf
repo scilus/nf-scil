@@ -16,7 +16,8 @@ workflow ANATOMICAL_SEGMENTATION {
         ch_versions = Channel.empty()
 
         // ** FSL fast segmentation ** //
-        SEGMENTATION_FASTSEG ( ch_image )
+        // TODO: Add lesion mask
+        SEGMENTATION_FASTSEG ( ch_image.map{ it + [""] } )
         ch_versions = ch_versions.mix(SEGMENTATION_FASTSEG.out.versions.first())
 
         // ** Setting outputs ** //

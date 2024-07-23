@@ -93,7 +93,7 @@ process PREPROC_EDDY {
 
     echo "--very_verbose $extra_args" >> eddy.sh
     sh eddy.sh
-    scil_volume_math.py lower_threshold dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
+    scil_volume_math.py lower_clip dwi_eddy_corrected.nii.gz 0 ${prefix}__dwi_corrected.nii.gz
 
     if [[ \$number_rev_dwi -eq 0 ]]
     then
