@@ -136,7 +136,8 @@ workflow TRACTOFLOW {
     ANATOMICAL_SEGMENTATION(
         T1_REGISTRATION.out.image_warped,
         TRANSFORM_WMPARC.out.warped_image
-            .join(TRANSFORM_APARC_ASEG.out.warped_image)
+            .join(TRANSFORM_APARC_ASEG.out.warped_image),
+        Channel.empty()
     )
     ch_versions = ch_versions.mix(ANATOMICAL_SEGMENTATION.out.versions.first())
 

@@ -8,9 +8,9 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_dwi_resampled.nii.gz:md5,c9cbd6494df9e42abcdc7e5cfcbf828c",
+                        "test_dwi_resampled.nii.gz:md5,1fb970f12cf95b0604bd1b27234bc73a",
                         "test__bval_eddy:md5,7995daabbd74fcf7c365a39a779f67e9",
-                        "test__dwi_eddy_corrected.bvec:md5,b1c4e58303885b66d6b267aa13571f5b"
+                        "test__dwi_eddy_corrected.bvec:md5,81abbd9af8ff0d4e0ac230492e7e9740"
                     ]
                 ],
                 "1": [
@@ -23,16 +23,35 @@
                     ]
                 ],
                 "10": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,30e80b2a767fd1a076ac23557eb2b736",
+                        "test__local_tracking_config.json:md5,ff2a194e24c4eb1c8e994be029e03c6a"
+                    ]
                 ],
                 "11": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__pft_tracking.trk:md5,1308b0281f9cd8b7782f2b270eccc242",
+                        "test__pft_tracking_config.json:md5,1185d2d6919687f1b299eda667f6aa74"
+                    ]
                 ],
                 "12": [
+                    "versions.yml:md5,3a3c674e9221f19ed409a1890bc2eb39",
+                    "versions.yml:md5,402c3604be37f571df13f983b1b5dd68",
                     "versions.yml:md5,689514aa26a4f84f83063f34c0e38190",
                     "versions.yml:md5,a3d1c964db9fa1079b738398a64219f7",
+                    "versions.yml:md5,a986b4e17262e999e378666d281e9ef3",
+                    "versions.yml:md5,aaab00d1fa7d070cc7ee67fd768416b8",
                     "versions.yml:md5,ad06aa4db03ace5de5712b3fa021bf89",
                     "versions.yml:md5,ba57313cd97586c885868a3aef7314a3",
+                    "versions.yml:md5,d6c87a227ba82214dbafc880b2af4e8a",
                     "versions.yml:md5,fc6a2d3923b6ecd60b833ce5f09f8877"
                 ],
                 "2": [
@@ -41,7 +60,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_warped.nii.gz:md5,7dd7bd555aafd6d6483e5e5509a6b6bc"
+                        "test__t1_warped.nii.gz:md5,65c5f76511c9322035062243303593f5"
                     ]
                 ],
                 "3": [
@@ -50,14 +69,22 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__output1Warp.nii.gz:md5,b4c0e54d52f84719157f934bd1894d34",
-                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
-                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
-                        "test__output1InverseWarp.nii.gz:md5,cda5cb395702d69d2515eb23d21d4337"
+                        "test__output1Warp.nii.gz:md5,a59af5e719125ae468ddd3d5da892133",
+                        "test__output0GenericAffine.mat:md5,b9ceca81b32ccd5a71fc4e0a62b31852",
+                        "test__output0GenericAffine.mat:md5,b9ceca81b32ccd5a71fc4e0a62b31852",
+                        "test__output1InverseWarp.nii.gz:md5,3627d4846ef3da1017c28cd05d00f8b9"
                     ]
                 ],
                 "4": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__mask_wm.nii.gz:md5,b7673388e70af3c70b3d5bc98ef97237",
+                        "test__mask_gm.nii.gz:md5,39349e37fc8bc8a7c4e3cb593269ae19",
+                        "test__mask_csf.nii.gz:md5,162c68e9d738e9433b2ce91a432655a1"
+                    ]
                 ],
                 "5": [
                     
@@ -68,7 +95,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__tensor.nii.gz:md5,70acf24a5221bb3035489cd0c6804754"
+                        "test__tensor.nii.gz:md5,babf65170f2aad061d9cb4847c00fb36"
                     ]
                 ],
                 "7": [
@@ -77,29 +104,47 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
-                        "test__rd.nii.gz:md5,eafd81c8f57fe192d981c991303297b1",
-                        "test__md.nii.gz:md5,04bd3997273a1469f9b847a61a5704f8",
-                        "test__fa.nii.gz:md5,e99a8363a6bb7dbe786a176dccf3118c",
-                        "test__ga.nii.gz:md5,798fb5e848824aa7808f59c6cf6ac5eb",
-                        "test__rgb.nii.gz:md5,10eae95841a5d0e675f1d8c91a1dcc79",
-                        "test__evecs_v1.nii.gz:md5,d1e2bf1db0f37886595ab0c1a6aeda20",
-                        "test__evecs_v2.nii.gz:md5,2416618f6c952c0bf22fc66508a07b84",
-                        "test__evecs_v3.nii.gz:md5,ef758b5da72652ea195a8a1be3836b20",
-                        "test__evals_e1.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
-                        "test__evals_e2.nii.gz:md5,a9dd902d19da24826e9719437be7779e",
-                        "test__evals_e3.nii.gz:md5,6af6733f2bea6f93aefd5b7e11a446e5",
-                        "test__residual.nii.gz:md5,ec5be059884f53d000e395c52781e2bb",
-                        "test__nonphysical.nii.gz:md5,f4b5b404b0e5275fcb269f0e18d2d344",
-                        "test__mode.nii.gz:md5,ccb386d99394a03f8648c949759d2e27",
-                        "test__norm.nii.gz:md5,0abb675167529634edd35e3b576d1884"
+                        "test__ad.nii.gz:md5,710ff70bd2ae2b2b6006ebb5cbc033e5",
+                        "test__rd.nii.gz:md5,f42e159ad29088fb4d79e33ca9d7cf2f",
+                        "test__md.nii.gz:md5,7ae0d6fc12bbb7e4fcef92701da9d876",
+                        "test__fa.nii.gz:md5,db4e9009f8b47976af856376e6433396",
+                        "test__ga.nii.gz:md5,08d0b133dc7f8a6290e02e4edfb1e1bd",
+                        "test__rgb.nii.gz:md5,6dbb190970339c07e153eacbd978c04b",
+                        "test__evecs_v1.nii.gz:md5,13c79fdbae8d251ffd45315f8e33d231",
+                        "test__evecs_v2.nii.gz:md5,f4367f35b300bf4e0a820e2b81306269",
+                        "test__evecs_v3.nii.gz:md5,4cedfb517559ac93822ae00b0f79759d",
+                        "test__evals_e1.nii.gz:md5,710ff70bd2ae2b2b6006ebb5cbc033e5",
+                        "test__evals_e2.nii.gz:md5,89991a0b4a71e78f966d40aa6ea7ce7e",
+                        "test__evals_e3.nii.gz:md5,142e887515f40c341b48e7d318f011db",
+                        "test__residual.nii.gz:md5,b399a430d539825ef43e63be464506e1",
+                        "test__nonphysical.nii.gz:md5,b9d44001ac4c983344e1e55e60fdbac8",
+                        "test__mode.nii.gz:md5,800eca594730092e6ed21985785fbf0c",
+                        "test__norm.nii.gz:md5,7252be2225c26d954a9e414d7bad1f5f"
                     ]
                 ],
                 "8": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__frf.txt:md5,7b7188ebab11de0d4a26bc44c4ffd53c",
+                        [
+                            
+                        ],
+                        [
+                            
+                        ]
+                    ]
                 ],
                 "9": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,605139522307965ead093a9cdb72f0f1"
+                    ]
                 ],
                 "brain_mask": [
                     [
@@ -116,22 +161,22 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__ad.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
-                        "test__rd.nii.gz:md5,eafd81c8f57fe192d981c991303297b1",
-                        "test__md.nii.gz:md5,04bd3997273a1469f9b847a61a5704f8",
-                        "test__fa.nii.gz:md5,e99a8363a6bb7dbe786a176dccf3118c",
-                        "test__ga.nii.gz:md5,798fb5e848824aa7808f59c6cf6ac5eb",
-                        "test__rgb.nii.gz:md5,10eae95841a5d0e675f1d8c91a1dcc79",
-                        "test__evecs_v1.nii.gz:md5,d1e2bf1db0f37886595ab0c1a6aeda20",
-                        "test__evecs_v2.nii.gz:md5,2416618f6c952c0bf22fc66508a07b84",
-                        "test__evecs_v3.nii.gz:md5,ef758b5da72652ea195a8a1be3836b20",
-                        "test__evals_e1.nii.gz:md5,9b0a94a606b2f905cea541da14cc4b31",
-                        "test__evals_e2.nii.gz:md5,a9dd902d19da24826e9719437be7779e",
-                        "test__evals_e3.nii.gz:md5,6af6733f2bea6f93aefd5b7e11a446e5",
-                        "test__residual.nii.gz:md5,ec5be059884f53d000e395c52781e2bb",
-                        "test__nonphysical.nii.gz:md5,f4b5b404b0e5275fcb269f0e18d2d344",
-                        "test__mode.nii.gz:md5,ccb386d99394a03f8648c949759d2e27",
-                        "test__norm.nii.gz:md5,0abb675167529634edd35e3b576d1884"
+                        "test__ad.nii.gz:md5,710ff70bd2ae2b2b6006ebb5cbc033e5",
+                        "test__rd.nii.gz:md5,f42e159ad29088fb4d79e33ca9d7cf2f",
+                        "test__md.nii.gz:md5,7ae0d6fc12bbb7e4fcef92701da9d876",
+                        "test__fa.nii.gz:md5,db4e9009f8b47976af856376e6433396",
+                        "test__ga.nii.gz:md5,08d0b133dc7f8a6290e02e4edfb1e1bd",
+                        "test__rgb.nii.gz:md5,6dbb190970339c07e153eacbd978c04b",
+                        "test__evecs_v1.nii.gz:md5,13c79fdbae8d251ffd45315f8e33d231",
+                        "test__evecs_v2.nii.gz:md5,f4367f35b300bf4e0a820e2b81306269",
+                        "test__evecs_v3.nii.gz:md5,4cedfb517559ac93822ae00b0f79759d",
+                        "test__evals_e1.nii.gz:md5,710ff70bd2ae2b2b6006ebb5cbc033e5",
+                        "test__evals_e2.nii.gz:md5,89991a0b4a71e78f966d40aa6ea7ce7e",
+                        "test__evals_e3.nii.gz:md5,142e887515f40c341b48e7d318f011db",
+                        "test__residual.nii.gz:md5,b399a430d539825ef43e63be464506e1",
+                        "test__nonphysical.nii.gz:md5,b9d44001ac4c983344e1e55e60fdbac8",
+                        "test__mode.nii.gz:md5,800eca594730092e6ed21985785fbf0c",
+                        "test__norm.nii.gz:md5,7252be2225c26d954a9e414d7bad1f5f"
                     ]
                 ],
                 "dti_tensor": [
@@ -140,7 +185,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__tensor.nii.gz:md5,70acf24a5221bb3035489cd0c6804754"
+                        "test__tensor.nii.gz:md5,babf65170f2aad061d9cb4847c00fb36"
                     ]
                 ],
                 "dwi": [
@@ -149,22 +194,54 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_dwi_resampled.nii.gz:md5,c9cbd6494df9e42abcdc7e5cfcbf828c",
+                        "test_dwi_resampled.nii.gz:md5,1fb970f12cf95b0604bd1b27234bc73a",
                         "test__bval_eddy:md5,7995daabbd74fcf7c365a39a779f67e9",
-                        "test__dwi_eddy_corrected.bvec:md5,b1c4e58303885b66d6b267aa13571f5b"
+                        "test__dwi_eddy_corrected.bvec:md5,81abbd9af8ff0d4e0ac230492e7e9740"
                     ]
                 ],
                 "fodf": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__fodf.nii.gz:md5,605139522307965ead093a9cdb72f0f1"
+                    ]
                 ],
                 "frf": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__frf.txt:md5,7b7188ebab11de0d4a26bc44c4ffd53c",
+                        [
+                            
+                        ],
+                        [
+                            
+                        ]
+                    ]
                 ],
                 "local_tractogram": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__local_tracking.trk:md5,30e80b2a767fd1a076ac23557eb2b736",
+                        "test__local_tracking_config.json:md5,ff2a194e24c4eb1c8e994be029e03c6a"
+                    ]
                 ],
                 "pft_tractogram": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__pft_tracking.trk:md5,1308b0281f9cd8b7782f2b270eccc242",
+                        "test__pft_tracking_config.json:md5,1185d2d6919687f1b299eda667f6aa74"
+                    ]
                 ],
                 "t1": [
                     [
@@ -172,7 +249,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_warped.nii.gz:md5,7dd7bd555aafd6d6483e5e5509a6b6bc"
+                        "test__t1_warped.nii.gz:md5,65c5f76511c9322035062243303593f5"
                     ]
                 ],
                 "t1_to_b0_transformations": [
@@ -181,23 +258,36 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__output1Warp.nii.gz:md5,b4c0e54d52f84719157f934bd1894d34",
-                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
-                        "test__output0GenericAffine.mat:md5,bb393dcf47cb64695fccc3b989593e10",
-                        "test__output1InverseWarp.nii.gz:md5,cda5cb395702d69d2515eb23d21d4337"
+                        "test__output1Warp.nii.gz:md5,a59af5e719125ae468ddd3d5da892133",
+                        "test__output0GenericAffine.mat:md5,b9ceca81b32ccd5a71fc4e0a62b31852",
+                        "test__output0GenericAffine.mat:md5,b9ceca81b32ccd5a71fc4e0a62b31852",
+                        "test__output1InverseWarp.nii.gz:md5,3627d4846ef3da1017c28cd05d00f8b9"
                     ]
                 ],
                 "tissues_maps": [
                     
                 ],
                 "tissues_masks": [
-                    
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__mask_wm.nii.gz:md5,b7673388e70af3c70b3d5bc98ef97237",
+                        "test__mask_gm.nii.gz:md5,39349e37fc8bc8a7c4e3cb593269ae19",
+                        "test__mask_csf.nii.gz:md5,162c68e9d738e9433b2ce91a432655a1"
+                    ]
                 ],
                 "versions": [
+                    "versions.yml:md5,3a3c674e9221f19ed409a1890bc2eb39",
+                    "versions.yml:md5,402c3604be37f571df13f983b1b5dd68",
                     "versions.yml:md5,689514aa26a4f84f83063f34c0e38190",
                     "versions.yml:md5,a3d1c964db9fa1079b738398a64219f7",
+                    "versions.yml:md5,a986b4e17262e999e378666d281e9ef3",
+                    "versions.yml:md5,aaab00d1fa7d070cc7ee67fd768416b8",
                     "versions.yml:md5,ad06aa4db03ace5de5712b3fa021bf89",
                     "versions.yml:md5,ba57313cd97586c885868a3aef7314a3",
+                    "versions.yml:md5,d6c87a227ba82214dbafc880b2af4e8a",
                     "versions.yml:md5,fc6a2d3923b6ecd60b833ce5f09f8877"
                 ]
             }
@@ -206,6 +296,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-23T14:39:42.244333"
+        "timestamp": "2024-07-23T22:27:12.656719"
     }
 }
