@@ -123,7 +123,7 @@ jobs:
         path: [ "${{ fromJson(needs.nf-test-changes.outputs.paths) }}" ]
         profile: ["docker"]
         exclude:
-          - module: nf-test
+          - path: modules/nf-core/nf-test
     uses: ./.github/workflows/nf-test_module.yml
     with:
       profile: ${{ matrix.profile }}
@@ -132,7 +132,7 @@ jobs:
 
   confirm-pass:
     runs-on: ubuntu-latest
-    needs: [prettier, editorconfig, nf-test-changes, lint-modules, nf-test]
+    needs: [prettier, editorconfig, nf-test-changes, lint-modules, lint-subworkflows, nf-test]
     if: ${{ !cancelled() }}
     steps:
       - name: All tests ok
