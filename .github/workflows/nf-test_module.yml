@@ -55,7 +55,9 @@ jobs:
         uses: nf-core/setup-nextflow@v2
 
       - name: Setup nf-test
-        uses: nf-core/setup-nf-test@v1
+        uses: AlexVCaron/setup-nf-test@2c5a31b90b34d97abf155b57ee0f79c7f5aa118a
+        with:
+          version: ${{ env.NFTEST_VER }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
