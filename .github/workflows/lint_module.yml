@@ -1,24 +1,35 @@
-name: Lint nf-scil module
+name: Lint nf-scil component
 
 on:
   workflow_dispatch:
     inputs:
-      module:
-        description: "A tag describing the module"
+      component:
+        description: "A tag describing the component"
         required: true
         type: string
+      type:
+        description: "Type of component"
+        required: true
+        type: choice
+        options:
+          - module
+          - subworkflow
   workflow_call:
     inputs:
-      module:
-        description: "A tag describing the module"
+      component:
+        description: "A tag describing the component"
+        required: true
+        type: string
+      type:
+        description: "Type of component"
         required: true
         type: string
 
-run-name: Lint ${{ inputs.module }}
+run-name: Lint ${{ inputs.component }}
 jobs:
   nf-core-lint:
     runs-on: ubuntu-latest
-    name: nf-core-lint-${{ inputs.module }}
+    name: nf-core-lint-${{ inputs.component }}
 
     steps:
       - uses: actions/checkout@v4
@@ -51,18 +62,7 @@ jobs:
         run: |
           python -m pip install --upgrade --force-reinstall nf-core==2.14.*
 
-      - name: Lint module ${{ inputs.module }}
+      - name: Lint ${{ inputs.type }} ${{ inputs.component }}
         env:
           GIT_CLONE_PROTECTION_ACTIVE: false
-        run: nf-core --verbose modules --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.module }}
-        if: ${{ !startsWith(inputs.module, 'subworkflows/') }}
-
-      - name: Remove substring from matrix.tags
-        id: remove_substring
-        run: echo subworkflow_names=$(echo "${{ inputs.module }}" | sed 's/subworkflows\///g') >> $GITHUB_OUTPUT
-
-      - name: Lint subworkflow ${{ inputs.module }}
-        env:
-          GIT_CLONE_PROTECTION_ACTIVE: false
-        run: nf-core --verbose subworkflows --git-remote https://github.com/scilus/nf-scil.git lint ${{steps.remove_substring.outputs.subworkflow_names}}
-        if: ${{ startsWith(inputs.module, 'subworkflows/') }}
+        run: nf-core --verbose ${{ inputs.type }}s --git-remote https://github.com/scilus/nf-scil.git lint ${{ inputs.component }}
