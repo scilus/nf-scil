@@ -54,7 +54,6 @@ jobs:
     name: nf-test-changes
     runs-on: ubuntu-latest
     outputs:
-      # Expose matched filters as job 'modules' output variable
       paths: ${{ steps.changes.outputs.components }}
       modules: ${{ steps.components.outputs.modules }}
       subworkflows: ${{ steps.components.outputs.subworkflows }}
@@ -74,8 +73,8 @@ jobs:
       - name: Separate modules and subworkflows
         id: components
         run: |
-          echo modules=$(echo '${{ steps.changes.outputs.components }}' | jq -c '. | map(select(contains("modules"))) | map(gsub("modules/nf-core/"; ""))') >> $GITHUB_OUTPUT
-          echo subworkflows=$(echo '${{ steps.changes.outputs.components }}' | jq '. | map(select(contains("subworkflows"))) | map(gsub("subworkflows/nf-core/"; ""))') >> $GITHUB_OUTPUT
+          echo modules=$(echo '${{ steps.changes.outputs.components }}' | jq -c '. | map(select(contains("modules"))) | map(gsub("modules/nf-scil/"; ""))') >> $GITHUB_OUTPUT
+          echo subworkflows=$(echo '${{ steps.changes.outputs.components }}' | jq '. | map(select(contains("subworkflows"))) | map(gsub("subworkflows/nf-scil/"; ""))') >> $GITHUB_OUTPUT
 
       - name: debug
         run: |
@@ -117,7 +116,7 @@ jobs:
   nf-test:
     name: nf-test
     needs: [nf-test-changes]
-    if: needs.nf-test-changes.outputs.modules != '[]'
+    if: ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
     strategy:
       fail-fast: false
       matrix:
