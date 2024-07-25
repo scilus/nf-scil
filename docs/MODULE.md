@@ -1,20 +1,21 @@
 # Contributing to nf-scil
 
+- [Contributing to nf-scil](#contributing-to-nf-scil)
 - [Adding a new module to nf-scil](#adding-a-new-module-to-nf-scil)
   - [Generate the template](#generate-the-template)
   - [Edit the template](#edit-the-template)
-    - [Editing the module's main.nf](#editing-modulesnf-scilcategorytoolmainnf-)
-    - [Editing the module's meta.yml](#editing-modulesnf-scilcategorytoolmetayml-)
-    - [Editing the tests' main.nf](#editing-testsmodulesnf-scilcategorytoolmainnf-)
-    - [Editing the tests' nextflow.config](#editing-testsmodulesnf-scilcategorytoolnextflowconfig-)
+    - [Editing `./modules/nf-scil/<category>/<tool>/main.nf` :](#editing-modulesnf-scilcategorytoolmainnf-)
+    - [Editing `./modules/nf-scil/<category>/>tool>/environment.yml`:](#editing-modulesnf-scilcategorytoolenvironmentyml)
+    - [Editing `./modules/nf-scil/<category>/<tool>/meta.yml` :](#editing-modulesnf-scilcategorytoolmetayml-)
+    - [Editing `./modules/nf-scil/<category>/<tool>/tests/main.nf.test` :](#editing-modulesnf-scilcategorytooltestsmainnftest-)
+    - [Editing `./modules/nf-scil/<category>/<tool>/tests/nextflow.config` :](#editing-modulesnf-scilcategorytooltestsnextflowconfig-)
   - [Run the tests to generate the test metadata file](#run-the-tests-to-generate-the-test-metadata-file)
   - [Lint your code](#lint-your-code)
-  - [Last safety test](#last-safety-test)
   - [Submit your PR](#submit-your-pr)
 - [Defining processes optional parameters](#defining-processes-optional-parameters)
 - [Test data infrastructure](#test-data-infrastructure)
-  - [Using the .test_data directory](#using-the-test_data-directory)
   - [Using Scilpy Fetcher](#using-scilpy-fetcher)
+  - [Using the `.test_data` directory](#using-the-test_data-directory)
 
 # Adding a new module to nf-scil
 
@@ -151,6 +152,20 @@ already follow all guidelines. You will find related files in :
 
   - Call `touch <file>` to generate empty files for all required outputs.
 
+### Editing `./modules/nf-scil/<category>/>tool>/environment.yml`:
+
+Start by removing the comments added automatically by `nf-core`, then, replace the existing `channels` section by:
+```yml
+channels:
+  - Docker
+  - Apptainer
+```
+and add the name of the tools used within your module in the `dependencies` section. For example, if you are using `scilpy` tools, write:
+```yml
+dependencies:
+  - scilpy
+```
+
 ### Editing `./modules/nf-scil/<category>/<tool>/meta.yml` :
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but we
@@ -168,26 +183,84 @@ Once done, commit your module and push the changes. Then, to look at the documen
 nf-core modules info <category/name>
 ```
 
-### Editing `./tests/modules/nf-scil/<category>/<tool>/main.nf` :
+### Editing `./modules/nf-scil/<category>/<tool>/tests/main.nf.test` :
 
-The module's test suite is a collection of workflows containing isolated test cases. You
-can add as many more tests as your heart desire (not too much), in addition to the one
-provided.
+The module's test infrastructure is auto-generated when creating a module using the `nf-core` command. First file you should modify is the `main.nf.test`, which contains the input and assertion instructions for `nf-test`.
 
-> [!IMPORTANT]
-> Each workflow is atomic, in which it does not contain more than a single test to run.
+> [!NOTE]
+> Multiple tests can be specified one after the other in the `main.nf.test`, be sure to corner most of the use-case of your module to ensure catching any potential bugs!
 
-In any case, to get the test workflows working, do the following :
+To specify test data, you need to define a `setup` section before the actual test definition. This setup section will use the `load_test_data` workflow to fetch your test data from an available archive (see [here](./TEST_DATA.md) for the list of available archives). Once you selected the archives and files you need, add a `setup` section before the test section.
+```groovy
+setup {
+  run("LOAD_TEST_DATA", alias: "LOAD_DATA") {
+    script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
+    process {
+      """
+      input[0] = Channel.from( [ "<archive>" ] )
+      input[1] = "test.load-test-data"
+      """
+    }
+  }
+}
+```
+Replace the `<archive>` with the name of the one you need and you'll be able to access the archives within your test suite! Next, you want to define your inputs for your actual tests. The inputs are defined in a positional order, meaning that `input[0]` will be the first one provided to your process. Every `input[i]` represents a channel, so if your process takes, for example, a `tuple val(meta), path(image)`, you will have to define the meta and image within the same `input[i]`. A code block for a test that takes this tuple as input would look like this:
+```groovy
+    test("example - simple") {
+        config "./nextflow.config"
+        when {
+            process {
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map    -> your meta
+                        file("\${test_data_directory}/image.nii.gz") // -> your image file.
+                    ]
+                }
+                """
+            }
+        }
+        then {
+            assertAll(
+                { assert process.success },
+                { assert snapshot(process.out).match() }
+            )
+        }
+    }
+```
+If your process takes an optional input (such as a mask), you can simply add an empty list:
+```groovy
+                """
+                input[0] = LOAD_DATA.out.test_data_directory.map{
+                    test_data_directory -> [
+                        [ id:'test', single_end:false ], // meta map      -> your meta
+                        file("\${test_data_directory}/image.nii.gz"), //  -> your image file.
+                        []                                            //  -> your optional input.
+                    ]
+                }
+                """
+```
+Once you have set up your input correctly, ensure the assertions within the `assertAll` are consistent with the outputs you are expecting. The default values (as shown above) will assert the consistency of the md5sum. For more details regarding the possible assertions, see the [nf-test doc](https://www.nf-test.com/docs/assertions/assertions/).
 
-- Either modify the auto-generated `input` object to add your test data or replace it with
-  a _fetcher workflow_. You can do this at the end, when you have defined your test cases.
-  Refer to [this section](#test-data-infrastructure) to see which use case fits your tests
-  better.
+To add more test cases, you can add multiple `test` sections as defined above (all within the same `nextflow process {}`). This can be done to test with different inputs, or different parameters provided through a `nextflow.config` file. If you want to define specific parameters for a single test, assign the `nextflow.config` file using the `config` parameter within the test definition (as shown above). If you want to assign identical parameters for all tests, you can bind the `nextflow.config` file at the beginning of the `main.nf.test`:
+```groovy
+nextflow_process {
 
-### Editing `./tests/modules/nf-scil/<category>/<tool>/nextflow.config` :
+    name "Test Process <CATEGORY>_<TOOL>"
+    script "../main.nf"
+    process "<CATEGORY>_<TOOL>"
+    config "./nextflow.config"
+```
+Finally, ensure all the tags at the beginning of the process definition include the `LOAD_TEST_DATA` subworkflow. If not, add those two lines:
+```groovy
+    tag "subworkflows"
+    tag "subworkflows/load_test_data"
+```
+Make sure there is no more comments generated by the `nf-core` template, and you should be good to go!
 
-You don't need to touch anything here, except if you have defined optional parameters
-with `task.ext` and want to alter their values for some test cases. Refer to
+### Editing `./modules/nf-scil/<category>/<tool>/tests/nextflow.config` :
+
+The `nextflow.config` file does not exist by default, so you will have to create it if needed. This is not mandatory, except if you have defined optional parameters with `task.ext` and want to alter their values for some test cases. Refer to
 [this section](#defining-processes-optional-parameters) to see how to scope those parameters
 to specific tests using `selectors`.
 
@@ -197,24 +270,17 @@ to specific tests using `selectors`.
 > Verify you are located at the root of `nf-scil` (not inside modules) before
 > running commands !
 
-Once the test data has been pushed to the desired location and been made available to the
-test infrastructure using the relevant configurations, the test module has to be pre-tested
-so output files that gets generated are checksum correctly.
+Once you have correctly setup your test cases and made sure the data is available, the test module has to be pre-tested
+so output files that gets generated are snapshotted correctly before being pushed to `nf-scil`.
 
-> [!IMPORTANT]
-> The test infrastructure uses `pytest-workflow` to run the tests. It is `git-aware`,
-> meaning that only files either `committed` or `staged` will be considered by
-> the tests. To verify that your file will be loaded correctly, check that it is
-> listed by `git ls-files`.
-
-Run :
+To do so, run:
 
 ```bash
-nf-core modules create-test-yml --run-tests --force --no-prompts <category>/<tool>
+nf-core modules test -u <category>/<tool>
 ```
 
 All the test case you defined will be run, watch out for errors ! Once everything runs
-smoothly, look at the test metadata file produced : `tests/modules/nf-scil/<category/<tool>/test.yml`
+smoothly, look at the snapshot file produced : `./modules/nf-scil/<category>/<tool>/tests/main.nf.test.snap`
 and validate that ALL outputs produced by test cases have been caught. Their `md5sum` is
 critical to ensure future executions of your test produce valid outputs.
 
@@ -226,7 +292,7 @@ Before submitting to _nf-scil_, once you've commit and push everything, the code
 nf-core modules lint <category>/<tool>
 ```
 
-You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `ẁarnings`as possible.
+You'll probably get a bunch of _whitespace_ and _indentation_ errors, but also image errors, bad _nextflow_ syntax and more. You need to fix all `errors` and as much as the `warnings`as possible.
 
 ## Submit your PR
 
