@@ -32,6 +32,7 @@ on:
 env:
   NXF_SINGULARITY_CACHEDIR: /home/runner/.singularity_cache/.singularity
   NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
+  XDG_CONFIG_PATH: /home/runner/.config
 
 run-name: Run nf-test on ${{ inputs.paths }}
 jobs:
@@ -73,6 +74,11 @@ jobs:
           key: ${{ runner.os }}-pip-pdiff
           restore-keys: |
             ${{ runner.os }}-pip-pdiff
+
+      - uses: actions/cache@v4
+        with:
+          path: ${{ env.XDG_CONFIG_PATH }}/nf-scil-test-archives
+          key: nf-scil-test-data-cache
 
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip pdiff cryptography
