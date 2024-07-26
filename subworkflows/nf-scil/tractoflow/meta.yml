@@ -1,44 +1,147 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/subworkflows/yaml-schema.json
 name: "tractoflow"
-## TODO nf-core: Add a description of the subworkflow and list keywords
-description: Sort SAM/BAM/CRAM file
+description: Run preprocessing, reconstruction and tractography on diffusion MRI images
 keywords:
-  - sort
-  - bam
-  - sam
-  - cram
-## TODO nf-core: Add a list of the modules and/or subworkflows used in the subworkflow
+  - diffusion MRI
+  - preprocessing
+  - tractography
+  - fODF
+  - DTI
 components:
-  - samtools/sort
-  - samtools/index
-## TODO nf-core: List all of the channels used as input with a description and their structure
+  - reconst/dtimetrics
+  - registration/antsapplytransforms
+  - reconst/frf
+  - reconst/meanfrf
+  - reconst/dtimetrics
+  - reconst/fodf
+  - tracking/pfttracking
+  - tracking/localtracking
+  - anatomical_segmentation
+  - preproc_dwi
+  - preproc_t1
+  - registration
 input:
-  - ch_bam:
+  - ch_dwi:
       type: file
       description: |
-        The input channel containing the BAM/CRAM/SAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.{bam/cram/sam}"
-## TODO nf-core: List all of the channels used as output with a descriptions and their structure
+        Diffusion Weighted Image in Nifti format, with b-values/vectors in fsl format
+        Structure: [ val(meta), path(dwi_nifti), path(bval_file), path(bvec_file) ]
+      pattern: "*.{nii/nii.gz/bval/bvec}"
+  - ch_sbref:
+      type: file
+      description: |
+        Single-band b0 associated to the DWI in Nifti format, optional
+        Structure: [ val(meta), path(sbref_nifti) ]
+      pattern: "*.{nii/nii.gz}"
+  - ch_rev_dwi:
+      type: file
+      description: |
+        Reverse-phase acquired DWI, with b-values/vectors in fsl format, optional
+        Structure: [ val(meta), path(rev_dwi_nifti), path(bval_file), path(bvec_file) ]
+      pattern: "*.{nii/nii.gz/bval/bvec}"
+  - ch_rev_sbref:
+      type: file
+      description: |
+        Single-band b0 associated to the reverse-phase acquired DWI in Nifti format, optional
+        Structure: [ val(meta), path(rev_sbref_nifti) ], optional
+      pattern: "*.{nii/nii.gz}"
+  - ch_t1:
+      type: file
+      description: |
+        Anatomical T1w image in Nifti format
+        Structure: [ val(meta), path(t1_nifti) ]
+      pattern: "*.{nii/nii.gz}"
+  - ch_wmparc:
+      type: file
+      description: |
+        White matter parcellation aligned to the T1w image in Nifti format, optional
+        Structure: [ val(meta), path(wmparc_nifti) ]
+      pattern: "*.{nii/nii.gz}"
+  - ch_aparc_aseg:
+      type: file
+      description: |
+        Tissue segmentation aligned to the T1w image in Nifti format, optional
+        Structure: [ val(meta), path(aparc+aseg_nifti) ], optional
+      pattern: "*.{nii/nii.gz}"
+  - ch_topup_config:
+      type: file
+      description: |
+        Topup custom configuration file, optional
+        Structure: [ path(topup_config_file) ]
+      pattern: "*.{cnf}"
+  - ch_bet_template:
+      type: file
+      description: |
+        Anatomical template for brain extraction in Nifti format, optional
+        Structure: [ path(bet_template_nifti) ]
+      pattern: "*.{nii/nii.gz}"
+  - ch_bet_probability:
+      type: file
+      description: |
+        Brain probability image aligned to the anatomical template in Nifti format, optional
+        Structure: [ path(bet_template_nifti) ]
+      pattern: "*.{nii/nii.gz}"
 output:
-  - bam:
-      type: file
+  - dwi:
       description: |
-        Channel containing BAM files
-        Structure: [ val(meta), path(bam) ]
-      pattern: "*.bam"
-  - bai:
-      type: file
+        Preprocessed Diffusion Weighted Image in Nifti format, with b-values/vectors in fsl format
+        Structure: [ val(meta), path(dwi), path(bval), path(bvec) ]
+      pattern: "*.{nii/nii.gz/bval/bvec}"
+  - brain_mask:
       description: |
-        Channel containing indexed BAM (BAI) files
-        Structure: [ val(meta), path(bai) ]
-      pattern: "*.bai"
-  - csi:
-      type: file
+        Brain mask in Nifti format
+        Structure: [ val(meta), path(brain_mask) ]
+      pattern: "*.{nii/nii.gz}"
+  - t1:
       description: |
-        Channel containing CSI files
-        Structure: [ val(meta), path(csi) ]
-      pattern: "*.csi"
+        Preprocessed anatomical T1w image in Nifti format
+        Structure: [ val(meta), path(t1) ]
+      pattern: "*.{nii/nii.gz}"
+  - t1_to_b0_transformations:
+      description: |
+        Lists of transformations for T1w space to DWI space, and back, in Nifti format
+        Structure: [ val(meta), [path(transform), ...], [path(inverse_transform), ...] ]
+      pattern: "*.{nii/nii.gz}"
+  - tissues_masks:
+      description: |
+        Masks of WM, GM and CSF regions in Nifti format
+        Structure: [ val(meta), path(wm_mask), path(gm_mask), path(csf_mask) ]
+      pattern: "*.{nii/nii.gz}"
+  - tissues_maps:
+      description: |
+        Estimated fractions of WM, GM and CSF regions in Nifti format
+        Structure: [ val(meta), path(wm_pvf), path(gm_pvf), path(csf_pvf) ]
+      pattern: "*.{nii/nii.gz}"
+  - dti_tensor:
+      description: |
+        DTI tensors (dipy convention) in Nifti format
+        Structure: [ val(meta), path(tensors) ]
+      pattern: "*.{nii/nii.gz}"
+  - dti_metrics:
+      description: |
+        List of metrics computed on the DTI tensors (AD,RD,MD,FA,RGB,residuals,...) in Nifti format
+        Structure: [ val(meta), path(ad), path(rd), ... ]
+      pattern: "*.{nii/nii.gz}"
+  - frf:
+      description: |
+        Estimated single fiber response function
+        Structure: [ val(meta), path(response) ]
+      pattern: "*.txt"
+  - fodf:
+      description: |
+        fODF coefficients in Nifti format
+        Structure: [ val(meta), path(fodf) ]
+      pattern: "*.{nii/nii.gz}"
+  - local_tractogram:
+      description: |
+        Tractogram computed by local tractography and its parameters
+        Structure: [ val(meta), path(tractogram), path(metadata) ]
+      pattern: "*.{trk/json}"
+  - pft_tractogram:
+      description: |
+        Tractogram computed by Particle Filtering tractography and its parameters
+        Structure: [ val(meta), path(tractogram), path(metadata) ]
+      pattern: "*.{trk/json}"
   - versions:
       type: file
       description: |
