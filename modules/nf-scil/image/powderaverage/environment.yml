@@ -1,0 +1,7 @@
+---
+name: "image_powderaverage"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - scilpy
