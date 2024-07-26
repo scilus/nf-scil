@@ -152,7 +152,7 @@ already follow all guidelines. You will find related files in :
 
   - Call `touch <file>` to generate empty files for all required outputs.
 
-### Editing `./modules/nf-scil/<category>/>tool>/environment.yml`:
+### Editing `./modules/nf-scil/<category>/<tool>/environment.yml`:
 
 Start by removing the comments added automatically by `nf-core`, then, replace the existing `channels` section by:
 
