@@ -34,12 +34,5 @@ output:
         Structure: [ path(temporary_test_data_path) ]
       pattern: "*/{prefix}_*/archive_name"
 
-  - versions:
-      type: file
-      description: |
-        File containing software versions
-        Structure: [ path(versions.yml) ]
-      pattern: "versions.yml"
-
 authors:
   - "@AlexVCaron"
