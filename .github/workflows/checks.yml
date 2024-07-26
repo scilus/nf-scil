@@ -123,7 +123,7 @@ jobs:
         path: [ "${{ fromJson(needs.nf-test-changes.outputs.paths) }}" ]
         profile: ["docker"]
         exclude:
-          - path: modules/nf-core/nf-test
+          - path: subworkflows/nf-scil/load_test_data
     uses: ./.github/workflows/nf-test_module.yml
     with:
       profile: ${{ matrix.profile }}

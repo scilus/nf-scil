@@ -1,2 +1,0 @@
-testdata/scilpy:
-  - "modules/nf-scil/testdata/scilpy/**"
