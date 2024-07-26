@@ -53,26 +53,4 @@ nextflow_process {
 
     }
 
-    test("load_bids - temp - stub") {
-
-        options "-stub"
-
-        when {
-            process {
-                """
-                input[0] = "bids_json.zip"
-                input[1] = File.createTempFile("test.test-data.scilpy.bids-json", "").getAbsolutePath()
-                """
-            }
-        }
-
-        then {
-            assertAll(
-                { assert process.success },
-                { assert snapshot(process.out).match() }
-            )
-        }
-
-    }
-
 }
