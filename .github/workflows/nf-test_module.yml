@@ -32,7 +32,6 @@ on:
 env:
   NXF_SINGULARITY_CACHEDIR: /home/runner/.singularity_cache/.singularity
   NXF_SINGULARITY_LIBRARYDIR: ${{ github.workspace }}/.singularity
-  XDG_CONFIG_PATH: /home/runner/.config
 
 run-name: Run nf-test on ${{ inputs.paths }}
 jobs:
@@ -43,6 +42,7 @@ jobs:
     env:
       NXF_ANSI_LOG: false
       NFTEST_VER: "0.9.0-rc1"
+      XDG_DATA_PATH: /home/runner/_work/.data
 
     steps:
       - uses: actions/checkout@v4
@@ -77,7 +77,7 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          path: ${{ env.XDG_CONFIG_PATH }}/nf-scil-test-archives
+          path: ${{ env.XDG_DATA_PATH }}/nf-scil-test-archives
           key: nf-scil-test-data-cache
 
       - name: Install Python dependencies
