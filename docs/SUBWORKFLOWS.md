@@ -3,11 +3,12 @@
 - [Adding a new subworkflow to nf-scil](#adding-a-new-subworkflow-to-nf-scil)
   - [Generate the template](#generate-the-template)
   - [Generate the template](#generate-the-template-1)
-    - [Edit the subworkflow's main.nf](#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
+    - [Edit `./subworkflows/nf-scil/<name_of_your_workflow>/main.nf`](#edit-subworkflowsnf-scilname_of_your_workflowmainnf)
       - [Define your Subworkflow inputs.](#define-your-subworkflow-inputs)
       - [Fill the `main:` section.](#fill-the-main-section)
       - [define your Workflow outputs.](#define-your-workflow-outputs)
-    - [Edit the subworkflow's meta.yml](#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+    - [Edit `./subworkflows/nf-scil/<name_of_your_workflow>/meta.yml`](#edit-subworkflowsnf-scilname_of_your_workflowmetayml)
+    - [Add test case to your subworkflow!](#add-test-case-to-your-subworkflow)
   - [Lint your code](#lint-your-code)
   - [Submit your PR](#submit-your-pr)
 
@@ -134,6 +135,10 @@ versions = ch_versions // channel: [ versions.yml ]
 
 Fill the sections you find relevant. There is a lot of metadata in this file, but you
 don't need to specify them all. Provide at least 3 relevant `keywords` and list all modules and subworkflows used in the `components` section. List all `inputs` and `outputs` in the order in which you defined them. Give a complete `description` of the subworkflow, describing all potential uses and variations of inputs and their effects on expected outputs.
+
+### Add test case to your subworkflow!
+
+Adding tests to your subworkflow is nearly identical as creating tests for a module. For detailed instructions, please see [here](./MODULE.md#editing-modulesnf-scilcategorytooltestsmainnftest-).
 
 ## Lint your code
 
