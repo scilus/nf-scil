@@ -3,7 +3,9 @@ import java.nio.file.Files
 def fetch_archive ( name, destination, remote, database, data_identifiers ) {
     // Find cache location for test archives
     def storage = file(
-        System.getenv('XDG_DATA_HOME') ?: "${System.getenv('HOME')}/.local/share"
+        System.getenv('NFSCIL_TEST_DATA_HOME') ?:
+        System.getenv('XDG_DATA_HOME') ?:
+        "${System.getenv('HOME')}/.local/share"
     )
     def cache_location = file("$storage/nf-scil-test-archives")
     if ( !cache_location.exists() ) cache_location.mkdirs()
