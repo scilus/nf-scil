@@ -16,6 +16,9 @@
                         ]
                     ]
                 ],
+                "1": [
+                    "versions.yml:md5,5ccf597dc693f9e49c46da8fa7f6c839"
+                ],
                 "test_data_directory": [
                     [
                         [
@@ -29,6 +32,9 @@
                             "result_real_dwi_real_sbref.json:md5,22adcf1437117b643cf292a82e7f7552"
                         ]
                     ]
+                ],
+                "versions": [
+                    "versions.yml:md5,5ccf597dc693f9e49c46da8fa7f6c839"
                 ]
             }
         ],
@@ -36,7 +42,7 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-26T04:59:04.819174"
+        "timestamp": "2024-07-26T14:26:21.40363"
     },
     "load_bids - work": {
         "content": [
@@ -55,6 +61,9 @@
                         ]
                     ]
                 ],
+                "1": [
+                    "versions.yml:md5,5ccf597dc693f9e49c46da8fa7f6c839"
+                ],
                 "test_data_directory": [
                     [
                         [
@@ -68,6 +77,9 @@
                             "result_real_dwi_real_sbref.json:md5,22adcf1437117b643cf292a82e7f7552"
                         ]
                     ]
+                ],
+                "versions": [
+                    "versions.yml:md5,5ccf597dc693f9e49c46da8fa7f6c839"
                 ]
             }
         ],
@@ -75,6 +87,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-26T04:59:12.589018"
+        "timestamp": "2024-07-26T14:26:28.259429"
     }
 }
