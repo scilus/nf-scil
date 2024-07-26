@@ -30,5 +30,12 @@ output:
       description: Directory where to store the test data
       pattern: "*"
 
+  - versions:
+      type: file
+      description: |
+        File containing software versions
+        Structure: [ path(versions.yml) ]
+      pattern: "versions.yml"
+
 authors:
   - "@AlexVCaron"

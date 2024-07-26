@@ -88,6 +88,9 @@
                         ]
                     ]
                 ],
+                "1": [
+                    "versions.yml:md5,95abc82518c73365fb65ccd45bdc247a"
+                ],
                 "test_data_directory": [
                     [
                         [
@@ -173,6 +176,9 @@
                             ]
                         ]
                     ]
+                ],
+                "versions": [
+                    "versions.yml:md5,95abc82518c73365fb65ccd45bdc247a"
                 ]
             }
         ],
@@ -180,6 +186,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-26T05:17:20.977666"
+        "timestamp": "2024-07-26T14:44:36.334352"
     }
 }

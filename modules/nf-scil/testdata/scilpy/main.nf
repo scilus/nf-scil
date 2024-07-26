@@ -11,7 +11,8 @@ process TESTDATA_SCILPY {
     path(test_data_path)
 
     output:
-    path("${archive.take(archive.lastIndexOf('.'))}") , emit: test_data_directory
+    path("${archive.take(archive.lastIndexOf('.'))}")   , emit: test_data_directory
+    path "versions.yml"                                 , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
@@ -53,4 +54,6 @@ process TESTDATA_SCILPY {
             }
         }
     }
+
+    file("$task.workDir/versions.yml") << "${task.process}: []\n"
 }
