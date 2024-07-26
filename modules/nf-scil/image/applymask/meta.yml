@@ -34,15 +34,15 @@ output:
         Groovy Map containing sample information
         e.g. `[ id:'sample1', single_end:false ]`
 
-  - versions:
-      type: file
-      description: File containing software versions
-      pattern: "versions.yml"
-
   - image:
       type: file
       description: Masked 3D or 4D image.
       pattern: "*.nii.gz"
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
 
 authors:
   - "@gagnonanthony"
