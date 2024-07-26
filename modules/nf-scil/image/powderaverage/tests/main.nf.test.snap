@@ -8,7 +8,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_pwd_avg.nii.gz:md5,02ff470dcf2d9553a1a55e5e6d9d8ea8"
+                        "test_pwd_avg.nii.gz:md5,b0065ccd52d4921738a6538c3cd5d86a"
                     ]
                 ],
                 "1": [
@@ -20,7 +20,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_pwd_avg.nii.gz:md5,02ff470dcf2d9553a1a55e5e6d9d8ea8"
+                        "test_pwd_avg.nii.gz:md5,b0065ccd52d4921738a6538c3cd5d86a"
                     ]
                 ],
                 "versions": [
@@ -32,7 +32,7 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.3"
         },
-        "timestamp": "2024-07-25T14:40:57.797067"
+        "timestamp": "2024-07-26T12:43:21.971071"
     },
     "powderaverage - no mask": {
         "content": [
