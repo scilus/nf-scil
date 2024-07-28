@@ -25,6 +25,7 @@ process DENOISING_MPPCA {
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
+    export MRTRIX_RNG_SEED=112524
 
     dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent -nthreads $task.cpus
     fslmaths ${prefix}_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
