@@ -1,0 +1,7 @@
+---
+name: "image_applymask"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - Mrtrix

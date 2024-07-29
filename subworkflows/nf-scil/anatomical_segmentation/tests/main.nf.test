@@ -35,7 +35,8 @@ nextflow_workflow {
                 input[0] = LOAD_DATA.out.test_data_directory.map{
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
-                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/anat/anat_image.nii.gz", checkIfExists: true),
+                        []
                     ]}
                 input[1] = []
                 """
@@ -60,7 +61,8 @@ nextflow_workflow {
                     test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/freesurfer/aparc_aseg.nii.gz", checkIfExists: true),
-                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true)
+                        file("\${test_data_directory}/freesurfer/wmparc.nii.gz", checkIfExists: true),
+                        []
                     ]}
                 """
             }

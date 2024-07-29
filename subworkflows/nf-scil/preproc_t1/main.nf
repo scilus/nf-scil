@@ -61,4 +61,3 @@ workflow PREPROC_T1 {
         t1_final        = BETCROP_CROPVOLUME_T1.out.image        // channel: [ val(meta), [ image ] ]
         versions        = ch_versions                         // channel: [ versions.yml ]
 }
-

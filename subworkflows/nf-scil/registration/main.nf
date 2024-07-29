@@ -62,4 +62,3 @@ workflow REGISTRATION {
 
         versions = ch_versions                 // channel: [ versions.yml ]
 }
-

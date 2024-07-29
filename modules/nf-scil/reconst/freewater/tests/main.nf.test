@@ -31,16 +31,15 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/dwi.nii.gz", checkIfExists: true),
                         file("\${test_data_directory}/dwi.bval", checkIfExists: true),
                         file("\${test_data_directory}/dwi.bvec", checkIfExists: true),
                         file("\${test_data_directory}/mask.nii.gz", checkIfExists: true),
                         []
-                    ]
-                 }
+                    ]}
                 """
             }
         }
@@ -59,16 +58,15 @@ nextflow_process {
         when {
             process {
                 """
-                input[0] = LOAD_DATA.out.test_data_directory.map{
-                    test_data_directory -> [
+                input[0] = LOAD_DATA.out.test_data_directory
+                    .map{ test_data_directory -> [
                         [ id:'test', single_end:false ], // meta map
                         file("\${test_data_directory}/dwi.nii.gz", checkIfExists: true),
                         file("\${test_data_directory}/dwi.bval", checkIfExists: true),
                         file("\${test_data_directory}/dwi.bvec", checkIfExists: true),
                         [],
                         []
-                    ]
-                 }
+                    ]}
                 """
             }
         }

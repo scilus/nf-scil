@@ -14,16 +14,6 @@
                         "result_real_dwi_real_sbref.json:md5,22adcf1437117b643cf292a82e7f7552"
                     ],
                     [
-                        "ad.nii.gz:md5,f87b69283ecef92bc8e4f2b17ad504bf",
-                        "atlas_brainnetome.json:md5,c3383bee51f8705809beb6e4441253b1",
-                        "atlas_brainnetome.nii.gz:md5,9b596405a9655f7748c63c89401fb1bd",
-                        "fa.nii.gz:md5,b7c938027fe0d72e072e89877827368c",
-                        "map_gm.nii.gz:md5,17a3acdd50413ba24c698da8c796f813",
-                        "map_wm.nii.gz:md5,9d66fcae34ade57648209b0209d152e0",
-                        "mask_gm.nii.gz:md5,7db96262ef3d358a1ae496afa65d3bab",
-                        "mask_wm.nii.gz:md5,1df8e8e4efe84d526b5dd3e2c37d1c37"
-                    ],
-                    [
                         [
                             ".gitignore:md5,63638721e968d8bb26df823dfeb84151",
                             "meanstd_all.json:md5,263627e1f11003985b2938e55fcf3cde",
@@ -93,9 +83,6 @@
                             "sub-2120_rd.npy.dvc:md5,4191106058b2f08321a547bce3836b30"
                         ]
                     ]
-                ],
-                "1": [
-                    "versions.yml:md5,4968541ff1eead957b8f13ccb5a89dfb"
                 ],
                 "test_data_directory": [
                     [
@@ -109,16 +96,6 @@
                         "result_real_dwi_real_sbref.json:md5,22adcf1437117b643cf292a82e7f7552"
                     ],
                     [
-                        "ad.nii.gz:md5,f87b69283ecef92bc8e4f2b17ad504bf",
-                        "atlas_brainnetome.json:md5,c3383bee51f8705809beb6e4441253b1",
-                        "atlas_brainnetome.nii.gz:md5,9b596405a9655f7748c63c89401fb1bd",
-                        "fa.nii.gz:md5,b7c938027fe0d72e072e89877827368c",
-                        "map_gm.nii.gz:md5,17a3acdd50413ba24c698da8c796f813",
-                        "map_wm.nii.gz:md5,9d66fcae34ade57648209b0209d152e0",
-                        "mask_gm.nii.gz:md5,7db96262ef3d358a1ae496afa65d3bab",
-                        "mask_wm.nii.gz:md5,1df8e8e4efe84d526b5dd3e2c37d1c37"
-                    ],
-                    [
                         [
                             ".gitignore:md5,63638721e968d8bb26df823dfeb84151",
                             "meanstd_all.json:md5,263627e1f11003985b2938e55fcf3cde",
@@ -188,16 +165,13 @@
                             "sub-2120_rd.npy.dvc:md5,4191106058b2f08321a547bce3836b30"
                         ]
                     ]
-                ],
-                "versions": [
-                    "versions.yml:md5,4968541ff1eead957b8f13ccb5a89dfb"
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-15T19:35:11.556369"
+        "timestamp": "2024-07-26T15:46:38.950226"
     }
 }

@@ -22,12 +22,15 @@
                     },
                     "test__b0_mean.nii.gz:md5,f50e652bcdd1d45f7a4c592df7eb851a"
                 ]
+            ],
+            [
+                "versions.yml:md5,9e086ab052cde49b01096c3bc8f524c0"
             ]
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-04-29T15:40:07.558114"
+        "timestamp": "2024-07-22T03:44:06.877352"
     }
 }

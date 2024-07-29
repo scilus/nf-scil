@@ -12,12 +12,12 @@ process PREPROC_TOPUP {
 
     output:
         tuple val(meta), path("*__corrected_b0s.nii.gz"), emit: topup_corrected_b0s
-        tuple val(meta), path("*_fieldcoef.nii.gz"), emit: topup_fieldcoef
-        tuple val(meta), path("*_movpar.txt"), emit: topup_movpart
+        tuple val(meta), path("*_fieldcoef.nii.gz")     , emit: topup_fieldcoef
+        tuple val(meta), path("*_movpar.txt")           , emit: topup_movpart
         tuple val(meta), path("*__rev_b0_warped.nii.gz"), emit: rev_b0_warped
-        tuple val(meta), path("*__rev_b0_mean.nii.gz"), emit: rev_b0_mean
-        tuple val(meta), path("*__b0_mean.nii.gz"), emit: b0_mean
-        path "versions.yml"           , emit: versions
+        tuple val(meta), path("*__rev_b0_mean.nii.gz")  , emit: rev_b0_mean
+        tuple val(meta), path("*__b0_mean.nii.gz")      , emit: b0_mean
+        path "versions.yml"                             , emit: versions
 
     when:
     task.ext.when == null || task.ext.when

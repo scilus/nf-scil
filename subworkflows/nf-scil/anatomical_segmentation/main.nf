@@ -52,4 +52,3 @@ workflow ANATOMICAL_SEGMENTATION {
 
         versions = ch_versions                  // channel: [ versions.yml ]
 }
-

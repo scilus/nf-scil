@@ -30,7 +30,7 @@ jobs:
           node-version: "20"
 
       - name: Install Prettier
-        run: npm install -g prettier
+        run: npm install -g prettier@3.1.0
 
       - name: Run Prettier --check
         run: prettier --check .
@@ -54,26 +54,32 @@ jobs:
     name: nf-test-changes
     runs-on: ubuntu-latest
     outputs:
-      # Expose matched filters as job 'modules' output variable
-      modules: ${{ steps.filter.outputs.changes }}
+      paths: ${{ steps.changes.outputs.components }}
+      modules: ${{ steps.components.outputs.modules }}
+      subworkflows: ${{ steps.components.outputs.subworkflows }}
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2 # To retrieve the preceding commit.
+          fetch-depth: 0
 
-      - name: Combine all tags.yml files
-        id: get_tags
-        run: find . -name "tags.yml" -not -path "./.github/*" -exec cat {} + > .github/tags.yml
+      - name: List nf-test files
+        id: changes
+        uses: adamrtalbot/detect-nf-test-changes@v0.0.3
+        with:
+          head: ${{ github.sha }}
+          base: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha || github.event.before }}
+          n_parents: 2
+
+      - name: Separate modules and subworkflows
+        id: components
+        run: |
+          echo modules=$(echo '${{ steps.changes.outputs.components }}' | jq -c '. | map(select(contains("modules"))) | map(gsub("modules/nf-scil/"; ""))') >> $GITHUB_OUTPUT
+          echo subworkflows=$(echo '${{ steps.changes.outputs.components }}' | jq '. | map(select(contains("subworkflows"))) | map(gsub("subworkflows/nf-scil/"; ""))') >> $GITHUB_OUTPUT
 
       - name: debug
-        run: cat .github/tags.yml
-
-      # TODO: change back to using dorny/paths-filter when https://github.com/dorny/paths-filter/pull/133 is implemented
-      - uses: mirpedrol/paths-filter@main
-        id: filter
-        with:
-          filters: ".github/tags.yml"
-          token: ${{ github.token }}
+        run: |
+          echo ${{ steps.components.outputs.modules }}
+          echo ${{ steps.components.outputs.subworkflows }}
 
   lint-modules:
     name: lint-modules
@@ -84,33 +90,49 @@ jobs:
       matrix:
         module: [
           "${{ fromJson(needs.nf-test-changes.outputs.modules) }}"
-          ]
+        ]
     uses: ./.github/workflows/lint_module.yml
     with:
-      module: ${{ matrix.module }}
+      type: "module"
+      component: ${{ matrix.module }}
     secrets: inherit
 
-  nf-test-modules:
-    name: nf-test-modules
+  lint-subworkflows:
+    name: lint-subworkflows
     needs: [nf-test-changes]
-    if: needs.nf-test-changes.outputs.modules != '[]'
+    if: ${{ ( needs.nf-test-changes.outputs.subworkflows != '[]') }}
     strategy:
       fail-fast: false
       matrix:
-        module: ["${{ fromJson(needs.nf-test-changes.outputs.modules) }}"]
+        subworkflow: [
+          "${{ fromJson(needs.nf-test-changes.outputs.subworkflows) }}"
+        ]
+    uses: ./.github/workflows/lint_module.yml
+    with:
+      type: "subworkflow"
+      component: ${{ matrix.subworkflow }}
+    secrets: inherit
+
+  nf-test:
+    name: nf-test
+    needs: [nf-test-changes]
+    if: ${{ ( needs.nf-test-changes.outputs.paths != '[]' ) }}
+    strategy:
+      fail-fast: false
+      matrix:
+        path: [ "${{ fromJson(needs.nf-test-changes.outputs.paths) }}" ]
         profile: ["docker"]
         exclude:
-          - module: nf-test
-
+          - path: subworkflows/nf-scil/load_test_data
     uses: ./.github/workflows/nf-test_module.yml
     with:
-      module: ${{ matrix.module }}
       profile: ${{ matrix.profile }}
+      paths: ${{ matrix.path }}
     secrets: inherit
 
   confirm-pass:
     runs-on: ubuntu-latest
-    needs: [prettier, editorconfig, nf-test-changes, lint-modules, nf-test-modules]
+    needs: [prettier, editorconfig, nf-test-changes, lint-modules, lint-subworkflows, nf-test]
     if: ${{ !cancelled() }}
     steps:
       - name: All tests ok

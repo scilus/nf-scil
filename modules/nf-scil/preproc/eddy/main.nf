@@ -10,12 +10,11 @@ process PREPROC_EDDY {
         tuple val(meta), path(dwi), path(bval), path(bvec), path(rev_dwi), path(rev_bval), path(rev_bvec), path(corrected_b0s), path(topup_fieldcoef), path(topup_movpart)
 
     output:
-        tuple val(meta), path("*__dwi_corrected.nii.gz"), emit: dwi_corrected
-        tuple val(meta), path("*__bval_eddy"), emit: bval_corrected
+        tuple val(meta), path("*__dwi_corrected.nii.gz")   , emit: dwi_corrected
+        tuple val(meta), path("*__bval_eddy")              , emit: bval_corrected
         tuple val(meta), path("*__dwi_eddy_corrected.bvec"), emit: bvec_corrected
-        tuple val(meta), path("*__b0_bet_mask.nii.gz"), emit: b0_mask
-
-    path "versions.yml"           , emit: versions
+        tuple val(meta), path("*__b0_bet_mask.nii.gz")     , emit: b0_mask
+        path "versions.yml"                                , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
