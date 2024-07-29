@@ -40,7 +40,7 @@ process RECONST_FODF {
     def sh_order = task.ext.sh_order ? "--sh_order " + task.ext.sh_order : ""
     def sh_basis = task.ext.sh_basis ? "--sh_basis " + task.ext.sh_basis : ""
     def set_method = task.ext.method ? task.ext.method : "ssst"
-    def processes = task.ext.processes ? "--processes " + task.ext.processes : ""
+    def processes = task.cpus > 1 ? "--processes " + task.cpus : ""
     def set_mask = mask ? "--mask $mask" : ""
     def relative_threshold = task.ext.relative_threshold ? "--rt " + task.ext.relative_threshold : ""
     def fodf_metrics_a_factor = task.ext.fodf_metrics_a_factor ? task.ext.fodf_metrics_a_factor : 2.0
@@ -122,7 +122,7 @@ process RECONST_FODF {
             $set_mask $sh_basis $absolute_peaks \
             $peaks $peak_values $peak_indices \
             $afd_max $afd_total \
-            $afd_sum $nufo \
+            $afd_sum $nufo $processes \
             $relative_threshold --not_all --at \${a_threshold}
     fi
 
