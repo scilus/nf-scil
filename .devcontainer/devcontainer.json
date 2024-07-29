@@ -83,8 +83,7 @@
                 "AlexVCaron.nf-scil-extensions",
                 "ms-python.autopep8",
                 "ms-python.vscode-pylance",
-                "mutantdino.resourcemonitor",
-                "KorbinianEckstein.niivue"
+                "mutantdino.resourcemonitor"
             ]
         }
     },

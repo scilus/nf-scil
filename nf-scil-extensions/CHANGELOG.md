@@ -1,9 +1,5 @@
 # Change Log
 
-All notable changes to the "nf-scil-extensions" extension pack will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
 ## [Unreleased]
 
 ## [0.0.1] - 2023-11-10
@@ -13,3 +9,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.2] - 2023-11-14
 
 - Add Git Graph to the package
+
+## [0.0.4] - 2024-09-29
+
+- Add NiiVue to the package
+- Lean down package list to follow included extension packages
