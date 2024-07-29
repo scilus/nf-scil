@@ -28,6 +28,11 @@ input:
       description: Nifti dwi file to denoise
       pattern: "*.{nii,nii.gz}"
 
+  - mask:
+      type: file
+      description: Nifti mask file for the dwi, optional
+      pattern: "*.{nii,nii.gz}"
+
 output:
   - meta:
       type: map

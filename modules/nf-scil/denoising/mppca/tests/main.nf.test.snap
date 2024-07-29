@@ -5,10 +5,9 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test_dwi_denoised.nii.gz:md5,f0efe6163677a0e5aca9756125f55c16"
+                        "test_dwi_denoised.nii.gz:md5,7ede52f321a38e6d171c01504b2e5b4c"
                     ]
                 ],
                 "1": [
@@ -17,10 +16,9 @@
                 "image": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test_dwi_denoised.nii.gz:md5,f0efe6163677a0e5aca9756125f55c16"
+                        "test_dwi_denoised.nii.gz:md5,7ede52f321a38e6d171c01504b2e5b4c"
                     ]
                 ],
                 "versions": [
@@ -32,6 +30,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-27T01:45:10.310484"
+        "timestamp": "2024-07-29T03:06:13.465555"
     }
 }

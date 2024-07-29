@@ -19,6 +19,7 @@ process DENOISING_NLMEANS {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def ncoils = task.ext.number_of_coils ?: 1
     def args = ["--processes $task.cpus"]
     if (mask) args += ["--mask $mask"]
 
@@ -27,7 +28,7 @@ process DENOISING_NLMEANS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_denoising_nlmeans.py $image ${prefix}_denoised.nii.gz 1 ${args.join(" ")}
+    scil_denoising_nlmeans.py $image ${prefix}_denoised.nii.gz $ncoils ${args.join(" ")}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
