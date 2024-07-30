@@ -19,7 +19,7 @@ nextflow_process {
                 script "../../../../../subworkflows/nf-scil/load_test_data/main.nf"
                 process {
                     """
-                    input[0] = Channel.from( [ "raw_DWIss1000-dir32.zip", "topup_results.zip" ] )
+                    input[0] = Channel.from( [ "raw_DWIss1000-dir32.zip", "TOPUP.zip" ] )
                     input[1] = "test.load-test-data"
                     """
                 }
@@ -33,7 +33,7 @@ nextflow_process {
                 ch_split_test_data = LOAD_DATA.out.test_data_directory
                     .branch{
                         raw_dwi: it.simpleName == "raw_DWIss1000-dir32"
-                        topup_results: it.SimpleName == "topup_results"
+                        topup_results: it.SimpleName == "TOPUP"
                     }
                 ch_raw_dwi = ch_split_test_data.raw_dwi
                     .map{ test_data_directory -> [

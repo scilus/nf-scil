@@ -31,7 +31,7 @@ workflow PREPROC_DWI {
             }
 
         // ** Denoised DWI ** //
-        DENOISE_DWI ( ch_denoise_dwi.dwi )
+        DENOISE_DWI ( ch_denoise_dwi.dwi.map{ it + [[]] } )
         ch_versions = ch_versions.mix(DENOISE_DWI.out.versions.first())
 
         ch_denoise_rev_dwi = ch_rev_dwi
@@ -40,7 +40,7 @@ workflow PREPROC_DWI {
                 rev_bvs_files: [ meta, bval, bvec ]
             }
         // ** Denoised reverse DWI ** //
-        DENOISE_REVDWI ( ch_denoise_rev_dwi.rev_dwi )
+        DENOISE_REVDWI ( ch_denoise_rev_dwi.rev_dwi.map{ it + [[]] } )
         ch_versions = ch_versions.mix(DENOISE_REVDWI.out.versions.first())
 
         ch_topup_eddy_rev_dwi = DENOISE_REVDWI.out.image

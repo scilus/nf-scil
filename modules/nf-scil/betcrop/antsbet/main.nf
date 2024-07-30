@@ -8,7 +8,7 @@ process BETCROP_ANTSBET {
         'scilus/scilus:2.0.0' }"
 
     input:
-    tuple val(meta), path(t1), path(template), path(tissues_probabilities)
+    tuple val(meta), path(t1), path(template), path(tissues_probabilities), path(mask), path(initial_affine)
 
     output:
     tuple val(meta), path("*t1_bet.nii.gz")     , emit: t1
@@ -19,8 +19,10 @@ process BETCROP_ANTSBET {
     task.ext.when == null || task.ext.when
 
     script:
-    def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def args = []
+    if (mask) args += ["-f $mask"]
+    if (initial_affine) args += ["-r $initial_affine"]
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=$task.cpus
@@ -28,8 +30,12 @@ process BETCROP_ANTSBET {
     export OPENBLAS_NUM_THREADS=1
     export ANTS_RANDOM_SEED=1234
 
-    antsBrainExtraction.sh -d 3 -a $t1 -e $template -o bet/ -m $tissues_probabilities -u 0
-    scil_volume_math.py convert bet/BrainExtractionMask.nii.gz ${prefix}__t1_bet_mask.nii.gz --data_type uint8
+    antsBrainExtraction.sh -d 3 -a $t1 -o bet/ -u 0 \
+        -e $template -m $tissues_probabilities ${args.join(' ')}
+
+    scil_volume_math.py convert bet/BrainExtractionMask.nii.gz \
+        ${prefix}__t1_bet_mask.nii.gz --data_type uint8
+
     mrcalc $t1 ${prefix}__t1_bet_mask.nii.gz -mult ${prefix}__t1_bet.nii.gz -nthreads $task.cpus
 
     cat <<-END_VERSIONS > versions.yml
