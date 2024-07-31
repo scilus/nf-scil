@@ -76,6 +76,11 @@ input:
         The metrics has to follow a specific naming convention.
       pattern: "*_{bundle_name}_{metric_name}.nii.gz"
 
+  - lesions:
+      type: file
+      description: Nifti lesion volume to compute statistics on. The lesion mask must be a binary mask.
+      pattern: "*.nii.gz"
+
 output:
   - meta:
       type: map
@@ -108,20 +113,40 @@ output:
       description: Evaluate basic measurements of bundle(s).
       pattern: "*__volume.json"
 
+  - volume_lesions:
+      type: file
+      description: Compute bundle volume in each lesions in mm3.
+      pattern: "*__volume_lesion.json"
+
   - streamline_count:
       type: file
       description: Return the number of streamlines in a tractogram.
       pattern: "*__streamline_count.json"
+
+  - streamline_count_lesions:
+      type: file
+      description: Return the number of streamlines in each lesions.
+      pattern: "*__streamline_count_lesions.json"
 
   - volume_per_labels:
       type: file
       description: Compute bundle volume per label in mm3. This script supports anisotropic voxels resolution. Volume is estimated by counting the number of voxel occupied by each label and multiplying it by the volume of a single voxel.
       pattern: "*__volume_per_label.json"
 
+  - volume_per_labels_lesions:
+      type: file
+      description: Compute bundle volume per label in each lesions in mm3.
+      pattern: "*__volume_per_label_lesions.json"
+
   - mean_std_per_point:
       type: file
       description: Average the metric values of all voxels occupied by the bundle per label.
       pattern: "*__mean_std_per_point.json"
+
+  - lesion_stats:
+      type: file
+      description: File of the lesion-wise volume measure.
+      pattern: "*_lesion_stats.json"
 
   - endpoints_head:
       type: file
@@ -131,6 +156,11 @@ output:
   - endpoints_tail:
       type: file
       description: Endpoint tail map of bundle. The endpoint tail map is simply a count of the number of streamlines that end in each voxel.
+      pattern: "*.nii.gz"
+
+  - lesion_map:
+      type: file
+      description: Nifti files of labelized lesion(s) map for each bundles.
       pattern: "*.nii.gz"
 
   - versions:

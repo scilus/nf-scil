@@ -1,4 +1,111 @@
 {
+    "bundle - stats - lesions": {
+        "content": [
+            {
+                "0": [
+                    
+                ],
+                "1": [
+                    
+                ],
+                "10": [
+                    
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    
+                ],
+                "15": [
+                    
+                ],
+                "2": [
+                    
+                ],
+                "3": [
+                    
+                ],
+                "4": [
+                    
+                ],
+                "5": [
+                    
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
+                    
+                ],
+                "9": [
+                    
+                ],
+                "endpoints_head": [
+                    
+                ],
+                "endpoints_metric_stats": [
+                    
+                ],
+                "endpoints_raw": [
+                    
+                ],
+                "endpoints_tail": [
+                    
+                ],
+                "length": [
+                    
+                ],
+                "lesion_map": [
+                    
+                ],
+                "lesion_stats": [
+                    
+                ],
+                "mean_std": [
+                    
+                ],
+                "mean_std_per_point": [
+                    
+                ],
+                "streamline_count": [
+                    
+                ],
+                "streamline_count_lesions": [
+                    
+                ],
+                "versions": [
+                    
+                ],
+                "volume": [
+                    
+                ],
+                "volume_lesions": [
+                    
+                ],
+                "volume_per_labels": [
+                    
+                ],
+                "volume_per_labels_lesions": [
+                    
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-07-31T20:54:54.296906"
+    },
     "bundle - stats": {
         "content": [
             {
@@ -21,6 +128,39 @@
                     ]
                 ],
                 "10": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "13": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "14": [
+                    
+                ],
+                "15": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
@@ -54,6 +194,12 @@
                     
                 ],
                 "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
                     [
                         {
                             "id": "test",
@@ -62,32 +208,8 @@
                         "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
                 ],
-                "7": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
-                    ]
-                ],
-                "8": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
-                    ]
-                ],
                 "9": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
-                    ]
+                    
                 ],
                 "endpoints_head": [
                     [
@@ -134,6 +256,12 @@
                         "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
                     ]
                 ],
+                "lesion_map": [
+                    
+                ],
+                "lesion_stats": [
+                    
+                ],
                 "mean_std": [
                     [
                         {
@@ -155,6 +283,9 @@
                 "streamline_count": [
                     
                 ],
+                "streamline_count_lesions": [
+                    
+                ],
                 "versions": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
@@ -167,6 +298,9 @@
                         "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
                     ]
                 ],
+                "volume_lesions": [
+                    
+                ],
                 "volume_per_labels": [
                     [
                         {
@@ -175,14 +309,17 @@
                         },
                         "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
+                ],
+                "volume_per_labels_lesions": [
+                    
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
         },
-        "timestamp": "2024-06-12T14:39:41.886782"
+        "timestamp": "2024-07-31T20:52:19.29951"
     },
     "bundle - stats - light": {
         "content": [
@@ -194,6 +331,21 @@
                     
                 ],
                 "10": [
+                    
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    
+                ],
+                "15": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
@@ -206,6 +358,9 @@
                     
                 ],
                 "5": [
+                    
+                ],
+                "6": [
                     [
                         {
                             "id": "test",
@@ -213,9 +368,6 @@
                         },
                         "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
-                ],
-                "6": [
-                    
                 ],
                 "7": [
                     
@@ -241,6 +393,12 @@
                 "length": [
                     
                 ],
+                "lesion_map": [
+                    
+                ],
+                "lesion_stats": [
+                    
+                ],
                 "mean_std": [
                     
                 ],
@@ -256,21 +414,30 @@
                         "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
                 ],
+                "streamline_count_lesions": [
+                    
+                ],
                 "versions": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "volume": [
                     
                 ],
+                "volume_lesions": [
+                    
+                ],
                 "volume_per_labels": [
+                    
+                ],
+                "volume_per_labels_lesions": [
                     
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
         },
-        "timestamp": "2024-06-12T14:39:53.476493"
+        "timestamp": "2024-07-31T20:52:29.344762"
     }
 }
