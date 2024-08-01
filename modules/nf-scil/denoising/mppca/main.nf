@@ -20,7 +20,7 @@ process DENOISING_MPPCA {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def extent = task.ext.extent ? "-extent " + task.ext.extent : ""
-    def args = ["-nthreads $task.cpus"]
+    def args = ["-nthreads ${task.cpus - 1}"]
     if (mask) args += ["-mask $mask"]
 
     """
