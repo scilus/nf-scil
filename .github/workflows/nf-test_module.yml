@@ -119,6 +119,18 @@ jobs:
           path: >-
             test.tap
 
+      - name: Tests logs
+        if: failure()
+        run: |
+            shopt -s globstar
+            for f in /home/runner/_work/.nf-test/**/work/**/.command.log
+            do
+
+            echo "$(sed '3q;d' $(dirname $f)/.command.run)"
+            cat $f
+
+            done
+
       - name: Clean up
         if: always()
         run: |

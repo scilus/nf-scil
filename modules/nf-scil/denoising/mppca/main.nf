@@ -8,7 +8,7 @@ process DENOISING_MPPCA {
         'scilus/scilus:2.0.0' }"
 
     input:
-    tuple val(meta), path(dwi)
+    tuple val(meta), path(dwi), path(mask)
 
     output:
     tuple val(meta), path("*_dwi_denoised.nii.gz")  , emit: image
@@ -20,6 +20,8 @@ process DENOISING_MPPCA {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def extent = task.ext.extent ? "-extent " + task.ext.extent : ""
+    def args = ["-nthreads ${task.cpus - 1}"]
+    if (mask) args += ["-mask $mask"]
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -27,7 +29,7 @@ process DENOISING_MPPCA {
     export OPENBLAS_NUM_THREADS=1
     export MRTRIX_RNG_SEED=12345
 
-    dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent -nthreads ${task.cpus - 1} -debug
+    dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent ${args.join(" ")} -debug
     fslmaths ${prefix}_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
 
     cat <<-END_VERSIONS > versions.yml
