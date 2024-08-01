@@ -124,11 +124,7 @@ jobs:
         if: failure()
         run: |
             shopt -s globstar
-            ls -lha /home/runner/_work
-            ls -lha /home/runner/_work/tmpdir
-            ls -lha /home/runner/_work/nf-scil
-            ls -lha /home/runner/_work/nf-scil/nf-scil
-            for f in /home/runner/_work/nf-scil/nf-scil/.nf-test/**/work/**/.command.log
+            for f in /home/runner/_work/tests/**/work/**/.command.log
             do
 
             echo "$(sed '3q;d' $(dirname $f)/.command.run)"
