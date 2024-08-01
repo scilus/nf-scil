@@ -115,6 +115,7 @@ jobs:
             ${{ inputs.paths }}
 
       - uses: pcolby/tap-summary@v1
+        if: always()
         with:
           path: >-
             test.tap
