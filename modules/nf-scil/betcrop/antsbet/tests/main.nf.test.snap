@@ -7,7 +7,7 @@
                         {
                             "id": "test"
                         },
-                        "test__t1_bet.nii.gz:md5,fd07e75d77b8844ebde0de5dc2195cd2"
+                        "test__t1_bet.nii.gz:md5,7e123ce5b3485dcf59189626b372a998"
                     ]
                 ],
                 "1": [
@@ -15,7 +15,7 @@
                         {
                             "id": "test"
                         },
-                        "test__t1_bet_mask.nii.gz:md5,add51bfdfc249738f3431999fa8dd08b"
+                        "test__t1_bet_mask.nii.gz:md5,d19f11a798ced79cc8d1e0cb5fc6294b"
                     ]
                 ],
                 "2": [
@@ -26,7 +26,7 @@
                         {
                             "id": "test"
                         },
-                        "test__t1_bet_mask.nii.gz:md5,add51bfdfc249738f3431999fa8dd08b"
+                        "test__t1_bet_mask.nii.gz:md5,d19f11a798ced79cc8d1e0cb5fc6294b"
                     ]
                 ],
                 "t1": [
@@ -34,7 +34,7 @@
                         {
                             "id": "test"
                         },
-                        "test__t1_bet.nii.gz:md5,fd07e75d77b8844ebde0de5dc2195cd2"
+                        "test__t1_bet.nii.gz:md5,7e123ce5b3485dcf59189626b372a998"
                     ]
                 ],
                 "versions": [
@@ -46,6 +46,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-08-01T04:15:42.462954"
+        "timestamp": "2024-08-01T04:39:54.352166"
     }
 }
