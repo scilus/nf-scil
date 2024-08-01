@@ -112,6 +112,7 @@ jobs:
             --profile=$PROFILE \
             --tap=test.tap \
             --verbose \
+            --debug \
             ${{ inputs.paths }}
 
       - uses: pcolby/tap-summary@v1
@@ -123,7 +124,11 @@ jobs:
         if: failure()
         run: |
             shopt -s globstar
-            for f in /home/runner/_work/.nf-test/**/work/**/.command.log
+            ls -lha /home/runner/_work
+            ls -lha /home/runner/_work/tmpdir
+            ls -lha /home/runner/_work/nf-scil
+            ls -lha /home/runner/_work/nf-scil/nf-scil
+            for f in /home/runner/_work/nf-scil/nf-scil/.nf-test/**/work/**/.command.log
             do
 
             echo "$(sed '3q;d' $(dirname $f)/.command.run)"
