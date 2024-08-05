@@ -133,6 +133,7 @@ jobs:
             done
 
       - name: Upload images as artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: image_artifacts
