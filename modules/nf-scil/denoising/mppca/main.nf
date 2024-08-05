@@ -4,8 +4,8 @@ process DENOISING_MPPCA {
     label 'process_single'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
-        'scilus/scilus:2.0.0' }"
+        'https://scil.usherbrooke.ca/containers/scilus_2.0.2.sif':
+        'scilus/scilus:2.0.2' }"
 
     input:
     tuple val(meta), path(dwi), path(mask)
@@ -30,12 +30,13 @@ process DENOISING_MPPCA {
     export MRTRIX_RNG_SEED=12345
 
     dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent ${args.join(" ")} -debug
-    fslmaths ${prefix}_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
+    scil_volume_math.py lower_clip ${prefix}_dwi_denoised.nii.gz 0 \
+        ${prefix}_dwi_denoised.nii.gz -f
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
-        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
+        scilpy: \$(pip list | grep scilpy | tr -s ' ' | cut -d' ' -f2)
     END_VERSIONS
     """
 
@@ -52,7 +53,7 @@ process DENOISING_MPPCA {
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         mrtrix: \$(mrcalc -version 2>&1 | sed -n 's/== mrcalc \\([0-9.]\\+\\).*/\\1/p')
-        fsl: \$(flirt -version 2>&1 | sed -n 's/FLIRT version \\([0-9.]\\+\\)/\\1/p')
+        scilpy: \$(pip list | grep scilpy | tr -s ' ' | cut -d' ' -f2)
     END_VERSIONS
     """
 }
