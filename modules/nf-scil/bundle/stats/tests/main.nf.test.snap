@@ -1,4 +1,279 @@
 {
+    "bundle - stats - lesions": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                    ]
+                ],
+                "10": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "11": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__lesion_stats.json:md5,cefff165378a416816c1c7a644c4969c"
+                    ]
+                ],
+                "12": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "13": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "14": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__IFGWM.trk_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
+                    ]
+                ],
+                "15": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_lesions.json:md5,6221f9954d93904de992d5b7af99bcce"
+                    ]
+                ],
+                "6": [
+                    
+                ],
+                "7": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_streamline_count_lesions.json:md5,08433569dd80f6b1dd53193e7cf446d6"
+                    ]
+                ],
+                "8": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                    ]
+                ],
+                "9": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label_lesions.json:md5,b9138245af55e3becd3c9e2bec2c9821"
+                    ]
+                ],
+                "endpoints_head": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "endpoints_metric_stats": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_metric_stats.json:md5,d13e29a5d9dd09e8b5a2d40b3b61b3a9"
+                    ]
+                ],
+                "endpoints_raw": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_endpoints_map_raw.json:md5,2a86a4d10878c942c09723c3122940b4"
+                    ]
+                ],
+                "endpoints_tail": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "length": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
+                    ]
+                ],
+                "lesion_map": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__IFGWM.trk_lesion_map.nii.gz:md5,390c8abfcfa2533367099c9fac26ee21"
+                    ]
+                ],
+                "lesion_stats": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__lesion_stats.json:md5,cefff165378a416816c1c7a644c4969c"
+                    ]
+                ],
+                "mean_std": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std.json:md5,f7463e5519063f7e0f32709d0dfdc1a2"
+                    ]
+                ],
+                "mean_std_per_point": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "streamline_count": [
+                    
+                ],
+                "streamline_count_lesions": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_streamline_count_lesions.json:md5,08433569dd80f6b1dd53193e7cf446d6"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
+                ],
+                "volume": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
+                    ]
+                ],
+                "volume_lesions": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_lesions.json:md5,6221f9954d93904de992d5b7af99bcce"
+                    ]
+                ],
+                "volume_per_labels": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
+                    ]
+                ],
+                "volume_per_labels_lesions": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_volume_per_label_lesions.json:md5,b9138245af55e3becd3c9e2bec2c9821"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
+        },
+        "timestamp": "2024-08-01T13:47:29.33467"
+    },
     "bundle - stats": {
         "content": [
             {
@@ -21,6 +296,39 @@
                     ]
                 ],
                 "10": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
+                    ]
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
+                    ]
+                ],
+                "13": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
+                    ]
+                ],
+                "14": [
+                    
+                ],
+                "15": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
@@ -54,6 +362,12 @@
                     
                 ],
                 "6": [
+                    
+                ],
+                "7": [
+                    
+                ],
+                "8": [
                     [
                         {
                             "id": "test",
@@ -62,32 +376,8 @@
                         "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
                 ],
-                "7": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "test_mean_std_per_point.json:md5,efcac000fb6c0f607b7377154e68854c"
-                    ]
-                ],
-                "8": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_map_head.nii.gz:md5,444b8e3e40f4694b84a1fb5a2be8a52f"
-                    ]
-                ],
                 "9": [
-                    [
-                        {
-                            "id": "test",
-                            "single_end": false
-                        },
-                        "IFGWM_endpoints_map_tail.nii.gz:md5,a4cb0339f71c17a8703e920e0eb4916a"
-                    ]
+                    
                 ],
                 "endpoints_head": [
                     [
@@ -134,6 +424,12 @@
                         "test_length_stats.json:md5,72873da12072e254f369ec316911df28"
                     ]
                 ],
+                "lesion_map": [
+                    
+                ],
+                "lesion_stats": [
+                    
+                ],
                 "mean_std": [
                     [
                         {
@@ -155,6 +451,9 @@
                 "streamline_count": [
                     
                 ],
+                "streamline_count_lesions": [
+                    
+                ],
                 "versions": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
@@ -167,6 +466,9 @@
                         "test_volume.json:md5,f2cf5bbf678b0d364f26120ad10900ae"
                     ]
                 ],
+                "volume_lesions": [
+                    
+                ],
                 "volume_per_labels": [
                     [
                         {
@@ -175,14 +477,17 @@
                         },
                         "test_volume_per_label.json:md5,1ba8e9d51cc2dec86fdaa4498488424b"
                     ]
+                ],
+                "volume_per_labels_lesions": [
+                    
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
         },
-        "timestamp": "2024-06-12T14:39:41.886782"
+        "timestamp": "2024-08-01T13:42:36.266056"
     },
     "bundle - stats - light": {
         "content": [
@@ -194,6 +499,21 @@
                     
                 ],
                 "10": [
+                    
+                ],
+                "11": [
+                    
+                ],
+                "12": [
+                    
+                ],
+                "13": [
+                    
+                ],
+                "14": [
+                    
+                ],
+                "15": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "2": [
@@ -206,6 +526,9 @@
                     
                 ],
                 "5": [
+                    
+                ],
+                "6": [
                     [
                         {
                             "id": "test",
@@ -213,9 +536,6 @@
                         },
                         "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
-                ],
-                "6": [
-                    
                 ],
                 "7": [
                     
@@ -241,6 +561,12 @@
                 "length": [
                     
                 ],
+                "lesion_map": [
+                    
+                ],
+                "lesion_stats": [
+                    
+                ],
                 "mean_std": [
                     
                 ],
@@ -256,21 +582,30 @@
                         "test_streamline_count.json:md5,bedf1fbd223dd47d9a8970dc779f296f"
                     ]
                 ],
+                "streamline_count_lesions": [
+                    
+                ],
                 "versions": [
                     "versions.yml:md5,c22283763660c5778cdd9c34c64200bd"
                 ],
                 "volume": [
                     
                 ],
+                "volume_lesions": [
+                    
+                ],
                 "volume_per_labels": [
+                    
+                ],
+                "volume_per_labels_lesions": [
                     
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.3"
         },
-        "timestamp": "2024-06-12T14:39:53.476493"
+        "timestamp": "2024-08-01T13:42:46.785058"
     }
 }
