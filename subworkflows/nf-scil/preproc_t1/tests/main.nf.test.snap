@@ -17,7 +17,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__image_n4.nii.gz:md5,f9b1e5305c8c176c8ef72168b8a33f2d"
+                        "test__image_n4.nii.gz:md5,c160137c26b8b11402f463227ee28d6e"
                     ]
                 ],
                 "2": [
@@ -26,7 +26,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__resampled.nii.gz:md5,a16a9d32732752b40f699cea2fb046bd"
+                        "test_resampled.nii.gz:md5,06e452615bb075f5f3a5a80c220707f3"
                     ]
                 ],
                 "3": [
@@ -35,7 +35,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet.nii.gz:md5,f0a2be8bc64bb8b0311bb7022e177623"
+                        "test__t1_bet.nii.gz:md5,93b0d252e8885d8d939e747d5fe6d0a7"
                     ]
                 ],
                 "4": [
@@ -44,7 +44,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet_mask.nii.gz:md5,bdafc62e0e2ab35d0d48e1021d0a82db"
+                        "test__t1_bet_mask.nii.gz:md5,fb6c01740be1bbe81d4142719f0a3f50"
                     ]
                 ],
                 "5": [
@@ -53,7 +53,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped_bbox.pkl:md5,39a3444e23d7ea6478ef1213f88e7715"
+                        "test_t1_cropped_bbox.pkl:md5,56a715cd7f758999c586145c95c385e4"
                     ]
                 ],
                 "6": [
@@ -62,7 +62,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_cropped.nii.gz:md5,02b2ca05a95c8494a85cda69ebe6d5e7"
+                        "test_cropped.nii.gz:md5,67fb0c639d0369d4530913bb97ef709c"
                     ]
                 ],
                 "7": [
@@ -71,7 +71,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped.nii.gz:md5,593d0b155da379bb41e8557ea5f9b92e"
+                        "test_t1_cropped.nii.gz:md5,18454290250b0a5941b9949b9e92dc66"
                     ]
                 ],
                 "8": [
@@ -88,7 +88,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped_bbox.pkl:md5,39a3444e23d7ea6478ef1213f88e7715"
+                        "test_t1_cropped_bbox.pkl:md5,56a715cd7f758999c586145c95c385e4"
                     ]
                 ],
                 "image_N4": [
@@ -97,7 +97,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__image_n4.nii.gz:md5,f9b1e5305c8c176c8ef72168b8a33f2d"
+                        "test__image_n4.nii.gz:md5,c160137c26b8b11402f463227ee28d6e"
                     ]
                 ],
                 "image_bet": [
@@ -106,7 +106,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet.nii.gz:md5,f0a2be8bc64bb8b0311bb7022e177623"
+                        "test__t1_bet.nii.gz:md5,93b0d252e8885d8d939e747d5fe6d0a7"
                     ]
                 ],
                 "image_nlmeans": [
@@ -124,7 +124,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__resampled.nii.gz:md5,a16a9d32732752b40f699cea2fb046bd"
+                        "test_resampled.nii.gz:md5,06e452615bb075f5f3a5a80c220707f3"
                     ]
                 ],
                 "mask_bet": [
@@ -133,7 +133,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet_mask.nii.gz:md5,bdafc62e0e2ab35d0d48e1021d0a82db"
+                        "test__t1_bet_mask.nii.gz:md5,fb6c01740be1bbe81d4142719f0a3f50"
                     ]
                 ],
                 "mask_final": [
@@ -142,7 +142,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_cropped.nii.gz:md5,02b2ca05a95c8494a85cda69ebe6d5e7"
+                        "test_cropped.nii.gz:md5,67fb0c639d0369d4530913bb97ef709c"
                     ]
                 ],
                 "t1_final": [
@@ -151,7 +151,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped.nii.gz:md5,593d0b155da379bb41e8557ea5f9b92e"
+                        "test_t1_cropped.nii.gz:md5,18454290250b0a5941b9949b9e92dc66"
                     ]
                 ],
                 "versions": [
@@ -165,10 +165,10 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-10T19:57:38.341812"
+        "timestamp": "2024-06-21T01:37:51.279144"
     },
     "preproc_t1_classic": {
         "content": [
@@ -188,7 +188,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__image_n4.nii.gz:md5,ef0d9af46aa1e330c5d7679ead500596"
+                        "test__image_n4.nii.gz:md5,22f8703764e0faa5acdb97e5ca28f060"
                     ]
                 ],
                 "2": [
@@ -197,7 +197,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__resampled.nii.gz:md5,88bae6bfeea1734111621b437e09548d"
+                        "test_resampled.nii.gz:md5,e4220a9c0ff443b98e1c492b00d57031"
                     ]
                 ],
                 "3": [
@@ -206,7 +206,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet.nii.gz:md5,016f12c75e3543c27987a91eb2160a19"
+                        "test__t1_bet.nii.gz:md5,c09879d6ea63f7bacf2a8c9820d95f0a"
                     ]
                 ],
                 "4": [
@@ -215,7 +215,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet_mask.nii.gz:md5,cf0cc416ca8b352d3cba58d9132ab0da"
+                        "test__t1_bet_mask.nii.gz:md5,807b6cdb41a8b53ba8f8de44b1fd36f9"
                     ]
                 ],
                 "5": [
@@ -224,7 +224,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped_bbox.pkl:md5,5d9bd5d9c068031f34c34223b5892153"
+                        "test_t1_cropped_bbox.pkl:md5,ef8174257c4db4009e18dfb082a784e1"
                     ]
                 ],
                 "6": [
@@ -233,7 +233,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_cropped.nii.gz:md5,aee59cb0bf2a4e14bfe116dc68be365b"
+                        "test_cropped.nii.gz:md5,9c2cbf03b77336166e3e3eb820808e93"
                     ]
                 ],
                 "7": [
@@ -242,7 +242,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped.nii.gz:md5,f4bea1286a90760eecf348dd9bffd2e6"
+                        "test_t1_cropped.nii.gz:md5,505134ee3ab95dcbe0fdf787771c1402"
                     ]
                 ],
                 "8": [
@@ -259,7 +259,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped_bbox.pkl:md5,5d9bd5d9c068031f34c34223b5892153"
+                        "test_t1_cropped_bbox.pkl:md5,ef8174257c4db4009e18dfb082a784e1"
                     ]
                 ],
                 "image_N4": [
@@ -268,7 +268,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__image_n4.nii.gz:md5,ef0d9af46aa1e330c5d7679ead500596"
+                        "test__image_n4.nii.gz:md5,22f8703764e0faa5acdb97e5ca28f060"
                     ]
                 ],
                 "image_bet": [
@@ -277,7 +277,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet.nii.gz:md5,016f12c75e3543c27987a91eb2160a19"
+                        "test__t1_bet.nii.gz:md5,c09879d6ea63f7bacf2a8c9820d95f0a"
                     ]
                 ],
                 "image_nlmeans": [
@@ -295,7 +295,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__resampled.nii.gz:md5,88bae6bfeea1734111621b437e09548d"
+                        "test_resampled.nii.gz:md5,e4220a9c0ff443b98e1c492b00d57031"
                     ]
                 ],
                 "mask_bet": [
@@ -304,7 +304,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test__t1_bet_mask.nii.gz:md5,cf0cc416ca8b352d3cba58d9132ab0da"
+                        "test__t1_bet_mask.nii.gz:md5,807b6cdb41a8b53ba8f8de44b1fd36f9"
                     ]
                 ],
                 "mask_final": [
@@ -313,7 +313,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_cropped.nii.gz:md5,aee59cb0bf2a4e14bfe116dc68be365b"
+                        "test_cropped.nii.gz:md5,9c2cbf03b77336166e3e3eb820808e93"
                     ]
                 ],
                 "t1_final": [
@@ -322,7 +322,7 @@
                             "id": "test",
                             "single_end": false
                         },
-                        "test_t1_cropped.nii.gz:md5,f4bea1286a90760eecf348dd9bffd2e6"
+                        "test_t1_cropped.nii.gz:md5,505134ee3ab95dcbe0fdf787771c1402"
                     ]
                 ],
                 "versions": [
@@ -336,9 +336,9 @@
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.2"
         },
-        "timestamp": "2024-05-10T19:36:04.155481"
+        "timestamp": "2024-06-22T00:07:42.03345"
     }
 }

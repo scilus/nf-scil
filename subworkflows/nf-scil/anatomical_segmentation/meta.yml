@@ -55,21 +55,21 @@ output:
         segmentation method and inputs provided.
         Structure: [ val(meta), path(csf_mask) ]
       pattern: "*.{nii,nii.gz}"
-  - wm_maps:
+  - wm_map:
       type: file
       description: |
         Channel containing WM probability maps. Will be only outputted if FSL's fast segmentation
         is used and not with FreeSurfer's parcellation files.
         Structure: [ val(meta), path(wm_maps) ]
       pattern: "*.{nii,nii.gz}"
-  - gm_maps:
+  - gm_map:
       type: file
       description: |
         Channel containing GM probability maps. Will be only outputted if FSL's fast segmentation
         is used and not with FreeSurfer's parcellation files.
         Structure: [ val(meta), path(gm_maps) ]
       pattern: "*.{nii,nii.gz}"
-  - csf_maps:
+  - csf_map:
       type: file
       description: |
         Channel containing CSF probability maps. Will be only outputted if FSL's fast segmentation

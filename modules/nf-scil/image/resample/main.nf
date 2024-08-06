@@ -1,6 +1,7 @@
 process IMAGE_RESAMPLE {
     tag "$meta.id"
     label 'process_single'
+    label 'process_high_memory'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://scil.usherbrooke.ca/containers/scilus_2.0.1.sif':
@@ -18,6 +19,7 @@ process IMAGE_RESAMPLE {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def suffix = task.ext.first_suffix ? "${task.ext.first_suffix}_resampled" : "resampled"
     def reference = "$ref" ? "--ref $ref" : ""
     def voxel_size = task.ext.voxel_size ? "--voxel_size " + task.ext.voxel_size : ""
     def volume_size = task.ext.volume_size ? "--volume_size " + task.ext.volume_size : ""
@@ -31,10 +33,9 @@ process IMAGE_RESAMPLE {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_volume_resample.py $image ${prefix}__resampled.nii.gz \
+    scil_volume_resample.py $image ${prefix}_${suffix}.nii.gz \
         $voxel_size $volume_size $reference $iso_min \
         $f $enforce_dimensions $interp
-
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

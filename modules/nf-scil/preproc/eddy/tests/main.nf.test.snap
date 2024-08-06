@@ -8,7 +8,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__bval_eddy:md5,4c61c53078316c31b4d5daf446a3d6ac"
+                    "test__bval_eddy:md5,7995daabbd74fcf7c365a39a779f67e9"
                 ]
             ],
             "test__dwi_eddy_corrected.bvec",
@@ -18,7 +18,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__b0_bet_mask.nii.gz:md5,fc1f94e2a5e2cf5197d7fdc28a83ca28"
+                    "test__b0_bet_mask.nii.gz:md5,f7593774c048491bbe1e08ad43077301"
                 ]
             ],
             [
@@ -29,6 +29,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-22T03:27:48.011429"
+        "timestamp": "2024-07-04T18:30:02.443274"
     }
 }

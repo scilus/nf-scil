@@ -1,7 +1,7 @@
 
 process DENOISING_NLMEANS {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
@@ -19,7 +19,8 @@ process DENOISING_NLMEANS {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
-    def args = []
+    def ncoils = task.ext.number_of_coils ?: 1
+    def args = ["--processes $task.cpus"]
     if (mask) args += ["--mask $mask"]
 
     """
@@ -27,7 +28,7 @@ process DENOISING_NLMEANS {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    scil_denoising_nlmeans.py $image ${prefix}_denoised.nii.gz 1 ${args.join(" ")}
+    scil_denoising_nlmeans.py $image ${prefix}_denoised.nii.gz $ncoils ${args.join(" ")}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

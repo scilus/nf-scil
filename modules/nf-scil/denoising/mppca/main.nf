@@ -1,14 +1,14 @@
 
 process DENOISING_MPPCA {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_medium'
 
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://scil.usherbrooke.ca/containers/scilus_2.0.0.sif':
         'scilus/scilus:2.0.0' }"
 
     input:
-    tuple val(meta), path(dwi)
+    tuple val(meta), path(dwi), path(mask)
 
     output:
     tuple val(meta), path("*_dwi_denoised.nii.gz")  , emit: image
@@ -20,13 +20,16 @@ process DENOISING_MPPCA {
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
     def extent = task.ext.extent ? "-extent " + task.ext.extent : ""
+    def args = ["-nthreads ${task.cpus - 1}"]
+    if (mask) args += ["-mask $mask"]
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
+    export MRTRIX_RNG_SEED=112524
 
-    dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent -nthreads 1
+    dwidenoise $dwi ${prefix}_dwi_denoised.nii.gz $extent ${args.join(" ")}
     fslmaths ${prefix}_dwi_denoised.nii.gz -thr 0 ${prefix}_dwi_denoised.nii.gz
 
     cat <<-END_VERSIONS > versions.yml

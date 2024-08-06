@@ -11,7 +11,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__rev_b0_mean.nii.gz:md5,a0c63d7a8a234d85eeb63045ae2a8f60"
+                    "test__rev_b0_mean.nii.gz:md5,0555e5a36b3b7c39f2aa6d62b32faf11"
                 ]
             ],
             [
@@ -20,7 +20,7 @@
                         "id": "test",
                         "single_end": false
                     },
-                    "test__b0_mean.nii.gz:md5,f50e652bcdd1d45f7a4c592df7eb851a"
+                    "test__b0_mean.nii.gz:md5,b6f6374890b211b2dc6758c2bd4e5f24"
                 ]
             ],
             [
@@ -31,6 +31,6 @@
             "nf-test": "0.9.0-rc1",
             "nextflow": "24.04.2"
         },
-        "timestamp": "2024-07-22T03:44:06.877352"
+        "timestamp": "2024-07-04T17:37:38.673159"
     }
 }
