@@ -1,0 +1,8 @@
+---
+name: "reconst_mrds"
+channels:
+  - Docker
+  - Apptainer
+dependencies:
+  - "mrds"
+  - "scilpy"
