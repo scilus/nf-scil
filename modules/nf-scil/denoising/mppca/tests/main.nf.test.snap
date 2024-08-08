@@ -5,33 +5,31 @@
                 "0": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test_dwi_denoised.nii.gz:md5,c949b91d96513cba506975c271e53596"
+                        "test_dwi_denoised.nii.gz:md5,697aa941c0cb71fe1865662da5b727fa"
                     ]
                 ],
                 "1": [
-                    "versions.yml:md5,fb589ae27eb3edb1cd1a50b0e13d2714"
+                    "versions.yml:md5,c9915fbc1956d7f54bee0748f1ddf920"
                 ],
                 "image": [
                     [
                         {
-                            "id": "test",
-                            "single_end": false
+                            "id": "test"
                         },
-                        "test_dwi_denoised.nii.gz:md5,c949b91d96513cba506975c271e53596"
+                        "test_dwi_denoised.nii.gz:md5,697aa941c0cb71fe1865662da5b727fa"
                     ]
                 ],
                 "versions": [
-                    "versions.yml:md5,fb589ae27eb3edb1cd1a50b0e13d2714"
+                    "versions.yml:md5,c9915fbc1956d7f54bee0748f1ddf920"
                 ]
             }
         ],
         "meta": {
-            "nf-test": "0.8.4",
-            "nextflow": "23.10.1"
+            "nf-test": "0.9.0-rc1",
+            "nextflow": "24.04.4"
         },
-        "timestamp": "2024-04-25T11:07:06.152814"
+        "timestamp": "2024-08-05T15:17:51.718413"
     }
 }
