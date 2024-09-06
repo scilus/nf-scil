@@ -12,7 +12,8 @@
     "updateContentCommand": "bash .devcontainer/updateContentCommand.sh",
     "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
     "containerEnv": {
-        "WORKSPACE": "${containerWorkspaceFolder}"
+        "WORKSPACE": "${containerWorkspaceFolder}",
+        "DUMMY": "assign me to infra !!!!!"
     },
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
