@@ -1,7 +1,7 @@
 reviewers:
   defaults:
     - repository-owners
-    - team:Reviewers_nf-scil
+    - arnaudbore
     - AlexVCaron
 
   groups:
@@ -11,6 +11,12 @@ reviewers:
     infrastructure-leads:
       - AlexVCaron
     documentation-leads:
+      - AlexVCaron
+      - arnaudbore
+      - gagnonanthony
+      - ThoumyreStanislas
+      - Manonedde
+    guidelines-leads:
       - AlexVCaron
       - arnaudbore
       - gagnonanthony
@@ -54,9 +60,9 @@ files:
   'docs/**':
     - documentation-leads
   'modules/nf-scil/**':
-    - team:Reviewers_nf-scil
+    - guidelines-leads
   'subworkflows/nf-scil/**':
-    - team:Reviewers_nf-scil
+    - guidelines-leads
   'LICENSE':
     - repository-owners
   'CONTRIBUTING.md':
@@ -68,5 +74,5 @@ options:
   ignored_keywords:
     - WIP
     - Work in progress
-  enable_group_assignments: true
+  enable_group_assignment: true
   last_files_match_only: false
